@@ -2,6 +2,7 @@ import type { NextPage } from "next";
 import Head from "next/head";
 import { getCollection } from "../lib/collection";
 import styles from "../styles/Home.module.css";
+import Link from "next/link";
 
 const id: string =
   "http://localhost:3000/fixtures/iiif/collection/tenncities.json";
@@ -18,7 +19,6 @@ interface Props {
 }
 
 const Home: NextPage<Props> = ({ collection }) => {
-  console.log(collection);
   return (
     <div className={styles.container}>
       <Head>
@@ -29,9 +29,16 @@ const Home: NextPage<Props> = ({ collection }) => {
 
       <main className={styles.main}>
         <h1>What is Can?</h1>
+        <ul>
+          {collection.items.map((item) => {
+            return (
+              <li key={item.id}>
+                <Link href={`/article/manifest?id=${item.id}`}>{item.id}</Link>
+              </li>
+            );
+          })}
+        </ul>
       </main>
-
-      <footer className={styles.footer}></footer>
     </div>
   );
 };
