@@ -1,0 +1,710 @@
+{
+  "@context": ["https://iiif.io/api/presentation/3/context.json"],
+  "id": "https://digital.lib.utk.edu/assemble/collection/collections/tenncities",
+  "type": "Collection",
+  "label": {
+    "en": ["Images of East Tennessee"]
+  },
+  "items": [
+    {
+      "id": "https://digital.lib.utk.edu/assemble/manifest/tenncities/316",
+      "type": "Manifest",
+      "label": {
+        "none": ["tenncities:316"]
+      }
+    },
+    {
+      "id": "https://digital.lib.utk.edu/assemble/manifest/tenncities/317",
+      "type": "Manifest",
+      "label": {
+        "none": ["tenncities:317"]
+      }
+    },
+    {
+      "id": "https://digital.lib.utk.edu/assemble/manifest/tenncities/318",
+      "type": "Manifest",
+      "label": {
+        "none": ["tenncities:318"]
+      }
+    },
+    {
+      "id": "https://digital.lib.utk.edu/assemble/manifest/tenncities/319",
+      "type": "Manifest",
+      "label": {
+        "none": ["tenncities:319"]
+      }
+    },
+    {
+      "id": "https://digital.lib.utk.edu/assemble/manifest/tenncities/320",
+      "type": "Manifest",
+      "label": {
+        "none": ["tenncities:320"]
+      }
+    },
+    {
+      "id": "https://digital.lib.utk.edu/assemble/manifest/tenncities/321",
+      "type": "Manifest",
+      "label": {
+        "none": ["tenncities:321"]
+      }
+    },
+    {
+      "id": "https://digital.lib.utk.edu/assemble/manifest/tenncities/322",
+      "type": "Manifest",
+      "label": {
+        "none": ["tenncities:322"]
+      }
+    },
+    {
+      "id": "https://digital.lib.utk.edu/assemble/manifest/tenncities/323",
+      "type": "Manifest",
+      "label": {
+        "none": ["tenncities:323"]
+      }
+    },
+    {
+      "id": "https://digital.lib.utk.edu/assemble/manifest/tenncities/324",
+      "type": "Manifest",
+      "label": {
+        "none": ["tenncities:324"]
+      }
+    },
+    {
+      "id": "https://digital.lib.utk.edu/assemble/manifest/tenncities/325",
+      "type": "Manifest",
+      "label": {
+        "none": ["tenncities:325"]
+      }
+    },
+    {
+      "id": "https://digital.lib.utk.edu/assemble/manifest/tenncities/326",
+      "type": "Manifest",
+      "label": {
+        "none": ["tenncities:326"]
+      }
+    },
+    {
+      "id": "https://digital.lib.utk.edu/assemble/manifest/tenncities/327",
+      "type": "Manifest",
+      "label": {
+        "none": ["tenncities:327"]
+      }
+    },
+    {
+      "id": "https://digital.lib.utk.edu/assemble/manifest/tenncities/328",
+      "type": "Manifest",
+      "label": {
+        "none": ["tenncities:328"]
+      }
+    },
+    {
+      "id": "https://digital.lib.utk.edu/assemble/manifest/tenncities/329",
+      "type": "Manifest",
+      "label": {
+        "none": ["tenncities:329"]
+      }
+    },
+    {
+      "id": "https://digital.lib.utk.edu/assemble/manifest/tenncities/330",
+      "type": "Manifest",
+      "label": {
+        "none": ["tenncities:330"]
+      }
+    },
+    {
+      "id": "https://digital.lib.utk.edu/assemble/manifest/tenncities/331",
+      "type": "Manifest",
+      "label": {
+        "none": ["tenncities:331"]
+      }
+    },
+    {
+      "id": "https://digital.lib.utk.edu/assemble/manifest/tenncities/332",
+      "type": "Manifest",
+      "label": {
+        "none": ["tenncities:332"]
+      }
+    },
+    {
+      "id": "https://digital.lib.utk.edu/assemble/manifest/tenncities/333",
+      "type": "Manifest",
+      "label": {
+        "none": ["tenncities:333"]
+      }
+    },
+    {
+      "id": "https://digital.lib.utk.edu/assemble/manifest/tenncities/334",
+      "type": "Manifest",
+      "label": {
+        "none": ["tenncities:334"]
+      }
+    },
+    {
+      "id": "https://digital.lib.utk.edu/assemble/manifest/tenncities/335",
+      "type": "Manifest",
+      "label": {
+        "none": ["tenncities:335"]
+      }
+    },
+    {
+      "id": "https://digital.lib.utk.edu/assemble/manifest/tenncities/336",
+      "type": "Manifest",
+      "label": {
+        "none": ["tenncities:336"]
+      }
+    },
+    {
+      "id": "https://digital.lib.utk.edu/assemble/manifest/tenncities/337",
+      "type": "Manifest",
+      "label": {
+        "none": ["tenncities:337"]
+      }
+    },
+    {
+      "id": "https://digital.lib.utk.edu/assemble/manifest/tenncities/338",
+      "type": "Manifest",
+      "label": {
+        "none": ["tenncities:338"]
+      }
+    },
+    {
+      "id": "https://digital.lib.utk.edu/assemble/manifest/tenncities/339",
+      "type": "Manifest",
+      "label": {
+        "none": ["tenncities:339"]
+      }
+    },
+    {
+      "id": "https://digital.lib.utk.edu/assemble/manifest/tenncities/340",
+      "type": "Manifest",
+      "label": {
+        "none": ["tenncities:340"]
+      }
+    },
+    {
+      "id": "https://digital.lib.utk.edu/assemble/manifest/tenncities/341",
+      "type": "Manifest",
+      "label": {
+        "none": ["tenncities:341"]
+      }
+    },
+    {
+      "id": "https://digital.lib.utk.edu/assemble/manifest/tenncities/342",
+      "type": "Manifest",
+      "label": {
+        "none": ["tenncities:342"]
+      }
+    },
+    {
+      "id": "https://digital.lib.utk.edu/assemble/manifest/tenncities/343",
+      "type": "Manifest",
+      "label": {
+        "none": ["tenncities:343"]
+      }
+    },
+    {
+      "id": "https://digital.lib.utk.edu/assemble/manifest/tenncities/344",
+      "type": "Manifest",
+      "label": {
+        "none": ["tenncities:344"]
+      }
+    },
+    {
+      "id": "https://digital.lib.utk.edu/assemble/manifest/tenncities/345",
+      "type": "Manifest",
+      "label": {
+        "none": ["tenncities:345"]
+      }
+    },
+    {
+      "id": "https://digital.lib.utk.edu/assemble/manifest/tenncities/346",
+      "type": "Manifest",
+      "label": {
+        "none": ["tenncities:346"]
+      }
+    },
+    {
+      "id": "https://digital.lib.utk.edu/assemble/manifest/tenncities/347",
+      "type": "Manifest",
+      "label": {
+        "none": ["tenncities:347"]
+      }
+    },
+    {
+      "id": "https://digital.lib.utk.edu/assemble/manifest/tenncities/348",
+      "type": "Manifest",
+      "label": {
+        "none": ["tenncities:348"]
+      }
+    },
+    {
+      "id": "https://digital.lib.utk.edu/assemble/manifest/tenncities/349",
+      "type": "Manifest",
+      "label": {
+        "none": ["tenncities:349"]
+      }
+    },
+    {
+      "id": "https://digital.lib.utk.edu/assemble/manifest/tenncities/350",
+      "type": "Manifest",
+      "label": {
+        "none": ["tenncities:350"]
+      }
+    },
+    {
+      "id": "https://digital.lib.utk.edu/assemble/manifest/tenncities/351",
+      "type": "Manifest",
+      "label": {
+        "none": ["tenncities:351"]
+      }
+    },
+    {
+      "id": "https://digital.lib.utk.edu/assemble/manifest/tenncities/352",
+      "type": "Manifest",
+      "label": {
+        "none": ["tenncities:352"]
+      }
+    },
+    {
+      "id": "https://digital.lib.utk.edu/assemble/manifest/tenncities/353",
+      "type": "Manifest",
+      "label": {
+        "none": ["tenncities:353"]
+      }
+    },
+    {
+      "id": "https://digital.lib.utk.edu/assemble/manifest/tenncities/354",
+      "type": "Manifest",
+      "label": {
+        "none": ["tenncities:354"]
+      }
+    },
+    {
+      "id": "https://digital.lib.utk.edu/assemble/manifest/tenncities/355",
+      "type": "Manifest",
+      "label": {
+        "none": ["tenncities:355"]
+      }
+    },
+    {
+      "id": "https://digital.lib.utk.edu/assemble/manifest/tenncities/356",
+      "type": "Manifest",
+      "label": {
+        "none": ["tenncities:356"]
+      }
+    },
+    {
+      "id": "https://digital.lib.utk.edu/assemble/manifest/tenncities/357",
+      "type": "Manifest",
+      "label": {
+        "none": ["tenncities:357"]
+      }
+    },
+    {
+      "id": "https://digital.lib.utk.edu/assemble/manifest/tenncities/358",
+      "type": "Manifest",
+      "label": {
+        "none": ["tenncities:358"]
+      }
+    },
+    {
+      "id": "https://digital.lib.utk.edu/assemble/manifest/tenncities/359",
+      "type": "Manifest",
+      "label": {
+        "none": ["tenncities:359"]
+      }
+    },
+    {
+      "id": "https://digital.lib.utk.edu/assemble/manifest/tenncities/360",
+      "type": "Manifest",
+      "label": {
+        "none": ["tenncities:360"]
+      }
+    },
+    {
+      "id": "https://digital.lib.utk.edu/assemble/manifest/tenncities/361",
+      "type": "Manifest",
+      "label": {
+        "none": ["tenncities:361"]
+      }
+    },
+    {
+      "id": "https://digital.lib.utk.edu/assemble/manifest/tenncities/362",
+      "type": "Manifest",
+      "label": {
+        "none": ["tenncities:362"]
+      }
+    },
+    {
+      "id": "https://digital.lib.utk.edu/assemble/manifest/tenncities/363",
+      "type": "Manifest",
+      "label": {
+        "none": ["tenncities:363"]
+      }
+    },
+    {
+      "id": "https://digital.lib.utk.edu/assemble/manifest/tenncities/364",
+      "type": "Manifest",
+      "label": {
+        "none": ["tenncities:364"]
+      }
+    },
+    {
+      "id": "https://digital.lib.utk.edu/assemble/manifest/tenncities/365",
+      "type": "Manifest",
+      "label": {
+        "none": ["tenncities:365"]
+      }
+    },
+    {
+      "id": "https://digital.lib.utk.edu/assemble/manifest/tenncities/366",
+      "type": "Manifest",
+      "label": {
+        "none": ["tenncities:366"]
+      }
+    },
+    {
+      "id": "https://digital.lib.utk.edu/assemble/manifest/tenncities/367",
+      "type": "Manifest",
+      "label": {
+        "none": ["tenncities:367"]
+      }
+    },
+    {
+      "id": "https://digital.lib.utk.edu/assemble/manifest/tenncities/368",
+      "type": "Manifest",
+      "label": {
+        "none": ["tenncities:368"]
+      }
+    },
+    {
+      "id": "https://digital.lib.utk.edu/assemble/manifest/tenncities/369",
+      "type": "Manifest",
+      "label": {
+        "none": ["tenncities:369"]
+      }
+    },
+    {
+      "id": "https://digital.lib.utk.edu/assemble/manifest/tenncities/370",
+      "type": "Manifest",
+      "label": {
+        "none": ["tenncities:370"]
+      }
+    },
+    {
+      "id": "https://digital.lib.utk.edu/assemble/manifest/tenncities/371",
+      "type": "Manifest",
+      "label": {
+        "none": ["tenncities:371"]
+      }
+    },
+    {
+      "id": "https://digital.lib.utk.edu/assemble/manifest/tenncities/372",
+      "type": "Manifest",
+      "label": {
+        "none": ["tenncities:372"]
+      }
+    },
+    {
+      "id": "https://digital.lib.utk.edu/assemble/manifest/tenncities/373",
+      "type": "Manifest",
+      "label": {
+        "none": ["tenncities:373"]
+      }
+    },
+    {
+      "id": "https://digital.lib.utk.edu/assemble/manifest/tenncities/374",
+      "type": "Manifest",
+      "label": {
+        "none": ["tenncities:374"]
+      }
+    },
+    {
+      "id": "https://digital.lib.utk.edu/assemble/manifest/tenncities/375",
+      "type": "Manifest",
+      "label": {
+        "none": ["tenncities:375"]
+      }
+    },
+    {
+      "id": "https://digital.lib.utk.edu/assemble/manifest/tenncities/376",
+      "type": "Manifest",
+      "label": {
+        "none": ["tenncities:376"]
+      }
+    },
+    {
+      "id": "https://digital.lib.utk.edu/assemble/manifest/tenncities/377",
+      "type": "Manifest",
+      "label": {
+        "none": ["tenncities:377"]
+      }
+    },
+    {
+      "id": "https://digital.lib.utk.edu/assemble/manifest/tenncities/378",
+      "type": "Manifest",
+      "label": {
+        "none": ["tenncities:378"]
+      }
+    },
+    {
+      "id": "https://digital.lib.utk.edu/assemble/manifest/tenncities/379",
+      "type": "Manifest",
+      "label": {
+        "none": ["tenncities:379"]
+      }
+    },
+    {
+      "id": "https://digital.lib.utk.edu/assemble/manifest/tenncities/380",
+      "type": "Manifest",
+      "label": {
+        "none": ["tenncities:380"]
+      }
+    },
+    {
+      "id": "https://digital.lib.utk.edu/assemble/manifest/tenncities/381",
+      "type": "Manifest",
+      "label": {
+        "none": ["tenncities:381"]
+      }
+    },
+    {
+      "id": "https://digital.lib.utk.edu/assemble/manifest/tenncities/382",
+      "type": "Manifest",
+      "label": {
+        "none": ["tenncities:382"]
+      }
+    },
+    {
+      "id": "https://digital.lib.utk.edu/assemble/manifest/tenncities/383",
+      "type": "Manifest",
+      "label": {
+        "none": ["tenncities:383"]
+      }
+    },
+    {
+      "id": "https://digital.lib.utk.edu/assemble/manifest/tenncities/384",
+      "type": "Manifest",
+      "label": {
+        "none": ["tenncities:384"]
+      }
+    },
+    {
+      "id": "https://digital.lib.utk.edu/assemble/manifest/tenncities/385",
+      "type": "Manifest",
+      "label": {
+        "none": ["tenncities:385"]
+      }
+    },
+    {
+      "id": "https://digital.lib.utk.edu/assemble/manifest/tenncities/386",
+      "type": "Manifest",
+      "label": {
+        "none": ["tenncities:386"]
+      }
+    },
+    {
+      "id": "https://digital.lib.utk.edu/assemble/manifest/tenncities/387",
+      "type": "Manifest",
+      "label": {
+        "none": ["tenncities:387"]
+      }
+    },
+    {
+      "id": "https://digital.lib.utk.edu/assemble/manifest/tenncities/388",
+      "type": "Manifest",
+      "label": {
+        "none": ["tenncities:388"]
+      }
+    },
+    {
+      "id": "https://digital.lib.utk.edu/assemble/manifest/tenncities/389",
+      "type": "Manifest",
+      "label": {
+        "none": ["tenncities:389"]
+      }
+    },
+    {
+      "id": "https://digital.lib.utk.edu/assemble/manifest/tenncities/390",
+      "type": "Manifest",
+      "label": {
+        "none": ["tenncities:390"]
+      }
+    },
+    {
+      "id": "https://digital.lib.utk.edu/assemble/manifest/tenncities/391",
+      "type": "Manifest",
+      "label": {
+        "none": ["tenncities:391"]
+      }
+    },
+    {
+      "id": "https://digital.lib.utk.edu/assemble/manifest/tenncities/392",
+      "type": "Manifest",
+      "label": {
+        "none": ["tenncities:392"]
+      }
+    },
+    {
+      "id": "https://digital.lib.utk.edu/assemble/manifest/tenncities/393",
+      "type": "Manifest",
+      "label": {
+        "none": ["tenncities:393"]
+      }
+    },
+    {
+      "id": "https://digital.lib.utk.edu/assemble/manifest/tenncities/394",
+      "type": "Manifest",
+      "label": {
+        "none": ["tenncities:394"]
+      }
+    },
+    {
+      "id": "https://digital.lib.utk.edu/assemble/manifest/tenncities/395",
+      "type": "Manifest",
+      "label": {
+        "none": ["tenncities:395"]
+      }
+    },
+    {
+      "id": "https://digital.lib.utk.edu/assemble/manifest/tenncities/396",
+      "type": "Manifest",
+      "label": {
+        "none": ["tenncities:396"]
+      }
+    },
+    {
+      "id": "https://digital.lib.utk.edu/assemble/manifest/tenncities/397",
+      "type": "Manifest",
+      "label": {
+        "none": ["tenncities:397"]
+      }
+    },
+    {
+      "id": "https://digital.lib.utk.edu/assemble/manifest/tenncities/398",
+      "type": "Manifest",
+      "label": {
+        "none": ["tenncities:398"]
+      }
+    },
+    {
+      "id": "https://digital.lib.utk.edu/assemble/manifest/tenncities/399",
+      "type": "Manifest",
+      "label": {
+        "none": ["tenncities:399"]
+      }
+    },
+    {
+      "id": "https://digital.lib.utk.edu/assemble/manifest/tenncities/400",
+      "type": "Manifest",
+      "label": {
+        "none": ["tenncities:400"]
+      }
+    },
+    {
+      "id": "https://digital.lib.utk.edu/assemble/manifest/tenncities/401",
+      "type": "Manifest",
+      "label": {
+        "none": ["tenncities:401"]
+      }
+    },
+    {
+      "id": "https://digital.lib.utk.edu/assemble/manifest/tenncities/402",
+      "type": "Manifest",
+      "label": {
+        "none": ["tenncities:402"]
+      }
+    },
+    {
+      "id": "https://digital.lib.utk.edu/assemble/manifest/tenncities/403",
+      "type": "Manifest",
+      "label": {
+        "none": ["tenncities:403"]
+      }
+    },
+    {
+      "id": "https://digital.lib.utk.edu/assemble/manifest/tenncities/404",
+      "type": "Manifest",
+      "label": {
+        "none": ["tenncities:404"]
+      }
+    },
+    {
+      "id": "https://digital.lib.utk.edu/assemble/manifest/tenncities/405",
+      "type": "Manifest",
+      "label": {
+        "none": ["tenncities:405"]
+      }
+    },
+    {
+      "id": "https://digital.lib.utk.edu/assemble/manifest/tenncities/406",
+      "type": "Manifest",
+      "label": {
+        "none": ["tenncities:406"]
+      }
+    },
+    {
+      "id": "https://digital.lib.utk.edu/assemble/manifest/tenncities/407",
+      "type": "Manifest",
+      "label": {
+        "none": ["tenncities:407"]
+      }
+    },
+    {
+      "id": "https://digital.lib.utk.edu/assemble/manifest/tenncities/408",
+      "type": "Manifest",
+      "label": {
+        "none": ["tenncities:408"]
+      }
+    },
+    {
+      "id": "https://digital.lib.utk.edu/assemble/manifest/tenncities/409",
+      "type": "Manifest",
+      "label": {
+        "none": ["tenncities:409"]
+      }
+    },
+    {
+      "id": "https://digital.lib.utk.edu/assemble/manifest/tenncities/410",
+      "type": "Manifest",
+      "label": {
+        "none": ["tenncities:410"]
+      }
+    },
+    {
+      "id": "https://digital.lib.utk.edu/assemble/manifest/tenncities/411",
+      "type": "Manifest",
+      "label": {
+        "none": ["tenncities:411"]
+      }
+    },
+    {
+      "id": "https://digital.lib.utk.edu/assemble/manifest/tenncities/412",
+      "type": "Manifest",
+      "label": {
+        "none": ["tenncities:412"]
+      }
+    },
+    {
+      "id": "https://digital.lib.utk.edu/assemble/manifest/tenncities/413",
+      "type": "Manifest",
+      "label": {
+        "none": ["tenncities:413"]
+      }
+    },
+    {
+      "id": "https://digital.lib.utk.edu/assemble/manifest/tenncities/414",
+      "type": "Manifest",
+      "label": {
+        "none": ["tenncities:414"]
+      }
+    },
+    {
+      "id": "https://digital.lib.utk.edu/assemble/manifest/tenncities/415",
+      "type": "Manifest",
+      "label": {
+        "none": ["tenncities:415"]
+      }
+    }
+  ]
+}

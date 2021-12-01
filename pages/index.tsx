@@ -1,9 +1,21 @@
 import type { NextPage } from "next";
 import Head from "next/head";
-import Image from "next/image";
+import { getCollection } from "../lib/collection";
 import styles from "../styles/Home.module.css";
 
-const Home: NextPage = () => {
+const id: string =
+  "http://localhost:3000/fixtures/iiif/collection/tenncities.json";
+
+interface IIIFCollection {
+  id: string;
+}
+
+interface Props {
+  collection: IIIFCollection;
+}
+
+const Home: NextPage<Props> = ({ collection }) => {
+  console.log(collection);
   return (
     <div className={styles.container}>
       <Head>
@@ -18,5 +30,13 @@ const Home: NextPage = () => {
     </div>
   );
 };
+
+export async function getStaticProps() {
+  const collection: any = await getCollection(id);
+
+  return {
+    props: { collection },
+  };
+}
 
 export default Home;
