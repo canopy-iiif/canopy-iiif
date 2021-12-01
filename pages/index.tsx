@@ -7,7 +7,10 @@ const id: string =
   "http://localhost:3000/fixtures/iiif/collection/tenncities.json";
 
 interface IIIFCollection {
+  "@context": string | string[];
   id: string;
+  type: "Collection";
+  items: [];
 }
 
 interface Props {
@@ -24,7 +27,9 @@ const Home: NextPage<Props> = ({ collection }) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className={styles.main}>What is Can?</main>
+      <main className={styles.main}>
+        <h1>What is Can?</h1>
+      </main>
 
       <footer className={styles.footer}></footer>
     </div>
