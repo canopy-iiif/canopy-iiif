@@ -1,27 +1,10 @@
-# API routes with GraphQL server
+<img width="90" alt="image" src="https://iiif.stack.rdc.library.northwestern.edu/iiif/2/bb9b1011-9d0a-46e0-9769-507e38668f11/95,200,1550,1550/600,/0/default.jpg"> <img width="90" alt="image" src="https://iiif.stack.rdc.library.northwestern.edu/iiif/2/bb9b1011-9d0a-46e0-9769-507e38668f11/482,587,775,775/600,/0/default.jpg"> <img width="90" alt="image" src="https://iiif.stack.rdc.library.northwestern.edu/iiif/2/bb9b1011-9d0a-46e0-9769-507e38668f11/695,808,387,387/600,/0/default.jpg">
 
-Next.js ships with [API routes](https://github.com/vercel/next.js#api-routes), which provide an easy solution to build your own `API`. This example shows their usage alongside [apollo-server-micro](https://github.com/apollographql/apollo-server/tree/main/packages/apollo-server-micro) to provide simple GraphQL server consumed by Next.js app.
+# Can
 
-## Preview
+Home food processing jar against background of colorful fresh vegetables, including corn, radishes, and tomatoes.
 
-Preview the example live on [StackBlitz](http://stackblitz.com/):
+### Cans of Inspiration
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/vercel/next.js/tree/canary/examples/api-routes-graphql)
-
-## Deploy your own
-
-Deploy the example using [Vercel](https://vercel.com?utm_source=github&utm_medium=readme&utm_campaign=next-example):
-
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https://github.com/vercel/next.js/tree/canary/examples/api-routes-graphql&project-name=api-routes-graphql&repository-name=api-routes-graphql)
-
-## How to use
-
-Execute [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) with [npm](https://docs.npmjs.com/cli/init) or [Yarn](https://yarnpkg.com/lang/en/docs/cli/create/) to bootstrap the example:
-
-```bash
-npx create-next-app --example api-routes-graphql api-routes-graphql-app
-# or
-yarn create next-app --example api-routes-graphql api-routes-graphql-app
-```
-
-Deploy it to the cloud with [Vercel](https://vercel.com/new?utm_source=github&utm_medium=readme&utm_campaign=next-example) ([Documentation](https://nextjs.org/docs/deployment)).
+- [Oh Yeah](https://www.youtube.com/watch?v=bRMSjidUB_o) / Can
+- [Small Crushed Campbell's Soup Can (Beef Noodle)](https://emuseum.huntington.org/objects/51528/small-crushed-campbells-soup-can-beef-noodle?ctx=b04c5e2adef03d7d5bf921bf4f06ae0f3154c5e9&idx=1) / Warhol
