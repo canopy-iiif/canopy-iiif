@@ -1,0 +1,43 @@
+{
+  "description": [
+    "written, illustrated, and published by Edward S. Curtis ; edited by Frederick Webb Hodge ; foreword by Theodore Roosevelt ; field research conducted under the patronage of J. Pierpont Morgan. ; Original photogravures produced in Boston by John Andrew & Son from 1899-1910."
+  ],
+  "label": "Three Eagles - Nez Percé",
+  "sequences": [
+    {
+      "canvases": [
+        {
+          "height": "480",
+          "images": [
+            {
+              "motivation": "sc:painting",
+              "on": "https://iiif.stack.rdc.library.northwestern.edu/public/dd/d7/2f/96/-9/86/9-/43/35/-9/d8/c-/3a/3d/a5/1a/d1/28-manifest.json/canvas/b5f79191-b6d4-4867-afeb-5dd010c26112",
+              "resource": {
+                "description": "Three Eagles - Nez Percé",
+                "label": "vol_ct08013u.tif",
+                "service": {
+                  "profile": "http://iiif.io/api/image/2/level2.json",
+                  "@context": "http://iiif.io/api/image/2/context.json",
+                  "@id": "https://iiif.stack.rdc.library.northwestern.edu/iiif/2/b5f79191-b6d4-4867-afeb-5dd010c26112"
+                },
+                "@id": "https://iiif.stack.rdc.library.northwestern.edu/iiif/2/b5f79191-b6d4-4867-afeb-5dd010c26112/full/600,/0/default.jpg",
+                "@type": "dctypes:Image"
+              },
+              "@type": "oa:Annotation"
+            }
+          ],
+          "label": "vol_ct08013u.tif",
+          "width": "640",
+          "@id": "https://iiif.stack.rdc.library.northwestern.edu/public/dd/d7/2f/96/-9/86/9-/43/35/-9/d8/c-/3a/3d/a5/1a/d1/28-manifest.json/canvas/b5f79191-b6d4-4867-afeb-5dd010c26112",
+          "@type": "sc:Canvas"
+        }
+      ],
+      "@context": "http://iiif.io/api/presentation/2/context.json",
+      "@id": "/sequence/normal",
+      "@type": "sc:Sequence"
+    }
+  ],
+  "@context": "http://iiif.io/api/presentation/2/context.json",
+  "@id": "https://iiif.stack.rdc.library.northwestern.edu/public/dd/d7/2f/96/-9/86/9-/43/35/-9/d8/c-/3a/3d/a5/1a/d1/28-manifest.json",
+  "@type": "sc:Manifest"
+}

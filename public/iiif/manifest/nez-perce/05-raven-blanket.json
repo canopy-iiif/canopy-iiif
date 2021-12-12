@@ -1,0 +1,43 @@
+{
+  "description": [
+    "written, illustrated, and published by Edward S. Curtis ; edited by Frederick Webb Hodge ; foreword by Theodore Roosevelt ; field research conducted under the patronage of J. Pierpont Morgan. ; Original photogravures produced in Boston by John Andrew & Son from 1899-1910."
+  ],
+  "label": "Raven Blanket - Nez Percé",
+  "sequences": [
+    {
+      "canvases": [
+        {
+          "height": "480",
+          "images": [
+            {
+              "motivation": "sc:painting",
+              "on": "https://iiif.stack.rdc.library.northwestern.edu/public/19/ef/ac/1e/-5/e7/9-/47/1c/-8/9c/2-/a6/0a/77/55/62/ce-manifest.json/canvas/4630e77e-598e-4ca3-8441-8a3d56c67c4f",
+              "resource": {
+                "description": "Raven Blanket - Nez Percé",
+                "label": "Plate 4",
+                "service": {
+                  "profile": "http://iiif.io/api/image/2/level2.json",
+                  "@context": "http://iiif.io/api/image/2/context.json",
+                  "@id": "https://iiif.stack.rdc.library.northwestern.edu/iiif/2/4630e77e-598e-4ca3-8441-8a3d56c67c4f"
+                },
+                "@id": "https://iiif.stack.rdc.library.northwestern.edu/iiif/2/4630e77e-598e-4ca3-8441-8a3d56c67c4f/full/600,/0/default.jpg",
+                "@type": "dctypes:Image"
+              },
+              "@type": "oa:Annotation"
+            }
+          ],
+          "label": "Plate 4",
+          "width": "640",
+          "@id": "https://iiif.stack.rdc.library.northwestern.edu/public/19/ef/ac/1e/-5/e7/9-/47/1c/-8/9c/2-/a6/0a/77/55/62/ce-manifest.json/canvas/4630e77e-598e-4ca3-8441-8a3d56c67c4f",
+          "@type": "sc:Canvas"
+        }
+      ],
+      "@context": "http://iiif.io/api/presentation/2/context.json",
+      "@id": "/sequence/normal",
+      "@type": "sc:Sequence"
+    }
+  ],
+  "@context": "http://iiif.io/api/presentation/2/context.json",
+  "@id": "https://iiif.stack.rdc.library.northwestern.edu/public/19/ef/ac/1e/-5/e7/9-/47/1c/-8/9c/2-/a6/0a/77/55/62/ce-manifest.json",
+  "@type": "sc:Manifest"
+}

@@ -1,0 +1,43 @@
+{
+  "description": [
+    "written, illustrated, and published by Edward S. Curtis ; edited by Frederick Webb Hodge ; foreword by Theodore Roosevelt ; field research conducted under the patronage of J. Pierpont Morgan. ; Original photogravures produced in Boston by John Andrew & Son from 1899-1910."
+  ],
+  "label": "Nez Percé Matron",
+  "sequences": [
+    {
+      "canvases": [
+        {
+          "height": "480",
+          "images": [
+            {
+              "motivation": "sc:painting",
+              "on": "https://iiif.stack.rdc.library.northwestern.edu/public/0c/d4/08/af/-e/d9/b-/4d/d1/-a/5a/1-/52/da/dc/c6/67/f5-manifest.json/canvas/8b3ae6bc-a41b-4da2-98ca-6ac90fb38186",
+              "resource": {
+                "description": "Nez Percé Matron",
+                "label": "vol_ct08005u.tif",
+                "service": {
+                  "profile": "http://iiif.io/api/image/2/level2.json",
+                  "@context": "http://iiif.io/api/image/2/context.json",
+                  "@id": "https://iiif.stack.rdc.library.northwestern.edu/iiif/2/8b3ae6bc-a41b-4da2-98ca-6ac90fb38186"
+                },
+                "@id": "https://iiif.stack.rdc.library.northwestern.edu/iiif/2/8b3ae6bc-a41b-4da2-98ca-6ac90fb38186/full/600,/0/default.jpg",
+                "@type": "dctypes:Image"
+              },
+              "@type": "oa:Annotation"
+            }
+          ],
+          "label": "vol_ct08005u.tif",
+          "width": "640",
+          "@id": "https://iiif.stack.rdc.library.northwestern.edu/public/0c/d4/08/af/-e/d9/b-/4d/d1/-a/5a/1-/52/da/dc/c6/67/f5-manifest.json/canvas/8b3ae6bc-a41b-4da2-98ca-6ac90fb38186",
+          "@type": "sc:Canvas"
+        }
+      ],
+      "@context": "http://iiif.io/api/presentation/2/context.json",
+      "@id": "/sequence/normal",
+      "@type": "sc:Sequence"
+    }
+  ],
+  "@context": "http://iiif.io/api/presentation/2/context.json",
+  "@id": "https://iiif.stack.rdc.library.northwestern.edu/public/0c/d4/08/af/-e/d9/b-/4d/d1/-a/5a/1-/52/da/dc/c6/67/f5-manifest.json",
+  "@type": "sc:Manifest"
+}

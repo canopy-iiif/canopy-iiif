@@ -1,0 +1,43 @@
+{
+  "description": [
+    "written, illustrated, and published by Edward S. Curtis ; edited by Frederick Webb Hodge ; foreword by Theodore Roosevelt ; field research conducted under the patronage of J. Pierpont Morgan. ; Original photogravures produced in Boston by John Andrew & Son from 1899-1910."
+  ],
+  "label": "Night Scout - Nez Percé",
+  "sequences": [
+    {
+      "canvases": [
+        {
+          "height": "480",
+          "images": [
+            {
+              "motivation": "sc:painting",
+              "on": "https://iiif.stack.rdc.library.northwestern.edu/public/c3/e1/6b/10/-a/8a/9-/4d/ee/-9/6f/c-/5f/81/a7/7e/f3/b7-manifest.json/canvas/c542c750-489c-430d-8dd5-3565497c6452",
+              "resource": {
+                "description": "Night Scout - Nez Percé",
+                "label": "Plate 5",
+                "service": {
+                  "profile": "http://iiif.io/api/image/2/level2.json",
+                  "@context": "http://iiif.io/api/image/2/context.json",
+                  "@id": "https://iiif.stack.rdc.library.northwestern.edu/iiif/2/c542c750-489c-430d-8dd5-3565497c6452"
+                },
+                "@id": "https://iiif.stack.rdc.library.northwestern.edu/iiif/2/c542c750-489c-430d-8dd5-3565497c6452/full/600,/0/default.jpg",
+                "@type": "dctypes:Image"
+              },
+              "@type": "oa:Annotation"
+            }
+          ],
+          "label": "Plate 5",
+          "width": "640",
+          "@id": "https://iiif.stack.rdc.library.northwestern.edu/public/c3/e1/6b/10/-a/8a/9-/4d/ee/-9/6f/c-/5f/81/a7/7e/f3/b7-manifest.json/canvas/c542c750-489c-430d-8dd5-3565497c6452",
+          "@type": "sc:Canvas"
+        }
+      ],
+      "@context": "http://iiif.io/api/presentation/2/context.json",
+      "@id": "/sequence/normal",
+      "@type": "sc:Sequence"
+    }
+  ],
+  "@context": "http://iiif.io/api/presentation/2/context.json",
+  "@id": "https://iiif.stack.rdc.library.northwestern.edu/public/c3/e1/6b/10/-a/8a/9-/4d/ee/-9/6f/c-/5f/81/a7/7e/f3/b7-manifest.json",
+  "@type": "sc:Manifest"
+}

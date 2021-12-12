@@ -1,0 +1,43 @@
+{
+  "description": [
+    "written, illustrated, and published by Edward S. Curtis ; edited by Frederick Webb Hodge ; foreword by Theodore Roosevelt ; field research conducted under the patronage of J. Pierpont Morgan. ; Original photogravures produced in Boston by John Andrew & Son from 1899-1910."
+  ],
+  "label": "Lawyer - Nez Percé",
+  "sequences": [
+    {
+      "canvases": [
+        {
+          "height": "480",
+          "images": [
+            {
+              "motivation": "sc:painting",
+              "on": "https://iiif.stack.rdc.library.northwestern.edu/public/09/3a/f1/dc/-1/14/7-/4d/fe/-9/95/b-/12/fb/9f/98/31/92-manifest.json/canvas/f3f7bde0-c173-4c7e-8bed-c1534d220fd3",
+              "resource": {
+                "description": "Lawyer - Nez Percé",
+                "label": "Plate 9",
+                "service": {
+                  "profile": "http://iiif.io/api/image/2/level2.json",
+                  "@context": "http://iiif.io/api/image/2/context.json",
+                  "@id": "https://iiif.stack.rdc.library.northwestern.edu/iiif/2/f3f7bde0-c173-4c7e-8bed-c1534d220fd3"
+                },
+                "@id": "https://iiif.stack.rdc.library.northwestern.edu/iiif/2/f3f7bde0-c173-4c7e-8bed-c1534d220fd3/full/600,/0/default.jpg",
+                "@type": "dctypes:Image"
+              },
+              "@type": "oa:Annotation"
+            }
+          ],
+          "label": "Plate 9",
+          "width": "640",
+          "@id": "https://iiif.stack.rdc.library.northwestern.edu/public/09/3a/f1/dc/-1/14/7-/4d/fe/-9/95/b-/12/fb/9f/98/31/92-manifest.json/canvas/f3f7bde0-c173-4c7e-8bed-c1534d220fd3",
+          "@type": "sc:Canvas"
+        }
+      ],
+      "@context": "http://iiif.io/api/presentation/2/context.json",
+      "@id": "/sequence/normal",
+      "@type": "sc:Sequence"
+    }
+  ],
+  "@context": "http://iiif.io/api/presentation/2/context.json",
+  "@id": "https://iiif.stack.rdc.library.northwestern.edu/public/09/3a/f1/dc/-1/14/7-/4d/fe/-9/95/b-/12/fb/9f/98/31/92-manifest.json",
+  "@type": "sc:Manifest"
+}

@@ -1,0 +1,43 @@
+{
+  "description": [
+    "written, illustrated, and published by Edward S. Curtis ; edited by Frederick Webb Hodge ; foreword by Theodore Roosevelt ; field research conducted under the patronage of J. Pierpont Morgan. ; Original photogravures produced in Boston by John Andrew & Son from 1899-1910."
+  ],
+  "label": "Joseph Dead Feast Lodge - Nez Percé",
+  "sequences": [
+    {
+      "canvases": [
+        {
+          "height": "480",
+          "images": [
+            {
+              "motivation": "sc:painting",
+              "on": "https://iiif.stack.rdc.library.northwestern.edu/public/83/fb/e9/4b/-6/db/7-/46/3e/-9/94/2-/6b/eb/25/6a/a6/06-manifest.json/canvas/d5d256ea-2e10-4794-9b84-1344ed02152f",
+              "resource": {
+                "description": "Joseph Dead Feast Lodge - Nez Percé",
+                "label": "vol_ct08020u.tif",
+                "service": {
+                  "profile": "http://iiif.io/api/image/2/level2.json",
+                  "@context": "http://iiif.io/api/image/2/context.json",
+                  "@id": "https://iiif.stack.rdc.library.northwestern.edu/iiif/2/d5d256ea-2e10-4794-9b84-1344ed02152f"
+                },
+                "@id": "https://iiif.stack.rdc.library.northwestern.edu/iiif/2/d5d256ea-2e10-4794-9b84-1344ed02152f/full/600,/0/default.jpg",
+                "@type": "dctypes:Image"
+              },
+              "@type": "oa:Annotation"
+            }
+          ],
+          "label": "vol_ct08020u.tif",
+          "width": "640",
+          "@id": "https://iiif.stack.rdc.library.northwestern.edu/public/83/fb/e9/4b/-6/db/7-/46/3e/-9/94/2-/6b/eb/25/6a/a6/06-manifest.json/canvas/d5d256ea-2e10-4794-9b84-1344ed02152f",
+          "@type": "sc:Canvas"
+        }
+      ],
+      "@context": "http://iiif.io/api/presentation/2/context.json",
+      "@id": "/sequence/normal",
+      "@type": "sc:Sequence"
+    }
+  ],
+  "@context": "http://iiif.io/api/presentation/2/context.json",
+  "@id": "https://iiif.stack.rdc.library.northwestern.edu/public/83/fb/e9/4b/-6/db/7-/46/3e/-9/94/2-/6b/eb/25/6a/a6/06-manifest.json",
+  "@type": "sc:Manifest"
+}

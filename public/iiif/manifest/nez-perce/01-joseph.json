@@ -1,0 +1,43 @@
+{
+  "description": [
+    "written, illustrated, and published by Edward S. Curtis ; edited by Frederick Webb Hodge ; foreword by Theodore Roosevelt ; field research conducted under the patronage of J. Pierpont Morgan. ; Original photogravures produced in Boston by John Andrew & Son from 1899-1910."
+  ],
+  "label": "Joseph - Nez Percé",
+  "sequences": [
+    {
+      "canvases": [
+        {
+          "height": "480",
+          "images": [
+            {
+              "motivation": "sc:painting",
+              "on": "https://iiif.stack.rdc.library.northwestern.edu/public/84/ae/c8/c1/-4/2e/8-/4e/2c/-a/6b/2-/1c/7e/37/90/21/7f-manifest.json/canvas/8061b387-205e-44b2-a91b-49fcc1f10a19",
+              "resource": {
+                "description": "Joseph - Nez Percé",
+                "label": "vol_ct08012u.tif",
+                "service": {
+                  "profile": "http://iiif.io/api/image/2/level2.json",
+                  "@context": "http://iiif.io/api/image/2/context.json",
+                  "@id": "https://iiif.stack.rdc.library.northwestern.edu/iiif/2/8061b387-205e-44b2-a91b-49fcc1f10a19"
+                },
+                "@id": "https://iiif.stack.rdc.library.northwestern.edu/iiif/2/8061b387-205e-44b2-a91b-49fcc1f10a19/full/600,/0/default.jpg",
+                "@type": "dctypes:Image"
+              },
+              "@type": "oa:Annotation"
+            }
+          ],
+          "label": "vol_ct08012u.tif",
+          "width": "640",
+          "@id": "https://iiif.stack.rdc.library.northwestern.edu/public/84/ae/c8/c1/-4/2e/8-/4e/2c/-a/6b/2-/1c/7e/37/90/21/7f-manifest.json/canvas/8061b387-205e-44b2-a91b-49fcc1f10a19",
+          "@type": "sc:Canvas"
+        }
+      ],
+      "@context": "http://iiif.io/api/presentation/2/context.json",
+      "@id": "/sequence/normal",
+      "@type": "sc:Sequence"
+    }
+  ],
+  "@context": "http://iiif.io/api/presentation/2/context.json",
+  "@id": "https://iiif.stack.rdc.library.northwestern.edu/public/84/ae/c8/c1/-4/2e/8-/4e/2c/-a/6b/2-/1c/7e/37/90/21/7f-manifest.json",
+  "@type": "sc:Manifest"
+}

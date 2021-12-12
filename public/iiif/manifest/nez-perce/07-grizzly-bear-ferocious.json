@@ -1,0 +1,43 @@
+{
+  "description": [
+    "written, illustrated, and published by Edward S. Curtis ; edited by Frederick Webb Hodge ; foreword by Theodore Roosevelt ; field research conducted under the patronage of J. Pierpont Morgan. ; Original photogravures produced in Boston by John Andrew & Son from 1899-1910."
+  ],
+  "label": "Grizzly-bear Ferocious - Nez Percé",
+  "sequences": [
+    {
+      "canvases": [
+        {
+          "height": "480",
+          "images": [
+            {
+              "motivation": "sc:painting",
+              "on": "https://iiif.stack.rdc.library.northwestern.edu/public/97/21/96/ff/-d/61/4-/4b/76/-9/d1/2-/80/e1/8f/1f/37/c9-manifest.json/canvas/4e26962c-c2de-45ad-aa92-56279965b136",
+              "resource": {
+                "description": "Grizzly-bear Ferocious - Nez Percé",
+                "label": "vol_ct08007u.tif",
+                "service": {
+                  "profile": "http://iiif.io/api/image/2/level2.json",
+                  "@context": "http://iiif.io/api/image/2/context.json",
+                  "@id": "https://iiif.stack.rdc.library.northwestern.edu/iiif/2/4e26962c-c2de-45ad-aa92-56279965b136"
+                },
+                "@id": "https://iiif.stack.rdc.library.northwestern.edu/iiif/2/4e26962c-c2de-45ad-aa92-56279965b136/full/600,/0/default.jpg",
+                "@type": "dctypes:Image"
+              },
+              "@type": "oa:Annotation"
+            }
+          ],
+          "label": "vol_ct08007u.tif",
+          "width": "640",
+          "@id": "https://iiif.stack.rdc.library.northwestern.edu/public/97/21/96/ff/-d/61/4-/4b/76/-9/d1/2-/80/e1/8f/1f/37/c9-manifest.json/canvas/4e26962c-c2de-45ad-aa92-56279965b136",
+          "@type": "sc:Canvas"
+        }
+      ],
+      "@context": "http://iiif.io/api/presentation/2/context.json",
+      "@id": "/sequence/normal",
+      "@type": "sc:Sequence"
+    }
+  ],
+  "@context": "http://iiif.io/api/presentation/2/context.json",
+  "@id": "https://iiif.stack.rdc.library.northwestern.edu/public/97/21/96/ff/-d/61/4-/4b/76/-9/d1/2-/80/e1/8f/1f/37/c9-manifest.json",
+  "@type": "sc:Manifest"
+}
