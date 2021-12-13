@@ -1,54 +1,32 @@
 import { ApolloServer, gql } from "apollo-server-micro";
-
-const getCollection = () => {
-  return fetch("http://localhost:3000/iiif/collection/nez-perce.json", {
-    method: "GET",
-    headers: {
-      Accept: "application/json",
-      "Content-Type": "application/json",
-    },
-  })
-    .then((response) => response.json())
-    .then((responseData) => {
-      return responseData;
-    })
-    .catch((error) => console.warn(error));
-};
+import ManifestAPI from "./manifest";
 
 const typeDefs = gql`
   type Query {
-    manifests: [User!]!
+    manifests: [Manifest!]!
   }
-  type User {
+  type Manifest {
+    id: String
     label: String
+    type: String
   }
 `;
 
-// const thisThing = getCollection().then((response) => {
-//   return response;
-// });
-
-const sample = [
-  {
-    label: "joseph",
-  },
-  {
-    label: "matron",
-  },
-  {
-    label: "grizzly bear ferocious",
-  },
-];
-
 const resolvers = {
   Query: {
-    manifests(parent, args, context) {
-      return sample;
+    manifests: async (_, __, { dataSources }) => {
+      return dataSources.manifestAPI.getManifests();
     },
   },
 };
 
-const apolloServer = new ApolloServer({ typeDefs, resolvers });
+const apolloServer = new ApolloServer({
+  typeDefs,
+  resolvers,
+  dataSources: () => {
+    return { manifestAPI: new ManifestAPI() };
+  },
+});
 
 const startServer = apolloServer.start();
 

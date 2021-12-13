@@ -12,7 +12,7 @@ const fetcher = (query) =>
     .then((json) => json.data);
 
 export default function Index() {
-  const { data, error } = useSWR("{ manifests { label } }", fetcher);
+  const { data, error } = useSWR("{ manifests { id, label, type } }", fetcher);
 
   if (error) return <div>Failed to load</div>;
   if (!data) return <div>Loading...</div>;
@@ -22,7 +22,11 @@ export default function Index() {
   return (
     <div>
       {manifests.map((manifest, i) => (
-        <div key={i}>{manifest.label}</div>
+        <dl key={i}>
+          <dt>{manifest.label}</dt>
+          <dd>{manifest.id}</dd>
+          <dd>{manifest.type}</dd>
+        </dl>
       ))}
     </div>
   );
