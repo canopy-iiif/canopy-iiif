@@ -1,9 +1,6 @@
 import { ApolloClient, InMemoryCache } from "@apollo/client";
 import { SchemaLink } from "@apollo/client/link/schema";
-import { makeExecutableSchema } from "@graphql-tools/schema";
-import { typeDefs } from "./graphql";
-
-const schema = makeExecutableSchema({ typeDefs });
+import { schema } from "./graphql";
 
 export const client = new ApolloClient({
   cache: new InMemoryCache(),

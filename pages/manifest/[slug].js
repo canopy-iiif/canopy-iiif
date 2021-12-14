@@ -2,15 +2,13 @@ import Layout from "../../components/layout";
 import { client } from "../api/apollo-client";
 import { gql } from "@apollo/client";
 
-export default function Manifest({ id }) {
-  return <Layout>{id}</Layout>;
+export default function Manifest({ slug }) {
+  return <Layout>{slug}</Layout>;
 }
 
 export async function getStaticProps({ params }) {
   return {
-    props: {
-      ...params,
-    },
+    props: { ...params },
   };
 }
 
@@ -19,8 +17,7 @@ export async function getStaticPaths() {
     query: gql`
       query GetManifests {
         manifests {
-          label
-          id
+          slug
         }
       }
     `,

@@ -1,4 +1,5 @@
 import { ApolloServer, gql } from "apollo-server-micro";
+import { makeExecutableSchema } from "@graphql-tools/schema";
 import ManifestAPI from "./manifest";
 
 export const typeDefs = gql`
@@ -8,24 +9,53 @@ export const typeDefs = gql`
   type Manifest {
     id: String
     label: String
+    slug: String
     type: String
   }
 `;
 
+const sample = [
+  {
+    id: "this",
+    label: "joseph",
+    slug: "joseph",
+    type: "Manifest",
+  },
+  {
+    id: "that",
+    label: "matron",
+    slug: "matron",
+    type: "Manifest",
+  },
+  {
+    id: "other",
+    label: "grizzly bear ferocious",
+    slug: "grizzly-bear-ferocious",
+    type: "Manifest",
+  },
+];
+
 const resolvers = {
   Query: {
-    manifests: async (_, __, { dataSources }) => {
-      return dataSources.manifestAPI.getManifests();
+    manifests(parent, args, context) {
+      return sample;
     },
+    // manifests: async (_, __, { dataSources }) => {
+    //   return dataSources.manifestAPI.getManifests();
+    // },
   },
 };
 
-const apolloServer = new ApolloServer({
+export const schema = makeExecutableSchema({
   typeDefs,
   resolvers,
-  dataSources: () => {
-    return { manifestAPI: new ManifestAPI() };
-  },
+});
+
+export const apolloServer = new ApolloServer({
+  schema,
+  // dataSources: () => {
+  //   return { manifestAPI: new ManifestAPI() };
+  // },
 });
 
 const startServer = apolloServer.start();
