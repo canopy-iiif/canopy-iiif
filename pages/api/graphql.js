@@ -1,9 +1,9 @@
 import { ApolloServer, gql } from "apollo-server-micro";
 import ManifestAPI from "./manifest";
 
-const typeDefs = gql`
+export const typeDefs = gql`
   type Query {
-    manifests: [Manifest!]!
+    manifests: [Manifest]
   }
   type Manifest {
     id: String

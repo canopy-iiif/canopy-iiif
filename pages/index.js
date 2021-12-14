@@ -22,11 +22,13 @@ export default function Index() {
   return (
     <div>
       {manifests.map((manifest, i) => (
-        <dl key={i}>
-          <dt>{manifest.label}</dt>
-          <dd>{manifest.id}</dd>
-          <dd>{manifest.type}</dd>
-        </dl>
+        <>
+          <dl key={i}>
+            <dt>{manifest.label}</dt>
+            <dd>{manifest.id}</dd>
+            <dd>{manifest.type}</dd>
+          </dl>
+        </>
       ))}
     </div>
   );
