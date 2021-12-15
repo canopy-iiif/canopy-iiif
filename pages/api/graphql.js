@@ -3,19 +3,20 @@ import { ApolloClient, InMemoryCache } from "@apollo/client";
 import { SchemaLink } from "@apollo/client/link/schema";
 import { makeExecutableSchema } from "@graphql-tools/schema";
 import ManifestAPI from "./manifest";
+import slugify from "slugify";
 import { sample } from "../../mocks/sample";
 
 const typeDefs = gql`
   type Query {
     manifests: [Manifest]
     allManifests: [Manifest]
-    getManifest(slug: String): Manifest
+    getManifest(slug: ID): Manifest
   }
 
   type Manifest {
     id: String
     label: String
-    slug: String
+    slug: ID
     type: String
   }
 `;
@@ -23,10 +24,10 @@ const typeDefs = gql`
 const resolvers = {
   Query: {
     allManifests: async (_, __, context) => {
-      return sample;
+      return getRootCollection();
     },
     getManifest: async (_, { slug }, context) => {
-      return sample.find((manifest) => manifest.slug === slug);
+      return getRootCollection().find((manifest) => manifest.slug === slug);
     },
     manifests: async (_, __, context) => {
       return sample;
@@ -78,6 +79,20 @@ export const client = new ApolloClient({
   ssrMode: true,
   ssrForceFetchDelay: 100,
 });
+
+export const getRootCollection = () =>
+  fetch(
+    "https://raw.githubusercontent.com/mathewjordan/can/main/public/iiif/collection/nez-perce.json"
+  )
+    .then(function (response) {
+      return response.json();
+    })
+    .then(function (json) {
+      return json.items.map((item) => {
+        item.slug = slugify(item.label, { lower: true });
+        return item;
+      });
+    });
 
 export const fetcher = (query) =>
   fetch("/api/graphql", {
