@@ -29,9 +29,6 @@ const resolvers = {
     getManifest: async (_, { slug }, context) => {
       return getManifestBySlug(slug);
     },
-    manifests: async (_, __, context) => {
-      return sample;
-    },
   },
 };
 
