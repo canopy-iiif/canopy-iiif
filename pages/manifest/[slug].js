@@ -4,7 +4,9 @@ import { gql } from "@apollo/client";
 import useSWR from "swr";
 import dynamic from "next/dynamic";
 
-const ReactMediaPlayer = dynamic(() => import("@nulib/react-media-player"));
+const ReactMediaPlayer = dynamic(() => import("@nulib/react-media-player"), {
+  ssr: false,
+});
 
 export default function Manifest({ slug }) {
   const { data, error } = useSWR(
