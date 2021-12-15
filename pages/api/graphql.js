@@ -27,7 +27,7 @@ const resolvers = {
       return getRootCollection();
     },
     getManifest: async (_, { slug }, context) => {
-      return getRootCollection().find((manifest) => manifest.slug === slug);
+      return getManifestBySlug(slug);
     },
     manifests: async (_, __, context) => {
       return sample;
@@ -92,6 +92,22 @@ export const getRootCollection = () =>
         item.slug = slugify(item.label, { lower: true });
         return item;
       });
+    });
+
+export const getManifestBySlug = (slug) =>
+  fetch(
+    "https://raw.githubusercontent.com/mathewjordan/can/main/public/iiif/collection/nez-perce.json"
+  )
+    .then(function (response) {
+      return response.json();
+    })
+    .then(function (json) {
+      const filtered = json.items.filter((item) => {
+        if (slugify(item.label, { lower: true }) === slug) {
+          return item;
+        }
+      });
+      if (filtered.length > 0) return filtered[0];
     });
 
 export const fetcher = (query) =>

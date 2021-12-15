@@ -35,15 +35,16 @@ export async function getStaticProps({ params }) {
 export async function getStaticPaths() {
   const { loading, error, data } = await client.query({
     query: gql`
-      query Manifests {
-        manifests {
+      query AllManifests {
+        allManifests {
           slug
+          label
         }
       }
     `,
   });
 
-  const paths = data.manifests.map((item) => ({
+  const paths = data.allManifests.map((item) => ({
     params: { ...item },
   }));
 
