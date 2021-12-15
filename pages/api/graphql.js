@@ -1,13 +1,17 @@
 import { ApolloServer, gql } from "apollo-server-micro";
+import { ApolloClient, InMemoryCache } from "@apollo/client";
+import { SchemaLink } from "@apollo/client/link/schema";
 import { makeExecutableSchema } from "@graphql-tools/schema";
 import ManifestAPI from "./manifest";
 import { sample } from "../../mocks/sample";
 
-export const typeDefs = gql`
+const typeDefs = gql`
   type Query {
     manifests: [Manifest]
-    manifest(slug: String): Manifest
+    allManifests: [Manifest]
+    getManifest(slug: String): Manifest
   }
+
   type Manifest {
     id: String
     label: String
@@ -18,25 +22,25 @@ export const typeDefs = gql`
 
 const resolvers = {
   Query: {
-    manifests(parent, args, context) {
+    allManifests: async (_, __, context) => {
       return sample;
     },
-    // manifests: async (_, __, { dataSources }) => {
-    //   return dataSources.manifestAPI.getManifests();
-    // },
+    getManifest: async (_, { slug }, context) => {
+      return sample.find((manifest) => manifest.slug === slug);
+    },
+    manifests: async (_, __, context) => {
+      return sample;
+    },
   },
 };
 
-export const schema = makeExecutableSchema({
+const schema = makeExecutableSchema({
   typeDefs,
   resolvers,
 });
 
-export const apolloServer = new ApolloServer({
+const apolloServer = new ApolloServer({
   schema,
-  // dataSources: () => {
-  //   return { manifestAPI: new ManifestAPI() };
-  // },
 });
 
 const startServer = apolloServer.start();
@@ -67,3 +71,21 @@ export const config = {
     bodyParser: false,
   },
 };
+
+export const client = new ApolloClient({
+  cache: new InMemoryCache(),
+  link: new SchemaLink({ schema }),
+  ssrMode: true,
+  ssrForceFetchDelay: 100,
+});
+
+export const fetcher = (query) =>
+  fetch("/api/graphql", {
+    method: "POST",
+    headers: {
+      "Content-type": "application/json",
+    },
+    body: JSON.stringify({ query }),
+  })
+    .then((res) => res.json())
+    .then((json) => json.data);

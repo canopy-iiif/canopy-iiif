@@ -8,6 +8,7 @@
   "dependencies": {
     "@apollo/client": "^3.5.6",
     "@graphql-tools/schema": "^8.3.1",
+    "@nulib/react-media-player": "^1.6.1",
     "apollo-datasource-rest": "^3.4.0",
     "apollo-server-micro": "^3.0.1",
     "graphql": "^15.8.0",

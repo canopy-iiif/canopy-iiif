@@ -2,7 +2,7 @@ import Link from "next/link";
 
 const Header = () => {
   return (
-    <header>
+    <header style={{ marginBottom: "1rem" }}>
       <nav>
         <Link href="/">
           <a>Home</a>
