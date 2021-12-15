@@ -1,10 +1,12 @@
 import { ApolloServer, gql } from "apollo-server-micro";
 import { makeExecutableSchema } from "@graphql-tools/schema";
 import ManifestAPI from "./manifest";
+import { sample } from "../../mocks/sample";
 
 export const typeDefs = gql`
   type Query {
     manifests: [Manifest]
+    manifest(slug: String): Manifest
   }
   type Manifest {
     id: String
@@ -13,27 +15,6 @@ export const typeDefs = gql`
     type: String
   }
 `;
-
-const sample = [
-  {
-    id: "this",
-    label: "joseph",
-    slug: "joseph",
-    type: "Manifest",
-  },
-  {
-    id: "that",
-    label: "matron",
-    slug: "matron",
-    type: "Manifest",
-  },
-  {
-    id: "other",
-    label: "grizzly bear ferocious",
-    slug: "grizzly-bear-ferocious",
-    type: "Manifest",
-  },
-];
 
 const resolvers = {
   Query: {

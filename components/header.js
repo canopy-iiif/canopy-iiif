@@ -3,7 +3,11 @@ import Link from "next/link";
 const Header = () => {
   return (
     <header>
-      <nav></nav>
+      <nav>
+        <Link href="/">
+          <a>Home</a>
+        </Link>
+      </nav>
     </header>
   );
 };

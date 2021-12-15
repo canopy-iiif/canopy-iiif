@@ -1,4 +1,6 @@
+import Link from "next/link";
 import useSWR from "swr";
+import Layout from "../components/layout";
 
 const fetcher = (query) =>
   fetch("/api/graphql", {
@@ -12,7 +14,7 @@ const fetcher = (query) =>
     .then((json) => json.data);
 
 export default function Index() {
-  const { data, error } = useSWR("{ manifests { id, label, type } }", fetcher);
+  const { data, error } = useSWR("{ manifests { id, label, slug } }", fetcher);
 
   if (error) return <div>Failed to load</div>;
   if (!data) return <div>Loading...</div>;
@@ -20,16 +22,16 @@ export default function Index() {
   const { manifests } = data;
 
   return (
-    <div>
-      {manifests.map((manifest, i) => (
-        <>
-          <dl key={i}>
-            <dt>{manifest.label}</dt>
-            <dd>{manifest.id}</dd>
-            <dd>{manifest.type}</dd>
-          </dl>
-        </>
-      ))}
-    </div>
+    <Layout>
+      <nav>
+        {manifests.map((manifest, i) => (
+          <li>
+            <Link href={`/manifest/${manifest.slug}`} key={manifest.id}>
+              <a>{manifest.label}</a>
+            </Link>
+          </li>
+        ))}
+      </nav>
+    </Layout>
   );
 }
