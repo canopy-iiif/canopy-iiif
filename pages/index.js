@@ -1,12 +1,12 @@
-import Link from "next/link";
 import useSWR from "swr";
+import Link from "next/link";
 import Layout from "../components/layout";
-import { fetcher } from "./api/graphql";
+import { getGraphQL } from "./api/graphql";
 
 export default function Index() {
   const { data, error } = useSWR(
     "{ allManifests { id, label, slug } }",
-    fetcher
+    getGraphQL
   );
 
   if (error) return <div>Failed to load</div>;

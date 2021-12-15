@@ -1,8 +1,8 @@
-import Layout from "../../components/layout";
-import { client, fetcher } from "../api/graphql";
-import { gql } from "@apollo/client";
 import useSWR from "swr";
 import dynamic from "next/dynamic";
+import { gql } from "@apollo/client";
+import { client, getGraphQL } from "../api/graphql";
+import Layout from "../../components/layout";
 
 const ReactMediaPlayer = dynamic(() => import("@nulib/react-media-player"), {
   ssr: false,
@@ -11,7 +11,7 @@ const ReactMediaPlayer = dynamic(() => import("@nulib/react-media-player"), {
 export default function Manifest({ slug }) {
   const { data, error } = useSWR(
     `{ getManifest(slug: "${slug}") { id, label } }`,
-    fetcher
+    getGraphQL
   );
 
   if (!data) return null;

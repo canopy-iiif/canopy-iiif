@@ -2,9 +2,7 @@ import { ApolloServer, gql } from "apollo-server-micro";
 import { ApolloClient, InMemoryCache } from "@apollo/client";
 import { SchemaLink } from "@apollo/client/link/schema";
 import { makeExecutableSchema } from "@graphql-tools/schema";
-import ManifestAPI from "./manifest";
-import slugify from "slugify";
-import { sample } from "../../mocks/sample";
+import { getManifestBySlug, getRootCollection } from "./iiif";
 
 const typeDefs = gql`
   type Query {
@@ -77,37 +75,7 @@ export const client = new ApolloClient({
   ssrForceFetchDelay: 100,
 });
 
-export const getRootCollection = () =>
-  fetch(
-    "https://raw.githubusercontent.com/mathewjordan/can/main/public/iiif/collection/nez-perce.json"
-  )
-    .then(function (response) {
-      return response.json();
-    })
-    .then(function (json) {
-      return json.items.map((item) => {
-        item.slug = slugify(item.label, { lower: true });
-        return item;
-      });
-    });
-
-export const getManifestBySlug = (slug) =>
-  fetch(
-    "https://raw.githubusercontent.com/mathewjordan/can/main/public/iiif/collection/nez-perce.json"
-  )
-    .then(function (response) {
-      return response.json();
-    })
-    .then(function (json) {
-      const filtered = json.items.filter((item) => {
-        if (slugify(item.label, { lower: true }) === slug) {
-          return item;
-        }
-      });
-      if (filtered.length > 0) return filtered[0];
-    });
-
-export const fetcher = (query) =>
+export const getGraphQL = (query) =>
   fetch("/api/graphql", {
     method: "POST",
     headers: {
