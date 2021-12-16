@@ -55,6 +55,11 @@
       "id": "https://raw.githubusercontent.com/mathewjordan/can/main/public/iiif/manifest/nez-perce/10-kulkultsalum.json",
       "type": "Manifest",
       "label": "Kulkultsálum - Nez Percé"
+    },
+    {
+      "id": "https://raw.githubusercontent.com/mathewjordan/can/main/public/iiif/manifest/nez-perce/10-kulkultsalum.json",
+      "type": "Manifest",
+      "label": "Kulkultsálum - Nez Percé (duplicate)"
     }
   ]
 }
