@@ -14,7 +14,7 @@
               "on": "https://iiif.stack.rdc.library.northwestern.edu/public/84/ae/c8/c1/-4/2e/8-/4e/2c/-a/6b/2-/1c/7e/37/90/21/7f-manifest.json/canvas/8061b387-205e-44b2-a91b-49fcc1f10a19",
               "resource": {
                 "description": "Joseph - Nez Percé",
-                "label": "vol_ct08012u.tif",
+                "label": "vol_ct08012u.tif - filename-test",
                 "service": {
                   "profile": "http://iiif.io/api/image/2/level2.json",
                   "@context": "http://iiif.io/api/image/2/context.json",
