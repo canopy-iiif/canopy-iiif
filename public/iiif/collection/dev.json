@@ -3,42 +3,18 @@
   "id": "http://localhost:5001/iiif/collection/dev.json",
   "type": "Collection",
   "label": {
-    "en": [
-      "Edward S. Curtis's The North American Indian -- Volume 8. The Nez Perces. Wallawalla. Umatilla. Cayuse. The Chinookan tribes"
-    ]
+    "en": ["Nez Percé (Nimíipuu)"]
   },
-  "requiredStatement": {
-    "label": {
-      "en": ["Attribution"]
-    },
-    "value": {
-      "en": ["Courtesy of Northwestern University Libraries"]
-    }
-  },
-  "rights": "http://rightsstatements.org/vocab/NoC-NC/1.0/",
   "items": [
     {
-      "id": "http://localhost:5001/iiif/manifest/dev/01-joseph.json",
+      "id": "http://localhost:5001/iiif/manifest/nez-perce/01-joseph.json",
       "type": "Manifest",
-      "label": {
-        "en": ["Joseph - Nez Percé"]
-      },
-      "thumbnail": [
-        {
-          "id": "https://iiif.stack.rdc.library.northwestern.edu/iiif/2/8061b387-205e-44b2-a91b-49fcc1f10a19/full/200,/0/default.jpg",
-          "type": "Image",
-          "format": "image/jpeg",
-          "service": [
-            {
-              "profile": "http://iiif.io/api/image/2/level2.json",
-              "@context": "http://iiif.io/api/image/2/context.json",
-              "@id": "https://iiif.stack.rdc.library.northwestern.edu/iiif/2/8061b387-205e-44b2-a91b-49fcc1f10a19"
-            }
-          ],
-          "width": 200,
-          "height": 200
-        }
-      ]
+      "label": "Joseph - Nez Percé"
+    },
+    {
+      "id": "http://localhost:5001/iiif/manifest/nez-perce/02-tsawatenok.json",
+      "type": "Manifest",
+      "label": "A Tlŭ'wŭláhŭ Mask - Tsawatenok"
     }
   ]
 }

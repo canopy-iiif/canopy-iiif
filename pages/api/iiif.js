@@ -1,29 +1,31 @@
 import slugify from "slugify";
 
-export const getRootCollection = () =>
-  fetch(
-    "https://raw.githubusercontent.com/mathewjordan/can/main/public/iiif/collection/nez-perce.json"
-  )
+const slugifyConfig = {
+  lower: true,
+  strict: true,
+  trim: true,
+};
+
+export const getRootCollection = (rootCollection) =>
+  fetch(rootCollection)
     .then(function (response) {
       return response.json();
     })
     .then(function (json) {
       return json.items.map((item) => {
-        item.slug = slugify(item.label, { lower: true });
+        item.slug = slugify(item.label, { ...slugifyConfig });
         return item;
       });
     });
 
-export const getManifestBySlug = (slug) =>
-  fetch(
-    "https://raw.githubusercontent.com/mathewjordan/can/main/public/iiif/collection/nez-perce.json"
-  )
+export const getManifestBySlug = (rootCollection, slug) =>
+  fetch(rootCollection)
     .then(function (response) {
       return response.json();
     })
     .then(function (json) {
       const filtered = json.items.filter((item) => {
-        if (slugify(item.label, { lower: true }) === slug) {
+        if (slugify(item.label, { ...slugifyConfig }) === slug) {
           return item;
         }
       });
