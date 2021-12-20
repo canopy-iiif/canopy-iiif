@@ -8,16 +8,7 @@ const ReactMediaPlayer = dynamic(() => import("@nulib/react-media-player"), {
   ssr: false,
 });
 
-export default function Manifest({ slug }) {
-  const { data, error } = useSWR(
-    `{ getManifest(slug: "${slug}") { id, label } }`,
-    getGraphQL
-  );
-
-  if (!data) return null;
-
-  const { id, label } = data.getManifest;
-
+export default function Manifest({ id, label }) {
   return (
     <Layout>
       <h1>{label}</h1>
@@ -27,8 +18,19 @@ export default function Manifest({ slug }) {
 }
 
 export async function getStaticProps({ params }) {
+  const { slug } = params;
+  const { loading, error, data } = await client.query({
+    query: gql`
+      query GetManifestBySlug {
+        getManifest(slug: "${slug}") { id, label }
+      }
+    `,
+  });
+
+  if (!data) return null;
+
   return {
-    props: { ...params },
+    props: { ...data.getManifest },
   };
 }
 
@@ -38,7 +40,6 @@ export async function getStaticPaths() {
       query AllManifests {
         allManifests {
           slug
-          label
         }
       }
     `,
