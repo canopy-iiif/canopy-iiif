@@ -86,9 +86,9 @@
       "format": "image/jpeg",
       "service": [
         {
+          "id": "https://iiif.stack.rdc.library.northwestern.edu/iiif/2/8061b387-205e-44b2-a91b-49fcc1f10a19",
           "profile": "http://iiif.io/api/image/2/level2.json",
-          "@context": "http://iiif.io/api/image/2/context.json",
-          "@id": "https://iiif.stack.rdc.library.northwestern.edu/iiif/2/8061b387-205e-44b2-a91b-49fcc1f10a19"
+          "type": "ImageService2"
         }
       ],
       "width": 200,
@@ -120,9 +120,9 @@
                 "format": "image/jpeg",
                 "service": [
                   {
+                    "id": "https://iiif.stack.rdc.library.northwestern.edu/iiif/2/8061b387-205e-44b2-a91b-49fcc1f10a19",
                     "profile": "http://iiif.io/api/image/2/level2.json",
-                    "@context": "http://iiif.io/api/image/2/context.json",
-                    "@id": "https://iiif.stack.rdc.library.northwestern.edu/iiif/2/8061b387-205e-44b2-a91b-49fcc1f10a19"
+                    "type": "ImageService2"
                   }
                 ],
                 "width": 1947,
