@@ -15,6 +15,11 @@
       "id": "http://localhost:5001/iiif/manifest/dev/02-tsawatenok.json",
       "type": "Manifest",
       "label": "A Tlŭ'wŭláhŭ Mask - Tsawatenok"
+    },
+    {
+      "id": "http://localhost:5001/iiif/manifest/dev/03-shores-of-nootka-sound.json",
+      "type": "Manifest",
+      "label": "Shores of Nootka Sound"
     }
   ]
 }
