@@ -3,12 +3,16 @@ import dynamic from "next/dynamic";
 import { gql } from "@apollo/client";
 import { client, getGraphQL } from "../api/graphql";
 import Layout from "../../components/layout";
+import { getManifestById } from "../api/iiif";
 
 const ReactMediaPlayer = dynamic(() => import("@nulib/react-media-player"), {
   ssr: false,
 });
 
 export default function Manifest({ id, label }) {
+  getManifestById(id).then((json) => {
+    console.log(json);
+  });
   return (
     <Layout>
       <h1>{label}</h1>

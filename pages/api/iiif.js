@@ -31,3 +31,12 @@ export const getManifestBySlug = (rootCollection, slug) =>
       });
       if (filtered.length > 0) return filtered[0];
     });
+
+export const getManifestById = (id) =>
+  fetch(id)
+    .then(function (response) {
+      return response.json();
+    })
+    .then(function (json) {
+      return json;
+    });
