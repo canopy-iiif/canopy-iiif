@@ -2,22 +2,26 @@ import useSWR from "swr";
 import Link from "next/link";
 import { gql } from "@apollo/client";
 import { client } from "./api/graphql";
-import Layout from "../components/layout";
 import { getManifestById } from "./api/iiif";
+import Layout from "../components/layout";
+import Grid from "../components/Grid/Grid";
 
 export default function Index({ allManifests }) {
   return (
     <Layout>
-      <nav>
+      <Grid>
         {allManifests.map((manifest, i) => {
-          const { data, error } = useSWR(manifest.id, getManifestById);
+          // const { data, error } = useSWR(manifest.id, getManifestById);
           return (
-            <Link href={`/manifest/${manifest.slug}`} key={manifest.id}>
-              <a style={{ display: "flex" }}>{manifest.label}</a>
-            </Link>
+            <Grid.Card
+              key={manifest.id}
+              href={`/manifest/${manifest.slug}`}
+              thumbnail=""
+              title={manifest.label}
+            />
           );
         })}
-      </nav>
+      </Grid>
     </Layout>
   );
 }
