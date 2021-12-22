@@ -14,6 +14,9 @@ export const getRootCollection = (rootCollection) =>
     .then(function (json) {
       return json.items.map((item) => {
         item.slug = slugify(item.label, { ...slugifyConfig });
+        getManifestById(item.id).then((manifest) => {
+          //return item;
+        });
         return item;
       });
     });
