@@ -11,16 +11,7 @@ export default function Index({ allManifests }) {
     <Layout>
       <Grid>
         {allManifests.map((manifest, i) => {
-          console.log(allManifests);
-          // const { data, error } = useSWR(manifest.id, getManifestById);
-          return (
-            <Grid.Card
-              key={manifest.id}
-              href={`/manifest/${manifest.slug}`}
-              thumbnail=""
-              title={manifest.label}
-            />
-          );
+          return <Grid.Item data={manifest} key={manifest.id} />;
         })}
       </Grid>
     </Layout>

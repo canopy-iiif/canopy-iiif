@@ -1,10 +1,11 @@
 import Link from "next/link";
-import GridCard from "./Card";
+import { Wrapper } from "./Grid.styled";
+import GridItem from "./Item";
 
 const Grid = ({ children }) => {
-  return <div>{children}</div>;
+  return <Wrapper>{children}</Wrapper>;
 };
 
-Grid.Card = GridCard;
+Grid.Item = GridItem;
 
 export default Grid;

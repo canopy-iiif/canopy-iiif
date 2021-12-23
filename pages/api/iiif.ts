@@ -7,7 +7,7 @@ const slugifyConfig = {
   trim: true,
 };
 
-export const getRootCollection = (rootCollection) =>
+export const getAllManifests = (rootCollection) =>
   fetch(rootCollection)
     .then(function (response) {
       return response.json();
