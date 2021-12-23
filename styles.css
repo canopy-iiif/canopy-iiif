@@ -2,12 +2,13 @@
 @import "@radix-ui/colors/mauve.css";
 
 html {
-  font-size: 17px;
+  font-size: 15px;
 }
 
 body {
   font-family: "Readex Pro", -apple-system, "Helvetica", sans-serif;
-  letter-spacing: -0.015em;
+  font-weight: 350;
+  letter-spacing: -0.01em;
   margin: 0 auto;
   background-color: var(--mauve2);
 }

@@ -20,9 +20,9 @@ const Content = styled("div", {
 
 const Wrapper = styled("div", {
   display: "flex",
-  width: "calc(25% - 1rem)",
+  width: "calc(25% - 2rem)",
   position: "relative",
-  margin: "0.5rem",
+  margin: "1rem",
 
   a: {
     display: "flex",
@@ -30,7 +30,7 @@ const Wrapper = styled("div", {
     width: "100%",
     backgroundColor: "$mauve1",
     color: "$mauve12",
-    boxShadow: "3px 3px 11px #0002",
+    boxShadow: "3px 3px 11px #0001",
     textDecoration: "none !important",
     borderRadius: "3px",
     overflow: "hidden",
