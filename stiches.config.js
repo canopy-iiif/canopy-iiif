@@ -1,13 +1,13 @@
-import { blackA, crimson, mauve, violet } from "@radix-ui/colors";
+import { blackA, indigo, mauve, sky } from "@radix-ui/colors";
 
 import { createStitches } from "@stitches/react";
 
 export const theme = {
   colors: {
     ...blackA,
-    ...crimson,
+    ...indigo,
     ...mauve,
-    ...violet,
+    ...sky,
   },
 };
 

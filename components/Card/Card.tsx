@@ -1,4 +1,4 @@
-import { Wrapper } from "./Card.styled";
+import { Content, Figure, Wrapper } from "./Card.styled";
 import Link from "next/link";
 
 const Card = ({ label, path, thumbnail }) => {
@@ -6,10 +6,10 @@ const Card = ({ label, path, thumbnail }) => {
     <Wrapper>
       <Link href={path}>
         <a>
-          <div>
-            <figure></figure>
-            <div>{label}</div>
-          </div>
+          <Figure />
+          <Content>
+            <h4>{label}</h4>
+          </Content>
         </a>
       </Link>
     </Wrapper>

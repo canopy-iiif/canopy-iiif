@@ -1,19 +1,40 @@
 import { styled } from "../../stiches.config";
 
-const Wrapper = styled("div", {
-  display: "flex",
-  width: "25%",
-  position: "relative",
-  margin: "1rem",
+const Figure = styled("figure", {
+  backgroundColor: "$mauve8",
+  width: "100%",
+  height: "150px",
+  padding: "0",
+  margin: "0",
+});
 
-  a: {
-    display: "flex",
-    width: "100%",
-    padding: "1rem",
-    backgroundColor: "$mauve1",
-    color: "$mauve12",
-    boxShadow: "5px 5px 13px #0001",
+const Content = styled("div", {
+  padding: "1rem",
+
+  h4: {
+    margin: "0",
+    fontWeight: "450",
+    textDecoration: "none !important",
   },
 });
 
-export { Wrapper };
+const Wrapper = styled("div", {
+  display: "flex",
+  width: "calc(25% - 1rem)",
+  position: "relative",
+  margin: "0.5rem",
+
+  a: {
+    display: "flex",
+    flexDirection: "column",
+    width: "100%",
+    backgroundColor: "$mauve1",
+    color: "$mauve12",
+    boxShadow: "3px 3px 11px #0002",
+    textDecoration: "none !important",
+    borderRadius: "3px",
+    overflow: "hidden",
+  },
+});
+
+export { Content, Figure, Wrapper };

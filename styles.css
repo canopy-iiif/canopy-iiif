@@ -1,15 +1,13 @@
-@import url("https://fonts.googleapis.com/css2?family=Readex+Pro&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Readex+Pro:wght@200;300;400;500;600;700&display=swap");
 @import "@radix-ui/colors/mauve.css";
 
 html {
-  font-size: 16px;
+  font-size: 17px;
 }
 
 body {
   font-family: "Readex Pro", -apple-system, "Helvetica", sans-serif;
-  letter-spacing: -0.02em;
-  padding: 1rem;
-  max-width: 1280px;
+  letter-spacing: -0.015em;
   margin: 0 auto;
-  background-color: var(--mauve3);
+  background-color: var(--mauve2);
 }
