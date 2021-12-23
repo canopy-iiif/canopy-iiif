@@ -1,3 +1,6 @@
+/**
+ * Configuration built by `npm run build`
+ */
 const config = {
   collection:
     "https://raw.githubusercontent.com/mathewjordan/can/main/public/iiif/collection/nez-perce.json",
@@ -8,6 +11,9 @@ const config = {
   metadata: ["Date", "Subject"],
 };
 
+/**
+ * Configuration built by `npm run dev`
+ */
 const dev = {
   collection: "http://localhost:5001/iiif/collection/dev.json",
   hero: [
