@@ -1,13 +1,9 @@
 import { gql } from "@apollo/client";
 import { client } from "../api/graphql";
 import Layout from "../../components/layout";
-import { getManifestById } from "../api/iiif";
 import Viewer from "../../components/Viewer/Viewer";
 
 export default function Manifest({ id, label }) {
-  getManifestById(id).then((json) => {
-    console.log(json);
-  });
   return (
     <Layout>
       <h1>{label}</h1>
