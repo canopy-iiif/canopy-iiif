@@ -13,11 +13,24 @@ const typeDefs = gql`
     getManifest(slug: ID): Manifest
   }
 
+  type Collection {
+    collectionId: String
+    id: ID
+    label: String
+  }
+
   type Manifest {
+    collectionId: ID
     id: String
     label: String
+    metadata: [Metadata]
     slug: ID
-    type: String
+  }
+
+  type Metadata {
+    manifestId: ID
+    label: [String]
+    value: [String]
   }
 `;
 
