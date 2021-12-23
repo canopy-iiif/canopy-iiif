@@ -1,13 +1,8 @@
-import useSWR from "swr";
-import dynamic from "next/dynamic";
 import { gql } from "@apollo/client";
-import { client, getGraphQL } from "../api/graphql";
+import { client } from "../api/graphql";
 import Layout from "../../components/layout";
 import { getManifestById } from "../api/iiif";
-
-const ReactMediaPlayer = dynamic(() => import("@nulib/react-media-player"), {
-  ssr: false,
-});
+import Viewer from "../../components/Viewer/Viewer";
 
 export default function Manifest({ id, label }) {
   getManifestById(id).then((json) => {
@@ -16,7 +11,7 @@ export default function Manifest({ id, label }) {
   return (
     <Layout>
       <h1>{label}</h1>
-      <ReactMediaPlayer manifestId={id} />
+      <Viewer manifestId={id} />
     </Layout>
   );
 }
