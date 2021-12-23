@@ -20,9 +20,8 @@ const Content = styled("div", {
 
 const Wrapper = styled("div", {
   display: "flex",
-  width: "calc(25% - 2rem)",
+  width: "100%",
   position: "relative",
-  margin: "1rem",
 
   a: {
     display: "flex",

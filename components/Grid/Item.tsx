@@ -1,13 +1,16 @@
 import Card from "../Card/Card";
+import { Item } from "./Grid.styled";
 
 const GridItem = ({ data }) => {
   return (
-    <Card
-      key={data.id}
-      label={data.label}
-      path={`/manifest/${data.slug}`}
-      thumbnail=""
-    />
+    <Item>
+      <Card
+        key={data.id}
+        label={data.label}
+        path={`/manifest/${data.slug}`}
+        thumbnail=""
+      />
+    </Item>
   );
 };
 
