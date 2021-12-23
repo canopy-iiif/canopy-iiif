@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { getLabel } from "../../hooks/getLabel";
+import { getResourceImage } from "../../hooks/getResourceImage";
 
 import { getManifestById } from "../../pages/api/iiif";
 import { Figure, Wrapper } from "./Hero.styled";
@@ -16,9 +17,8 @@ const Hero = () => {
 
   if (!hero) return null;
 
-  console.log(hero.items[0].items[0].items[0].body.service[0].id);
-
-  const imageService = hero.items[0].items[0].items[0].body.service[0].id;
+  const resource = hero.items[0].items[0].items[0].body;
+  const image = getResourceImage(resource, "1280,", "250,950,2615,1200");
 
   // canvas key
   // target region
@@ -28,7 +28,7 @@ const Hero = () => {
     <Wrapper>
       {/* {getLabel(hero.label)} */}
       <Figure>
-        <img src={`${imageService}/250,950,2615,1200/1280,/0/default.jpg`} />
+        <img src={image} />
       </Figure>
     </Wrapper>
   );
