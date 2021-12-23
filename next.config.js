@@ -18,7 +18,7 @@ module.exports = (phase) => {
     })(),
     hero: (() => {
       if (isDev) return dev.hero;
-      if (isProd) return config.siteTitle;
+      if (isProd) return config.hero;
     })(),
     metadata: (() => {
       if (isDev) return dev.metadata;
