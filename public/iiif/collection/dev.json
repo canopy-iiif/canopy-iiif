@@ -7,14 +7,23 @@
   },
   "items": [
     {
+      "id": "http://localhost:5001/iiif/collection/dev-sub.json",
+      "type": "Collection",
+      "label": "The Makah"
+    },
+    {
       "id": "http://localhost:5001/iiif/manifest/dev/01-joseph.json",
       "type": "Manifest",
-      "label": "Joseph - Nez Percé"
+      "label": {
+        "en": ["Joseph - Nez Percé"]
+      }
     },
     {
       "id": "http://localhost:5001/iiif/manifest/dev/02-tsawatenok.json",
       "type": "Manifest",
-      "label": "A Tlŭ'wŭláhŭ Mask - Tsawatenok"
+      "label": {
+        "none": ["A Tlŭ'wŭláhŭ Mask - Tsawatenok"]
+      }
     },
     {
       "id": "http://localhost:5001/iiif/manifest/dev/03-shores-of-nootka-sound.json",

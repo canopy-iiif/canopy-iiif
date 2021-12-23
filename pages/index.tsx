@@ -11,6 +11,7 @@ export default function Index({ allManifests }) {
     <Layout>
       <Grid>
         {allManifests.map((manifest, i) => {
+          console.log(allManifests);
           // const { data, error } = useSWR(manifest.id, getManifestById);
           return (
             <Grid.Card
@@ -34,6 +35,7 @@ export async function getStaticProps() {
           id
           label
           slug
+          metadata
         }
       }
     `,

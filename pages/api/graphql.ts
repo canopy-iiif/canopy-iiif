@@ -22,7 +22,7 @@ const typeDefs = gql`
   type Manifest {
     collectionId: ID
     id: String
-    label: String
+    label: [String]!
     metadata: [Metadata]
     slug: ID
   }

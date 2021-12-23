@@ -1,4 +1,5 @@
 import slugify from "slugify";
+import { getLabel } from "../../hooks/getLabel";
 
 const slugifyConfig = {
   lower: true,
@@ -12,12 +13,12 @@ export const getRootCollection = (rootCollection) =>
       return response.json();
     })
     .then(function (json) {
-      return json.items.map((item) => {
-        item.slug = slugify(item.label, { ...slugifyConfig });
-        getManifestById(item.id).then((manifest) => {
-          //return item;
-        });
-        return item;
+      return json.items.filter((item) => {
+        if (item.type === "Manifest") {
+          item.label = getLabel(item.label);
+          item.slug = slugify(item.label[0], { ...slugifyConfig });
+          return item;
+        }
       });
     });
 
@@ -28,7 +29,8 @@ export const getManifestBySlug = (rootCollection, slug) =>
     })
     .then(function (json) {
       const filtered = json.items.filter((item) => {
-        if (slugify(item.label, { ...slugifyConfig }) === slug) {
+        item.label = getLabel(item.label);
+        if (slugify(item.label[0], { ...slugifyConfig }) === slug) {
           return item;
         }
       });
