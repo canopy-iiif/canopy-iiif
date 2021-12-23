@@ -1,9 +1,9 @@
 {
   "@context": "http://iiif.io/api/presentation/3/context.json",
-  "id": "http://localhost:5001/iiif/manifest/dev/01-joseph.json",
+  "id": "http://localhost:5001/iiif/manifest/dev/11-watching-for-the-signal.json",
   "type": "Manifest",
   "label": {
-    "en": ["Joseph - Nez Percé"]
+    "en": ["Watching for the Signal - Nez Percé"]
   },
   "summary": {
     "en": [
@@ -36,11 +36,11 @@
     },
     {
       "label": { "en": ["Date"] },
-      "value": { "en": ["1903"] }
+      "value": { "en": ["1910"] }
     },
     {
       "label": { "en": ["Dimensions"] },
-      "value": { "en": ["18.6 x 12 cm [image size], 23 x 15 cm [plate size]"] }
+      "value": { "en": ["46 x 34 cm [plate size]"] }
     },
     {
       "label": { "en": ["Genre"] },
@@ -81,12 +81,12 @@
   "rights": "http://rightsstatements.org/vocab/NoC-NC/1.0/",
   "thumbnail": [
     {
-      "id": "https://iiif.stack.rdc.library.northwestern.edu/iiif/2/8061b387-205e-44b2-a91b-49fcc1f10a19/full/200,/0/default.jpg",
+      "id": "https://iiif.stack.rdc.library.northwestern.edu/iiif/2/8f58fe3a-caaf-4210-aa48-6a7cf8b63de8/full/200,/0/default.jpg",
       "type": "Image",
       "format": "image/jpeg",
       "service": [
         {
-          "id": "https://iiif.stack.rdc.library.northwestern.edu/iiif/2/8061b387-205e-44b2-a91b-49fcc1f10a19",
+          "id": "https://iiif.stack.rdc.library.northwestern.edu/iiif/2/8f58fe3a-caaf-4210-aa48-6a7cf8b63de8",
           "profile": "http://iiif.io/api/image/2/level2.json",
           "type": "ImageService2"
         }
@@ -97,36 +97,36 @@
   ],
   "items": [
     {
-      "id": "http://localhost:5001/iiif/manifest/dev/01-joseph/canvas/0",
+      "id": "http://localhost:5001/iiif/manifest/dev/11-watching-for-the-signal/canvas/0",
       "type": "Canvas",
-      "width": 1947,
-      "height": 3072,
+      "width": 3814,
+      "height": 5120,
       "label": {
-        "en": ["Joseph - Nez Percé"]
+        "en": ["Watching for the Signal - Nez Percé"]
       },
       "items": [
         {
-          "id": "http://localhost:5001/iiif/manifest/dev/01-joseph/canvas/0/page/0",
+          "id": "http://localhost:5001/iiif/manifest/dev/11-watching-for-the-signal/canvas/0/page/0",
           "type": "AnnotationPage",
           "items": [
             {
-              "id": "http://localhost:5001/iiif/manifest/dev/01-joseph/canvas/0/page/0/annotation/0",
+              "id": "http://localhost:5001/iiif/manifest/dev/11-watching-for-the-signal/canvas/0/page/0/annotation/0",
               "type": "Annotation",
               "motivation": "painting",
-              "target": "http://localhost:5001/iiif/manifest/dev/01-joseph/canvas/0",
+              "target": "http://localhost:5001/iiif/manifest/dev/11-watching-for-the-signal/canvas/0",
               "body": {
-                "id": "https://iiif.stack.rdc.library.northwestern.edu/iiif/2/8061b387-205e-44b2-a91b-49fcc1f10a19/full/600,/0/default.jpg",
+                "id": "https://iiif.stack.rdc.library.northwestern.edu/iiif/2/8f58fe3a-caaf-4210-aa48-6a7cf8b63de8/full/600,/0/default.jpg",
                 "type": "Image",
                 "format": "image/jpeg",
                 "service": [
                   {
-                    "id": "https://iiif.stack.rdc.library.northwestern.edu/iiif/2/8061b387-205e-44b2-a91b-49fcc1f10a19",
+                    "id": "https://iiif.stack.rdc.library.northwestern.edu/iiif/2/8f58fe3a-caaf-4210-aa48-6a7cf8b63de8",
                     "profile": "http://iiif.io/api/image/2/level2.json",
                     "type": "ImageService2"
                   }
                 ],
-                "width": 1947,
-                "height": 3072
+                "width": 3814,
+                "height": 5120
               }
             }
           ]

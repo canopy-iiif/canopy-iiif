@@ -34,6 +34,13 @@
       "id": "http://localhost:5001/iiif/manifest/dev/04-apache-camp.json",
       "type": "Manifest",
       "label": "Apache Camp"
+    },
+    {
+      "id": "http://localhost:5001/iiif/manifest/dev/11-watching-for-the-signal.json",
+      "type": "Manifest",
+      "label": {
+        "none": ["Watching for the Signal - Nez Percé"]
+      }
     }
   ]
 }
