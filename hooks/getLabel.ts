@@ -3,7 +3,7 @@ import { InternationalString } from "@hyperion-framework/types";
 // Get string from a IIIF pres 3 label by language code
 export const getLabel = (
   label: InternationalString,
-  language: string = "en"
+  language: string = "none"
 ) => {
   /*
    * If no label exists, return a hardcoded string.
