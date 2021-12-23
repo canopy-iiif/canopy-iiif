@@ -4,7 +4,7 @@ import { SchemaLink } from "@apollo/client/link/schema";
 import { makeExecutableSchema } from "@graphql-tools/schema";
 import { getAllManifests, getManifestBySlug } from "./iiif";
 
-const rootCollection = process.env.rootCollection;
+const collection = process.env.collection;
 
 const typeDefs = gql`
   type Query {
@@ -37,10 +37,10 @@ const typeDefs = gql`
 const resolvers = {
   Query: {
     allManifests: async (_, __, context) => {
-      return getAllManifests(rootCollection);
+      return getAllManifests(collection);
     },
     getManifest: async (_, { slug }, context) => {
-      return getManifestBySlug(rootCollection, slug);
+      return getManifestBySlug(collection, slug);
     },
   },
 };

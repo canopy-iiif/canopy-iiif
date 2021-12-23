@@ -1,11 +1,11 @@
 import Link from "next/link";
 
-const siteTitle = process.env.siteTitle;
+const title = process.env.title;
 
 const Header = () => {
   return (
     <header style={{ marginBottom: "1rem" }}>
-      <span>{siteTitle}</span>
+      <span>{title}</span>
       <nav>
         <Link href="/">
           <a>Home</a>

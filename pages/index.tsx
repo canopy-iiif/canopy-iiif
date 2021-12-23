@@ -5,10 +5,12 @@ import { client } from "./api/graphql";
 import { getManifestById } from "./api/iiif";
 import Layout from "../components/layout";
 import Grid from "../components/Grid/Grid";
+import Hero from "../components/Hero/Hero";
 
 export default function Index({ allManifests }) {
   return (
     <Layout>
+      <Hero />
       <Grid>
         {allManifests.map((manifest, i) => {
           return <Grid.Item data={manifest} key={manifest.id} />;

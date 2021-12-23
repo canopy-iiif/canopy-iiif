@@ -34,11 +34,6 @@
       "id": "http://localhost:5001/iiif/manifest/dev/04-apache-camp.json",
       "type": "Manifest",
       "label": "Apache Camp"
-    },
-    {
-      "id": "http://localhost:5001/iiif/manifest/dev/05-joseph.json",
-      "type": "Manifest",
-      "label": "Joseph - Nez Percé"
     }
   ]
 }

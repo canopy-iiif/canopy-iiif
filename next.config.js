@@ -9,16 +9,24 @@ module.exports = (phase) => {
   const isDev = phase === PHASE_DEVELOPMENT_SERVER;
   const isProd = phase === PHASE_PRODUCTION_BUILD;
 
-  const { rootCollection, siteTitle } = can.config;
+  const { config, dev } = can;
 
   const env = {
-    rootCollection: (() => {
-      if (isDev) return "http://localhost:5001/iiif/collection/dev.json";
-      if (isProd) return rootCollection;
+    collection: (() => {
+      if (isDev) return dev.collection;
+      if (isProd) return config.collection;
     })(),
-    siteTitle: (() => {
-      if (isDev) return "Nimíipuu, or the Nez Percé";
-      if (isProd) return siteTitle;
+    hero: (() => {
+      if (isDev) return dev.hero;
+      if (isProd) return config.siteTitle;
+    })(),
+    metadata: (() => {
+      if (isDev) return dev.metadata;
+      if (isProd) return config.metadata;
+    })(),
+    title: (() => {
+      if (isDev) return dev.title;
+      if (isProd) return config.title;
     })(),
   };
 
