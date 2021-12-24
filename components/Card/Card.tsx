@@ -7,8 +7,6 @@ const Card = ({ label, path, resource }) => {
 
   if (resource) image = getResourceImage(resource, "400,", "full");
 
-  console.log(image);
-
   return (
     <Wrapper>
       <Link href={path}>
