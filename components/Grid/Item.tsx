@@ -13,6 +13,7 @@ const GridItem = ({ data }) => {
   }, []);
 
   let resource = null;
+  let label = data.label;
 
   if (item) resource = item.items[0].items[0].items[0].body;
 

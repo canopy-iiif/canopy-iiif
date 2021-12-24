@@ -18,6 +18,7 @@ const Hero = () => {
   if (!hero) return null;
 
   const resource = hero.items[0].items[0].items[0].body;
+
   const image = getResourceImage(resource, "1280,", "250,950,2615,1200");
 
   // canvas key

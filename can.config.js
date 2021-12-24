@@ -14,13 +14,15 @@ const config = {
  * Configuration built by `npm run dev`
  */
 const dev = {
-  collection: "http://localhost:5001/iiif/collection/dev.json",
+  collection:
+    "https://digital.lib.utk.edu/assemble/collection/collections/acwiley",
   hero: [
-    "http://localhost:5001/iiif/manifest/dev/03-shores-of-nootka-sound.json",
-    "http://localhost:5001/iiif/manifest/dev/04-apache-camp.json",
+    "https://digital.lib.utk.edu/assemble/manifest/acwiley/289",
+    "https://digital.lib.utk.edu/assemble/manifest/acwiley/393",
+    "https://digital.lib.utk.edu/assemble/manifest/acwiley/427",
   ],
-  metadata: ["Date", "Subject"],
-  title: "Nimíipuu, or the Nez Percé",
+  metadata: ["Coverage", "Date", "Topic"],
+  title: "Anna Catherine Wiley Sketches",
 };
 
 exports.config = config;
