@@ -3,7 +3,7 @@ import React, { useState, useEffect, useRef } from "react";
 import clsx from "clsx";
 import { LQIP, Wrapper } from "./Figure.styled";
 
-const Figure = ({ resource }) => {
+const Figure = ({ resource, region = "full", size = "400," }) => {
   const [loaded, setLoaded] = useState(false);
   const imgRef = useRef();
 
@@ -19,8 +19,8 @@ const Figure = ({ resource }) => {
   let image = null;
   let lqip = null;
 
-  if (resource) lqip = getResourceImage(resource, "20,", "full");
-  if (resource) image = getResourceImage(resource, "400,", "full");
+  if (resource) lqip = getResourceImage(resource, "20,", region);
+  if (resource) image = getResourceImage(resource, size, region);
 
   return (
     <Wrapper>
