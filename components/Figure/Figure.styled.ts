@@ -15,6 +15,7 @@ const Wrapper = styled("figure", {
   [`& ${LQIP}`]: {
     display: "block",
     position: "absolute",
+    zIndex: "0",
     left: "0",
     top: "0",
     width: "100%",
@@ -22,17 +23,15 @@ const Wrapper = styled("figure", {
     backgroundRepeat: "no-repeat",
     backgroundPosition: "center",
     backgroundSize: "contain",
-    zIndex: "0",
-    opacity: 0,
   },
 
   img: {
+    position: "relative",
+    zIndex: "1",
     width: "100%",
     height: "100%",
     objectFit: "contain",
-    position: "relative",
-    zIndex: "1",
-    transition: "all opacity 3000ms",
+    transition: "all 1000ms ease-in-out",
     opacity: 0,
 
     [`&.loaded`]: {
