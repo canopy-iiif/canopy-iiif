@@ -13,6 +13,7 @@
     "@stitches/react": "^1.2.6",
     "apollo-datasource-rest": "^3.4.0",
     "apollo-server-micro": "^3.0.1",
+    "clsx": "^1.1.1",
     "graphql": "^15.8.0",
     "micro": "^9.3.4",
     "next": "latest",
