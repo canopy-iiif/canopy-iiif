@@ -31,7 +31,7 @@ const Wrapper = styled("figure", {
     width: "100%",
     height: "100%",
     objectFit: "contain",
-    transition: "all 1000ms ease-in-out",
+    transition: "all 500ms ease-in-out",
     opacity: 0,
 
     [`&.loaded`]: {
