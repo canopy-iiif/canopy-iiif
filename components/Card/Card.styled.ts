@@ -1,19 +1,5 @@
 import { styled } from "../../stiches.config";
 
-const Figure = styled("figure", {
-  backgroundColor: "$mauve9",
-  width: "100%",
-  height: "150px",
-  padding: "0",
-  margin: "0",
-
-  img: {
-    width: "100%",
-    height: "100%",
-    objectFit: "contain",
-  },
-});
-
 const Content = styled("div", {
   padding: "1rem",
 
@@ -42,4 +28,4 @@ const Wrapper = styled("div", {
   },
 });
 
-export { Content, Figure, Wrapper };
+export { Content, Wrapper };
