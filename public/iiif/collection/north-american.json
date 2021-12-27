@@ -1,0 +1,38 @@
+{
+  "@context": ["https://iiif.io/api/presentation/3/context.json"],
+  "id": "https://can-the.vercel.app/iiif/collection/north-american.json",
+  "type": "Collection",
+  "label": {
+    "en": ["The North American"]
+  },
+  "items": [
+    {
+      "id": "https://can-the.vercel.app/iiif/manifest/uncategorized/shores-of-nootka-sound.json",
+      "type": "Manifest",
+      "label": {
+        "en": ["Shores of Nootka Sound"]
+      }
+    },
+    {
+      "id": "https://can-the.vercel.app/iiif/collection/apache.json",
+      "type": "Collection",
+      "label": {
+        "en": ["Apache"]
+      }
+    },
+    {
+      "id": "https://can-the.vercel.app/iiif/collection/nez-perce.json",
+      "type": "Collection",
+      "label": {
+        "en": ["Nez Percé (Nimíipuu)"]
+      }
+    },
+    {
+      "id": "https://can-the.vercel.app/iiif/collection/tsawatenok.json",
+      "type": "Collection",
+      "label": {
+        "en": ["Tsawatenok (Tsawataineuk)"]
+      }
+    }
+  ]
+}

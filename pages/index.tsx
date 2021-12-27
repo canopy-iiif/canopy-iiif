@@ -12,9 +12,10 @@ export default function Index({ allManifests }) {
     <Layout>
       <Hero />
       <Grid>
-        {allManifests.map((manifest, i) => {
-          return <Grid.Item data={manifest} key={manifest.id} />;
-        })}
+        {allManifests &&
+          allManifests.map((manifest, i) => {
+            return <Grid.Item data={manifest} key={manifest.id} />;
+          })}
       </Grid>
     </Layout>
   );
@@ -24,11 +25,12 @@ export async function getStaticProps() {
   const { loading, error, data } = await client.query({
     query: gql`
       query AllManifests {
-        allManifests(limit: 8) {
+        allManifests {
           id
           label
           slug
           metadata
+          collectionId
         }
       }
     `,

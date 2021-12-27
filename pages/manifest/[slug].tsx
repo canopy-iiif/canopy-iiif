@@ -39,6 +39,7 @@ export async function getStaticPaths() {
       }
     `,
   });
+  console.log(data);
 
   const paths = data.allManifests.map((item) => ({
     params: { ...item },

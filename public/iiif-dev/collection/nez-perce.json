@@ -1,47 +1,11 @@
 {
   "@context": ["https://iiif.io/api/presentation/3/context.json"],
-  "id": "http://localhost:5001/iiif/collection/dev.json",
+  "id": "http://localhost:5001/iiif/collection/nez-perce.json",
   "type": "Collection",
   "label": {
     "en": ["Nez Percé (Nimíipuu)"]
   },
   "items": [
-    {
-      "id": "http://localhost:5001/iiif/collection/dev-sub.json",
-      "type": "Collection",
-      "label": "The Makah"
-    },
-    {
-      "id": "http://localhost:5001/iiif/manifest/dev/01-joseph.json",
-      "type": "Manifest",
-      "label": {
-        "en": ["Joseph - Nez Percé"]
-      }
-    },
-    {
-      "id": "http://localhost:5001/iiif/manifest/dev/02-tsawatenok.json",
-      "type": "Manifest",
-      "label": {
-        "none": ["A Tlŭ'wŭláhŭ Mask - Tsawatenok"]
-      }
-    },
-    {
-      "id": "http://localhost:5001/iiif/manifest/dev/03-shores-of-nootka-sound.json",
-      "type": "Manifest",
-      "label": "Shores of Nootka Sound"
-    },
-    {
-      "id": "http://localhost:5001/iiif/manifest/dev/04-apache-camp.json",
-      "type": "Manifest",
-      "label": "Apache Camp"
-    },
-    {
-      "id": "http://localhost:5001/iiif/manifest/dev/11-watching-for-the-signal.json",
-      "type": "Manifest",
-      "label": {
-        "none": ["Watching for the Signal - Nez Percé"]
-      }
-    },
     {
       "id": "http://localhost:5001/iiif/manifest/nez-perce/01-joseph.json",
       "type": "Manifest",

@@ -1,9 +1,9 @@
 {
   "@context": "http://iiif.io/api/presentation/3/context.json",
-  "id": "http://localhost:5001/iiif/manifest/dev/03-shores-of-nootka-sound.json",
+  "id": "http://localhost:5001/iiif/manifest/tsawatenok/02-tsawatenok.json",
   "type": "Manifest",
   "label": {
-    "en": ["Shores of Nootka Sound"]
+    "en": ["A Tlŭ'wŭláhŭ Mask - Tsawatenok"]
   },
   "summary": {
     "en": [
@@ -36,12 +36,12 @@
     },
     {
       "label": { "en": ["Date"] },
-      "value": { "en": ["1915"] }
+      "value": { "en": ["1914"] }
     },
     {
       "label": { "en": ["Dimensions"] },
       "value": {
-        "en": ["35 x 43 cm [plate size]"]
+        "en": ["19.1 x 13.2 cm [image size], 24 x 16 cm [plate size]"]
       }
     },
     {
@@ -64,13 +64,8 @@
         "en": [
           "Pacific Northwest",
           "British Columbia",
-          "Washington (State)",
-          "Alaska",
-          "Nootka Indians",
-          "Haida Indians",
-          "Makah Indians",
-          "Clayoquot Indians",
-          "Hesquiaht (First Nation)"
+          "Kwakiutl Indians",
+          "Koskimo Indians"
         ]
       }
     }
@@ -86,12 +81,12 @@
   "rights": "http://rightsstatements.org/vocab/NoC-NC/1.0/",
   "thumbnail": [
     {
-      "id": "https://iiif.stack.rdc.library.northwestern.edu/iiif/2/af10ff55-2311-42cb-a7c0-9305b77e6a07/full/200,/0/default.jpg",
+      "id": "https://iiif.stack.rdc.library.northwestern.edu/iiif/2/748abfca-e9ca-42e3-8896-6dec198368fb/full/200,/0/default.jpg",
       "type": "Image",
       "format": "image/jpeg",
       "service": [
         {
-          "id": "https://iiif.stack.rdc.library.northwestern.edu/iiif/2/af10ff55-2311-42cb-a7c0-9305b77e6a07",
+          "id": "https://iiif.stack.rdc.library.northwestern.edu/iiif/2/748abfca-e9ca-42e3-8896-6dec198368fb",
           "profile": "http://iiif.io/api/image/2/level2.json",
           "type": "ImageService2"
         }
@@ -102,36 +97,36 @@
   ],
   "items": [
     {
-      "id": "http://localhost:5001/iiif/manifest/dev/03-shores-of-nootka-sound/canvas/0",
+      "id": "http://localhost:5001/iiif/manifest/tsawatenok/02-tsawatenok/canvas/0",
       "type": "Canvas",
-      "width": 5097,
-      "height": 4216,
+      "width": 2061,
+      "height": 3072,
       "label": {
-        "en": ["Shores of Nootka Sound"]
+        "en": ["A Tlŭ'wŭláhŭ Mask - Tsawatenok"]
       },
       "items": [
         {
-          "id": "http://localhost:5001/iiif/manifest/dev/03-shores-of-nootka-sound/canvas/0/page/0",
+          "id": "http://localhost:5001/iiif/manifest/tsawatenok/02-tsawatenok/canvas/0/page/0",
           "type": "AnnotationPage",
           "items": [
             {
-              "id": "http://localhost:5001/iiif/manifest/dev/03-shores-of-nootka-sound/canvas/0/page/0/annotation/0",
+              "id": "http://localhost:5001/iiif/manifest/tsawatenok/02-tsawatenok/canvas/0/page/0/annotation/0",
               "type": "Annotation",
               "motivation": "painting",
-              "target": "http://localhost:5001/iiif/manifest/dev/03-shores-of-nootka-sound/canvas/0",
+              "target": "http://localhost:5001/iiif/manifest/tsawatenok/02-tsawatenok/canvas/0",
               "body": {
-                "id": "https://iiif.stack.rdc.library.northwestern.edu/iiif/2/af10ff55-2311-42cb-a7c0-9305b77e6a07/full/600,/0/default.jpg",
+                "id": "https://iiif.stack.rdc.library.northwestern.edu/iiif/2/748abfca-e9ca-42e3-8896-6dec198368fb/full/600,/0/default.jpg",
                 "type": "Image",
                 "format": "image/jpeg",
                 "service": [
                   {
-                    "id": "https://iiif.stack.rdc.library.northwestern.edu/iiif/2/af10ff55-2311-42cb-a7c0-9305b77e6a07",
+                    "id": "https://iiif.stack.rdc.library.northwestern.edu/iiif/2/748abfca-e9ca-42e3-8896-6dec198368fb",
                     "profile": "http://iiif.io/api/image/2/level2.json",
                     "type": "ImageService2"
                   }
                 ],
-                "width": 5097,
-                "height": 4216
+                "width": 2061,
+                "height": 3072
               }
             }
           ]

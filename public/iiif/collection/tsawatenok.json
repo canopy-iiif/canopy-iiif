@@ -1,0 +1,17 @@
+{
+  "@context": ["https://iiif.io/api/presentation/3/context.json"],
+  "id": "https://can-the.vercel.app/iiif/collection/tsawatenok.json",
+  "type": "Collection",
+  "label": {
+    "en": ["Tsawatenok (Tsawataineuk)"]
+  },
+  "items": [
+    {
+      "id": "https://can-the.vercel.app/iiif/manifest/tsawatenok/02-tsawatenok.json",
+      "type": "Manifest",
+      "label": {
+        "en": ["A Tlŭ'wŭláhŭ Mask - Tsawatenok"]
+      }
+    }
+  ]
+}

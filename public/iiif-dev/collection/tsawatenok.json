@@ -1,0 +1,17 @@
+{
+  "@context": ["https://iiif.io/api/presentation/3/context.json"],
+  "id": "http://localhost:5001/iiif/collection/tsawatenok.json",
+  "type": "Collection",
+  "label": {
+    "en": ["Tsawatenok (Tsawataineuk)"]
+  },
+  "items": [
+    {
+      "id": "http://localhost:5001/iiif/manifest/tsawatenok/02-tsawatenok.json",
+      "type": "Manifest",
+      "label": {
+        "en": ["A Tlŭ'wŭláhŭ Mask - Tsawatenok"]
+      }
+    }
+  ]
+}

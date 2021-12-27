@@ -1,0 +1,15 @@
+{
+  "@context": ["https://iiif.io/api/presentation/3/context.json"],
+  "id": "https://can-the.vercel.app/iiif/collection/apache.json",
+  "type": "Collection",
+  "label": {
+    "en": ["Apache"]
+  },
+  "items": [
+    {
+      "id": "https://can-the.vercel.app/iiif/manifest/apache/04-apache-camp.json",
+      "type": "Manifest",
+      "label": "Apache Camp"
+    }
+  ]
+}
