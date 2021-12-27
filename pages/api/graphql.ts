@@ -7,7 +7,7 @@ import { getAllManifests, getManifests, getManifestBySlug } from "./iiif";
 const typeDefs = gql`
   type Query {
     manifests: [Manifest]
-    allManifests: [Manifest]
+    allManifests(limit: Int): [Manifest]
     getManifest(slug: ID): Manifest
   }
 
@@ -34,8 +34,8 @@ const typeDefs = gql`
 
 const resolvers = {
   Query: {
-    allManifests: async (_, __, context) => {
-      return getAllManifests();
+    allManifests: async (_, { limit }, context) => {
+      return getAllManifests(limit);
     },
     getManifest: async (_, { slug }, context) => {
       return getManifestBySlug(slug);

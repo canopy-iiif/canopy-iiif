@@ -9,12 +9,9 @@ const Figure = ({ resource, region = "full", size = "400," }) => {
 
   useEffect(() => {
     if (imgRef.current && imgRef.current.complete) {
-      console.log(imgRef.current);
       setLoaded(true);
     }
   }, []);
-
-  console.log(loaded);
 
   let image = null;
   let lqip = null;

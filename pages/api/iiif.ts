@@ -9,14 +9,14 @@ const slugifyConfig = {
 
 const COLLECTION = process.env.collection;
 
-export const getAllManifests = () =>
+export const getAllManifests = (limit) =>
   fetch(COLLECTION)
     .then(function (response) {
       return response.json();
     })
     .then(function (json) {
-      return json.items.filter((item) => {
-        if (item.type === "Manifest") {
+      return json.items.filter((item, index) => {
+        if (item.type === "Manifest" && index <= limit) {
           item.label = getLabel(item.label);
           item.slug = slugify(item.label[0], { ...slugifyConfig });
           return item;
