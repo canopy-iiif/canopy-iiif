@@ -2,10 +2,11 @@
  * Configuration built by `npm run build`
  */
 const config = {
-  collection: "https://can-the.vercel.app/iiif/collection/north-american.json",
+  collection: "https://can-the.vercel.app/iiif/collection/nez-perce.json",
   title: "Nimíipuu, the Nez Percé",
   hero: [
-    "https://can-the.vercel.app/iiif/manifest/uncategorized/shores-of-nootka-sound.json",
+    "https://can-the.vercel.app/iiif/manifest/nez-perce/08-map-territory.json",
+    "https://can-the.vercel.app/iiif/manifest/nez-perce/09-joseph-dead-feast-lodge.json",
   ],
   metadata: ["Date", "Subject"],
 };
