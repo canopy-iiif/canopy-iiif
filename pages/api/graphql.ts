@@ -2,9 +2,7 @@ import { ApolloServer, gql } from "apollo-server-micro";
 import { ApolloClient, InMemoryCache } from "@apollo/client";
 import { SchemaLink } from "@apollo/client/link/schema";
 import { makeExecutableSchema } from "@graphql-tools/schema";
-import { getAllManifests, getManifestBySlug } from "./iiif";
-
-const collection = process.env.collection;
+import { getAllManifests, getManifests, getManifestBySlug } from "./iiif";
 
 const typeDefs = gql`
   type Query {
@@ -37,10 +35,10 @@ const typeDefs = gql`
 const resolvers = {
   Query: {
     allManifests: async (_, __, context) => {
-      return getAllManifests(collection);
+      return getAllManifests();
     },
     getManifest: async (_, { slug }, context) => {
-      return getManifestBySlug(collection, slug);
+      return getManifestBySlug(slug);
     },
   },
 };

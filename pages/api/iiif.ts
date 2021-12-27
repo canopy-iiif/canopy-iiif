@@ -7,8 +7,10 @@ const slugifyConfig = {
   trim: true,
 };
 
-export const getAllManifests = (rootCollection) =>
-  fetch(rootCollection)
+const COLLECTION = process.env.collection;
+
+export const getAllManifests = () =>
+  fetch(COLLECTION)
     .then(function (response) {
       return response.json();
     })
@@ -22,8 +24,8 @@ export const getAllManifests = (rootCollection) =>
       });
     });
 
-export const getManifestBySlug = (rootCollection, slug) =>
-  fetch(rootCollection)
+export const getManifestBySlug = (slug) =>
+  fetch(COLLECTION)
     .then(function (response) {
       return response.json();
     })
