@@ -19,17 +19,15 @@ const buildCollection = (json, depth) => {
   const label = getLabel(json.label);
   const slug = slugify(label[0], { ...slugifyConfig });
   const children = getCollectionItems(json.items, id);
-  return [
-    {
-      id,
-      label,
-      slug,
-      depth,
-      manifests: children.manifests,
-      collections: children.collections,
-      items: children.items,
-    },
-  ];
+  return {
+    id,
+    label,
+    slug,
+    depth,
+    manifests: children.manifests,
+    collections: children.collections,
+    items: children.items,
+  };
 };
 
 const getCollectionItems = (items, parent) => {
@@ -52,13 +50,23 @@ const getCollectionItems = (items, parent) => {
  *
  * @returns
  */
-export const getCollection = (tree = [], id = ROOT_COLLECTION, depth) =>
+export const getCollection = (depth, id = ROOT_COLLECTION) =>
   fetch(id)
     .then((response) => {
       return response.json();
     })
     .then((json) => {
-      return tree.concat(buildCollection(json, depth));
+      return buildCollection(json, depth);
+      const parent = buildCollection(json, depth);
+
+      if (parent.collections > 0) {
+        parent.items.forEach((child) => {
+          // if (child.type === "Collection")
+          // tree = tree.concat([getCollection(tree, child.id, depth + 1)]);
+        });
+      }
+
+      return tree;
     });
 
 /**

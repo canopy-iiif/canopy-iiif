@@ -46,7 +46,25 @@ const typeDefs = gql`
 const resolvers = {
   Query: {
     collections: async (_, __, context) => {
-      return getCollection(_, _, 0);
+      /**
+       * get root collection
+       */
+      let tree = [];
+      let root = Promise.resolve(getCollection(0));
+      return root.then((collection) => {
+        tree = tree.concat([collection]);
+        if (collection.collections > 0) {
+          collection.items.forEach((child) => {
+            if (child.type === "Collection") {
+              let item = Promise.resolve(
+                getCollection(collection.depth + 1, child.id)
+              );
+              tree = tree.concat([item]);
+            }
+          });
+        }
+        return tree;
+      });
     },
     allManifests: async (_, __, context) => {
       return getAllManifests();
