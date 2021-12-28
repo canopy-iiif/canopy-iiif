@@ -7,13 +7,13 @@ import Layout from "../components/layout";
 import Grid from "../components/Grid/Grid";
 import Hero from "../components/Hero/Hero";
 
-export default function Index({ allManifests }) {
+export default function Index({ manifests }) {
   return (
     <Layout>
       <Hero />
       <Grid>
-        {allManifests &&
-          allManifests.map((manifest, i) => {
+        {manifests &&
+          manifests.map((manifest, i) => {
             return <Grid.Item data={manifest} key={manifest.id} />;
           })}
       </Grid>
@@ -24,8 +24,8 @@ export default function Index({ allManifests }) {
 export async function getStaticProps() {
   const { loading, error, data } = await client.query({
     query: gql`
-      query AllManifests {
-        allManifests {
+      query Manifests {
+        manifests {
           id
           label
           slug

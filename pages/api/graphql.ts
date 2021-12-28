@@ -3,11 +3,14 @@ import { ApolloClient, InMemoryCache } from "@apollo/client";
 import { SchemaLink } from "@apollo/client/link/schema";
 import { makeExecutableSchema } from "@graphql-tools/schema";
 import { getCollection, getAllManifests, getManifestBySlug } from "./iiif";
+import { getLabel } from "../../hooks/getLabel";
+import slugify from "slugify";
 
 const typeDefs = gql`
   type Query {
-    allCollections: [Collection]
-    allCollectionItems: [CollectionItem]
+    collections: [Collection]
+    collectionItems: [CollectionItem]
+    manifests: [Manifest]
     allManifests: [Manifest]
     getManifest(slug: ID): Manifest
   }
@@ -66,10 +69,10 @@ const getCollectionData = () => {
 
 const resolvers = {
   Query: {
-    allCollections: async (_, __, context) => {
+    collections: async (_, __, context) => {
       return getCollectionData();
     },
-    allCollectionItems: async (_, __, context) => {
+    collectionItems: async (_, __, context) => {
       return getCollectionData().then((tree) => {
         return Promise.all(tree).then((values) => {
           let items = [];
@@ -79,6 +82,27 @@ const resolvers = {
             });
           });
           return items;
+        });
+      });
+    },
+    manifests: async (_, __, context) => {
+      return getCollectionData().then((tree) => {
+        return Promise.all(tree).then((values) => {
+          let items = [];
+          values.forEach((results) => {
+            results.items.forEach((element) => {
+              items.push(element);
+            });
+          });
+          return items.filter((item) => {
+            item.slug = slugify(item.label[0], {
+              lower: true,
+              strict: true,
+              trim: true,
+            });
+            item.collectionId = null;
+            return item.type === "Manifest";
+          });
         });
       });
     },
