@@ -73,10 +73,6 @@ export const getCollection = (depth, id = ROOT_COLLECTION, parent = null) =>
     .then((response) => response.json())
     .then((json) => buildCollection(json, depth, parent));
 
-export const getCollectionItems = () => {
-  return [{ id: "garbage" }];
-};
-
 /**
  *
  * @param id
