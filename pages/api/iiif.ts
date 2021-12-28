@@ -1,7 +1,8 @@
-import { concat } from "@apollo/client";
+import { concat, gql } from "@apollo/client";
 import { useState } from "react";
 import slugify from "slugify";
 import { getLabel } from "../../hooks/getLabel";
+import { getGraphQL } from "./graphql";
 
 const slugifyConfig = {
   lower: true,
@@ -25,7 +26,7 @@ const buildCollection = (json, depth, parent = null) => {
   const { id } = json;
   const label = getLabel(json.label);
   const slug = slugify(label[0], { ...slugifyConfig });
-  const children = getCollectionItems(json.items, id);
+  const children = buildCollectionItems(json.items, id);
   return {
     id,
     label,
@@ -37,14 +38,14 @@ const buildCollection = (json, depth, parent = null) => {
     items: children.items,
   };
 };
+
 /**
  *
  * @param items
  * @param parent
  * @returns
  */
-
-const getCollectionItems = (items, parent) => {
+const buildCollectionItems = (items, parent) => {
   let manifests = 0;
   let collections = 0;
   return {
@@ -67,10 +68,14 @@ const getCollectionItems = (items, parent) => {
  * @param parent
  * @returns
  */
-export const getCollection = (depth, id = ROOT_COLLECTION, parent) =>
+export const getCollection = (depth, id = ROOT_COLLECTION, parent = null) =>
   fetch(id)
     .then((response) => response.json())
     .then((json) => buildCollection(json, depth, parent));
+
+export const getCollectionItems = () => {
+  return [{ id: "garbage" }];
+};
 
 /**
  *

@@ -2,11 +2,17 @@ import { ApolloServer, gql } from "apollo-server-micro";
 import { ApolloClient, InMemoryCache } from "@apollo/client";
 import { SchemaLink } from "@apollo/client/link/schema";
 import { makeExecutableSchema } from "@graphql-tools/schema";
-import { getCollection, getAllManifests, getManifestBySlug } from "./iiif";
+import {
+  getCollection,
+  getAllManifests,
+  getManifestBySlug,
+  getCollectionItems,
+} from "./iiif";
 
 const typeDefs = gql`
   type Query {
     collections: [Collection]
+    collectionItems: [CollectionItem]
     allManifests: [Manifest]
     getManifest(slug: ID): Manifest
   }
@@ -44,24 +50,37 @@ const typeDefs = gql`
   }
 `;
 
+let tree = [];
+const root = Promise.resolve(getCollection(0));
+const collections = root.then((collection) => {
+  tree = tree.concat([collection]);
+  if (collection.collections > 0) {
+    collection.items.forEach((child) => {
+      if (child.type === "Collection") {
+        const item = Promise.resolve(
+          getCollection(collection.depth + 1, child.id, collection.id)
+        );
+        tree = tree.concat([item]);
+      }
+    });
+  }
+  return tree;
+});
+
 const resolvers = {
   Query: {
     collections: async (_, __, context) => {
-      let tree = [];
-      let root = Promise.resolve(getCollection(0));
-      return root.then((collection) => {
-        tree = tree.concat([collection]);
-        if (collection.collections > 0) {
-          collection.items.forEach((child) => {
-            if (child.type === "Collection") {
-              let item = Promise.resolve(
-                getCollection(collection.depth + 1, child.id, collection.id)
-              );
-              tree = tree.concat([item]);
-            }
+      return collections;
+    },
+    collectionItems: async (_, __, context) => {
+      return Promise.all(tree).then((values) => {
+        let items = [];
+        values.forEach((results) => {
+          results.items.forEach((element) => {
+            items.push(element);
           });
-        }
-        return tree;
+        });
+        return items;
       });
     },
     allManifests: async (_, __, context) => {
