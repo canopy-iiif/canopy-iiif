@@ -14,7 +14,14 @@ const slugifyConfig = {
  */
 const ROOT_COLLECTION = process.env.collection;
 
-const buildCollection = (json, depth) => {
+/**
+ *
+ * @param json
+ * @param depth
+ * @param parent
+ * @returns
+ */
+const buildCollection = (json, depth, parent = null) => {
   const { id } = json;
   const label = getLabel(json.label);
   const slug = slugify(label[0], { ...slugifyConfig });
@@ -24,11 +31,18 @@ const buildCollection = (json, depth) => {
     label,
     slug,
     depth,
+    parent,
     manifests: children.manifests,
     collections: children.collections,
     items: children.items,
   };
 };
+/**
+ *
+ * @param items
+ * @param parent
+ * @returns
+ */
 
 const getCollectionItems = (items, parent) => {
   let manifests = 0;
@@ -48,66 +62,34 @@ const getCollectionItems = (items, parent) => {
 
 /**
  *
+ * @param depth
+ * @param id
+ * @param parent
  * @returns
  */
-export const getCollection = (depth, id = ROOT_COLLECTION) =>
+export const getCollection = (depth, id = ROOT_COLLECTION, parent) =>
   fetch(id)
-    .then((response) => {
-      return response.json();
-    })
-    .then((json) => {
-      return buildCollection(json, depth);
-      const parent = buildCollection(json, depth);
-
-      if (parent.collections > 0) {
-        parent.items.forEach((child) => {
-          // if (child.type === "Collection")
-          // tree = tree.concat([getCollection(tree, child.id, depth + 1)]);
-        });
-      }
-
-      return tree;
-    });
+    .then((response) => response.json())
+    .then((json) => buildCollection(json, depth, parent));
 
 /**
  *
+ * @param id
  * @returns
  */
 export const getAllManifests = (id = ROOT_COLLECTION) =>
   fetch(id)
-    .then((response) => {
-      return response.json();
-    })
-    .then((json) => {
-      return json.items.filter((item) => {
+    .then((response) => response.json())
+    .then((json) =>
+      json.items.filter((item) => {
         if (item.type === "Manifest") {
           item.label = getLabel(item.label);
           item.slug = slugify(item.label[0], { ...slugifyConfig });
           item.collectionId = id;
           return item;
         }
-      });
-    });
-
-// export const getNestedCollections = (id) =>
-//   fetch(id)
-//     .then((response) => {
-//       return response.json();
-//     })
-//     .then((json) => {
-//       manifests = manifests.concat(
-//         json.items.filter((item) => {
-//           if (item.type === "Manifest") {
-//             item.label = getLabel(item.label);
-//             item.slug = slugify(item.label[0], { ...slugifyConfig });
-//             item.collectionId = id;
-//             return item;
-//           }
-//           if (item.type === "Collection") getNestedCollections(item.id);
-//         })
-//       );
-//       return manifests;
-//     });
+      })
+    );
 
 /**
  *
@@ -116,10 +98,8 @@ export const getAllManifests = (id = ROOT_COLLECTION) =>
  */
 export const getManifestBySlug = (slug) =>
   fetch(ROOT_COLLECTION)
-    .then(function (response) {
-      return response.json();
-    })
-    .then(function (json) {
+    .then((response) => response.json())
+    .then((json) => {
       const filtered = json.items.filter((item) => {
         item.label = getLabel(item.label);
         if (slugify(item.label[0], { ...slugifyConfig }) === slug) {
@@ -137,18 +117,16 @@ export const getManifestBySlug = (slug) =>
  */
 export const getManifests = (limit, offset) =>
   fetch(ROOT_COLLECTION)
-    .then(function (response) {
-      return response.json();
-    })
-    .then(function (json) {
-      return json.items.filter((item, index) => {
+    .then((response) => response.json())
+    .then((json) =>
+      json.items.filter((item, index) => {
         if (item.type === "Manifest" && index) {
           item.label = getLabel(item.label);
           item.slug = slugify(item.label[0], { ...slugifyConfig });
           return item;
         }
-      });
-    });
+      })
+    );
 
 /**
  *
@@ -157,9 +135,5 @@ export const getManifests = (limit, offset) =>
  */
 export const getManifestById = (id) =>
   fetch(id)
-    .then(function (response) {
-      return response.json();
-    })
-    .then(function (json) {
-      return json;
-    });
+    .then((response) => response.json())
+    .then((json) => json);

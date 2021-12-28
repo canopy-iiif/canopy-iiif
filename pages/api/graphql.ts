@@ -18,6 +18,7 @@ const typeDefs = gql`
     collections: Int
     manifests: Int
     depth: Int
+    parent: String
     slug: ID
   }
 
@@ -46,9 +47,6 @@ const typeDefs = gql`
 const resolvers = {
   Query: {
     collections: async (_, __, context) => {
-      /**
-       * get root collection
-       */
       let tree = [];
       let root = Promise.resolve(getCollection(0));
       return root.then((collection) => {
@@ -57,7 +55,7 @@ const resolvers = {
           collection.items.forEach((child) => {
             if (child.type === "Collection") {
               let item = Promise.resolve(
-                getCollection(collection.depth + 1, child.id)
+                getCollection(collection.depth + 1, child.id, collection.id)
               );
               tree = tree.concat([item]);
             }
