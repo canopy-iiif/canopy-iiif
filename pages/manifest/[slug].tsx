@@ -14,6 +14,9 @@ export default function Manifest({ id, label }) {
 
 export async function getStaticProps({ params }) {
   const { slug } = params;
+
+  console.log(slug);
+
   const { loading, error, data } = await client.query({
     query: gql`
       query GetManifestBySlug {
@@ -21,6 +24,8 @@ export async function getStaticProps({ params }) {
       }
     `,
   });
+
+  console.log(data);
 
   if (!data) return null;
 

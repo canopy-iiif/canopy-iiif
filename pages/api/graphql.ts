@@ -27,7 +27,7 @@ const typeDefs = gql`
   }
 
   type CollectionItem {
-    id: String!
+    id: String
     label: [String]
     type: String
     parent: String
@@ -35,7 +35,7 @@ const typeDefs = gql`
 
   type Manifest {
     collectionId: ID
-    id: String!
+    id: String
     label: [String]
     metadata: [Metadata]
     slug: ID
@@ -109,8 +109,26 @@ const resolvers = {
     allManifests: async (_, __, context) => {
       return getAllManifests();
     },
-    getManifest: async (_, { slug }, context) => {
-      return getManifestBySlug(slug);
+    getManifest: async (manifests, { slug }, context) => {
+      return getCollectionData().then((tree) => {
+        return Promise.all(tree).then((values) => {
+          let items = [];
+          values.forEach((results) => {
+            results.items.forEach((element) => {
+              items.push(element);
+            });
+          });
+          return items.filter((item) => {
+            item.slug = slugify(item.label[0], {
+              lower: true,
+              strict: true,
+              trim: true,
+            });
+            item.collectionId = null;
+            return item.slug === slug;
+          })[0];
+        });
+      });
     },
   },
 };
