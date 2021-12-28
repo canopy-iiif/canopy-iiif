@@ -1,3 +1,4 @@
+import { concat } from "@apollo/client";
 import { useState } from "react";
 import slugify from "slugify";
 import { getLabel } from "../../hooks/getLabel";
@@ -11,34 +12,94 @@ const slugifyConfig = {
 /**
  *
  */
-const COLLECTION = process.env.collection;
-let manifests = [];
+const ROOT_COLLECTION = process.env.collection;
+
+const buildCollection = (json, depth) => {
+  const { id } = json;
+  const label = getLabel(json.label);
+  const slug = slugify(label[0], { ...slugifyConfig });
+  const children = getCollectionItems(json.items, id);
+  return [
+    {
+      id,
+      label,
+      slug,
+      depth,
+      manifests: children.manifests,
+      collections: children.collections,
+      items: children.items,
+    },
+  ];
+};
+
+const getCollectionItems = (items, parent) => {
+  let manifests = 0;
+  let collections = 0;
+  return {
+    items: items.map((item) => {
+      if (item.type === "Manifest") manifests++;
+      if (item.type === "Collection") collections++;
+      item.label = getLabel(item.label);
+      item.parent = parent;
+      return item;
+    }),
+    manifests,
+    collections,
+  };
+};
 
 /**
  *
  * @returns
  */
-export const getAllManifests = (id = COLLECTION, root = false) =>
+export const getCollection = (tree = [], id = ROOT_COLLECTION, depth) =>
   fetch(id)
-    .then(function (response) {
+    .then((response) => {
       return response.json();
     })
-    .then(function (json) {
-      manifests = manifests.concat(
-        json.items.filter((item) => {
-          if (item.type === "Manifest") {
-            item.label = getLabel(item.label);
-            item.slug = slugify(item.label[0], { ...slugifyConfig });
-            item.collectionId = id;
-            return item;
-          }
-          if (item.type === "Collection") getAllManifests(item.id);
-        })
-      );
-      console.log(`manifests`, manifests);
-      console.log(`manifests.length`, manifests.length);
-      return manifests;
+    .then((json) => {
+      return tree.concat(buildCollection(json, depth));
     });
+
+/**
+ *
+ * @returns
+ */
+export const getAllManifests = (id = ROOT_COLLECTION) =>
+  fetch(id)
+    .then((response) => {
+      return response.json();
+    })
+    .then((json) => {
+      return json.items.filter((item) => {
+        if (item.type === "Manifest") {
+          item.label = getLabel(item.label);
+          item.slug = slugify(item.label[0], { ...slugifyConfig });
+          item.collectionId = id;
+          return item;
+        }
+      });
+    });
+
+// export const getNestedCollections = (id) =>
+//   fetch(id)
+//     .then((response) => {
+//       return response.json();
+//     })
+//     .then((json) => {
+//       manifests = manifests.concat(
+//         json.items.filter((item) => {
+//           if (item.type === "Manifest") {
+//             item.label = getLabel(item.label);
+//             item.slug = slugify(item.label[0], { ...slugifyConfig });
+//             item.collectionId = id;
+//             return item;
+//           }
+//           if (item.type === "Collection") getNestedCollections(item.id);
+//         })
+//       );
+//       return manifests;
+//     });
 
 /**
  *
@@ -46,7 +107,7 @@ export const getAllManifests = (id = COLLECTION, root = false) =>
  * @returns
  */
 export const getManifestBySlug = (slug) =>
-  fetch(COLLECTION)
+  fetch(ROOT_COLLECTION)
     .then(function (response) {
       return response.json();
     })
@@ -67,7 +128,7 @@ export const getManifestBySlug = (slug) =>
  * @returns
  */
 export const getManifests = (limit, offset) =>
-  fetch(COLLECTION)
+  fetch(ROOT_COLLECTION)
     .then(function (response) {
       return response.json();
     })

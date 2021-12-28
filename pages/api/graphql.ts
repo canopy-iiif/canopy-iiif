@@ -2,24 +2,36 @@ import { ApolloServer, gql } from "apollo-server-micro";
 import { ApolloClient, InMemoryCache } from "@apollo/client";
 import { SchemaLink } from "@apollo/client/link/schema";
 import { makeExecutableSchema } from "@graphql-tools/schema";
-import { getAllManifests, getManifestBySlug } from "./iiif";
+import { getCollection, getAllManifests, getManifestBySlug } from "./iiif";
 
 const typeDefs = gql`
   type Query {
+    collections: [Collection]
     allManifests: [Manifest]
     getManifest(slug: ID): Manifest
   }
 
   type Collection {
-    collectionId: String
-    id: ID
-    label: String
+    id: String!
+    label: [String]
+    items: [CollectionItem]
+    collections: Int
+    manifests: Int
+    depth: Int
+    slug: ID
+  }
+
+  type CollectionItem {
+    id: String!
+    label: [String]
+    type: String
+    parent: String
   }
 
   type Manifest {
     collectionId: ID
-    id: String
-    label: [String]!
+    id: String!
+    label: [String]
     metadata: [Metadata]
     slug: ID
   }
@@ -33,8 +45,11 @@ const typeDefs = gql`
 
 const resolvers = {
   Query: {
+    collections: async (_, __, context) => {
+      return getCollection(_, _, 0);
+    },
     allManifests: async (_, __, context) => {
-      return getAllManifests(_, true);
+      return getAllManifests();
     },
     getManifest: async (_, { slug }, context) => {
       return getManifestBySlug(slug);
