@@ -6,7 +6,6 @@ const config = {
   title: "The North Americans",
   hero: [
     "https://can-the.vercel.app/iiif/manifest/apache/04-apache-camp.json",
-    "https://can-the.vercel.app/iiif/manifest/uncategorized/shores-of-nootka-sound.json",
     "https://can-the.vercel.app/iiif/manifest/nez-perce/08-map-territory.json",
   ],
   metadata: ["Date", "Subject"],
@@ -20,7 +19,6 @@ const dev = {
   title: "The North Americans",
   hero: [
     "http://localhost:5001/iiif-dev/manifest/apache/04-apache-camp.json",
-    "http://localhost:5001/iiif-dev/manifest/uncategorized/shores-of-nootka-sound.json",
     "http://localhost:5001/iiif-dev/manifest/nez-perce/08-map-territory.json",
   ],
   metadata: ["Date", "Subject"],
