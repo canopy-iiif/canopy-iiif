@@ -1,13 +1,13 @@
 {
   "@context": "http://iiif.io/api/presentation/3/context.json",
-  "id": "http://localhost:5001/iiif-dev/manifest/nez-perce/03-matron.json",
+  "id": "http://localhost:5001/iiif-dev/manifest/tsawatenok/06-tsawatenok-tree-burial.json",
   "type": "Manifest",
   "label": {
-    "en": ["Nez Percé Matron"]
+    "en": ["Tsawatenok Tree Burial"]
   },
   "summary": {
     "en": [
-      "written, illustrated, and published by Edward S. Curtis ; edited by Frederick Webb Hodge ; foreword by Theodore Roosevelt ; field research conducted under the patronage of J. Pierpont Morgan. ; Original photogravures produced in Boston by John Andrew & Son from 1899-1910."
+      "written, illustrated, and published by Edward S. Curtis ; edited by Frederick Webb Hodge ; foreword by Theodore Roosevelt ; field research conducted under the patronage of J. Pierpont Morgan. ; Original photogravures produced in Boston by John Andrew & Son in 1914."
     ]
   },
   "metadata": [
@@ -36,12 +36,12 @@
     },
     {
       "label": { "en": ["Date"] },
-      "value": { "en": ["1910"] }
+      "value": { "en": ["1914"] }
     },
     {
       "label": { "en": ["Dimensions"] },
       "value": {
-        "en": ["18.3 x 12.6 cm [image size], 23 x 16 cm [plate size]"]
+        "en": ["20.2 x 15 cm [image size], 24 x 18 cm [plate size]"]
       }
     },
     {
@@ -62,12 +62,10 @@
       "label": { "en": ["Subject"] },
       "value": {
         "en": [
-          "Nez Percé Indians",
-          "Walla Walla Indians",
-          "Umatilla Indians",
-          "Cayuse Indians",
-          "Chinookan Indians",
-          "Tlakluit Indians"
+          "Pacific Northwest",
+          "British Columbia",
+          "Kwakiutl Indians",
+          "Koskimo Indians"
         ]
       }
     }
@@ -83,12 +81,12 @@
   "rights": "http://rightsstatements.org/vocab/NoC-NC/1.0/",
   "thumbnail": [
     {
-      "id": "https://iiif.stack.rdc.library.northwestern.edu/iiif/2/8b3ae6bc-a41b-4da2-98ca-6ac90fb38186/full/200,/0/default.jpg",
+      "id": "https://iiif.stack.rdc.library.northwestern.edu/iiif/2/1c2efe41-bc71-44ee-bc85-f7aaa0fa45e1/full/200,/0/default.jpg",
       "type": "Image",
       "format": "image/jpeg",
       "service": [
         {
-          "id": "https://iiif.stack.rdc.library.northwestern.edu/iiif/2/8b3ae6bc-a41b-4da2-98ca-6ac90fb38186",
+          "id": "https://iiif.stack.rdc.library.northwestern.edu/iiif/2/1c2efe41-bc71-44ee-bc85-f7aaa0fa45e1",
           "profile": "http://iiif.io/api/image/2/level2.json",
           "type": "ImageService2"
         }
@@ -99,35 +97,35 @@
   ],
   "items": [
     {
-      "id": "http://localhost:5001/iiif-dev/manifest/nez-perce/03-matron/canvas/0",
+      "id": "http://localhost:5001/iiif-dev/manifest/tsawatenok/06-tsawatenok-tree-burial/canvas/0",
       "type": "Canvas",
-      "width": 2100,
+      "width": 2228,
       "height": 3072,
       "label": {
-        "en": ["Nez Percé Matron"]
+        "en": ["Tsawatenok Tree Burial"]
       },
       "items": [
         {
-          "id": "http://localhost:5001/iiif-dev/manifest/nez-perce/03-matron/canvas/0/page/0",
+          "id": "http://localhost:5001/iiif-dev/manifest/tsawatenok/06-tsawatenok-tree-burial/canvas/0/page/0",
           "type": "AnnotationPage",
           "items": [
             {
-              "id": "http://localhost:5001/iiif-dev/manifest/nez-perce/03-matron/canvas/0/page/0/annotation/0",
+              "id": "http://localhost:5001/iiif-dev/manifest/tsawatenok/06-tsawatenok-tree-burial/canvas/0/page/0/annotation/0",
               "type": "Annotation",
               "motivation": "painting",
-              "target": "http://localhost:5001/iiif-dev/manifest/nez-perce/03-matron/canvas/0",
+              "target": "http://localhost:5001/iiif-dev/manifest/tsawatenok/06-tsawatenok-tree-burial/canvas/0",
               "body": {
-                "id": "https://iiif.stack.rdc.library.northwestern.edu/iiif/2/8b3ae6bc-a41b-4da2-98ca-6ac90fb38186/full/600,/0/default.jpg",
+                "id": "https://iiif.stack.rdc.library.northwestern.edu/iiif/2/1c2efe41-bc71-44ee-bc85-f7aaa0fa45e1/full/600,/0/default.jpg",
                 "type": "Image",
                 "format": "image/jpeg",
                 "service": [
                   {
-                    "id": "https://iiif.stack.rdc.library.northwestern.edu/iiif/2/8b3ae6bc-a41b-4da2-98ca-6ac90fb38186",
+                    "id": "https://iiif.stack.rdc.library.northwestern.edu/iiif/2/1c2efe41-bc71-44ee-bc85-f7aaa0fa45e1",
                     "profile": "http://iiif.io/api/image/2/level2.json",
                     "type": "ImageService2"
                   }
                 ],
-                "width": 2100,
+                "width": 2228,
                 "height": 3072
               }
             }

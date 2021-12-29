@@ -1,9 +1,9 @@
 {
   "@context": "http://iiif.io/api/presentation/3/context.json",
-  "id": "http://localhost:5001/iiif/manifest/tsawatenok/02-tsawatenok.json",
+  "id": "https://can-the.vercel.app/iiif/manifest/tsawatenok/05-tsawatenok-house-front.json",
   "type": "Manifest",
   "label": {
-    "en": ["A Tlŭ'wŭláhŭ Mask - Tsawatenok"]
+    "en": ["A Tsawatenok House-front"]
   },
   "summary": {
     "en": [
@@ -41,7 +41,7 @@
     {
       "label": { "en": ["Dimensions"] },
       "value": {
-        "en": ["19.1 x 13.2 cm [image size], 24 x 16 cm [plate size]"]
+        "en": ["18 x 23 cm [plate size]"]
       }
     },
     {
@@ -81,12 +81,12 @@
   "rights": "http://rightsstatements.org/vocab/NoC-NC/1.0/",
   "thumbnail": [
     {
-      "id": "https://iiif.stack.rdc.library.northwestern.edu/iiif/2/748abfca-e9ca-42e3-8896-6dec198368fb/full/200,/0/default.jpg",
+      "id": "https://iiif.stack.rdc.library.northwestern.edu/iiif/2/65670b6f-36b4-4e7d-b90d-769a5e62ebbb/full/200,/0/default.jpg",
       "type": "Image",
       "format": "image/jpeg",
       "service": [
         {
-          "id": "https://iiif.stack.rdc.library.northwestern.edu/iiif/2/748abfca-e9ca-42e3-8896-6dec198368fb",
+          "id": "https://iiif.stack.rdc.library.northwestern.edu/iiif/2/65670b6f-36b4-4e7d-b90d-769a5e62ebbb",
           "profile": "http://iiif.io/api/image/2/level2.json",
           "type": "ImageService2"
         }
@@ -97,36 +97,36 @@
   ],
   "items": [
     {
-      "id": "http://localhost:5001/iiif/manifest/tsawatenok/02-tsawatenok/canvas/0",
+      "id": "https://can-the.vercel.app/iiif/manifest/tsawatenok/05-tsawatenok-house-front/canvas/0",
       "type": "Canvas",
-      "width": 2061,
-      "height": 3072,
+      "width": 3072,
+      "height": 2342,
       "label": {
-        "en": ["A Tlŭ'wŭláhŭ Mask - Tsawatenok"]
+        "en": ["A Tsawatenok House-front"]
       },
       "items": [
         {
-          "id": "http://localhost:5001/iiif/manifest/tsawatenok/02-tsawatenok/canvas/0/page/0",
+          "id": "https://can-the.vercel.app/iiif/manifest/tsawatenok/05-tsawatenok-house-front/canvas/0/page/0",
           "type": "AnnotationPage",
           "items": [
             {
-              "id": "http://localhost:5001/iiif/manifest/tsawatenok/02-tsawatenok/canvas/0/page/0/annotation/0",
+              "id": "https://can-the.vercel.app/iiif/manifest/tsawatenok/05-tsawatenok-house-front/canvas/0/page/0/annotation/0",
               "type": "Annotation",
               "motivation": "painting",
-              "target": "http://localhost:5001/iiif/manifest/tsawatenok/02-tsawatenok/canvas/0",
+              "target": "https://can-the.vercel.app/iiif/manifest/tsawatenok/05-tsawatenok-house-front/canvas/0",
               "body": {
-                "id": "https://iiif.stack.rdc.library.northwestern.edu/iiif/2/748abfca-e9ca-42e3-8896-6dec198368fb/full/600,/0/default.jpg",
+                "id": "https://iiif.stack.rdc.library.northwestern.edu/iiif/2/65670b6f-36b4-4e7d-b90d-769a5e62ebbb/full/600,/0/default.jpg",
                 "type": "Image",
                 "format": "image/jpeg",
                 "service": [
                   {
-                    "id": "https://iiif.stack.rdc.library.northwestern.edu/iiif/2/748abfca-e9ca-42e3-8896-6dec198368fb",
+                    "id": "https://iiif.stack.rdc.library.northwestern.edu/iiif/2/65670b6f-36b4-4e7d-b90d-769a5e62ebbb",
                     "profile": "http://iiif.io/api/image/2/level2.json",
                     "type": "ImageService2"
                   }
                 ],
-                "width": 2061,
-                "height": 3072
+                "width": 3072,
+                "height": 2342
               }
             }
           ]

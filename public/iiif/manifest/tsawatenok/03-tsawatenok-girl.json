@@ -1,9 +1,9 @@
 {
   "@context": "http://iiif.io/api/presentation/3/context.json",
-  "id": "https://can-the.vercel.app/iiif/manifest/tsawatenok/02-tsawatenok.json",
+  "id": "https://can-the.vercel.app/iiif/manifest/tsawatenok/03-tsawatenok-girl.json",
   "type": "Manifest",
   "label": {
-    "en": ["A Tlŭ'wŭláhŭ Mask - Tsawatenok"]
+    "en": ["Tsawatenok Girl"]
   },
   "summary": {
     "en": [
@@ -41,7 +41,7 @@
     {
       "label": { "en": ["Dimensions"] },
       "value": {
-        "en": ["19.1 x 13.2 cm [image size], 24 x 16 cm [plate size]"]
+        "en": ["19.1 x 13.9 cm [image size], 23 x 17 cm [plate size]"]
       }
     },
     {
@@ -81,12 +81,12 @@
   "rights": "http://rightsstatements.org/vocab/NoC-NC/1.0/",
   "thumbnail": [
     {
-      "id": "https://iiif.stack.rdc.library.northwestern.edu/iiif/2/748abfca-e9ca-42e3-8896-6dec198368fb/full/200,/0/default.jpg",
+      "id": "https://iiif.stack.rdc.library.northwestern.edu/iiif/2/b5fed658-324f-4d0d-b59d-63d90addd35a/full/200,/0/default.jpg",
       "type": "Image",
       "format": "image/jpeg",
       "service": [
         {
-          "id": "https://iiif.stack.rdc.library.northwestern.edu/iiif/2/748abfca-e9ca-42e3-8896-6dec198368fb",
+          "id": "https://iiif.stack.rdc.library.northwestern.edu/iiif/2/b5fed658-324f-4d0d-b59d-63d90addd35a",
           "profile": "http://iiif.io/api/image/2/level2.json",
           "type": "ImageService2"
         }
@@ -97,35 +97,35 @@
   ],
   "items": [
     {
-      "id": "https://can-the.vercel.app/iiif/manifest/tsawatenok/02-tsawatenok/canvas/0",
+      "id": "https://can-the.vercel.app/iiif/manifest/tsawatenok/03-tsawatenok-girl/canvas/0",
       "type": "Canvas",
-      "width": 2061,
+      "width": 2175,
       "height": 3072,
       "label": {
-        "en": ["A Tlŭ'wŭláhŭ Mask - Tsawatenok"]
+        "en": ["Tsawatenok Girl"]
       },
       "items": [
         {
-          "id": "https://can-the.vercel.app/iiif/manifest/tsawatenok/02-tsawatenok/canvas/0/page/0",
+          "id": "https://can-the.vercel.app/iiif/manifest/tsawatenok/03-tsawatenok-girl/canvas/0/page/0",
           "type": "AnnotationPage",
           "items": [
             {
-              "id": "https://can-the.vercel.app/iiif/manifest/tsawatenok/02-tsawatenok/canvas/0/page/0/annotation/0",
+              "id": "https://can-the.vercel.app/iiif/manifest/tsawatenok/03-tsawatenok-girl/canvas/0/page/0/annotation/0",
               "type": "Annotation",
               "motivation": "painting",
-              "target": "https://can-the.vercel.app/iiif/manifest/tsawatenok/02-tsawatenok/canvas/0",
+              "target": "https://can-the.vercel.app/iiif/manifest/tsawatenok/03-tsawatenok-girl/canvas/0",
               "body": {
-                "id": "https://iiif.stack.rdc.library.northwestern.edu/iiif/2/748abfca-e9ca-42e3-8896-6dec198368fb/full/600,/0/default.jpg",
+                "id": "https://iiif.stack.rdc.library.northwestern.edu/iiif/2/b5fed658-324f-4d0d-b59d-63d90addd35a/full/600,/0/default.jpg",
                 "type": "Image",
                 "format": "image/jpeg",
                 "service": [
                   {
-                    "id": "https://iiif.stack.rdc.library.northwestern.edu/iiif/2/748abfca-e9ca-42e3-8896-6dec198368fb",
+                    "id": "https://iiif.stack.rdc.library.northwestern.edu/iiif/2/b5fed658-324f-4d0d-b59d-63d90addd35a",
                     "profile": "http://iiif.io/api/image/2/level2.json",
                     "type": "ImageService2"
                   }
                 ],
-                "width": 2061,
+                "width": 2175,
                 "height": 3072
               }
             }

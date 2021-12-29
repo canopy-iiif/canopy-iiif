@@ -1,13 +1,13 @@
 {
   "@context": ["https://iiif.io/api/presentation/3/context.json"],
-  "id": "http://localhost:5001/iiif/collection/apache.json",
+  "id": "http://localhost:5001/iiif-dev/collection/apache.json",
   "type": "Collection",
   "label": {
     "en": ["Apache"]
   },
   "items": [
     {
-      "id": "http://localhost:5001/iiif/manifest/apache/04-apache-camp.json",
+      "id": "http://localhost:5001/iiif-dev/manifest/apache/04-apache-camp.json",
       "type": "Manifest",
       "label": "Apache Camp"
     }

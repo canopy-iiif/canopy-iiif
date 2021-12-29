@@ -1,6 +1,6 @@
 {
   "@context": "http://iiif.io/api/presentation/3/context.json",
-  "id": "http://localhost:5001/iiif/manifest/nez-perce/11-watching-for-the-signal.json",
+  "id": "http://localhost:5001/iiif-dev/manifest/nez-perce/11-watching-for-the-signal.json",
   "type": "Manifest",
   "label": {
     "en": ["Watching for the Signal - Nez Percé"]
@@ -97,7 +97,7 @@
   ],
   "items": [
     {
-      "id": "http://localhost:5001/iiif/manifest/nez-perce/11-watching-for-the-signal/canvas/0",
+      "id": "http://localhost:5001/iiif-dev/manifest/nez-perce/11-watching-for-the-signal/canvas/0",
       "type": "Canvas",
       "width": 3814,
       "height": 5120,
@@ -106,14 +106,14 @@
       },
       "items": [
         {
-          "id": "http://localhost:5001/iiif/manifest/nez-perce/11-watching-for-the-signal/canvas/0/page/0",
+          "id": "http://localhost:5001/iiif-dev/manifest/nez-perce/11-watching-for-the-signal/canvas/0/page/0",
           "type": "AnnotationPage",
           "items": [
             {
-              "id": "http://localhost:5001/iiif/manifest/nez-perce/11-watching-for-the-signal/canvas/0/page/0/annotation/0",
+              "id": "http://localhost:5001/iiif-dev/manifest/nez-perce/11-watching-for-the-signal/canvas/0/page/0/annotation/0",
               "type": "Annotation",
               "motivation": "painting",
-              "target": "http://localhost:5001/iiif/manifest/nez-perce/11-watching-for-the-signal/canvas/0",
+              "target": "http://localhost:5001/iiif-dev/manifest/nez-perce/11-watching-for-the-signal/canvas/0",
               "body": {
                 "id": "https://iiif.stack.rdc.library.northwestern.edu/iiif/2/8f58fe3a-caaf-4210-aa48-6a7cf8b63de8/full/600,/0/default.jpg",
                 "type": "Image",

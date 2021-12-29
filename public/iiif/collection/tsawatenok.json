@@ -7,10 +7,45 @@
   },
   "items": [
     {
-      "id": "https://can-the.vercel.app/iiif/manifest/tsawatenok/02-tsawatenok.json",
+      "id": "https://can-the.vercel.app/iiif/manifest/tsawatenok/01-mowakiu.json",
+      "type": "Manifest",
+      "label": {
+        "en": ["Mówakiu - Tsawatenok"]
+      }
+    },
+    {
+      "id": "https://can-the.vercel.app/iiif/manifest/tsawatenok/02-tluwulahu-mask.json",
       "type": "Manifest",
       "label": {
         "en": ["A Tlŭ'wŭláhŭ Mask - Tsawatenok"]
+      }
+    },
+    {
+      "id": "https://can-the.vercel.app/iiif/manifest/tsawatenok/03-tsawatenok-girl.json",
+      "type": "Manifest",
+      "label": {
+        "en": ["Tsawatenok Girl"]
+      }
+    },
+    {
+      "id": "https://can-the.vercel.app/iiif/manifest/tsawatenok/04-lagyus.json",
+      "type": "Manifest",
+      "label": {
+        "en": ["Lágyus - Tsawatenok"]
+      }
+    },
+    {
+      "id": "https://can-the.vercel.app/iiif/manifest/tsawatenok/05-tsawatenok-house-front.json",
+      "type": "Manifest",
+      "label": {
+        "en": ["A Tsawatenok House-front"]
+      }
+    },
+    {
+      "id": "https://can-the.vercel.app/iiif/manifest/tsawatenok/06-tsawatenok-tree-burial.json",
+      "type": "Manifest",
+      "label": {
+        "en": ["Tsawatenok Tree Burial"]
       }
     }
   ]
