@@ -12,19 +12,32 @@ const Wrapper = styled("header", {
   top: "0",
   width: "calc(100% - 4rem)",
   backgroundColor: "$indigo12",
+  background: "linear-gradient(90deg, $mauve12 0%, $indigo12 100%)",
   padding: "1rem 2rem",
   display: "flex",
   flexDirection: "row",
   justifyContent: "space-between",
   color: "$indigo1",
   boxShadow: "3px 3px 8px #0002",
+  fontSize: "1rem",
+  lineHeight: "1.5rem",
+  alignItems: "center",
 
-  a: {
-    fontWeight: "350",
-    display: "inline-flex",
-    marginRight: "1rem",
-    color: "$indigo6",
+  [`&  ${Title} a`]: {
     textDecoration: "none",
+    color: "$indigo1",
+  },
+
+  nav: {
+    a: {
+      fontWeight: "350",
+      display: "inline-flex",
+      fontSize: "1rem",
+      marginRight: "1.25rem",
+      lineHeight: "1.25rem",
+      color: "$indigo6",
+      textDecoration: "none",
+    },
   },
 });
 
