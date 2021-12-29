@@ -37,7 +37,7 @@ export async function getStaticProps() {
   const { loading, error, data } = await client.query({
     query: gql`
       query Manifests {
-        manifests {
+        manifests(limit: 15, offset: 0) {
           id
           label
           slug

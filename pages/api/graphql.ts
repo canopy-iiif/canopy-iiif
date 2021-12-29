@@ -10,7 +10,7 @@ const typeDefs = gql`
   type Query {
     collections: [Collection]
     collectionItems: [CollectionItem]
-    manifests: [Manifest]
+    manifests(limit: Int, offset: Int): [Manifest]
     allManifests: [Manifest]
     getManifest(slug: ID): Manifest
   }
@@ -85,7 +85,7 @@ const resolvers = {
         });
       });
     },
-    manifests: async (_, __, context) => {
+    manifests: async (_, { limit, offset }, context) => {
       return getCollectionData().then((tree) => {
         return Promise.all(tree).then((values) => {
           let items = [];
@@ -94,7 +94,7 @@ const resolvers = {
               items.push(element);
             });
           });
-          return items.filter((item) => {
+          const results = items.filter((item) => {
             item.slug = slugify(item.label[0], {
               lower: true,
               strict: true,
@@ -103,6 +103,11 @@ const resolvers = {
             item.collectionId = null;
             return item.type === "Manifest";
           });
+          console.log(`limit`, limit);
+          console.log(`offset`, offset);
+          if (Number.isInteger(limit) && Number.isInteger(offset))
+            return results.slice(offset, offset + limit);
+          return results;
         });
       });
     },
