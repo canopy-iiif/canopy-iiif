@@ -21,9 +21,9 @@ const Figure = ({ resource, region = "full", size = "400," }) => {
 
   return (
     <Wrapper>
-      {lqip && (
+      {/* {lqip && (
         <LQIP css={{ background: `url("${lqip}")` }} aria-hidden="true" />
-      )}
+      )} */}
       <img
         src={image}
         ref={imgRef}

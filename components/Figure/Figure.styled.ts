@@ -3,7 +3,8 @@ import { styled } from "../../stiches.config";
 const LQIP = styled("span", {});
 
 const Wrapper = styled("figure", {
-  backgroundColor: "$mauve9",
+  backgroundColor: "$mauve3",
+  display: "flex",
   width: "100%",
   height: "100%",
   padding: "0",
@@ -11,6 +12,8 @@ const Wrapper = styled("figure", {
   position: "relative",
   overflow: "hidden",
   zIndex: "0",
+  borderRadius: "3px",
+  boxShadow: "3px 3px 8px #0001",
 
   [`& ${LQIP}`]: {
     display: "block",
