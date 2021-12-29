@@ -1,17 +1,18 @@
 import Link from "next/link";
+import { Title, Wrapper } from "./Header.styled";
 
 const title = process.env.title;
 
 const Header = () => {
   return (
-    <header style={{ marginBottom: "1rem" }}>
-      <span>{title}</span>
+    <Wrapper>
+      <Title>{title}</Title>
       <nav>
         <Link href="/">
           <a>Home</a>
         </Link>
       </nav>
-    </header>
+    </Wrapper>
   );
 };
 

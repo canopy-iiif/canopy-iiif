@@ -16,7 +16,7 @@ const typeDefs = gql`
   }
 
   type Collection {
-    id: String!
+    id: String
     label: [String]
     items: [CollectionItem]
     collections: Int
@@ -48,9 +48,9 @@ const typeDefs = gql`
   }
 `;
 
-const getCollectionData = () => {
+const getCollectionData = (depth = 0) => {
   let tree = [];
-  const root = Promise.resolve(getCollection(0));
+  const root = Promise.resolve(getCollection(depth));
   return root.then((collection) => {
     tree = tree.concat([collection]);
     if (collection.collections > 0) {
