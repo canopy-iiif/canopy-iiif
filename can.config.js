@@ -31,11 +31,17 @@ const dev = {
  */
 const devAlt = {
   collection:
-    "https://digital.lib.utk.edu/assemble/collection/collections/acwiley",
-  hero: ["https://digital.lib.utk.edu/assemble/manifest/acwiley/427"],
+    "https://digital.lib.utk.edu/assemble/collection/collections/tenncities",
+  hero: [
+    "https://digital.lib.utk.edu/assemble/manifest/tenncities/365",
+    "https://digital.lib.utk.edu/assemble/manifest/tenncities/289",
+    "https://digital.lib.utk.edu/assemble/manifest/tenncities/419",
+    "https://digital.lib.utk.edu/assemble/manifest/tenncities/435",
+    "https://digital.lib.utk.edu/assemble/manifest/tenncities/443",
+  ],
   metadata: ["Coverage", "Date", "Topic"],
-  title: "Anna Catherine Wiley Sketches",
+  title: "Images of Eastern Tennessee",
 };
 
 exports.config = config;
-exports.dev = dev;
+exports.dev = devAlt;
