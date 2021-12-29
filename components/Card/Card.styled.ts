@@ -37,6 +37,7 @@ const Wrapper = styled("div", {
 
       figure: {
         transform: "scale3d(1.04, 1.04, 1.04)",
+        boxShadow: "3px 3px 8px #0002",
       },
     },
   },

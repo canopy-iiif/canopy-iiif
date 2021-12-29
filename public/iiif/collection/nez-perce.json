@@ -7,9 +7,14 @@
   },
   "items": [
     {
-      "id": "https://can-the.vercel.app/iiif/manifest/nez-perce/01-joseph.json",
-      "type": "Manifest",
+      "id": "https://can-the.vercel.app/iiif/collection/nez-perce-joseph.json",
+      "type": "Collection",
       "label": "Joseph - Nez Percé"
+    },
+    {
+      "id": "https://can-the.vercel.app/iiif/manifest/nez-perce/01-half-moon.json",
+      "type": "Manifest",
+      "label": "Half Moon - Nez Percé"
     },
     {
       "id": "https://can-the.vercel.app/iiif/manifest/nez-perce/02-lawyer.json",
@@ -47,9 +52,9 @@
       "label": "Map of Nez Percé Territory"
     },
     {
-      "id": "https://can-the.vercel.app/iiif/manifest/nez-perce/09-joseph-dead-feast-lodge.json",
+      "id": "https://can-the.vercel.app/iiif/manifest/nez-perce/09-girl.json",
       "type": "Manifest",
-      "label": "Joseph Dead Feast Lodge - Nez Percé"
+      "label": "Nez Percé Girl"
     },
     {
       "id": "https://can-the.vercel.app/iiif/manifest/nez-perce/10-kulkultsalum.json",

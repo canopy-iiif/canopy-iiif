@@ -7,9 +7,14 @@
   },
   "items": [
     {
-      "id": "http://localhost:5001/iiif-dev/manifest/nez-perce/01-joseph.json",
-      "type": "Manifest",
+      "id": "http://localhost:5001/iiif-dev/collection/nez-perce-joseph.json",
+      "type": "Collection",
       "label": "Joseph - Nez Percé"
+    },
+    {
+      "id": "http://localhost:5001/iiif-dev/manifest/nez-perce/01-half-moon.json",
+      "type": "Manifest",
+      "label": "Half Moon - Nez Percé"
     },
     {
       "id": "http://localhost:5001/iiif-dev/manifest/nez-perce/02-lawyer.json",
@@ -47,9 +52,9 @@
       "label": "Map of Nez Percé Territory"
     },
     {
-      "id": "http://localhost:5001/iiif-dev/manifest/nez-perce/09-joseph-dead-feast-lodge.json",
+      "id": "http://localhost:5001/iiif-dev/manifest/nez-perce/09-girl.json",
       "type": "Manifest",
-      "label": "Joseph Dead Feast Lodge - Nez Percé"
+      "label": "Nez Percé Girl"
     },
     {
       "id": "http://localhost:5001/iiif-dev/manifest/nez-perce/10-kulkultsalum.json",
