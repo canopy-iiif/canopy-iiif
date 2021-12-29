@@ -12,7 +12,7 @@ const Wrapper = styled("header", {
   top: "0",
   width: "calc(100% - 4rem)",
   backgroundColor: "$indigo12",
-  background: "linear-gradient(90deg, $mauve12 0%, $indigo12 100%)",
+  background: "linear-gradient(90deg, $indigo12 0%, $mauve12 100%)",
   padding: "1rem 2rem",
   display: "flex",
   flexDirection: "row",
