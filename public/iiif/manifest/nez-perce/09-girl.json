@@ -83,12 +83,12 @@
   "rights": "http://rightsstatements.org/vocab/NoC-NC/1.0/",
   "thumbnail": [
     {
-      "id": "https://iiif.stack.rdc.library.northwestern.edu/iiif/2/8b3ae6bc-a41b-4da2-98ca-6ac90fb38186/full/200,/0/default.jpg",
+      "id": "https://iiif.stack.rdc.library.northwestern.edu/iiif/2/90e4dc8a-996c-4f1f-9c9a-20f77e0d3fc6/full/200,/0/default.jpg",
       "type": "Image",
       "format": "image/jpeg",
       "service": [
         {
-          "id": "https://iiif.stack.rdc.library.northwestern.edu/iiif/2/8b3ae6bc-a41b-4da2-98ca-6ac90fb38186",
+          "id": "https://iiif.stack.rdc.library.northwestern.edu/iiif/2/90e4dc8a-996c-4f1f-9c9a-20f77e0d3fc6",
           "profile": "http://iiif.io/api/image/2/level2.json",
           "type": "ImageService2"
         }
@@ -101,7 +101,7 @@
     {
       "id": "https://can-the.vercel.app/iiif/manifest/nez-perce/09-girl/canvas/0",
       "type": "Canvas",
-      "width": 2100,
+      "width": 2131,
       "height": 3072,
       "label": {
         "en": ["Nez Percé Girl"]
@@ -117,17 +117,17 @@
               "motivation": "painting",
               "target": "https://can-the.vercel.app/iiif/manifest/nez-perce/09-girl/canvas/0",
               "body": {
-                "id": "https://iiif.stack.rdc.library.northwestern.edu/iiif/2/8b3ae6bc-a41b-4da2-98ca-6ac90fb38186/full/600,/0/default.jpg",
+                "id": "https://iiif.stack.rdc.library.northwestern.edu/iiif/2/90e4dc8a-996c-4f1f-9c9a-20f77e0d3fc6/full/600,/0/default.jpg",
                 "type": "Image",
                 "format": "image/jpeg",
                 "service": [
                   {
-                    "id": "https://iiif.stack.rdc.library.northwestern.edu/iiif/2/8b3ae6bc-a41b-4da2-98ca-6ac90fb38186",
+                    "id": "https://iiif.stack.rdc.library.northwestern.edu/iiif/2/90e4dc8a-996c-4f1f-9c9a-20f77e0d3fc6",
                     "profile": "http://iiif.io/api/image/2/level2.json",
                     "type": "ImageService2"
                   }
                 ],
-                "width": 2100,
+                "width": 2131,
                 "height": 3072
               }
             }
