@@ -1,5 +1,4 @@
 import { styled } from "../../stiches.config";
-import { Wrapper } from "../Figure/Figure.styled";
 
 const Content = styled("div", {
   padding: "1rem 0",
@@ -31,13 +30,13 @@ const Wrapper = styled("div", {
     width: "100%",
     color: "$mauve12",
     textDecoration: "none !important",
-    transition: "all 100ms ease-in-out",
+    transition: "all 200ms ease-in-out",
 
     [`&:hover, &:focus`]: {
       color: "$indigo11",
 
       figure: {
-        transform: "scale(1.03)",
+        transform: "scale3d(1.04, 1.04, 1.04)",
       },
     },
   },

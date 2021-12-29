@@ -14,7 +14,7 @@ const Wrapper = styled("figure", {
   zIndex: "0",
   borderRadius: "3px",
   boxShadow: "3px 3px 8px #0001",
-  transition: "all 200ms ease-in-out",
+  transition: "all 200ms cubic-bezier(0.175, 0.885, 0.32, 1.275)",
 
   img: {
     position: "relative",
