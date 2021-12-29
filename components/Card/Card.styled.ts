@@ -13,7 +13,7 @@ const Content = styled("div", {
   span: {
     display: "block",
     margin: "0.25rem 0 0",
-    fontWeight: "200",
+    fontWeight: "350",
     fontSize: "0.8333rem",
     color: "$mauve10",
   },

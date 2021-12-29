@@ -9,8 +9,9 @@ const Title = styled("span", {
 const Wrapper = styled("header", {
   position: "fixed",
   zIndex: "1",
-  backgroundColor: "$indigo12",
+  top: "0",
   width: "calc(100% - 4rem)",
+  backgroundColor: "$indigo12",
   padding: "1rem 2rem",
   display: "flex",
   flexDirection: "row",
@@ -19,7 +20,7 @@ const Wrapper = styled("header", {
   boxShadow: "3px 3px 8px #0002",
 
   a: {
-    fontWeight: "200",
+    fontWeight: "350",
     display: "inline-flex",
     marginRight: "1rem",
     color: "$indigo6",

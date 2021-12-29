@@ -4,14 +4,14 @@ const Wrapper = styled("nav", {
   margin: "auto",
 
   a: {
-    fontWeight: "200",
+    fontWeight: "350",
     fontSize: "1.5rem",
     display: "inline-flex",
     marginRight: "1rem",
     color: "$mauve10",
 
     [`&:first-child`]: {
-      fontWeight: "800",
+      fontWeight: "650",
       color: "$mauve12",
     },
   },
