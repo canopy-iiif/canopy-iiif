@@ -1,6 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { getLabel } from "../../hooks/getLabel";
-import { getResourceImage } from "../../hooks/getResourceImage";
 
 import { getManifestById } from "../../pages/api/iiif";
 import Figure from "../Figure/Figure";

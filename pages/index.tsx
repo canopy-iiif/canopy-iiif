@@ -6,17 +6,29 @@ import { getManifestById } from "./api/iiif";
 import Layout from "../components/layout";
 import Grid from "../components/Grid/Grid";
 import Hero from "../components/Hero/Hero";
+import Nav from "../components/Nav/Nav";
 
 export default function Index({ manifests }) {
+  /**
+   * @todo make section a component with an isFluid variant and default at max-width 1280
+   */
   return (
     <Layout>
       <Hero />
-      <Grid>
-        {manifests &&
-          manifests.map((manifest, i) => {
-            return <Grid.Item data={manifest} key={manifest.id} />;
-          })}
-      </Grid>
+      <section
+        style={{
+          maxWidth: "1280px",
+          margin: "auto",
+        }}
+      >
+        <Nav />
+        <Grid>
+          {manifests &&
+            manifests.map((manifest, i) => {
+              return <Grid.Item data={manifest} key={manifest.id} />;
+            })}
+        </Grid>
+      </section>
     </Layout>
   );
 }

@@ -27,7 +27,6 @@ const Wrapper = styled("div", {
   flexWrap: "wrap",
   margin: "auto",
   padding: "1rem",
-  maxWidth: "1280px",
 });
 
 export { Item, Wrapper };

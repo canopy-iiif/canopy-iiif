@@ -18,6 +18,8 @@ const config = {
 const dev = {
   collection: "http://localhost:5001/iiif-dev/collection/north-american.json",
   hero: [
+    "https://can-the.vercel.app/iiif/manifest/uncategorized/shores-of-nootka-sound.json",
+    "https://can-the.vercel.app/iiif/manifest/nez-perce/08-map-territory.json",
     "http://localhost:5001/iiif-dev/manifest/uncategorized/shores-of-nootka-sound.json",
   ],
   metadata: ["Date", "Subject"],

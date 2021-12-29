@@ -5,9 +5,6 @@ const ReactMediaPlayer = dynamic(() => import("@nulib/react-media-player"), {
 });
 
 const Viewer = ({ manifestId }) => (
-  <ReactMediaPlayer
-    manifestId={manifestId}
-    options={{ showTitle: false, showIIIFBadge: false }}
-  />
+  <ReactMediaPlayer manifestId={manifestId} options={{ showTitle: false }} />
 );
 export default Viewer;

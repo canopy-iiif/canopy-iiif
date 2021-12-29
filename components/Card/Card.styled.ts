@@ -9,6 +9,13 @@ const Content = styled("div", {
     fontSize: "1.1rem",
     textDecoration: "none !important",
   },
+
+  span: {
+    display: "block",
+    margin: "0.25rem 0 0",
+    fontSize: "0.8333rem",
+    color: "$mauve10",
+  },
 });
 
 const Wrapper = styled("div", {
