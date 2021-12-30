@@ -5,8 +5,9 @@ import Layout from "../components/layout";
 import Grid from "../components/Grid/Grid";
 import Hero from "../components/Hero/Hero";
 import Nav from "../components/Nav/Nav";
+import { InView } from "react-intersection-observer";
 
-const RESULT_LIMIT = 5;
+const RESULT_LIMIT = 20;
 const RESULT_OFFSET = 0;
 
 export default function Index({ manifests }) {
@@ -16,34 +17,32 @@ export default function Index({ manifests }) {
 
   const [limit, setLimit] = useState(RESULT_LIMIT);
   const [offset, setOffset] = useState(RESULT_OFFSET);
-  const [results, setResults] = useState([]);
+  const [results, setResults] = useState();
 
   useEffect(() => {
-    async function fetchInitialData() {
-      const { loading, error, data } = await client.query({
-        query: gql`
-          query Manifests {
-            manifests(limit: ${RESULT_LIMIT}, offset: ${offset}) {
-              id
-              label
-              slug
-              metadata
-              collectionId
-            }
-          }
-        `,
+    const data = fetchData(offset);
+    if (data)
+      data.then((response) => {
+        setResults(response.manifests);
       });
-      if (data) setResults(data.manifests);
-    }
-    fetchInitialData();
   }, []);
 
   const handleLoadMore = async () => {
     const newOffset = limit + offset;
+    const data = fetchData(newOffset);
+
+    if (data && results)
+      data.then((response) => {
+        setResults(results.concat(response.manifests));
+        setOffset(newOffset);
+      });
+  };
+
+  const fetchData = async (offset) => {
     const { loading, error, data } = await client.query({
       query: gql`
         query Manifests {
-          manifests(limit: ${RESULT_LIMIT}, offset: ${newOffset}) {
+          manifests(limit: ${RESULT_LIMIT}, offset: ${offset}) {
             id
             label
             slug
@@ -53,11 +52,7 @@ export default function Index({ manifests }) {
         }
       `,
     });
-
-    if (data) {
-      setResults(results.concat(data.manifests));
-      setOffset(newOffset);
-    }
+    if (data) return data;
   };
 
   return (
@@ -75,7 +70,9 @@ export default function Index({ manifests }) {
             results.map((result, i) => {
               return <Grid.Item data={result} key={result.id} />;
             })}
-          <Grid.LoadMore handleLoadMore={handleLoadMore} />
+          <InView as="div" onChange={(inView, entry) => handleLoadMore()}>
+            <Grid.LoadMore handleLoadMore={handleLoadMore} />
+          </InView>
         </Grid>
       </section>
     </Layout>
