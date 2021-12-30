@@ -3,6 +3,7 @@ import { styled } from "../../stiches.config";
 const Item = styled("div", {
   width: "calc(20% - 2rem)",
   padding: "1rem",
+  zIndex: "1",
 
   "@lg": {
     width: "calc(25% - 2rem)",
@@ -26,7 +27,8 @@ const Wrapper = styled("div", {
   flexDirection: "row",
   flexWrap: "wrap",
   margin: "auto",
-  padding: "1rem",
+  padding: "1rem 1rem 3rem",
+  position: "relative",
 });
 
 export { Item, Wrapper };

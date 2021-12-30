@@ -103,8 +103,6 @@ const resolvers = {
             item.collectionId = null;
             return item.type === "Manifest";
           });
-          console.log(`limit`, limit);
-          console.log(`offset`, offset);
           if (Number.isInteger(limit) && Number.isInteger(offset))
             return results.slice(offset, offset + limit);
           return results;
