@@ -8,7 +8,6 @@ import Nav from "../components/Nav/Nav";
 import { InView } from "react-intersection-observer";
 
 const RESULT_LIMIT = 20;
-const RESULT_OFFSET = 0;
 
 export default function Index({ manifests }) {
   /**
@@ -16,8 +15,8 @@ export default function Index({ manifests }) {
    */
 
   const [limit, setLimit] = useState(RESULT_LIMIT);
-  const [offset, setOffset] = useState(RESULT_OFFSET);
-  const [results, setResults] = useState();
+  const [offset, setOffset] = useState(0);
+  const [results, setResults] = useState([]);
 
   useEffect(() => {
     const data = fetchData(offset);
@@ -31,7 +30,7 @@ export default function Index({ manifests }) {
     const newOffset = limit + offset;
     const data = fetchData(newOffset);
 
-    if (data && results)
+    if (data && results.length > 0)
       data.then((response) => {
         setResults(results.concat(response.manifests));
         setOffset(newOffset);
@@ -70,7 +69,20 @@ export default function Index({ manifests }) {
             results.map((result, i) => {
               return <Grid.Item data={result} key={result.id} />;
             })}
-          <InView as="div" onChange={(inView, entry) => handleLoadMore()}>
+          <InView
+            as="div"
+            onChange={(inView, entry) => handleLoadMore()}
+            style={{
+              width: "100%",
+              height: "50vh",
+              position: "absolute",
+              bottom: "0",
+              left: "0",
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "flex-end",
+            }}
+          >
             <Grid.LoadMore handleLoadMore={handleLoadMore} />
           </InView>
         </Grid>
