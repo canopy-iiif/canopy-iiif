@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { getLabel } from "../../hooks/getLabel";
 import { getManifestById } from "../../pages/api/iiif";
 import Card from "../Card/Card";
 import { Item } from "./Grid.styled";
@@ -13,15 +14,16 @@ const GridItem = ({ data }) => {
   }, []);
 
   let resource = null;
-  let label = data.label;
 
-  if (item) resource = item.items[0].items[0].items[0].body;
+  if (!item) return <></>;
+
+  resource = item.items[0].items[0].items[0].body;
 
   return (
     <Item>
       <Card
         key={data.id}
-        label={data.label}
+        label={getLabel(item.label)}
         path={`/manifest/${data.slug}`}
         resource={resource}
       />

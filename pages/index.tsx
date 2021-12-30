@@ -12,6 +12,11 @@ export default function Index({ manifests }) {
   /**
    * @todo make section a component with an isFluid variant and default at max-width 1280
    */
+
+  const handleLoadMore = () => {
+    console.log(true);
+  };
+
   return (
     <Layout>
       <Hero />
@@ -27,6 +32,7 @@ export default function Index({ manifests }) {
             manifests.map((manifest, i) => {
               return <Grid.Item data={manifest} key={manifest.id} />;
             })}
+          <Grid.LoadMore />
         </Grid>
       </section>
     </Layout>
@@ -37,7 +43,7 @@ export async function getStaticProps() {
   const { loading, error, data } = await client.query({
     query: gql`
       query Manifests {
-        manifests(limit: 15, offset: 0) {
+        manifests(limit: 4, offset: 0) {
           id
           label
           slug
