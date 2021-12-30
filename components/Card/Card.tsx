@@ -8,7 +8,7 @@ const Card = ({ label, path, resource }) => {
     <Wrapper>
       <Link href={path}>
         <a>
-          <Figure resource={resource} size="400," />
+          <Figure resource={resource} size="300," />
           <Content>
             <h4>{label}</h4>
             <span>{context}</span>
