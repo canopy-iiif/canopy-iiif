@@ -29,6 +29,7 @@ const Wrapper = styled("div", {
   margin: "auto",
   padding: "1rem 1rem 3rem",
   position: "relative",
+  zIndex: "0",
 });
 
 export { Item, Wrapper };
