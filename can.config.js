@@ -42,4 +42,4 @@ const devAlt = {
 };
 
 exports.config = config;
-exports.dev = dev;
+exports.dev = devAlt;

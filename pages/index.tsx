@@ -16,15 +16,18 @@ export default function Index({ manifests }) {
 
   const [limit, setLimit] = useState(RESULT_LIMIT);
   const [offset, setOffset] = useState(0);
-  const [results, setResults] = useState([]);
+  const [results, setResults] = useState(manifests);
 
-  useEffect(() => {
-    const data = fetchData(offset);
-    if (data)
-      data.then((response) => {
-        setResults(response.manifests);
-      });
-  }, []);
+  /**
+   * rewrite this w/ static props
+   */
+  // useEffect(() => {
+  //   const data = fetchData(offset);
+  //   if (data)
+  //     data.then((response) => {
+  //       setResults(response.manifests);
+  //     });
+  // }, []);
 
   const handleLoadMore = async () => {
     const newOffset = limit + offset;
@@ -37,6 +40,10 @@ export default function Index({ manifests }) {
       });
   };
 
+  /**
+   * @param offset
+   * @returns
+   */
   const fetchData = async (offset) => {
     const { loading, error, data } = await client.query({
       query: gql`
@@ -89,4 +96,26 @@ export default function Index({ manifests }) {
       </section>
     </Layout>
   );
+}
+
+export async function getStaticProps() {
+  const { loading, error, data } = await client.query({
+    query: gql`
+      query Manifests {
+        manifests(limit: ${RESULT_LIMIT}, offset: 0) {
+          id
+          label
+          slug
+          metadata
+          collectionId
+        }
+      }
+    `,
+  });
+
+  if (!data) return null;
+
+  return {
+    props: { ...data },
+  };
 }
