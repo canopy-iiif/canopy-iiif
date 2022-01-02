@@ -4,7 +4,15 @@ import GridItem from "./Item";
 import GridLoadMore from "./LoadMore";
 
 const Grid = ({ children }) => {
-  return <Wrapper>{children}</Wrapper>;
+  return (
+    <Wrapper
+      breakpointCols={5}
+      className="can-grid"
+      columnClassName="can-grid-column"
+    >
+      {children}
+    </Wrapper>
+  );
 };
 
 Grid.Item = GridItem;

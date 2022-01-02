@@ -76,23 +76,23 @@ export default function Index({ manifests }) {
             results.map((result, i) => {
               return <Grid.Item data={result} key={result.id} />;
             })}
-          <InView
-            as="div"
-            onChange={(inView, entry) => handleLoadMore()}
-            style={{
-              width: "100%",
-              height: "50vh",
-              position: "absolute",
-              bottom: "0",
-              left: "0",
-              display: "flex",
-              flexDirection: "column",
-              justifyContent: "flex-end",
-            }}
-          >
-            <Grid.LoadMore handleLoadMore={handleLoadMore} />
-          </InView>
         </Grid>
+        {/* <InView
+          as="div"
+          onChange={(inView, entry) => handleLoadMore()}
+          style={{
+            width: "100%",
+            height: "50vh",
+            position: "absolute",
+            bottom: "0",
+            left: "0",
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "flex-end",
+          }}
+        >
+          <Grid.LoadMore handleLoadMore={handleLoadMore} />
+        </InView> */}
       </section>
     </Layout>
   );

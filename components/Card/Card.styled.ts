@@ -1,7 +1,7 @@
 import { styled } from "../../stiches.config";
 
 const Content = styled("div", {
-  padding: "1rem 0",
+  padding: "1rem 0 0",
 
   h4: {
     margin: "0",

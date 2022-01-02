@@ -20,7 +20,7 @@ const GridItem = ({ data }) => {
   resource = item.items[0].items[0].items[0].body;
 
   return (
-    <Item>
+    <Item className="can-grid-column">
       <Card
         key={data.id}
         label={getLabel(item.label)}
