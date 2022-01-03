@@ -23,20 +23,27 @@ const ROOT_COLLECTION = process.env.collection;
  * @returns
  */
 const buildCollection = (json, depth, parent = null) => {
-  const context = json["@context"];
+  /**
+   * defensively determine @context
+   */
+  let context = json["@context"];
+  if (Array.isArray(context)) context = context[0];
+  context = context.replace("https://", "");
+  context = context.replace("http://", "");
 
+  /**
+   * set props
+   */
   let id = null;
   let label = null;
   let slug = null;
   let children = null;
 
   /**
-   * based on context, do a switch
+   * based on @context, parse collections
    */
-  console.log(context);
-
   switch (context) {
-    case "http://iiif.io/api/presentation/2/context.json":
+    case "iiif.io/api/presentation/2/context.json":
       id = json["@id"];
       label = getLabel(json.label);
       slug = slugify(label[0], { ...slugifyConfig });
@@ -51,7 +58,7 @@ const buildCollection = (json, depth, parent = null) => {
         collections: children.collections,
         items: children.items,
       };
-    case "http://iiif.io/api/presentation/3/context.json":
+    case "iiif.io/api/presentation/3/context.json":
       id = json.id;
       label = getLabel(json.label);
       slug = slugify(label[0], { ...slugifyConfig });
