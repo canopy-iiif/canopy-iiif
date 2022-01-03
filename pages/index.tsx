@@ -2,10 +2,15 @@ import React, { useState, useEffect } from "react";
 import { gql } from "@apollo/client";
 import { client } from "./api/graphql";
 import Layout from "../components/layout";
-import Grid from "../components/Grid/Grid";
 import Hero from "../components/Hero/Hero";
 import Nav from "../components/Nav/Nav";
+import dynamic from "next/dynamic";
+import GridItem from "../components/Grid/Item";
 import { InView } from "react-intersection-observer";
+
+const Grid = dynamic(() => import("../components/Grid/Grid"), {
+  ssr: false,
+});
 
 const RESULT_LIMIT = 20;
 
@@ -74,7 +79,7 @@ export default function Index({ manifests }) {
         <Grid>
           {results &&
             results.map((result, i) => {
-              return <Grid.Item data={result} key={result.id} />;
+              return <GridItem data={result} key={result.id} />;
             })}
         </Grid>
         {/* <InView
