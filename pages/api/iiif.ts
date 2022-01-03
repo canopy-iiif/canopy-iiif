@@ -23,6 +23,8 @@ const ROOT_COLLECTION = process.env.collection;
  * @returns
  */
 const buildCollection = (json, depth, parent = null) => {
+  if (!json) return null;
+
   /**
    * defensively determine @context
    */
@@ -75,6 +77,8 @@ const buildCollection = (json, depth, parent = null) => {
       };
   }
 
+  console.log(children);
+
   return {
     id,
     label,
@@ -96,19 +100,44 @@ const buildCollection = (json, depth, parent = null) => {
 const buildCollectionItems2 = (json, parent) => {
   let manifests = 0;
   let collections = 0;
+  let items = [];
+
+  if (json.collections)
+    items = items.concat(
+      json.collections.map((item) => {
+        item.id = item["@id"];
+        delete item["@id"];
+
+        item.type = item["@type"].replace("sc:", "");
+        delete item["@type"];
+
+        if (item.type === "Manifest") manifests++;
+        if (item.type === "Collection") collections++;
+        item.label = getLabel(item.label);
+        item.parent = parent;
+        return item;
+      })
+    );
+
+  if (json.manifests)
+    items = items.concat(
+      json.manifests.map((item) => {
+        item.id = item["@id"];
+        delete item["@id"];
+
+        item.type = item["@type"].replace("sc:", "");
+        delete item["@type"];
+
+        if (item.type === "Manifest") manifests++;
+        if (item.type === "Collection") collections++;
+        item.label = getLabel(item.label);
+        item.parent = parent;
+        return item;
+      })
+    );
+
   return {
-    items: json.collections.map((item) => {
-      item.id = item["@id"];
-      item.type = item["@type"].replace("sc:", "");
-      if (item.type === "sc:Manifest") manifests++;
-      if (item.type === "sc:Collection") collections++;
-      item.label = getLabel(item.label);
-      item.parent = parent;
-      delete item["@id"];
-      delete item["@type"];
-      console.log(item);
-      return item;
-    }),
+    items: items,
     manifests,
     collections,
   };
@@ -139,7 +168,14 @@ const buildCollectionItems3 = (json, parent) => {
  */
 export const getCollection = (depth, id = ROOT_COLLECTION, parent = null) =>
   fetch(id)
-    .then((response) => response.json())
+    .then((response) => response.text())
+    .then((text) => {
+      try {
+        return JSON.parse(text);
+      } catch (err) {
+        console.log(err);
+      }
+    })
     .then((json) => buildCollection(json, depth, parent));
 
 /**

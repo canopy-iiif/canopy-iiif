@@ -53,16 +53,17 @@ const getCollectionData = (depth = 0) => {
   const root = Promise.resolve(getCollection(depth));
   return root.then((collection) => {
     tree = tree.concat([collection]);
-    if (collection.collections > 0) {
-      collection.items.forEach((child) => {
-        if (child.type === "Collection") {
-          const item = Promise.resolve(
-            getCollection(collection.depth + 1, child.id, collection.id)
-          );
-          tree = tree.concat([item]);
-        }
-      });
-    }
+    if (collection)
+      if (collection.collections > 0) {
+        collection.items.forEach((child) => {
+          if (child.type === "Collection") {
+            const item = Promise.resolve(
+              getCollection(collection.depth + 1, child.id, collection.id)
+            );
+            tree = tree.concat([item]);
+          }
+        });
+      }
     return tree;
   });
 };
@@ -90,9 +91,10 @@ const resolvers = {
         return Promise.all(tree).then((values) => {
           let items = [];
           values.forEach((results) => {
-            results.items.forEach((element) => {
-              items.push(element);
-            });
+            if (results)
+              results.items.forEach((element) => {
+                items.push(element);
+              });
           });
           const results = items.filter((item) => {
             item.slug = slugify(item.label[0], {
