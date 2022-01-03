@@ -3,8 +3,3 @@
 # Can
 
 Home food processing jar against background of colorful fresh vegetables, including corn, radishes, and tomatoes.
-
-### Cans of Inspiration
-
-- [Oh Yeah](https://www.youtube.com/watch?v=bRMSjidUB_o) / Can
-- [Small Crushed Campbell's Soup Can (Beef Noodle)](https://emuseum.huntington.org/objects/51528/small-crushed-campbells-soup-can-beef-noodle?ctx=b04c5e2adef03d7d5bf921bf4f06ae0f3154c5e9&idx=1) / Warhol
