@@ -119,9 +119,10 @@ const resolvers = {
         return Promise.all(tree).then((values) => {
           let items = [];
           values.forEach((results) => {
-            results.items.forEach((element) => {
-              items.push(element);
-            });
+            if (results)
+              results.items.forEach((element) => {
+                items.push(element);
+              });
           });
           return items.filter((item) => {
             item.slug = slugify(item.label[0], {

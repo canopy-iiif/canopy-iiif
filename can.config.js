@@ -2,13 +2,14 @@
  * Configuration built by `npm run build`
  */
 const config = {
-  collection: "https://can-the.vercel.app/iiif/collection/north-american.json",
-  title: "The North Americans",
+  collection: "https://view.nls.uk/collections/top.json",
   hero: [
-    "https://can-the.vercel.app/iiif/manifest/apache/04-apache-camp.json",
-    "https://can-the.vercel.app/iiif/manifest/nez-perce/08-map-territory.json",
+    "https://view.nls.uk/manifest/7549/75496599/manifest.json",
+    "https://view.nls.uk/manifest/1175/2694/117526944/manifest.json",
+    "https://view.nls.uk/manifest/1216/4487/121644879/manifest.json",
   ],
-  metadata: ["Date", "Subject"],
+  metadata: ["Subject/content", "Form/genre", "Date created", "Place created"],
+  title: "National Library of Scotland IIIF Collections",
 };
 
 /**
@@ -41,8 +42,12 @@ const devAlt = {
 
 const devAlt2 = {
   collection: "https://view.nls.uk/collections/top.json",
-  hero: ["https://view.nls.uk/manifest/9713/97134287/manifest.json"],
-  metadata: ["Coverage", "Date", "Topic"],
+  hero: [
+    "https://view.nls.uk/manifest/7549/75496599/manifest.json",
+    "https://view.nls.uk/manifest/1175/2694/117526944/manifest.json",
+    "https://view.nls.uk/manifest/1216/4487/121644879/manifest.json",
+  ],
+  metadata: ["Subject/content", "Form/genre", "Date created", "Place created"],
   title: "National Library of Scotland IIIF Collections",
 };
 

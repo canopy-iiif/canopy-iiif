@@ -16,9 +16,15 @@ const Hero = () => {
 
   if (!hero) return null;
 
-  return null;
+  let resource = null;
 
-  const resource = hero.items[0].items[0].items[0].body;
+  /**
+   * @todo: handle this better
+   */
+  if (hero.items) resource = hero.items[0].items[0].items[0].body;
+
+  if (hero.sequences)
+    resource = hero.sequences[0].canvases[0].images[0].resource;
 
   // canvas key
   // target region
