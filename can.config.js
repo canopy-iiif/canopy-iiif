@@ -40,17 +40,11 @@ const devAlt = {
 };
 
 const devAlt2 = {
-  collection:
-    "https://iiif.wellcomecollection.org/presentation/collections/archives/RCPSYCH/X1",
-  hero: [
-    "https://digital.lib.utk.edu/assemble/manifest/heilman/661",
-    "https://digital.lib.utk.edu/assemble/manifest/heilman/317",
-    "https://digital.lib.utk.edu/assemble/manifest/heilman/338",
-  ],
+  collection: "https://view.nls.uk/collections/top.json",
+  hero: ["https://view.nls.uk/manifest/9713/97134287/manifest.json"],
   metadata: ["Coverage", "Date", "Topic"],
-  title:
-    "All-Party Parliamentary Group on Population, Development and Reproductive Health",
+  title: "National Library of Scotland IIIF Collections",
 };
 
 exports.config = config;
-exports.dev = devAlt2;
+exports.dev = dev;

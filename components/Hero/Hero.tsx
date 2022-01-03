@@ -16,6 +16,8 @@ const Hero = () => {
 
   if (!hero) return null;
 
+  return null;
+
   const resource = hero.items[0].items[0].items[0].body;
 
   // canvas key

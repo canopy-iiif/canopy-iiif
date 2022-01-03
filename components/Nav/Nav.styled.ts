@@ -11,6 +11,7 @@ const Wrapper = styled("nav", {
     display: "inline-flex",
     marginRight: "1rem",
     color: "$mauve10",
+    textDecoration: "none",
 
     [`&:first-child`]: {
       fontWeight: "650",

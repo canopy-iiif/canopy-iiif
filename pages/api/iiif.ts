@@ -23,10 +23,51 @@ const ROOT_COLLECTION = process.env.collection;
  * @returns
  */
 const buildCollection = (json, depth, parent = null) => {
-  const { id } = json;
-  const label = getLabel(json.label);
-  const slug = slugify(label[0], { ...slugifyConfig });
-  const children = buildCollectionItems(json.items, id);
+  const context = json["@context"];
+
+  let id = null;
+  let label = null;
+  let slug = null;
+  let children = null;
+
+  /**
+   * based on context, do a switch
+   */
+  console.log(context);
+
+  switch (context) {
+    case "http://iiif.io/api/presentation/2/context.json":
+      id = json["@id"];
+      label = getLabel(json.label);
+      slug = slugify(label[0], { ...slugifyConfig });
+      children = buildCollectionItems2(json, id);
+      return {
+        id,
+        label,
+        slug,
+        depth,
+        parent,
+        manifests: children.manifests,
+        collections: children.collections,
+        items: children.items,
+      };
+    case "http://iiif.io/api/presentation/3/context.json":
+      id = json.id;
+      label = getLabel(json.label);
+      slug = slugify(label[0], { ...slugifyConfig });
+      children = buildCollectionItems3(json, id);
+      return {
+        id,
+        label,
+        slug,
+        depth,
+        parent,
+        manifests: children.manifests,
+        collections: children.collections,
+        items: children.items,
+      };
+  }
+
   return {
     id,
     label,
@@ -45,11 +86,32 @@ const buildCollection = (json, depth, parent = null) => {
  * @param parent
  * @returns
  */
-const buildCollectionItems = (items, parent) => {
+const buildCollectionItems2 = (json, parent) => {
   let manifests = 0;
   let collections = 0;
   return {
-    items: items.map((item) => {
+    items: json.collections.map((item) => {
+      item.id = item["@id"];
+      item.type = item["@type"].replace("sc:", "");
+      if (item.type === "sc:Manifest") manifests++;
+      if (item.type === "sc:Collection") collections++;
+      item.label = getLabel(item.label);
+      item.parent = parent;
+      delete item["@id"];
+      delete item["@type"];
+      console.log(item);
+      return item;
+    }),
+    manifests,
+    collections,
+  };
+};
+
+const buildCollectionItems3 = (json, parent) => {
+  let manifests = 0;
+  let collections = 0;
+  return {
+    items: json.items.map((item) => {
       if (item.type === "Manifest") manifests++;
       if (item.type === "Collection") collections++;
       item.label = getLabel(item.label);
