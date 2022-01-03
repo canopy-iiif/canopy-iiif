@@ -1,5 +1,5 @@
 {
-  "@context": ["https://iiif.io/api/presentation/3/context.json"],
+  "@context": ["http://iiif.io/api/presentation/3/context.json"],
   "id": "https://can-the.vercel.app/iiif/collection/nez-perce.json",
   "type": "Collection",
   "label": {
