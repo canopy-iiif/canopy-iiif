@@ -29,17 +29,15 @@ const dev = {
  */
 const devAlt = {
   collection:
-    "https://digital.lib.utk.edu/assemble/collection/collections/tenncities",
+    "https://digital.lib.utk.edu/assemble/collection/collections/heilman",
   hero: [
-    "https://digital.lib.utk.edu/assemble/manifest/tenncities/365",
-    "https://digital.lib.utk.edu/assemble/manifest/tenncities/289",
-    "https://digital.lib.utk.edu/assemble/manifest/tenncities/419",
-    "https://digital.lib.utk.edu/assemble/manifest/tenncities/435",
-    "https://digital.lib.utk.edu/assemble/manifest/tenncities/443",
+    "https://digital.lib.utk.edu/assemble/manifest/heilman/661",
+    "https://digital.lib.utk.edu/assemble/manifest/heilman/317",
+    "https://digital.lib.utk.edu/assemble/manifest/heilman/338",
   ],
   metadata: ["Coverage", "Date", "Topic"],
-  title: "Images of Eastern Tennessee",
+  title: "The Botanical photography of Alan S. Heilman",
 };
 
 exports.config = config;
-exports.dev = dev;
+exports.dev = devAlt;

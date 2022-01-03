@@ -6,6 +6,7 @@ import Hero from "../components/Hero/Hero";
 import Nav from "../components/Nav/Nav";
 import dynamic from "next/dynamic";
 import GridItem from "../components/Grid/Item";
+import GridLoadMore from "../components/Grid/LoadMore";
 import { InView } from "react-intersection-observer";
 
 const Grid = dynamic(() => import("../components/Grid/Grid"), {
@@ -73,6 +74,7 @@ export default function Index({ manifests }) {
         style={{
           maxWidth: "1280px",
           margin: "auto",
+          position: "relative",
         }}
       >
         <Nav />
@@ -82,7 +84,7 @@ export default function Index({ manifests }) {
               return <GridItem data={result} key={result.id} />;
             })}
         </Grid>
-        {/* <InView
+        <InView
           as="div"
           onChange={(inView, entry) => handleLoadMore()}
           style={{
@@ -96,8 +98,8 @@ export default function Index({ manifests }) {
             justifyContent: "flex-end",
           }}
         >
-          <Grid.LoadMore handleLoadMore={handleLoadMore} />
-        </InView> */}
+          <GridLoadMore handleLoadMore={handleLoadMore} />
+        </InView>
       </section>
     </Layout>
   );
