@@ -39,5 +39,18 @@ const devAlt = {
   title: "The Botanical photography of Alan S. Heilman",
 };
 
+const devAlt2 = {
+  collection:
+    "https://iiif.wellcomecollection.org/presentation/collections/archives/RCPSYCH/X1",
+  hero: [
+    "https://digital.lib.utk.edu/assemble/manifest/heilman/661",
+    "https://digital.lib.utk.edu/assemble/manifest/heilman/317",
+    "https://digital.lib.utk.edu/assemble/manifest/heilman/338",
+  ],
+  metadata: ["Coverage", "Date", "Topic"],
+  title:
+    "All-Party Parliamentary Group on Population, Development and Reproductive Health",
+};
+
 exports.config = config;
-exports.dev = devAlt;
+exports.dev = devAlt2;
