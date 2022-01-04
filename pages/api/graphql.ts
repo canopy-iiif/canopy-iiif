@@ -2,15 +2,24 @@ import { ApolloServer, gql } from "apollo-server-micro";
 import { ApolloClient, InMemoryCache } from "@apollo/client";
 import { SchemaLink } from "@apollo/client/link/schema";
 import { makeExecutableSchema } from "@graphql-tools/schema";
-import { getCollection, getAllManifests, getManifestBySlug } from "./iiif";
+import {
+  getCollection,
+  getAllManifests,
+  getManifestBySlug,
+  getManifestById,
+} from "./iiif";
 import { getLabel } from "../../hooks/getLabel";
 import slugify from "slugify";
+import { getValues } from "../../hooks/getValues";
+
+const data = process.env.data;
 
 const typeDefs = gql`
   type Query {
     collections: [Collection]
     collectionItems: [CollectionItem]
     manifests(limit: Int, offset: Int): [Manifest]
+    metadata: [Metadata]
     allManifests: [Manifest]
     getManifest(slug: ID): Manifest
   }
@@ -42,9 +51,9 @@ const typeDefs = gql`
   }
 
   type Metadata {
-    manifestId: ID
-    label: [String]
-    value: [String]
+    manifestId: String
+    label: String
+    value: String
   }
 `;
 
@@ -108,6 +117,49 @@ const resolvers = {
           if (Number.isInteger(limit) && Number.isInteger(offset))
             return results.slice(offset, offset + limit);
           return results;
+        });
+      });
+    },
+    metadata: async (_, __, context) => {
+      return getCollectionData().then((tree) => {
+        return Promise.all(tree).then((values) => {
+          let items = [];
+          values.forEach((results) => {
+            if (results)
+              results.items.forEach((element) => {
+                items.push(element);
+              });
+          });
+          let results = [];
+          items.forEach((item) => {
+            if (item.type === "Manifest") {
+              results.push(
+                getManifestById(item.id).then((manifest) => {
+                  let data = [];
+                  manifest.metadata.forEach((metadata) => {
+                    const label = getValues(metadata.label)[0];
+                    const values = getValues(metadata.value);
+                    if (process.env.metadata.includes(label)) {
+                      values.forEach((value) => {
+                        const result = {
+                          manifestId: item.id,
+                          label,
+                          value,
+                        };
+                        data.push(result);
+                      });
+                    }
+                  });
+                  return data;
+                })
+              );
+            }
+          });
+          return Promise.all(results).then((array) => {
+            let items = [];
+            array.forEach((result) => (items = items.concat(result)));
+            return items;
+          });
         });
       });
     },

@@ -30,7 +30,5 @@ module.exports = (phase) => {
     })(),
   };
 
-  return {
-    env,
-  };
+  return { env };
 };
