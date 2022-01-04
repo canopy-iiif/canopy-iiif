@@ -19,7 +19,7 @@ const typeDefs = gql`
     collections: [Collection]
     collectionItems: [CollectionItem]
     manifests(limit: Int, offset: Int): [Manifest]
-    metadata: [Metadata]
+    metadata(id: String, label: String): [Metadata]
     allManifests: [Manifest]
     getManifest(slug: ID): Manifest
   }
@@ -120,16 +120,24 @@ const resolvers = {
         });
       });
     },
-    metadata: async (_, __, context) => {
+    metadata: async (_, { id, label }, context) => {
+      let filterByLabels = process.env.metadata;
+      if (label) filterByLabels = [label as string];
+
       return getCollectionData().then((tree) => {
         return Promise.all(tree).then((values) => {
           let items = [];
-          values.forEach((results) => {
-            if (results)
-              results.items.forEach((element) => {
-                items.push(element);
-              });
-          });
+          if (id) {
+            items.push({ id, type: "Manifest" });
+          } else {
+            values.forEach((results) => {
+              if (results)
+                results.items.forEach((element) => {
+                  items.push(element);
+                });
+            });
+          }
+
           let results = [];
           items.forEach((item) => {
             if (item.type === "Manifest") {
@@ -137,13 +145,13 @@ const resolvers = {
                 getManifestById(item.id).then((manifest) => {
                   let data = [];
                   manifest.metadata.forEach((metadata) => {
-                    const label = getValues(metadata.label)[0];
-                    const values = getValues(metadata.value);
-                    if (process.env.metadata.includes(label)) {
-                      values.forEach((value) => {
+                    const metadataLabel = getValues(metadata.label)[0];
+                    const metadataValues = getValues(metadata.value);
+                    if (filterByLabels.includes(metadataLabel)) {
+                      metadataValues.forEach((value) => {
                         const result = {
                           manifestId: item.id,
-                          label,
+                          label: metadataLabel,
                           value,
                         };
                         data.push(result);
@@ -155,6 +163,7 @@ const resolvers = {
               );
             }
           });
+
           return Promise.all(results).then((array) => {
             let items = [];
             array.forEach((result) => (items = items.concat(result)));
