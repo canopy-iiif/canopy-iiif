@@ -29,14 +29,10 @@ const dev = {
  */
 const devAlt = {
   collection:
-    "https://digital.lib.utk.edu/assemble/collection/collections/heilman",
-  hero: [
-    "https://digital.lib.utk.edu/assemble/manifest/heilman/661",
-    "https://digital.lib.utk.edu/assemble/manifest/heilman/317",
-    "https://digital.lib.utk.edu/assemble/manifest/heilman/338",
-  ],
+    "https://digital.lib.utk.edu/assemble/collection/collections/sanborn",
+  hero: ["https://digital.lib.utk.edu/assemble/manifest/sanborn/1003"],
   metadata: ["Coverage", "Date", "Topic"],
-  title: "The Botanical photography of Alan S. Heilman",
+  title: "Sanborn Fire Insurance Maps Collection",
 };
 
 const devAlt2 = {

@@ -11,6 +11,7 @@ import {
 import { getLabel } from "../../hooks/getLabel";
 import slugify from "slugify";
 import { getValues } from "../../hooks/getValues";
+const axios = require("axios");
 
 const data = process.env.data;
 
@@ -18,7 +19,7 @@ const typeDefs = gql`
   type Query {
     collections: [Collection]
     collectionItems: [CollectionItem]
-    manifests(limit: Int, offset: Int): [Manifest]
+    manifests(limit: Int, offset: Int, id: [String]): [Manifest]
     metadata(id: String, label: String): [Metadata]
     allManifests: [Manifest]
     getManifest(slug: ID): Manifest
@@ -44,7 +45,7 @@ const typeDefs = gql`
 
   type Manifest {
     collectionId: ID
-    id: String
+    id: ID
     label: [String]
     metadata: [Metadata]
     slug: ID
@@ -95,7 +96,7 @@ const resolvers = {
         });
       });
     },
-    manifests: async (_, { limit, offset }, context) => {
+    manifests: async (_, { limit, offset, id }, context) => {
       return getCollectionData().then((tree) => {
         return Promise.all(tree).then((values) => {
           let items = [];
@@ -105,7 +106,7 @@ const resolvers = {
                 items.push(element);
               });
           });
-          const results = items.filter((item) => {
+          let results = items.filter((item) => {
             item.slug = slugify(item.label[0], {
               lower: true,
               strict: true,
@@ -114,8 +115,11 @@ const resolvers = {
             item.collectionId = null;
             return item.type === "Manifest";
           });
+          if (Array.isArray(id)) {
+            results = results.filter((result) => id.includes(result.id));
+          }
           if (Number.isInteger(limit) && Number.isInteger(offset))
-            return results.slice(offset, offset + limit);
+            results = results.slice(offset, offset + limit);
           return results;
         });
       });
@@ -138,36 +142,31 @@ const resolvers = {
             });
           }
 
-          let results = [];
-          items.forEach((item) => {
-            if (item.type === "Manifest") {
-              results.push(
-                getManifestById(item.id).then((manifest) => {
-                  let data = [];
-                  manifest.metadata.forEach((metadata) => {
-                    const metadataLabel = getValues(metadata.label)[0];
-                    const metadataValues = getValues(metadata.value);
-                    if (filterByLabels.includes(metadataLabel)) {
-                      metadataValues.forEach((value) => {
-                        const result = {
-                          manifestId: item.id,
-                          label: metadataLabel,
-                          value,
-                        };
-                        data.push(result);
-                      });
-                    }
-                  });
-                  return data;
-                })
-              );
-            }
-          });
+          const responses = getBulkManifests(items);
 
-          return Promise.all(results).then((array) => {
-            let items = [];
-            array.forEach((result) => (items = items.concat(result)));
-            return items;
+          return responses.then((manifests) => {
+            let data = [];
+            manifests
+              .filter((manifest) => {
+                if (manifest) return manifest;
+              })
+              .map((manifest) => {
+                manifest.metadata.forEach((metadata) => {
+                  const metadataLabel = getValues(metadata.label)[0];
+                  const metadataValues = getValues(metadata.value);
+                  if (filterByLabels.includes(metadataLabel)) {
+                    metadataValues.forEach((value) => {
+                      const result = {
+                        manifestId: manifest.id,
+                        label: metadataLabel,
+                        value,
+                      };
+                      data.push(result);
+                    });
+                  }
+                });
+              });
+            return data;
           });
         });
       });
@@ -198,6 +197,54 @@ const resolvers = {
     },
   },
 };
+
+const getBulkManifests = async (items) => {
+  return await chunks(
+    items,
+    async (item) => {
+      const { id, type } = item;
+      if (type === "Manifest")
+        return axios.get(id).then((result) => result.data);
+    },
+    5
+  );
+};
+
+/*
+ * Embedded axios based request handlers
+ */
+function all(items, fn) {
+  const promises = items.map((item) => fn(item));
+  return Promise.all(promises);
+}
+
+function series(items, fn) {
+  let result = [];
+  return items
+    .reduce((acc, item) => {
+      acc = acc.then(() => {
+        return fn(item).then((res) => result.push(res));
+      });
+      return acc;
+    }, Promise.resolve())
+    .then(() => result);
+}
+
+function splitToChunks(items, chunkSize = 25) {
+  const result = [];
+  for (let i = 0; i < items.length; i += chunkSize) {
+    result.push(items.slice(i, i + chunkSize));
+  }
+  return result;
+}
+
+function chunks(items, fn, chunkSize = 25) {
+  let result = [];
+  const chunks = splitToChunks(items, chunkSize);
+  return series(chunks, (chunk) => {
+    return all(chunk, fn).then((res) => (result = result.concat(res)));
+  }).then(() => result);
+}
 
 const schema = makeExecutableSchema({
   typeDefs,

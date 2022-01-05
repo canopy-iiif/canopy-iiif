@@ -8,8 +8,6 @@ import groupBy from "lodash/groupBy";
 import map from "lodash/map";
 
 export default function Index({ metadata }) {
-  console.log(metadata);
-
   return (
     <Layout>
       <Hero />
@@ -26,7 +24,6 @@ export default function Index({ metadata }) {
             <>
               <h2>{result.label}</h2>
               {result.data.map((value) => {
-                console.log(value);
                 return (
                   <>
                     <h4>{value.value}</h4>

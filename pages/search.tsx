@@ -8,6 +8,8 @@ import dynamic from "next/dynamic";
 import GridItem from "../components/Grid/Item";
 import GridLoadMore from "../components/Grid/LoadMore";
 import { InView } from "react-intersection-observer";
+import { map as lodashMap, groupBy as lodashGroupBy } from "lodash";
+import { useRouter } from "next/router";
 
 const Grid = dynamic(() => import("../components/Grid/Grid"), {
   ssr: false,
@@ -15,7 +17,24 @@ const Grid = dynamic(() => import("../components/Grid/Grid"), {
 
 const RESULT_LIMIT = 20;
 
-export default function Index({ manifests }) {
+export default function Index({ manifests, metadata }) {
+  // const router = useRouter();
+  // const filter = Object.getOwnPropertyNames(router.query);
+  // const pluck = metadata
+  //   .filter((result) => {
+  //     return Object.getOwnPropertyNames(router.query).includes(result.label);
+  //   })
+  //   .map((item) => {
+  //     return item.data.filter((term) => {
+  //       if (term.value === router.query[filter[0]]) return term.values;
+  //     });
+  //   })[0][0]
+  //   .values.map((manifest) => {
+  //     return manifest.manifestId;
+  //   });
+
+  // console.log(pluck);
+
   /**
    * @todo make section a component with an isFluid variant and default at max-width 1280
    */
@@ -117,13 +136,38 @@ export async function getStaticProps() {
           metadata
           collectionId
         }
+        Subject: metadata(label: "Subject") {
+          manifestId
+          label
+          value
+        }
+        Date: metadata(label: "Date") {
+          manifestId
+          label
+          value
+        }
       }
     `,
   });
 
+  const { manifests } = data;
+
   if (!data) return null;
 
+  const METADATA_LABELS = process.env.metadata as any as string[];
+
+  const metadata = METADATA_LABELS.map((string) => {
+    const values = data[string];
+    return {
+      label: string,
+      data: lodashMap(lodashGroupBy(values, "value"), (values, value) => ({
+        value,
+        values,
+      })),
+    };
+  });
+
   return {
-    props: { ...data },
+    props: { manifests, metadata },
   };
 }
