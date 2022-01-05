@@ -142,7 +142,7 @@ const resolvers = {
             });
           }
 
-          const responses = getBulkManifests(items);
+          const responses = getBulkManifests(items, 10);
 
           return responses.then((manifests) => {
             let data = [];
@@ -198,7 +198,7 @@ const resolvers = {
   },
 };
 
-const getBulkManifests = async (items) => {
+const getBulkManifests = async (items, chunkSize) => {
   return await chunks(
     items,
     async (item) => {
@@ -206,7 +206,7 @@ const getBulkManifests = async (items) => {
       if (type === "Manifest")
         return axios.get(id).then((result) => result.data);
     },
-    5
+    chunkSize
   );
 };
 
