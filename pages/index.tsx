@@ -6,6 +6,7 @@ import Hero from "../components/Hero/Hero";
 import Nav from "../components/Nav/Nav";
 import groupBy from "lodash/groupBy";
 import map from "lodash/map";
+import orderBy from "lodash/orderBy";
 
 export default function Index({ metadata }) {
   return (
@@ -23,17 +24,12 @@ export default function Index({ metadata }) {
           return (
             <>
               <h2>{result.label}</h2>
-              {result.data.map((value) => {
+              {result.values.map((value) => {
                 return (
                   <>
                     <h4>{value.value}</h4>
-                    {value.values.map((item) => {
-                      return (
-                        <>
-                          <li>{item.manifestId}</li>
-                        </>
-                      );
-                    })}
+                    <h5>count: {value.count}</h5>
+                    <span>rep: {value.representative}</span>
                   </>
                 );
               })}
@@ -48,8 +44,6 @@ export default function Index({ metadata }) {
 export async function getStaticProps() {
   const METADATA_LABELS = process.env.metadata as any as string[];
 
-  console.log(METADATA_LABELS);
-
   const metadataQueries = METADATA_LABELS.map((label) => {
     return `
       ${label}: metadata(label: "${label}") {
@@ -58,8 +52,6 @@ export async function getStaticProps() {
       }
     `;
   });
-
-  console.log(metadataQueries);
 
   const { loading, error, data } = await client.query({
     query: gql`
@@ -77,6 +69,24 @@ export async function getStaticProps() {
         value,
         values,
       })),
+    };
+  }).map((grouped) => {
+    const values = orderBy(
+      grouped.data.map((term) => {
+        return {
+          value: term.value,
+          count: term.values.length,
+          representative:
+            term.values[Math.floor(Math.random() * term.values.length)]
+              .manifestId,
+        };
+      }),
+      "count",
+      "desc"
+    ).slice(0, 5);
+    return {
+      label: grouped.label,
+      values,
     };
   });
 
