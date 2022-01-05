@@ -29,10 +29,10 @@ const dev = {
  */
 const devAlt = {
   collection:
-    "https://digital.lib.utk.edu/assemble/collection/collections/sanborn",
-  hero: ["https://digital.lib.utk.edu/assemble/manifest/sanborn/1003"],
-  metadata: ["Coverage", "Date", "Topic"],
-  title: "Sanborn Fire Insurance Maps Collection",
+    "https://digital.lib.utk.edu/assemble/collection/collections/tenncities",
+  hero: ["https://digital.lib.utk.edu/assemble/manifest/tenncities/343"],
+  metadata: ["Place", "Date", "Format", "Subject"],
+  title: "Images of East Tennessee",
 };
 
 const devAlt2 = {
@@ -43,4 +43,4 @@ const devAlt2 = {
 };
 
 exports.config = config;
-exports.dev = dev;
+exports.dev = devAlt;

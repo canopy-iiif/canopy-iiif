@@ -46,24 +46,28 @@ export default function Index({ metadata }) {
 }
 
 export async function getStaticProps() {
+  const METADATA_LABELS = process.env.metadata as any as string[];
+
+  console.log(METADATA_LABELS);
+
+  const metadataQueries = METADATA_LABELS.map((label) => {
+    return `
+      ${label}: metadata(label: "${label}") {
+        manifestId
+        value
+      }
+    `;
+  });
+
+  console.log(metadataQueries);
+
   const { loading, error, data } = await client.query({
     query: gql`
       query Metadata {
-        Subject: metadata(label: "Subject") {
-          manifestId
-          value
-        }
-        Date: metadata(label: "Date") {
-          manifestId
-          value
-        }
+        ${metadataQueries.join(",")}
       }
     `,
   });
-
-  if (!data) return null;
-
-  const METADATA_LABELS = process.env.metadata as any as string[];
 
   const metadata = METADATA_LABELS.map((string) => {
     const values = data[string];
