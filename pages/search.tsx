@@ -4,16 +4,10 @@ import { client } from "./api/graphql";
 import Layout from "../components/layout";
 import Hero from "../components/Hero/Hero";
 import Nav from "../components/Nav/Nav";
-import dynamic from "next/dynamic";
-import GridItem from "../components/Grid/Item";
-import GridLoadMore from "../components/Grid/LoadMore";
 import { InView } from "react-intersection-observer";
 import { map as lodashMap, groupBy as lodashGroupBy } from "lodash";
 import { useRouter } from "next/router";
-
-const Grid = dynamic(() => import("../components/Grid/Grid"), {
-  ssr: false,
-});
+import Grid from "../components/Grid/Grid";
 
 const RESULT_LIMIT = 20;
 
@@ -100,7 +94,7 @@ export default function Index({ manifests, metadata }) {
         <Grid>
           {results &&
             results.map((result, i) => {
-              return <GridItem data={result} key={result.id} />;
+              return <Grid.Item data={result} key={result.id} />;
             })}
         </Grid>
         <InView
@@ -118,7 +112,7 @@ export default function Index({ manifests, metadata }) {
             zIndex: "0",
           }}
         >
-          <GridLoadMore handleLoadMore={handleLoadMore} />
+          <Grid.LoadMore handleLoadMore={handleLoadMore} />
         </InView>
       </section>
     </Layout>
