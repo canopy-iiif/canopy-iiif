@@ -2,13 +2,11 @@
  * Configuration built by `npm run build`
  */
 const config = {
-  collection: "https://can-the.vercel.app/iiif/collection/north-american.json",
-  title: "The North Americans",
-  hero: [
-    "https://can-the.vercel.app/iiif/manifest/apache/04-apache-camp.json",
-    "https://can-the.vercel.app/iiif/manifest/nez-perce/08-map-territory.json",
-  ],
-  metadata: ["Date", "Subject"],
+  collection:
+    "https://digital.lib.utk.edu/assemble/collection/collections/tenncities",
+  hero: ["https://digital.lib.utk.edu/assemble/manifest/tenncities/343"],
+  metadata: ["Place", "Date", "Format", "Subject"],
+  title: "Images of East Tennessee",
 };
 
 /**
