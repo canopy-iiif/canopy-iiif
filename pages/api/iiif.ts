@@ -29,6 +29,8 @@ const buildCollection = (json, depth, parent = null) => {
    * defensively determine @context
    */
   let context = json["@context"];
+  if (!context) context = "http://iiif.io/api/presentation/3/context.json";
+
   if (Array.isArray(context)) context = context[0];
   context = context.replace("https://", "");
   context = context.replace("http://", "");
