@@ -42,5 +42,13 @@ const devAlt2 = {
   title: "National Library of Scotland IIIF Collections",
 };
 
+const devAltPres3 = {
+  collection:
+    "https://iiif.wellcomecollection.org/presentation/collections/archives/SA/WWP",
+  hero: ["https://iiif.wellcomecollection.org/presentation/b19116342"],
+  metadata: ["Publication/creation"],
+  title: "The Widow Welch's Pills",
+};
+
 exports.config = config;
 exports.dev = dev;

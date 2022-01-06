@@ -7,6 +7,7 @@ import Nav from "../components/Nav/Nav";
 import groupBy from "lodash/groupBy";
 import map from "lodash/map";
 import orderBy from "lodash/orderBy";
+import Ribbon from "../components/Ribbon/Ribbon";
 
 export default function Index({ metadata }) {
   return (
@@ -20,22 +21,13 @@ export default function Index({ metadata }) {
         }}
       >
         <Nav />
-        {metadata.map((result) => {
-          return (
-            <>
-              <h2>{result.label}</h2>
-              {result.values.map((value) => {
-                return (
-                  <>
-                    <h4>{value.value}</h4>
-                    <h5>count: {value.count}</h5>
-                    <span>rep: {value.representative}</span>
-                  </>
-                );
-              })}
-            </>
-          );
-        })}
+        {metadata.map((result) => (
+          <Ribbon label={result.label} key={result.label}>
+            {result.values.map((data) => (
+              <Ribbon.Item data={data} />
+            ))}
+          </Ribbon>
+        ))}
       </section>
     </Layout>
   );
