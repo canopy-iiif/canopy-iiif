@@ -51,4 +51,4 @@ const devAltPres3 = {
 };
 
 exports.config = config;
-exports.dev = dev;
+exports.dev = devAlt;
