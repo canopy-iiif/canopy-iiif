@@ -1,11 +1,10 @@
 import RibbonItem from "./Item";
-import { Items, Wrapper } from "./Ribbon.styled";
+import { Items, Title, Wrapper } from "./Ribbon.styled";
 
 const Ribbon = ({ label, children }) => {
-  console.log(children);
   return (
     <Wrapper>
-      {label}
+      <Title>By {label}</Title>
       <Items>{children}</Items>
     </Wrapper>
   );

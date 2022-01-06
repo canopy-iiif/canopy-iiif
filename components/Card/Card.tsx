@@ -11,7 +11,6 @@ const Card = ({ label, path, resource, size = "300," }) => {
           <Figure resource={resource} size={size} />
           <Content>
             <h4>{label}</h4>
-            <span>{context}</span>
           </Content>
         </a>
       </Link>
