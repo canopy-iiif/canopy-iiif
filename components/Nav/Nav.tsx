@@ -38,7 +38,6 @@ const Nav = () => {
   const items = [
     { path: "/", text: "Browse" },
     { path: "/search", text: "Search" },
-    { path: "/collections", text: "Collections" },
     { path: "/about", text: "About" },
   ];
 
