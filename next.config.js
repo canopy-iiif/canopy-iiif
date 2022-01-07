@@ -12,6 +12,7 @@ module.exports = (phase) => {
   const { config, dev } = can;
 
   const env = {
+    staticPageGenerationTimeout: 600,
     collection: (() => {
       if (isDev) return dev.collection;
       if (isProd) return config.collection;
