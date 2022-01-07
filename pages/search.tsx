@@ -54,11 +54,10 @@ export default function Index({ manifests, metadata }) {
 
   return (
     <Layout>
-      <Hero />
       <section
         style={{
           maxWidth: "1280px",
-          margin: "auto",
+          margin: "6rem auto 0",
           position: "relative",
         }}
       >
