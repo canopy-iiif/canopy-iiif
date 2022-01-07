@@ -29,7 +29,7 @@ const Figure = ({
         style={
           isCover
             ? {
-                objectFit: "contain",
+                objectFit: "cover",
                 objectPosition: "50% 50%",
                 width: "200px",
                 height: "200px",

@@ -20,7 +20,6 @@ export default function Index({ metadata }) {
           position: "relative",
         }}
       >
-        <Nav />
         {metadata.map((result) => (
           <Ribbon label={result.label} key={result.label}>
             {result.values.map((data) => (
@@ -75,7 +74,7 @@ export async function getStaticProps() {
       }),
       "count",
       "desc"
-    ).slice(0, 5);
+    ).slice(0, 10);
     return {
       label: grouped.label,
       values,

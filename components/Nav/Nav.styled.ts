@@ -1,23 +1,48 @@
 import { styled } from "../../stiches.config";
-const Wrapper = styled("nav", {
-  padding: "2rem 2rem 1rem",
-  margin: "auto",
-  position: "relative",
-  zIndex: "1",
+
+const Highlight = styled("div", {
+  backgroundColor: "$indigo11",
+  background: "linear-gradient(90deg, $indigo10 0%, $indigo11 100%)",
+  position: "absolute",
+  top: "0.25rem",
+  left: "0",
+  borderRadius: "2rem",
+  height: "2rem",
+  transition: "all 100ms ease-in-out",
+});
+
+const Items = styled("div", {
+  display: "flex",
+  alignItems: "center",
+  marginRight: "0.5rem",
 
   a: {
-    fontWeight: "350",
-    fontSize: "1.5rem",
     display: "inline-flex",
-    marginRight: "1rem",
-    color: "$mauve10",
+    color: "$indigo7",
     textDecoration: "none",
+    padding: "0.5rem 1rem",
+    marginRight: "0.5rem",
+    borderRadius: "2rem",
+    fontWeight: "300",
+    position: "relative",
+    transition: "all 100ms ease-in-out",
 
-    [`&:first-child`]: {
-      fontWeight: "650",
-      color: "$mauve12",
+    [`&:hover`]: {
+      color: "$indigo1 !important",
+    },
+
+    [`&.active`]: {
+      fontWeight: "500",
+      color: "$mauve1",
     },
   },
 });
 
-export { Wrapper };
+const Wrapper = styled("nav", {
+  position: "relative",
+  display: "flex",
+  alignItems: "center",
+  zIndex: "1",
+});
+
+export { Highlight, Items, Wrapper };

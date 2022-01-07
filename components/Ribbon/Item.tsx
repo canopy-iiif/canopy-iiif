@@ -25,6 +25,7 @@ const RibbonItem = ({ data }) => {
         key={data.id}
         label={data.value}
         path={``}
+        context={`${data.count} Items`}
         resource={resource}
         isCover
       />
