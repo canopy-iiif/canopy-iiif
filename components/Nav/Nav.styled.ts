@@ -10,10 +10,14 @@ const Wrapper = styled("nav", {
     fontSize: "1.5rem",
     display: "inline-flex",
     marginRight: "1rem",
-    color: "$mauve10",
+    color: "$mauve11",
     textDecoration: "none",
 
-    [`&:first-child`]: {
+    [`&:hover`]: {
+      color: "$indigo11",
+    },
+
+    [`&.active`]: {
       fontWeight: "650",
       color: "$mauve12",
     },
