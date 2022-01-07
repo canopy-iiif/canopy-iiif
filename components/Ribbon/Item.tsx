@@ -21,7 +21,13 @@ const RibbonItem = ({ data }) => {
 
   return (
     <Item>
-      <Card key={data.id} label={data.value} path={``} resource={resource} />
+      <Card
+        key={data.id}
+        label={data.value}
+        path={``}
+        resource={resource}
+        isCover
+      />
     </Item>
   );
 };
