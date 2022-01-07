@@ -8,7 +8,7 @@ const config = {
     "https://can-the.vercel.app/iiif/manifest/apache/04-apache-camp.json",
     "https://can-the.vercel.app/iiif/manifest/nez-perce/08-map-territory.json",
   ],
-  metadata: ["Date", "Subject"],
+  metadata: ["Subject", "Date", "Dimensions"],
 };
 
 /**
@@ -21,7 +21,7 @@ const dev = {
     "http://localhost:5001/iiif-dev/manifest/apache/04-apache-camp.json",
     "http://localhost:5001/iiif-dev/manifest/nez-perce/08-map-territory.json",
   ],
-  metadata: ["Date", "Subject"],
+  metadata: ["Subject", "Date", "Dimensions"],
 };
 
 /**
