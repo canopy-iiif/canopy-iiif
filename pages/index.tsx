@@ -20,7 +20,6 @@ export default function Index({ metadata }) {
           position: "relative",
         }}
       >
-        <Nav />
         {metadata.map((result) => (
           <Ribbon label={result.label} key={result.label}>
             {result.values.map((data) => (

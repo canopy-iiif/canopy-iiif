@@ -62,7 +62,6 @@ export default function Index({ manifests, metadata }) {
           position: "relative",
         }}
       >
-        <Nav />
         <Grid>
           {results &&
             results.map((result, i) => {

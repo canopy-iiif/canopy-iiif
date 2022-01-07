@@ -2,6 +2,7 @@ import Link from "next/link";
 import React from "react";
 import { Highlight, Wrapper } from "./Nav.styled";
 import { useRouter } from "next/router";
+import IIIF from "../../svg/IIIF";
 
 const Nav = () => {
   const [itemBoundingBox, setItemBoundingBox] = React.useState(null);
@@ -25,7 +26,7 @@ const Nav = () => {
 
   if (itemBoundingBox && wrapperBoundingBox) {
     highlightStyles.transitionDuration = isHoveredFromNull ? "0ms" : "150ms";
-    highlightStyles.opacity = highlightedItem ? 1 : 0;
+    highlightStyles.opacity = highlightedItem ? 0.25 : 0;
     highlightStyles.width = `${itemBoundingBox.width}px`;
     highlightStyles.transform = `translate(${
       itemBoundingBox.left - wrapperBoundingBox.left
@@ -54,6 +55,13 @@ const Nav = () => {
           </a>
         </Link>
       ))}
+      <a
+        href="/"
+        target="_blank"
+        style={{ width: "1.25rem", height: "1.25rem", display: "inline-flex" }}
+      >
+        <IIIF blue="#fff" red="#fff" />
+      </a>
     </Wrapper>
   );
 };
