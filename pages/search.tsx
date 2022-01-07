@@ -12,23 +12,6 @@ import Grid from "../components/Grid/Grid";
 const RESULT_LIMIT = 20;
 
 export default function Index({ manifests, metadata }) {
-  // const router = useRouter();
-  // const filter = Object.getOwnPropertyNames(router.query);
-  // const pluck = metadata
-  //   .filter((result) => {
-  //     return Object.getOwnPropertyNames(router.query).includes(result.label);
-  //   })
-  //   .map((item) => {
-  //     return item.data.filter((term) => {
-  //       if (term.value === router.query[filter[0]]) return term.values;
-  //     });
-  //   })[0][0]
-  //   .values.map((manifest) => {
-  //     return manifest.manifestId;
-  //   });
-
-  // console.log(pluck);
-
   /**
    * @todo make section a component with an isFluid variant and default at max-width 1280
    */
@@ -36,17 +19,6 @@ export default function Index({ manifests, metadata }) {
   const [limit, setLimit] = useState(RESULT_LIMIT);
   const [offset, setOffset] = useState(0);
   const [results, setResults] = useState(manifests);
-
-  /**
-   * rewrite this w/ static props
-   */
-  // useEffect(() => {
-  //   const data = fetchData(offset);
-  //   if (data)
-  //     data.then((response) => {
-  //       setResults(response.manifests);
-  //     });
-  // }, []);
 
   const handleLoadMore = async () => {
     const newOffset = limit + offset;
@@ -82,15 +54,13 @@ export default function Index({ manifests, metadata }) {
 
   return (
     <Layout>
-      <Hero />
       <section
         style={{
           maxWidth: "1280px",
-          margin: "auto",
+          margin: "6rem auto 0",
           position: "relative",
         }}
       >
-        <Nav />
         <Grid>
           {results &&
             results.map((result, i) => {
