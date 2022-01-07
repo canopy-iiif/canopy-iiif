@@ -5,7 +5,7 @@ const Content = styled("div", {
 
   h4: {
     margin: "0",
-    fontWeight: "650",
+    fontWeight: "500",
     fontSize: "1rem",
     textDecoration: "none !important",
   },
@@ -13,7 +13,7 @@ const Content = styled("div", {
   span: {
     display: "block",
     margin: "0.25rem 0 0",
-    fontWeight: "350",
+    fontWeight: "300",
     fontSize: "0.8333rem",
     color: "$mauve10",
   },
