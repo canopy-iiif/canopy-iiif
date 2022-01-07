@@ -13,6 +13,7 @@ const Items = styled("div", {
 const Title = styled("h3", {
   margin: "1rem 0.5rem 0",
   fontWeight: "800",
+  fontSize: "1.5rem",
   color: "$mauve12",
 });
 
