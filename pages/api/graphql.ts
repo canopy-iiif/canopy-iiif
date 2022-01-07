@@ -2,15 +2,25 @@ import { ApolloServer, gql } from "apollo-server-micro";
 import { ApolloClient, InMemoryCache } from "@apollo/client";
 import { SchemaLink } from "@apollo/client/link/schema";
 import { makeExecutableSchema } from "@graphql-tools/schema";
-import { getCollection, getAllManifests, getManifestBySlug } from "./iiif";
+import {
+  getCollection,
+  getAllManifests,
+  getManifestBySlug,
+  getManifestById,
+} from "./iiif";
 import { getLabel } from "../../hooks/getLabel";
 import slugify from "slugify";
+import { getValues } from "../../hooks/getValues";
+const axios = require("axios");
+
+const data = process.env.data;
 
 const typeDefs = gql`
   type Query {
     collections: [Collection]
     collectionItems: [CollectionItem]
-    manifests(limit: Int, offset: Int): [Manifest]
+    manifests(limit: Int, offset: Int, id: [String]): [Manifest]
+    metadata(id: String, label: String): [Metadata]
     allManifests: [Manifest]
     getManifest(slug: ID): Manifest
   }
@@ -35,16 +45,16 @@ const typeDefs = gql`
 
   type Manifest {
     collectionId: ID
-    id: String
+    id: ID
     label: [String]
     metadata: [Metadata]
     slug: ID
   }
 
   type Metadata {
-    manifestId: ID
-    label: [String]
-    value: [String]
+    manifestId: String
+    label: String
+    value: String
   }
 `;
 
@@ -53,16 +63,17 @@ const getCollectionData = (depth = 0) => {
   const root = Promise.resolve(getCollection(depth));
   return root.then((collection) => {
     tree = tree.concat([collection]);
-    if (collection.collections > 0) {
-      collection.items.forEach((child) => {
-        if (child.type === "Collection") {
-          const item = Promise.resolve(
-            getCollection(collection.depth + 1, child.id, collection.id)
-          );
-          tree = tree.concat([item]);
-        }
-      });
-    }
+    if (collection)
+      if (collection.collections > 0) {
+        collection.items.forEach((child) => {
+          if (child.type === "Collection") {
+            const item = Promise.resolve(
+              getCollection(collection.depth + 1, child.id, collection.id)
+            );
+            tree = tree.concat([item]);
+          }
+        });
+      }
     return tree;
   });
 };
@@ -85,16 +96,17 @@ const resolvers = {
         });
       });
     },
-    manifests: async (_, { limit, offset }, context) => {
+    manifests: async (_, { limit, offset, id }, context) => {
       return getCollectionData().then((tree) => {
         return Promise.all(tree).then((values) => {
           let items = [];
           values.forEach((results) => {
-            results.items.forEach((element) => {
-              items.push(element);
-            });
+            if (results)
+              results.items.forEach((element) => {
+                items.push(element);
+              });
           });
-          const results = items.filter((item) => {
+          let results = items.filter((item) => {
             item.slug = slugify(item.label[0], {
               lower: true,
               strict: true,
@@ -103,9 +115,59 @@ const resolvers = {
             item.collectionId = null;
             return item.type === "Manifest";
           });
+          if (Array.isArray(id)) {
+            results = results.filter((result) => id.includes(result.id));
+          }
           if (Number.isInteger(limit) && Number.isInteger(offset))
-            return results.slice(offset, offset + limit);
+            results = results.slice(offset, offset + limit);
           return results;
+        });
+      });
+    },
+    metadata: async (_, { id, label }, context) => {
+      let filterByLabels = process.env.metadata;
+      if (label) filterByLabels = [label as string];
+
+      return getCollectionData().then((tree) => {
+        return Promise.all(tree).then((values) => {
+          let items = [];
+          if (id) {
+            items.push({ id, type: "Manifest" });
+          } else {
+            values.forEach((results) => {
+              if (results)
+                results.items.forEach((element) => {
+                  items.push(element);
+                });
+            });
+          }
+
+          const responses = getBulkManifests(items, 10);
+
+          return responses.then((manifests) => {
+            let data = [];
+            manifests
+              .filter((manifest) => {
+                if (manifest) return manifest;
+              })
+              .map((manifest) => {
+                manifest.metadata.forEach((metadata) => {
+                  const metadataLabel = getValues(metadata.label)[0];
+                  const metadataValues = getValues(metadata.value);
+                  if (filterByLabels.includes(metadataLabel)) {
+                    metadataValues.forEach((value) => {
+                      const result = {
+                        manifestId: manifest.id,
+                        label: metadataLabel,
+                        value,
+                      };
+                      data.push(result);
+                    });
+                  }
+                });
+              });
+            return data;
+          });
         });
       });
     },
@@ -135,6 +197,54 @@ const resolvers = {
     },
   },
 };
+
+const getBulkManifests = async (items, chunkSize) => {
+  return await chunks(
+    items,
+    async (item) => {
+      const { id, type } = item;
+      if (type === "Manifest")
+        return axios.get(id).then((result) => result.data);
+    },
+    chunkSize
+  );
+};
+
+/*
+ * Embedded axios based request handlers
+ */
+function all(items, fn) {
+  const promises = items.map((item) => fn(item));
+  return Promise.all(promises);
+}
+
+function series(items, fn) {
+  let result = [];
+  return items
+    .reduce((acc, item) => {
+      acc = acc.then(() => {
+        return fn(item).then((res) => result.push(res));
+      });
+      return acc;
+    }, Promise.resolve())
+    .then(() => result);
+}
+
+function splitToChunks(items, chunkSize = 25) {
+  const result = [];
+  for (let i = 0; i < items.length; i += chunkSize) {
+    result.push(items.slice(i, i + chunkSize));
+  }
+  return result;
+}
+
+function chunks(items, fn, chunkSize = 25) {
+  let result = [];
+  const chunks = splitToChunks(items, chunkSize);
+  return series(chunks, (chunk) => {
+    return all(chunk, fn).then((res) => (result = result.concat(res)));
+  }).then(() => result);
+}
 
 const schema = makeExecutableSchema({
   typeDefs,

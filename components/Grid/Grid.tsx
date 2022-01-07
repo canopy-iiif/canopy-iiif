@@ -53,6 +53,7 @@ const Grid = ({ children }) => {
   );
 };
 
-export { GridItem, GridLoadMore };
+Grid.Item = GridItem;
+Grid.LoadMore = GridLoadMore;
 
 export default Grid;

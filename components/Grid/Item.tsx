@@ -17,7 +17,13 @@ const GridItem = ({ data }) => {
 
   if (!item) return <></>;
 
-  resource = item.items[0].items[0].items[0].body;
+  /**
+   * @todo: handle this better
+   */
+  if (item.items) resource = item.items[0].items[0].items[0].body;
+
+  if (item.sequences)
+    resource = item.sequences[0].canvases[0].images[0].resource;
 
   return (
     <Item className="can-grid-column">

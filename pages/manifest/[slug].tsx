@@ -23,8 +23,6 @@ export async function getStaticProps({ params }) {
     `,
   });
 
-  console.log(data);
-
   if (!data) return null;
 
   return {

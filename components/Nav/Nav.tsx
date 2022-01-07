@@ -1,12 +1,16 @@
+import Link from "next/link";
 import React from "react";
 import { Wrapper } from "./Nav.styled";
 
 const Nav = () => {
   return (
     <Wrapper>
-      <a>Search</a>
-      <a>Browse</a>
-      <a>Collections</a>
+      <Link href="/">
+        <a>Browse</a>
+      </Link>
+      <Link href="/search">
+        <a>Search</a>
+      </Link>
     </Wrapper>
   );
 };
