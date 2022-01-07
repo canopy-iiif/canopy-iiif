@@ -26,10 +26,6 @@ const Hero = () => {
   if (hero.sequences)
     resource = hero.sequences[0].canvases[0].images[0].resource;
 
-  // canvas key
-  // target region
-  // as target?
-
   return (
     <Wrapper>
       <Figure resource={resource} region="250,950,2615,1200" size="1280," />

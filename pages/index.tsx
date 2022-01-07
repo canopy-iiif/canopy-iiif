@@ -4,69 +4,12 @@ import { client } from "./api/graphql";
 import Layout from "../components/layout";
 import Hero from "../components/Hero/Hero";
 import Nav from "../components/Nav/Nav";
-import dynamic from "next/dynamic";
-import GridItem from "../components/Grid/Item";
-import GridLoadMore from "../components/Grid/LoadMore";
-import { InView } from "react-intersection-observer";
+import groupBy from "lodash/groupBy";
+import map from "lodash/map";
+import orderBy from "lodash/orderBy";
+import Ribbon from "../components/Ribbon/Ribbon";
 
-const Grid = dynamic(() => import("../components/Grid/Grid"), {
-  ssr: false,
-});
-
-const RESULT_LIMIT = 20;
-
-export default function Index({ manifests }) {
-  /**
-   * @todo make section a component with an isFluid variant and default at max-width 1280
-   */
-
-  const [limit, setLimit] = useState(RESULT_LIMIT);
-  const [offset, setOffset] = useState(0);
-  const [results, setResults] = useState(manifests);
-
-  /**
-   * rewrite this w/ static props
-   */
-  // useEffect(() => {
-  //   const data = fetchData(offset);
-  //   if (data)
-  //     data.then((response) => {
-  //       setResults(response.manifests);
-  //     });
-  // }, []);
-
-  const handleLoadMore = async () => {
-    const newOffset = limit + offset;
-    const data = fetchData(newOffset);
-
-    if (data && results.length > 0)
-      data.then((response) => {
-        setResults(results.concat(response.manifests));
-        setOffset(newOffset);
-      });
-  };
-
-  /**
-   * @param offset
-   * @returns
-   */
-  const fetchData = async (offset) => {
-    const { loading, error, data } = await client.query({
-      query: gql`
-        query Manifests {
-          manifests(limit: ${RESULT_LIMIT}, offset: ${offset}) {
-            id
-            label
-            slug
-            metadata
-            collectionId
-          }
-        }
-      `,
-    });
-    if (data) return data;
-  };
-
+export default function Index({ metadata }) {
   return (
     <Layout>
       <Hero />
@@ -77,30 +20,68 @@ export default function Index({ manifests }) {
           position: "relative",
         }}
       >
-        <Nav />
+        {metadata.map((result) => (
+          <Ribbon label={result.label} key={result.label}>
+            {result.values.map((data) => (
+              <Ribbon.Item data={data} />
+            ))}
+          </Ribbon>
+        ))}
       </section>
     </Layout>
   );
 }
 
 export async function getStaticProps() {
+  const METADATA_LABELS = process.env.metadata as any as string[];
+
+  const metadataQueries = METADATA_LABELS.map((label) => {
+    return `
+      ${label}: metadata(label: "${label}") {
+        manifestId
+        value
+      }
+    `;
+  });
+
   const { loading, error, data } = await client.query({
     query: gql`
-      query Manifests {
-        manifests(limit: ${RESULT_LIMIT}, offset: 0) {
-          id
-          label
-          slug
-          metadata
-          collectionId
-        }
+      query Metadata {
+        ${metadataQueries.join(",")}
       }
     `,
   });
 
-  if (!data) return null;
+  const metadata = METADATA_LABELS.map((string) => {
+    const values = data[string];
+    return {
+      label: string,
+      data: map(groupBy(values, "value"), (values, value) => ({
+        value,
+        values,
+      })),
+    };
+  }).map((grouped) => {
+    const values = orderBy(
+      grouped.data.map((term) => {
+        return {
+          value: term.value,
+          count: term.values.length,
+          representative:
+            term.values[Math.floor(Math.random() * term.values.length)]
+              .manifestId,
+        };
+      }),
+      "count",
+      "desc"
+    ).slice(0, 10);
+    return {
+      label: grouped.label,
+      values,
+    };
+  });
 
   return {
-    props: { ...data },
+    props: { metadata },
   };
 }

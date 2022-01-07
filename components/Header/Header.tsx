@@ -1,8 +1,7 @@
 import Link from "next/link";
-import IIIF from "../../svg/IIIF";
+import Nav from "../Nav/Nav";
 import { Title, Wrapper } from "./Header.styled";
 
-const collection = process.env.collection;
 const title = process.env.title;
 
 const Header = () => {
@@ -13,15 +12,7 @@ const Header = () => {
           <a>{title}</a>
         </Link>
       </Title>
-      <nav style={{ display: "flex" }}>
-        <a
-          href={collection}
-          target="_blank"
-          style={{ width: "1.25rem", height: "1.25rem", display: "block" }}
-        >
-          <IIIF blue="#fff" red="#fff" />
-        </a>
-      </nav>
+      <Nav />
     </Wrapper>
   );
 };

@@ -3,16 +3,16 @@ import { styled } from "../../stiches.config";
 const Content = styled("div", {});
 
 const Title = styled("span", {
-  fontWeight: "650",
+  fontWeight: "500",
 });
 
 const Wrapper = styled("header", {
   position: "fixed",
-  zIndex: "1",
+  zIndex: "2",
   top: "0",
   width: "calc(100% - 4rem)",
   backgroundColor: "$indigo12",
-  background: "linear-gradient(90deg, $indigo12 0%, $mauve12 100%)",
+  background: "linear-gradient(90deg, $mauve12 61.8%, $indigo12 100%)",
   padding: "1rem 2rem",
   display: "flex",
   flexDirection: "row",
@@ -26,18 +26,7 @@ const Wrapper = styled("header", {
   [`&  ${Title} a`]: {
     textDecoration: "none",
     color: "$indigo1",
-  },
-
-  nav: {
-    a: {
-      fontWeight: "350",
-      display: "inline-flex",
-      fontSize: "1rem",
-      marginRight: "1.25rem",
-      lineHeight: "1.25rem",
-      color: "$indigo6",
-      textDecoration: "none",
-    },
+    fontSize: "1rem",
   },
 });
 

@@ -2,16 +2,22 @@ import { Content, Wrapper } from "./Card.styled";
 import Link from "next/link";
 import Figure from "../Figure/Figure";
 
-const Card = ({ label, path, resource }) => {
-  const context = "1903";
+const Card = ({
+  label,
+  path,
+  resource,
+  context = "",
+  size = "300,",
+  isCover = false,
+}) => {
   return (
     <Wrapper>
       <Link href={path}>
         <a>
-          <Figure resource={resource} size="300," />
+          <Figure resource={resource} size={size} isCover={isCover} />
           <Content>
             <h4>{label}</h4>
-            <span>{context}</span>
+            {context && <span>{context}</span>}
           </Content>
         </a>
       </Link>

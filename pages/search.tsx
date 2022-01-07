@@ -4,18 +4,14 @@ import { client } from "./api/graphql";
 import Layout from "../components/layout";
 import Hero from "../components/Hero/Hero";
 import Nav from "../components/Nav/Nav";
-import dynamic from "next/dynamic";
-import GridItem from "../components/Grid/Item";
-import GridLoadMore from "../components/Grid/LoadMore";
 import { InView } from "react-intersection-observer";
-
-const Grid = dynamic(() => import("../components/Grid/Grid"), {
-  ssr: false,
-});
+import { map as lodashMap, groupBy as lodashGroupBy } from "lodash";
+import { useRouter } from "next/router";
+import Grid from "../components/Grid/Grid";
 
 const RESULT_LIMIT = 20;
 
-export default function Index({ manifests }) {
+export default function Index({ manifests, metadata }) {
   /**
    * @todo make section a component with an isFluid variant and default at max-width 1280
    */
@@ -23,17 +19,6 @@ export default function Index({ manifests }) {
   const [limit, setLimit] = useState(RESULT_LIMIT);
   const [offset, setOffset] = useState(0);
   const [results, setResults] = useState(manifests);
-
-  /**
-   * rewrite this w/ static props
-   */
-  // useEffect(() => {
-  //   const data = fetchData(offset);
-  //   if (data)
-  //     data.then((response) => {
-  //       setResults(response.manifests);
-  //     });
-  // }, []);
 
   const handleLoadMore = async () => {
     const newOffset = limit + offset;
@@ -69,19 +54,17 @@ export default function Index({ manifests }) {
 
   return (
     <Layout>
-      <Hero />
       <section
         style={{
           maxWidth: "1280px",
-          margin: "auto",
+          margin: "6rem auto 0",
           position: "relative",
         }}
       >
-        <Nav />
         <Grid>
           {results &&
             results.map((result, i) => {
-              return <GridItem data={result} key={result.id} />;
+              return <Grid.Item data={result} key={result.id} />;
             })}
         </Grid>
         <InView
@@ -99,7 +82,7 @@ export default function Index({ manifests }) {
             zIndex: "0",
           }}
         >
-          <GridLoadMore handleLoadMore={handleLoadMore} />
+          <Grid.LoadMore handleLoadMore={handleLoadMore} />
         </InView>
       </section>
     </Layout>
@@ -117,13 +100,38 @@ export async function getStaticProps() {
           metadata
           collectionId
         }
+        Subject: metadata(label: "Subject") {
+          manifestId
+          label
+          value
+        }
+        Date: metadata(label: "Date") {
+          manifestId
+          label
+          value
+        }
       }
     `,
   });
 
+  const { manifests } = data;
+
   if (!data) return null;
 
+  const METADATA_LABELS = process.env.metadata as any as string[];
+
+  const metadata = METADATA_LABELS.map((string) => {
+    const values = data[string];
+    return {
+      label: string,
+      data: lodashMap(lodashGroupBy(values, "value"), (values, value) => ({
+        value,
+        values,
+      })),
+    };
+  });
+
   return {
-    props: { ...data },
+    props: { manifests, metadata },
   };
 }

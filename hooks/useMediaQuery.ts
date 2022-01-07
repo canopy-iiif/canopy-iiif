@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 
 export const useMediaQuery = (mediaQuery: string) => {
+  if (typeof window === "undefined") return;
+
   const match = () => {
     if (!window.matchMedia) {
       return false;

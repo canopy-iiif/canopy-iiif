@@ -8,13 +8,16 @@
   "dependencies": {
     "@apollo/client": "^3.5.6",
     "@graphql-tools/schema": "^8.3.1",
-    "@nulib/react-media-player": "^1.6.4",
+    "@nulib/react-media-player": "^1.6.5",
     "@radix-ui/colors": "^0.1.8",
     "@stitches/react": "^1.2.6",
     "apollo-datasource-rest": "^3.4.0",
     "apollo-server-micro": "^3.0.1",
+    "axios": "^0.24.0",
     "clsx": "^1.1.1",
     "graphql": "^15.8.0",
+    "lodash": "^4.17.21",
+    "manifesto.js": "^4.2.4",
     "micro": "^9.3.4",
     "next": "latest",
     "react": "^17.0.2",
@@ -25,6 +28,7 @@
     "swr": "^0.5.6"
   },
   "devDependencies": {
+    "@types/lodash": "^4.14.178",
     "typescript": "^4.5.4"
   }
 }

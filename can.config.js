@@ -2,14 +2,13 @@
  * Configuration built by `npm run build`
  */
 const config = {
-  collection: "https://view.nls.uk/collections/top.json",
+  collection: "https://view.nls.uk/collections/1881/5593/188155936.json",
   hero: [
-    "https://view.nls.uk/manifest/7549/75496599/manifest.json",
-    "https://view.nls.uk/manifest/1175/2694/117526944/manifest.json",
-    "https://view.nls.uk/manifest/1216/4487/121644879/manifest.json",
+    "https://view.nls.uk/manifest/1175/9797/117597970/manifest.json",
+    "https://view.nls.uk/manifest/1019/8305/101983051/manifest.json",
   ],
-  metadata: ["Subject/content", "Form/genre", "Date created", "Place created"],
-  title: "National Library of Scotland IIIF Collections",
+  metadata: ["Author", "Owner", "Bookseller"],
+  title: "Gaelic manuscripts of Scotland",
 };
 
 /**
@@ -21,35 +20,20 @@ const dev = {
   hero: [
     "http://localhost:5001/iiif-dev/manifest/apache/04-apache-camp.json",
     "http://localhost:5001/iiif-dev/manifest/nez-perce/08-map-territory.json",
+    "http://localhost:5001/iiif-dev/manifest/tsawatenok/05-tsawatenok-house-front.json",
   ],
-  metadata: ["Date", "Subject"],
+  metadata: ["Subject", "Date", "Dimensions"],
 };
 
-/**
- * Large but shallow collection for testing
- */
-const devAlt = {
-  collection:
-    "https://digital.lib.utk.edu/assemble/collection/collections/heilman",
+const devScotland = {
+  collection: "https://view.nls.uk/collections/1881/5593/188155936.json",
   hero: [
-    "https://digital.lib.utk.edu/assemble/manifest/heilman/661",
-    "https://digital.lib.utk.edu/assemble/manifest/heilman/317",
-    "https://digital.lib.utk.edu/assemble/manifest/heilman/338",
+    "https://view.nls.uk/manifest/1175/9797/117597970/manifest.json",
+    "https://view.nls.uk/manifest/1019/8305/101983051/manifest.json",
   ],
-  metadata: ["Coverage", "Date", "Topic"],
-  title: "The Botanical photography of Alan S. Heilman",
-};
-
-const devAlt2 = {
-  collection: "https://view.nls.uk/collections/top.json",
-  hero: [
-    "https://view.nls.uk/manifest/7549/75496599/manifest.json",
-    "https://view.nls.uk/manifest/1175/2694/117526944/manifest.json",
-    "https://view.nls.uk/manifest/1216/4487/121644879/manifest.json",
-  ],
-  metadata: ["Subject/content", "Form/genre", "Date created", "Place created"],
-  title: "National Library of Scotland IIIF Collections",
+  metadata: ["Author", "Owner", "Bookseller"],
+  title: "Gaelic manuscripts of Scotland",
 };
 
 exports.config = config;
-exports.dev = devAlt2;
+exports.dev = devScotland;
