@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Card from "../Card/Card";
 import { getLabel } from "../../hooks/getLabel";
-import { getManifestById } from "../../pages/api/iiif";
+import { getManifestById } from "../../services/iiif";
 import { Item } from "./Ribbon.styled";
 
 const RibbonItem = ({ data }) => {

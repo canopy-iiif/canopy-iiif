@@ -1,8 +1,8 @@
 import { concat, gql } from "@apollo/client";
 import { useState } from "react";
 import slugify from "slugify";
-import { getLabel } from "../../hooks/getLabel";
-import { getGraphQL } from "./graphql";
+import { getLabel } from "../hooks/getLabel";
+import { getGraphQL } from "../pages/api/graphql";
 
 const slugifyConfig = {
   lower: true,
