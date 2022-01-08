@@ -3,6 +3,8 @@ import { styled } from "../../stiches.config";
 const Content = styled("div", {});
 
 const Title = styled("span", {
+  display: "flex",
+  flexGrow: "1",
   fontWeight: "500",
 });
 
