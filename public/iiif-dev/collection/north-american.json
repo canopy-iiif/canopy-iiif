@@ -23,7 +23,9 @@
     {
       "id": "http://localhost:5001/iiif-dev/collection/nez-perce-joseph.json",
       "type": "Collection",
-      "label": "Joseph - Nez Percé"
+      "label": {
+        "en": ["Joseph - Nez Percé"]
+      }
     },
     {
       "id": "http://localhost:5001/iiif-dev/collection/nez-perce.json",
