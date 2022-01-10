@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-import { getManifestById } from "../../pages/api/iiif";
+import { getManifestById } from "../../services/iiif";
 import Figure from "../Figure/Figure";
 import { Wrapper } from "./Hero.styled";
 
