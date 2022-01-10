@@ -8,7 +8,7 @@
   "dependencies": {
     "@apollo/client": "^3.5.6",
     "@graphql-tools/schema": "^8.3.1",
-    "@nulib/react-media-player": "^1.6.4",
+    "@nulib/react-media-player": "^1.6.5",
     "@radix-ui/colors": "^0.1.8",
     "@stitches/react": "^1.2.6",
     "apollo-datasource-rest": "^3.4.0",
