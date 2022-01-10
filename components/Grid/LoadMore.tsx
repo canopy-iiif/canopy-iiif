@@ -5,7 +5,12 @@ const GridLoadMore = ({ handleLoadMore }) => {
     <div style={{ width: "100%", display: "flex", justifyContent: "center" }}>
       <button
         onClick={() => handleLoadMore()}
-        style={{ padding: "1rem 2rem", cursor: "pointer", fontWeight: "650" }}
+        style={{
+          padding: "1rem 2rem",
+          cursor: "pointer",
+          fontWeight: "650",
+          opacity: "0",
+        }}
       >
         Load More
       </button>

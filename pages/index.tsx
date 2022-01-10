@@ -74,7 +74,7 @@ export async function getStaticProps() {
       }),
       "count",
       "desc"
-    ).slice(0, 5);
+    ).slice(0, 10);
     return {
       label: grouped.label,
       values,

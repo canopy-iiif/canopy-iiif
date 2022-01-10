@@ -7,13 +7,11 @@ import {
   getAllManifests,
   getManifestBySlug,
   getManifestById,
-} from "./iiif";
+} from "../../services/iiif";
 import { getLabel } from "../../hooks/getLabel";
 import slugify from "slugify";
 import { getValues } from "../../hooks/getValues";
 const axios = require("axios");
-
-const data = process.env.data;
 
 const typeDefs = gql`
   type Query {

@@ -22,13 +22,11 @@ const dev = {
   hero: [
     "http://localhost:5001/iiif-dev/manifest/apache/04-apache-camp.json",
     "http://localhost:5001/iiif-dev/manifest/nez-perce/08-map-territory.json",
+    "http://localhost:5001/iiif-dev/manifest/tsawatenok/05-tsawatenok-house-front.json",
   ],
   metadata: ["Subject", "Date", "Dimensions"],
 };
 
-/**
- * Large but shallow collection for testing
- */
 const devAlt = {
   collection:
     "https://digital.lib.utk.edu/assemble/collection/collections/heilman",

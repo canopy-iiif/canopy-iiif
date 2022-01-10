@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { getLabel } from "../../hooks/getLabel";
-import { getManifestById } from "../../pages/api/iiif";
+import { getManifestById } from "../../services/iiif";
 import Card from "../Card/Card";
 import { Item } from "./Grid.styled";
 

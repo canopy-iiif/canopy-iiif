@@ -7,6 +7,10 @@ export default function Manifest({ id, label }) {
   return (
     <Layout>
       <h1>{label}</h1>
+      Attempting to load:{" "}
+      <a href={id} target="_blank">
+        {id}
+      </a>
       <Viewer manifestId={id} />
     </Layout>
   );

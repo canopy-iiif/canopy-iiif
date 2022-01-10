@@ -2,7 +2,7 @@ import Link from "next/link";
 import { Wrapper } from "./Grid.styled";
 import GridItem from "./Item";
 import GridLoadMore from "./LoadMore";
-import { useMediaQuery } from "../../hooks/useMediaQuery";
+import { useMediaQuery } from "../../hooks/use-media-query";
 import { media } from "../../stiches.config";
 import { useEffect, useState } from "react";
 
