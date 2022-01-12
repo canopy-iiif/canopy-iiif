@@ -11,20 +11,24 @@ import Grid from "../components/Grid/Grid";
 
 const RESULT_LIMIT = 20;
 
-export default function Index({ manifests, metadata }) {
+export default function Index({ metadata }) {
   /**
    * @todo make section a component with an isFluid variant and default at max-width 1280
    */
 
   const [limit, setLimit] = useState(RESULT_LIMIT);
   const [offset, setOffset] = useState(0);
-  const [results, setResults] = useState(manifests);
+  const [results, setResults] = useState([]);
+
+  const handleSearch = async (event) => {
+    // do something with event.target.value
+  };
 
   const handleLoadMore = async () => {
     const newOffset = limit + offset;
     const data = fetchData(newOffset);
 
-    if (data && results.length > 0)
+    if (data)
       data.then((response) => {
         setResults(results.concat(response.manifests));
         setOffset(newOffset);
@@ -39,7 +43,7 @@ export default function Index({ manifests, metadata }) {
     const { loading, error, data } = await client.query({
       query: gql`
         query Manifests {
-          manifests(limit: ${RESULT_LIMIT}, offset: ${offset}) {
+          manifests {
             id
             label
             slug
@@ -61,6 +65,7 @@ export default function Index({ manifests, metadata }) {
           position: "relative",
         }}
       >
+        <input onChange={(event) => handleSearch(event)} />
         <Grid>
           {results &&
             results.map((result, i) => {
@@ -93,13 +98,6 @@ export async function getStaticProps() {
   const { loading, error, data } = await client.query({
     query: gql`
       query Manifests {
-        manifests(limit: ${RESULT_LIMIT}, offset: 0) {
-          id
-          label
-          slug
-          metadata
-          collectionId
-        }
         Subject: metadata(label: "Subject") {
           manifestId
           label
@@ -113,8 +111,6 @@ export async function getStaticProps() {
       }
     `,
   });
-
-  const { manifests } = data;
 
   if (!data) return null;
 
@@ -132,6 +128,6 @@ export async function getStaticProps() {
   });
 
   return {
-    props: { manifests, metadata },
+    props: { metadata },
   };
 }
