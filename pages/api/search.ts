@@ -11,8 +11,8 @@ export default async (req, res) => {
               items.push(element);
             });
         });
-        let manifests = items.filter((item) => item.type === "Manifest");
 
+        let manifests = items.filter((item) => item.type === "Manifest");
         if (req.query.q)
           manifests = req.query.q
             ? manifests.filter((manifest) =>
@@ -20,9 +20,11 @@ export default async (req, res) => {
               )
             : [];
 
+        const results = manifests.map((manifest) => manifest.id);
+
         res.statusCode = 200;
         res.setHeader("Content-Type", "application/json");
-        res.end(JSON.stringify({ manifests }));
+        res.end(JSON.stringify({ results }));
       })
       .catch((error) => {
         res.json(error);
