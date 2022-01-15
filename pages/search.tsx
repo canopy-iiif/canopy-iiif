@@ -1,34 +1,28 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { gql } from "@apollo/client";
 import { client } from "./api/graphql";
 import Layout from "../components/layout";
-import Hero from "../components/Hero/Hero";
-import Nav from "../components/Nav/Nav";
 import { InView } from "react-intersection-observer";
 import { map as lodashMap, groupBy as lodashGroupBy } from "lodash";
-import { useRouter } from "next/router";
 import Grid from "../components/Grid/Grid";
+import Filter from "../components/Filter/Filter";
 
-const RESULT_LIMIT = 20;
+const RESULT_LIMIT = 30;
 
-export default function Index({ metadata }) {
+export default function Index({ manifests, metadata }) {
   /**
    * @todo make section a component with an isFluid variant and default at max-width 1280
    */
 
   const [limit, setLimit] = useState(RESULT_LIMIT);
   const [offset, setOffset] = useState(0);
-  const [results, setResults] = useState([]);
-
-  const handleSearch = async (event) => {
-    // do something with event.target.value
-  };
+  const [results, setResults] = useState(manifests);
 
   const handleLoadMore = async () => {
     const newOffset = limit + offset;
     const data = fetchData(newOffset);
 
-    if (data)
+    if (data && results.length > 0)
       data.then((response) => {
         setResults(results.concat(response.manifests));
         setOffset(newOffset);
@@ -43,7 +37,7 @@ export default function Index({ metadata }) {
     const { loading, error, data } = await client.query({
       query: gql`
         query Manifests {
-          manifests {
+          manifests(limit: ${RESULT_LIMIT}, offset: ${offset}) {
             id
             label
             slug
@@ -65,7 +59,7 @@ export default function Index({ metadata }) {
           position: "relative",
         }}
       >
-        <input onChange={(event) => handleSearch(event)} />
+        <Filter />
         <Grid>
           {results &&
             results.map((result, i) => {
@@ -98,6 +92,13 @@ export async function getStaticProps() {
   const { loading, error, data } = await client.query({
     query: gql`
       query Manifests {
+        manifests(limit: ${RESULT_LIMIT}, offset: 0) {
+          id
+          label
+          slug
+          metadata
+          collectionId
+        }
         Subject: metadata(label: "Subject") {
           manifestId
           label
@@ -111,6 +112,8 @@ export async function getStaticProps() {
       }
     `,
   });
+
+  const { manifests } = data;
 
   if (!data) return null;
 
@@ -128,6 +131,6 @@ export async function getStaticProps() {
   });
 
   return {
-    props: { metadata },
+    props: { manifests, metadata },
   };
 }
