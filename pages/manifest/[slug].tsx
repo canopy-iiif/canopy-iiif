@@ -2,16 +2,21 @@ import { gql } from "@apollo/client";
 import { client } from "../api/graphql";
 import Layout from "../../components/layout";
 import Viewer from "../../components/Viewer/Viewer";
+import Hero from "../../components/Hero/Hero";
 
 export default function Manifest({ id, label }) {
   return (
     <Layout>
-      <h1>{label}</h1>
-      Attempting to load:{" "}
-      <a href={id} target="_blank">
-        {id}
-      </a>
-      <Viewer manifestId={id} />
+      <Hero />
+      <section
+        style={{
+          maxWidth: "1280px",
+          margin: "auto",
+          position: "relative",
+        }}
+      >
+        <Viewer manifestId={id} />
+      </section>
     </Layout>
   );
 }

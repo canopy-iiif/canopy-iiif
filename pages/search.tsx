@@ -1,13 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { gql } from "@apollo/client";
 import { client } from "./api/graphql";
 import Layout from "../components/layout";
-import Hero from "../components/Hero/Hero";
-import Nav from "../components/Nav/Nav";
 import { InView } from "react-intersection-observer";
 import { map as lodashMap, groupBy as lodashGroupBy } from "lodash";
-import { useRouter } from "next/router";
 import Grid from "../components/Grid/Grid";
+import Filter from "../components/Filter/Filter";
+import Hero from "../components/Hero/Hero";
 
 const RESULT_LIMIT = 20;
 
@@ -54,13 +53,15 @@ export default function Index({ manifests, metadata }) {
 
   return (
     <Layout>
+      <Hero />
       <section
         style={{
           maxWidth: "1280px",
-          margin: "6rem auto 0",
+          margin: "1rem auto 0",
           position: "relative",
         }}
       >
+        {/* <Filter /> */}
         <Grid>
           {results &&
             results.map((result, i) => {

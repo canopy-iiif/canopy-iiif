@@ -4,6 +4,7 @@ import { SchemaLink } from "@apollo/client/link/schema";
 import { makeExecutableSchema } from "@graphql-tools/schema";
 import {
   getCollection,
+  getCollectionData,
   getAllManifests,
   getManifestBySlug,
   getManifestById,
@@ -55,26 +56,6 @@ const typeDefs = gql`
     value: String
   }
 `;
-
-const getCollectionData = (depth = 0) => {
-  let tree = [];
-  const root = Promise.resolve(getCollection(depth));
-  return root.then((collection) => {
-    tree = tree.concat([collection]);
-    if (collection)
-      if (collection.collections > 0) {
-        collection.items.forEach((child) => {
-          if (child.type === "Collection") {
-            const item = Promise.resolve(
-              getCollection(collection.depth + 1, child.id, collection.id)
-            );
-            tree = tree.concat([item]);
-          }
-        });
-      }
-    return tree;
-  });
-};
 
 const resolvers = {
   Query: {
