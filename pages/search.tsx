@@ -6,8 +6,9 @@ import { InView } from "react-intersection-observer";
 import { map as lodashMap, groupBy as lodashGroupBy } from "lodash";
 import Grid from "../components/Grid/Grid";
 import Filter from "../components/Filter/Filter";
+import Hero from "../components/Hero/Hero";
 
-const RESULT_LIMIT = 30;
+const RESULT_LIMIT = 20;
 
 export default function Index({ manifests, metadata }) {
   /**
@@ -52,14 +53,15 @@ export default function Index({ manifests, metadata }) {
 
   return (
     <Layout>
+      <Hero />
       <section
         style={{
           maxWidth: "1280px",
-          margin: "6rem auto 0",
+          margin: "1rem auto 0",
           position: "relative",
         }}
       >
-        <Filter />
+        {/* <Filter /> */}
         <Grid>
           {results &&
             results.map((result, i) => {
