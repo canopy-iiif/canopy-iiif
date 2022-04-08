@@ -1,8 +1,8 @@
 import dynamic from "next/dynamic";
 
-const ReactMediaPlayer = dynamic(() => import("@nulib/react-media-player"), {
+const CloverIIIF = dynamic(() => import("@samvera/clover-iiif"), {
   ssr: false,
 });
 
-const Viewer = ({ manifestId }) => <ReactMediaPlayer manifestId={manifestId} />;
+const Viewer = ({ manifestId }) => <CloverIIIF manifestId={manifestId} />;
 export default Viewer;
