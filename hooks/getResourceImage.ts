@@ -13,8 +13,8 @@ export const getResourceImage = (resource, size = "600,", region = "full") => {
       return `${resource.service.id}/${region}/${size}/0/default.jpg`;
   }
 
-  if (resource.service["@id"])
-    return `${resource.service["@id"]}/${region}/${size}/0/default.jpg`;
+  if (resource.service[0]["@id"])
+    return `${resource.service[0]["@id"]}/${region}/${size}/0/default.jpg`;
 
   return `${resource.service[0].id}/${region}/${size}/0/default.jpg`;
 };
