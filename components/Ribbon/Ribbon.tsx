@@ -1,15 +1,19 @@
-import RibbonItem from "./Item";
-import { Items, Title, Wrapper } from "./Ribbon.styled";
+import dynamic from "next/dynamic";
+
+const BloomIIIF = dynamic(() => import("@samvera/bloom-iiif"), {
+  ssr: false,
+});
 
 const Ribbon = ({ label, children }) => {
+  const collectionId: string = "http://localhost:5001/api/collection";
+
   return (
-    <Wrapper>
-      <Title>{label}</Title>
-      <Items>{children}</Items>
-    </Wrapper>
+    <>
+      <BloomIIIF collectionId={collectionId} />
+      <BloomIIIF collectionId={collectionId} />
+      <BloomIIIF collectionId={collectionId} />
+    </>
   );
 };
-
-Ribbon.Item = RibbonItem;
 
 export default Ribbon;
