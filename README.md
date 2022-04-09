@@ -53,4 +53,8 @@ const dev = {
   ],
   metadata: ["Subject", "Date", "Dimensions"],
 };
+
+
+exports.config = config;
+exports.dev = dev;
 ```
