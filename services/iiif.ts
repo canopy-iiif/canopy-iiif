@@ -16,17 +16,6 @@ const slugifyConfig = {
  *
  */
 const ROOT_COLLECTION = process.env.collection;
-
-export const getCollection = (depth, id = ROOT_COLLECTION, parent = null) => {
-  const vault = new Vault();
-  return vault
-    .loadCollection(id)
-    .then((data: any) => buildCollection(data, depth, parent))
-    .catch((error: any) => {
-      console.error(`Collection failed to load: ${error}`);
-    });
-};
-
 export const getCollectionData = (depth = 0) => {
   let tree = [];
   const root = Promise.resolve(getCollection(depth));
@@ -47,6 +36,16 @@ export const getCollectionData = (depth = 0) => {
   });
 };
 
+export const getCollection = (depth, id = ROOT_COLLECTION, parent = null) => {
+  const vault = new Vault();
+  return vault
+    .loadCollection(id)
+    .then((data: any) => buildCollection(data, depth, parent))
+    .catch((error: any) => {
+      console.error(`Collection failed to load: ${error}`);
+    });
+};
+
 /**
  *
  * @param json
@@ -60,7 +59,7 @@ const buildCollection = (data, depth, parent = null) => {
   const id = data.id;
   const label = getLabel(data.label);
   const slug = slugify(label[0], { ...slugifyConfig });
-  const children = buildCollectionItems3(data, id);
+  const children = buildCollectionItems(data, id);
 
   return {
     id,
@@ -74,59 +73,7 @@ const buildCollection = (data, depth, parent = null) => {
   };
 };
 
-/**
- *
- * @param items
- * @param parent
- * @returns
- */
-const buildCollectionItems2 = (json, parent) => {
-  let manifests = 0;
-  let collections = 0;
-  let items = [];
-
-  if (json.collections)
-    items = items.concat(
-      json.collections.map((item) => {
-        item.id = item["@id"];
-        delete item["@id"];
-
-        item.type = item["@type"].replace("sc:", "");
-        delete item["@type"];
-
-        if (item.type === "Manifest") manifests++;
-        if (item.type === "Collection") collections++;
-        item.label = getLabel(item.label);
-        item.parent = parent;
-        return item;
-      })
-    );
-
-  if (json.manifests)
-    items = items.concat(
-      json.manifests.map((item) => {
-        item.id = item["@id"];
-        delete item["@id"];
-
-        item.type = item["@type"].replace("sc:", "");
-        delete item["@type"];
-
-        if (item.type === "Manifest") manifests++;
-        if (item.type === "Collection") collections++;
-        item.label = getLabel(item.label);
-        item.parent = parent;
-        return item;
-      })
-    );
-
-  return {
-    items: items,
-    manifests,
-    collections,
-  };
-};
-
-const buildCollectionItems3 = (json, parent) => {
+const buildCollectionItems = (json, parent) => {
   let manifests = 0;
   let collections = 0;
   return {
