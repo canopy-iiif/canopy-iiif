@@ -3,11 +3,11 @@
  */
 const config = {
   collection: "https://digital.lib.utk.edu/assemble/collection/collections/bcpl",
-  title: "RFTA Artists",
+  title: "Blount County Public Library Images",
   hero: [
     "https://digital.lib.utk.edu/assemble/manifest/bcpl/185",
   ],
-  metadata: ["Subject"],
+  metadata: ["Subject", "Place", "Photographer"],
 };
 
 /**
@@ -15,11 +15,11 @@ const config = {
  */
 const dev = {
   collection: "https://digital.lib.utk.edu/assemble/collection/collections/bcpl",
-  title: "RFTA Artists",
+  title: "Blount County Public Library Images",
   hero: [
     "https://digital.lib.utk.edu/assemble/manifest/bcpl/185",
   ],
-  metadata: ["Subject"],
+  metadata: ["Subject", "Place", "Photographer"],
 };
 
 
