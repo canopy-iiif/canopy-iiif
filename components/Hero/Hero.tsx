@@ -21,14 +21,14 @@ const Hero = () => {
   /**
    * @todo: handle this better
    */
-  if (hero.items) resource = hero.items[0].items[0].items[0].body;
+  // if (hero.items) resource = hero.items[0].items[0].items[0].body;
 
-  if (hero.sequences)
-    resource = hero.sequences[0].canvases[0].images[0].resource;
+  // if (hero.sequences)
+  //   resource = hero.sequences[0].canvases[0].images[0].resource;
 
   return (
     <Wrapper>
-      <Figure resource={resource} region="250,950,2615,1200" size="20," />
+      {/* <Figure resource={resource} region="250,950,2615,1200" size="20," /> */}
     </Wrapper>
   );
 };

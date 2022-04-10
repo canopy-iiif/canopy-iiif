@@ -20,19 +20,19 @@ const GridItem = ({ data }) => {
   /**
    * @todo: handle this better
    */
-  if (item.items) resource = item.items[0].items[0].items[0].body;
+  // if (item.items) resource = item.items[0].items[0].items[0].body;
 
-  if (item.sequences)
-    resource = item.sequences[0].canvases[0].images[0].resource;
+  // if (item.sequences)
+  //   resource = item.sequences[0].canvases[0].images[0].resource;
 
   return (
     <Item className="can-grid-column">
-      <Card
+      {/* <Card
         key={data.id}
         label={getLabel(item.label)}
         path={`/manifest/${data.slug}`}
         resource={resource}
-      />
+      /> */}
     </Item>
   );
 };

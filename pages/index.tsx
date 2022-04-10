@@ -20,13 +20,7 @@ export default function Index({ metadata }) {
           position: "relative",
         }}
       >
-        {metadata.map((result) => (
-          <Ribbon label={result.label} key={result.label}>
-            {result.values.map((data) => (
-              <Ribbon.Item data={data} />
-            ))}
-          </Ribbon>
-        ))}
+        <span></span>
       </section>
     </Layout>
   );

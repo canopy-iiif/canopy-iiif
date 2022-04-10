@@ -2,14 +2,7 @@ import { ApolloServer, gql } from "apollo-server-micro";
 import { ApolloClient, InMemoryCache } from "@apollo/client";
 import { SchemaLink } from "@apollo/client/link/schema";
 import { makeExecutableSchema } from "@graphql-tools/schema";
-import {
-  getCollection,
-  getCollectionData,
-  getAllManifests,
-  getManifestBySlug,
-  getManifestById,
-} from "../../services/iiif";
-import { getLabel } from "../../hooks/getLabel";
+import { getCollectionData } from "../../services/iiif";
 import slugify from "slugify";
 import { getValues } from "../../hooks/getValues";
 const axios = require("axios");
@@ -20,7 +13,6 @@ const typeDefs = gql`
     collectionItems: [CollectionItem]
     manifests(limit: Int, offset: Int, id: [String]): [Manifest]
     metadata(id: String, label: String): [Metadata]
-    allManifests: [Manifest]
     getManifest(slug: ID): Manifest
   }
 
@@ -78,6 +70,10 @@ const resolvers = {
     manifests: async (_, { limit, offset, id }, context) => {
       return getCollectionData().then((tree) => {
         return Promise.all(tree).then((values) => {
+          /**
+           * flatten items of distinct collections
+           * @todo: break this out
+           */
           let items = [];
           values.forEach((results) => {
             if (results)
@@ -85,6 +81,10 @@ const resolvers = {
                 items.push(element);
               });
           });
+
+          /**
+           * massage manifests
+           */
           let results = items.filter((item) => {
             item.slug = slugify(item.label[0], {
               lower: true,
@@ -149,9 +149,6 @@ const resolvers = {
           });
         });
       });
-    },
-    allManifests: async (_, __, context) => {
-      return getAllManifests();
     },
     getManifest: async (manifests, { slug }, context) => {
       return getCollectionData().then((tree) => {

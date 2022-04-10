@@ -64,9 +64,9 @@ export default function Index({ manifests, metadata }) {
         {/* <Filter /> */}
         <Grid>
           {results &&
-            results.map((result, i) => {
-              return <Grid.Item data={result} key={result.id} />;
-            })}
+            results.map((result, i) => (
+              <Grid.Item data={result} key={result.id} />
+            ))}
         </Grid>
         <InView
           as="div"

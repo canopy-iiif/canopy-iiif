@@ -1,9 +1,5 @@
-import { concat, gql } from "@apollo/client";
-import { useState } from "react";
 import slugify from "slugify";
 import { getLabel } from "../hooks/getLabel";
-import { getGraphQL } from "../pages/api/graphql";
-
 import { Vault } from "@iiif/vault";
 
 const slugifyConfig = {
@@ -46,6 +42,15 @@ export const getCollection = (depth, id = ROOT_COLLECTION, parent = null) => {
     });
 };
 
+export const getManifestById = (id) => {
+  const vault = new Vault();
+  return vault
+    .loadManifest(id)
+    .then((data: any) => data)
+    .catch((error: any) => {
+      console.error(`Collection failed to load: ${error}`);
+    });
+};
 /**
  *
  * @param json
@@ -91,25 +96,6 @@ const buildCollectionItems = (json, parent) => {
 
 /**
  *
- * @param id
- * @returns
- */
-export const getAllManifests = (id = ROOT_COLLECTION) =>
-  fetch(id)
-    .then((response) => response.json())
-    .then((json) =>
-      json.items.filter((item) => {
-        if (item.type === "Manifest") {
-          item.label = getLabel(item.label);
-          item.slug = slugify(item.label[0], { ...slugifyConfig });
-          item.collectionId = id;
-          return item;
-        }
-      })
-    );
-
-/**
- *
  * @param slug
  * @returns
  */
@@ -144,13 +130,3 @@ export const getManifests = (limit, offset) =>
         }
       })
     );
-
-/**
- *
- * @param id
- * @returns
- */
-export const getManifestById = (id) =>
-  fetch(id)
-    .then((response) => response.json())
-    .then((json) => json);
