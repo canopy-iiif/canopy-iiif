@@ -4,6 +4,8 @@ import slugify from "slugify";
 import { getLabel } from "../hooks/getLabel";
 import { getGraphQL } from "../pages/api/graphql";
 
+import { Vault } from "@iiif/vault";
+
 const slugifyConfig = {
   lower: true,
   strict: true,
@@ -14,6 +16,16 @@ const slugifyConfig = {
  *
  */
 const ROOT_COLLECTION = process.env.collection;
+
+export const getCollection = (depth, id = ROOT_COLLECTION, parent = null) => {
+  const vault = new Vault();
+  return vault
+    .loadCollection(id)
+    .then((data: any) => buildCollection(data, depth, parent))
+    .catch((error: any) => {
+      console.error(`Collection failed to load: ${error}`);
+    });
+};
 
 export const getCollectionData = (depth = 0) => {
   let tree = [];
@@ -42,64 +54,13 @@ export const getCollectionData = (depth = 0) => {
  * @param parent
  * @returns
  */
-const buildCollection = (json, depth, parent = null) => {
-  if (!json) return null;
+const buildCollection = (data, depth, parent = null) => {
+  if (!data) return null;
 
-  /**
-   * defensively determine @context
-   */
-  let context = json["@context"];
-  if (!context) context = "http://iiif.io/api/presentation/3/context.json";
-
-  if (Array.isArray(context)) context = context[0];
-  context = context.replace("https://", "");
-  context = context.replace("http://", "");
-
-  /**
-   * set props
-   */
-  let id = null;
-  let label = null;
-  let slug = null;
-  let children = null;
-
-  /**
-   * based on @context, parse collections
-   */
-  switch (context) {
-    case "iiif.io/api/presentation/2/context.json":
-      id = json["@id"];
-      label = getLabel(json.label);
-      slug = slugify(label[0], { ...slugifyConfig });
-      children = buildCollectionItems2(json, id);
-      return {
-        id,
-        label,
-        slug,
-        depth,
-        parent,
-        manifests: children.manifests,
-        collections: children.collections,
-        items: children.items,
-      };
-    case "iiif.io/api/presentation/3/context.json":
-      id = json.id;
-      label = getLabel(json.label);
-      slug = slugify(label[0], { ...slugifyConfig });
-      children = buildCollectionItems3(json, id);
-      return {
-        id,
-        label,
-        slug,
-        depth,
-        parent,
-        manifests: children.manifests,
-        collections: children.collections,
-        items: children.items,
-      };
-  }
-
-  console.log(children);
+  const id = data.id;
+  const label = getLabel(data.label);
+  const slug = slugify(label[0], { ...slugifyConfig });
+  const children = buildCollectionItems3(data, id);
 
   return {
     id,
@@ -180,25 +141,6 @@ const buildCollectionItems3 = (json, parent) => {
     collections,
   };
 };
-
-/**
- *
- * @param depth
- * @param id
- * @param parent
- * @returns
- */
-export const getCollection = (depth, id = ROOT_COLLECTION, parent = null) =>
-  fetch(id)
-    .then((response) => response.text())
-    .then((text) => {
-      try {
-        return JSON.parse(text);
-      } catch (err) {
-        console.log(err);
-      }
-    })
-    .then((json) => buildCollection(json, depth, parent));
 
 /**
  *
