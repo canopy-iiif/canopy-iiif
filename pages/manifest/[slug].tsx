@@ -9,6 +9,7 @@ import {
   RequiredStatement,
   Summary,
 } from "@samvera/nectar-iiif";
+import Related from "../../components/Related/Related";
 
 export default function Manifest({ manifest }) {
   const { id, label, metadata, requiredStatement, summary } = manifest;
@@ -29,6 +30,9 @@ export default function Manifest({ manifest }) {
         {requiredStatement && (
           <RequiredStatement requiredStatement={requiredStatement} />
         )}
+      </section>
+      <section>
+        <Related label={label} />
       </section>
     </Layout>
   );
