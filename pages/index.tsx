@@ -1,12 +1,6 @@
-import React from "react";
-import { gql } from "@apollo/client";
-import { client } from "./api/graphql";
+import React, { useEffect, useState } from "react";
 import Layout from "../components/layout";
 import Hero from "../components/Hero/Hero";
-import Nav from "../components/Nav/Nav";
-import groupBy from "lodash/groupBy";
-import map from "lodash/map";
-import orderBy from "lodash/orderBy";
 import dynamic from "next/dynamic";
 
 const BloomIIIF = dynamic(() => import("@samvera/bloom-iiif"), {
@@ -14,6 +8,14 @@ const BloomIIIF = dynamic(() => import("@samvera/bloom-iiif"), {
 });
 
 export default function Index({ metadata }) {
+  const [baseUrl, setBaseUrl] = useState("");
+  useEffect(() => {
+    console.log(window.location);
+    const { host, protocol } = window.location;
+    const baseUrl = `${protocol}//${host}`;
+    setBaseUrl(baseUrl);
+  }, []);
+
   return (
     <Layout>
       <Hero />
@@ -25,9 +27,7 @@ export default function Index({ metadata }) {
         }}
       >
         {metadata.map((label) => (
-          <BloomIIIF
-            collectionId={`http://localhost:5001/api/iiif/metadata/${label}`}
-          />
+          <BloomIIIF collectionId={`${baseUrl}/api/iiif/metadata/${label}`} />
         ))}
       </section>
     </Layout>

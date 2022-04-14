@@ -4,7 +4,7 @@ import { client } from "./../../graphql";
 import groupBy from "lodash/groupBy";
 import map from "lodash/map";
 import orderBy from "lodash/orderBy";
-import { withRouter } from "next/router";
+import absoluteUrl from "next-absolute-url";
 
 const getMetadata = async (metdataQuery) => {
   const { loading, error, data } = await client.query({
@@ -18,6 +18,7 @@ const getMetadata = async (metdataQuery) => {
 };
 
 export default function handler(req, res) {
+  const { origin } = absoluteUrl(req);
   const { label } = req.query;
 
   const metdataQuery = `
@@ -53,10 +54,10 @@ export default function handler(req, res) {
           "desc"
         ).slice(0, 10);
         return {
-          id: `http://localhost:5001/api/iiif/metadata/${grouped.label}`,
+          id: `${origin}/api/iiif/metadata/${grouped.label}`,
           label: grouped.label,
           summary: `Browse by ${grouped.label}`,
-          homepage: `http://localhost:5001/search`,
+          homepage: `${origin}/search`,
           items,
         };
       })[0];
