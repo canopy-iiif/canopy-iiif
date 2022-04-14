@@ -10,7 +10,6 @@ const BloomIIIF = dynamic(() => import("@samvera/bloom-iiif"), {
 export default function Index({ metadata }) {
   const [baseUrl, setBaseUrl] = useState("");
   useEffect(() => {
-    console.log(window.location);
     const { host, protocol } = window.location;
     const baseUrl = `${protocol}//${host}`;
     setBaseUrl(baseUrl);
@@ -27,7 +26,10 @@ export default function Index({ metadata }) {
         }}
       >
         {metadata.map((label) => (
-          <BloomIIIF collectionId={`${baseUrl}/api/iiif/metadata/${label}`} />
+          <BloomIIIF
+            collectionId={`${baseUrl}/api/iiif/metadata/${label}`}
+            key={`${baseUrl}/api/iiif/metadata/${label}`}
+          />
         ))}
       </section>
     </Layout>

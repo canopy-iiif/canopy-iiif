@@ -19,7 +19,7 @@ const buildCollection = (data) => {
           id: homepage,
         });
         manifest.addThumbnail({
-          id: "http://localhost:5001/manifest/url",
+          id: "item.id",
         });
       });
     });
