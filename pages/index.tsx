@@ -1,14 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Layout from "../components/layout";
 import Hero from "../components/Hero/Hero";
-import dynamic from "next/dynamic";
-
-const BloomIIIF: React.ComponentType<{ collectionId: string }> = dynamic(
-  () => import("@samvera/bloom-iiif"),
-  {
-    ssr: false,
-  }
-);
+import BloomIIIF from "@samvera/bloom-iiif";
 
 export default function Index({ metadata }) {
   const [baseUrl, setBaseUrl] = useState("");
