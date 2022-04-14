@@ -3,9 +3,12 @@ import Layout from "../components/layout";
 import Hero from "../components/Hero/Hero";
 import dynamic from "next/dynamic";
 
-const BloomIIIF = dynamic(() => import("@samvera/bloom-iiif"), {
-  ssr: false,
-});
+const BloomIIIF: React.ComponentType<{ collectionId: string }> = dynamic(
+  () => import("@samvera/bloom-iiif"),
+  {
+    ssr: false,
+  }
+);
 
 export default function Index({ metadata }) {
   const [baseUrl, setBaseUrl] = useState("");
