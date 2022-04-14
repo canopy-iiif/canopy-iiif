@@ -32,6 +32,12 @@ const devAlt = {
     "https://iiif.bodleian.ox.ac.uk/iiif/manifest/d6f0ea37-6882-42a5-a923-9fb1e034ae29.json",
   ],
   metadata: ["Materials"],
+  pages: {
+    seeAlso: [
+      "https://id.for.seeAlso.item.1.md",
+      "https://id.for.seeAlso.item.2.md",
+    ],
+  },
 };
 
 exports.config = config;
