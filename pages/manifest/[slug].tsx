@@ -21,17 +21,27 @@ export default function Manifest({ manifest }) {
           maxWidth: "1280px",
           margin: "auto",
           position: "relative",
+          padding: "1rem 0 0",
         }}
       >
         <Viewer manifestId={id} />
-        <Label label={label} as="h1" />
-        {summary && <Summary summary={summary} />}
-        {metadata && <Metadata metadata={metadata} />}
-        {requiredStatement && (
-          <RequiredStatement requiredStatement={requiredStatement} />
-        )}
+        <div style={{ padding: "0 1.618rem 2rem" }}>
+          <Label label={label} as="h1" />
+          {summary && <Summary summary={summary} />}
+          {metadata && <Metadata metadata={metadata} />}
+          {requiredStatement && (
+            <RequiredStatement requiredStatement={requiredStatement} />
+          )}
+        </div>
       </section>
-      <section>
+      <section
+        style={{
+          maxWidth: "1280px",
+          margin: "auto",
+          position: "relative",
+          padding: "0 1.618rem",
+        }}
+      >
         <Related label={label} />
       </section>
     </Layout>

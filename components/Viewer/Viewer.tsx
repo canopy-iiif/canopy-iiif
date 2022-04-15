@@ -7,5 +7,12 @@ const CloverIIIF: React.ComponentType<{ manifestId: string }> = dynamic(
   }
 );
 
-const Viewer = ({ manifestId }) => <CloverIIIF manifestId={manifestId} />;
+const options = {
+  showTitle: false,
+  showIIIFBadge: false,
+};
+
+const Viewer = ({ manifestId }) => (
+  <CloverIIIF manifestId={manifestId} options={options} />
+);
 export default Viewer;
