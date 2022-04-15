@@ -21,12 +21,14 @@ export default function Index({ metadata }) {
           position: "relative",
         }}
       >
-        {metadata.map((label) => (
-          <BloomIIIF
-            collectionId={`${baseUrl}/api/iiif/metadata/${label}`}
-            key={`${baseUrl}/api/iiif/metadata/${label}`}
-          />
-        ))}
+        <div style={{ padding: "1rem 2rem" }}>
+          {metadata.map((label) => (
+            <BloomIIIF
+              collectionId={`${baseUrl}/api/iiif/metadata/${label}`}
+              key={`${baseUrl}/api/iiif/metadata/${label}`}
+            />
+          ))}
+        </div>
       </section>
     </Layout>
   );
