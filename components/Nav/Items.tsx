@@ -21,15 +21,17 @@ const NavItems = ({ items }) => {
 
   const resetHighlight = () => setHighlightedItem(null);
 
-  const highlightStyles = {};
+  let highlightStyles = {};
 
   if (itemBoundingBox && wrapperBoundingBox) {
-    highlightStyles.transitionDuration = isHoveredFromNull ? "0ms" : "100ms";
-    highlightStyles.opacity = highlightedItem ? 0.25 : 0;
-    highlightStyles.width = `${itemBoundingBox.width}px`;
-    highlightStyles.transform = `translate(${
-      itemBoundingBox.left - wrapperBoundingBox.left
-    }px)`;
+    highlightStyles = {
+      transitionDuration: isHoveredFromNull ? "0ms" : "100ms",
+      opacity: highlightedItem ? 0.25 : 0,
+      width: `${itemBoundingBox.width}px`,
+      transform: `translate(${
+        itemBoundingBox.left - wrapperBoundingBox.left
+      }px)`,
+    };
   }
 
   const router = useRouter();
