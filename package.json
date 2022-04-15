@@ -13,16 +13,21 @@
     "@radix-ui/colors": "^0.1.8",
     "@samvera/bloom-iiif": "^0.0.4-alpha.0",
     "@samvera/clover-iiif": "^1.8.0",
+    "@samvera/nectar-iiif": "^0.0.4-alpha.2",
     "@stitches/react": "^1.2.6",
+    "@types/react": "^17.0.44",
+    "@types/react-dom": "^18.0.0",
     "apollo-datasource-rest": "^3.4.0",
     "apollo-server-micro": "^3.0.1",
     "axios": "^0.24.0",
     "clsx": "^1.1.1",
     "flexsearch": "^0.7.21",
     "graphql": "^15.8.0",
+    "iiif-builder": "^1.0.4",
     "lodash": "^4.17.21",
     "micro": "^9.3.4",
     "next": "latest",
+    "next-absolute-url": "^1.2.2",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-intersection-observer": "^8.33.1",
@@ -33,5 +38,9 @@
   "devDependencies": {
     "@types/lodash": "^4.14.178",
     "typescript": "^4.5.4"
+  },
+  "resolutions": {
+    "@types/react": "17.0.44",
+    "@types/react-dom": "18.0.0"
   }
 }

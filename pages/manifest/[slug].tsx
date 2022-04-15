@@ -2,20 +2,47 @@ import { gql } from "@apollo/client";
 import { client } from "../api/graphql";
 import Layout from "../../components/layout";
 import Viewer from "../../components/Viewer/Viewer";
-import Hero from "../../components/Hero/Hero";
+import { Vault } from "@iiif/vault";
+import {
+  Label,
+  Metadata,
+  RequiredStatement,
+  Summary,
+} from "@samvera/nectar-iiif";
+import Related from "../../components/Related/Related";
 
-export default function Manifest({ id, label }) {
+export default function Manifest({ manifest }) {
+  const { id, label, metadata, requiredStatement, summary } = manifest;
+
   return (
     <Layout>
-      <Hero />
       <section
         style={{
           maxWidth: "1280px",
           margin: "auto",
           position: "relative",
+          padding: "1rem 0 0",
         }}
       >
         <Viewer manifestId={id} />
+        <div style={{ padding: "0 1.618rem 2rem" }}>
+          <Label label={label} as="h1" />
+          {summary && <Summary summary={summary} />}
+          {metadata && <Metadata metadata={metadata} />}
+          {requiredStatement && (
+            <RequiredStatement requiredStatement={requiredStatement} />
+          )}
+        </div>
+      </section>
+      <section
+        style={{
+          maxWidth: "1280px",
+          margin: "auto",
+          position: "relative",
+          padding: "0 1.618rem",
+        }}
+      >
+        <Related label={label} />
       </section>
     </Layout>
   );
@@ -34,8 +61,17 @@ export async function getStaticProps({ params }) {
 
   if (!data) return null;
 
+  const { id } = data.getManifest;
+  const vault = new Vault();
+  const manifest = await vault
+    .loadManifest(id)
+    .then((data) => data)
+    .catch((error) => {
+      console.error(`Manifest ${id} failed to load: ${error}`);
+    });
+
   return {
-    props: { ...data.getManifest },
+    props: { manifest },
   };
 }
 
