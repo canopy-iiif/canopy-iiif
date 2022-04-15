@@ -23,7 +23,7 @@
     "clsx": "^1.1.1",
     "flexsearch": "^0.7.21",
     "graphql": "^15.8.0",
-    "iiif-builder": "^1.0.2",
+    "iiif-builder": "^1.0.4",
     "lodash": "^4.17.21",
     "micro": "^9.3.4",
     "next": "latest",

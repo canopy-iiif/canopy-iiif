@@ -12,7 +12,7 @@ const buildCollection = (data) => {
       id: homepage,
     });
     items.forEach((item) => {
-      collection.createManifest(item.id, (manifest) => {
+      collection.createCollection(item.id, (manifest) => {
         manifest.addLabel(item.label, "none");
         manifest.addSummary(item.summary, "none");
         manifest.setHomepage({
