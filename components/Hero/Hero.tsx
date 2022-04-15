@@ -28,7 +28,7 @@ const Hero = () => {
 
   return (
     <Wrapper>
-      <Figure resource={resource} region="250,950,2615,1200" size="1280," />
+      <Figure resource={resource} region="250,950,2615,1200" size="20," />
     </Wrapper>
   );
 };

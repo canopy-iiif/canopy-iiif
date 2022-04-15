@@ -15,6 +15,26 @@ const slugifyConfig = {
  */
 const ROOT_COLLECTION = process.env.collection;
 
+export const getCollectionData = (depth = 0) => {
+  let tree = [];
+  const root = Promise.resolve(getCollection(depth));
+  return root.then((collection) => {
+    tree = tree.concat([collection]);
+    if (collection)
+      if (collection.collections > 0) {
+        collection.items.forEach((child) => {
+          if (child.type === "Collection") {
+            const item = Promise.resolve(
+              getCollection(collection.depth + 1, child.id, collection.id)
+            );
+            tree = tree.concat([item]);
+          }
+        });
+      }
+    return tree;
+  });
+};
+
 /**
  *
  * @param json
