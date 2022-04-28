@@ -27,11 +27,9 @@ export default function Manifest({ manifest }) {
         <Viewer manifestId={id} />
         <div style={{ padding: "0 1.618rem 2rem" }}>
           <Label label={label} as="h1" />
-          {summary && <Summary summary={summary} />}
-          {metadata && <Metadata metadata={metadata} />}
-          {requiredStatement && (
-            <RequiredStatement requiredStatement={requiredStatement} />
-          )}
+          <Summary summary={summary} />
+          <Metadata metadata={metadata} />
+          <RequiredStatement requiredStatement={requiredStatement} />
         </div>
       </section>
       <section
