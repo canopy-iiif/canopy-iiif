@@ -43,11 +43,13 @@ export default function handler(req, res) {
       .map((grouped) => {
         const items = orderBy(
           grouped.data.map((term) => {
+            const representative =
+              term.values[Math.floor(Math.random() * term.values.length)]
+                .manifestId;
             return {
               label: term.value,
               summary: `${term.values.length} Items`,
-              id: term.values[Math.floor(Math.random() * term.values.length)]
-                .manifestId,
+              id: representative,
             };
           }),
           "count",

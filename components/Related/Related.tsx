@@ -19,14 +19,8 @@ const Related = ({ label }) => {
         More Like <Label label={label} as="span" />
       </h2>
       <div>
-        <BloomIIIF
-          collectionId={`${baseUrl}/api/iiif/metadata/Subject`}
-          key={`${baseUrl}/api/iiif/metadata/Subject`}
-        />
-        <BloomIIIF
-          collectionId={`${baseUrl}/api/iiif/metadata/Date`}
-          key={`${baseUrl}/api/iiif/metadata/Date`}
-        />
+        @todo: create mvp method for getting related items as bloom
+        collection(s)
       </div>
     </>
   );

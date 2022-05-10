@@ -11,19 +11,18 @@ const buildCollection = (data) => {
     collection.setHomepage({
       id: homepage,
     });
-    items.forEach((item) => {
-      collection.createCollection(item.id, (manifest) => {
-        manifest.addLabel(item.label, "none");
-        manifest.addSummary(item.summary, "none");
-        manifest.setHomepage({
-          id: homepage,
-        });
-        manifest.addThumbnail({
-          id: "item.id",
-        });
-      });
-    });
+    items.forEach((item) => buildManifest(collection, item));
   });
 };
+
+const buildManifest = async (collection, item) =>
+  collection.createManifest(item.id, (manifest) => {
+    manifest.addLabel(item.label, "none");
+    manifest.addSummary(item.summary, "none");
+    manifest.addThumbnail({
+      id: "https://en.wikipedia.org/wiki/Ege_Bamyas%C4%B1#/media/File:Egebamyasialbumcover.jpg",
+      type: "Image",
+    });
+  });
 
 export { buildCollection };
