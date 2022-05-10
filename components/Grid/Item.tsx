@@ -30,7 +30,7 @@ const GridItem = ({ data }) => {
       <Card
         key={data.id}
         label={getLabel(item.label)}
-        path={`/manifest/${data.slug}`}
+        path={`/work/${data.slug}`}
         resource={resource}
       />
     </Item>
