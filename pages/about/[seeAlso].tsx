@@ -1,9 +1,9 @@
 import Layout from "../../components/layout";
 
-export default function Topic() {
+export default function SeeAlso() {
   return (
     <Layout>
-      <>[metadata label]</>
+      <>[seeAlso entry markdown]</>
     </Layout>
   );
 }
