@@ -9,7 +9,6 @@ const collection = process.env.collection;
 const navItems = [
   { path: "/", text: "Browse" },
   { path: "/search", text: "Search" },
-  { path: "/about", text: "About" },
 ];
 
 const Header = () => {
