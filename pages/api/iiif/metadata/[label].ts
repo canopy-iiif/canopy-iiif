@@ -5,6 +5,7 @@ import groupBy from "lodash/groupBy";
 import map from "lodash/map";
 import orderBy from "lodash/orderBy";
 import absoluteUrl from "next-absolute-url";
+import { getManifestById } from "../../../../services/iiif";
 
 const getMetadata = async (metdataQuery) => {
   const { loading, error, data } = await client.query({
@@ -28,42 +29,46 @@ export default function handler(req, res) {
     }
   `;
 
-  Promise.resolve(getMetadata(metdataQuery)).then((data) => {
-    const collectionData = [label]
-      .map((string) => {
-        const values = data[string];
-        return {
-          label: string,
-          data: map(groupBy(values, "value"), (values, value) => ({
-            value,
-            values,
-          })),
-        };
-      })
-      .map((grouped) => {
-        const items = orderBy(
-          grouped.data.map((term) => {
-            const representative =
-              term.values[Math.floor(Math.random() * term.values.length)]
-                .manifestId;
+  Promise.resolve(
+    getMetadata(metdataQuery)
+      .then((data) => {
+        return [label]
+          .map((string) => {
+            const values = data[string];
             return {
-              label: term.value,
-              summary: `${term.values.length} Items`,
-              id: representative,
+              label: string,
+              data: map(groupBy(values, "value"), (values, value) => ({
+                value,
+                values,
+              })),
             };
-          }),
-          "count",
-          "desc"
-        ).slice(0, 10);
-        return {
-          id: `${origin}/api/iiif/metadata/${grouped.label}`,
-          label: grouped.label,
-          summary: `Browse by ${grouped.label}`,
-          homepage: `${origin}/search`,
-          items,
-        };
-      })[0];
-
-    res.status(200).json(buildCollection(collectionData));
-  });
+          })
+          .map((grouped) => {
+            const items = orderBy(
+              grouped.data.map((term) => {
+                const representative =
+                  term.values[Math.floor(Math.random() * term.values.length)]
+                    .manifestId;
+                return {
+                  label: term.value,
+                  summary: `${term.values.length} Items`,
+                  id: representative,
+                };
+              }),
+              "count",
+              "desc"
+            ).slice(0, 10);
+            return {
+              id: `${origin}/api/iiif/metadata/${grouped.label}`,
+              label: grouped.label,
+              summary: `Browse by ${grouped.label}`,
+              homepage: `${origin}/search`,
+              items,
+            };
+          })[0];
+      })
+      .then((data) => {
+        res.status(200).json(buildCollection(data));
+      })
+  );
 }

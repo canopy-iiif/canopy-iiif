@@ -6,8 +6,8 @@ const Related = ({ label }) => {
   const [baseUrl, setBaseUrl] = useState("");
   useEffect(() => {
     const { host, protocol } = window.location;
-    const baseUrl = `${protocol}//${host}`;
-    setBaseUrl(baseUrl);
+    const root = `${protocol}//${host}`;
+    setBaseUrl(root);
   }, []);
 
   /**
