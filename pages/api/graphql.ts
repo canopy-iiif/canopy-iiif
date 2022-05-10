@@ -2,14 +2,7 @@ import { ApolloServer, gql } from "apollo-server-micro";
 import { ApolloClient, InMemoryCache } from "@apollo/client";
 import { SchemaLink } from "@apollo/client/link/schema";
 import { makeExecutableSchema } from "@graphql-tools/schema";
-import {
-  getCollection,
-  getCollectionData,
-  getAllManifests,
-  getManifestBySlug,
-  getManifestById,
-} from "../../services/iiif";
-import { getLabel } from "../../hooks/getLabel";
+import { getCollectionData, getAllManifests } from "../../services/iiif";
 import slugify from "slugify";
 import { getValues } from "../../hooks/getValues";
 const axios = require("axios");
