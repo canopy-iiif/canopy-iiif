@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import { gql } from "@apollo/client";
-import { client } from "./api/graphql";
-import Layout from "../components/layout";
+import { client } from "../api/graphql";
+import Layout from "../../components/layout";
 import { InView } from "react-intersection-observer";
 import { map as lodashMap, groupBy as lodashGroupBy } from "lodash";
-import Grid from "../components/Grid/Grid";
-import Hero from "../components/Hero/Hero";
+import Grid from "../../components/Grid/Grid";
+import Hero from "../../components/Hero/Hero";
 
 const RESULT_LIMIT = 20;
 
