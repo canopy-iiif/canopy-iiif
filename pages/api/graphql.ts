@@ -47,6 +47,7 @@ const typeDefs = gql`
     manifestId: String
     label: String
     value: String
+    thumbnail: String
   }
 `;
 
@@ -132,6 +133,7 @@ const resolvers = {
                         manifestId: manifest.id,
                         label: metadataLabel,
                         value,
+                        thumbnail: manifest.thumbnail[0].id,
                       };
                       data.push(result);
                     });
