@@ -28,7 +28,7 @@ const buildHomepage = (id, label) => ({
 });
 
 const buildThumbnail = (id) => ({
-  id: "http://localhost:5001/images/placeholder.png",
+  id: id,
   type: "Image",
 });
 
@@ -39,7 +39,7 @@ const buildItem = (type, id, label, homepage, thumbnail) => ({
     none: [label],
   },
   homepage: [buildHomepage(homepage, label)],
-  thumbnail: [buildThumbnail(id)],
+  thumbnail: [buildThumbnail(thumbnail)],
 });
 
 export { buildCollection };
