@@ -26,6 +26,7 @@ export default function handler(req, res) {
     ${label}: metadata(label: "${label}") {
       manifestId
       value
+      thumbnail
     }
   `;
 
@@ -49,10 +50,12 @@ export default function handler(req, res) {
                 const representative =
                   term.values[Math.floor(Math.random() * term.values.length)]
                     .manifestId;
+                const thumbnail = term.values[Math.floor(Math.random() * term.values.length)].thumbnail;
                 return {
                   label: term.value,
                   summary: `${term.values.length} Items`,
                   id: representative,
+                  thumbnail: thumbnail,
                 };
               }),
               "count",
