@@ -5,6 +5,7 @@ import groupBy from "lodash/groupBy";
 import map from "lodash/map";
 import orderBy from "lodash/orderBy";
 import absoluteUrl from "next-absolute-url";
+import slugify from "slugify";
 import { getManifestById } from "../../../../services/iiif";
 
 const getMetadata = async (metdataQuery) => {
@@ -56,6 +57,7 @@ export default function handler(req, res) {
                   summary: `${term.values.length} Items`,
                   id: representative,
                   thumbnail: thumbnail,
+                  homepage: `${origin}/browse/${slugify(term.value)}`,
                 };
               }),
               "count",
@@ -65,7 +67,6 @@ export default function handler(req, res) {
               id: `${origin}/api/iiif/metadata/${grouped.label}`,
               label: grouped.label,
               summary: `Browse by ${grouped.label}`,
-              homepage: `${origin}/search`,
               items,
             };
           })[0];
