@@ -6,7 +6,6 @@ import map from "lodash/map";
 import orderBy from "lodash/orderBy";
 import absoluteUrl from "next-absolute-url";
 import slugify from "slugify";
-import { getManifestById } from "../../../../services/iiif";
 
 const getMetadata = async (metdataQuery) => {
   const { loading, error, data } = await client.query({
