@@ -54,7 +54,7 @@ export default function handler(req, res) {
                 return {
                   label: term.value,
                   summary: `${term.values.length} Items`,
-                  id: representative,
+                  id: `${origin}/api/iiif/metadata/${slugify(term.value)}`,
                   thumbnail: thumbnail,
                   homepage: `${origin}/browse/${slugify(term.value)}`,
                 };
