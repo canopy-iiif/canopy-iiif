@@ -53,10 +53,10 @@ export default function handler(req, res) {
                 const thumbnail = term.values[Math.floor(Math.random() * term.values.length)].thumbnail;
                 return {
                   label: term.value,
-                  summary: `${term.values.length} Items`,
-                  id: `${origin}/api/iiif/metadata/${slugify(term.value)}`,
+                  summary: `View objects with a label of "${grouped.label}" and value of "${term.value}".`,
+                  id: `${origin}/api/iiif/metadata/${slugify(grouped.label)}/${slugify(term.value)}`,
                   thumbnail: thumbnail,
-                  homepage: `${origin}/browse/${slugify(term.value)}`,
+                  homepage: `${origin}/browse/${slugify(grouped.label)}/${slugify(term.value)}`,
                 };
               }),
               "count",
@@ -66,6 +66,7 @@ export default function handler(req, res) {
               id: `${origin}/api/iiif/metadata/${grouped.label}`,
               label: grouped.label,
               summary: `Browse by ${grouped.label}`,
+              homepage: `${origin}/browse/${slugify(grouped.label)}`,
               items,
             };
           })[0];
