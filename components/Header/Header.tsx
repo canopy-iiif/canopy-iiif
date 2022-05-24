@@ -1,7 +1,7 @@
 import Link from "next/link";
-import Nav from "../Nav/Nav";
-import { Title, Wrapper } from "./Header.styled";
-import IIIF from "../SVG/IIIF";
+import Nav from "@/components/Nav/Nav";
+import { Title, Wrapper } from "@/components/Header/Header.styled";
+import IIIF from "@/components/SVG/IIIF";
 
 const title = process.env.title;
 const collection = process.env.collection;

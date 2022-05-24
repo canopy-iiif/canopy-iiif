@@ -1,6 +1,6 @@
-import { buildCollection } from "../../../../services/iiif-builder";
+import { buildCollection } from "@/services/iiif-builder";
 import { gql } from "@apollo/client";
-import { client } from "./../../graphql";
+import { client } from "@/pages/api/graphql";
 import groupBy from "lodash/groupBy";
 import map from "lodash/map";
 import orderBy from "lodash/orderBy";
@@ -50,13 +50,19 @@ export default function handler(req, res) {
                 const representative =
                   term.values[Math.floor(Math.random() * term.values.length)]
                     .manifestId;
-                const thumbnail = term.values[Math.floor(Math.random() * term.values.length)].thumbnail;
+                const thumbnail =
+                  term.values[Math.floor(Math.random() * term.values.length)]
+                    .thumbnail;
                 return {
                   label: term.value,
                   summary: `View objects with a label of "${grouped.label}" and value of "${term.value}".`,
-                  id: `${origin}/api/iiif/metadata/${slugify(grouped.label)}/${slugify(term.value)}`,
+                  id: `${origin}/api/iiif/metadata/${slugify(
+                    grouped.label
+                  )}/${slugify(term.value)}`,
                   thumbnail: thumbnail,
-                  homepage: `${origin}/browse/${slugify(grouped.label)}/${slugify(term.value)}`,
+                  homepage: `${origin}/browse/${slugify(
+                    grouped.label
+                  )}/${slugify(term.value)}`,
                 };
               }),
               "count",

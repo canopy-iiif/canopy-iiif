@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { Highlight, Items } from "./Nav.styled";
+import { Highlight, Items } from "@/components/Nav/Nav.styled";
 
 const NavItems = ({ items }) => {
   const [itemBoundingBox, setItemBoundingBox] = React.useState(null);

@@ -1,7 +1,7 @@
 import { gql } from "@apollo/client";
-import { client } from "../api/graphql";
-import Layout from "../../components/layout";
-import Viewer from "../../components/Viewer/Viewer";
+import { client } from "@/pages/api/graphql";
+import Layout from "@/components/layout";
+import Viewer from "@/components/Viewer/Viewer";
 import { Vault } from "@iiif/vault";
 import {
   Label,
@@ -9,7 +9,7 @@ import {
   RequiredStatement,
   Summary,
 } from "@samvera/nectar-iiif";
-import Related from "../../components/Related/Related";
+import Related from "@/components/Related/Related";
 
 export default function Manifest({ manifest }) {
   const { id, label, metadata, requiredStatement, summary } = manifest;

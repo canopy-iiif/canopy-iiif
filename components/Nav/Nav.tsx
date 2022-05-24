@@ -1,6 +1,6 @@
 import React from "react";
-import { Wrapper } from "./Nav.styled";
-import NavItems from "./Items";
+import { Wrapper } from "@/components/Nav/Nav.styled";
+import NavItems from "@/components/Nav/Items";
 
 const Nav = ({ items }) => {
   return (

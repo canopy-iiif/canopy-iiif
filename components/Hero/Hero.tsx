@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 
-import { getManifestById } from "../../services/iiif";
-import Figure from "../Figure/Figure";
-import { Wrapper } from "./Hero.styled";
+import { getManifestById } from "@/services/iiif";
+import Figure from "@/components/Figure/Figure";
+import { Wrapper } from "@/components/Hero/Hero.styled";
 
 const Hero = () => {
   const [hero, setHero] = useState();

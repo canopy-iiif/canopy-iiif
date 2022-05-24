@@ -1,7 +1,7 @@
-import { getResourceImage } from "../../hooks/getResourceImage";
+import { getResourceImage } from "@/hooks/getResourceImage";
 import React, { useState, useEffect, useRef } from "react";
 import clsx from "clsx";
-import { LQIP, Wrapper } from "./Figure.styled";
+import { LQIP, Wrapper } from "@/components/Figure/Figure.styled";
 
 const Figure = ({
   resource,

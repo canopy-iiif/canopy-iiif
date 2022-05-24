@@ -1,5 +1,5 @@
-import { styled } from "../../stiches.config";
-import { Wrapper as Figure } from "../Figure/Figure.styled";
+import { styled } from "@/stiches.config";
+import { Wrapper as Figure } from "@/components/Figure/Figure.styled";
 
 const Wrapper = styled("div", {
   display: "flex",
