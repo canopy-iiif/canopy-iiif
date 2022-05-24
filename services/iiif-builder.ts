@@ -1,8 +1,8 @@
 const buildCollection = (data) => {
   const { id, label, summary, homepage, items } = data;
 
-  const collectionItems = items.map(({ id, label, homepage, thumbnail }) =>
-    buildItem("Manifest", id, label, homepage, thumbnail)
+  const collectionItems = items.map(({ id, label, homepage, thumbnail, summary }) =>
+    buildItem("Manifest", id, label, homepage, thumbnail, summary)
   );
 
   return {
@@ -28,18 +28,19 @@ const buildHomepage = (id, label) => ({
 });
 
 const buildThumbnail = (id) => ({
-  id: "http://localhost:5001/images/placeholder.png",
+  id: id,
   type: "Image",
 });
 
-const buildItem = (type, id, label, homepage, thumbnail) => ({
+const buildItem = (type, id, label, homepage, thumbnail, summary) => ({
   id,
   type,
   label: {
     none: [label],
   },
   homepage: [buildHomepage(homepage, label)],
-  thumbnail: [buildThumbnail(id)],
+  thumbnail: [buildThumbnail(thumbnail)],
+  summary: {none: [summary]},
 });
 
 export { buildCollection };

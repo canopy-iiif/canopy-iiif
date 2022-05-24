@@ -5,7 +5,7 @@ import groupBy from "lodash/groupBy";
 import map from "lodash/map";
 import orderBy from "lodash/orderBy";
 import absoluteUrl from "next-absolute-url";
-import { getManifestById } from "../../../../services/iiif";
+import slugify from "slugify";
 
 const getMetadata = async (metdataQuery) => {
   const { loading, error, data } = await client.query({
@@ -26,6 +26,7 @@ export default function handler(req, res) {
     ${label}: metadata(label: "${label}") {
       manifestId
       value
+      thumbnail
     }
   `;
 
@@ -49,10 +50,13 @@ export default function handler(req, res) {
                 const representative =
                   term.values[Math.floor(Math.random() * term.values.length)]
                     .manifestId;
+                const thumbnail = term.values[Math.floor(Math.random() * term.values.length)].thumbnail;
                 return {
                   label: term.value,
-                  summary: `${term.values.length} Items`,
-                  id: representative,
+                  summary: `View objects with a label of "${grouped.label}" and value of "${term.value}".`,
+                  id: `${origin}/api/iiif/metadata/${slugify(grouped.label)}/${slugify(term.value)}`,
+                  thumbnail: thumbnail,
+                  homepage: `${origin}/browse/${slugify(grouped.label)}/${slugify(term.value)}`,
                 };
               }),
               "count",
@@ -62,7 +66,7 @@ export default function handler(req, res) {
               id: `${origin}/api/iiif/metadata/${grouped.label}`,
               label: grouped.label,
               summary: `Browse by ${grouped.label}`,
-              homepage: `${origin}/search`,
+              homepage: `${origin}/browse/${slugify(grouped.label)}`,
               items,
             };
           })[0];
