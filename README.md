@@ -1,22 +1,20 @@
 <img width="90" alt="image" src="https://iiif.stack.rdc.library.northwestern.edu/iiif/2/bb9b1011-9d0a-46e0-9769-507e38668f11/95,200,1550,1550/600,/0/default.jpg"> <img width="90" alt="image" src="https://iiif.stack.rdc.library.northwestern.edu/iiif/2/bb9b1011-9d0a-46e0-9769-507e38668f11/482,587,775,775/600,/0/default.jpg"> <img width="90" alt="image" src="https://iiif.stack.rdc.library.northwestern.edu/iiif/2/bb9b1011-9d0a-46e0-9769-507e38668f11/695,808,387,387/600,/0/default.jpg">
 
-# Can
+# Canopy
 
 ### An attempted and mostly pure IIIF Collection site generator using Next.js
 
 _Home food processing jar against background of colorful fresh vegetables, including corn, radishes, and tomatoes._
 
-
 ## Notes
 
-Can is an experimental application that will standup a browseable and searchable digital collections style site entirely from a IIIF Collection and the items it contains. 
+Canopy is an experimental application that will standup a browseable and searchable digital collections style site entirely from a IIIF Collection and the items it contains.
 
 - This the epitome of a work-in-progress.
 - Most baselines features are still being proved out.
-- It's definitely possible. 
+- It's definitely possible.
 
 ## Technical Stuff
-
 
 ```shell
 # installation
@@ -31,13 +29,13 @@ npm run build
 
 ## Configuration
 
-Edit `can.config.js`
+Edit `canopy.config.js`
 
 ```jsx
 /**
  * Configuration built by `npm run build`
  */
- 
+
 const config = {
   collection: "https://can-the.vercel.app/iiif/collection/north-american.json",
   title: "The North Americans",
@@ -61,7 +59,6 @@ const dev = {
   ],
   metadata: ["Subject", "Date", "Dimensions"],
 };
-
 
 exports.config = config;
 exports.dev = dev;
