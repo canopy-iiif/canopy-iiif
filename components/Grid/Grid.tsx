@@ -1,11 +1,20 @@
 import { Wrapper } from "@/components/Grid/Grid.styled";
-import GridItem from "@/components/Grid/Item";
-import GridLoadMore from "@/components/Grid/LoadMore";
+import GridItem, { GridItemProps } from "@/components/Grid/Item";
+import GridLoadMore, { GridLoadMoreProps } from "@/components/Grid/LoadMore";
 import { useMediaQuery } from "@/hooks/use-media-query";
 import { media } from "@/stiches.config";
-import { useEffect, useState } from "react";
+import { ReactNode, useEffect, useState } from "react";
 
-const Grid = ({ children }) => {
+interface GridProps {
+  children: ReactNode | ReactNode[];
+}
+
+interface GridComposition {
+  Item: React.FC<GridItemProps>;
+  LoadMore: React.FC<GridLoadMoreProps>;
+}
+
+const Grid: React.FC<GridProps> & GridComposition = ({ children }) => {
   /**
    * @todo move this elsewhere and make it smarter
    */

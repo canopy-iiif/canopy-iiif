@@ -4,7 +4,11 @@ import { getManifestById } from "@/services/iiif";
 import Card from "@/components/Card/Card";
 import { Item } from "@/components/Grid/Grid.styled";
 
-const GridItem = ({ data }) => {
+export interface GridItemProps {
+  data: any;
+}
+
+const GridItem: React.FC<GridItemProps> = ({ data }) => {
   const [item, setItem] = useState();
 
   useEffect(() => {

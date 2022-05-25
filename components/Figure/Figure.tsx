@@ -1,20 +1,28 @@
 import { getResourceImage } from "@/hooks/getResourceImage";
 import React, { useState, useEffect, useRef } from "react";
 import clsx from "clsx";
-import { LQIP, Wrapper } from "@/components/Figure/Figure.styled";
+import { Wrapper } from "@/components/Figure/Figure.styled";
 
-const Figure = ({
-  resource,
+interface FigureProps {
+  region?: string;
+  resource: string;
+  size?: string;
+  isCover: boolean;
+}
+
+const Figure: React.FC<FigureProps> = ({
   region = "full",
+  resource,
   size = "400,",
   isCover = false,
 }) => {
   const [loaded, setLoaded] = useState(false);
-  const imgRef = useRef();
+  const imgRef = useRef(null);
 
   useEffect(() => {
-    if (imgRef.current && imgRef.current.complete) {
-      setLoaded(true);
+    if (imgRef?.current) {
+      const img = imgRef?.current as HTMLImageElement;
+      if (img.complete) setLoaded(true);
     }
   }, []);
 

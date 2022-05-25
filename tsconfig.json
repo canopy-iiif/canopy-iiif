@@ -24,6 +24,13 @@
     "skipLibCheck": true,
     "target": "es5"
   },
-  "include": ["*.ts", "*.tsx"],
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "**/*.js",
+    "**/*.jsx",
+    "types.d.ts"
+  ],
   "exclude": ["node_modules"]
 }

@@ -1,8 +1,17 @@
 import { Content, Wrapper } from "@/components/Card/Card.styled";
 import Link from "next/link";
-import Figure from "@/components/Card/Card";
+import Figure from "@/components/Figure/Figure";
 
-const Card = ({
+interface CardProps {
+  label: string;
+  path: string;
+  resource: string;
+  context: string;
+  size?: string;
+  isCover: boolean;
+}
+
+const Card: React.FC<CardProps> = ({
   label,
   path,
   resource,
