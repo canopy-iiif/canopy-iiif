@@ -3,7 +3,7 @@ const {
   PHASE_PRODUCTION_BUILD,
 } = require("next/constants");
 
-const can = require("./can.config");
+const can = require("./canopy.config");
 
 module.exports = (phase) => {
   const isDev = phase === PHASE_DEVELOPMENT_SERVER;
