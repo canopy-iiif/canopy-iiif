@@ -1,5 +1,5 @@
-import Layout from "../../../components/layout";
-import Hero from "../../../components/Hero/Hero";
+import Layout from "@/components/layout";
+import Hero from "@/components/Hero/Hero";
 
 export default function TopicSlug() {
   return (

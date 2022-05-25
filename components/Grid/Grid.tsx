@@ -1,9 +1,8 @@
-import Link from "next/link";
-import { Wrapper } from "./Grid.styled";
-import GridItem from "./Item";
-import GridLoadMore from "./LoadMore";
-import { useMediaQuery } from "../../hooks/use-media-query";
-import { media } from "../../stiches.config";
+import { Wrapper } from "@/components/Grid/Grid.styled";
+import GridItem from "@/components/Grid/Item";
+import GridLoadMore from "@/components/Grid/LoadMore";
+import { useMediaQuery } from "@/hooks/use-media-query";
+import { media } from "@/stiches.config";
 import { useEffect, useState } from "react";
 
 const Grid = ({ children }) => {

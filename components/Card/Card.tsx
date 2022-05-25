@@ -1,6 +1,6 @@
-import { Content, Wrapper } from "./Card.styled";
+import { Content, Wrapper } from "@/components/Card/Card.styled";
 import Link from "next/link";
-import Figure from "../Figure/Figure";
+import Figure from "@/components/Figure/Figure";
 
 const Card = ({
   label,

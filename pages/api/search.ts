@@ -1,4 +1,4 @@
-import { getCollectionData } from "../../services/iiif";
+import { getCollectionData } from "@/services/iiif";
 
 export default async (req, res) => {
   getCollectionData().then((tree) => {

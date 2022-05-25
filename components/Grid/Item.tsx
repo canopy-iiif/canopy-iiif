@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { getLabel } from "../../hooks/getLabel";
-import { getManifestById } from "../../services/iiif";
-import Card from "../Card/Card";
-import { Item } from "./Grid.styled";
+import { getLabel } from "@/hooks/getLabel";
+import { getManifestById } from "@/services/iiif";
+import Card from "@/components/Card/Card";
+import { Item } from "@/components/Grid/Grid.styled";
 
 const GridItem = ({ data }) => {
   const [item, setItem] = useState();
