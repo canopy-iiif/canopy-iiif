@@ -3,13 +3,14 @@ import { getLabel } from "@/hooks/getLabel";
 import { getManifestById } from "@/services/iiif";
 import Card from "@/components/Card/Card";
 import { Item } from "@/components/Grid/Grid.styled";
+import { Manifest } from "@iiif/presentation-3";
 
 export interface GridItemProps {
   data: any;
 }
 
 const GridItem: React.FC<GridItemProps> = ({ data }) => {
-  const [item, setItem] = useState();
+  const [item, setItem] = useState<Manifest>();
 
   useEffect(() => {
     getManifestById(data.id).then((json) => {

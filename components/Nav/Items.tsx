@@ -3,7 +3,11 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { Highlight, Items } from "@/components/Nav/Nav.styled";
 
-const NavItems = ({ items }) => {
+interface NavItemsProps {
+  items: any;
+}
+
+const NavItems: React.FC<NavItemsProps> = ({ items }) => {
   const [itemBoundingBox, setItemBoundingBox] = React.useState(null);
   const [wrapperBoundingBox, setWrapperBoundingBox] = React.useState(null);
   const [highlightedItem, setHighlightedItem] = React.useState(null);
