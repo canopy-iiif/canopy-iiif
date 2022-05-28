@@ -3,6 +3,7 @@ import { client } from "@/pages/api/graphql";
 import Layout from "@/components/layout";
 import Viewer from "@/components/Viewer/Viewer";
 import { Vault } from "@iiif/vault";
+import Metatag from "@/components/Metatag/Metatag"
 import {
   Label,
   Metadata,
@@ -16,6 +17,7 @@ export default function Manifest({ manifest }) {
 
   return (
     <Layout>
+      <Metatag label={label} summary={summary} />
       <div style={{ padding: "1.31rem 0 0" }}>
         <Viewer manifestId={id} />
       </div>
