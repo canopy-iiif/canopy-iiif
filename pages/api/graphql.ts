@@ -13,7 +13,7 @@ const typeDefs = gql`
     collectionItems: [CollectionItem]
     manifests(limit: Int, offset: Int, id: [String]): [Manifest]
     metadata(id: String, label: String): [Metadata]
-    metadataItems(id: String, label: String, valueOfMetadata: String): [Metadata]
+    metadataItems(id: String, label: String, valueOfMetadata: String): [Manifest]
     allManifests: [Manifest]
     getManifest(slug: ID): Manifest
   }
@@ -180,10 +180,12 @@ const resolvers = {
                     metadataValues.forEach((value) => {
                       if(value === valueOfMetadata){
                         const result = {
-                          manifestId: manifest.id,
-                          label: metadataLabel,
-                          value,
+                          id: manifest.id,
+                          label: manifest.label.en,
+                          metadata: manifest.metadata,
                           thumbnail: manifest.thumbnail[0].id,
+                          slug: manifest.id,
+                          collectionId: `api/iiif/metadata/${metadataLabel}/${value}`,
                         };
                         data.push(result);
                       }
