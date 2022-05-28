@@ -9,15 +9,16 @@ import {
   Metadata,
   RequiredStatement,
   Summary,
+  Thumbnail
 } from "@samvera/nectar-iiif";
 import Related from "@/components/Related/Related";
 
 export default function Manifest({ manifest }) {
-  const { id, label, metadata, requiredStatement, summary } = manifest;
+  const { id, label, metadata, requiredStatement, summary, thumbnail } = manifest;
 
   return (
     <Layout>
-      <Metatag label={label} summary={summary} />
+      <Metatag label={label} summary={summary} thumbnail={thumbnail} />
       <div style={{ padding: "1.31rem 0 0" }}>
         <Viewer manifestId={id} />
       </div>
