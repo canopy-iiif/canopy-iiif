@@ -43,6 +43,7 @@ const typeDefs = gql`
     metadata: [Metadata]
     slug: ID
     thumbnail: String
+    summary: String
   }
 
   type Metadata {
@@ -182,10 +183,11 @@ const resolvers = {
                       if(value === valueOfMetadata){
                         const result = {
                           id: manifest.id,
-                          label: manifest.label.en,
+                          label: getValues(manifest.label),
                           metadata: manifest.metadata,
                           thumbnail: manifest.thumbnail[0].id,
                           slug: manifest.id,
+                          summary: getValues(manifest.summary)[0],
                           collectionId: `api/iiif/metadata/${metadataLabel}/${value}`,
                         };
                         data.push(result);
