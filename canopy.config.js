@@ -23,9 +23,9 @@ exports.dev = {
 };
 
 /**
- * Canopy defaults
+ * Canopy globals regardless of environment
  */
-exports.defaults = {
+exports.globals = {
   slugify: {
     lower: true,
     strict: true,
