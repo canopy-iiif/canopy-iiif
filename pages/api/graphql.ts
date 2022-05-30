@@ -7,6 +7,9 @@ import slugify from "slugify";
 import { getValues } from "@/hooks/getValues";
 const axios = require("axios");
 
+import canopyCollections from "../../public/_canopy/collections.json";
+import canopyManifests from "../../public/_canopy/manifests.json";
+
 const typeDefs = gql`
   type Query {
     collections: [Collection]
@@ -54,7 +57,8 @@ const typeDefs = gql`
 const resolvers = {
   Query: {
     collections: async (_, __, context) => {
-      return getCollectionData();
+      let collections = canopyCollections;
+      return [collections];
     },
     collectionItems: async (_, __, context) => {
       return getCollectionData().then((tree) => {
@@ -70,32 +74,8 @@ const resolvers = {
       });
     },
     manifests: async (_, { limit, offset, id }, context) => {
-      return getCollectionData().then((tree) => {
-        return Promise.all(tree).then((values) => {
-          let items = [];
-          values.forEach((results) => {
-            if (results)
-              results.items.forEach((element) => {
-                items.push(element);
-              });
-          });
-          let results = items.filter((item) => {
-            item.slug = slugify(item.label[0], {
-              lower: true,
-              strict: true,
-              trim: true,
-            });
-            item.collectionId = null;
-            return item.type === "Manifest";
-          });
-          if (Array.isArray(id)) {
-            results = results.filter((result) => id.includes(result.id));
-          }
-          if (Number.isInteger(limit) && Number.isInteger(offset))
-            results = results.slice(offset, offset + limit);
-          return results;
-        });
-      });
+      let manifests = canopyManifests;
+      return manifests;
     },
     metadata: async (_, { id, label }, context) => {
       let filterByLabels = process.env.metadata;
@@ -171,6 +151,8 @@ const resolvers = {
     },
   },
 };
+
+const fetcher = (url: string) => fetch(url).then((r) => r.json());
 
 const getBulkManifests = async (items, chunkSize) => {
   return await chunks(

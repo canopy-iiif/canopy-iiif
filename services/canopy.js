@@ -1,17 +1,27 @@
-/**
- *
- */
-
 const fs = require("fs");
 const { buildCanopyCollection } = require("./iiif-helpers");
+const slugify = require("slugify");
+
+const slugifyConfig = {
+  lower: true,
+  strict: true,
+  trim: true,
+};
 
 const canopyDirectory = "public/_canopy";
 
+/**
+ *
+ * @param {*} env
+ */
 module.exports.buildCanopy = (env) => {
   /**
    * get root collection and transform it to canopy friendly schema
    */
   getRootCollection(env.collection).then((json) => {
+    /**
+     * make collection(s)
+     */
     const canopyCollection = buildCanopyCollection(json, 0, null);
 
     try {
@@ -31,8 +41,44 @@ module.exports.buildCanopy = (env) => {
         }
       }
     );
+
+    /**
+     * make manifest(s)
+     */
+    const canopyManifests = canopyCollection.items.map((item) => {
+      /**
+       * what should label look like at this point?
+       * language for label?
+       * are they unique?
+       */
+      if (item.type === "Manifest")
+        return {
+          collectionId: item.parent,
+          id: item.id,
+          label: item.label,
+          slug: slugify(item.label[0], slugifyConfig),
+        };
+    });
+
+    fs.writeFile(
+      `${canopyDirectory}/manifests.json`,
+      JSON.stringify(canopyManifests),
+      (err) => {
+        if (err) {
+          console.error(err);
+        }
+      }
+    );
   });
 };
+
+// type Manifest {
+//   collectionId: ID
+//   id: ID
+//   label: [String]
+//   metadata: [Metadata]
+//   slug: ID
+// }
 
 const getRootCollection = (id) =>
   fetch(id)
