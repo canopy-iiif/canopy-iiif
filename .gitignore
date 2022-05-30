@@ -33,4 +33,4 @@ yarn-error.log*
 # vercel
 .vercel
 
-public/_canopy/*
+.canopy/*

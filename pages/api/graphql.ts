@@ -6,8 +6,8 @@ import { getCollectionData, getAllManifests } from "@/services/iiif";
 import slugify from "slugify";
 import { getValues } from "@/hooks/getValues";
 
-import CANOPY_COLLECTIONS from "@/public/_canopy/collections.json";
-import CANOPY_MANIFESTS from "@/public/_canopy/manifests.json";
+import CANOPY_COLLECTIONS from "@/.canopy/collections.json";
+import CANOPY_MANIFESTS from "@/.canopy/manifests.json";
 
 const axios = require("axios");
 

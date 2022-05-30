@@ -2,7 +2,7 @@ const fs = require("fs");
 const { buildCanopyCollection } = require("./iiif-helpers");
 const slugify = require("slugify");
 
-const canopyDirectory = "public/_canopy";
+const canopyDirectory = ".canopy";
 
 /**
  *
