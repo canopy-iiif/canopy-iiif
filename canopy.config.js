@@ -21,3 +21,14 @@ exports.dev = {
   hero: ["https://digital.lib.utk.edu/assemble/manifest/rftaart/76"],
   metadata: ["Artist", "Subject"],
 };
+
+/**
+ * Canopy defaults
+ */
+exports.defaults = {
+  slugify: {
+    lower: true,
+    strict: true,
+    trim: true,
+  },
+};

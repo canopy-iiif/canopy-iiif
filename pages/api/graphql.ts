@@ -5,10 +5,11 @@ import { makeExecutableSchema } from "@graphql-tools/schema";
 import { getCollectionData, getAllManifests } from "@/services/iiif";
 import slugify from "slugify";
 import { getValues } from "@/hooks/getValues";
-const axios = require("axios");
 
 import CANOPY_COLLECTIONS from "@/public/_canopy/collections.json";
 import CANOPY_MANIFESTS from "@/public/_canopy/manifests.json";
+
+const axios = require("axios");
 
 const typeDefs = gql`
   type Query {

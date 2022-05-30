@@ -2,12 +2,6 @@ const fs = require("fs");
 const { buildCanopyCollection } = require("./iiif-helpers");
 const slugify = require("slugify");
 
-const slugifyConfig = {
-  lower: true,
-  strict: true,
-  trim: true,
-};
-
 const canopyDirectory = "public/_canopy";
 
 /**
@@ -56,7 +50,7 @@ module.exports.buildCanopy = (env) => {
           collectionId: item.parent,
           id: item.id,
           label: item.label,
-          slug: slugify(item.label[0], slugifyConfig),
+          slug: slugify(item.label[0], env.slugify),
         };
     });
 

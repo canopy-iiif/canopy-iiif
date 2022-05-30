@@ -13,6 +13,7 @@ module.exports = (phase) => {
   const { prod, dev } = config;
 
   const env = {
+    ...config.defaults,
     collection: (() => {
       if (isDev) return dev.collection;
       if (isProd) return prod.collection;

@@ -4,12 +4,6 @@ import slugify from "slugify";
 import { getLabel } from "@/hooks/getLabel";
 import { getGraphQL } from "@/pages/api/graphql";
 
-const slugifyConfig = {
-  lower: true,
-  strict: true,
-  trim: true,
-};
-
 /**
  *
  */
@@ -70,7 +64,7 @@ const buildCollection = (json, depth, parent = null) => {
     case "iiif.io/api/presentation/2/context.json":
       id = json["@id"];
       label = getLabel(json.label);
-      slug = slugify(label[0], { ...slugifyConfig });
+      slug = slugify(label[0], process.env.slugify);
       children = buildCollectionItems2(json, id);
       return {
         id,
@@ -85,7 +79,7 @@ const buildCollection = (json, depth, parent = null) => {
     case "iiif.io/api/presentation/3/context.json":
       id = json.id;
       label = getLabel(json.label);
-      slug = slugify(label[0], { ...slugifyConfig });
+      slug = slugify(label[0], process.env.slugify);
       children = buildCollectionItems3(json, id);
       return {
         id,
@@ -212,7 +206,7 @@ export const getAllManifests = (id = ROOT_COLLECTION) =>
       json.items.filter((item) => {
         if (item.type === "Manifest") {
           item.label = getLabel(item.label);
-          item.slug = slugify(item.label[0], { ...slugifyConfig });
+          item.slug = slugify(item.label[0], process.env.slugify);
           item.collectionId = id;
           return item;
         }
@@ -230,7 +224,7 @@ export const getManifestBySlug = (slug) =>
     .then((json) => {
       const filtered = json.items.filter((item) => {
         item.label = getLabel(item.label);
-        if (slugify(item.label[0], { ...slugifyConfig }) === slug) {
+        if (slugify(item.label[0], process.env.slugify) === slug) {
           return item;
         }
       });
@@ -250,7 +244,7 @@ export const getManifests = (limit, offset) =>
       json.items.filter((item, index) => {
         if (item.type === "Manifest" && index) {
           item.label = getLabel(item.label);
-          item.slug = slugify(item.label[0], { ...slugifyConfig });
+          item.slug = slugify(item.label[0], process.env.slugify);
           return item;
         }
       })

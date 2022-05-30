@@ -1,11 +1,5 @@
 const slugify = require("slugify");
 
-const slugifyConfig = {
-  lower: true,
-  strict: true,
-  trim: true,
-};
-
 /**
  *
  */
@@ -38,7 +32,7 @@ exports.buildCanopyCollection = (json, depth, parent = null) => {
     case "iiif.io/api/presentation/2/context.json":
       id = json["@id"];
       label = getLabel(json.label);
-      slug = slugify(label[0], { ...slugifyConfig });
+      slug = slugify(label[0], process.env.slugify);
       children = buildCollectionItems2(json, id);
       return {
         id,
@@ -53,7 +47,7 @@ exports.buildCanopyCollection = (json, depth, parent = null) => {
     case "iiif.io/api/presentation/3/context.json":
       id = json.id;
       label = getLabel(json.label);
-      slug = slugify(label[0], { ...slugifyConfig });
+      slug = slugify(label[0], process.env.slugify);
       children = buildCollectionItems3(json, id);
       return {
         id,
