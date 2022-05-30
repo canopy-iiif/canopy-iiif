@@ -56,10 +56,7 @@ const typeDefs = gql`
 
 const resolvers = {
   Query: {
-    collections: async (_, __, context) => {
-      let collections = canopyCollections;
-      return [collections];
-    },
+    collections: async (_, __, context) => canopyCollections,
     collectionItems: async (_, __, context) => {
       return getCollectionData().then((tree) => {
         return Promise.all(tree).then((values) => {
@@ -73,10 +70,7 @@ const resolvers = {
         });
       });
     },
-    manifests: async (_, { limit, offset, id }, context) => {
-      let manifests = canopyManifests;
-      return manifests;
-    },
+    manifests: async (_, { limit, offset, id }, context) => canopyManifests,
     metadata: async (_, { id, label }, context) => {
       let filterByLabels = process.env.metadata;
       if (label) filterByLabels = [label as string];
@@ -128,31 +122,17 @@ const resolvers = {
     allManifests: async (_, __, context) => {
       return getAllManifests();
     },
-    getManifest: async (manifests, { slug }, context) => {
-      return getCollectionData().then((tree) => {
-        return Promise.all(tree).then((values) => {
-          let items = [];
-          values.forEach((results) => {
-            results.items.forEach((element) => {
-              items.push(element);
-            });
-          });
-          return items.filter((item) => {
-            item.slug = slugify(item.label[0], {
-              lower: true,
-              strict: true,
-              trim: true,
-            });
-            item.collectionId = null;
-            return item.slug === slug;
-          })[0];
-        });
-      });
-    },
+    getManifest: async (_, { slug }, context) =>
+      canopyManifests.filter(
+        (item) =>
+          (slug = slugify(item.label[0], {
+            lower: true,
+            strict: true,
+            trim: true,
+          }))
+      )[0],
   },
 };
-
-const fetcher = (url: string) => fetch(url).then((r) => r.json());
 
 const getBulkManifests = async (items, chunkSize) => {
   return await chunks(

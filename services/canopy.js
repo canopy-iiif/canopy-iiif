@@ -34,7 +34,7 @@ module.exports.buildCanopy = (env) => {
 
     fs.writeFile(
       `${canopyDirectory}/collections.json`,
-      JSON.stringify(canopyCollection),
+      JSON.stringify([canopyCollection]),
       (err) => {
         if (err) {
           console.error(err);
