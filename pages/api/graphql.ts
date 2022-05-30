@@ -7,8 +7,8 @@ import slugify from "slugify";
 import { getValues } from "@/hooks/getValues";
 const axios = require("axios");
 
-import canopyCollections from "../../public/_canopy/collections.json";
-import canopyManifests from "../../public/_canopy/manifests.json";
+import CANOPY_COLLECTIONS from "@/public/_canopy/collections.json";
+import CANOPY_MANIFESTS from "@/public/_canopy/manifests.json";
 
 const typeDefs = gql`
   type Query {
@@ -56,7 +56,16 @@ const typeDefs = gql`
 
 const resolvers = {
   Query: {
-    collections: async (_, __, context) => canopyCollections,
+    /**
+     *
+     */
+    collections: async (_, __, context) => {
+      return CANOPY_COLLECTIONS;
+    },
+
+    /**
+     *
+     */
     collectionItems: async (_, __, context) => {
       return getCollectionData().then((tree) => {
         return Promise.all(tree).then((values) => {
@@ -70,7 +79,17 @@ const resolvers = {
         });
       });
     },
-    manifests: async (_, { limit, offset, id }, context) => canopyManifests,
+
+    /**
+     *
+     */
+    manifests: async (_, { limit, offset, id }, context) => {
+      return CANOPY_MANIFESTS;
+    },
+
+    /**
+     *
+     */
     metadata: async (_, { id, label }, context) => {
       let filterByLabels = process.env.metadata;
       if (label) filterByLabels = [label as string];
@@ -119,18 +138,28 @@ const resolvers = {
         });
       });
     },
+
+    /**
+     *
+     */
     allManifests: async (_, __, context) => {
       return getAllManifests();
     },
-    getManifest: async (_, { slug }, context) =>
-      canopyManifests.filter(
+
+    /**
+     *
+     */
+    getManifest: async (_, { slug }, context) => {
+      return CANOPY_MANIFESTS.filter(
         (item) =>
-          (slug = slugify(item.label[0], {
+          slug ===
+          slugify(item.label[0], {
             lower: true,
             strict: true,
             trim: true,
-          }))
-      )[0],
+          })
+      )[0];
+    },
   },
 };
 
