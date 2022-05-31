@@ -22,13 +22,6 @@ module.exports = (phase) => {
     ...config.environment,
   };
 
-  /**
-   *
-   */
   canopy.buildCanopy(env);
-
-  /**
-   *
-   */
   return { env };
 };
