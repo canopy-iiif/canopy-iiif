@@ -7,9 +7,6 @@ const config = require("./canopy.config");
 const canopy = require("./services/canopy");
 
 module.exports = (phase) => {
-  /**
-   *
-   */
   const isDev = phase === PHASE_DEVELOPMENT_SERVER;
   const isProd = phase === PHASE_PRODUCTION_BUILD;
 
