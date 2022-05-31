@@ -52,9 +52,6 @@ const typeDefs = gql`
 
 const resolvers = {
   Query: {
-    /**
-     *
-     */
     collections: async (_, __, context) => {
       return CANOPY_COLLECTIONS;
     },
