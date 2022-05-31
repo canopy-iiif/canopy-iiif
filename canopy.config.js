@@ -1,7 +1,7 @@
 /**
  * Configuration built by `npm run build`
  */
-const config = {
+exports.prod = {
   collection:
     "https://digital.lib.utk.edu/assemble/collection/collections/rftacuratedart",
   title:
@@ -13,7 +13,7 @@ const config = {
 /**
  * Configuration built by `npm run dev`
  */
-const dev = {
+exports.dev = {
   collection:
     "https://digital.lib.utk.edu/assemble/collection/collections/rftacuratedart",
   title:
@@ -22,5 +22,13 @@ const dev = {
   metadata: ["Artist", "Subject"],
 };
 
-exports.config = config;
-exports.dev = dev;
+/**
+ * Canopy globals regardless of environment
+ */
+exports.globals = {
+  slugify: {
+    lower: true,
+    strict: true,
+    trim: true,
+  },
+};
