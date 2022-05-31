@@ -70,9 +70,6 @@ const resolvers = {
       if (CANOPY_METADATA) return CANOPY_METADATA;
     },
 
-    /**
-     *
-     */
     getManifest: async (_, { slug }, context) => {
       return CANOPY_MANIFESTS.filter(
         (item) =>
