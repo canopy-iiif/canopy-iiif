@@ -1,8 +1,15 @@
+const axios = require("axios");
 const slugify = require("slugify");
 
-/**
- *
- */
+exports.getRootCollection = (id) =>
+  fetch(id).then((response) => response.json());
+
+exports.getBulkManifests = async (items, chunkSize) =>
+  await chunks(
+    items,
+    async (item) => axios.get(item.id).then((result) => result.data),
+    chunkSize
+  );
 
 exports.buildCanopyCollection = (json, depth, parent = null) => {
   if (!json) return null;
@@ -180,3 +187,45 @@ exports.getValues = (values, language = "none") => {
    */
   return values[language];
 };
+
+/**
+ *
+ */
+
+function all(items, fn) {
+  const promises = items.map((item, index) => {
+    console.log(`${item.id}`);
+    return fn(item);
+  });
+  return Promise.all(promises);
+}
+
+function series(items, fn) {
+  let result = [];
+  return items
+    .reduce((acc, item) => {
+      acc = acc.then(() => {
+        console.log(`Fetching...`);
+        return fn(item).then((res) => result.push(res));
+      });
+      return acc;
+    }, Promise.resolve())
+    .then(() => result);
+}
+
+function splitToChunks(items, chunkSize = 25) {
+  const result = [];
+  for (let i = 0; i < items.length; i += chunkSize) {
+    result.push(items.slice(i, i + chunkSize));
+  }
+  return result;
+}
+
+function chunks(items, fn, chunkSize = 25) {
+  let result = [];
+  const chunks = splitToChunks(items, chunkSize);
+
+  return series(chunks, (chunk) => {
+    return all(chunk, fn).then((res) => (result = result.concat(res)));
+  }).then(() => result);
+}

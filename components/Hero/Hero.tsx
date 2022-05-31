@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-
 import { getJsonByURI } from "@/services/utils";
 import Figure from "@/components/Figure/Figure";
 import { Wrapper } from "@/components/Hero/Hero.styled";
