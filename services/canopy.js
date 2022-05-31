@@ -71,6 +71,16 @@ module.exports.buildCanopy = (env) => {
     /**
      * flatten metadata
      */
+
+    fs.writeFile(
+      `${canopyDirectory}/metadata.json`,
+      JSON.stringify([]),
+      (err) => {
+        if (err) {
+          console.error(err);
+        }
+      }
+    );
     const responses = getBulkManifests(canopyManifests, 10);
 
     responses.then((manifests) => {

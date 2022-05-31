@@ -7,9 +7,9 @@ import slugify from "slugify";
 /**
  *
  */
-import CANOPY_COLLECTIONS from ".canopy/collections.json";
-import CANOPY_MANIFESTS from ".canopy/manifests.json";
-import * as CANOPY_METADATA from ".canopy/metadata.json";
+import CANOPY_COLLECTIONS from "@/.canopy/collections.json";
+import CANOPY_MANIFESTS from "@/.canopy/manifests.json";
+import CANOPY_METADATA from "@/.canopy/metadata.json";
 
 const typeDefs = gql`
   type Query {
@@ -81,10 +81,6 @@ const resolvers = {
      *
      */
     metadata: async (_, { id, label }, context) => {
-      // let filterByLabels = process.env.metadata;
-      // if (label) filterByLabels = [label as string];
-      // return CANOPY_METADATA;
-
       if (CANOPY_METADATA) return CANOPY_METADATA;
     },
 
