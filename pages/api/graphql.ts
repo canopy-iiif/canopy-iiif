@@ -62,10 +62,6 @@ const resolvers = {
     collectionItems: async (_, __, context) => {
       return CANOPY_COLLECTIONS.items;
     },
-
-    /**
-     *
-     */
     manifests: async (_, { limit, offset, id }, context) => {
       return CANOPY_MANIFESTS;
     },
