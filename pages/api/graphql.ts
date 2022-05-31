@@ -3,10 +3,6 @@ import { ApolloClient, InMemoryCache } from "@apollo/client";
 import { SchemaLink } from "@apollo/client/link/schema";
 import { makeExecutableSchema } from "@graphql-tools/schema";
 import slugify from "slugify";
-
-/**
- *
- */
 import CANOPY_COLLECTIONS from "@/.canopy/collections.json";
 import CANOPY_MANIFESTS from "@/.canopy/manifests.json";
 import CANOPY_METADATA from "@/.canopy/metadata.json";
