@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-import { getManifestById } from "@/services/iiif";
+import { getJsonByURI } from "@/services/utils";
 import Figure from "@/components/Figure/Figure";
 import { Wrapper } from "@/components/Hero/Hero.styled";
 
@@ -9,7 +9,7 @@ const Hero = () => {
 
   useEffect(() => {
     const random = Math.floor(Math.random() * process.env.hero.length);
-    getManifestById(process.env.hero[random]).then((json) => {
+    getJsonByURI(process.env.hero[random]).then((json) => {
       setHero(json);
     });
   }, []);
