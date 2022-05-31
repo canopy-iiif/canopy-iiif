@@ -188,9 +188,6 @@ exports.getValues = (values, language = "none") => {
   return values[language];
 };
 
-/**
- *
- */
 
 function all(items, fn) {
   const promises = items.map((item, index) => {
