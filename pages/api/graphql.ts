@@ -66,9 +66,6 @@ const resolvers = {
       return CANOPY_MANIFESTS;
     },
 
-    /**
-     *
-     */
     metadata: async (_, { id, label }, context) => {
       if (CANOPY_METADATA) return CANOPY_METADATA;
     },
