@@ -55,10 +55,6 @@ const resolvers = {
     collections: async (_, __, context) => {
       return CANOPY_COLLECTIONS;
     },
-
-    /**
-     *
-     */
     collectionItems: async (_, __, context) => {
       return CANOPY_COLLECTIONS.items;
     },
