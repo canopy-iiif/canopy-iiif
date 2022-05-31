@@ -196,25 +196,6 @@ export const getCollection = (depth, id = ROOT_COLLECTION, parent = null) =>
 
 /**
  *
- * @param id
- * @returns
- */
-export const getAllManifests = (id = ROOT_COLLECTION) =>
-  fetch(id)
-    .then((response) => response.json())
-    .then((json) =>
-      json.items.filter((item) => {
-        if (item.type === "Manifest") {
-          item.label = getLabel(item.label);
-          item.slug = slugify(item.label[0], process.env.slugify);
-          item.collectionId = id;
-          return item;
-        }
-      })
-    );
-
-/**
- *
  * @param slug
  * @returns
  */

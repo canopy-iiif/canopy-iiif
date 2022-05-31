@@ -1,7 +1,11 @@
+const axios = require("axios");
+const { buildCanopyCollection, getValues } = require("./iiif-helpers");
 const fs = require("fs");
-const { buildCanopyCollection } = require("./iiif-helpers");
 const slugify = require("slugify");
 
+/**
+ * directory where canopy instance build data is stored.
+ */
 const canopyDirectory = ".canopy";
 
 /**
@@ -14,7 +18,7 @@ module.exports.buildCanopy = (env) => {
    */
   getRootCollection(env.collection).then((json) => {
     /**
-     * make collection(s)
+     * make collections
      */
     const canopyCollection = buildCanopyCollection(json, 0, null);
 
@@ -37,7 +41,7 @@ module.exports.buildCanopy = (env) => {
     );
 
     /**
-     * make manifest(s)
+     * create manifest listing
      */
     const canopyManifests = canopyCollection.items.map((item) => {
       /**
@@ -63,16 +67,48 @@ module.exports.buildCanopy = (env) => {
         }
       }
     );
+
+    /**
+     * flatten metadata
+     */
+    const responses = getBulkManifests(canopyManifests, 10);
+
+    responses.then((manifests) => {
+      let canopyMetadata = [];
+      manifests
+        .filter((manifest) => {
+          if (manifest) return manifest;
+        })
+        .map((manifest) =>
+          manifest.metadata.forEach((metadata) => {
+            const metadataLabel = getValues(metadata.label)[0];
+            const metadataValues = getValues(metadata.value);
+            if (env.metadata.includes(metadataLabel)) {
+              metadataValues.forEach((value) => {
+                const result = {
+                  manifestId: manifest.id,
+                  label: metadataLabel,
+                  value,
+                  thumbnail: manifest.thumbnail[0].id,
+                };
+                canopyMetadata.push(result);
+              });
+            }
+          })
+        );
+
+      fs.writeFile(
+        `${canopyDirectory}/metadata.json`,
+        JSON.stringify(canopyMetadata),
+        (err) => {
+          if (err) {
+            console.error(err);
+          }
+        }
+      );
+    });
   });
 };
-
-// type Manifest {
-//   collectionId: ID
-//   id: ID
-//   label: [String]
-//   metadata: [Metadata]
-//   slug: ID
-// }
 
 const getRootCollection = (id) =>
   fetch(id)
@@ -85,3 +121,43 @@ const getRootCollection = (id) =>
       }
     })
     .then((json) => json);
+
+const getBulkManifests = async (items, chunkSize) =>
+  await chunks(
+    items,
+    async (item) => axios.get(item.id).then((result) => result.data),
+    chunkSize
+  );
+
+function all(items, fn) {
+  const promises = items.map((item) => fn(item));
+  return Promise.all(promises);
+}
+
+function series(items, fn) {
+  let result = [];
+  return items
+    .reduce((acc, item) => {
+      acc = acc.then(() => {
+        return fn(item).then((res) => result.push(res));
+      });
+      return acc;
+    }, Promise.resolve())
+    .then(() => result);
+}
+
+function splitToChunks(items, chunkSize = 25) {
+  const result = [];
+  for (let i = 0; i < items.length; i += chunkSize) {
+    result.push(items.slice(i, i + chunkSize));
+  }
+  return result;
+}
+
+function chunks(items, fn, chunkSize = 25) {
+  let result = [];
+  const chunks = splitToChunks(items, chunkSize);
+  return series(chunks, (chunk) => {
+    return all(chunk, fn).then((res) => (result = result.concat(res)));
+  }).then(() => result);
+}

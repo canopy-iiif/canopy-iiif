@@ -164,3 +164,19 @@ const getLabel = (label, language = "none") => {
    */
   return label[language];
 };
+
+exports.getValues = (values, language = "none") => {
+  /*
+   * If InternationalString code does not exist on label, then
+   * return what may be there, ex: label.none[0] OR label.fr[0]
+   */
+  if (!values[language]) {
+    const codes = Object.getOwnPropertyNames(values);
+    if (codes.length > 0) return values[codes[0]];
+  }
+
+  /*
+   * Return label value for InternationalString code `en`
+   */
+  return values[language];
+};
