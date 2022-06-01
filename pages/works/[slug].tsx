@@ -10,6 +10,7 @@ import {
   Summary,
 } from "@samvera/nectar-iiif";
 import Related from "@/components/Related/Related";
+import WorkInner from "@/components/Work/Inner";
 
 export default function Manifest({ manifest }) {
   const { id, label, metadata, requiredStatement, summary } = manifest;
@@ -19,21 +20,7 @@ export default function Manifest({ manifest }) {
       <div style={{ padding: "1.31rem 0 0" }}>
         <Viewer manifestId={id} />
       </div>
-      <section
-        style={{
-          maxWidth: "1280px",
-          margin: "auto",
-          position: "relative",
-          padding: "1rem 0 0",
-        }}
-      >
-        <div style={{ padding: "0 1.618rem 2rem" }}>
-          <Label label={label} as="h1" />
-          <Summary summary={summary} />
-          <Metadata metadata={metadata} />
-          <RequiredStatement requiredStatement={requiredStatement} />
-        </div>
-      </section>
+      <WorkInner manifest={manifest} />
       <section
         style={{
           maxWidth: "1280px",
