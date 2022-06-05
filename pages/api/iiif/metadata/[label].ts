@@ -7,6 +7,8 @@ import orderBy from "lodash/orderBy";
 import absoluteUrl from "next-absolute-url";
 import slugify from "slugify";
 
+const slugifyConfig = process.env.slugify;
+
 const getMetadata = async (metdataQuery) => {
   const { loading, error, data } = await client.query({
     query: gql`
@@ -54,12 +56,14 @@ export default function handler(req, res) {
                   label: term.value,
                   summary: `${count} ${count !== 1 ? `Items` : "Item"}`,
                   id: `${origin}/api/iiif/metadata/${slugify(
-                    grouped.label
-                  )}/${slugify(term.value)}`,
+                    grouped.label,
+                    slugifyConfig
+                  )}/${slugify(term.value, slugifyConfig)}`,
                   thumbnail: thumbnail,
                   homepage: `${origin}/browse/${slugify(
-                    grouped.label
-                  )}/${slugify(term.value)}`,
+                    grouped.label,
+                    slugifyConfig
+                  )}/${slugify(term.value, slugifyConfig)}`,
                 };
               }),
               "count",
@@ -69,7 +73,10 @@ export default function handler(req, res) {
               id: `${origin}/api/iiif/metadata/${grouped.label}`,
               label: grouped.label,
               summary: `Browse by ${grouped.label}`,
-              homepage: `${origin}/browse/${slugify(grouped.label)}`,
+              homepage: `${origin}/browse/${slugify(
+                grouped.label,
+                slugifyConfig
+              )}`,
               items,
             };
           })[0];
