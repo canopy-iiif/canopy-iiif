@@ -42,20 +42,16 @@ module.exports.buildCanopy = (env) => {
      * create manifest listing
      */
     console.log(`Creating manifest listing...`);
-    const canopyManifests = canopyCollection.items.map((item) => {
-      /**
-       * what should label look like at this point?
-       * language for label?
-       * are they unique?
-       */
-      if (item.type === "Manifest")
+    const canopyManifests = canopyCollection.items
+      .filter((item) => item.type === "Manifest")
+      .map((item) => {
         return {
           collectionId: item.parent,
           id: item.id,
           label: item.label,
           slug: slugify(item.label[0], env.slugify),
         };
-    });
+      });
 
     fs.writeFile(
       `${canopyDirectory}/manifests.json`,
@@ -82,6 +78,7 @@ module.exports.buildCanopy = (env) => {
     );
 
     console.log(`Flattening prescribed metadata...`);
+
     const responses = getBulkManifests(canopyManifests, 25);
 
     responses.then((manifests) => {

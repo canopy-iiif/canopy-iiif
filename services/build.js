@@ -188,12 +188,13 @@ exports.getValues = (values, language = "none") => {
   return values[language];
 };
 
-
 function all(items, fn) {
-  const promises = items.map((item, index) => {
-    console.log(`${item.id}`);
-    return fn(item);
-  });
+  const promises = items
+    .filter((item) => item)
+    .map((item, index) => {
+      if (item) console.log(`${item.id}`);
+      return fn(item);
+    });
   return Promise.all(promises);
 }
 

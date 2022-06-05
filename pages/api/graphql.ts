@@ -63,7 +63,10 @@ const resolvers = {
     },
 
     metadata: async (_, { id, label }, context) => {
-      if (CANOPY_METADATA) return CANOPY_METADATA;
+      console.log(label);
+
+      if (CANOPY_METADATA)
+        return CANOPY_METADATA.filter((item) => item.label === label);
     },
 
     getManifest: async (_, { slug }, context) => {
