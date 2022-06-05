@@ -47,15 +47,12 @@ export default function handler(req, res) {
           .map((grouped) => {
             const items = orderBy(
               grouped.data.map((term) => {
-                const representative =
-                  term.values[Math.floor(Math.random() * term.values.length)]
-                    .manifestId;
+                const count = term.values.length;
                 const thumbnail =
-                  term.values[Math.floor(Math.random() * term.values.length)]
-                    .thumbnail;
+                  term.values[Math.floor(Math.random() * count)].thumbnail;
                 return {
                   label: term.value,
-                  summary: `View objects with a label of "${grouped.label}" and value of "${term.value}".`,
+                  summary: `${count} ${count !== 1 ? `Items` : "Item"}`,
                   id: `${origin}/api/iiif/metadata/${slugify(
                     grouped.label
                   )}/${slugify(term.value)}`,
@@ -67,7 +64,7 @@ export default function handler(req, res) {
               }),
               "count",
               "desc"
-            ).slice(0, 10);
+            ).slice(0, 20);
             return {
               id: `${origin}/api/iiif/metadata/${grouped.label}`,
               label: grouped.label,
