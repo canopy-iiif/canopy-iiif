@@ -35,31 +35,36 @@ Edit `canopy.config.js`
 /**
  * Configuration built by `npm run build`
  */
-
-const config = {
-  collection: "https://can-the.vercel.app/iiif/collection/north-american.json",
-  title: "The North Americans",
+exports.prod = {
+  collection: "https://canopy-iiif.vercel.app/iiif/collection/nez-perce.json",
+  title: "Nez Percé (Nimíipuu)",
   hero: [
-    "https://can-the.vercel.app/iiif/manifest/apache/04-apache-camp.json",
-    "https://can-the.vercel.app/iiif/manifest/nez-perce/08-map-territory.json",
+    "https://canopy-iiif.vercel.app/iiif/manifest/nez-perce/02-lawyer.json",
   ],
-  metadata: ["Subject", "Date", "Dimensions"],
+  metadata: ["Date", "Subject"],
 };
 
 /**
  * Configuration built by `npm run dev`
  */
-const dev = {
-  collection: "http://localhost:5001/iiif-dev/collection/north-american.json",
-  title: "The North Americans",
+exports.dev = {
+  collection: "https://canopy-iiif.vercel.app/iiif/collection/nez-perce.json",
+  title: "Nez Percé (Nimíipuu)",
   hero: [
-    "http://localhost:5001/iiif-dev/manifest/apache/04-apache-camp.json",
-    "http://localhost:5001/iiif-dev/manifest/nez-perce/08-map-territory.json",
-    "http://localhost:5001/iiif-dev/manifest/tsawatenok/05-tsawatenok-house-front.json",
+    "https://canopy-iiif.vercel.app/iiif/manifest/nez-perce/02-lawyer.json",
   ],
-  metadata: ["Subject", "Date", "Dimensions"],
+  metadata: ["Date", "Subject"],
 };
 
-exports.config = config;
-exports.dev = dev;
+/**
+ * Canopy globals regardless of environment
+ */
+exports.globals = {
+  slugify: {
+    lower: true,
+    strict: true,
+    trim: true,
+  },
+};
+
 ```
