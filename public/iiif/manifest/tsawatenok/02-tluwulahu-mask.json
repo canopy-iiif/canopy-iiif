@@ -1,6 +1,6 @@
 {
   "@context": "http://iiif.io/api/presentation/3/context.json",
-  "id": "https://can-the.vercel.app/iiif/manifest/tsawatenok/02-tluwulahu-mask.json",
+  "id": "https://canopy-iiif.vercel.app/iiif/manifest/tsawatenok/02-tluwulahu-mask.json",
   "type": "Manifest",
   "label": {
     "en": ["A Tlŭ'wŭláhŭ Mask - Tsawatenok"]
@@ -97,7 +97,7 @@
   ],
   "items": [
     {
-      "id": "https://can-the.vercel.app/iiif/manifest/tsawatenok/02-tluwulahu-mask/canvas/0",
+      "id": "https://canopy-iiif.vercel.app/iiif/manifest/tsawatenok/02-tluwulahu-mask/canvas/0",
       "type": "Canvas",
       "width": 2061,
       "height": 3072,
@@ -106,14 +106,14 @@
       },
       "items": [
         {
-          "id": "https://can-the.vercel.app/iiif/manifest/tsawatenok/02-tluwulahu-mask/canvas/0/page/0",
+          "id": "https://canopy-iiif.vercel.app/iiif/manifest/tsawatenok/02-tluwulahu-mask/canvas/0/page/0",
           "type": "AnnotationPage",
           "items": [
             {
-              "id": "https://can-the.vercel.app/iiif/manifest/tsawatenok/02-tluwulahu-mask/canvas/0/page/0/annotation/0",
+              "id": "https://canopy-iiif.vercel.app/iiif/manifest/tsawatenok/02-tluwulahu-mask/canvas/0/page/0/annotation/0",
               "type": "Annotation",
               "motivation": "painting",
-              "target": "https://can-the.vercel.app/iiif/manifest/tsawatenok/02-tluwulahu-mask/canvas/0",
+              "target": "https://canopy-iiif.vercel.app/iiif/manifest/tsawatenok/02-tluwulahu-mask/canvas/0",
               "body": {
                 "id": "https://iiif.stack.rdc.library.northwestern.edu/iiif/2/748abfca-e9ca-42e3-8896-6dec198368fb/full/600,/0/default.jpg",
                 "type": "Image",

@@ -1,6 +1,6 @@
 {
   "@context": "http://iiif.io/api/presentation/3/context.json",
-  "id": "https://can-the.vercel.app/iiif/manifest/nez-perce/06-night-scout.json",
+  "id": "https://canopy-iiif.vercel.app/iiif/manifest/nez-perce/06-night-scout.json",
   "type": "Manifest",
   "label": {
     "en": ["Night Scout - Nez Percé"]
@@ -97,7 +97,7 @@
   ],
   "items": [
     {
-      "id": "https://can-the.vercel.app/iiif/manifest/nez-perce/06-night-scout/canvas/0",
+      "id": "https://canopy-iiif.vercel.app/iiif/manifest/nez-perce/06-night-scout/canvas/0",
       "type": "Canvas",
       "width": 3411,
       "height": 5120,
@@ -106,14 +106,14 @@
       },
       "items": [
         {
-          "id": "https://can-the.vercel.app/iiif/manifest/nez-perce/06-night-scout/canvas/0/page/0",
+          "id": "https://canopy-iiif.vercel.app/iiif/manifest/nez-perce/06-night-scout/canvas/0/page/0",
           "type": "AnnotationPage",
           "items": [
             {
-              "id": "https://can-the.vercel.app/iiif/manifest/nez-perce/06-night-scout/canvas/0/page/0/annotation/0",
+              "id": "https://canopy-iiif.vercel.app/iiif/manifest/nez-perce/06-night-scout/canvas/0/page/0/annotation/0",
               "type": "Annotation",
               "motivation": "painting",
-              "target": "https://can-the.vercel.app/iiif/manifest/nez-perce/06-night-scout/canvas/0",
+              "target": "https://canopy-iiif.vercel.app/iiif/manifest/nez-perce/06-night-scout/canvas/0",
               "body": {
                 "id": "https://iiif.stack.rdc.library.northwestern.edu/iiif/2/c542c750-489c-430d-8dd5-3565497c6452/full/600,/0/default.jpg",
                 "type": "Image",
