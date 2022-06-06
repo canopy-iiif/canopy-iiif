@@ -16,7 +16,7 @@ exports.prod = {
  */
 exports.dev = {
   collection:
-    "http://localhost:5001/fixtures/iiif-dev/collection/nez-perce.json",
+    "http://localhost:5001/fixtures/iiif-dev/collection/north-american.json",
   title: "Nez Percé (Nimíipuu)",
   hero: [
     "http://localhost:5001/fixtures/iiif-dev/manifest/nez-perce/02-lawyer.json",

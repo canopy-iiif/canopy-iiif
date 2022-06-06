@@ -1,8 +1,7 @@
 const axios = require("axios");
 const slugify = require("slugify");
 
-exports.getRootCollection = (id) =>
-  fetch(id).then((response) => response.json());
+exports.getCollection = (id) => fetch(id).then((response) => response.json());
 
 exports.getBulkManifests = async (items, chunkSize) =>
   await chunks(
@@ -31,8 +30,6 @@ exports.buildCanopyCollection = (json, depth, parent = null) => {
   let label = null;
   let slug = null;
   let children = null;
-
-  console.log(context);
 
   /**
    * based on @context, parse collections
