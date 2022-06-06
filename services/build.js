@@ -32,6 +32,8 @@ exports.buildCanopyCollection = (json, depth, parent = null) => {
   let slug = null;
   let children = null;
 
+  console.log(context);
+
   /**
    * based on @context, parse collections
    */
@@ -129,6 +131,7 @@ const buildCollectionItems2 = (json, parent) => {
 const buildCollectionItems3 = (json, parent) => {
   let manifests = 0;
   let collections = 0;
+
   return {
     items: json.items.map((item) => {
       /**

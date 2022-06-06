@@ -17,7 +17,7 @@ module.exports.buildCanopy = (env) => {
     /**
      * generate collection data
      */
-    console.log(`Generating collection data...`);
+    console.log(`Generating collection data for ${env.collection}...`);
     const canopyCollection = buildCanopyCollection(json, 0, null);
 
     try {
