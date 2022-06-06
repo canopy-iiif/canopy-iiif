@@ -14,11 +14,9 @@ exports.prod = {
  * Configuration built by `npm run dev`
  */
 exports.dev = {
-  collection: "https://canopy-iiif.vercel.app/iiif/collection/nez-perce.json",
+  collection: "http://localhost:5001/iiif-dev/collection/nez-perce.json",
   title: "Nez Percé (Nimíipuu)",
-  hero: [
-    "https://canopy-iiif.vercel.app/iiif/manifest/nez-perce/02-lawyer.json",
-  ],
+  hero: ["http://localhost:5001/iiif-dev/manifest/nez-perce/02-lawyer.json"],
   metadata: ["Date", "Subject"],
 };
 
