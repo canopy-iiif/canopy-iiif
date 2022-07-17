@@ -1,6 +1,7 @@
 import Head from 'next/head';
 import { getValues } from "@/hooks/getValues";
 import {useEffect, useState} from "react";
+import { metatags } from "@/canopy.config";
 
 const Metatag = ({label, summary, thumbnail}) => {
   const [baseUrl, setBaseUrl] = useState("");
@@ -14,13 +15,18 @@ const Metatag = ({label, summary, thumbnail}) => {
 
   return (
     <Head>
+      <title>{labelValue}</title>
       <meta property="og:title" content={labelValue} key="title" />
       <meta property="og:description" content={summaryValue} key="summary" />
       <meta property="og:image" content={thumbnail[0].id} key="og-image" />
       <meta name="description" content={summaryValue} key="description" />
       <meta name="twitter:title" content={labelValue} key="twitter-title" />
+      <meta name="twitter:description" content={summaryValue} key="twitter-summary" />
       <meta name="twitter:image" content={thumbnail[0].id} key="twitter-image" />
       <meta name="twitter:image:alt" content={labelValue} key="twitter-image-alt" />
+      <meta name="twitter:card" content="summary_large_image" key="twitter-card" />
+      <meta name="twitter:site" content={metatags.twitterSite} key="twitter-site" />
+      <meta name="twitter:creator" content={metatags.twitterCreator} key="twitter-creator" />
     </Head>
   );
 };

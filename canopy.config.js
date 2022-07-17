@@ -22,5 +22,10 @@ const dev = {
   metadata: ["Artist", "Subject"],
 };
 
+exports.metatags = {
+  twitterCreator: "@utklibraries",
+  twitterSite: "@utklibraries",
+};
+
 exports.config = config;
 exports.dev = dev;
