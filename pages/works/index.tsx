@@ -5,7 +5,7 @@ import Layout from "@/components/layout";
 import { InView } from "react-intersection-observer";
 import { map as lodashMap, groupBy as lodashGroupBy } from "lodash";
 import Grid from "@/components/Grid/Grid";
-import Metatag from "../../components/Metatag/Metatag";
+import Metatag from "@/components/Metatag/Metatag";
 import { dev } from "@/canopy.config";
 
 const RESULT_LIMIT = 20;
