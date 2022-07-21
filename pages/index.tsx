@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Layout from "@/components/layout";
 import Hero from "@/components/Hero/Hero";
 import BloomIIIF from "@samvera/bloom-iiif";
-import Metatag from "../components/Metatag/Metatag";
+import Metatag from "@/components/Metatag/Metatag";
 import { dev } from "@/canopy.config";
 
 export default function Index({ metadata }) {
