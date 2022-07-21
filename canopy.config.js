@@ -21,8 +21,6 @@ exports.dev = {
   ],
   metadata: ["Date", "Subject"],
   seo: {
-    hostname: "https://canopy-iiif.vercel.app",
-    description: "",
     analytics: "",
     metatags: {
       googleSiteVerification: "",
