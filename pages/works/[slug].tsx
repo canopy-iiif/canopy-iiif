@@ -2,7 +2,7 @@ import { gql } from "@apollo/client";
 import { client } from "@/pages/api/graphql";
 import Layout from "@/components/layout";
 import Viewer from "@/components/Viewer/Viewer";
-import Metatag from "../../components/Metatag/Metatag";
+import Metatag from "@/components/Metatag/Metatag";
 import { Vault } from "@iiif/vault";
 import Related from "@/components/Related/Related";
 import WorkInner from "@/components/Work/Inner";
