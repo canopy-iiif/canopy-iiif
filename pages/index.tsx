@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Layout from "@/components/layout";
 import Hero from "@/components/Hero/Hero";
-import BloomIIIF from "@samvera/bloom-iiif";
+import Slider from "@/components/Viewer/Slider";
 
 export default function Index({ metadata }) {
   const [baseUrl, setBaseUrl] = useState("");
@@ -23,7 +23,7 @@ export default function Index({ metadata }) {
       >
         <div style={{ padding: "1rem 2rem" }}>
           {metadata.map((label) => (
-            <BloomIIIF
+            <Slider
               collectionId={`${baseUrl}/api/iiif/metadata/${label}`}
               key={`${baseUrl}/api/iiif/metadata/${label}`}
             />
