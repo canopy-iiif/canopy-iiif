@@ -63,8 +63,6 @@ const resolvers = {
     },
 
     metadata: async (_, { id, label }, context) => {
-      console.log(label);
-
       if (CANOPY_METADATA)
         return CANOPY_METADATA.filter((item) => item.label === label);
     },

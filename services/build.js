@@ -32,8 +32,6 @@ exports.buildCanopyCollection = (json, depth, parent = null) => {
   let slug = null;
   let children = null;
 
-  console.log(context);
-
   /**
    * based on @context, parse collections
    */
@@ -228,5 +226,7 @@ function chunks(items, fn, chunkSize = 25) {
 
   return series(chunks, (chunk) => {
     return all(chunk, fn).then((res) => (result = result.concat(res)));
-  }).then(() => result);
+  }).then(() => {
+    return result;
+  });
 }
