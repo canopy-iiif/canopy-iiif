@@ -1,6 +1,6 @@
 # Canopy IIIF
 
-### An attempted and mostly pure IIIF Collection site generator using Next.js
+An attempted and mostly pure IIIF Collection site generator using Next.js
 
 ## Notes
 
