@@ -87,12 +87,12 @@
   "rights": "http://rightsstatements.org/vocab/NoC-NC/1.0/",
   "thumbnail": [
     {
-      "id": "https://fixtures/iiif.stack.rdc.library.northwestern.edu/fixtures/iiif/2/bc818795-6ff9-4dca-bb34-d619e4c38b9e/full/200,/0/default.jpg",
+      "id": "https://iiif.stack.rdc.library.northwestern.edu/iiif/2/bc818795-6ff9-4dca-bb34-d619e4c38b9e/full/200,/0/default.jpg",
       "type": "Image",
       "format": "image/jpeg",
       "service": [
         {
-          "id": "https://fixtures/iiif.stack.rdc.library.northwestern.edu/fixtures/iiif/2/bc818795-6ff9-4dca-bb34-d619e4c38b9e",
+          "id": "https://iiif.stack.rdc.library.northwestern.edu/iiif/2/bc818795-6ff9-4dca-bb34-d619e4c38b9e",
           "profile": "http://iiif.io/api/image/2/level2.json",
           "type": "ImageService2"
         }
@@ -121,12 +121,12 @@
               "motivation": "painting",
               "target": "http://localhost:5001/fixtures/iiif-dev/manifest/apache/08-white-river/canvas/0",
               "body": {
-                "id": "https://fixtures/iiif.stack.rdc.library.northwestern.edu/fixtures/iiif/2/bc818795-6ff9-4dca-bb34-d619e4c38b9e/full/600,/0/default.jpg",
+                "id": "https://iiif.stack.rdc.library.northwestern.edu/iiif/2/bc818795-6ff9-4dca-bb34-d619e4c38b9e/full/600,/0/default.jpg",
                 "type": "Image",
                 "format": "image/jpeg",
                 "service": [
                   {
-                    "id": "https://fixtures/iiif.stack.rdc.library.northwestern.edu/fixtures/iiif/2/bc818795-6ff9-4dca-bb34-d619e4c38b9e",
+                    "id": "https://iiif.stack.rdc.library.northwestern.edu/iiif/2/bc818795-6ff9-4dca-bb34-d619e4c38b9e",
                     "profile": "http://iiif.io/api/image/2/level2.json",
                     "type": "ImageService2"
                   }

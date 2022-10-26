@@ -83,12 +83,12 @@
   "rights": "http://rightsstatements.org/vocab/NoC-NC/1.0/",
   "thumbnail": [
     {
-      "id": "https://fixtures/iiif.stack.rdc.library.northwestern.edu/fixtures/iiif/2/90e4dc8a-996c-4f1f-9c9a-20f77e0d3fc6/full/200,/0/default.jpg",
+      "id": "https://iiif.stack.rdc.library.northwestern.edu/iiif/2/90e4dc8a-996c-4f1f-9c9a-20f77e0d3fc6/full/200,/0/default.jpg",
       "type": "Image",
       "format": "image/jpeg",
       "service": [
         {
-          "id": "https://fixtures/iiif.stack.rdc.library.northwestern.edu/fixtures/iiif/2/90e4dc8a-996c-4f1f-9c9a-20f77e0d3fc6",
+          "id": "https://iiif.stack.rdc.library.northwestern.edu/iiif/2/90e4dc8a-996c-4f1f-9c9a-20f77e0d3fc6",
           "profile": "http://iiif.io/api/image/2/level2.json",
           "type": "ImageService2"
         }
@@ -117,12 +117,12 @@
               "motivation": "painting",
               "target": "https://canopy-iiif.vercel.app/fixtures/iiif/manifest/nez-perce/09-girl/canvas/0",
               "body": {
-                "id": "https://fixtures/iiif.stack.rdc.library.northwestern.edu/fixtures/iiif/2/90e4dc8a-996c-4f1f-9c9a-20f77e0d3fc6/full/600,/0/default.jpg",
+                "id": "https://iiif.stack.rdc.library.northwestern.edu/iiif/2/90e4dc8a-996c-4f1f-9c9a-20f77e0d3fc6/full/600,/0/default.jpg",
                 "type": "Image",
                 "format": "image/jpeg",
                 "service": [
                   {
-                    "id": "https://fixtures/iiif.stack.rdc.library.northwestern.edu/fixtures/iiif/2/90e4dc8a-996c-4f1f-9c9a-20f77e0d3fc6",
+                    "id": "https://iiif.stack.rdc.library.northwestern.edu/iiif/2/90e4dc8a-996c-4f1f-9c9a-20f77e0d3fc6",
                     "profile": "http://iiif.io/api/image/2/level2.json",
                     "type": "ImageService2"
                   }

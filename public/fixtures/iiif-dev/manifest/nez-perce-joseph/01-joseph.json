@@ -81,12 +81,12 @@
   "rights": "http://rightsstatements.org/vocab/NoC-NC/1.0/",
   "thumbnail": [
     {
-      "id": "https://fixtures/iiif.stack.rdc.library.northwestern.edu/fixtures/iiif/2/8061b387-205e-44b2-a91b-49fcc1f10a19/full/200,/0/default.jpg",
+      "id": "https://iiif.stack.rdc.library.northwestern.edu/iiif/2/8061b387-205e-44b2-a91b-49fcc1f10a19/full/200,/0/default.jpg",
       "type": "Image",
       "format": "image/jpeg",
       "service": [
         {
-          "id": "https://fixtures/iiif.stack.rdc.library.northwestern.edu/fixtures/iiif/2/8061b387-205e-44b2-a91b-49fcc1f10a19",
+          "id": "https://iiif.stack.rdc.library.northwestern.edu/iiif/2/8061b387-205e-44b2-a91b-49fcc1f10a19",
           "profile": "http://iiif.io/api/image/2/level2.json",
           "type": "ImageService2"
         }
@@ -115,12 +115,12 @@
               "motivation": "painting",
               "target": "http://localhost:5001/fixtures/iiif-dev/manifest/nez-perce-joseph/01-joseph/canvas/0",
               "body": {
-                "id": "https://fixtures/iiif.stack.rdc.library.northwestern.edu/fixtures/iiif/2/8061b387-205e-44b2-a91b-49fcc1f10a19/full/600,/0/default.jpg",
+                "id": "https://iiif.stack.rdc.library.northwestern.edu/iiif/2/8061b387-205e-44b2-a91b-49fcc1f10a19/full/600,/0/default.jpg",
                 "type": "Image",
                 "format": "image/jpeg",
                 "service": [
                   {
-                    "id": "https://fixtures/iiif.stack.rdc.library.northwestern.edu/fixtures/iiif/2/8061b387-205e-44b2-a91b-49fcc1f10a19",
+                    "id": "https://iiif.stack.rdc.library.northwestern.edu/iiif/2/8061b387-205e-44b2-a91b-49fcc1f10a19",
                     "profile": "http://iiif.io/api/image/2/level2.json",
                     "type": "ImageService2"
                   }

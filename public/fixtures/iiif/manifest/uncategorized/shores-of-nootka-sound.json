@@ -86,12 +86,12 @@
   "rights": "http://rightsstatements.org/vocab/NoC-NC/1.0/",
   "thumbnail": [
     {
-      "id": "https://fixtures/iiif.stack.rdc.library.northwestern.edu/fixtures/iiif/2/af10ff55-2311-42cb-a7c0-9305b77e6a07/full/200,/0/default.jpg",
+      "id": "https://iiif.stack.rdc.library.northwestern.edu/iiif/2/af10ff55-2311-42cb-a7c0-9305b77e6a07/full/200,/0/default.jpg",
       "type": "Image",
       "format": "image/jpeg",
       "service": [
         {
-          "id": "https://fixtures/iiif.stack.rdc.library.northwestern.edu/fixtures/iiif/2/af10ff55-2311-42cb-a7c0-9305b77e6a07",
+          "id": "https://iiif.stack.rdc.library.northwestern.edu/iiif/2/af10ff55-2311-42cb-a7c0-9305b77e6a07",
           "profile": "http://iiif.io/api/image/2/level2.json",
           "type": "ImageService2"
         }
@@ -120,12 +120,12 @@
               "motivation": "painting",
               "target": "https://canopy-iiif.vercel.app/fixtures/iiif/manifest/uncategorized/shores-of-nootka-sound/canvas/0",
               "body": {
-                "id": "https://fixtures/iiif.stack.rdc.library.northwestern.edu/fixtures/iiif/2/af10ff55-2311-42cb-a7c0-9305b77e6a07/full/600,/0/default.jpg",
+                "id": "https://iiif.stack.rdc.library.northwestern.edu/iiif/2/af10ff55-2311-42cb-a7c0-9305b77e6a07/full/600,/0/default.jpg",
                 "type": "Image",
                 "format": "image/jpeg",
                 "service": [
                   {
-                    "id": "https://fixtures/iiif.stack.rdc.library.northwestern.edu/fixtures/iiif/2/af10ff55-2311-42cb-a7c0-9305b77e6a07",
+                    "id": "https://iiif.stack.rdc.library.northwestern.edu/iiif/2/af10ff55-2311-42cb-a7c0-9305b77e6a07",
                     "profile": "http://iiif.io/api/image/2/level2.json",
                     "type": "ImageService2"
                   }

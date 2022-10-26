@@ -81,12 +81,12 @@
   "rights": "http://rightsstatements.org/vocab/NoC-NC/1.0/",
   "thumbnail": [
     {
-      "id": "https://fixtures/iiif.stack.rdc.library.northwestern.edu/fixtures/iiif/2/b5fed658-324f-4d0d-b59d-63d90addd35a/full/200,/0/default.jpg",
+      "id": "https://iiif.stack.rdc.library.northwestern.edu/iiif/2/b5fed658-324f-4d0d-b59d-63d90addd35a/full/200,/0/default.jpg",
       "type": "Image",
       "format": "image/jpeg",
       "service": [
         {
-          "id": "https://fixtures/iiif.stack.rdc.library.northwestern.edu/fixtures/iiif/2/b5fed658-324f-4d0d-b59d-63d90addd35a",
+          "id": "https://iiif.stack.rdc.library.northwestern.edu/iiif/2/b5fed658-324f-4d0d-b59d-63d90addd35a",
           "profile": "http://iiif.io/api/image/2/level2.json",
           "type": "ImageService2"
         }
@@ -115,12 +115,12 @@
               "motivation": "painting",
               "target": "http://localhost:5001/fixtures/iiif-dev/manifest/tsawatenok/03-tsawatenok-girl/canvas/0",
               "body": {
-                "id": "https://fixtures/iiif.stack.rdc.library.northwestern.edu/fixtures/iiif/2/b5fed658-324f-4d0d-b59d-63d90addd35a/full/600,/0/default.jpg",
+                "id": "https://iiif.stack.rdc.library.northwestern.edu/iiif/2/b5fed658-324f-4d0d-b59d-63d90addd35a/full/600,/0/default.jpg",
                 "type": "Image",
                 "format": "image/jpeg",
                 "service": [
                   {
-                    "id": "https://fixtures/iiif.stack.rdc.library.northwestern.edu/fixtures/iiif/2/b5fed658-324f-4d0d-b59d-63d90addd35a",
+                    "id": "https://iiif.stack.rdc.library.northwestern.edu/iiif/2/b5fed658-324f-4d0d-b59d-63d90addd35a",
                     "profile": "http://iiif.io/api/image/2/level2.json",
                     "type": "ImageService2"
                   }

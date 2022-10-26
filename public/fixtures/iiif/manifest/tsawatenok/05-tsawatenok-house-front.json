@@ -81,12 +81,12 @@
   "rights": "http://rightsstatements.org/vocab/NoC-NC/1.0/",
   "thumbnail": [
     {
-      "id": "https://fixtures/iiif.stack.rdc.library.northwestern.edu/fixtures/iiif/2/65670b6f-36b4-4e7d-b90d-769a5e62ebbb/full/200,/0/default.jpg",
+      "id": "https://iiif.stack.rdc.library.northwestern.edu/iiif/2/65670b6f-36b4-4e7d-b90d-769a5e62ebbb/full/200,/0/default.jpg",
       "type": "Image",
       "format": "image/jpeg",
       "service": [
         {
-          "id": "https://fixtures/iiif.stack.rdc.library.northwestern.edu/fixtures/iiif/2/65670b6f-36b4-4e7d-b90d-769a5e62ebbb",
+          "id": "https://iiif.stack.rdc.library.northwestern.edu/iiif/2/65670b6f-36b4-4e7d-b90d-769a5e62ebbb",
           "profile": "http://iiif.io/api/image/2/level2.json",
           "type": "ImageService2"
         }
@@ -115,12 +115,12 @@
               "motivation": "painting",
               "target": "https://canopy-iiif.vercel.app/fixtures/iiif/manifest/tsawatenok/05-tsawatenok-house-front/canvas/0",
               "body": {
-                "id": "https://fixtures/iiif.stack.rdc.library.northwestern.edu/fixtures/iiif/2/65670b6f-36b4-4e7d-b90d-769a5e62ebbb/full/600,/0/default.jpg",
+                "id": "https://iiif.stack.rdc.library.northwestern.edu/iiif/2/65670b6f-36b4-4e7d-b90d-769a5e62ebbb/full/600,/0/default.jpg",
                 "type": "Image",
                 "format": "image/jpeg",
                 "service": [
                   {
-                    "id": "https://fixtures/iiif.stack.rdc.library.northwestern.edu/fixtures/iiif/2/65670b6f-36b4-4e7d-b90d-769a5e62ebbb",
+                    "id": "https://iiif.stack.rdc.library.northwestern.edu/iiif/2/65670b6f-36b4-4e7d-b90d-769a5e62ebbb",
                     "profile": "http://iiif.io/api/image/2/level2.json",
                     "type": "ImageService2"
                   }
