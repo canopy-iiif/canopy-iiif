@@ -1,4 +1,4 @@
-import { styled } from "@/stiches.config";
+import { styled } from "@/stitches";
 import Masonry from "react-masonry-css";
 
 const Item = styled("div", {

@@ -1,4 +1,4 @@
-import { styled } from "@/stiches.config";
+import { styled } from "@/stitches";
 
 const WorkData = styled("div", { padding: "0 1.618rem 2rem" });
 
@@ -18,7 +18,7 @@ const StyledWorkInner = styled("section", {
     dd: {
       marginInlineStart: "0",
       paddingBottom: "1.25rem",
-    }
+    },
   },
 });
 

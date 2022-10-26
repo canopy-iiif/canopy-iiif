@@ -2,7 +2,7 @@ import { Wrapper } from "@/components/Grid/Grid.styled";
 import GridItem from "@/components/Grid/Item";
 import GridLoadMore from "@/components/Grid/LoadMore";
 import { useMediaQuery } from "@/hooks/use-media-query";
-import { media } from "@/stiches.config";
+import { width } from "@/styles/media";
 import { useEffect, useState } from "react";
 
 const Grid = ({ children }) => {
@@ -10,11 +10,11 @@ const Grid = ({ children }) => {
    * @todo move this elsewhere and make it smarter
    */
   let mediaQuery = new Map();
-  mediaQuery.set("xs", useMediaQuery(media.xs));
-  mediaQuery.set("sm", useMediaQuery(media.sm));
-  mediaQuery.set("md", useMediaQuery(media.md));
-  mediaQuery.set("lg", useMediaQuery(media.lg));
-  mediaQuery.set("xl", useMediaQuery(media.xl));
+  mediaQuery.set("xs", useMediaQuery(width.xs));
+  mediaQuery.set("sm", useMediaQuery(width.sm));
+  mediaQuery.set("md", useMediaQuery(width.md));
+  mediaQuery.set("lg", useMediaQuery(width.lg));
+  mediaQuery.set("xl", useMediaQuery(width.xl));
 
   useEffect(() => {
     if (mediaQuery.get("xs")) {

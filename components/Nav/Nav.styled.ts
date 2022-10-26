@@ -1,4 +1,4 @@
-import { styled } from "@/stiches.config";
+import { styled } from "@/stitches";
 
 const Highlight = styled("div", {
   backgroundColor: "$indigo11",

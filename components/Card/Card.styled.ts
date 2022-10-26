@@ -1,4 +1,4 @@
-import { styled } from "@/stiches.config";
+import { styled } from "@/stitches";
 
 const Content = styled("div", {
   padding: "1rem 0 0",

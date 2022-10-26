@@ -1,4 +1,4 @@
-import { styled } from "@/stiches.config";
+import { styled } from "@/stitches";
 import { Wrapper as Figure } from "@/components/Figure/Figure.styled";
 
 const Wrapper = styled("div", {
