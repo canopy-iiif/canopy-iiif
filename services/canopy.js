@@ -79,7 +79,7 @@ module.exports.buildCanopy = (env) => {
 
     console.log(`Flattening prescribed metadata...`);
 
-    const responses = getBulkManifests(canopyManifests, 25);
+    const responses = getBulkManifests(canopyManifests, 10);
 
     responses.then((manifests) => {
       let canopyMetadata = [];
