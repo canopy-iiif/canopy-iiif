@@ -1,6 +1,6 @@
 {
   "@context": "http://iiif.io/api/presentation/3/context.json",
-  "id": "https://canopy-iiif.vercel.app/fixtures/iiif/manifest/apache/12-das-lan.json",
+  "id": "https://raw.githubusercontent.com/mathewjordan/canopy-iiif/main/public/fixtures/iiif/manifest/apache/12-das-lan.json",
   "type": "Manifest",
   "label": {
     "en": ["Das Lan - Apache"]
@@ -103,7 +103,7 @@
   ],
   "items": [
     {
-      "id": "https://canopy-iiif.vercel.app/fixtures/iiif/manifest/apache/12-das-lan/canvas/0",
+      "id": "https://raw.githubusercontent.com/mathewjordan/canopy-iiif/main/public/fixtures/iiif/manifest/apache/12-das-lan/canvas/0",
       "type": "Canvas",
       "width": 2185,
       "height": 3072,
@@ -112,14 +112,14 @@
       },
       "items": [
         {
-          "id": "https://canopy-iiif.vercel.app/fixtures/iiif/manifest/apache/12-das-lan/canvas/0/page/0",
+          "id": "https://raw.githubusercontent.com/mathewjordan/canopy-iiif/main/public/fixtures/iiif/manifest/apache/12-das-lan/canvas/0/page/0",
           "type": "AnnotationPage",
           "items": [
             {
-              "id": "https://canopy-iiif.vercel.app/fixtures/iiif/manifest/apache/12-das-lan/canvas/0/page/0/annotation/0",
+              "id": "https://raw.githubusercontent.com/mathewjordan/canopy-iiif/main/public/fixtures/iiif/manifest/apache/12-das-lan/canvas/0/page/0/annotation/0",
               "type": "Annotation",
               "motivation": "painting",
-              "target": "https://canopy-iiif.vercel.app/fixtures/iiif/manifest/apache/12-das-lan/canvas/0",
+              "target": "https://raw.githubusercontent.com/mathewjordan/canopy-iiif/main/public/fixtures/iiif/manifest/apache/12-das-lan/canvas/0",
               "body": {
                 "id": "https://iiif.stack.rdc.library.northwestern.edu/iiif/2/8bb808cb-67f3-4182-af8e-50b8392ace28/full/600,/0/default.jpg",
                 "type": "Image",

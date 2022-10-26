@@ -1,6 +1,6 @@
 {
   "@context": "http://iiif.io/api/presentation/3/context.json",
-  "id": "https://canopy-iiif.vercel.app/fixtures/iiif/manifest/tsawatenok/04-lagyus.json",
+  "id": "https://raw.githubusercontent.com/mathewjordan/canopy-iiif/main/public/fixtures/iiif/manifest/tsawatenok/04-lagyus.json",
   "type": "Manifest",
   "label": {
     "en": ["Lágyus - Tsawatenok"]
@@ -97,7 +97,7 @@
   ],
   "items": [
     {
-      "id": "https://canopy-iiif.vercel.app/fixtures/iiif/manifest/tsawatenok/04-lagyus/canvas/0",
+      "id": "https://raw.githubusercontent.com/mathewjordan/canopy-iiif/main/public/fixtures/iiif/manifest/tsawatenok/04-lagyus/canvas/0",
       "type": "Canvas",
       "width": 2111,
       "height": 3072,
@@ -106,14 +106,14 @@
       },
       "items": [
         {
-          "id": "https://canopy-iiif.vercel.app/fixtures/iiif/manifest/tsawatenok/04-lagyus/canvas/0/page/0",
+          "id": "https://raw.githubusercontent.com/mathewjordan/canopy-iiif/main/public/fixtures/iiif/manifest/tsawatenok/04-lagyus/canvas/0/page/0",
           "type": "AnnotationPage",
           "items": [
             {
-              "id": "https://canopy-iiif.vercel.app/fixtures/iiif/manifest/tsawatenok/04-lagyus/canvas/0/page/0/annotation/0",
+              "id": "https://raw.githubusercontent.com/mathewjordan/canopy-iiif/main/public/fixtures/iiif/manifest/tsawatenok/04-lagyus/canvas/0/page/0/annotation/0",
               "type": "Annotation",
               "motivation": "painting",
-              "target": "https://canopy-iiif.vercel.app/fixtures/iiif/manifest/tsawatenok/04-lagyus/canvas/0",
+              "target": "https://raw.githubusercontent.com/mathewjordan/canopy-iiif/main/public/fixtures/iiif/manifest/tsawatenok/04-lagyus/canvas/0",
               "body": {
                 "id": "https://iiif.stack.rdc.library.northwestern.edu/iiif/2/2959606d-4be4-4c34-a02b-ee1d68a39c9d/full/600,/0/default.jpg",
                 "type": "Image",

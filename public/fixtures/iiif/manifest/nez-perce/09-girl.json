@@ -1,6 +1,6 @@
 {
   "@context": "http://iiif.io/api/presentation/3/context.json",
-  "id": "https://canopy-iiif.vercel.app/fixtures/iiif/manifest/nez-perce/09-girl.json",
+  "id": "https://raw.githubusercontent.com/mathewjordan/canopy-iiif/main/public/fixtures/iiif/manifest/nez-perce/09-girl.json",
   "type": "Manifest",
   "label": {
     "en": ["Nez Percé Girl"]
@@ -99,7 +99,7 @@
   ],
   "items": [
     {
-      "id": "https://canopy-iiif.vercel.app/fixtures/iiif/manifest/nez-perce/09-girl/canvas/0",
+      "id": "https://raw.githubusercontent.com/mathewjordan/canopy-iiif/main/public/fixtures/iiif/manifest/nez-perce/09-girl/canvas/0",
       "type": "Canvas",
       "width": 2131,
       "height": 3072,
@@ -108,14 +108,14 @@
       },
       "items": [
         {
-          "id": "https://canopy-iiif.vercel.app/fixtures/iiif/manifest/nez-perce/09-girl/canvas/0/page/0",
+          "id": "https://raw.githubusercontent.com/mathewjordan/canopy-iiif/main/public/fixtures/iiif/manifest/nez-perce/09-girl/canvas/0/page/0",
           "type": "AnnotationPage",
           "items": [
             {
-              "id": "https://canopy-iiif.vercel.app/fixtures/iiif/manifest/nez-perce/09-girl/canvas/0/page/0/annotation/0",
+              "id": "https://raw.githubusercontent.com/mathewjordan/canopy-iiif/main/public/fixtures/iiif/manifest/nez-perce/09-girl/canvas/0/page/0/annotation/0",
               "type": "Annotation",
               "motivation": "painting",
-              "target": "https://canopy-iiif.vercel.app/fixtures/iiif/manifest/nez-perce/09-girl/canvas/0",
+              "target": "https://raw.githubusercontent.com/mathewjordan/canopy-iiif/main/public/fixtures/iiif/manifest/nez-perce/09-girl/canvas/0",
               "body": {
                 "id": "https://iiif.stack.rdc.library.northwestern.edu/iiif/2/90e4dc8a-996c-4f1f-9c9a-20f77e0d3fc6/full/600,/0/default.jpg",
                 "type": "Image",

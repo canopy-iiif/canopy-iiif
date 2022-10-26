@@ -1,6 +1,6 @@
 {
   "@context": "http://iiif.io/api/presentation/3/context.json",
-  "id": "https://canopy-iiif.vercel.app/fixtures/iiif/manifest/nez-perce-joseph/04-last-home-of-joseph.json",
+  "id": "https://raw.githubusercontent.com/mathewjordan/canopy-iiif/main/public/fixtures/iiif/manifest/nez-perce-joseph/04-last-home-of-joseph.json",
   "type": "Manifest",
   "label": {
     "en": ["Last Home of Joseph - Nez Percé"]
@@ -99,7 +99,7 @@
   ],
   "items": [
     {
-      "id": "https://canopy-iiif.vercel.app/fixtures/iiif/manifest/nez-perce-joseph/04-last-home-of-joseph/canvas/0",
+      "id": "https://raw.githubusercontent.com/mathewjordan/canopy-iiif/main/public/fixtures/iiif/manifest/nez-perce-joseph/04-last-home-of-joseph/canvas/0",
       "type": "Canvas",
       "width": 3072,
       "height": 2560,
@@ -108,14 +108,14 @@
       },
       "items": [
         {
-          "id": "https://canopy-iiif.vercel.app/fixtures/iiif/manifest/nez-perce-joseph/04-last-home-of-joseph/canvas/0/page/0",
+          "id": "https://raw.githubusercontent.com/mathewjordan/canopy-iiif/main/public/fixtures/iiif/manifest/nez-perce-joseph/04-last-home-of-joseph/canvas/0/page/0",
           "type": "AnnotationPage",
           "items": [
             {
-              "id": "https://canopy-iiif.vercel.app/fixtures/iiif/manifest/nez-perce-joseph/04-last-home-of-joseph/canvas/0/page/0/annotation/0",
+              "id": "https://raw.githubusercontent.com/mathewjordan/canopy-iiif/main/public/fixtures/iiif/manifest/nez-perce-joseph/04-last-home-of-joseph/canvas/0/page/0/annotation/0",
               "type": "Annotation",
               "motivation": "painting",
-              "target": "https://canopy-iiif.vercel.app/fixtures/iiif/manifest/nez-perce-joseph/04-last-home-of-joseph/canvas/0",
+              "target": "https://raw.githubusercontent.com/mathewjordan/canopy-iiif/main/public/fixtures/iiif/manifest/nez-perce-joseph/04-last-home-of-joseph/canvas/0",
               "body": {
                 "id": "https://iiif.stack.rdc.library.northwestern.edu/iiif/2/7424bda9-1bbf-4a9c-a47a-c5f57c795bf6/full/600,/0/default.jpg",
                 "type": "Image",
