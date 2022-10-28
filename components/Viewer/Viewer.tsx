@@ -1,6 +1,6 @@
 import dynamic from "next/dynamic";
 
-const CloverIIIF: React.ComponentType<{ manifestId: string }> = dynamic(
+const CloverIIIF: React.ComponentType<{ id: string }> = dynamic(
   () => import("@samvera/clover-iiif"),
   {
     ssr: false,
@@ -14,9 +14,6 @@ const options = {
   renderAbout: false,
 };
 
-const Viewer = ({ manifestId }) => (
-  <>
-    <CloverIIIF id={manifestId} options={options} />
-  </>
-);
+const Viewer = ({ id }) => <CloverIIIF id={id} />;
+
 export default Viewer;

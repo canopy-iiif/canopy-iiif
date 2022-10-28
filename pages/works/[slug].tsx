@@ -18,8 +18,7 @@ export default function Manifest({ manifest }) {
   return (
     <Layout>
       <div style={{ padding: "1.31rem 0 0" }}>
-        <Viewer manifestId={id} />
-        {id}
+        <Viewer id={id} />
       </div>
       <WorkInner manifest={manifest} />
       <section
