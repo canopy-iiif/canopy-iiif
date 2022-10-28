@@ -1,4 +1,3 @@
-import BloomIIIF from "@samvera/bloom-iiif";
 import { useEffect, useState } from "react";
 import { Label } from "@samvera/nectar-iiif";
 

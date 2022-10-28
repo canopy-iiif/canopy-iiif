@@ -13,6 +13,7 @@
     "noEmit": true,
     "paths": {
       "@/*": ["*"],
+      "@/app": ["*"],
       "@/components/*": ["components/*"],
       "@/hooks/*": ["hooks/*"],
       "@/pages/*": ["pages/*"],

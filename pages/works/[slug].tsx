@@ -1,7 +1,7 @@
 import { gql } from "@apollo/client";
 import { client } from "@/pages/api/graphql";
 import Layout from "@/components/layout";
-import Viewer from "@/components/Viewer/Viewer";
+import Viewer from "@/app/Viewer/Viewer";
 import { Vault } from "@iiif/vault";
 import {
   Label,

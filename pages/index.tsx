@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Layout from "@/components/layout";
 import Hero from "@/components/Hero/Hero";
-import Slider from "@/components/Viewer/Slider";
+import Slider from "@/app/Viewer/Slider";
 
 export default function Index({ metadata }) {
   const [baseUrl, setBaseUrl] = useState("");

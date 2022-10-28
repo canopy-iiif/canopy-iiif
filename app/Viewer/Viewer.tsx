@@ -1,3 +1,5 @@
+"use client";
+
 import dynamic from "next/dynamic";
 
 const CloverIIIF: React.ComponentType<{ id: string }> = dynamic(
@@ -14,6 +16,6 @@ const options = {
   renderAbout: false,
 };
 
-const Viewer = ({ id }) => <CloverIIIF id={id} />;
+const Viewer = ({ id }) => <CloverIIIF id={id} options={options} />;
 
 export default Viewer;
