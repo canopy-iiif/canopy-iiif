@@ -73,7 +73,7 @@ module.exports.buildCanopy = (env) => {
       (err) => {
         if (err) {
           console.error(err);
-        }
+        }m,
       }
     );
 

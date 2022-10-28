@@ -21,13 +21,6 @@
       }
     },
     {
-      "id": "https://raw.githubusercontent.com/mathewjordan/canopy-iiif/main/public/fixtures/iiif/collection/nez-perce-joseph.json",
-      "type": "Collection",
-      "label": {
-        "en": ["Joseph - Nez Percé"]
-      }
-    },
-    {
       "id": "https://raw.githubusercontent.com/mathewjordan/canopy-iiif/main/public/fixtures/iiif/collection/nez-perce.json",
       "type": "Collection",
       "label": {

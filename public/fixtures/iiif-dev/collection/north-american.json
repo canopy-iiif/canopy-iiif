@@ -21,13 +21,6 @@
       }
     },
     {
-      "id": "http://localhost:5001/fixtures/iiif-dev/collection/nez-perce-joseph.json",
-      "type": "Collection",
-      "label": {
-        "en": ["Joseph - Nez Percé"]
-      }
-    },
-    {
       "id": "http://localhost:5001/fixtures/iiif-dev/collection/nez-perce.json",
       "type": "Collection",
       "label": {

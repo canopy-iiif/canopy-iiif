@@ -82,6 +82,34 @@
       "label": {
         "none": ["Watching for the Signal - Nez Percé"]
       }
+    },
+    {
+      "id": "http://localhost:5001/fixtures/iiif-dev/manifest/nez-perce/12-joseph.json",
+      "type": "Manifest",
+      "label": {
+        "none": ["Joseph - Nez Percé"]
+      }
+    },
+    {
+      "id": "http://localhost:5001/fixtures/iiif-dev/manifest/nez-perce/13-chief-joseph.json",
+      "type": "Manifest",
+      "label": {
+        "none": ["Chief Joseph - Nez Percé"]
+      }
+    },
+    {
+      "id": "http://localhost:5001/fixtures/iiif-dev/manifest/nez-perce/14-joseph-dead-feast-lodge.json",
+      "type": "Manifest",
+      "label": {
+        "none": ["Joseph Dead Feast Lodge - Nez Percé"]
+      }
+    },
+    {
+      "id": "http://localhost:5001/fixtures/iiif-dev/manifest/nez-perce/15-last-home-of-joseph.json",
+      "type": "Manifest",
+      "label": {
+        "none": ["Last Home of Joseph - Nez Percé"]
+      }
     }
   ]
 }
