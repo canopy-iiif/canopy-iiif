@@ -16,6 +16,11 @@ const options = {
   renderAbout: false,
 };
 
-const Viewer = ({ id }) => <CloverIIIF id={id} options={options} />;
+const Viewer = ({ id }) => (
+  <>
+    {id}
+    <CloverIIIF id={id} options={options} />
+  </>
+);
 
 export default Viewer;
