@@ -70,11 +70,7 @@ module.exports.buildCanopy = (env) => {
     fs.writeFile(
       `${canopyDirectory}/metadata.json`,
       JSON.stringify([]),
-      (err) => {
-        if (err) {
-          console.error(err);
-        }m,
-      }
+      (error) => error && console.error(error)
     );
 
     console.log(`Flattening prescribed metadata...`);
