@@ -15,9 +15,7 @@ const Header = () => {
   return (
     <Wrapper>
       <Title>
-        <Link href="/">
-          <a>{title}</a>
-        </Link>
+        <Link href="/">{title}</Link>
       </Title>
       <Nav items={navItems} />
       <a

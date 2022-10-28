@@ -13,13 +13,11 @@ const Card = ({
   return (
     <Wrapper>
       <Link href={path}>
-        <a>
-          <Figure resource={resource} size={size} isCover={isCover} />
-          <Content>
-            <h4>{label}</h4>
-            {context && <span>{context}</span>}
-          </Content>
-        </a>
+        <Figure resource={resource} size={size} isCover={isCover} />
+        <Content>
+          <h4>{label}</h4>
+          {context && <span>{context}</span>}
+        </Content>
       </Link>
     </Wrapper>
   );
