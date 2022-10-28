@@ -15,6 +15,8 @@ const options = {
 };
 
 const Viewer = ({ manifestId }) => (
-  <CloverIIIF id={manifestId} options={options} />
+  <>
+    <CloverIIIF id={manifestId} options={options} />
+  </>
 );
 export default Viewer;
