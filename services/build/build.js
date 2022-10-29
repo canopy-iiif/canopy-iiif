@@ -1,8 +1,8 @@
 const axios = require("axios");
 const slugify = require("slugify");
 const { chunks } = require("./chunks");
-const { getPresentation3 } = require("./iiif/context");
-const { getLabel } = require("./iiif/label");
+const { getPresentation3 } = require("../iiif/context");
+const { getLabel } = require("../iiif/label");
 
 exports.getRootCollection = (id) =>
   fetch(id).then((response) => response.json());

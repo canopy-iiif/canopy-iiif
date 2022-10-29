@@ -1,8 +1,12 @@
+const { log } = require("./log");
+
 function all(items, fn) {
   const promises = items
     .filter((item) => item)
     .map((item) => {
-      if (item) console.log(`${item.id}`);
+      if (item) {
+        log(`${item.id}\n`, true);
+      }
       return fn(item);
     });
   return Promise.all(promises);
@@ -22,9 +26,9 @@ function chunks(items, fn, chunkSize = 25) {
 function series(items, fn) {
   let result = [];
   return items
-    .reduce((acc, item) => {
+    .reduce((acc, item, index) => {
       acc = acc.then(() => {
-        console.log(`Fetching...`);
+        log(`\nAggregating series ${index + 1} of ${items.length}...\n`);
         return fn(item).then((res) => result.push(res));
       });
       return acc;

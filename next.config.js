@@ -4,7 +4,7 @@ const {
 } = require("next/constants");
 
 const config = require("./canopy.config");
-const canopy = require("./services/canopy");
+const canopy = require("./services/build/canopy");
 
 module.exports = (phase) => {
   const isDev = phase === PHASE_DEVELOPMENT_SERVER;

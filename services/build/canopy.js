@@ -3,12 +3,14 @@ const {
   getBulkManifests,
   getRootCollection,
 } = require("./build");
-const { getEntries } = require("./iiif/label");
+const { getEntries } = require("../iiif/label");
 const fs = require("fs");
 const slugify = require("slugify");
+const { log } = require("./log");
 
 module.exports.buildCanopy = (env) => {
-  console.log(`Generating collection data for ${env.collection}...`);
+  log(`Generating Collection data for...\n`);
+  log(`${env.collection}\n\n`, true);
   getRootCollection(env.collection).then((json) => {
     const canopyDirectory = ".canopy";
     const canopyCollection = getCanopyCollection(json, 0, null);
@@ -34,7 +36,7 @@ module.exports.buildCanopy = (env) => {
     /**
      * create manifest listing
      */
-    console.log(`Creating manifest listing...`);
+    log(`Creating Manifest listing...\n`);
     const canopyManifests = canopyCollection.items
       .filter((item) => item.type === "Manifest")
       .map((item) => {
@@ -66,9 +68,8 @@ module.exports.buildCanopy = (env) => {
       (error) => error && console.error(error)
     );
 
-    console.log(`Flattening prescribed metadata...`);
-
-    const responses = getBulkManifests(canopyManifests, 20);
+    log(`Flattening prescribed metadata...\n`);
+    const responses = getBulkManifests(canopyManifests, 10);
 
     responses.then((manifests) => {
       let canopyMetadata = [];
