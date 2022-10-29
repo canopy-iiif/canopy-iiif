@@ -1,14 +1,6 @@
 # Canopy IIIF
 
-A purely IIIF sourced site generator using Next.js.
-
-## Notes
-
-Canopy is an experimental application that will standup a browseable and searchable digital collections style site entirely from a IIIF Collection and the items it contains.
-
-- This the epitome of a work-in-progress.
-- Most baselines features are still being proved out.
-- It's definitely possible.
+A purely IIIF sourced site generator using Next.js. Canopy is an experimental application that will standup a browseable and searchable digital collections style site entirely from a IIIF Collection and the items it contains.
 
 ## Technical Stuff
 
