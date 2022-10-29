@@ -1,16 +1,13 @@
-const {
-  getCanopyCollection,
-  getBulkManifests,
-  getRootCollection,
-} = require("./build");
+const { getCanopyCollection } = require("./shape");
 const { getEntries } = require("../iiif/label");
 const fs = require("fs");
 const slugify = require("slugify");
 const { log } = require("./log");
+const { getRootCollection, getBulkManifests } = require("./fetch");
 
-module.exports.buildCanopy = (env) => {
+module.exports.build = (env) => {
   log(`Generating Collection data for...\n`);
-  log(`${env.collection}\n\n`, true);
+  log(`${env.collection}\n\n`, "dim");
   getRootCollection(env.collection).then((json) => {
     const canopyDirectory = ".canopy";
     const canopyCollection = getCanopyCollection(json, 0, null);

@@ -5,7 +5,7 @@ function all(items, fn) {
     .filter((item) => item)
     .map((item) => {
       if (item) {
-        log(`${item.id}\n`, true);
+        log(`${item.id}\n`, "dim");
       }
       return fn(item);
     });
