@@ -5,7 +5,7 @@ function all(items, fn) {
     .filter((item) => item)
     .map((item) => {
       if (item) {
-        log(`${item.id}\n`, "dim");
+        log(`${item.id}\n`, "yellow");
       }
       return fn(item);
     });
@@ -28,7 +28,7 @@ function series(items, fn) {
   return items
     .reduce((acc, item, index) => {
       acc = acc.then(() => {
-        log(`\nAggregating series ${index + 1} of ${items.length}...\n`);
+        log(`\nAggregating Manifests... (${index + 1}/${items.length})\n`);
         return fn(item).then((res) => result.push(res));
       });
       return acc;

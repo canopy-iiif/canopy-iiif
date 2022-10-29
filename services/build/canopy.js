@@ -6,8 +6,8 @@ const { log } = require("./log");
 const { getRootCollection, getBulkManifests } = require("./fetch");
 
 module.exports.build = (env) => {
-  log(`Generating Collection data for...\n`);
-  log(`${env.collection}\n\n`, "dim");
+  log(`Building Canopy from IIIF Collection...\n`);
+  log(`${env.collection}\n\n`, "yellow");
   getRootCollection(env.collection).then((json) => {
     const canopyDirectory = ".canopy";
     const canopyCollection = getCanopyCollection(json, 0, null);
