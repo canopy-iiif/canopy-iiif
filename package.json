@@ -8,6 +8,7 @@
   "dependencies": {
     "@apollo/client": "^3.5.6",
     "@graphql-tools/schema": "^8.3.1",
+    "@iiif/parser": "^1.1.0",
     "@iiif/presentation-3": "^1.0.4",
     "@iiif/vault": "^0.9.17",
     "@radix-ui/colors": "^0.1.8",

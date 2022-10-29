@@ -3,7 +3,6 @@ import Nav from "@/components/Nav/Nav";
 import { Title, Wrapper } from "@/components/Header/Header.styled";
 import IIIF from "@/components/SVG/IIIF";
 
-const title = process.env.title;
 const collection = process.env.collection;
 
 const navItems = [
@@ -15,7 +14,7 @@ const Header = () => {
   return (
     <Wrapper>
       <Title>
-        <Link href="/">{title}</Link>
+        <Link href="/"></Link>
       </Title>
       <Nav items={navItems} />
       <a

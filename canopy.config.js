@@ -4,7 +4,6 @@
 exports.prod = {
   collection:
     "https://raw.githubusercontent.com/mathewjordan/canopy-iiif/main/public/fixtures/iiif/collection/nez-perce.json",
-  title: "Nez Percé (Nimíipuu)",
   hero: [
     "https://raw.githubusercontent.com/mathewjordan/canopy-iiif/main/public/fixtures/iiif/manifest/nez-perce/02-lawyer.json",
   ],
@@ -17,7 +16,6 @@ exports.prod = {
 exports.dev = {
   collection:
     "http://localhost:5001/fixtures/iiif-dev/collection/nez-perce.json",
-  title: "Nez Percé (Nimíipuu)",
   hero: [
     "http://localhost:5001/fixtures/iiif-dev/manifest/nez-perce/02-lawyer.json",
   ],

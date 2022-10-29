@@ -1,24 +1,17 @@
 const {
-  buildCanopyCollection,
+  getCanopyCollection,
   getBulkManifests,
   getRootCollection,
-  getValues,
 } = require("./build");
+const { getEntries } = require("./iiif/label");
 const fs = require("fs");
 const slugify = require("slugify");
 
 module.exports.buildCanopy = (env) => {
+  console.log(`Generating collection data for ${env.collection}...`);
   getRootCollection(env.collection).then((json) => {
-    /**
-     * set directory to write canopy structure to
-     */
     const canopyDirectory = ".canopy";
-
-    /**
-     * generate collection data
-     */
-    console.log(`Generating collection data for ${env.collection}...`);
-    const canopyCollection = buildCanopyCollection(json, 0, null);
+    const canopyCollection = getCanopyCollection(json, 0, null);
 
     try {
       if (!fs.existsSync(canopyDirectory)) {
@@ -75,7 +68,7 @@ module.exports.buildCanopy = (env) => {
 
     console.log(`Flattening prescribed metadata...`);
 
-    const responses = getBulkManifests(canopyManifests, 10);
+    const responses = getBulkManifests(canopyManifests, 20);
 
     responses.then((manifests) => {
       let canopyMetadata = [];
@@ -85,8 +78,8 @@ module.exports.buildCanopy = (env) => {
         })
         .map((manifest) =>
           manifest.metadata.forEach((metadata) => {
-            const metadataLabel = getValues(metadata.label)[0];
-            const metadataValues = getValues(metadata.value);
+            const metadataLabel = getEntries(metadata.label)[0];
+            const metadataValues = getEntries(metadata.value);
             if (env.metadata.includes(metadataLabel)) {
               metadataValues.forEach((value) => {
                 const result = {
