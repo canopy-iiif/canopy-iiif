@@ -8,8 +8,8 @@ import ThemeMode from "./ThemeMode";
 const collection = process.env.collection;
 
 const navItems = [
-  { path: "/", text: "Browse" },
-  { path: "/works", text: "Search" },
+  { path: "/", text: "Topics" },
+  { path: "/works", text: "Works" },
 ];
 
 const Header = () => {
@@ -19,7 +19,7 @@ const Header = () => {
         <Link href="/"></Link>
       </Title>
       <Nav items={navItems} />
-      <ThemeMode />
+      {/* <ThemeMode /> */}
       <a
         href={collection}
         target="_blank"
