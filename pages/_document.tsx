@@ -1,3 +1,4 @@
+import React from "react";
 import Document, {
   Html,
   Head,
@@ -6,7 +7,7 @@ import Document, {
   DocumentContext,
 } from "next/document";
 
-class CanDocument extends Document {
+class CanopyDocument extends Document {
   static async getInitialProps(ctx: DocumentContext) {
     const initialProps = await Document.getInitialProps(ctx);
 
@@ -26,4 +27,4 @@ class CanDocument extends Document {
   }
 }
 
-export default CanDocument;
+export default CanopyDocument;

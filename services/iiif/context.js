@@ -4,9 +4,12 @@ const { convertPresentation2 } = require("@iiif/parser/presentation-2");
  * defensively determine @context
  */
 contextAsArray = (json) => {
-  return Array.isArray(json["@context"])
+  console.log(json["@context"]);
+  const context = Array.isArray(json["@context"])
     ? json["@context"]
     : [json["@context"]];
+
+  return context.map((uri) => uri.replace("http://", "https://"));
 };
 
 /**
@@ -15,8 +18,8 @@ contextAsArray = (json) => {
 exports.getPresentation3 = (json) => {
   const context = contextAsArray(json);
   const validContexts = [
-    "http://iiif.io/api/presentation/2/context.json",
-    "http://iiif.io/api/presentation/3/context.json",
+    "https://iiif.io/api/presentation/2/context.json",
+    "https://iiif.io/api/presentation/3/context.json",
   ];
 
   /**
@@ -29,7 +32,7 @@ exports.getPresentation3 = (json) => {
       return json;
     } else {
       throw new TypeError(
-        `Collection is not of @context: ${validContexts.join}`
+        `Collection is not of @context: ${validContexts.join(", ")}.`
       );
     }
   } catch (e) {
