@@ -8,8 +8,8 @@ import ThemeMode from "./ThemeMode";
 const collection = process.env.collection;
 
 const navItems = [
-  { path: "/", text: "Browse Topics" },
-  { path: "/works", text: "Search Works" },
+  { path: "/", text: "Browse" },
+  { path: "/works", text: "Search" },
 ];
 
 const Header = () => {

@@ -2,37 +2,35 @@ import { styled } from "@/stitches";
 
 const Highlight = styled("div", {
   backgroundColor: "$indigo11",
-  background: "linear-gradient(90deg, $indigo10 0%, $indigo11 100%)",
   position: "absolute",
-  top: "0.25rem",
   left: "0",
+  height: "calc(($gr2 * 2) + $gr3)",
   borderRadius: "2rem",
-  height: "2rem",
   transition: "all 100ms ease-in-out",
 });
 
 const Items = styled("div", {
   display: "flex",
   alignItems: "center",
-  marginRight: "0.5rem",
+  fontSize: "$gr4",
+  fontWeight: "600",
+  fontFamily: "$sans",
 
   a: {
+    padding: "$gr2 $gr3",
     display: "inline-flex",
-    color: "$indigo10",
+    color: "$indigo6",
     textDecoration: "none",
-    padding: "0.5rem 1rem",
-    marginRight: "0.5rem",
     borderRadius: "2rem",
-    fontWeight: "600",
     position: "relative",
     transition: "all 100ms ease-in-out",
 
     [`&:hover`]: {
-      color: "$indigo1 !important",
+      color: "$indigo2 !important",
     },
 
     [`&.active`]: {
-      color: "$indigo12",
+      color: "$indigo6",
     },
   },
 });

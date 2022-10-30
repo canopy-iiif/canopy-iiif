@@ -10,7 +10,7 @@ const defaults = {
 
   html: {
     fontFamily: "$sans",
-    fontSize: "16px",
+    fontSize: "17.5px",
     fontSmooth: "always",
     webKitFontSmothing: "antialiased",
     mozOsxFontSmoth: "grayscale",
