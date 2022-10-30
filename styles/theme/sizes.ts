@@ -1,8 +1,4 @@
-export const gr = (multiplier: number) => 1.618 ** multiplier;
-
-/**
- * calculated via golden ratio
- */
+import { gr } from "../helpers/goldenRatio";
 
 const sizes = {
   gr1: `calc(1rem / ${gr(2)})`, // 7.25765912227px

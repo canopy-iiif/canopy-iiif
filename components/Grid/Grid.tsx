@@ -2,7 +2,7 @@ import { Wrapper } from "@/components/Grid/Grid.styled";
 import GridItem from "@/components/Grid/Item";
 import GridLoadMore from "@/components/Grid/LoadMore";
 import { useMediaQuery } from "@/hooks/use-media-query";
-import { width } from "@/styles/media";
+import { width } from "../../styles/theme/media";
 import { useEffect, useState } from "react";
 
 const Grid = ({ children }) => {
@@ -14,7 +14,6 @@ const Grid = ({ children }) => {
   mediaQuery.set("sm", useMediaQuery(width.sm));
   mediaQuery.set("md", useMediaQuery(width.md));
   mediaQuery.set("lg", useMediaQuery(width.lg));
-  mediaQuery.set("xl", useMediaQuery(width.xl));
 
   useEffect(() => {
     if (mediaQuery.get("xs")) {

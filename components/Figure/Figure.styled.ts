@@ -14,7 +14,7 @@ const Wrapper = styled("figure", {
   zIndex: "0",
   borderRadius: "3px",
   boxShadow: "2px 2px 5px #0001",
-  transition: "all 200ms cubic-bezier(0.175, 0.885, 0.32, 1.275)",
+  transition: "$all",
 
   img: {
     position: "relative",
@@ -22,7 +22,7 @@ const Wrapper = styled("figure", {
     width: "100%",
     height: "100%",
     objectFit: "contain",
-    transition: "all 500ms ease-in-out",
+    transition: "$all",
     opacity: 0,
 
     [`&.loaded`]: {

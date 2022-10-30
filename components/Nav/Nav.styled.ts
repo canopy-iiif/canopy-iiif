@@ -33,7 +33,7 @@ const Items = styled("div", {
 
     [`&.active`]: {
       fontWeight: "500",
-      color: "$mauve1",
+      color: "$slate1",
     },
   },
 });

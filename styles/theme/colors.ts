@@ -3,24 +3,24 @@ import {
   indigoA,
   indigoDark,
   indigoDarkA,
-  mauve,
-  mauveA,
-  mauveDark,
-  mauveDarkA,
+  slate,
+  slateA,
+  slateDark,
+  slateDarkA,
 } from "@radix-ui/colors";
 
 const dark = {
   ...indigoDark,
   ...indigoDarkA,
-  ...mauveDark,
-  ...mauveDarkA,
+  ...slateDark,
+  ...slateDarkA,
 };
 
 const light = {
   ...indigo,
   ...indigoA,
-  ...mauve,
-  ...mauveA,
+  ...slate,
+  ...slateA,
 };
 
 export { dark, light };
