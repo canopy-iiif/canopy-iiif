@@ -18,12 +18,12 @@ const Items = styled("div", {
 
   a: {
     display: "inline-flex",
-    color: "$indigo7",
+    color: "$indigo10",
     textDecoration: "none",
     padding: "0.5rem 1rem",
     marginRight: "0.5rem",
     borderRadius: "2rem",
-    fontWeight: "300",
+    fontWeight: "600",
     position: "relative",
     transition: "all 100ms ease-in-out",
 
@@ -32,8 +32,7 @@ const Items = styled("div", {
     },
 
     [`&.active`]: {
-      fontWeight: "500",
-      color: "$slate1",
+      color: "$indigo12",
     },
   },
 });

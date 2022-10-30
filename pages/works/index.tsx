@@ -51,13 +51,7 @@ export default function Index({ manifests, metadata }) {
 
   return (
     <Layout>
-      <section
-        style={{
-          maxWidth: "1280px",
-          margin: "1rem auto 0",
-          position: "relative",
-        }}
-      >
+      <section>
         {/* <Filter /> */}
         <Grid>
           {results &&

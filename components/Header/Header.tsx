@@ -3,6 +3,7 @@ import Link from "next/link";
 import Nav from "@/components/Nav/Nav";
 import { Title, Wrapper } from "@/components/Header/Header.styled";
 import IIIF from "@/components/SVG/IIIF";
+import ThemeMode from "./ThemeMode";
 
 const collection = process.env.collection;
 
@@ -18,6 +19,7 @@ const Header = () => {
         <Link href="/"></Link>
       </Title>
       <Nav items={navItems} />
+      <ThemeMode />
       <a
         href={collection}
         target="_blank"
@@ -27,7 +29,7 @@ const Header = () => {
           display: "inline-flex",
         }}
       >
-        <IIIF blue="#fff" red="#fff" />
+        <IIIF />
       </a>
     </Wrapper>
   );

@@ -14,13 +14,7 @@ export default function Index({ metadata }) {
   return (
     <Layout>
       <Hero />
-      <section
-        style={{
-          maxWidth: "1280px",
-          margin: "auto",
-          position: "relative",
-        }}
-      >
+      <section>
         <div style={{ padding: "1rem 2rem" }}>
           {metadata.map((label) => (
             <Slider

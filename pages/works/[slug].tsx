@@ -17,18 +17,9 @@ export default function Manifest({ manifest }) {
 
   return (
     <Layout>
-      <div style={{ padding: "1.31rem 0 0" }}>
-        <Viewer id={id} />
-      </div>
+      <Viewer id={id} />
       <WorkInner manifest={manifest} />
-      <section
-        style={{
-          maxWidth: "1280px",
-          margin: "auto",
-          position: "relative",
-          padding: "0 1.618rem",
-        }}
-      >
+      <section>
         <Related label={label} />
       </section>
     </Layout>
