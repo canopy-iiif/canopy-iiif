@@ -15,20 +15,24 @@ function all(items, fn) {
 function chunks(items, fn, chunkSize = 25) {
   let result = [];
   const chunks = splitToChunks(items, chunkSize);
+  const info = { total: items.length, chunkSize };
 
-  return series(chunks, (chunk) => {
+  return series(chunks, info, (chunk) => {
     return all(chunk, fn).then((res) => (result = result.concat(res)));
   }).then(() => {
     return result;
   });
 }
 
-function series(items, fn) {
+function series(items, info, fn) {
   let result = [];
+  log(
+    `\nAggregating ${info.total} Manifest(s) in ${items.length} chunk(s)...\n`
+  );
   return items
     .reduce((acc, item, index) => {
       acc = acc.then(() => {
-        log(`\nAggregating Manifests... (${index + 1}/${items.length})\n`);
+        log(`\nChunk (${index + 1}/${items.length})\n`);
         return fn(item).then((res) => result.push(res));
       });
       return acc;
