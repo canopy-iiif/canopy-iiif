@@ -4,7 +4,6 @@ const { convertPresentation2 } = require("@iiif/parser/presentation-2");
  * defensively determine @context
  */
 contextAsArray = (json) => {
-  console.log(json["@context"]);
   const context = Array.isArray(json["@context"])
     ? json["@context"]
     : [json["@context"]];
