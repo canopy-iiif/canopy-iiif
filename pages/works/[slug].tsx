@@ -2,7 +2,7 @@ import Layout from "@/components/layout";
 import Viewer from "@/app/Viewer/Viewer";
 import Related from "@/components/Related/Related";
 import WorkInner from "@/components/Work/Inner";
-import CANOPY_MANIFESTS from "@/.canopy/manifests.json";
+import MANIFESTS from "@/.canopy/manifests.json";
 import { Vault } from "@iiif/vault";
 
 export default function Manifest({ manifest }) {
@@ -20,7 +20,7 @@ export default function Manifest({ manifest }) {
 }
 
 export async function getStaticProps({ params }) {
-  const { id } = CANOPY_MANIFESTS.find((item) => item.slug === params.slug);
+  const { id } = MANIFESTS.find((item) => item.slug === params.slug);
   const vault = new Vault();
   const manifest = await vault
     .loadManifest(id)
@@ -35,7 +35,7 @@ export async function getStaticProps({ params }) {
 }
 
 export async function getStaticPaths() {
-  const paths = CANOPY_MANIFESTS.map((item) => ({
+  const paths = MANIFESTS.map((item) => ({
     params: { ...item },
   }));
 

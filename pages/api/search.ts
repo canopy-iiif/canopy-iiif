@@ -1,19 +1,21 @@
-import CANOPY_MANIFESTS from "@/.canopy/manifests.json";
+import MANIFESTS from "@/.canopy/manifests.json";
 import absoluteUrl from "next-absolute-url";
 
 export default function handler(req, res) {
   const { origin } = absoluteUrl(req);
 
-  const items = CANOPY_MANIFESTS.map((manifest) => {
-    manifest.homepage = [
-      {
-        id: `${origin}/works/${manifest.slug}`,
-        type: "Text",
-        label: manifest.label,
-      },
-    ];
-    delete manifest.slug;
-    return manifest;
+  const items = MANIFESTS.map((item) => {
+    return {
+      id: item.id,
+      label: item.label,
+      homepage: [
+        {
+          id: `${origin}/works/${item.slug}`,
+          type: "Text",
+          label: item.label,
+        },
+      ],
+    };
   });
 
   const result = {

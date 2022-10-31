@@ -1,12 +1,12 @@
-import CANOPY_COLLECTIONS from "@/.canopy/collections.json";
-import CANOPY_MANIFESTS from "@/.canopy/manifests.json";
+import COLLECTIONS from "@/.canopy/collections.json";
+import MANIFESTS from "@/.canopy/manifests.json";
 import absoluteUrl from "next-absolute-url";
 
 export default function handler(req, res) {
   const { origin } = absoluteUrl(req);
-  const source = CANOPY_COLLECTIONS.find((collection) => !collection.parent);
+  const source = COLLECTIONS.find((collection) => !collection.parent);
 
-  const items = CANOPY_MANIFESTS.map((item) => {
+  const items = MANIFESTS.map((item) => {
     delete item.slug;
     return item;
   });
