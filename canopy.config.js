@@ -21,14 +21,3 @@ exports.dev = {
   ],
   metadata: ["Date", "Subject"],
 };
-
-/**
- * Canopy globals regardless of environment
- */
-exports.globals = {
-  slugify: {
-    lower: true,
-    strict: true,
-    trim: true,
-  },
-};

@@ -1,6 +1,6 @@
-const slugify = require("slugify");
 const { getPresentation3 } = require("../iiif/context");
 const { getLabel } = require("../iiif/label");
+const { getSlug } = require("./slug");
 
 exports.getCanopyCollection = (json, depth = 0, parent = null) => {
   if (!json) return null;
@@ -13,7 +13,7 @@ exports.getCanopyCollection = (json, depth = 0, parent = null) => {
     id: json.id,
     type: "Collection",
     label: json.label,
-    slug: slugify(getLabel(json.label)[0], process.env.slugify),
+    slug: getSlug(getLabel(json.label)[0]),
     depth: depth,
     parent: parent,
     manifests: children.manifests,

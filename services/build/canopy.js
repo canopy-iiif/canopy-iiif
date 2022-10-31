@@ -1,7 +1,7 @@
 const { getCanopyCollection } = require("./shape");
 const { getEntries, getLabel } = require("../iiif/label");
 const fs = require("fs");
-const slugify = require("slugify");
+const { getSlug } = require("./slug");
 const { log } = require("./log");
 const { getRootCollection, getBulkManifests } = require("./fetch");
 
@@ -37,7 +37,7 @@ module.exports.build = (env) => {
     const canopyManifests = canopyCollection.items
       .filter((item) => item.type === "Manifest")
       .map((item) => {
-        const slug = slugify(getLabel(item.label)[0], process.env.slugify);
+        const slug = getSlug(getLabel(item.label)[0]);
         return {
           collectionId: item.parent,
           id: item.id,
