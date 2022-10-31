@@ -19,7 +19,7 @@ const Wrapper = styled("header", {
   display: "flex",
   flexDirection: "row",
   justifyContent: "space-between",
-  color: "$slate12",
+  color: "$slate1",
   boxShadow: "3px 3px 8px #0002",
   fontSize: "1rem",
   lineHeight: "1.5rem",
@@ -27,8 +27,9 @@ const Wrapper = styled("header", {
 
   [`&  ${Title} a`]: {
     textDecoration: "none",
-    color: "$slate12",
-    fontSize: "1rem",
+    color: "$indigo1",
+    fontSize: "$gr4",
+    fontWeight: "600",
   },
 });
 
