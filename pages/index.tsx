@@ -16,12 +16,12 @@ export default function Index({ metadata }) {
       <Hero />
       <section>
         <div style={{ padding: "1rem 2rem" }}>
-          {metadata.map((label) => (
+          {/* {metadata.map((label) => (
             <Slider
               collectionId={`${baseUrl}/api/iiif/metadata/${label}`}
               key={`${baseUrl}/api/iiif/metadata/${label}`}
             />
-          ))}
+          ))} */}
         </div>
       </section>
     </Layout>

@@ -42,11 +42,7 @@ const Grid = ({ children }) => {
   const [cols, setCols] = useState(5);
 
   return (
-    <Wrapper
-      breakpointCols={cols}
-      className="can-grid"
-      columnClassName="can-grid-column"
-    >
+    <Wrapper breakpointCols={cols} columnClassName="can-grid-column">
       {children}
     </Wrapper>
   );

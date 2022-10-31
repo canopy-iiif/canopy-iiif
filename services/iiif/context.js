@@ -1,5 +1,3 @@
-const { convertPresentation2 } = require("@iiif/parser/presentation-2");
-
 /**
  * defensively determine @context
  */

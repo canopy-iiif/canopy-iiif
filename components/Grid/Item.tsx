@@ -6,11 +6,10 @@ import { Item } from "@/components/Grid/Grid.styled";
 
 const GridItem = ({ data }) => {
   const [item, setItem] = useState();
+  const path = data.homepage[0].id;
 
   useEffect(() => {
-    getJsonByURI(data.id).then((json) => {
-      setItem(json);
-    });
+    getJsonByURI(data.id).then((json) => setItem(json));
   }, []);
 
   let resource = null;
@@ -21,16 +20,15 @@ const GridItem = ({ data }) => {
    * @todo: handle this better
    */
   if (item.items) resource = item.items[0].items[0].items[0].body;
-
   if (item.sequences)
     resource = item.sequences[0].canvases[0].images[0].resource;
 
   return (
-    <Item className="can-grid-column">
+    <Item>
       <Card
         key={data.id}
-        label={getLabel(item.label)}
-        path={`/works/${data.slug}`}
+        label={getLabel(item?.label)}
+        path={path}
         resource={resource}
       />
     </Item>

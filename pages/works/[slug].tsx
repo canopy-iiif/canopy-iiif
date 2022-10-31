@@ -1,16 +1,9 @@
-import { gql } from "@apollo/client";
-import { client } from "@/pages/api/graphql";
 import Layout from "@/components/layout";
 import Viewer from "@/app/Viewer/Viewer";
-import { Vault } from "@iiif/vault";
-import {
-  Label,
-  Metadata,
-  RequiredStatement,
-  Summary,
-} from "@samvera/nectar-iiif";
 import Related from "@/components/Related/Related";
 import WorkInner from "@/components/Work/Inner";
+import CANOPY_MANIFESTS from "@/.canopy/manifests.json";
+import { Vault } from "@iiif/vault";
 
 export default function Manifest({ manifest }) {
   const { id, label, metadata, requiredStatement, summary } = manifest;
@@ -27,19 +20,7 @@ export default function Manifest({ manifest }) {
 }
 
 export async function getStaticProps({ params }) {
-  const { slug } = params;
-
-  const { loading, error, data } = await client.query({
-    query: gql`
-      query GetManifestBySlug {
-        getManifest(slug: "${slug}") { id, label }
-      }
-    `,
-  });
-
-  if (!data) return null;
-
-  const { id } = data.getManifest;
+  const { id } = CANOPY_MANIFESTS.find((item) => item.slug === params.slug);
   const vault = new Vault();
   const manifest = await vault
     .loadManifest(id)
@@ -54,17 +35,7 @@ export async function getStaticProps({ params }) {
 }
 
 export async function getStaticPaths() {
-  const { loading, error, data } = await client.query({
-    query: gql`
-      query Manifests {
-        manifests {
-          slug
-        }
-      }
-    `,
-  });
-
-  const paths = data.manifests.map((item) => ({
+  const paths = CANOPY_MANIFESTS.map((item) => ({
     params: { ...item },
   }));
 

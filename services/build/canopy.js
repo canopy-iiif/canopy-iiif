@@ -1,5 +1,5 @@
 const { getCanopyCollection } = require("./shape");
-const { getEntries } = require("../iiif/label");
+const { getEntries, getLabel } = require("../iiif/label");
 const fs = require("fs");
 const slugify = require("slugify");
 const { log } = require("./log");
@@ -10,7 +10,7 @@ module.exports.build = (env) => {
   log(`${env.collection}\n\n`, "yellow");
   getRootCollection(env.collection).then((json) => {
     const canopyDirectory = ".canopy";
-    const canopyCollection = getCanopyCollection(json, 0, null);
+    const canopyCollection = getCanopyCollection(json);
 
     try {
       if (!fs.existsSync(canopyDirectory)) {
@@ -37,11 +37,12 @@ module.exports.build = (env) => {
     const canopyManifests = canopyCollection.items
       .filter((item) => item.type === "Manifest")
       .map((item) => {
+        const slug = slugify(getLabel(item.label)[0], process.env.slugify);
         return {
           collectionId: item.parent,
           id: item.id,
           label: item.label,
-          slug: slugify(item.label[0], env.slugify),
+          slug: slug,
         };
       });
 
