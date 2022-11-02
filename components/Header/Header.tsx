@@ -9,7 +9,7 @@ import { Label } from "@samvera/nectar-iiif";
 const collection = process.env.collection;
 
 const navItems = [
-  { path: "/", text: "Topics" },
+  { path: "/", text: "Home" },
   { path: "/works", text: "Works" },
 ];
 
