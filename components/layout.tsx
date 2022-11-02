@@ -1,7 +1,7 @@
 import React from "react";
 import Head from "next/head";
 import Header from "@/components/Header/Header";
-import Main from "./Main/Main";
+import Main from "./Shared/Main";
 
 export const siteTitle = "Next.js Sample Website";
 

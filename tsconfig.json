@@ -18,7 +18,7 @@
       "@/hooks/*": ["hooks/*"],
       "@/pages/*": ["pages/*"],
       "@/services/*": ["services/*"],
-      "@/styles/*": ["fontSizes.ts/*"]
+      "@/styles/*": ["styles/*"]
     },
     "resolveJsonModule": true,
     "strict": true,

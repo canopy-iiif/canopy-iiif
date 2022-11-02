@@ -4,6 +4,7 @@ import Related from "@/components/Related/Related";
 import WorkInner from "@/components/Work/Inner";
 import MANIFESTS from "@/.canopy/manifests.json";
 import { Vault } from "@iiif/vault";
+import Container from "../../components/Shared/Container";
 
 export default function Manifest({ manifest }) {
   const { id, label, metadata, requiredStatement, summary } = manifest;
@@ -11,10 +12,12 @@ export default function Manifest({ manifest }) {
   return (
     <Layout>
       <Viewer id={id} />
-      <WorkInner manifest={manifest} />
-      <section>
-        <Related label={label} />
-      </section>
+      <Container>
+        <WorkInner manifest={manifest} />
+        <section>
+          <Related label={label} />
+        </section>
+      </Container>
     </Layout>
   );
 }

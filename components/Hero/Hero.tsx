@@ -9,6 +9,7 @@ import { Button } from "@nulib/design-system";
 import { HeroStyled } from "@/components/Hero/Hero.styled";
 import Link from "next/link";
 import React from "react";
+import Container from "../Shared/Container";
 
 interface HeroProps {
   collection?: any;
@@ -41,30 +42,36 @@ const Hero: React.FC<HeroProps> = ({ collection }) => {
           <SwiperSlide key={item.id}>
             <figure>
               <Thumbnail thumbnail={item.thumbnail} />
-              <figcaption>
-                <Link href={item.homepage[0].id}>
-                  <Label label={item.label} as="span" className="slide-label" />
-                </Link>
-                {item.summary && (
-                  <Summary
-                    summary={item.summary}
-                    as="span"
-                    className="slide-summary"
-                  />
-                )}
-                {item.seeAlso &&
-                  item.seeAlso.map((entry) => (
-                    <Link href={entry.id} key={entry.id}>
-                      <Button isPrimary as="a" className="slide-see-also">
-                        {entry.label ? (
-                          <Label label={entry.label} />
-                        ) : (
-                          <span>Search Collection</span>
-                        )}
-                      </Button>
-                    </Link>
-                  ))}
-              </figcaption>
+              <Container className="slide-inner" isFlex>
+                <figcaption>
+                  <Link href={item.homepage[0].id}>
+                    <Label
+                      label={item.label}
+                      as="span"
+                      className="slide-label"
+                    />
+                  </Link>
+                  {item.summary && (
+                    <Summary
+                      summary={item.summary}
+                      as="span"
+                      className="slide-summary"
+                    />
+                  )}
+                  {item.seeAlso &&
+                    item.seeAlso.map((entry) => (
+                      <Link href={entry.id} key={entry.id}>
+                        <Button isPrimary as="a" className="slide-see-also">
+                          {entry.label ? (
+                            <Label label={entry.label} />
+                          ) : (
+                            <span>Search Collection</span>
+                          )}
+                        </Button>
+                      </Link>
+                    ))}
+                </figcaption>
+              </Container>
             </figure>
           </SwiperSlide>
         ))}
