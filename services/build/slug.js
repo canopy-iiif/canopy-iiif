@@ -7,7 +7,11 @@ const config = {
 };
 
 function getSlug(text) {
-  return slugify(text, config);
+  return limit(slugify(text, config), 100);
+}
+
+function limit(string = "", limit = 0) {
+  return string.substring(0, limit);
 }
 
 module.exports = { getSlug };
