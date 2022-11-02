@@ -6,6 +6,7 @@ import React, {
   useState,
 } from "react";
 import { useRouter } from "next/router";
+import { SearchForm, SearchInput, SearchSubmit } from "./Search.styled";
 
 const Search = () => {
   const router = useRouter();
@@ -34,10 +35,14 @@ const Search = () => {
   }, [router]);
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input onChange={handleSearchChange} placeholder="Search" ref={search} />
-      <button>Search</button>
-    </form>
+    <SearchForm onSubmit={handleSubmit}>
+      <SearchInput
+        onChange={handleSearchChange}
+        placeholder="Search"
+        ref={search}
+      />
+      <SearchSubmit value="Search" type="submit" />
+    </SearchForm>
   );
 };
 
