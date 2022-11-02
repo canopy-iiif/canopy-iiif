@@ -2,8 +2,9 @@ import React, { useEffect, useState } from "react";
 import Layout from "@/components/layout";
 import Hero from "@/components/Hero/Hero";
 import Slider from "@/app/Viewer/Slider";
+import { createCollection } from "../services/iiif/constructors/collection";
 
-export default function Index({ metadata }) {
+export default function Index({ metadata, hero }) {
   const [baseUrl, setBaseUrl] = useState("");
   useEffect(() => {
     const { host, protocol } = window.location;
@@ -13,7 +14,9 @@ export default function Index({ metadata }) {
 
   return (
     <Layout>
-      <Hero />
+      <div style={{ height: "400px", position: "relative" }}>
+        <Hero collection={hero} />
+      </div>
       <section>
         <div style={{ padding: "1rem 2rem" }}>
           {/* {metadata.map((label) => (
@@ -29,9 +32,12 @@ export default function Index({ metadata }) {
 }
 
 export async function getStaticProps() {
+  const featured = process.env.featured as any as string[];
   const metadata = process.env.metadata as any as string[];
 
+  const hero = await createCollection(featured);
+
   return {
-    props: { metadata },
+    props: { metadata, hero },
   };
 }

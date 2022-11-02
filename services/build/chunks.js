@@ -20,7 +20,7 @@ function chunks(items, fn, chunkSize = 25) {
   return series(chunks, info, (chunk) => {
     return all(chunk, fn).then((res) => (result = result.concat(res)));
   }).then(() => {
-    log(`\n...Ready`);
+    log(`\n...Ready\n\n`);
     return result;
   });
 }
