@@ -6,11 +6,24 @@ A purely IIIF sourced site generator using Next.js. Canopy is an experimental ap
 > **Warning**
 > Canopy is a work in progress and being built in public.
 
-### Examples: [Nez Perce](https://canopy-iiif.vercel.app/), [Heilman](https://canopy-iiif-git-heilman-mathewjordan.vercel.app/)
+## Examples 
+
+### [Nez Percé (Nimíipuu)](https://canopy-iiif.vercel.app/)
+- IIIF Presentation API 3.0
+- 15 items
+- Provided by Northwestern University Libraries
+
+### [The Botanical photography of Alan S. Heilman](https://canopy-iiif-git-heilman-mathewjordan.vercel.app/)
+- IIIF Presentation API 3.0
+- 1120 items
+- Provided by University of Tennessee Libraries
+
+### [Rise of Literacy](https://canopy-iiif-git-nls-mathewjordan.vercel.app/)
+- IIIF Presentation API 2.0
+- 48 items
+- Provided by National Library of Scotland
 
 ![image](https://user-images.githubusercontent.com/7376450/199378560-7c6b28f3-074a-4e72-9d86-4381066cc8e4.png)
-
-![image](https://user-images.githubusercontent.com/7376450/199379791-08c54572-4d55-40a8-baee-f2c1dde5f0ac.png)
 
 ## Roadmap
 
@@ -18,6 +31,7 @@ A purely IIIF sourced site generator using Next.js. Canopy is an experimental ap
 - [x] Manifest as a `/work/` page
 - [ ] Collection as a `/collection/` page
 - [ ] `seeAlso` OR `rendering` support for `text/markdown` as supplemental content
+- [ ] Documentation for best-practice incorporating non-IIIF front matter
 
 ### Data Aggregration
 - [x] Collection of Manifests (i.e. `depth === 1`) 
