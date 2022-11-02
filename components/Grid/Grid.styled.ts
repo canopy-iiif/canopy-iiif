@@ -10,7 +10,12 @@ const Wrapper = styled(Masonry, {
   display: "flex",
   width: "auto",
   position: "relative",
+  padding: "$gr4 $gr2",
   zIndex: "1",
+
+  "@lg": {
+    padding: "$gr2",
+  },
 });
 
 export { Item, Wrapper };

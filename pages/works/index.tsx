@@ -3,6 +3,7 @@ import Layout from "@/components/layout";
 import { InView } from "react-intersection-observer";
 import { map as lodashMap, groupBy as lodashGroupBy } from "lodash";
 import Grid from "@/components/Grid/Grid";
+import Container from "@/components/Shared/Container";
 import useSWR from "swr";
 
 const fetcher = (url) => fetch(url).then((res) => res.json());
@@ -19,7 +20,7 @@ const Search = () => {
 
   return (
     <Layout>
-      <section>
+      <Container containerType="wide">
         {/* <Filter /> */}
         <Grid>
           {results &&
@@ -44,7 +45,7 @@ const Search = () => {
         >
           <Grid.LoadMore handleLoadMore={handleLoadMore} />
         </InView>
-      </section>
+      </Container>
     </Layout>
   );
 };
