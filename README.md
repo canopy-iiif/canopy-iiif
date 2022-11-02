@@ -23,8 +23,9 @@ A purely IIIF sourced site generator using Next.js. Canopy is an experimental ap
 - [ ] Search page facets on curated metadata
 - [ ] `next/link` routing from Work metadata to search page facets
 
-### Styling
+### User Experience
 - [ ] Fully Responsive
+- [ ] Lazy load search results
 - [ ] Custom theme support
 - [x] Dark mode
 
@@ -50,10 +51,11 @@ Edit `canopy.config.js`
  * Configuration built by `npm run build`
  */
 exports.prod = {
-  collection: "https://canopy-iiif.vercel.app/iiif/collection/nez-perce.json",
-  title: "Nez Percé (Nimíipuu)",
-  hero: [
-    "https://canopy-iiif.vercel.app/iiif/manifest/nez-perce/02-lawyer.json",
+  collection: "https://canopy-iiif.vercel.app/fixtures/iiif/collection/nez-perce.json",
+  featured: [
+    "https://canopy-iiif.vercel.app/fixtures/iiif/manifest/nez-perce/02-lawyer.json",
+    "https://canopy-iiif.vercel.app/fixtures/iiif/manifest/nez-perce/08-map-territory.json",
+    "https://canopy-iiif.vercel.app/fixtures/iiif/manifest/nez-perce/14-joseph-dead-feast-lodge.json",
   ],
   metadata: ["Date", "Subject"],
 };
@@ -62,22 +64,12 @@ exports.prod = {
  * Configuration built by `npm run dev`
  */
 exports.dev = {
-  collection: "https://canopy-iiif.vercel.app/iiif/collection/nez-perce.json",
-  title: "Nez Percé (Nimíipuu)",
-  hero: [
-    "https://canopy-iiif.vercel.app/iiif/manifest/nez-perce/02-lawyer.json",
+  collection: "https://canopy-iiif.vercel.app/fixtures/iiif/collection/nez-perce.json",
+  featured: [
+    "https://canopy-iiif.vercel.app/fixtures/iiif/manifest/nez-perce/02-lawyer.json",
+    "https://canopy-iiif.vercel.app/fixtures/iiif/manifest/nez-perce/08-map-territory.json",
+    "https://canopy-iiif.vercel.app/fixtures/iiif/manifest/nez-perce/14-joseph-dead-feast-lodge.json",
   ],
   metadata: ["Date", "Subject"],
-};
-
-/**
- * Canopy globals regardless of environment
- */
-exports.globals = {
-  slugify: {
-    lower: true,
-    strict: true,
-    trim: true,
-  },
 };
 ```
