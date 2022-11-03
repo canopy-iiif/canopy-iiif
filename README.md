@@ -39,7 +39,7 @@ A purely IIIF sourced site generator using Next.js. Canopy is an experimental ap
 - [x] Harvesting of curated metadata labels
 
 ### Search
-- [ ] Basic search on label(s)
+- [x] Basic search on label(s)
 - [ ] Complex search on summary and metadata
 - [ ] Search page facets on curated metadata
 - [ ] `next/link` routing from Work metadata to search page facets

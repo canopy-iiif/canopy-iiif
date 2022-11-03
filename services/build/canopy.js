@@ -7,10 +7,10 @@ const { getRootCollection, getBulkManifests } = require("./fetch");
 const { buildIndex } = require("./search");
 
 module.exports.build = (env) => {
+  const canopyDirectory = ".canopy";
   log(`Building Canopy from IIIF Collection...\n`);
   log(`${env.collection}\n\n`, "yellow");
   getRootCollection(env.collection).then((json) => {
-    const canopyDirectory = ".canopy";
     const canopyCollection = getCanopyCollection(json);
 
     try {
