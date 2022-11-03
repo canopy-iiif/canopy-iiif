@@ -29,12 +29,14 @@ export default function handler(req, res) {
   const { origin } = absoluteUrl(req);
   const { query } = req;
 
-  const results = getResults(query?.q)[0];
+  const results = query?.q
+    ? getResults(query?.q)[0]
+    : { result: INDEX.map((doc) => doc.id) };
 
-  const items = results?.result
-    ? MANIFESTS.filter((item) => {
-        return results.result.includes(item.id);
-      }).map((item) => {
+  const filtered = results?.result;
+
+  const items = filtered
+    ? MANIFESTS.filter((item) => filtered.includes(item.id)).map((item) => {
         return {
           id: item.id,
           label: item.label,
@@ -53,7 +55,7 @@ export default function handler(req, res) {
     "@context": "https://iiif.io/api/presentation/3/context.json",
     id: `${origin}/api/search`,
     type: "Collection",
-    label: { none: [`Search results for: ${query?.q}`] },
+    label: { none: [query?.q] },
     items: [...items],
   };
 

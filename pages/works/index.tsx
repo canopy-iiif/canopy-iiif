@@ -5,14 +5,23 @@ import { map as lodashMap, groupBy as lodashGroupBy } from "lodash";
 import Grid from "@/components/Grid/Grid";
 import Container from "@/components/Shared/Container";
 import useSWR from "swr";
+import { useRouter } from "next/router";
 
 const fetcher = (url) => fetch(url).then((res) => res.json());
 
 const Search = () => {
-  const { data, error } = useSWR("/api/search", fetcher);
+  const router = useRouter();
+  const { q } = router.query;
+
   const [results, setResults] = useState([]);
+  const [query, setQuery] = useState("");
+  const { data, error } = useSWR(`/api/search?${query}`, fetcher);
 
   const handleLoadMore = async () => {};
+
+  useEffect(() => {
+    q ? setQuery(`q=${q}`) : setQuery("");
+  }, [q]);
 
   useEffect(() => {
     data && setResults(data?.items);
