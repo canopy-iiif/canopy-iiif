@@ -5,7 +5,6 @@ const { getSlug } = require("./slug");
 const { log } = require("./log");
 const { getRootCollection, getBulkManifests } = require("./fetch");
 const { buildIndex } = require("./search");
-// const { Index } = require("flexsearch");
 
 module.exports.build = (env) => {
   log(`Building Canopy from IIIF Collection...\n`);
