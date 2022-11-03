@@ -1,4 +1,4 @@
-import INDEX from "@/.canopy/index.json";
+import SEARCH_INDEX from "@/.canopy/search.json";
 import MANIFESTS from "@/.canopy/manifests.json";
 import absoluteUrl from "next-absolute-url";
 import { Document } from "flexsearch";
@@ -20,7 +20,7 @@ function getResults(query) {
     },
   });
 
-  INDEX.forEach((doc) => index.add(doc));
+  SEARCH_INDEX.forEach((doc) => index.add(doc));
 
   return index.search(query, { index: ["label"] });
 }

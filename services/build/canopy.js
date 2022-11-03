@@ -104,7 +104,7 @@ module.exports.build = (env) => {
         log(`\nBuilding Search Index...\n`);
         const canopyIndex = buildIndex(manifests);
         fs.writeFile(
-          `${canopyDirectory}/index.json`,
+          `${canopyDirectory}/search.json`,
           JSON.stringify(canopyIndex),
           (err) => {
             if (err) {
