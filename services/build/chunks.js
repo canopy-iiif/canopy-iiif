@@ -20,16 +20,13 @@ function chunks(items, fn, chunkSize = 25) {
   return series(chunks, info, (chunk) => {
     return all(chunk, fn).then((res) => (result = result.concat(res)));
   }).then(() => {
-    log(`\n...Ready\n\n`);
     return result;
   });
 }
 
 function series(items, info, fn) {
   let result = [];
-  log(
-    `\nAggregating ${info.total} Manifest(s) in ${items.length} chunk(s)...\n`
-  );
+  log(`Aggregating ${info.total} Manifest(s) in ${items.length} chunk(s)...\n`);
   return items
     .reduce((acc, item, index) => {
       acc = acc.then(() => {
