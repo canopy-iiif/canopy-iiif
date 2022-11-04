@@ -5,10 +5,9 @@ import { styled } from "@/stitches";
 const HeroStyled = styled("div", {
   position: "absolute",
   width: "100%",
-  height: "calc(100% + 156px)",
-  marginTop: "-156px",
+  height: "100%",
   zIndex: "0",
-  backgroundColor: "$black",
+  backgroundColor: "$slate4",
 
   ".swiper": {
     backgroundColor: "transparent",
@@ -23,7 +22,7 @@ const HeroStyled = styled("div", {
         width: "100%",
         height: "300px",
         background:
-          "linear-gradient(173deg, $purple 0%, #4E2A84cc 19%, #0000 61.8%)",
+          "linear-gradient(173deg, $purple 0%, #f00 19%, #0000 61.8%)",
         position: "absolute",
         zIndex: "1",
       },
@@ -43,13 +42,14 @@ const HeroStyled = styled("div", {
 
     ".swiper-slide": {
       display: "flex",
+      backgroundColor: "$slate12",
 
       figure: {
         width: "100%",
         position: "relative",
         margin: "0",
         padding: "0",
-        backgroundColor: "$black",
+        backgroundColor: "$slate12",
 
         "&::after": {
           content: "",
@@ -68,7 +68,7 @@ const HeroStyled = styled("div", {
           display: "flex",
           width: "100%",
           height: "100%",
-          background: "linear-gradient(7deg, #000e 0%, #0000 61.8%)",
+          background: "linear-gradient(7deg, #000c 0%, #0000 61.8%)",
           position: "absolute",
           zIndex: "1",
           bottom: "0",
@@ -82,13 +82,12 @@ const HeroStyled = styled("div", {
           top: "0",
           left: "0",
           objectFit: "cover",
-          opacity: "0.618",
         },
 
         figcaption: {
           position: "absolute",
           zIndex: "1",
-          bottom: "$gr5",
+          bottom: "$gr6",
           color: "$white",
           display: "flex",
           flexDirection: "column",
@@ -103,8 +102,8 @@ const HeroStyled = styled("div", {
           },
 
           ".slide-label": {
-            fontFamily: "$displayBold",
-            fontSize: "$gr7",
+            fontFamily: "$sans",
+            fontSize: "$gr5",
             display: "block",
             margin: "0 0 $gr1",
             lineHeight: "1em",
@@ -112,9 +111,9 @@ const HeroStyled = styled("div", {
 
           ".slide-summary": {
             fontFamily: "$sansLightItalic",
-            fontSize: "$gr4",
+            fontSize: "$gr3",
             display: "block",
-            color: "$black20",
+            color: "$slate3",
             lineHeight: "1.15em",
           },
 
@@ -129,4 +128,14 @@ const HeroStyled = styled("div", {
     },
   },
 });
-export { HeroStyled };
+
+const HeroWrapper = styled("div", {
+  height: "calc(100vh - 61.25px)",
+  minHeight: "300px",
+  maxHeight: "500px",
+  backgroundColor: "$black",
+  position: "relative",
+  zIndex: "1",
+});
+
+export { HeroStyled, HeroWrapper };
