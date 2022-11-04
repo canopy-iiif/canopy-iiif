@@ -31,7 +31,7 @@ export default function handler(req, res) {
 
   const results = query?.q
     ? getResults(query?.q)[0]
-    : { result: INDEX.map((doc) => doc.id) };
+    : { result: SEARCH_INDEX.map((doc) => doc.id) };
 
   const filtered = results?.result;
 
