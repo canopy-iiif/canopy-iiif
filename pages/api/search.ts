@@ -2,14 +2,8 @@ import fs from "fs";
 import absoluteUrl from "next-absolute-url";
 import { Document } from "flexsearch";
 
-let SEARCH_INDEX = [];
-let MANIFESTS = [];
-
-if (fs.existsSync(`@/.canopy/index.json`))
-  SEARCH_INDEX = require("@/.canopy/index.json");
-
-if (fs.existsSync(`@/.canopy/manifests.json`))
-  MANIFESTS = require("@/.canopy/manifests.json");
+const SEARCH_INDEX = require("@/.canopy/index.json");
+const MANIFESTS = require("@/.canopy/manifests.json");
 
 function getResults(query) {
   const index = new Document({
