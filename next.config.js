@@ -23,5 +23,6 @@ module.exports = (phase) => {
   };
 
   canopy.build(env);
+
   return { env };
 };

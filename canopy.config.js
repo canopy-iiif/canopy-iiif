@@ -2,26 +2,24 @@
  * Configuration built by `npm run build`
  */
 exports.prod = {
-  collection:
-    "https://raw.githubusercontent.com/mathewjordan/canopy-iiif/main/public/fixtures/iiif/collection/nez-perce.json",
+  collection: "https://view.nls.uk/collections/1444/8181/144481817.json",
   featured: [
-    "https://raw.githubusercontent.com/mathewjordan/canopy-iiif/main/public/fixtures/iiif/manifest/nez-perce/08-map-territory.json",
-    "https://raw.githubusercontent.com/mathewjordan/canopy-iiif/main/public/fixtures/iiif/manifest/nez-perce/11-watching-for-the-signal.json",
-    "https://raw.githubusercontent.com/mathewjordan/canopy-iiif/main/public/fixtures/iiif/manifest/nez-perce/14-joseph-dead-feast-lodge.json",
+    "https://view.nls.uk/manifest/1446/0652/144606524/manifest.json",
+    "https://view.nls.uk/manifest/1446/0651/144606519/manifest.json",
+    "https://view.nls.uk/manifest/1875/4847/187548475/manifest.json",
   ],
-  metadata: ["Date", "Subject"],
+  metadata: ["Date printed", "Printer", "Author"],
 };
 
 /**
  * Configuration built by `npm run dev`
  */
 exports.dev = {
-  collection:
-    "http://localhost:5001/fixtures/iiif-dev/collection/nez-perce.json",
+  collection: "https://view.nls.uk/collections/1444/8181/144481817.json",
   featured: [
-    "http://localhost:5001/fixtures/iiif-dev/manifest/nez-perce/08-map-territory.json",
-    "http://localhost:5001/fixtures/iiif-dev/manifest/nez-perce/11-watching-for-the-signal.json",
-    "http://localhost:5001/fixtures/iiif-dev/manifest/nez-perce/14-joseph-dead-feast-lodge.json",
+    "https://view.nls.uk/manifest/1446/0652/144606524/manifest.json",
+    "https://view.nls.uk/manifest/1446/0651/144606519/manifest.json",
+    "https://view.nls.uk/manifest/1875/4847/187548475/manifest.json",
   ],
-  metadata: ["Date", "Subject"],
+  metadata: ["Date printed", "Printer", "Author"],
 };
