@@ -11,15 +11,11 @@ module.exports.build = (env) => {
   log(`Building Canopy from IIIF Collection...\n`);
   log(`${env.collection}\n\n`, "yellow");
   getRootCollection(env.collection).then((json) => {
-    fs.writeFile(
-      `${canopyDirectory}/search.json`,
-      JSON.stringify({}),
-      (err) => {
-        if (err) {
-          console.error(err);
-        }
+    fs.writeFile(`${canopyDirectory}/index.json`, JSON.stringify({}), (err) => {
+      if (err) {
+        console.error(err);
       }
-    );
+    });
 
     const canopyCollection = getCanopyCollection(json);
 

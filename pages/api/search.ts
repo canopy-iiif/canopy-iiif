@@ -1,4 +1,4 @@
-import SEARCH_INDEX from "@/.canopy/search.json";
+import SEARCH_INDEX from "@/.canopy/index.json";
 import MANIFESTS from "@/.canopy/manifests.json";
 import absoluteUrl from "next-absolute-url";
 import { Document } from "flexsearch";
