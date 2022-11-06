@@ -2,6 +2,7 @@ const {
   PHASE_DEVELOPMENT_SERVER,
   PHASE_PRODUCTION_BUILD,
 } = require("next/constants");
+const fs = require("fs");
 
 const config = require("./canopy.config");
 const canopy = require("./services/build/canopy");
@@ -21,6 +22,12 @@ module.exports = (phase) => {
     ...config.globals,
     ...config.environment,
   };
+
+  fs.writeFile(`${canopyDirectory}/test.json`, JSON.stringify({}), (err) => {
+    if (err) {
+      console.error(err);
+    }
+  });
 
   canopy.build(env);
 

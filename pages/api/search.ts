@@ -1,3 +1,4 @@
+import TEST from "@/.canopy/test.json";
 import SEARCH_INDEX from "@/.canopy/index.json";
 import MANIFESTS from "@/.canopy/manifests.json";
 import absoluteUrl from "next-absolute-url";
@@ -19,6 +20,8 @@ function getResults(query) {
       ],
     },
   });
+
+  console.log(TEST);
 
   SEARCH_INDEX.forEach((doc) => index.add(doc));
 
