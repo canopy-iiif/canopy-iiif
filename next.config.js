@@ -23,7 +23,7 @@ module.exports = (phase) => {
     ...config.environment,
   };
 
-  fs.writeFile(`${canopyDirectory}/test.json`, JSON.stringify({}), (err) => {
+  fs.writeFile(`.canopy/test.json`, JSON.stringify({}), (err) => {
     if (err) {
       console.error(err);
     }
