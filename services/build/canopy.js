@@ -21,7 +21,17 @@ module.exports.build = (env) => {
       console.error(err);
     }
 
-    fs.writeFile(
+    fs.writeFileSync(
+      `${canopyDirectory}/index.json`,
+      JSON.stringify([{}]),
+      (err) => {
+        if (err) {
+          console.error(err);
+        }
+      }
+    );
+
+    fs.writeFileSync(
       `${canopyDirectory}/collections.json`,
       JSON.stringify([canopyCollection]),
       (err) => {
@@ -47,7 +57,7 @@ module.exports.build = (env) => {
         };
       });
 
-    fs.writeFile(
+    fs.writeFileSync(
       `${canopyDirectory}/manifests.json`,
       JSON.stringify(canopyManifests),
       (err) => {
@@ -61,7 +71,7 @@ module.exports.build = (env) => {
      * flatten metadata
      */
 
-    fs.writeFile(
+    fs.writeFileSync(
       `${canopyDirectory}/metadata.json`,
       JSON.stringify([]),
       (error) => error && console.error(error)
@@ -91,7 +101,7 @@ module.exports.build = (env) => {
               }
             })
           );
-        fs.writeFile(
+        fs.writeFileSync(
           `${canopyDirectory}/metadata.json`,
           JSON.stringify(canopyMetadata),
           (err) => {
@@ -103,7 +113,7 @@ module.exports.build = (env) => {
 
         log(`\nBuilding Search Index...\n`);
         const canopyIndex = buildIndex(manifests);
-        fs.writeFile(
+        fs.writeFileSync(
           `${canopyDirectory}/search.json`,
           JSON.stringify(canopyIndex),
           (err) => {
