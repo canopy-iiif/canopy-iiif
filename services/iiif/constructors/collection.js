@@ -18,7 +18,7 @@ function createItem(resource) {
   return {
     id: resource.id,
     label: resource.label,
-    thumbnail: resource.thumbnail,
+    thumbnail: resource.thumbnail ? resource.thumbnail : [],
     homepage: getHomepageBySlug("slug"),
   };
 }

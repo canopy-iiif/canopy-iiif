@@ -1,8 +1,15 @@
-import TEST from "@/.canopy/test.json";
-import SEARCH_INDEX from "@/.canopy/index.json";
-import MANIFESTS from "@/.canopy/manifests.json";
+import fs from "fs";
 import absoluteUrl from "next-absolute-url";
 import { Document } from "flexsearch";
+
+let SEARCH_INDEX = [];
+let MANIFESTS = [];
+
+if (fs.existsSync(`@/.canopy/index.json`))
+  SEARCH_INDEX = require("@/.canopy/index.json");
+
+if (fs.existsSync(`@/.canopy/manifests.json`))
+  MANIFESTS = require("@/.canopy/manifests.json");
 
 function getResults(query) {
   const index = new Document({
@@ -20,8 +27,6 @@ function getResults(query) {
       ],
     },
   });
-
-  console.log(TEST);
 
   SEARCH_INDEX.forEach((doc) => index.add(doc));
 
