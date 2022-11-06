@@ -37,6 +37,9 @@ export default function handler(req, res) {
   const { origin } = absoluteUrl(req);
   const { query } = req;
 
+  console.log(`SEARCH_INDEX`, SEARCH_INDEX);
+  console.log(`MANIFESTS`, MANIFESTS);
+
   const results = query?.q
     ? getResults(query?.q)[0]
     : { result: SEARCH_INDEX.map((doc) => doc.id) };

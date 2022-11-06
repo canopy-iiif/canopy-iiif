@@ -22,16 +22,6 @@ module.exports.build = (env) => {
     }
 
     fs.writeFile(
-      `${canopyDirectory}/index.json`,
-      JSON.stringify([{}]),
-      (err) => {
-        if (err) {
-          console.error(err);
-        }
-      }
-    );
-
-    fs.writeFile(
       `${canopyDirectory}/collections.json`,
       JSON.stringify([canopyCollection]),
       (err) => {
