@@ -32,23 +32,31 @@ A purely IIIF sourced site generator using Next.js. Canopy is an experimental ap
 - [ ] Collection as a `/collection/` page
 - [ ] `seeAlso` OR `rendering` support for `text/markdown` as supplemental content
 - [ ] Documentation for best-practice incorporating non-IIIF front matter
+- [ ] Homepage metadata sliders
 
 ### Data Aggregration
 - [x] Collection of Manifests (i.e. `depth === 1`) 
 - [ ] Collection of Collections (i.e. `depth > 1`)
 - [x] Harvesting of curated metadata labels
+- [ ] Leveraging BCP 47 and internationalization
 
 ### Search
 - [x] Basic search on label(s)
+- [ ] No results language
 - [ ] Complex search on summary and metadata
 - [ ] Search page facets on curated metadata
 - [ ] `next/link` routing from Work metadata to search page facets
 
-### User Experience
+### User Interface & Experience
 - [ ] Fully Responsive
 - [ ] Lazy load search results
 - [ ] Custom theme support
 - [x] Dark mode
+
+### Configuration
+- [ ] Localization preferences
+- [ ] Site title label override
+- [ ] Slug pattern options
 
 ## Technical Stuff
 

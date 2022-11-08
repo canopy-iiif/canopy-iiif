@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { getLabel } from "@/hooks/getLabel";
 import { getJsonByURI } from "@/services/utils";
+import { getPresentation3 } from "@/services/iiif/context";
 import Card from "@/components/Card/Card";
 import { Item } from "@/components/Grid/Grid.styled";
 
@@ -9,7 +10,7 @@ const GridItem = ({ data }) => {
   const path = data.homepage[0].id;
 
   useEffect(() => {
-    getJsonByURI(data.id).then((json) => setItem(json));
+    getJsonByURI(data.id).then((json) => setItem(getPresentation3(json)));
   }, []);
 
   let resource = null;
@@ -20,8 +21,8 @@ const GridItem = ({ data }) => {
    * @todo: handle this better
    */
   if (item.items) resource = item.items[0].items[0].items[0].body;
-  if (item.sequences)
-    resource = item.sequences[0].canvases[0].images[0].resource;
+
+  const aspectRatio = resource.width / resource.height;
 
   return (
     <Item>
@@ -30,6 +31,7 @@ const GridItem = ({ data }) => {
         label={getLabel(item?.label)}
         path={path}
         resource={resource}
+        aspectRatio={aspectRatio}
       />
     </Item>
   );

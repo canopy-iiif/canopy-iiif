@@ -58,6 +58,21 @@ module.exports.build = (env) => {
     );
 
     /**
+     * create manifest listing
+     */
+    log(`Building search index..\n\n`);
+    const canopyIndex = buildIndex(canopyManifests);
+    fs.writeFile(
+      `${canopyDirectory}/index.json`,
+      JSON.stringify(canopyIndex),
+      (err) => {
+        if (err) {
+          console.error(err);
+        }
+      }
+    );
+
+    /**
      * flatten metadata
      */
 
@@ -94,18 +109,6 @@ module.exports.build = (env) => {
         fs.writeFile(
           `${canopyDirectory}/metadata.json`,
           JSON.stringify(canopyMetadata),
-          (err) => {
-            if (err) {
-              console.error(err);
-            }
-          }
-        );
-
-        log(`\nBuilding Search Index...\n`);
-        const canopyIndex = buildIndex(manifests);
-        fs.writeFile(
-          `${canopyDirectory}/search.json`,
-          JSON.stringify(canopyIndex),
           (err) => {
             if (err) {
               console.error(err);

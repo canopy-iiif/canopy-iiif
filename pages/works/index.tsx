@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Layout from "@/components/layout";
 import { InView } from "react-intersection-observer";
-import { map as lodashMap, groupBy as lodashGroupBy } from "lodash";
 import Grid from "@/components/Grid/Grid";
 import Container from "@/components/Shared/Container";
 import useSWR from "swr";

@@ -1,63 +1,61 @@
-import SEARCH_INDEX from "@/.canopy/search.json";
+import INDEX from "@/.canopy/index.json";
 import MANIFESTS from "@/.canopy/manifests.json";
 import absoluteUrl from "next-absolute-url";
-import { Document } from "flexsearch";
+import { search } from "libsearch";
 
-function getResults(query) {
-  const index = new Document({
-    optimize: true,
-    resolution: 9,
-    document: {
-      id: "id",
-      index: [
-        {
-          field: "label",
-          tokenize: "forward",
-          optimize: true,
-          resolution: 9,
-        },
-      ],
-    },
-  });
+export const config = {
+  runtime: "experimental-edge",
+};
 
-  SEARCH_INDEX.forEach((doc) => index.add(doc));
+const getItems = (origin, query) => {
+  const filtered = !query
+    ? INDEX.map((manifest) => manifest.id)
+    : getResults(query);
 
-  return index.search(query, { index: ["label"] });
-}
-
-export default function handler(req, res) {
-  const { origin } = absoluteUrl(req);
-  const { query } = req;
-
-  const results = query?.q
-    ? getResults(query?.q)[0]
-    : { result: SEARCH_INDEX.map((doc) => doc.id) };
-
-  const filtered = results?.result;
-
-  const items = filtered
-    ? MANIFESTS.filter((item) => filtered.includes(item.id)).map((item) => {
-        return {
-          id: item.id,
-          label: item.label,
-          homepage: [
-            {
-              id: `${origin}/works/${item.slug}`,
-              type: "Text",
-              label: item.label,
-            },
-          ],
-        };
-      })
+  return filtered
+    ? MANIFESTS.filter((item) => filtered.includes(item.id)).map((item) =>
+        searchResult(item, origin)
+      )
     : [];
+};
+
+const getResults = (query) =>
+  search(INDEX, query, (manifest) => manifest.label).map((result) => result.id);
+
+const searchResult = (item, origin) => {
+  return {
+    id: item.id,
+    label: item.label,
+    homepage: [
+      {
+        id: `${origin}/works/${item.slug}`,
+        type: "Text",
+        label: item.label,
+      },
+    ],
+  };
+};
+
+export default function handler(req) {
+  const { origin } = absoluteUrl(req);
+  const { url } = req;
+
+  const params = new URL(url).searchParams;
+  const query = params.get("q");
+  const items = getItems(origin, query);
 
   const result = {
     "@context": "https://iiif.io/api/presentation/3/context.json",
     id: `${origin}/api/search`,
     type: "Collection",
-    label: { none: [query?.q] },
+    label: { none: [query] },
     items: [...items],
   };
 
-  Promise.resolve(res.status(200).json({ ...result }));
+  return new Response(JSON.stringify({ ...result }), {
+    status: 200,
+    headers: {
+      "content-type": "application/json",
+    },
+  });
 }

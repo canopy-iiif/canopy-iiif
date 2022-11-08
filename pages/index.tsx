@@ -3,6 +3,7 @@ import Layout from "@/components/layout";
 import Hero from "@/components/Hero/Hero";
 import Slider from "@/app/Viewer/Slider";
 import { createCollection } from "../services/iiif/constructors/collection";
+import { HeroWrapper } from "../components/Hero/Hero.styled";
 
 export default function Index({ metadata, hero }) {
   const [baseUrl, setBaseUrl] = useState("");
@@ -14,9 +15,9 @@ export default function Index({ metadata, hero }) {
 
   return (
     <Layout>
-      <div style={{ height: "400px", position: "relative" }}>
+      <HeroWrapper>
         <Hero collection={hero} />
-      </div>
+      </HeroWrapper>
       <section>
         <div style={{ padding: "1rem 2rem" }}>
           {/* {metadata.map((label) => (

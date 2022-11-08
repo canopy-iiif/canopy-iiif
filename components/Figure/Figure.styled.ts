@@ -3,7 +3,7 @@ import { styled } from "@/stitches";
 const LQIP = styled("span", {});
 
 const Wrapper = styled("figure", {
-  backgroundColor: "$mauve3",
+  backgroundColor: "$slate6",
   display: "flex",
   width: "100%",
   height: "100%",
