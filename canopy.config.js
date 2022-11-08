@@ -2,26 +2,24 @@
  * Configuration built by `npm run build`
  */
 exports.prod = {
-  collection:
-    "https://canopy-iiif.vercel.app/fixtures/iiif/collection/nez-perce.json",
+  collection: "https://view.nls.uk/collections/1444/8181/144481817.json",
   featured: [
-    "https://canopy-iiif.vercel.app/fixtures/iiif/manifest/nez-perce/02-lawyer.json",
-    "https://canopy-iiif.vercel.app/fixtures/iiif/manifest/nez-perce/08-map-territory.json",
-    "https://canopy-iiif.vercel.app/fixtures/iiif/manifest/nez-perce/14-joseph-dead-feast-lodge.json",
+    "https://view.nls.uk/manifest/1446/0652/144606524/manifest.json",
+    "https://view.nls.uk/manifest/1446/0651/144606519/manifest.json",
+    "https://view.nls.uk/manifest/1875/4847/187548475/manifest.json",
   ],
-  metadata: ["Date", "Subject"],
+  metadata: ["Date printed", "Printer", "Author"],
 };
 
 /**
  * Configuration built by `npm run dev`
  */
 exports.dev = {
-  collection:
-    "https://canopy-iiif.vercel.app/fixtures/iiif/collection/nez-perce.json",
+  collection: "https://view.nls.uk/collections/1444/8181/144481817.json",
   featured: [
-    "https://canopy-iiif.vercel.app/fixtures/iiif/manifest/nez-perce/02-lawyer.json",
-    "https://canopy-iiif.vercel.app/fixtures/iiif/manifest/nez-perce/08-map-territory.json",
-    "https://canopy-iiif.vercel.app/fixtures/iiif/manifest/nez-perce/14-joseph-dead-feast-lodge.json",
+    "https://view.nls.uk/manifest/1446/0652/144606524/manifest.json",
+    "https://view.nls.uk/manifest/1446/0651/144606519/manifest.json",
+    "https://view.nls.uk/manifest/1875/4847/187548475/manifest.json",
   ],
-  metadata: ["Date", "Subject"],
+  metadata: ["Date printed", "Printer", "Author"],
 };
