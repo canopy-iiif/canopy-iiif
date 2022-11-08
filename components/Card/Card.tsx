@@ -1,4 +1,4 @@
-import { Content, Wrapper } from "@/components/Card/Card.styled";
+import { Content, Placeholder, Wrapper } from "@/components/Card/Card.styled";
 import Link from "next/link";
 import Figure from "@/components/Figure/Figure";
 import * as AspectRatio from "@radix-ui/react-aspect-ratio";
@@ -17,21 +17,21 @@ const Card = ({
 }) => {
   const { ref, inView } = useInView();
 
-  console.log(aspectRatio);
-
   return (
     <Wrapper ref={ref}>
       <Link href={path}>
         <AspectRatio.Root ratio={aspectRatio}>
-          <MotionConfig transition={{ duration: 1 }}>
-            {inView && resource && (
-              <LazyMotion features={domAnimation}>
-                <m.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
-                  <Figure resource={resource} size={size} isCover={isCover} />
-                </m.div>
-              </LazyMotion>
-            )}
-          </MotionConfig>
+          <Placeholder>
+            <MotionConfig transition={{ duration: 1 }}>
+              {inView && resource && (
+                <LazyMotion features={domAnimation}>
+                  <m.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
+                    <Figure resource={resource} size={size} isCover={isCover} />
+                  </m.div>
+                </LazyMotion>
+              )}
+            </MotionConfig>
+          </Placeholder>
         </AspectRatio.Root>
         <Content>
           <h4>{label}</h4>

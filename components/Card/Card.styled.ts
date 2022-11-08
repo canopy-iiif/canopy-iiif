@@ -1,5 +1,4 @@
 import { styled } from "@/stitches";
-import { indigo, indigoA, slate, slateA } from "@radix-ui/colors";
 
 const Content = styled("div", {
   padding: "$gr3 0 0",
@@ -18,6 +17,12 @@ const Content = styled("div", {
     fontSize: "0.8333rem",
     color: "$slate10",
   },
+});
+
+const Placeholder = styled("div", {
+  backgroundColor: "$slate6",
+  width: "100%",
+  height: "100%",
 });
 
 const Wrapper = styled("div", {
@@ -44,4 +49,4 @@ const Wrapper = styled("div", {
   },
 });
 
-export { Content, Wrapper };
+export { Content, Placeholder, Wrapper };
