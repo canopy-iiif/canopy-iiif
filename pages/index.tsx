@@ -13,6 +13,11 @@ export default function Index({ metadata, featured }) {
     items: featured.items.map((item) => {
       return {
         ...item,
+        thumbnail: [
+          ...item.thumbnail.map((entry) => {
+            return { ...entry, height: 1000, width: 1000 };
+          }),
+        ],
         homepage: [
           {
             id: `${baseUrl}/works/${item.homepage[0].id}`,
@@ -24,6 +29,7 @@ export default function Index({ metadata, featured }) {
     }),
   };
 
+  console.log(hero);
   useEffect(() => {
     const { host, protocol } = window.location;
     const baseUrl = `${protocol}//${host}`;
