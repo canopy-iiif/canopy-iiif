@@ -3,14 +3,8 @@ import MANIFESTS from "@/.canopy/manifests.json";
 import absoluteUrl from "next-absolute-url";
 import { search } from "libsearch";
 
-export const config = {
-  runtime: "experimental-edge",
-};
-
-const getItems = (origin, query) => {
-  const filtered = !query
-    ? INDEX.map((manifest) => manifest.id)
-    : getResults(query);
+const getItems = (origin, q) => {
+  const filtered = !q ? INDEX.map((manifest) => manifest.id) : getResults(q);
 
   return filtered
     ? MANIFESTS.filter((item) => filtered.includes(item.id)).map((item) =>
@@ -19,8 +13,8 @@ const getItems = (origin, query) => {
     : [];
 };
 
-const getResults = (query) =>
-  search(INDEX, query, (manifest) => manifest.label).map((result) => result.id);
+const getResults = (q) =>
+  search(INDEX, q, (manifest) => manifest.label).map((result) => result.id);
 
 const searchResult = (item, origin) => {
   return {
@@ -36,26 +30,18 @@ const searchResult = (item, origin) => {
   };
 };
 
-export default function handler(req) {
+export default function handler(req, res) {
   const { origin } = absoluteUrl(req);
-  const { url } = req;
-
-  const params = new URL(url).searchParams;
-  const query = params.get("q");
-  const items = getItems(origin, query);
+  const { query } = req;
+  const items = getItems(origin, query.q);
 
   const result = {
     "@context": "https://iiif.io/api/presentation/3/context.json",
     id: `${origin}/api/search`,
     type: "Collection",
-    label: { none: [query] },
+    label: { none: [query.q] },
     items: [...items],
   };
 
-  return new Response(JSON.stringify({ ...result }), {
-    status: 200,
-    headers: {
-      "content-type": "application/json",
-    },
-  });
+  res.status(200).json({ ...result });
 }
