@@ -51,7 +51,6 @@ A purely IIIF sourced site generator using Next.js. Canopy is an experimental ap
 - [ ] Fully Responsive
 - [ ] Lazy load search results
 - [ ] Custom theme support
-- [x] Dark mode
 
 ### Configuration
 - [ ] Localization preferences
