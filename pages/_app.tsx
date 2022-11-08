@@ -14,7 +14,7 @@ export default function CanopyApp({ Component, pageProps }) {
       attribute="class"
       defaultTheme="light"
       value={{
-        dark: darkTheme.className,
+        dark: "light",
         light: "light",
       }}
     >
