@@ -3,13 +3,13 @@
  */
 exports.prod = {
   collection:
-    "https://canopy-iiif.vercel.app/fixtures/iiif/collection/nez-perce.json",
+    "https://digital.lib.utk.edu/assemble/collection/collections/heilman",
   featured: [
-    "https://canopy-iiif.vercel.app/fixtures/iiif/manifest/nez-perce/02-lawyer.json",
-    "https://canopy-iiif.vercel.app/fixtures/iiif/manifest/nez-perce/08-map-territory.json",
-    "https://canopy-iiif.vercel.app/fixtures/iiif/manifest/nez-perce/14-joseph-dead-feast-lodge.json",
+    "https://digital.lib.utk.edu/assemble/manifest/heilman/506",
+    "https://digital.lib.utk.edu/assemble/manifest/heilman/808",
+    "https://digital.lib.utk.edu/assemble/manifest/heilman/1200",
   ],
-  metadata: ["Date", "Subject"],
+  metadata: ["Subject"],
 };
 
 /**
@@ -17,11 +17,11 @@ exports.prod = {
  */
 exports.dev = {
   collection:
-    "https://canopy-iiif.vercel.app/fixtures/iiif/collection/nez-perce.json",
+    "https://digital.lib.utk.edu/assemble/collection/collections/heilman",
   featured: [
-    "https://canopy-iiif.vercel.app/fixtures/iiif/manifest/nez-perce/02-lawyer.json",
-    "https://canopy-iiif.vercel.app/fixtures/iiif/manifest/nez-perce/08-map-territory.json",
-    "https://canopy-iiif.vercel.app/fixtures/iiif/manifest/nez-perce/14-joseph-dead-feast-lodge.json",
+    "https://digital.lib.utk.edu/assemble/manifest/heilman/506",
+    "https://digital.lib.utk.edu/assemble/manifest/heilman/808",
+    "https://digital.lib.utk.edu/assemble/manifest/heilman/1200",
   ],
-  metadata: ["Date", "Subject"],
+  metadata: ["Subject"],
 };
