@@ -26,16 +26,12 @@ const getTopCollection = (pages, baseUrl) => {
 
 const getPageCollection = (manifests, pages, page) => {
   const target = pages.find((item) => item.page === page);
-  return target.items.map((id) => {
-    const manifest = manifests.find((item) => item.id === id);
-    console.log(manifests);
-    return { ...manifest };
-  });
+  return target.items.map((id) => manifests.find((item) => item.id === id));
 };
 
 const getPages = (manifests, size) => {
   const count = Math.ceil(manifests.length / size);
-  const pages: any = Array.from(Array(count).keys());
+  const pages = Array.from(Array(count).keys());
 
   return pages.map((index) => {
     const start = size * index;
@@ -47,7 +43,6 @@ const getPages = (manifests, size) => {
 
 const getManifests = (origin, q) => {
   const filtered = !q ? INDEX.map((manifest) => manifest.id) : getResults(q);
-
   return filtered
     ? MANIFESTS.filter((item) => filtered.includes(item.id)).map((item) =>
         searchResult(item, origin)
