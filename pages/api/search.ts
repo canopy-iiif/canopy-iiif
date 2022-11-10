@@ -3,6 +3,15 @@ import MANIFESTS from "@/.canopy/manifests.json";
 import absoluteUrl from "next-absolute-url";
 import { search } from "libsearch";
 
+const getPartOf = (baseUrl) => {
+  const url = new URL(baseUrl);
+  url.searchParams.delete("page");
+  return {
+    id: url,
+    type: "Collection",
+  };
+};
+
 const getTopCollection = (pages, baseUrl) => {
   return pages.map((item) => {
     const url = new URL(baseUrl);
@@ -16,10 +25,12 @@ const getTopCollection = (pages, baseUrl) => {
 };
 
 const getPageCollection = (manifests, pages, page) => {
-  /**
-   * return collection of collections
-   */
-  return [];
+  const target = pages.find((item) => item.page === page);
+  return target.items.map((id) => {
+    const manifest = manifests.find((item) => item.id === id);
+    console.log(manifests);
+    return { ...manifest };
+  });
 };
 
 const getPages = (manifests, size) => {
@@ -70,7 +81,7 @@ export default function handler(req, res) {
   const manifests = getManifests(origin, q);
   const pages = getPages(manifests, 10);
   const items = page
-    ? getPageCollection(manifests, pages, page)
+    ? getPageCollection(manifests, pages, parseInt(page))
     : getTopCollection(pages, baseUrl);
 
   const result = {
@@ -79,6 +90,7 @@ export default function handler(req, res) {
     type: "Collection",
     label: { none: [q ? q : `All Results`] },
     items: [...items],
+    ...(page && { partOf: getPartOf(baseUrl) }),
   };
 
   res.status(200).json({ ...result });
