@@ -3,18 +3,23 @@ import MANIFESTS from "@/.canopy/manifests.json";
 import absoluteUrl from "next-absolute-url";
 import { search } from "libsearch";
 
-const getTopCollection = (manifests, pages) => {
-  /**
-   * return return collection of manifests
-   */
-  return;
+const getTopCollection = (pages, baseUrl) => {
+  return pages.map((item) => {
+    const url = new URL(baseUrl);
+    url.searchParams.append("page", item.page);
+    return {
+      id: url.toString(),
+      type: "Collection",
+      label: { none: [`Page ${item.page} (${item.items.length} Total)`] },
+    };
+  });
 };
 
 const getPageCollection = (manifests, pages, page) => {
   /**
    * return collection of collections
    */
-  return;
+  return [];
 };
 
 const getPages = (manifests, size) => {
@@ -25,7 +30,7 @@ const getPages = (manifests, size) => {
     const start = size * index;
     const end = size * (index + 1);
     const items = manifests.slice(start, end).map((item) => item.id);
-    return { page: index, items: items };
+    return { page: index + 1, items: items };
   });
 };
 
@@ -61,18 +66,19 @@ export default function handler(req, res) {
   const { query, url } = req;
   const { q, page } = query;
 
+  const baseUrl = origin + url;
   const manifests = getManifests(origin, q);
   const pages = getPages(manifests, 10);
   const items = page
     ? getPageCollection(manifests, pages, page)
-    : getTopCollection(manifests, pages);
+    : getTopCollection(pages, baseUrl);
 
   const result = {
     "@context": "https://iiif.io/api/presentation/3/context.json",
-    id: `${origin}${url}`,
+    id: baseUrl,
     type: "Collection",
-    label: { none: [q] },
-    items: [...manifests],
+    label: { none: [q ? q : `All Results`] },
+    items: [...items],
   };
 
   res.status(200).json({ ...result });
