@@ -6,10 +6,12 @@ import { search } from "libsearch";
 const getPartOf = (baseUrl) => {
   const url = new URL(baseUrl);
   url.searchParams.delete("page");
-  return {
-    id: url,
-    type: "Collection",
-  };
+  return [
+    {
+      id: url,
+      type: "Collection",
+    },
+  ];
 };
 
 const getTopCollection = (pages, baseUrl) => {
