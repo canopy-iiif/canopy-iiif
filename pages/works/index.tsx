@@ -1,28 +1,40 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import Layout from "@/components/layout";
 import Grid from "@/components/Grid/Grid";
 import Container from "@/components/Shared/Container";
 import useSWR from "swr";
 import { useRouter } from "next/router";
+import usePageResults from "@/hooks/usePageResults";
 
 const fetcher = (url) => fetch(url).then((res) => res.json());
 
-const Results = ({ active }) => {
-  const [results, setResults] = useState([]);
-  const { data } = useSWR(active, fetcher);
+const Results = ({ pages }) => {
+  const [page, setPage] = useState(0);
+  const { data, error, loading, more } = usePageResults(pages, page);
 
-  useEffect(() => {
-    data && setResults((current) => [current, ...data?.items]);
-  }, [data]);
+  const observer = useRef();
+  const loadMore = useCallback(
+    (node) => {
+      if (loading) return;
+      if (observer.current) observer.current.disconnect();
+      observer.current = new IntersectionObserver((entries) => {
+        if (entries[0].isIntersecting && more)
+          setPage((prevPage) => prevPage + 1);
+      });
+      if (node) observer.current.observe(node);
+    },
+    [loading, more]
+  );
 
   return (
     <Grid>
-      {results &&
-        results
+      {data &&
+        data
           .filter((result) => result.id)
-          .map((result, i) => {
+          .map((result, index) => {
             return <Grid.Item data={result} key={result.id} />;
           })}
+      <span ref={loadMore}></span>
     </Grid>
   );
 };
@@ -52,7 +64,7 @@ const Search = () => {
   return (
     <Layout>
       <Container containerType="wide">
-        <Results active={pages} />
+        <Results pages={pages} />
       </Container>
     </Layout>
   );
