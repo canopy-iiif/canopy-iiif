@@ -2,15 +2,15 @@ import React, { useCallback, useEffect, useRef, useState } from "react";
 import Layout from "@/components/layout";
 import Grid from "@/components/Grid/Grid";
 import Container from "@/components/Shared/Container";
-import useSWR from "swr";
 import { useRouter } from "next/router";
 import usePageResults from "@/hooks/usePageResults";
+import axios from "axios";
 
-const fetcher = (url) => fetch(url).then((res) => res.json());
-
-const Results = ({ pages }) => {
+const Results = ({ pages, query }) => {
   const [page, setPage] = useState(0);
-  const { data, error, loading, more } = usePageResults(pages, page);
+  const { data, error, loading, more } = usePageResults(pages, page, query);
+
+  useEffect(() => setPage(0), [query]);
 
   const observer = useRef();
   const loadMore = useCallback(
@@ -28,13 +28,21 @@ const Results = ({ pages }) => {
 
   return (
     <Grid>
-      {data &&
-        data
-          .filter((result) => result.id)
-          .map((result, index) => {
-            return <Grid.Item data={result} key={result.id} />;
-          })}
-      <span ref={loadMore}></span>
+      {data.map((result, index) => {
+        if (data.length === index + 1) {
+          return (
+            <span ref={data.length === index + 1 && loadMore} key={result.id}>
+              <Grid.Item data={result} />
+            </span>
+          );
+        } else {
+          return (
+            <span key={result.id}>
+              <Grid.Item data={result} />
+            </span>
+          );
+        }
+      })}
     </Grid>
   );
 };
@@ -44,27 +52,26 @@ const Search = () => {
   const { q } = router.query;
 
   const [pages, setPages] = useState<string[]>([]);
-  const [query, setQuery] = useState("");
-
-  const { data } = useSWR(`/api/search?${query}`, fetcher);
+  const [query, setQuery] = useState<string | undefined>();
 
   useEffect(() => {
+    setPages([]);
     const params = new URLSearchParams();
     if (q) params.append("q", q as string);
     q ? setQuery(params.toString()) : setQuery("");
   }, [q]);
 
   useEffect(() => {
-    if (data) {
-      const ids = data?.items.map((item) => item.id);
-      setPages(ids);
-    }
-  }, [data]);
+    if (query !== undefined)
+      axios
+        .get(`/api/search?${query}`)
+        .then((result) => setPages(result.data.items.map((item) => item.id)));
+  }, [query]);
 
   return (
     <Layout>
       <Container containerType="wide">
-        <Results pages={pages} />
+        <Results pages={pages} query={query} />
       </Container>
     </Layout>
   );

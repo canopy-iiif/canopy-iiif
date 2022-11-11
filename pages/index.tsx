@@ -29,7 +29,6 @@ export default function Index({ metadata, featured }) {
     }),
   };
 
-  console.log(hero);
   useEffect(() => {
     const { host, protocol } = window.location;
     const baseUrl = `${protocol}//${host}`;
