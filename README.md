@@ -23,7 +23,7 @@ A purely IIIF sourced site generator using Next.js. Canopy is an experimental ap
 - 48 items
 - Provided by National Library of Scotland
 
-![image](https://user-images.githubusercontent.com/7376450/199378560-7c6b28f3-074a-4e72-9d86-4381066cc8e4.png)
+![image](https://user-images.githubusercontent.com/7376450/201317777-0d46a3d6-1eea-41bb-ae04-41eeba9a3c5c.png)
 
 ## Roadmap
 
