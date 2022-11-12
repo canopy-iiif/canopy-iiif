@@ -102,7 +102,7 @@ const HeroStyled = styled("div", {
           },
 
           ".slide-label": {
-            fontFamily: "$sans",
+            fontFamily: "$book",
             fontSize: "$gr5",
             display: "block",
             margin: "0 0 $gr1",
@@ -110,7 +110,7 @@ const HeroStyled = styled("div", {
           },
 
           ".slide-summary": {
-            fontFamily: "$sansLightItalic",
+            fontFamily: "$bookLightItalic",
             fontSize: "$gr3",
             display: "block",
             color: "$slate3",

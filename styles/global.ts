@@ -5,11 +5,11 @@ const defaults = {
     margin: 0,
     padding: 0,
     fontWeight: "400",
-    backgroundColor: "$slate1",
+    backgroundColor: "$slate2",
   },
 
   html: {
-    fontFamily: "$sans",
+    fontFamily: "$book",
     fontSize: "17.5px",
     fontSmooth: "always",
     webKitFontSmothing: "antialiased",

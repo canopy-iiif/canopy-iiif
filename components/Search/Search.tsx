@@ -38,7 +38,7 @@ const Search = () => {
     <SearchForm onSubmit={handleSubmit}>
       <SearchInput
         onChange={handleSearchChange}
-        placeholder="Search"
+        placeholder="Find works..."
         ref={search}
       />
       <SearchSubmit value="Search" type="submit" />

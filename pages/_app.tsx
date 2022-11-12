@@ -12,9 +12,9 @@ export default function CanopyApp({ Component, pageProps }) {
   return (
     <ThemeProvider
       attribute="class"
-      defaultTheme="light"
+      defaultTheme="system"
       value={{
-        dark: "light",
+        dark: darkTheme.className,
         light: "light",
       }}
     >

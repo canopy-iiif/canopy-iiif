@@ -4,8 +4,10 @@ const Content = styled("div", {});
 
 const Title = styled("span", {
   display: "flex",
-  flexGrow: "1",
-  fontWeight: "500",
+  marginRight: "$gr3",
+  fontFamily: "$bookTight",
+  fontSize: "$gr5",
+  fontWeight: "800",
 });
 
 const Wrapper = styled("header", {
@@ -14,8 +16,7 @@ const Wrapper = styled("header", {
   top: "0",
   width: "calc(100% - ($gr4 * 2))",
   padding: "$gr1 $gr4",
-  backgroundColor: "$indigo12",
-  background: "linear-gradient(90deg, $slate12 0%, $indigo12 100%)",
+  backgroundColor: "$slate1",
   display: "flex",
   flexDirection: "row",
   justifyContent: "space-between",
@@ -27,9 +28,11 @@ const Wrapper = styled("header", {
 
   [`&  ${Title} a`]: {
     textDecoration: "none",
-    color: "$indigo1",
-    fontSize: "$gr4",
-    fontWeight: "600",
+    color: "$slate12",
+
+    "&:hover, &:focus": {
+      color: "$indigo10",
+    },
   },
 });
 
