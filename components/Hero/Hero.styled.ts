@@ -92,7 +92,7 @@ const HeroStyled = styled("div", {
           display: "flex",
           flexDirection: "column",
           alignItems: "flex-start",
-          textShadow: "2px 2px 2px #000",
+          textShadow: "5px 5px 13px #000a",
           maxWidth: "$gr11",
           textAlign: "left",
 
@@ -102,15 +102,16 @@ const HeroStyled = styled("div", {
           },
 
           ".slide-label": {
-            fontFamily: "$book",
-            fontSize: "$gr5",
+            fontFamily: "$bookTight",
+            fontSize: "$gr7",
+            fontWeight: "800",
             display: "block",
             margin: "0 0 $gr1",
             lineHeight: "1em",
           },
 
           ".slide-summary": {
-            fontFamily: "$bookLightItalic",
+            fontFamily: "$book",
             fontSize: "$gr3",
             display: "block",
             color: "$slate3",

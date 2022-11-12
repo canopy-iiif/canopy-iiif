@@ -33,7 +33,7 @@ const SearchSubmit = styled("input", {
   padding: "$gr1 $gr2",
   marginLeft: "-$gr1",
   fontSize: "$gr3",
-  fontWeight: "500",
+  fontWeight: "300",
   fontFamily: "$book",
   backgroundColor: "$indigo9",
   color: "$indigo3",
