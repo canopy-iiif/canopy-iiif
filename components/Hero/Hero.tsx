@@ -10,6 +10,7 @@ import { HeroStyled } from "@/components/Hero/Hero.styled";
 import Link from "next/link";
 import React from "react";
 import Container from "../Shared/Container";
+import { ArrowRightIcon } from "@radix-ui/react-icons";
 
 interface HeroProps {
   collection?: any;
@@ -41,12 +42,20 @@ const Hero: React.FC<HeroProps> = ({ collection }) => {
               <Thumbnail thumbnail={item.thumbnail} />
               <Container className="slide-inner" isFlex>
                 <figcaption>
-                  <Link href={item.homepage[0].id}>
+                  <Link
+                    href={item.homepage[0].id}
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      alignContent: "center",
+                    }}
+                  >
                     <Label
                       label={item.label}
                       as="span"
                       className="slide-label"
                     />
+                    <ArrowRightIcon />
                   </Link>
                   {item.summary && (
                     <Summary

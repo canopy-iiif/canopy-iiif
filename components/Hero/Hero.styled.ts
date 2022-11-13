@@ -23,22 +23,23 @@ const HeroStyled = styled("div", {
         display: "flex",
         width: "100%",
         height: "300px",
-        background: `linear-gradient(177deg, ${slateA.slateA12} 0%, ${slateA.slateA1} 30%)`,
+        background: `linear-gradient(176deg, ${slateA.slateA10} 2%, ${slateA.slateA4} 10%, ${slateA.slateA1} 20%)`,
         position: "absolute",
         zIndex: "1",
       },
     },
 
     ".swiper-button-prev, .swiper-button-next": {
-      color: "$white",
+      color: slate.slate1,
     },
 
     ".swiper-pagination-bullet": {
-      backgroundColor: "$white",
+      backgroundColor: slateDarkA.slateA7,
+      opacity: "1",
     },
 
     ".swiper-pagination-bullet-active": {
-      backgroundColor: "$white",
+      backgroundColor: slate.slate1,
     },
 
     ".swiper-slide": {
@@ -75,28 +76,35 @@ const HeroStyled = styled("div", {
         figcaption: {
           position: "absolute",
           zIndex: "10",
-          bottom: "$gr5",
-          color: "$indigo1",
+          bottom: "-$gr5",
           display: "flex",
           flexDirection: "column",
           alignItems: "flex-start",
           paddingTop: "$gr3",
           width: "$gr11",
+          backgroundColor: "$slate2",
           textAlign: "left",
-          borderTop: `2px solid ${slateDarkA.slateA3}`,
 
           a: {
-            color: `${indigo.indigo1} !important`,
+            color: "$slate12",
             textDecoration: "none",
-          },
 
-          ".slide-label": {
-            fontFamily: "$bookTight",
-            fontSize: "$gr5",
-            fontWeight: "500",
-            display: "block",
-            margin: "0 0 $gr1",
-            lineHeight: "1.15em",
+            ".slide-label": {
+              fontFamily: "$bookTight",
+              fontSize: "$gr4",
+              fontWeight: "800",
+              display: "flex",
+              marginRight: "$gr1",
+              lineHeight: "1.15em",
+              transition: "$all",
+            },
+
+            "&:hover, &:focus": {
+              color: "$indigo11",
+              ".slide-label": {
+                marginRight: "$gr2",
+              },
+            },
           },
 
           ".slide-summary": {
