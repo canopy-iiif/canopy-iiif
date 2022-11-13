@@ -23,3 +23,10 @@ exports.dev = {
   ],
   metadata: ["Date", "Subject"],
 };
+
+exports.options = {
+  theme: {
+    defaultTheme: "light", // "light" | "dark" | "system"
+    toggleEnabled: false,
+  },
+};

@@ -7,13 +7,14 @@ import { SearchProvider } from "../context/search";
 export default function CanopyApp({ Component, pageProps }) {
   globalStyles();
 
+  const { theme } = process.env.CANOPY_CONFIG;
   const [mounted, setMounted] = useState(false);
   useEffect(() => setMounted(true), []);
 
   return (
     <ThemeProvider
       attribute="class"
-      defaultTheme="system"
+      defaultTheme={theme?.defaultTheme ? theme?.defaultTheme : "light"}
       value={{
         dark: darkTheme.className,
         light: "light",

@@ -1,7 +1,7 @@
 import React from "react";
 import IIIF from "@/components/SVG/IIIF";
 
-const collection = process.env.collection;
+const { collection } = process.env.CANOPY_CONFIG;
 
 const Footer = () => {
   return (
