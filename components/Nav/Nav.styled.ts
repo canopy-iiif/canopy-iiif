@@ -1,7 +1,7 @@
 import { styled } from "@/stitches";
 
 const Highlight = styled("div", {
-  backgroundColor: "$indigo4",
+  backgroundColor: "$indigo7",
   position: "absolute",
   left: "0",
   height: "calc(($gr1 * 2) + $gr3)",
@@ -19,7 +19,7 @@ const Items = styled("div", {
   a: {
     padding: "$gr2 $gr3",
     display: "inline-flex",
-    color: "$slate11",
+    color: "$slate12",
     textDecoration: "none",
     borderRadius: "2rem",
     position: "relative",
@@ -30,7 +30,7 @@ const Items = styled("div", {
     },
 
     [`&.active`]: {
-      color: "$indigo12",
+      color: "$indigo11",
     },
   },
 });

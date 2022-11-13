@@ -1,4 +1,5 @@
 import { styled } from "@/stitches";
+import { indigo, indigoA, slate, slateA, slateDarkA } from "@radix-ui/colors";
 
 /* eslint sort-keys: 0 */
 
@@ -7,13 +8,14 @@ const HeroStyled = styled("div", {
   width: "100%",
   height: "100%",
   zIndex: "0",
-  backgroundColor: "$slate4",
+  backgroundColor: slate.slate12,
 
   ".swiper": {
     backgroundColor: "transparent",
     width: "100%",
     height: "100%",
     position: "relative",
+    overflow: "unset",
 
     ".swiper-wrapper": {
       "&::before": {
@@ -21,54 +23,41 @@ const HeroStyled = styled("div", {
         display: "flex",
         width: "100%",
         height: "300px",
-        background:
-          "linear-gradient(173deg, $purple 0%, #f00 19%, #0000 61.8%)",
+        background: `linear-gradient(176deg, ${slateA.slateA10} 2%, ${slateA.slateA4} 10%, ${slateA.slateA1} 20%)`,
         position: "absolute",
         zIndex: "1",
       },
     },
 
     ".swiper-button-prev, .swiper-button-next": {
-      color: "$white",
+      color: slate.slate1,
     },
 
     ".swiper-pagination-bullet": {
-      backgroundColor: "$white",
+      backgroundColor: slateDarkA.slateA7,
+      opacity: "1",
     },
 
     ".swiper-pagination-bullet-active": {
-      backgroundColor: "$white",
+      backgroundColor: slate.slate1,
     },
 
     ".swiper-slide": {
       display: "flex",
-      backgroundColor: "$slate12",
+      backgroundColor: slate.slate12,
 
       figure: {
         width: "100%",
         position: "relative",
         margin: "0",
         padding: "0",
-        backgroundColor: "$slate12",
-
-        "&::after": {
-          content: "",
-          display: "flex",
-          width: "100%",
-          height: "100%",
-          background:
-            "linear-gradient(300deg, #000e 0%, #0006 38.2%, #0000 100%)",
-          position: "absolute",
-          zIndex: "0",
-          bottom: "0",
-        },
 
         "&::before": {
           content: "",
           display: "flex",
           width: "100%",
           height: "100%",
-          background: "linear-gradient(7deg, #000c 0%, #0000 61.8%)",
+          background: `linear-gradient(7deg,  ${slateA.slateA12} 13%, ${slateA.slateA11} 30%, ${slateA.slateA1} 61.8%)`,
           position: "absolute",
           zIndex: "1",
           bottom: "0",
@@ -86,28 +75,36 @@ const HeroStyled = styled("div", {
 
         figcaption: {
           position: "absolute",
-          zIndex: "1",
-          bottom: "$gr6",
-          color: "$white",
+          zIndex: "10",
+          bottom: "-$gr5",
           display: "flex",
           flexDirection: "column",
           alignItems: "flex-start",
-          textShadow: "5px 5px 13px #000a",
-          maxWidth: "$gr11",
+          paddingTop: "$gr3",
+          width: "$gr11",
+          backgroundColor: "$slate2",
           textAlign: "left",
 
           a: {
-            color: "$white !important",
+            color: "$slate12",
             textDecoration: "none",
-          },
 
-          ".slide-label": {
-            fontFamily: "$bookTight",
-            fontSize: "$gr7",
-            fontWeight: "800",
-            display: "block",
-            margin: "0 0 $gr1",
-            lineHeight: "1em",
+            ".slide-label": {
+              fontFamily: "$bookTight",
+              fontSize: "$gr4",
+              fontWeight: "800",
+              display: "flex",
+              marginRight: "$gr1",
+              lineHeight: "1.15em",
+              transition: "$all",
+            },
+
+            "&:hover, &:focus": {
+              color: "$indigo11",
+              ".slide-label": {
+                marginRight: "$gr2",
+              },
+            },
           },
 
           ".slide-summary": {
@@ -134,7 +131,7 @@ const HeroWrapper = styled("div", {
   height: "calc(100vh - 61.25px)",
   minHeight: "300px",
   maxHeight: "500px",
-  backgroundColor: "$black",
+  backgroundColor: slate.slate12,
   position: "relative",
   zIndex: "1",
 });

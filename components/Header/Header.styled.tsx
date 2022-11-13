@@ -1,6 +1,5 @@
 import { styled } from "@/stitches";
-
-const Content = styled("div", {});
+import { slateA } from "@radix-ui/colors";
 
 const Title = styled("span", {
   display: "flex",
@@ -10,8 +9,9 @@ const Title = styled("span", {
   fontWeight: "800",
 });
 
-const Wrapper = styled("header", {
+const Content = styled("div", {
   position: "fixed",
+  width: "100%",
   zIndex: "2",
   top: "0",
   width: "calc(100% - ($gr4 * 2))",
@@ -21,10 +21,10 @@ const Wrapper = styled("header", {
   flexDirection: "row",
   justifyContent: "space-between",
   color: "$slate1",
-  boxShadow: "3px 3px 8px #0002",
   fontSize: "1rem",
   lineHeight: "1.5rem",
   alignItems: "center",
+  boxShadow: `3px 3px 8px ${slateA.slateA7}`,
 
   [`&  ${Title} a`]: {
     textDecoration: "none",
@@ -34,6 +34,12 @@ const Wrapper = styled("header", {
       color: "$indigo10",
     },
   },
+});
+
+const Wrapper = styled("header", {
+  display: "flex",
+  flexDirection: "column",
+  paddingTop: "61.25px",
 });
 
 export { Content, Title, Wrapper };
