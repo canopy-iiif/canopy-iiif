@@ -10,10 +10,6 @@ const Title = styled("span", {
 });
 
 const Content = styled("div", {
-  position: "fixed",
-  width: "100%",
-  zIndex: "2",
-  top: "0",
   width: "calc(100% - ($gr4 * 2))",
   padding: "$gr1 $gr4",
   backgroundColor: "$slate1",
@@ -24,6 +20,7 @@ const Content = styled("div", {
   fontSize: "1rem",
   lineHeight: "1.5rem",
   alignItems: "center",
+  zIndex: "1",
   boxShadow: `3px 3px 8px ${slateA.slateA7}`,
 
   [`&  ${Title} a`]: {
@@ -37,9 +34,12 @@ const Content = styled("div", {
 });
 
 const Wrapper = styled("header", {
+  position: "fixed",
+  width: "100%",
+  zIndex: "2",
+  top: "0",
   display: "flex",
   flexDirection: "column",
-  paddingTop: "61.25px",
 });
 
 export { Content, Title, Wrapper };

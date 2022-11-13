@@ -55,8 +55,8 @@ export default function Index({ metadata, featured }) {
 }
 
 export async function getStaticProps() {
-  const featuredItems = process.env.featured as any as string[];
-  const metadata = process.env.metadata as any as string[];
+  const featuredItems = process.env.CANOPY_CONFIG.featured as any as string[];
+  const metadata = process.env.CANOPY_CONFIG.metadata as any as string[];
 
   const featured = await createCollection(featuredItems);
 

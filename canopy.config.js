@@ -25,3 +25,10 @@ exports.dev = {
   ],
   metadata: ["Subject"],
 };
+
+exports.options = {
+  theme: {
+    defaultTheme: "light", // "light" | "dark" | "system"
+    toggleEnabled: false,
+  },
+};
