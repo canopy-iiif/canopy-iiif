@@ -20,6 +20,8 @@ const Content = styled("div", {
   fontSize: "1rem",
   lineHeight: "1.5rem",
   alignItems: "center",
+  zIndex: "1",
+  boxShadow: `3px 3px 8px ${slateA.slateA7}`,
 
   [`&  ${Title} a`]: {
     textDecoration: "none",
@@ -38,7 +40,6 @@ const Wrapper = styled("header", {
   top: "0",
   display: "flex",
   flexDirection: "column",
-  boxShadow: `3px 3px 8px ${slateA.slateA7}`,
 });
 
 export { Content, Title, Wrapper };

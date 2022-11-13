@@ -18,19 +18,19 @@ const Grid = ({ children }) => {
 
   useEffect(() => {
     if (mediaQuery.get("xs")) {
-      setCols(1);
-      return;
-    }
-    if (mediaQuery.get("sm")) {
       setCols(2);
       return;
     }
-    if (mediaQuery.get("md")) {
+    if (mediaQuery.get("sm")) {
       setCols(3);
       return;
     }
-    if (mediaQuery.get("lg")) {
+    if (mediaQuery.get("md")) {
       setCols(4);
+      return;
+    }
+    if (mediaQuery.get("lg")) {
+      setCols(5);
       return;
     }
     if (mediaQuery.get("xl")) {
@@ -42,7 +42,7 @@ const Grid = ({ children }) => {
   const [cols, setCols] = useState(5);
 
   return (
-    <Wrapper breakpointCols={cols} columnClassName="can-grid-column">
+    <Wrapper breakpointCols={cols} columnClassName="canopy-grid-column">
       {children}
     </Wrapper>
   );

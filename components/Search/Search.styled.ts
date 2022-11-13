@@ -1,5 +1,5 @@
 import { styled } from "@/stitches";
-import { slateA } from "@radix-ui/colors";
+import { indigo, slateA } from "@radix-ui/colors";
 
 const SearchForm = styled("form", {
   backgroundColor: "$slateA11",
@@ -38,7 +38,8 @@ const SearchInput = styled("input", {
   "&:active, &:focus": {
     color: "$indigo1",
     backgroundColor: "$indigoA7",
-    outline: "3px solid $indigo10",
+    outline: "2px solid $indigo10",
+    border: "none",
   },
 });
 
