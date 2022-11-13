@@ -41,7 +41,6 @@ const Search = () => {
         placeholder="Find works..."
         ref={search}
       />
-      <SearchSubmit value="Search" type="submit" />
     </SearchForm>
   );
 };

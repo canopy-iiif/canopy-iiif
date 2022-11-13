@@ -2,7 +2,7 @@ import "swiper/css";
 import "swiper/css/effect-fade";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
-import { Autoplay, EffectFade, Keyboard, Navigation, Pagination } from "swiper";
+import { Autoplay, EffectFade, Keyboard, Navigation } from "swiper";
 import { Label, Summary, Thumbnail } from "@samvera/nectar-iiif";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Button } from "@nulib/design-system";
@@ -29,11 +29,8 @@ const Hero: React.FC<HeroProps> = ({ collection }) => {
         effect="fade"
         keyboard={{ enabled: true }}
         loop={true}
-        modules={[Autoplay, EffectFade, Keyboard, Pagination, Navigation]}
+        modules={[Autoplay, EffectFade, Keyboard, Navigation]}
         navigation={collection?.items?.length > 1}
-        pagination={{
-          clickable: true,
-        }}
         preloadImages={false}
         slidesPerView={1}
         speed={200}

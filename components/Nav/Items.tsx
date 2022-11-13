@@ -25,7 +25,7 @@ const NavItems = ({ items }) => {
 
   if (itemBoundingBox && wrapperBoundingBox) {
     highlightStyles = {
-      transitionDuration: isHoveredFromNull ? "0ms" : "100ms",
+      transitionDuration: isHoveredFromNull ? "0ms" : "200ms",
       opacity: highlightedItem ? 1 : 0,
       width: `${itemBoundingBox.width}px`,
       transform: `translate(${

@@ -13,13 +13,13 @@ const Items = styled("div", {
   display: "flex",
   alignItems: "center",
   fontSize: "$gr4",
-  fontWeight: "800",
+  fontWeight: "500",
   fontFamily: "$bookTight",
 
   a: {
     padding: "$gr2 $gr3",
     display: "inline-flex",
-    color: "$slate11",
+    color: "$slate12",
     textDecoration: "none",
     borderRadius: "2rem",
     position: "relative",
@@ -30,7 +30,7 @@ const Items = styled("div", {
     },
 
     [`&.active`]: {
-      color: "$indigo12",
+      color: "$indigo11",
     },
   },
 });

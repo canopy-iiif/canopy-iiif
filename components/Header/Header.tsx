@@ -9,6 +9,8 @@ import Search from "../Search/Search";
 const navItems = [
   { path: "/", text: "Home" },
   { path: "/works", text: "Works" },
+  { path: "/collections", text: "Collections" },
+  { path: "#", text: "Search" },
 ];
 
 const Header = () => {
@@ -19,7 +21,7 @@ const Header = () => {
           <Label label={collections[0].label} as="span" />
         </Link>
       </Title>
-      <Search />
+      {/* <Search /> */}
       <Nav items={navItems} />
     </Wrapper>
   );

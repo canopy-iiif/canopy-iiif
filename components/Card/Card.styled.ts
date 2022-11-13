@@ -5,7 +5,7 @@ const Content = styled("div", {
 
   h4: {
     margin: "0",
-    fontWeight: "800",
+    fontWeight: "500",
     fontSize: "$gr4",
     fontFamily: "$bookTight",
     textDecoration: "none !important",
