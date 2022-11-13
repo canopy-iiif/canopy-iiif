@@ -15,6 +15,7 @@ const defaults = {
     fontSmooth: "always",
     webKitFontSmothing: "antialiased",
     mozOsxFontSmoth: "grayscale",
+    paddingTop: "61.25px",
   },
 
   p: {

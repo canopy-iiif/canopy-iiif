@@ -1,15 +1,17 @@
 import { styled } from "@/stitches";
+import { slateA } from "@radix-ui/colors";
 
 const SearchForm = styled("form", {
-  backgroundColor: "$slate6",
+  backgroundColor: "$slateA11",
   display: "flex",
   flexGrow: "1",
   position: "relative",
   zIndex: "0",
   transition: "$all",
   maxHeight: "0",
-  overflow: "hidden",
   opacity: "0",
+  backdropFilter: "blur(30px)",
+  boxShadow: `3px 3px 8px ${slateA.slateA7}`,
 
   variants: {
     isVisible: {
@@ -23,19 +25,20 @@ const SearchForm = styled("form", {
 
 const SearchInput = styled("input", {
   padding: "$gr3 $gr4",
-  fontSize: "$gr4",
+  fontSize: "$gr3",
   fontFamily: "$book",
   fontWeight: "500",
-  color: "$slate12",
-  backgroundColor: "transparent",
+  color: "$slate1",
+  backgroundColor: "$indigoA5",
   border: "none",
   transition: "$all",
-  outline: "none",
   flexGrow: "1",
+  boxSizing: "border-box",
 
   "&:active, &:focus": {
-    color: "$indigo11",
-    backgroundColor: "$indigoA4",
+    color: "$indigo1",
+    backgroundColor: "$indigoA7",
+    outline: "3px solid $indigo10",
   },
 });
 

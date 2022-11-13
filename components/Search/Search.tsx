@@ -52,7 +52,7 @@ const Search = () => {
         onChange={handleSearchChange}
         onFocus={handleSearchFocus}
         onBlur={handleSearchFocus}
-        placeholder="Find works..."
+        placeholder={`Search works, ex: "joseph"`}
         ref={search}
       />
     </SearchForm>
