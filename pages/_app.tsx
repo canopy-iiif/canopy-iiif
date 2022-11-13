@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import globalStyles from "../styles/global";
 import { darkTheme } from "../stitches";
 import { ThemeProvider } from "next-themes";
+import { SearchProvider } from "../context/search";
 
 export default function CanopyApp({ Component, pageProps }) {
   globalStyles();
@@ -18,7 +19,7 @@ export default function CanopyApp({ Component, pageProps }) {
         light: "light",
       }}
     >
-      {mounted && <Component {...pageProps} />}
+      <SearchProvider>{mounted && <Component {...pageProps} />}</SearchProvider>
     </ThemeProvider>
   );
 }

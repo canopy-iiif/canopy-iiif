@@ -7,36 +7,19 @@
     "incremental": true,
     "isolatedModules": true,
     "jsx": "preserve",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
+    "lib": ["dom", "dom.iterable", "esnext"],
     "module": "esnext",
     "moduleResolution": "node",
     "noEmit": true,
     "paths": {
-      "@/*": [
-        "*"
-      ],
-      "@/app": [
-        "app/*"
-      ],
-      "@/components/*": [
-        "components/*"
-      ],
-      "@/hooks/*": [
-        "hooks/*"
-      ],
-      "@/pages/*": [
-        "pages/*"
-      ],
-      "@/services/*": [
-        "services/*"
-      ],
-      "@/styles/*": [
-        "styles/*"
-      ]
+      "@/*": ["*"],
+      "@/components/*": ["components/*"],
+      "@/context/*": ["context/*"],
+      "@/hooks/*": ["hooks/*"],
+      "@/pages/*": ["pages/*"],
+      "@/services/*": ["services/*"],
+      "@/styles/*": ["styles/*"],
+      "@/types/*": ["types/*"]
     },
     "resolveJsonModule": true,
     "strict": true,
@@ -48,12 +31,6 @@
       }
     ]
   },
-  "include": [
-    "*.ts",
-    "*.tsx",
-    ".next/types/**/*.ts"
-  ],
-  "exclude": [
-    "node_modules"
-  ]
+  "include": ["*.ts", "*.tsx", ".next/types/**/*.ts"],
+  "exclude": ["node_modules"]
 }
