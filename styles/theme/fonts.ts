@@ -1,9 +1,9 @@
-const sans = `'Inter', -apple-system, "Helvetica", sans-serif`;
-const serif = `'Newsreader', Georgia, serif`;
+const book = `'Inter', -apple-system, "Helvetica", sans-serif`;
+const bookTight = `'Inter Tight', ${book}`;
 
 const fonts = {
-  sans,
-  serif,
+  book,
+  bookTight,
 };
 
 export default fonts;

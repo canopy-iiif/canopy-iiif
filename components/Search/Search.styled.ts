@@ -1,39 +1,80 @@
 import { styled } from "@/stitches";
 
 const SearchForm = styled("form", {
-  margin: "0 $gr3",
+  backgroundColor: "$slate6",
+  display: "flex",
+  flexGrow: "1",
+  position: "relative",
+  zIndex: "0",
+  transition: "$all",
+  maxHeight: "0",
+  overflow: "hidden",
+  opacity: "0",
+
+  variants: {
+    isVisible: {
+      true: {
+        maxHeight: "500px",
+        opacity: "1",
+      },
+    },
+  },
 });
 
 const SearchInput = styled("input", {
-  padding: "$gr1 $gr2",
+  padding: "$gr3 $gr4",
   fontSize: "$gr4",
-  fontFamily: "$sans",
-  fontWeight: "300",
-  borderRadius: "3px",
-  color: "$indigo12",
-  backgroundColor: "$indigo4",
+  fontFamily: "$book",
+  fontWeight: "500",
+  color: "$slate12",
+  backgroundColor: "transparent",
   border: "none",
   transition: "$all",
   outline: "none",
+  flexGrow: "1",
 
   "&:active, &:focus": {
-    color: "$indigo12",
-    backgroundColor: "$indigo1",
-    outline: "2px solid $indigo11",
-    boxShadow: "1px 1px 6px #fff2",
+    color: "$indigo11",
+    backgroundColor: "$indigoA4",
   },
 });
 
 const SearchSubmit = styled("input", {
   padding: "$gr1 $gr2",
-  fontSize: "$gr4",
-  fontFamily: "$serif",
+  marginLeft: "-$gr1",
+  fontSize: "$gr3",
   fontWeight: "300",
-  backgroundColor: "transparent",
-  color: "$slate1",
-  border: "none",
+  fontFamily: "$book",
+  backgroundColor: "$indigo9",
+  color: "$indigo3",
+  border: "1px solid $indigo9",
+  borderRadius: "5px",
+  borderTopLeftRadius: "0",
+  borderBottomLeftRadius: "0",
   cursor: "pointer",
-  display: "none",
+  transition: "$all",
+  position: "absolute",
+  right: "0",
+  top: "0",
+
+  "&:hover, &:focus": {
+    backgroundColor: "$indigo11",
+    color: "$indigo1",
+    boxShadow: "1px 1px 6px #0002",
+  },
 });
 
-export { SearchForm, SearchInput, SearchSubmit };
+const SearchToggle = styled("a", {
+  background: "transparent",
+  border: "none",
+  cursor: "pointer",
+  display: "flex",
+  alignItems: "center",
+
+  svg: {
+    marginRight: "$gr2",
+    zIndex: "-1",
+  },
+});
+
+export { SearchForm, SearchInput, SearchSubmit, SearchToggle };

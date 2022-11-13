@@ -23,5 +23,10 @@ module.exports = (phase) => {
   };
 
   canopy.build(env);
-  return { env };
+  return {
+    experimental: {
+      appDir: true,
+    },
+    env,
+  };
 };

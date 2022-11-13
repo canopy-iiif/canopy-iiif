@@ -5,9 +5,9 @@
 exports.getHomepageBySlug = (slug = "", label = "") => {
   return [
     {
-      id: "",
+      id: slug,
       type: "Text",
-      label: "",
+      label: label,
     },
   ];
 };

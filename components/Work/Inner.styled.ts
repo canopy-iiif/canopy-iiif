@@ -6,19 +6,19 @@ const StyledWorkInner = styled("section", {
   maxWidth: "1280px",
   margin: "auto",
   position: "relative",
-  padding: "1rem 0 0",
+  padding: "$gr5 0",
 
-  dl: {
-    dt: {
-      fontSize: "0.75rem",
-      fontWeight: "bold",
-      paddingBottom: "0.5rem",
-      textTransform: "uppercase",
-    },
-    dd: {
-      marginInlineStart: "0",
-      paddingBottom: "1.25rem",
-    },
+  h1: {
+    fontSize: "$gr8",
+    fontFamily: "$bookTight",
+    fontWeight: "800",
+    margin: "$gr2 0",
+  },
+
+  ".work-summary": {
+    fontSize: "$gr5",
+    color: "$slate11",
+    marginBottom: "$gr5",
   },
 });
 

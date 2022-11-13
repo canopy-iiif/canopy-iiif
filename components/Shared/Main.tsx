@@ -6,7 +6,7 @@ const Main = ({ children }) => {
 };
 
 const MainStyled = styled("main", {
-  margin: "calc($gr5 + ($gr1 * 2)) 0 0",
+  margin: "0",
 });
 
 export default Main;

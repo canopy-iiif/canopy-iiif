@@ -13,18 +13,24 @@
     "noEmit": true,
     "paths": {
       "@/*": ["*"],
-      "@/app": ["app/*"],
       "@/components/*": ["components/*"],
+      "@/context/*": ["context/*"],
       "@/hooks/*": ["hooks/*"],
       "@/pages/*": ["pages/*"],
       "@/services/*": ["services/*"],
-      "@/styles/*": ["styles/*"]
+      "@/styles/*": ["styles/*"],
+      "@/types/*": ["types/*"]
     },
     "resolveJsonModule": true,
     "strict": true,
     "skipLibCheck": true,
-    "target": "es5"
+    "target": "es5",
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ]
   },
-  "include": ["*.ts", "*.tsx"],
+  "include": ["*.ts", "*.tsx", ".next/types/**/*.ts"],
   "exclude": ["node_modules"]
 }

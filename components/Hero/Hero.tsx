@@ -2,7 +2,7 @@ import "swiper/css";
 import "swiper/css/effect-fade";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
-import { Autoplay, EffectFade, Keyboard, Navigation, Pagination } from "swiper";
+import { Autoplay, EffectFade, Keyboard, Navigation } from "swiper";
 import { Label, Summary, Thumbnail } from "@samvera/nectar-iiif";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Button } from "@nulib/design-system";
@@ -10,6 +10,7 @@ import { HeroStyled } from "@/components/Hero/Hero.styled";
 import Link from "next/link";
 import React from "react";
 import Container from "../Shared/Container";
+import { ArrowRightIcon } from "@radix-ui/react-icons";
 
 interface HeroProps {
   collection?: any;
@@ -29,11 +30,8 @@ const Hero: React.FC<HeroProps> = ({ collection }) => {
         effect="fade"
         keyboard={{ enabled: true }}
         loop={true}
-        modules={[Autoplay, EffectFade, Keyboard, Pagination, Navigation]}
+        modules={[Autoplay, EffectFade, Keyboard, Navigation]}
         navigation={collection?.items?.length > 1}
-        pagination={{
-          clickable: true,
-        }}
         preloadImages={false}
         slidesPerView={1}
         speed={200}
@@ -44,12 +42,20 @@ const Hero: React.FC<HeroProps> = ({ collection }) => {
               <Thumbnail thumbnail={item.thumbnail} />
               <Container className="slide-inner" isFlex>
                 <figcaption>
-                  <Link href={item.homepage[0].id}>
+                  <Link
+                    href={item.homepage[0].id}
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      alignContent: "center",
+                    }}
+                  >
                     <Label
                       label={item.label}
                       as="span"
                       className="slide-label"
                     />
+                    <ArrowRightIcon />
                   </Link>
                   {item.summary && (
                     <Summary
