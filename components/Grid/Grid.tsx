@@ -15,6 +15,7 @@ const Grid = ({ children }) => {
   mediaQuery.set("md", useMediaQuery(media.md));
   mediaQuery.set("lg", useMediaQuery(media.lg));
   mediaQuery.set("xl", useMediaQuery(media.xl));
+  mediaQuery.set("xxl", useMediaQuery(media.xxl));
 
   useEffect(() => {
     if (mediaQuery.get("xs")) {
@@ -35,6 +36,10 @@ const Grid = ({ children }) => {
     }
     if (mediaQuery.get("xl")) {
       setCols(5);
+      return;
+    }
+    if (mediaQuery.get("xxl")) {
+      setCols(6);
       return;
     }
   }, [mediaQuery]);

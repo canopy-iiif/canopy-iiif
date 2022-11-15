@@ -2,18 +2,51 @@ import { styled } from "@/stitches";
 import Masonry from "react-masonry-css";
 
 const Item = styled("div", {
-  paddingBottom: "$gr4",
+  paddingBottom: "$gr5",
   zIndex: "1",
+
+  "@xxs": {
+    paddingBottom: "$gr3",
+  },
+
+  "@xs": {
+    paddingBottom: "$gr3",
+  },
+
+  "@sm": {
+    paddingBottom: "$gr4",
+  },
+
+  "@md": {
+    paddingBottom: "$gr4",
+  },
 });
 
 const Wrapper = styled(Masonry, {
   display: "flex",
   width: "auto",
   position: "relative",
+  padding: "$gr2 0",
   zIndex: "1",
 
   ".canopy-grid-column": {
-    marginLeft: "$gr4",
+    marginLeft: "$gr5",
+
+    "@xxs": {
+      marginLeft: "$gr3",
+    },
+
+    "@xs": {
+      marginLeft: "$gr3",
+    },
+
+    "@sm": {
+      marginLeft: "$gr4",
+    },
+
+    "@md": {
+      marginLeft: "$gr4",
+    },
 
     "&:first-child": {
       marginLeft: "0",

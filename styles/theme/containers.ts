@@ -1,4 +1,4 @@
 export const maxWidths = {
-  default: "1120px",
+  default: "1200px",
   wide: "1440px",
 };
