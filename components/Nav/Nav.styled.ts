@@ -5,7 +5,7 @@ const Highlight = styled("div", {
   position: "absolute",
   left: "0",
   height: "calc(($gr1 * 2) + $gr3)",
-  borderRadius: "2rem",
+  borderRadius: "1.618rem",
   transition: "all 100ms ease-in-out",
 });
 

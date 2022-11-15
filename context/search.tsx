@@ -14,7 +14,7 @@ type SearchProviderProps = {
 
 const defaultState: SearchContextStore = {
   searchQuery: "",
-  searchVisible: false,
+  searchVisible: true,
 };
 
 const SearchStateContext = React.createContext<

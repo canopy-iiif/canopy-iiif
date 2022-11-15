@@ -10,7 +10,6 @@ const Wrapper = styled(Masonry, {
   display: "flex",
   width: "auto",
   position: "relative",
-  marginTop: "54px",
   padding: "$gr4",
   zIndex: "1",
 

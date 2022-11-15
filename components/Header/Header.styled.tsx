@@ -9,6 +9,12 @@ const Title = styled("span", {
   fontWeight: "800",
 });
 
+const Actions = styled("div", {
+  flexGrow: "1",
+  display: "flex",
+  justifyContent: "flex-end",
+});
+
 const Content = styled("div", {
   width: "calc(100% - ($gr4 * 2))",
   padding: "$gr1 $gr4",
@@ -42,4 +48,4 @@ const Wrapper = styled("header", {
   flexDirection: "column",
 });
 
-export { Content, Title, Wrapper };
+export { Actions, Content, Title, Wrapper };
