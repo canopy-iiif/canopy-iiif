@@ -13,14 +13,24 @@ import { SearchForm, SearchInput, SearchSubmit } from "./Search.styled";
 import { MagnifyingGlassIcon } from "@radix-ui/react-icons";
 
 const NavItems = ({ items }) => {
+  const router = useRouter();
   const { searchDispatch, searchState } = useSearchState();
-  const [itemBoundingBox, setItemBoundingBox] = React.useState(null);
-  const [wrapperBoundingBox, setWrapperBoundingBox] = React.useState(null);
-  const [highlightedItem, setHighlightedItem] = React.useState(null);
-  const [isHoveredFromNull, setIsHoveredFromNull] = React.useState(true);
+  const { searchQuery, searchVisible } = searchState;
 
-  const highlightRef = React.useRef(null);
-  const wrapperRef = React.useRef(null);
+  const [query, setQuery] = useState<string>(searchQuery);
+  const [searchFocus, setSearchFocus] = useState<boolean>(false);
+  const search = useRef<HTMLInputElement>(null);
+
+  const [itemBoundingBox, setItemBoundingBox] = useState(null);
+  const [wrapperBoundingBox, setWrapperBoundingBox] = useState(null);
+  const [highlightedItem, setHighlightedItem] = useState(null);
+  const [isHoveredFromNull, setIsHoveredFromNull] = useState(true);
+
+  /**
+   * highlight positioning
+   */
+  const highlightRef = useRef(null);
+  const wrapperRef = useRef(null);
 
   const repositionHighlight = (e, item) => {
     setItemBoundingBox(e.target.getBoundingClientRect());
@@ -44,13 +54,9 @@ const NavItems = ({ items }) => {
     };
   }
 
-  const router = useRouter();
-  const { searchQuery, searchVisible } = searchState;
-
-  const [query, setQuery] = useState<string>(searchQuery);
-  const [searchFocus, setSearchFocus] = useState<boolean>(false);
-  const search = useRef<HTMLInputElement>(null);
-
+  /**
+   * search handling
+   */
   const handleSubmit = (e: SyntheticEvent<HTMLFormElement>) => {
     e.preventDefault();
     router.push({
@@ -95,11 +101,9 @@ const NavItems = ({ items }) => {
             </Link>
           )}
           {item.type === "search" && (
-            <SearchForm onSubmit={handleSubmit}>
-              {searchFocus && <MagnifyingGlassIcon />}
+            <SearchForm onSubmit={handleSubmit} isFocused={searchFocus}>
+              <MagnifyingGlassIcon />
               <SearchInput
-                className={router.pathname == item.path ? "active" : ""}
-                onMouseOver={(ev) => repositionHighlight(ev, item)}
                 onChange={handleSearchChange}
                 onFocus={handleSearchFocus}
                 onBlur={handleSearchFocus}

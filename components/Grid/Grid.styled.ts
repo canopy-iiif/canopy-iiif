@@ -10,7 +10,6 @@ const Wrapper = styled(Masonry, {
   display: "flex",
   width: "auto",
   position: "relative",
-  padding: "$gr4",
   zIndex: "1",
 
   ".canopy-grid-column": {

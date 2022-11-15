@@ -71,6 +71,7 @@ const Search = () => {
   return (
     <Layout>
       <Container containerType="wide">
+        Works...
         <Results pages={pages} query={query} />
       </Container>
     </Layout>
