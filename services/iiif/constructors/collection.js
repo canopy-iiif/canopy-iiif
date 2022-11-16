@@ -1,6 +1,7 @@
 const axios = require("axios");
 const { getPresentation3 } = require("../context");
 const { getHomepageBySlug } = require("../homepage");
+const MANIFESTS = require("@/.canopy/manifests.json");
 
 async function createCollection(iiifResources, label = "") {
   const items = await getCollectionItems(iiifResources);
@@ -15,11 +16,12 @@ async function createCollection(iiifResources, label = "") {
 }
 
 function createItem(resource) {
+  const { slug } = MANIFESTS.find((item) => item.id === resource.id);
   return {
     id: resource.id,
     label: resource.label,
-    thumbnail: resource.thumbnail,
-    homepage: getHomepageBySlug("slug"),
+    thumbnail: resource?.thumbnail ? resource?.thumbnail : [],
+    homepage: getHomepageBySlug(slug, resource.label),
   };
 }
 

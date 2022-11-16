@@ -17,3 +17,10 @@ exports.dev = {
   featured: ["https://digital.lib.utk.edu/assemble/manifest/knoxgardens/126"],
   metadata: ["Subject"],
 };
+
+exports.options = {
+  theme: {
+    defaultTheme: "light", // "light" | "dark" | "system"
+    toggleEnabled: false,
+  },
+};

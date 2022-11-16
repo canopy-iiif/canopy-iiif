@@ -15,26 +15,31 @@ const Grid = ({ children }) => {
   mediaQuery.set("md", useMediaQuery(media.md));
   mediaQuery.set("lg", useMediaQuery(media.lg));
   mediaQuery.set("xl", useMediaQuery(media.xl));
+  mediaQuery.set("xxl", useMediaQuery(media.xxl));
 
   useEffect(() => {
     if (mediaQuery.get("xs")) {
-      setCols(1);
-      return;
-    }
-    if (mediaQuery.get("sm")) {
       setCols(2);
       return;
     }
-    if (mediaQuery.get("md")) {
+    if (mediaQuery.get("sm")) {
       setCols(3);
       return;
     }
-    if (mediaQuery.get("lg")) {
+    if (mediaQuery.get("md")) {
       setCols(4);
+      return;
+    }
+    if (mediaQuery.get("lg")) {
+      setCols(5);
       return;
     }
     if (mediaQuery.get("xl")) {
       setCols(5);
+      return;
+    }
+    if (mediaQuery.get("xxl")) {
+      setCols(6);
       return;
     }
   }, [mediaQuery]);
@@ -42,7 +47,7 @@ const Grid = ({ children }) => {
   const [cols, setCols] = useState(5);
 
   return (
-    <Wrapper breakpointCols={cols} columnClassName="can-grid-column">
+    <Wrapper breakpointCols={cols} columnClassName="canopy-grid-column">
       {children}
     </Wrapper>
   );

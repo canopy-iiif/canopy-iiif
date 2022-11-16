@@ -1,58 +1,86 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import Layout from "@/components/layout";
-import { InView } from "react-intersection-observer";
 import Grid from "@/components/Grid/Grid";
 import Container from "@/components/Shared/Container";
-import useSWR from "swr";
 import { useRouter } from "next/router";
+import usePageResults from "@/hooks/usePageResults";
+import axios from "axios";
+import { InternationalString } from "@iiif/presentation-3";
+import { Summary } from "@samvera/nectar-iiif";
 
-const fetcher = (url) => fetch(url).then((res) => res.json());
+const Results = ({ pages, query }) => {
+  const [page, setPage] = useState(0);
+  const { data, error, loading, more } = usePageResults(pages, page, query);
+
+  useEffect(() => setPage(0), [query]);
+
+  const observer = useRef();
+  const loadMore = useCallback(
+    (node) => {
+      if (loading) return;
+      if (observer.current) observer.current.disconnect();
+      observer.current = new IntersectionObserver((entries) => {
+        if (entries[0].isIntersecting && more)
+          setPage((prevPage) => prevPage + 1);
+      });
+      if (node) observer.current.observe(node);
+    },
+    [loading, more]
+  );
+
+  return (
+    <Grid>
+      {data.map((result, index) => {
+        if (data.length === index + 1) {
+          return (
+            <span ref={data.length === index + 1 && loadMore} key={result.id}>
+              <Grid.Item data={result} />
+            </span>
+          );
+        } else {
+          return (
+            <span key={result.id}>
+              <Grid.Item data={result} />
+            </span>
+          );
+        }
+      })}
+    </Grid>
+  );
+};
 
 const Search = () => {
   const router = useRouter();
   const { q } = router.query;
 
-  const [results, setResults] = useState([]);
-  const [query, setQuery] = useState("");
-  const { data, error } = useSWR(`/api/search?${query}`, fetcher);
-
-  const handleLoadMore = async () => {};
+  const [pages, setPages] = useState<string[]>([]);
+  const [query, setQuery] = useState<string | undefined>();
+  const [summary, setSummary] = useState<InternationalString>();
 
   useEffect(() => {
-    q ? setQuery(`q=${q}`) : setQuery("");
+    setPages([]);
+    const params = new URLSearchParams();
+    if (q) params.append("q", q as string);
+    q ? setQuery(params.toString()) : setQuery("");
   }, [q]);
 
   useEffect(() => {
-    data && setResults(data?.items);
-  }, [data]);
+    if (query !== undefined)
+      axios.get(`/api/search?${query}`).then((result) => {
+        setPages(result.data.items.map((item) => item.id));
+        setSummary(result.data.summary);
+      });
+  }, [query]);
 
   return (
     <Layout>
       <Container containerType="wide">
-        {/* <Filter /> */}
-        <Grid>
-          {results &&
-            results.map((result, i) => {
-              return <Grid.Item data={result} key={result.id} />;
-            })}
-        </Grid>
-        <InView
-          as="div"
-          onChange={(inView, entry) => handleLoadMore()}
-          style={{
-            width: "100%",
-            height: "50vh",
-            position: "absolute",
-            bottom: "0",
-            left: "0",
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "flex-end",
-            zIndex: "0",
-          }}
-        >
-          <Grid.LoadMore handleLoadMore={handleLoadMore} />
-        </InView>
+        <div style={{ padding: "1rem 0" }}>
+          <h3 style={{ fontWeight: "300", opacity: "0.5" }}>
+            {summary && <Summary summary={summary} as="span" />}
+          </h3>
+        </div>
+        <Results pages={pages} query={query} />
       </Container>
     </Layout>
   );

@@ -10,18 +10,27 @@ module.exports = (phase) => {
   const isDev = phase === PHASE_DEVELOPMENT_SERVER;
   const isProd = phase === PHASE_PRODUCTION_BUILD;
 
-  const { prod, dev } = config;
+  const { prod, dev, options } = config;
 
   config.environment = (() => {
     if (isDev) return dev;
     if (isProd) return prod;
   })();
 
+  config.options = options;
+
   const env = {
-    ...config.globals,
-    ...config.environment,
+    CANOPY_CONFIG: {
+      ...config.environment,
+      ...config.options,
+    },
   };
 
-  canopy.build(env);
-  return { env };
+  canopy.build(env.CANOPY_CONFIG);
+  return {
+    experimental: {
+      appDir: true,
+    },
+    env,
+  };
 };

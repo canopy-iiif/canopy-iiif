@@ -4,7 +4,7 @@ import {
   RequiredStatement,
   Summary,
 } from "@samvera/nectar-iiif";
-import { StyledWorkInner, WorkData } from "@/components/Work/Inner.styled"
+import { StyledWorkInner, WorkData } from "@/components/Work/Inner.styled";
 
 const WorkInner = ({ manifest }) => {
   const { label, metadata, requiredStatement, summary } = manifest;
@@ -13,7 +13,7 @@ const WorkInner = ({ manifest }) => {
     <StyledWorkInner>
       <WorkData>
         <Label label={label} as="h1" />
-        <Summary summary={summary} />
+        <Summary summary={summary} as="p" className="work-summary" />
         <Metadata metadata={metadata} />
         <RequiredStatement requiredStatement={requiredStatement} />
       </WorkData>

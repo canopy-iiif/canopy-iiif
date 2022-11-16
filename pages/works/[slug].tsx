@@ -1,5 +1,5 @@
 import Layout from "@/components/layout";
-import Viewer from "@/app/Viewer/Viewer";
+import Viewer from "@/components/Viewer/Viewer";
 import Related from "@/components/Related/Related";
 import WorkInner from "@/components/Work/Inner";
 import MANIFESTS from "@/.canopy/manifests.json";
