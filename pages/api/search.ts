@@ -58,6 +58,7 @@ const getResults = (q) =>
 const searchResult = (item, origin) => {
   return {
     id: item.id,
+    type: "Manifest",
     label: item.label,
     homepage: [
       {
