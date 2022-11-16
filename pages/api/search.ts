@@ -87,6 +87,9 @@ export default function handler(req, res) {
     type: "Collection",
     label: { none: [q ? q : `All Results`] },
     items: [...items],
+    ...(page
+      ? { summary: { none: [`${manifests.length} Results`] } }
+      : { summary: { none: [`${manifests.length} Results`] } }),
     ...(page && { partOf: getPartOf(baseUrl) }),
   };
 

@@ -5,7 +5,7 @@ const Highlight = styled("div", {
   position: "absolute",
   left: "0",
   height: "calc(($gr1 * 2) + $gr3)",
-  borderRadius: "2rem",
+  borderRadius: "1.618rem",
   transition: "all 100ms ease-in-out",
 });
 
@@ -15,6 +15,8 @@ const Items = styled("div", {
   fontSize: "$gr4",
   fontWeight: "800",
   fontFamily: "$bookTight",
+  flexGrow: "1",
+  justifyContent: "flex-end",
 
   a: {
     padding: "$gr2 $gr3",
@@ -40,6 +42,7 @@ const Wrapper = styled("nav", {
   display: "flex",
   alignItems: "center",
   zIndex: "1",
+  flexGrow: "1",
 });
 
 export { Highlight, Items, Wrapper };

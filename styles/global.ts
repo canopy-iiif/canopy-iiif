@@ -13,16 +13,12 @@ const defaults = {
 
   html: {
     fontFamily: "$book",
-    fontSize: "18px",
+    fontSize: "17.5px",
     fontWeight: "500",
     fontSmooth: "always",
     webKitFontSmothing: "antialiased",
     mozOsxFontSmoth: "grayscale",
     paddingTop: "61.25px",
-
-    [`@media ${media.sm}`]: {
-      fontSize: "14px",
-    },
   },
 
   p: {

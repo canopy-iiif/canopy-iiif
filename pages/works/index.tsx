@@ -5,6 +5,8 @@ import Container from "@/components/Shared/Container";
 import { useRouter } from "next/router";
 import usePageResults from "@/hooks/usePageResults";
 import axios from "axios";
+import { InternationalString } from "@iiif/presentation-3";
+import { Summary } from "@samvera/nectar-iiif";
 
 const Results = ({ pages, query }) => {
   const [page, setPage] = useState(0);
@@ -53,6 +55,7 @@ const Search = () => {
 
   const [pages, setPages] = useState<string[]>([]);
   const [query, setQuery] = useState<string | undefined>();
+  const [summary, setSummary] = useState<InternationalString>();
 
   useEffect(() => {
     setPages([]);
@@ -63,14 +66,20 @@ const Search = () => {
 
   useEffect(() => {
     if (query !== undefined)
-      axios
-        .get(`/api/search?${query}`)
-        .then((result) => setPages(result.data.items.map((item) => item.id)));
+      axios.get(`/api/search?${query}`).then((result) => {
+        setPages(result.data.items.map((item) => item.id));
+        setSummary(result.data.summary);
+      });
   }, [query]);
 
   return (
     <Layout>
       <Container containerType="wide">
+        <div style={{ padding: "1rem 0" }}>
+          <h3 style={{ fontWeight: "300", opacity: "0.5" }}>
+            {summary && <Summary summary={summary} as="span" />}
+          </h3>
+        </div>
         <Results pages={pages} query={query} />
       </Container>
     </Layout>

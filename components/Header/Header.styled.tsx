@@ -9,9 +9,15 @@ const Title = styled("span", {
   fontWeight: "800",
 });
 
+const Actions = styled("div", {
+  flexGrow: "1",
+  display: "flex",
+  justifyContent: "flex-end",
+});
+
 const Content = styled("div", {
-  width: "calc(100% - ($gr4 * 2))",
-  padding: "$gr1 $gr4",
+  width: "100%",
+  padding: "$gr1 $gr5",
   backgroundColor: "$slate1",
   display: "flex",
   flexDirection: "row",
@@ -22,6 +28,23 @@ const Content = styled("div", {
   alignItems: "center",
   zIndex: "1",
   boxShadow: `3px 3px 8px ${slateA.slateA7}`,
+  boxSizing: "border-box",
+
+  "@xxs": {
+    padding: "$gr1 $gr3",
+  },
+
+  "@xs": {
+    padding: "$gr1 $gr3",
+  },
+
+  "@sm": {
+    padding: "$gr1 $gr4",
+  },
+
+  "@md": {
+    padding: "$gr1 $gr4",
+  },
 
   [`&  ${Title} a`]: {
     textDecoration: "none",
@@ -42,4 +65,4 @@ const Wrapper = styled("header", {
   flexDirection: "column",
 });
 
-export { Content, Title, Wrapper };
+export { Actions, Content, Title, Wrapper };

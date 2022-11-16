@@ -4,6 +4,7 @@ export const width = {
   sm: 767,
   md: 991,
   lg: 1199,
+  xl: 1439,
 };
 
 const media = {
@@ -12,7 +13,8 @@ const media = {
   sm: `(max-width: ${width.sm}px)`,
   md: `(max-width: ${width.md}px)`,
   lg: `(max-width: ${width.lg}px)`,
-  xl: `(min-width: ${width.lg + 1}px)`,
+  xl: `(max-width: ${width.xl}px)`,
+  xxl: `(min-width: ${width.xl + 1}px)`,
 };
 
 export default media;

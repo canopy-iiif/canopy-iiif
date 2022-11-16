@@ -58,6 +58,28 @@ export const ContainerStyled = styled("div", {
     },
   },
   width: "100%",
+  boxSizing: "border-box",
+  padding: "0 $gr5",
+
+  "@xxs": {
+    padding: "0 $gr3",
+  },
+
+  "@xs": {
+    padding: "0 $gr3",
+  },
+
+  "@sm": {
+    padding: "0 $gr4",
+  },
+
+  "@md": {
+    padding: "0 $gr4",
+  },
+
+  "@xxl": {
+    padding: "0",
+  },
 });
 
 export default Container;

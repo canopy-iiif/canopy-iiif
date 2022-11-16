@@ -1,21 +1,36 @@
-import React from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { Highlight, Items } from "@/components/Nav/Nav.styled";
-import Search from "../Search/Search";
-import { SearchToggle } from "../Search/Search.styled";
-import { MagnifyingGlassIcon } from "@radix-ui/react-icons";
 import { useSearchState } from "../../context/search";
+import React, {
+  ChangeEvent,
+  SyntheticEvent,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
+import { SearchForm, SearchInput, SearchSubmit } from "./Search.styled";
+import { MagnifyingGlassIcon } from "@radix-ui/react-icons";
 
 const NavItems = ({ items }) => {
+  const router = useRouter();
   const { searchDispatch, searchState } = useSearchState();
-  const [itemBoundingBox, setItemBoundingBox] = React.useState(null);
-  const [wrapperBoundingBox, setWrapperBoundingBox] = React.useState(null);
-  const [highlightedItem, setHighlightedItem] = React.useState(null);
-  const [isHoveredFromNull, setIsHoveredFromNull] = React.useState(true);
+  const { searchQuery, searchVisible } = searchState;
 
-  const highlightRef = React.useRef(null);
-  const wrapperRef = React.useRef(null);
+  const [query, setQuery] = useState<string>(searchQuery);
+  const [searchFocus, setSearchFocus] = useState<boolean>(false);
+  const search = useRef<HTMLInputElement>(null);
+
+  const [itemBoundingBox, setItemBoundingBox] = useState(null);
+  const [wrapperBoundingBox, setWrapperBoundingBox] = useState(null);
+  const [highlightedItem, setHighlightedItem] = useState(null);
+  const [isHoveredFromNull, setIsHoveredFromNull] = useState(true);
+
+  /**
+   * highlight positioning
+   */
+  const highlightRef = useRef(null);
+  const wrapperRef = useRef(null);
 
   const repositionHighlight = (e, item) => {
     setItemBoundingBox(e.target.getBoundingClientRect());
@@ -39,7 +54,36 @@ const NavItems = ({ items }) => {
     };
   }
 
-  const router = useRouter();
+  /**
+   * search handling
+   */
+  const handleSubmit = (e: SyntheticEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    router.push({
+      pathname: "/works",
+      query: {
+        q: query,
+      },
+    });
+    searchDispatch({ type: "updateQuery", searchQuery: query });
+  };
+
+  const handleSearchChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setQuery(e.target.value);
+  };
+
+  const handleSearchFocus = (e: FocusEvent) =>
+    e.type === "focus" ? setSearchFocus(true) : setSearchFocus(false);
+
+  useEffect(() => {
+    if (router) {
+      const { q } = router.query;
+      if (q && search.current) search.current.value = q as string;
+      setQuery(q as string);
+    }
+  }, [router]);
+
+  useEffect(() => search?.current?.focus(), [searchVisible]);
 
   return (
     <Items ref={wrapperRef} onMouseLeave={resetHighlight}>
@@ -57,20 +101,21 @@ const NavItems = ({ items }) => {
             </Link>
           )}
           {item.type === "search" && (
-            <SearchToggle
-              key="search"
-              className={router.pathname == item.path ? "active" : ""}
-              onMouseOver={(ev) => repositionHighlight(ev, item)}
-              onClick={() =>
-                searchDispatch({
-                  type: "updateVisible",
-                  searchVisible: !searchState.searchVisible,
-                })
-              }
-            >
+            <SearchForm onSubmit={handleSubmit} isFocused={searchFocus}>
               <MagnifyingGlassIcon />
-              {item.text}
-            </SearchToggle>
+              <SearchInput
+                onChange={handleSearchChange}
+                onFocus={handleSearchFocus}
+                onBlur={handleSearchFocus}
+                ref={search}
+              />
+              <SearchSubmit
+                type="submit"
+                css={searchFocus ? { zIndex: 1 } : {}}
+              >
+                Search
+              </SearchSubmit>
+            </SearchForm>
           )}
         </>
       ))}
