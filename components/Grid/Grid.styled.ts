@@ -1,7 +1,7 @@
 import { styled } from "@/stitches";
 import Masonry from "react-masonry-css";
 
-const Item = styled("div", {
+const GridItem = styled("div", {
   paddingBottom: "$gr5",
   zIndex: "1",
 
@@ -22,7 +22,7 @@ const Item = styled("div", {
   },
 });
 
-const Wrapper = styled(Masonry, {
+const GridStyled = styled(Masonry, {
   display: "flex",
   width: "auto",
   position: "relative",
@@ -54,4 +54,4 @@ const Wrapper = styled(Masonry, {
   },
 });
 
-export { Item, Wrapper };
+export { GridItem, GridStyled };
