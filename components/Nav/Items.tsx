@@ -60,7 +60,7 @@ const NavItems = ({ items }) => {
   const handleSubmit = (e: SyntheticEvent<HTMLFormElement>) => {
     e.preventDefault();
     router.push({
-      pathname: "/works",
+      pathname: "/search",
       query: {
         q: query,
       },
