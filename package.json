@@ -4,6 +4,8 @@
   "scripts": {
     "dev": "next -p 5001",
     "build": "next build",
+    "predev": "node aggregate dev",
+    "prebuild": "node aggregate",
     "start": "next start"
   },
   "dependencies": {

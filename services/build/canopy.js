@@ -3,7 +3,7 @@ const { getEntries, getLabel } = require("../iiif/label");
 const fs = require("fs");
 const { getSlug } = require("./slug");
 const { log } = require("./log");
-const { getRootCollection, getBulkManifests } = require("./fetch");
+const { getRootCollection, getBulkManifests } = require("./request");
 const { buildIndex } = require("./search");
 
 module.exports.build = (env) => {
