@@ -3,10 +3,9 @@
  */
 exports.prod = {
   collection:
-    "https://canopy-iiif.vercel.app/fixtures/iiif/collection/nez-perce.json",
+    "https://dcapi.rdc-staging.library.northwestern.edu/api/v2/search?query=war&as=iiif",
   featured: [
-    "https://canopy-iiif.vercel.app/fixtures/iiif/manifest/nez-perce/15-last-home-of-joseph.json",
-    "https://canopy-iiif.vercel.app/fixtures/iiif/manifest/nez-perce/08-map-territory.json",
+    "https://dcapi.rdc-staging.library.northwestern.edu/api/v2/works/0f28456b-bcad-412d-986a-c37768bfba92?as=iiif",
   ],
   metadata: ["Date", "Subject"],
 };
@@ -16,10 +15,9 @@ exports.prod = {
  */
 exports.dev = {
   collection:
-    "https://canopy-iiif.vercel.app/fixtures/iiif/collection/nez-perce.json",
+    "https://dcapi.rdc-staging.library.northwestern.edu/api/v2/search?query=war&as=iiif",
   featured: [
-    "https://canopy-iiif.vercel.app/fixtures/iiif/manifest/nez-perce/15-last-home-of-joseph.json",
-    "https://canopy-iiif.vercel.app/fixtures/iiif/manifest/nez-perce/08-map-territory.json",
+    "https://dcapi.rdc-staging.library.northwestern.edu/api/v2/works/0f28456b-bcad-412d-986a-c37768bfba92?as=iiif",
   ],
   metadata: ["Date", "Subject"],
 };
