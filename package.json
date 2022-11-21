@@ -1,8 +1,11 @@
 {
+  "name": "canopy-iiif",
   "private": true,
   "scripts": {
     "dev": "next -p 5001",
     "build": "next build",
+    "predev": "node aggregate dev",
+    "prebuild": "node aggregate",
     "start": "next start"
   },
   "dependencies": {
@@ -37,10 +40,6 @@
     "@types/react": "^18.0.25",
     "@types/react-dom": "^18.0.8",
     "charm": "^1.0.2",
-    "typescript": "^4.8.4"
-  },
-  "resolutions": {
-    "@types/react": "^18.0.24",
-    "@types/react-dom": "^18.0.8"
+    "typescript": "^4.9.3"
   }
 }
