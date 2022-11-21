@@ -18,4 +18,4 @@ const aggregate = () => {
   canopy.build(env.CANOPY_CONFIG);
 };
 
-aggregate(true);
+aggregate();
