@@ -1,20 +1,3 @@
-import INDEX from "@/.canopy/index.json";
-import MANIFESTS from "@/.canopy/manifests.json";
-import { getDocuments } from "@/services/search/documents";
-import { searchResult } from "@/services/search/result";
-
-const getResults = (origin, q) => {
-  const filtered = !q
-    ? INDEX.map((manifest) => manifest.id)
-    : getDocuments(q, `${origin}/api`);
-
-  return filtered
-    ? MANIFESTS.filter((item) => filtered.includes(item.id)).map((item) =>
-        searchResult(item, origin)
-      )
-    : [];
-};
-
 const getPageCollection = (manifests, pages, page) => {
   const target = pages.find((item) => item.page === page);
   return target.items.map((id) => manifests.find((item) => item.id === id));
@@ -55,4 +38,19 @@ const getTopCollection = (pages, baseUrl) => {
   });
 };
 
-export { getPageCollection, getPages, getPartOf, getTopCollection, getResults };
+const getItem = (item, origin) => {
+  return {
+    id: item.id,
+    type: "Manifest",
+    label: item.label,
+    homepage: [
+      {
+        id: `${origin}/works/${item.slug}`,
+        type: "Text",
+        label: item.label,
+      },
+    ],
+  };
+};
+
+export { getPageCollection, getPages, getPartOf, getItem, getTopCollection };

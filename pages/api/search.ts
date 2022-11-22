@@ -3,9 +3,9 @@ import {
   getPageCollection,
   getPages,
   getPartOf,
-  getResults,
   getTopCollection,
-} from "@/services/search";
+} from "@/services/search/response";
+import { getResults } from "@/services/search/results";
 
 export default function handler(request, response) {
   const { origin } = absoluteUrl(request);
