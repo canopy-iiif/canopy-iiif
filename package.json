@@ -40,6 +40,8 @@
     "@types/react": "^18.0.25",
     "@types/react-dom": "^18.0.8",
     "charm": "^1.0.2",
+    "lodash.countby": "^4.6.0",
+    "lodash.uniqby": "^4.7.0",
     "typescript": "^4.9.3"
   }
 }
