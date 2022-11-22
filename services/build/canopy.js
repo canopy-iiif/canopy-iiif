@@ -5,6 +5,7 @@ const { getSlug } = require("./slug");
 const { log } = require("./log");
 const { getRootCollection, getBulkManifests } = require("./request");
 const { buildIndexData } = require("./search");
+const { buildFacets } = require("./facets");
 
 module.exports.build = (env) => {
   const canopyDirectory = ".canopy";
@@ -58,22 +59,13 @@ module.exports.build = (env) => {
       }
     );
 
-    /**
-     * flatten metadata
-     */
-
-    fs.writeFile(
-      `${canopyDirectory}/metadata.json`,
-      JSON.stringify([]),
-      (error) => error && console.error(error)
-    );
-
     const responses = getBulkManifests(canopyManifests, 10);
 
     responses
       .then((manifests) => {
         let canopyMetadata = [];
         let canopySearch = [];
+
         manifests
           .filter((manifest) => manifest?.type === "Manifest")
           .forEach((manifest) => {
@@ -98,21 +90,21 @@ module.exports.build = (env) => {
               const metadataValues = getEntries(metadata.value);
               if (env.metadata.includes(metadataLabel)) {
                 metadataValues.forEach((value) => {
-                  const result = {
-                    id: manifest.id,
+                  canopyMetadata.push({
+                    index: manifest.index,
                     label: metadataLabel,
                     value,
-                  };
-                  canopyMetadata.push(result);
+                  });
                 });
               }
             });
           });
 
-        log(`\nFlattening metadata...\n`);
+        log(`\nCreating facets...\n`);
+        const canopyFacets = buildFacets(env.metadata, canopyMetadata);
         fs.writeFile(
-          `${canopyDirectory}/metadata.json`,
-          JSON.stringify(canopyMetadata),
+          `${canopyDirectory}/facets.json`,
+          JSON.stringify(canopyFacets),
           (err) => {
             if (err) {
               console.error(err);
