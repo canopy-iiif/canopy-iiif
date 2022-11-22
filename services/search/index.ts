@@ -1,10 +1,13 @@
 import INDEX from "@/.canopy/index.json";
 import MANIFESTS from "@/.canopy/manifests.json";
-import { search } from "libsearch";
+import { getDocuments } from "@/services/search/documents";
 import { searchResult } from "@/services/search/result";
 
-const getManifests = (origin, q) => {
-  const filtered = !q ? INDEX.map((manifest) => manifest.id) : getResults(q);
+const getResults = (origin, q) => {
+  const filtered = !q
+    ? INDEX.map((manifest) => manifest.id)
+    : getDocuments(q, `${origin}/api`);
+
   return filtered
     ? MANIFESTS.filter((item) => filtered.includes(item.id)).map((item) =>
         searchResult(item, origin)
@@ -40,9 +43,6 @@ const getPartOf = (baseUrl) => {
   ];
 };
 
-const getResults = (q) =>
-  search(INDEX, q, (manifest) => manifest.label).map((result) => result.id);
-
 const getTopCollection = (pages, baseUrl) => {
   return pages.map((item) => {
     const url = new URL(baseUrl);
@@ -55,11 +55,4 @@ const getTopCollection = (pages, baseUrl) => {
   });
 };
 
-export {
-  getManifests,
-  getPageCollection,
-  getPages,
-  getPartOf,
-  getResults,
-  getTopCollection,
-};
+export { getPageCollection, getPages, getPartOf, getTopCollection, getResults };

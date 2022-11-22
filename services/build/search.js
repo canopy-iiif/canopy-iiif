@@ -1,6 +1,6 @@
 const { getLabel } = require("../iiif/label");
 
-exports.buildIndex = (manifests) => {
+exports.buildIndexData = (manifests) => {
   return manifests.map((manifest) => {
     const { id, label, summary } = manifest;
     return {

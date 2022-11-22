@@ -4,7 +4,7 @@ const fs = require("fs");
 const { getSlug } = require("./slug");
 const { log } = require("./log");
 const { getRootCollection, getBulkManifests } = require("./request");
-const { buildIndex } = require("./search");
+const { buildIndexData } = require("./search");
 
 module.exports.build = (env) => {
   const canopyDirectory = ".canopy";
@@ -58,21 +58,6 @@ module.exports.build = (env) => {
     );
 
     /**
-     * create manifest listing
-     */
-    log(`Building search index..\n\n`);
-    const canopyIndex = buildIndex(canopyManifests);
-    fs.writeFile(
-      `${canopyDirectory}/index.json`,
-      JSON.stringify(canopyIndex),
-      (err) => {
-        if (err) {
-          console.error(err);
-        }
-      }
-    );
-
-    /**
      * flatten metadata
      */
 
@@ -86,29 +71,41 @@ module.exports.build = (env) => {
 
     responses
       .then((manifests) => {
-        let canopyMetadata = [];
+        let canopySearch = [];
         manifests
           .filter((manifest) => manifest?.type === "Manifest")
-          .map((manifest) =>
-            manifest.metadata.forEach((metadata) => {
+          .forEach((manifest) => {
+            return manifest.metadata.forEach((metadata) => {
               const metadataLabel = getEntries(metadata.label)[0];
               const metadataValues = getEntries(metadata.value);
               if (env.metadata.includes(metadataLabel)) {
                 metadataValues.forEach((value) => {
                   const result = {
-                    manifestId: manifest.id,
+                    id: manifest.id,
                     label: metadataLabel,
                     value,
-                    thumbnail: manifest.thumbnail[0].id,
                   };
-                  canopyMetadata.push(result);
+                  canopySearch.push(result);
                 });
               }
-            })
-          );
+            });
+          });
+
         fs.writeFile(
           `${canopyDirectory}/metadata.json`,
-          JSON.stringify(canopyMetadata),
+          JSON.stringify(canopySearch),
+          (err) => {
+            if (err) {
+              console.error(err);
+            }
+          }
+        );
+
+        log(`Building search index..\n\n`);
+        const canopyIndex = buildIndexData(canopyManifests);
+        fs.writeFile(
+          `${canopyDirectory}/index.json`,
+          JSON.stringify(canopyIndex),
           (err) => {
             if (err) {
               console.error(err);
