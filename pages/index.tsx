@@ -45,8 +45,8 @@ export default function Index({ metadata, featured }) {
         <div style={{ padding: "1rem 2rem" }}>
           {FACETS.map((facet) => (
             <Slider
-              collectionId={`${baseUrl}/api/facet?label=${facet.slug}`}
-              key={`${baseUrl}/api/facet?label=${facet.slug}`}
+              collectionId={`${baseUrl}/api/facet/${facet.slug}`}
+              key={`${baseUrl}/api/facet/${facet.slug}`}
             />
           ))}
         </div>

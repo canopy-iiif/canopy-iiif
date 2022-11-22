@@ -4,14 +4,14 @@ import absoluteUrl from "next-absolute-url";
 export default function handler(request, response) {
   const { origin } = absoluteUrl(request);
   const { query, url } = request;
-  const { label, value } = query;
+  const { label } = query;
 
   const baseUrl = origin + url;
 
   const facet = FACETS.find((entry) => entry.slug === label);
   const items = facet.values.map((value) => {
     return {
-      id: `${baseUrl}&value=${value.value}`,
+      id: `${baseUrl}/${value.value}`,
       type: "Collection",
       label: { none: [value.value] },
       summary: { none: [`${value.doc_count} Items`] },
