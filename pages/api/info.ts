@@ -23,6 +23,7 @@ export default function handler(req, res) {
   const info = {
     "@context": "https://iiif.io/api/presentation/3/context.json",
     id: `${origin}/api/canopy`,
+    label: source.label,
     type: "Collection",
     items: items,
     seeAlso: seeAlso,
