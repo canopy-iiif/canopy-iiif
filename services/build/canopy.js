@@ -99,7 +99,7 @@ module.exports.build = (env) => {
               if (env.metadata.includes(metadataLabel)) {
                 metadataValues.forEach((value) => {
                   const result = {
-                    id: manifest.id,
+                    index: manifest.index,
                     label: metadataLabel,
                     value,
                   };
