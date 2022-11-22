@@ -1,18 +1,19 @@
 const _ = require("lodash");
 
 exports.buildFacets = (labels, metadata) => {
-  const uniqueValues = _.uniqBy(metadata, "value");
+  const unique = _.uniqBy(metadata, "value");
   const counts = _.countBy(metadata, "value");
 
   const facets = labels.map((label) => {
-    const values = uniqueValues
+    const values = unique
       .filter((entry) => entry.label === label)
       .map((entry) => {
+        const { value } = entry;
         return {
-          value: entry.value,
-          doc_count: counts[entry.value],
+          value: value,
+          doc_count: counts[value],
           docs: metadata
-            .filter((item) => item.value === entry.value)
+            .filter((item) => item.value === value)
             .map((item) => item.index),
         };
       });
