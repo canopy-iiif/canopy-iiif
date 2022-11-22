@@ -7,6 +7,9 @@ exports.getRootCollection = (id) =>
 exports.getBulkManifests = async (items, chunkSize) =>
   await chunks(
     items,
-    async (item) => axios.get(item.id).then((response) => response.data),
+    async (item) =>
+      axios.get(item.id).then((response) => {
+        return { index: item.index, ...response.data };
+      }),
     chunkSize
   );

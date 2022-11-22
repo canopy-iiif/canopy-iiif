@@ -4,7 +4,7 @@ const fs = require("fs");
 const { getSlug } = require("./slug");
 const { log } = require("./log");
 const { getRootCollection, getBulkManifests } = require("./request");
-const { buildIndex } = require("./search");
+const { buildIndexData } = require("./search");
 
 module.exports.build = (env) => {
   const canopyDirectory = ".canopy";
@@ -37,11 +37,12 @@ module.exports.build = (env) => {
     log(`Creating Manifest listing...\n`);
     const canopyManifests = canopyCollection.items
       .filter((item) => item.type === "Manifest")
-      .map((item) => {
+      .map((item, index) => {
         const slug = getSlug(getLabel(item.label)[0]);
         return {
           collectionId: item.parent,
           id: item.id,
+          index: index,
           label: item.label,
           slug: slug,
         };
@@ -50,21 +51,6 @@ module.exports.build = (env) => {
     fs.writeFile(
       `${canopyDirectory}/manifests.json`,
       JSON.stringify(canopyManifests),
-      (err) => {
-        if (err) {
-          console.error(err);
-        }
-      }
-    );
-
-    /**
-     * create manifest listing
-     */
-    log(`Building search index..\n\n`);
-    const canopyIndex = buildIndex(canopyManifests);
-    fs.writeFile(
-      `${canopyDirectory}/index.json`,
-      JSON.stringify(canopyIndex),
       (err) => {
         if (err) {
           console.error(err);
@@ -87,28 +73,58 @@ module.exports.build = (env) => {
     responses
       .then((manifests) => {
         let canopyMetadata = [];
+        let canopySearch = [];
         manifests
           .filter((manifest) => manifest?.type === "Manifest")
-          .map((manifest) =>
+          .forEach((manifest) => {
+            // pack search array
+            const settings = env.search.index;
+            canopySearch.push({
+              index: manifest.index,
+              label: manifest.label,
+              ...(settings.summary.enabled && { summary: manifest.summary }),
+              ...(settings.metadata.enabled && {
+                metadata: manifest.metadata.filter((entry) =>
+                  settings.metadata.all
+                    ? entry
+                    : env.metadata.includes(getEntries(entry.label)[0])
+                ),
+              }),
+            });
+
+            // pack metadata array
             manifest.metadata.forEach((metadata) => {
               const metadataLabel = getEntries(metadata.label)[0];
               const metadataValues = getEntries(metadata.value);
               if (env.metadata.includes(metadataLabel)) {
                 metadataValues.forEach((value) => {
                   const result = {
-                    manifestId: manifest.id,
+                    id: manifest.id,
                     label: metadataLabel,
                     value,
-                    thumbnail: manifest.thumbnail[0].id,
                   };
                   canopyMetadata.push(result);
                 });
               }
-            })
-          );
+            });
+          });
+
+        log(`\nFlattening metadata...\n`);
         fs.writeFile(
           `${canopyDirectory}/metadata.json`,
           JSON.stringify(canopyMetadata),
+          (err) => {
+            if (err) {
+              console.error(err);
+            }
+          }
+        );
+
+        log(`Building search index...\n`);
+        const canopyIndex = buildIndexData(canopySearch);
+        fs.writeFile(
+          `${canopyDirectory}/index.json`,
+          JSON.stringify(canopyIndex),
           (err) => {
             if (err) {
               console.error(err);
