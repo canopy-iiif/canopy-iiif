@@ -1,10 +1,11 @@
 const _ = require("lodash");
+const { getSlug } = require("./slug");
 
 exports.buildFacets = (labels, metadata) => {
   const unique = _.uniqBy(metadata, "value");
   const counts = _.countBy(metadata, "value");
 
-  const facets = labels.map((label) => {
+  return (facets = labels.map((label) => {
     const values = unique
       .filter((entry) => entry.label === label)
       .map((entry) => {
@@ -20,14 +21,8 @@ exports.buildFacets = (labels, metadata) => {
 
     return {
       label: label,
+      slug: getSlug(label),
       values: _.orderBy(values, ["doc_count", "value"], ["desc", "asc"]),
     };
-  });
-
-  return {
-    data: facets,
-    info: {
-      total: facets.length,
-    },
-  };
+  }));
 };
