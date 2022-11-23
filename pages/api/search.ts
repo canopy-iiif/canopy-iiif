@@ -19,6 +19,7 @@ export default function handler(request, response) {
     ? getPageCollection(results, pages, parseInt(page))
     : getTopCollection(pages, baseUrl);
 
+  response.setHeader("Access-Control-Allow-Origin", "*");
   response.status(200).json({
     "@context": "https://iiif.io/api/presentation/3/context.json",
     id: baseUrl,
