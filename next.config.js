@@ -26,9 +26,6 @@ module.exports = (phase) => {
   };
 
   return {
-    experimental: {
-      appDir: true,
-    },
     env,
   };
 };

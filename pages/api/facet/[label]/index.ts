@@ -11,7 +11,7 @@ export default function handler(request, response) {
   const facet = FACETS.find((entry) => entry.slug === label);
   const items = facet.values.map((value) => {
     return {
-      id: `${baseUrl}/${value.value}`,
+      id: `${baseUrl}/${value.slug}`,
       type: "Collection",
       label: { none: [value.value] },
       summary: { none: [`${value.doc_count} Items`] },
