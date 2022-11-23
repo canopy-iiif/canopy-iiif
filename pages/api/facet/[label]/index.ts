@@ -15,6 +15,13 @@ export default function handler(request, response) {
       type: "Collection",
       label: { none: [value.value] },
       summary: { none: [`${value.doc_count} Items`] },
+      homepage: [
+        {
+          id: `${origin}/search?${label}=${value.slug}`,
+          type: "Text",
+          label: { none: "" },
+        },
+      ],
     };
   });
 

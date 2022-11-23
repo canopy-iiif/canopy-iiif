@@ -7,6 +7,8 @@ import usePageResults from "@/hooks/usePageResults";
 import axios from "axios";
 import { InternationalString } from "@iiif/presentation-3";
 import { Summary } from "@samvera/nectar-iiif";
+import FACETS from "@/.canopy/facets";
+import Facets from "../components/Facets/Facets";
 
 const Results = ({ pages, query }) => {
   const [page, setPage] = useState(0);
@@ -53,6 +55,21 @@ const Search = () => {
   const router = useRouter();
   const { q } = router.query;
 
+  const facetValues = FACETS.map((facet) => facet.slug)
+    .filter((facet) => router.query[facet])
+    .map((facet) => {
+      const value: string = router.query[facet];
+      return {
+        label: facet,
+        value: value ? value.split(",") : [],
+      };
+    });
+
+  /**
+   * dispatch to context
+   */
+  console.log(facetValues);
+
   const [pages, setPages] = useState<string[]>([]);
   const [query, setQuery] = useState<string | undefined>();
   const [summary, setSummary] = useState<InternationalString>();
@@ -75,10 +92,18 @@ const Search = () => {
   return (
     <Layout>
       <Container containerType="wide">
-        <div style={{ padding: "1rem 0" }}>
+        <div
+          style={{
+            padding: "1rem 0",
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+          }}
+        >
           <h3 style={{ fontWeight: "300", opacity: "0.5" }}>
             {summary && <Summary summary={summary} as="span" />}
           </h3>
+          <Facets />
         </div>
         <Results pages={pages} query={query} />
       </Container>
