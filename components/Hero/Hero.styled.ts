@@ -57,7 +57,7 @@ const HeroStyled = styled("div", {
           display: "flex",
           width: "100%",
           height: "100%",
-          background: `linear-gradient(7deg,  ${slateA.slateA12} 13%, ${slateA.slateA11} 30%, ${slateA.slateA1} 61.8%)`,
+          background: `linear-gradient(7deg,  ${slateA.slateA11} 13%, ${slateA.slateA10} 30%, ${slateA.slateA1} 61.8%)`,
           position: "absolute",
           zIndex: "1",
           bottom: "0",
@@ -89,7 +89,7 @@ const HeroStyled = styled("div", {
 
             ".slide-label": {
               fontFamily: "$bookTight",
-              fontSize: "$gr6",
+              fontSize: "$gr7",
               fontWeight: "800",
               display: "flex",
               marginRight: "$gr2",
