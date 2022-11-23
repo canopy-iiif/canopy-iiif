@@ -3,12 +3,9 @@
  */
 exports.prod = {
   collection:
-    "https://canopy-iiif.vercel.app/fixtures/iiif/collection/nez-perce.json",
-  featured: [
-    "https://canopy-iiif.vercel.app/fixtures/iiif/manifest/nez-perce/15-last-home-of-joseph.json",
-    "https://canopy-iiif.vercel.app/fixtures/iiif/manifest/nez-perce/08-map-territory.json",
-  ],
-  metadata: ["Date", "Subject"],
+    "https://digital.lib.utk.edu/assemble/collection/collections/egypt",
+  featured: ["https://digital.lib.utk.edu/assemble/manifest/egypt/102"],
+  metadata: ["Subject", "Photographer", "Place", "Date", "Format"],
 };
 
 /**
@@ -16,12 +13,9 @@ exports.prod = {
  */
 exports.dev = {
   collection:
-    "https://canopy-iiif.vercel.app/fixtures/iiif/collection/nez-perce.json",
-  featured: [
-    "https://canopy-iiif.vercel.app/fixtures/iiif/manifest/nez-perce/15-last-home-of-joseph.json",
-    "https://canopy-iiif.vercel.app/fixtures/iiif/manifest/nez-perce/08-map-territory.json",
-  ],
-  metadata: ["Date", "Subject"],
+    "https://digital.lib.utk.edu/assemble/collection/collections/egypt",
+  featured: ["https://digital.lib.utk.edu/assemble/manifest/egypt/102"],
+  metadata: ["Subject", "Photographer", "Place", "Date", "Format"],
 };
 
 exports.options = {
@@ -33,7 +27,7 @@ exports.options = {
         all: false, // by default, only entries with curated labels are indexed
       },
       summary: {
-        enabled: false,
+        enabled: true,
       },
     },
   },
