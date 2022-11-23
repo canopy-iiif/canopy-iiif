@@ -9,7 +9,7 @@ exports.prod = {
     "https://digital.lib.utk.edu/assemble/manifest/heilman/808",
     "https://digital.lib.utk.edu/assemble/manifest/heilman/1200",
   ],
-  metadata: ["Subject"],
+  metadata: ["Subject", "Date", "Format", "Photographer"],
 };
 
 /**
@@ -23,7 +23,7 @@ exports.dev = {
     "https://digital.lib.utk.edu/assemble/manifest/heilman/808",
     "https://digital.lib.utk.edu/assemble/manifest/heilman/1200",
   ],
-  metadata: ["Subject"],
+  metadata: ["Subject", "Date", "Format", "Photographer"],
 };
 
 exports.options = {
@@ -35,7 +35,7 @@ exports.options = {
         all: false, // by default, only entries with curated labels are indexed
       },
       summary: {
-        enabled: false,
+        enabled: true,
       },
     },
   },
