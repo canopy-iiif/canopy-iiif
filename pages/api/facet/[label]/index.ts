@@ -11,13 +11,14 @@ export default function handler(request, response) {
   const facet = FACETS.find((entry) => entry.slug === label);
   const items = facet.values.map((value) => {
     return {
-      id: `${baseUrl}/${value.value}`,
+      id: `${baseUrl}/${value.slug}`,
       type: "Collection",
       label: { none: [value.value] },
       summary: { none: [`${value.doc_count} Items`] },
     };
   });
 
+  response.setHeader("Access-Control-Allow-Origin", "*");
   response.status(200).json({
     "@context": "https://iiif.io/api/presentation/3/context.json",
     id: baseUrl,

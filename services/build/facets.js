@@ -12,6 +12,7 @@ exports.buildFacets = (labels, metadata) => {
         const { value } = entry;
         return {
           value: value,
+          slug: getSlug(value),
           doc_count: counts[value],
           docs: metadata
             .filter((item) => item.value === value)
