@@ -8,10 +8,8 @@ import Search from "../Search/Search";
 import { Actions } from "./Header.styled";
 
 const navItems = [
-  { path: "#", text: "Search", type: "search" },
   { path: "/works", text: "Works", type: "link" },
   { path: "/collections", text: "Collections", type: "link" },
-  // { path: "/about", text: "About", type: "link" },
 ];
 
 const Header = () => {
@@ -24,6 +22,7 @@ const Header = () => {
           </Link>
         </Title>
         <Actions>
+          <Search />
           <Nav items={navItems} />
         </Actions>
       </Content>

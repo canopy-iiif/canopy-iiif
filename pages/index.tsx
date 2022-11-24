@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
+import FACETS from "@/.canopy/facets.json";
 import Layout from "@/components/layout";
 import Hero from "@/components/Hero/Hero";
-import Slider from "@/app/Viewer/Slider";
+import Container from "@/components/Shared/Container";
+import Slider from "@/components/Viewer/Slider";
 import { createCollection } from "../services/iiif/constructors/collection";
 import { HeroWrapper } from "../components/Hero/Hero.styled";
 
@@ -40,16 +42,16 @@ export default function Index({ metadata, featured }) {
       <HeroWrapper>
         <Hero collection={hero} />
       </HeroWrapper>
-      <section>
-        <div style={{ padding: "1rem 2rem" }}>
-          {/* {metadata.map((label) => (
+      <Container>
+        <section style={{ padding: "2rem 0" }}>
+          {FACETS.map((facet) => (
             <Slider
-              collectionId={`${baseUrl}/api/iiif/metadata/${label}`}
-              key={`${baseUrl}/api/iiif/metadata/${label}`}
+              collectionId={`${baseUrl}/api/facet/${facet.slug}`}
+              key={`${baseUrl}/api/facet/${facet.slug}`}
             />
-          ))} */}
-        </div>
-      </section>
+          ))}
+        </section>
+      </Container>
     </Layout>
   );
 }

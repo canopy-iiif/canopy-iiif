@@ -1,25 +1,10 @@
+import { Highlight, Items } from "@/components/Nav/Nav.styled";
+import React, { useRef, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { Highlight, Items } from "@/components/Nav/Nav.styled";
-import { useSearchState } from "../../context/search";
-import React, {
-  ChangeEvent,
-  SyntheticEvent,
-  useEffect,
-  useRef,
-  useState,
-} from "react";
-import { SearchForm, SearchInput, SearchSubmit } from "./Search.styled";
-import { MagnifyingGlassIcon } from "@radix-ui/react-icons";
 
 const NavItems = ({ items }) => {
   const router = useRouter();
-  const { searchDispatch, searchState } = useSearchState();
-  const { searchQuery, searchVisible } = searchState;
-
-  const [query, setQuery] = useState<string>(searchQuery);
-  const [searchFocus, setSearchFocus] = useState<boolean>(false);
-  const search = useRef<HTMLInputElement>(null);
 
   const [itemBoundingBox, setItemBoundingBox] = useState(null);
   const [wrapperBoundingBox, setWrapperBoundingBox] = useState(null);
@@ -54,70 +39,18 @@ const NavItems = ({ items }) => {
     };
   }
 
-  /**
-   * search handling
-   */
-  const handleSubmit = (e: SyntheticEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    router.push({
-      pathname: "/works",
-      query: {
-        q: query,
-      },
-    });
-    searchDispatch({ type: "updateQuery", searchQuery: query });
-  };
-
-  const handleSearchChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setQuery(e.target.value);
-  };
-
-  const handleSearchFocus = (e: FocusEvent) =>
-    e.type === "focus" ? setSearchFocus(true) : setSearchFocus(false);
-
-  useEffect(() => {
-    if (router) {
-      const { q } = router.query;
-      if (q && search.current) search.current.value = q as string;
-      setQuery(q as string);
-    }
-  }, [router]);
-
-  useEffect(() => search?.current?.focus(), [searchVisible]);
-
   return (
     <Items ref={wrapperRef} onMouseLeave={resetHighlight}>
       <Highlight ref={highlightRef} css={highlightStyles} />
       {items.map((item) => (
-        <>
-          {item.type === "link" && (
-            <Link
-              href={item.path}
-              key={item.path}
-              className={router.pathname == item.path ? "active" : ""}
-              onMouseOver={(ev) => repositionHighlight(ev, item)}
-            >
-              {item.text}
-            </Link>
-          )}
-          {item.type === "search" && (
-            <SearchForm onSubmit={handleSubmit} isFocused={searchFocus}>
-              <MagnifyingGlassIcon />
-              <SearchInput
-                onChange={handleSearchChange}
-                onFocus={handleSearchFocus}
-                onBlur={handleSearchFocus}
-                ref={search}
-              />
-              <SearchSubmit
-                type="submit"
-                css={searchFocus ? { zIndex: 1 } : {}}
-              >
-                Search
-              </SearchSubmit>
-            </SearchForm>
-          )}
-        </>
+        <Link
+          href={item.path}
+          key={item.path}
+          className={router.pathname == item.path ? "active" : ""}
+          onMouseOver={(ev) => repositionHighlight(ev, item)}
+        >
+          {item.text}
+        </Link>
       ))}
     </Items>
   );

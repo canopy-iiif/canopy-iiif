@@ -1,8 +1,11 @@
 {
+  "name": "canopy-iiif",
   "private": true,
   "scripts": {
     "dev": "next -p 5001",
     "build": "next build",
+    "predev": "node aggregate dev",
+    "prebuild": "node aggregate",
     "start": "next start"
   },
   "dependencies": {
@@ -11,15 +14,17 @@
     "@iiif/vault-helpers": "^0.9.11",
     "@radix-ui/colors": "^0.1.8",
     "@radix-ui/react-icons": "^1.1.1",
-    "@samvera/bloom-iiif": "^0.3.3",
+    "@radix-ui/react-select": "^1.1.2",
+    "@samvera/bloom-iiif": "^0.3.5-rc.0",
     "@samvera/clover-iiif": "^1.12.4-rc.0",
     "@samvera/nectar-iiif": "^0.0.18",
     "@stitches/react": "^1.2.8",
     "axios": "^0.24.0",
     "clsx": "^1.1.1",
+    "flexsearch": "^0.7.31",
     "framer-motion": "^7.6.5",
     "iiif-builder": "^1.0.4",
-    "libsearch": "^0.1.1",
+    "lodash": "^4.17.21",
     "next": "^13.0.0",
     "next-absolute-url": "^1.2.2",
     "next-themes": "^0.2.1",
@@ -37,10 +42,6 @@
     "@types/react": "^18.0.25",
     "@types/react-dom": "^18.0.8",
     "charm": "^1.0.2",
-    "typescript": "^4.8.4"
-  },
-  "resolutions": {
-    "@types/react": "^18.0.24",
-    "@types/react-dom": "^18.0.8"
+    "typescript": "^4.9.3"
   }
 }

@@ -4,7 +4,6 @@ const {
 } = require("next/constants");
 
 const config = require("./canopy.config");
-const canopy = require("./services/build/canopy");
 
 module.exports = (phase) => {
   const isDev = phase === PHASE_DEVELOPMENT_SERVER;
@@ -26,11 +25,7 @@ module.exports = (phase) => {
     },
   };
 
-  canopy.build(env.CANOPY_CONFIG);
   return {
-    experimental: {
-      appDir: true,
-    },
     env,
   };
 };

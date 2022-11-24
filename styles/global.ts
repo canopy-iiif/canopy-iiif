@@ -1,8 +1,6 @@
 import { globalCss } from "@stitches/react";
 import media from "./theme/media";
 
-console.log(media.sm);
-
 const defaults = {
   body: {
     margin: 0,

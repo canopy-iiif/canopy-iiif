@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { getLabel } from "@/hooks/getLabel";
-import { getJsonByURI } from "@/services/utils";
-import { getPresentation3 } from "@/services/iiif/context";
 import Card from "@/components/Card/Card";
-import { Item } from "@/components/Grid/Grid.styled";
+import { getJsonByURI } from "@/services/utils";
+import { GridItem as ItemStyled } from "@/components/Grid/Grid.styled";
+import { getLabel } from "@/hooks/getLabel";
+import { getPresentation3 } from "@/services/iiif/context";
 
 const GridItem = ({ data }) => {
   const [item, setItem] = useState();
@@ -13,7 +13,7 @@ const GridItem = ({ data }) => {
     getJsonByURI(data.id).then((json) => setItem(getPresentation3(json)));
   }, []);
 
-  let resource = null;
+  let resource;
 
   if (!item) return <></>;
 
@@ -25,7 +25,7 @@ const GridItem = ({ data }) => {
   const aspectRatio = resource.width / resource.height;
 
   return (
-    <Item>
+    <ItemStyled>
       <Card
         key={data.id}
         label={getLabel(item?.label)}
@@ -33,7 +33,7 @@ const GridItem = ({ data }) => {
         resource={resource}
         aspectRatio={aspectRatio}
       />
-    </Item>
+    </ItemStyled>
   );
 };
 

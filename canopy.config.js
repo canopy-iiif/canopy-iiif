@@ -19,6 +19,18 @@ exports.dev = {
 };
 
 exports.options = {
+  search: {
+    enabled: true,
+    index: {
+      metadata: {
+        enabled: true,
+        all: false, // by default, only entries with curated labels are indexed
+      },
+      summary: {
+        enabled: false,
+      },
+    },
+  },
   theme: {
     defaultTheme: "light", // "light" | "dark" | "system"
     toggleEnabled: false,
