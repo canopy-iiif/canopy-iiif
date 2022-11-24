@@ -68,7 +68,6 @@ const Search = () => {
   /**
    * dispatch to context
    */
-  console.log(facetValues);
 
   const [pages, setPages] = useState<string[]>([]);
   const [query, setQuery] = useState<string | undefined>();

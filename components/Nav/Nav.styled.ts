@@ -15,7 +15,7 @@ const Items = styled("div", {
   fontSize: "$gr4",
   fontWeight: "800",
   fontFamily: "$bookTight",
-  flexGrow: "1",
+  flexGrow: "0",
   justifyContent: "flex-end",
 
   a: {
@@ -42,7 +42,7 @@ const Wrapper = styled("nav", {
   display: "flex",
   alignItems: "center",
   zIndex: "1",
-  flexGrow: "1",
+  flexGrow: "0",
 });
 
 export { Highlight, Items, Wrapper };
