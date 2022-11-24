@@ -57,7 +57,7 @@ const HeroStyled = styled("div", {
           display: "flex",
           width: "100%",
           height: "100%",
-          background: `linear-gradient(7deg,  ${slateA.slateA12} 13%, ${slateA.slateA11} 30%, ${slateA.slateA1} 61.8%)`,
+          background: `linear-gradient(7deg,  ${slateA.slateA11} 13%, ${slateA.slateA10} 30%, ${slateA.slateA1} 61.8%)`,
           position: "absolute",
           zIndex: "1",
           bottom: "0",
@@ -76,31 +76,29 @@ const HeroStyled = styled("div", {
         figcaption: {
           position: "absolute",
           zIndex: "10",
-          bottom: "-$gr5",
+          bottom: "$gr6",
           display: "flex",
           flexDirection: "column",
           alignItems: "flex-start",
-          paddingTop: "$gr3",
           width: "$gr11",
-          backgroundColor: "$slate2",
           textAlign: "left",
 
           a: {
-            color: "$slate12",
+            color: slate.slate2,
             textDecoration: "none",
 
             ".slide-label": {
               fontFamily: "$bookTight",
-              fontSize: "$gr4",
+              fontSize: "$gr7",
               fontWeight: "800",
               display: "flex",
-              marginRight: "$gr1",
+              marginRight: "$gr2",
               lineHeight: "1.15em",
               transition: "$all",
             },
 
             "&:hover, &:focus": {
-              color: "$indigo11",
+              color: "$indigo6",
               ".slide-label": {
                 marginRight: "$gr2",
               },

@@ -7,6 +7,8 @@ import usePageResults from "@/hooks/usePageResults";
 import axios from "axios";
 import { InternationalString } from "@iiif/presentation-3";
 import { Summary } from "@samvera/nectar-iiif";
+import Facets from "../components/Facets/Facets";
+import { getActiveFacets } from "@/services/facet/facets";
 
 const Results = ({ pages, query }) => {
   const [page, setPage] = useState(0);
@@ -53,34 +55,52 @@ const Search = () => {
   const router = useRouter();
   const { q } = router.query;
 
+  const [facets, setFacets] = useState([]);
   const [pages, setPages] = useState<string[]>([]);
-  const [query, setQuery] = useState<string | undefined>();
+  const [params, setParams] = useState();
   const [summary, setSummary] = useState<InternationalString>();
+
+  useEffect(() => {
+    const activeFacets = getActiveFacets(router.query);
+    setFacets(activeFacets);
+  }, [router.query]);
 
   useEffect(() => {
     setPages([]);
     const params = new URLSearchParams();
     if (q) params.append("q", q as string);
-    q ? setQuery(params.toString()) : setQuery("");
-  }, [q]);
+    if (facets)
+      facets.forEach((facet) =>
+        params.append(facet.label, facet.value as string)
+      );
+    setParams(params);
+  }, [q, facets]);
 
   useEffect(() => {
-    if (query !== undefined)
-      axios.get(`/api/search?${query}`).then((result) => {
+    if (params !== undefined)
+      axios.get(`/api/search`, { params }).then((result) => {
         setPages(result.data.items.map((item) => item.id));
         setSummary(result.data.summary);
       });
-  }, [query]);
+  }, [params]);
 
   return (
     <Layout>
       <Container containerType="wide">
-        <div style={{ padding: "1rem 0" }}>
+        <div
+          style={{
+            padding: "1rem 0",
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+          }}
+        >
           <h3 style={{ fontWeight: "300", opacity: "0.5" }}>
             {summary && <Summary summary={summary} as="span" />}
           </h3>
+          <Facets />
         </div>
-        <Results pages={pages} query={query} />
+        <Results pages={pages} query={params} />
       </Container>
     </Layout>
   );
