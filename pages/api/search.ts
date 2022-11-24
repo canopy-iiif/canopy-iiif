@@ -6,6 +6,7 @@ import {
   getTopCollection,
 } from "@/services/search/response";
 import { getResults } from "@/services/search/results";
+import { getActiveFacets } from "@/services/facet/facets";
 
 export default function handler(request, response) {
   const { origin } = absoluteUrl(request);
@@ -13,7 +14,8 @@ export default function handler(request, response) {
   const { q, page } = query;
 
   const baseUrl = origin + url;
-  const results = getResults(origin, q);
+  const activeFacets = getActiveFacets(query);
+  const results = getResults(origin, q, activeFacets);
   const pages = getPages(results, 10);
   const items = page
     ? getPageCollection(results, pages, parseInt(page))
