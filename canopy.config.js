@@ -5,7 +5,7 @@ exports.prod = {
   collection:
     "https://raw.githubusercontent.com/mathewjordan/combine/main/output/curtis.json",
   featured: [
-    "https://dc.library.northwestern.edu/items/310ed1c8-0dfa-4302-bcf1-e08bda17885b",
+    "https://dcapi.rdc.library.northwestern.edu/api/v2/works/310ed1c8-0dfa-4302-bcf1-e08bda17885b?as=iiif",
   ],
   metadata: ["Date", "Subject"],
 };
@@ -17,7 +17,7 @@ exports.dev = {
   collection:
     "https://raw.githubusercontent.com/mathewjordan/combine/main/output/curtis.json",
   featured: [
-    "https://dc.library.northwestern.edu/items/310ed1c8-0dfa-4302-bcf1-e08bda17885b",
+    "https://dcapi.rdc.library.northwestern.edu/api/v2/works/310ed1c8-0dfa-4302-bcf1-e08bda17885b?as=iiif",
   ],
   metadata: ["Date", "Subject"],
 };
