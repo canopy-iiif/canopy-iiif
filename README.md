@@ -10,7 +10,7 @@ A purely IIIF sourced site generator using Next.js. Canopy is an experimental ap
 
 ### [Nez Percé (Nimíipuu)](https://canopy-iiif.vercel.app/)
 - IIIF Presentation API 3.0
-- 15 items
+- 81 items
 - Provided by Northwestern University Libraries
 
 <img src="https://user-images.githubusercontent.com/7376450/201527692-745abc6e-4c6b-4367-aa8c-6cb31d749a95.png" width="300px" />
