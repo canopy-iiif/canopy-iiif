@@ -12,7 +12,10 @@ module.exports.build = (env) => {
   log(`Building Canopy from IIIF Collection...\n`);
   log(`${env.collection}\n\n`, "yellow");
   getRootCollection(env.collection).then((json) => {
-    const canopyCollection = getCanopyCollection(json);
+    const canopyCollection = getCanopyCollection({
+      ...json,
+      label: env.label ? env.label : json.label,
+    });
 
     try {
       if (!fs.existsSync(canopyDirectory)) {
