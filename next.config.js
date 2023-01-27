@@ -25,7 +25,18 @@ module.exports = (phase) => {
     },
   };
 
+  const redirects = () => {
+    return [
+      {
+        source: "/works",
+        destination: "/search",
+        permanent: true,
+      },
+    ];
+  };
+
   return {
     env,
+    redirects,
   };
 };

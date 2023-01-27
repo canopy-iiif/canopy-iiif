@@ -9,7 +9,7 @@ import { Actions } from "./Header.styled";
 
 const navItems = [
   { path: "/works", text: "Works", type: "link" },
-  { path: "/collections", text: "Collections", type: "link" },
+  { path: "/about", text: "About", type: "link" },
 ];
 
 const Header = () => {
