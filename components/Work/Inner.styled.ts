@@ -1,6 +1,6 @@
 import { styled } from "@/stitches";
 
-const WorkData = styled("div", { padding: "0 1.618rem 2rem" });
+const WorkData = styled("div", {});
 
 const StyledWorkInner = styled("section", {
   maxWidth: "1280px",
