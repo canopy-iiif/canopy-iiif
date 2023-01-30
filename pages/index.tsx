@@ -44,6 +44,18 @@ export default function Index({ metadata, featured, collections }) {
         <Hero collection={hero} />
       </HeroWrapper>
       <Container>
+        <h2>About Canopy</h2>
+        <div>
+          <p>
+            <strong>Canopy IIIF</strong> is a purely{" "}
+            <a href="https://iiif.io/">IIIF</a> sourced site generator using
+            Next.js. Canopy is an experimental application that will standup a
+            browseable and searchable digital collections style site entirely
+            from a <a href="https://iiif.io/">IIIF Collection</a> and the
+            resources it references.
+          </p>
+          <a href="/about">Read More</a>
+        </div>
         <Related collections={collections} title="Highlighted Works" />
       </Container>
     </Layout>

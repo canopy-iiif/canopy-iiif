@@ -21,7 +21,7 @@ export default function Metadata() {
 
           return (
             <div>
-              <h3>{label}</h3>
+              <h2>{label}</h2>
               <ul>
                 {values.map((value) => (
                   <MetadataItem {...value} path={path} />
