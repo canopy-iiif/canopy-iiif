@@ -5,7 +5,9 @@ import {
   Summary,
 } from "@samvera/nectar-iiif";
 import { StyledWorkInner, WorkData } from "@/components/Work/Inner.styled";
+import FACETS from "@/.canopy/facets";
 import Link from "next/link";
+import React from "react";
 
 interface ValueAsListItemProps {
   searchParam?: string;
@@ -17,24 +19,20 @@ export const ValueAsListItem: React.FC<ValueAsListItemProps> = ({
   value,
 }) => {
   if (!value) return <></>;
-  const search = `xx`;
+  const search = `/search?${searchParam}=`;
   return (
-    <>
-      {searchParam ? (
-        <Link href={search.concat(encodeURIComponent(value))}>{value}</Link>
-      ) : (
-        <span dangerouslySetInnerHTML={{ __html: value }} />
-      )}
-    </>
+    <Link href={search.concat(encodeURIComponent(value))}>
+      <span dangerouslySetInnerHTML={{ __html: value }}></span>
+    </Link>
   );
 };
 
 const WorkInner = ({ manifest }) => {
   const { label, metadata, requiredStatement, summary } = manifest;
 
-  const formattedValues = [].map((value) => {
+  const formattedValues = FACETS.map((value) => {
     return {
-      Content: <ValueAsListItem searchParam={value.searchParam} />,
+      Content: <ValueAsListItem searchParam={value.slug} />,
       matchingLabel: { none: [value.label] },
     };
   });
@@ -44,11 +42,7 @@ const WorkInner = ({ manifest }) => {
       <WorkData>
         <Label label={label} as="h1" />
         <Summary summary={summary} as="p" className="work-summary" />
-        <Metadata
-          customValueContent={formattedValues}
-          customValueDelimiter={`<br/>`}
-          metadata={metadata}
-        />
+        <Metadata customValueContent={formattedValues} metadata={metadata} />
         <RequiredStatement requiredStatement={requiredStatement} />
       </WorkData>
     </StyledWorkInner>
