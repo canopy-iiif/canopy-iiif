@@ -1,10 +1,10 @@
-import Layout from "@/components/layout";
+import React from "react";
 
 export default function Works() {
-  return <Layout></Layout>;
+  return <></>;
 }
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   return {
     redirect: {
       destination: "/search",
