@@ -63,5 +63,6 @@ export async function getStaticProps() {
 
   return {
     props: { metadata, featured, collections },
+    revalidate: 3600,
   };
 }
