@@ -9,14 +9,17 @@ import Container from "../../components/Shared/Container";
 export default function Manifest({ manifest }) {
   const { id, label, metadata, requiredStatement, summary } = manifest;
 
+  const collections = [
+    "http://localhost:5001/api/facet/date/1910",
+    "http://localhost:5001/api/facet/subject/nez-perce-indians-topical",
+  ];
+
   return (
     <Layout>
       <Viewer id={id} />
       <Container>
         <WorkInner manifest={manifest} />
-        <section>
-          <Related label={label} />
-        </section>
+        <Related collections={collections} />
       </Container>
     </Layout>
   );

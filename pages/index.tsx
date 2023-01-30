@@ -3,11 +3,12 @@ import FACETS from "@/.canopy/facets.json";
 import Layout from "@/components/layout";
 import Hero from "@/components/Hero/Hero";
 import Container from "@/components/Shared/Container";
-import Slider from "@/components/Viewer/Slider";
 import { createCollection } from "../services/iiif/constructors/collection";
 import { HeroWrapper } from "../components/Hero/Hero.styled";
+import Related from "../components/Related/Related";
+import { getRelatedFacetValue } from "../services/iiif/constructors/related";
 
-export default function Index({ metadata, featured }) {
+export default function Index({ metadata, featured, collections }) {
   const [baseUrl, setBaseUrl] = useState("");
 
   const hero = {
@@ -43,14 +44,7 @@ export default function Index({ metadata, featured }) {
         <Hero collection={hero} />
       </HeroWrapper>
       <Container>
-        <section style={{ padding: "2rem 0" }}>
-          {FACETS.map((facet) => (
-            <Slider
-              collectionId={`${baseUrl}/api/facet/${facet.slug}`}
-              key={`${baseUrl}/api/facet/${facet.slug}`}
-            />
-          ))}
-        </section>
+        <Related collections={collections} title="Highlighted Works" />
       </Container>
     </Layout>
   );
@@ -62,7 +56,12 @@ export async function getStaticProps() {
 
   const featured = await createCollection(featuredItems);
 
+  const collections = FACETS.map((facet) => {
+    const value = getRelatedFacetValue(facet.label);
+    return `/api/facet/${facet.slug}/${value.slug}`;
+  });
+
   return {
-    props: { metadata, featured },
+    props: { metadata, featured, collections },
   };
 }
