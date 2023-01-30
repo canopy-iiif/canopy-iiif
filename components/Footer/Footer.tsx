@@ -1,5 +1,6 @@
 import React from "react";
 import IIIF from "@/components/SVG/IIIF";
+import ThemeMode from "../Header/ThemeMode";
 
 const { collection } = process.env.CANOPY_CONFIG;
 
@@ -17,6 +18,7 @@ const Footer = () => {
       >
         <IIIF />
       </a>
+      <ThemeMode />
     </footer>
   );
 };

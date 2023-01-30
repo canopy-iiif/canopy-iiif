@@ -13,7 +13,7 @@ const Items = styled("div", {
   display: "flex",
   alignItems: "center",
   fontSize: "$gr4",
-  fontWeight: "800",
+  fontWeight: "400",
   fontFamily: "$bookTight",
   flexGrow: "0",
   justifyContent: "flex-end",

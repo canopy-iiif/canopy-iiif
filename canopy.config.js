@@ -2,7 +2,7 @@
  * Configuration built by `npm run build`
  */
 exports.prod = {
-  label: { en: ["Nez Percé (Nimíipuu)"] },
+  label: { none: ["Canopy IIIF"] },
   collection:
     "https://api.dc.library.northwestern.edu/api/v2/search?query=%22Edward%20S.%20Curtis%27s%20The%20North%20American%20Indian%20--%20Volume%208.%20The%20Nez%20Perces.%20Wallawalla.%20Umatilla.%20Cayuse.%20The%20Chinookan%20tribes%22&as=iiif&size=500",
   featured: [
@@ -17,7 +17,7 @@ exports.prod = {
  * Configuration built by `npm run dev`
  */
 exports.dev = {
-  label: { en: ["Nez Percé (Nimíipuu)"] },
+  label: { none: ["Canopy IIIF"] },
   collection:
     "https://api.dc.library.northwestern.edu/api/v2/search?query=%22Edward%20S.%20Curtis%27s%20The%20North%20American%20Indian%20--%20Volume%208.%20The%20Nez%20Perces.%20Wallawalla.%20Umatilla.%20Cayuse.%20The%20Chinookan%20tribes%22&as=iiif&size=500",
   featured: [

@@ -1,11 +1,10 @@
 import Layout from "@/components/layout";
-import Hero from "@/components/Hero/Hero";
+import Container from "../components/Shared/Container";
 
 export default function About() {
   return (
     <Layout>
-      <Hero />
-      About...
+      <Container>About...</Container>
     </Layout>
   );
 }

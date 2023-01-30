@@ -70,11 +70,12 @@ const SearchInput = styled("input", {
 const SearchSubmit = styled("button", {
   padding: "$gr1 $gr3",
   fontSize: "$gr4",
-  fontWeight: "800",
+  fontWeight: "400",
   fontFamily: "$bookTight",
   backgroundColor: "transparent",
   border: "none",
   color: "$indigo12",
+  cursor: "pointer",
   transition: "$all",
   zIndex: "1",
 
