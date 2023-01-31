@@ -1,3 +1,4 @@
+import React from "react";
 import Layout from "@/components/layout";
 import Container from "../components/Shared/Container";
 
@@ -41,11 +42,11 @@ export default function About() {
               around lunr.js.
             </p>
             <p>
-              While the original Canopy was originally generated from a IIIF
-              Collection, the components delivering the user interface became
+              The original Canopy was generated from a single IIIF Collection;
+              however, the components delivering the user interface became
               heavily tailored to the source material of the Rising from the
-              Ashes, thus limiting the use of the codebase for other IIIF
-              Collections. A heavily integrated IIIF A/V Viewer was designed to
+              Ashes project, thus limiting the use of the codebase for other
+              collections. A heavily integrated IIIF A/V Viewer was designed to
               deliver Sound and Video resources. This A/V viewer would
               eventually evolve into a partial inspiration for Clover IIIF.
             </p>
@@ -95,6 +96,35 @@ export default function About() {
               Operational Infrastructure, delivered by Maria Matienzo (Stanford
               University) and Esme Cowles (Princeton University) at the CNI Fall
               2020 Virtual Membership Meeting.
+            </p>
+          </div>
+        </section>
+        <section>
+          <header>
+            <h2>Colophon</h2>
+          </header>
+          <div>
+            <p>
+              Mat Jordan, the primary author of Canopy IIIF, was born within the
+              original homelands of the Nimíipuu (Nez Percé) and hails from Nez
+              Perce County, Idaho, in the United States. Relating to this fact,
+              the source collection for the Canopy IIIF demonstration is
+              delivered via IIIF from the Edward S. Curtis's The North American
+              Indian collection, Volume 8. The Nez Perces. Wallawalla. Umatilla.
+              Cayuse. The Chinookan tribes series, at Northwestern University
+              Libraries.
+            </p>
+            <p>
+              This project is created using Next.js as a platform, with a
+              FlexSearch index for search, IIIF Presentation API 3.0 delivering
+              content, Radix UI and Stitches used throughout for the user
+              interface, and various community modules from IIIF and Samvera
+              supporting the work presentation and resource delivery.
+            </p>
+            <p>
+              This demonstration instance of Canopy IIIF is hosted on Vercel
+              with a consistent build time under 40 seconds. The build process
+              includes metadata aggregation requests of 81 IIIF Manifests.
             </p>
           </div>
         </section>

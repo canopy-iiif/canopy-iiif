@@ -70,7 +70,7 @@ const SearchInput = styled("input", {
 const SearchSubmit = styled("button", {
   padding: "$gr1 $gr3",
   fontSize: "$gr4",
-  fontWeight: "400",
+  fontWeight: "800",
   fontFamily: "$bookTight",
   backgroundColor: "transparent",
   border: "none",
