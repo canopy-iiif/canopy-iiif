@@ -22,12 +22,12 @@ A purely IIIF sourced site generator using Next.js. Canopy is an experimental ap
 
 <img src="https://user-images.githubusercontent.com/7376450/201527565-243437c8-bb90-408b-82fa-d8798478c9ee.png" width="300px" />
 
-### [Images of East Tennessee](https://canopy-iiif-git-tenncities-mathewjordan.vercel.app/)
-- IIIF Presentation API 3.0
-- 493 items
-- Provided by University of Tennessee Libraries
+### [Canonici](https://canopy-iiif-git-canonici-mathewjordan.vercel.app/)
+- IIIF Presentation API 2.0
+- 529 items
+- Provided by Bodleian Libraries, University of Oxford
 
-<img src="https://user-images.githubusercontent.com/7376450/201527467-f22568a0-9ac8-4b18-9180-69710c16a65a.png" width="300px" />
+<img src="https://user-images.githubusercontent.com/7376450/216225553-9d8a121a-5705-47a2-8f9b-388bc8dd30b2.png" width="300px" />
 
 ## Roadmap
 
