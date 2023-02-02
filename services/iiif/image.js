@@ -22,7 +22,7 @@ const getService = async (service, preferredWidth=1000) => {
 
 exports.getRepresentativeImage = async (resource, preferredSize=1000) => {
   const firstCanvas = resource.items[0].items[0].items[0];
-  const firstCanvasService = await getService(firstCanvas.body.service[0], preferredSize );
+  const firstCanvasService = await getService(firstCanvas.body.service[0], preferredSize);
   if (firstCanvasService !== {}) {
     return [
       {
@@ -33,5 +33,8 @@ exports.getRepresentativeImage = async (resource, preferredSize=1000) => {
         "height": firstCanvasService.height,
       }
     ]
+  }
+  else {
+    return firstCanvas.thumbnail ? firstCanvas.thumbnail : []
   }
 };
