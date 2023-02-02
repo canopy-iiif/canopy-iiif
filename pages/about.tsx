@@ -6,6 +6,18 @@ export default function About() {
   return (
     <Layout>
       <Container>
+        <div>
+          <h1>About</h1>
+          <p>
+            <strong>Canopy IIIF</strong> is a purely{" "}
+            <a href="https://iiif.io/">IIIF</a> sourced site generator using
+            Next.js. Canopy is an experimental application that will standup a
+            browseable and searchable digital collections style site entirely
+            from a <a href="https://iiif.io/">IIIF Collection</a> and the
+            resources it references.
+          </p>
+          <a href="https://github.com/mathewjordan/canopy-iiif">View Code</a>
+        </div>
         <section>
           <header>
             <h2>Basic Features</h2>
@@ -29,33 +41,50 @@ export default function About() {
           <div>
             <p>
               Canopy was initially conceived at the University of Tennessee
-              Libraries in the Summer ’21 as a statically generated digital
-              humanities website for the Rising from the Ashes: The Chimney Tops
-              2 Wildfires Oral History Project. The key goal of the initial
-              project was to reference IIIF resources hosted externally without
-              any duplication of the source material. Gatsby.js was chosen as a
-              platform to deliver materials sourced from IIIF Collection and
-              present IIIF Manifests of diverse content resource types
-              including: Sound, Video, and Image. Various front end user
-              interface components were also created to help in this
-              presentation, along with search and faceting functionality built
-              around lunr.js.
+              Libraries in the Summer ’21 as a statically generated web
+              application for the{" "}
+              <a href="https://rfta.lib.utk.edu/">
+                Rising from the Ashes: The Chimney Tops 2 Wildfires Oral History
+                Project
+              </a>
+              . The primary goal of the project was to allow IIIF resources
+              hosted in another repository to be enhanced and remixed without
+              any duplication of the source material.{" "}
+              <a href="https://www.gatsbyjs.com/">Gatsby.js</a> was chosen as
+              the static site generator to deliver materials sourced from a
+              single IIIF Collection and present IIIF Manifests of diverse
+              content resource types including: Sound, Video, and Image. Various
+              front end user interface components were also created to help in
+              this presentation, along with search and faceting functionality
+              built around <a href="https://lunrjs.com/">lunr.js</a>.
             </p>
             <p>
               The original Canopy was generated from a single IIIF Collection;
               however, the components delivering the user interface became
               heavily tailored to the source material of the Rising from the
-              Ashes project, thus limiting the use of the codebase for other
-              collections. A heavily integrated IIIF A/V Viewer was designed to
-              deliver Sound and Video resources. This A/V viewer would
-              eventually evolve into a partial inspiration for Clover IIIF.
+              Ashes project, thus limiting the reuse of the codebase for other
+              collections. The original Canopy featured a heavily integrated
+              IIIF A/V Viewer designed to deliver Sound and Video resources.
+              This A/V viewer would eventually evolve into a partial inspiration
+              for{" "}
+              <a href="https://samvera-labs.github.io/clover-iiif/">
+                Clover IIIF
+              </a>
+              .
             </p>
             <p>
               Canopy was reimagined as Canopy IIIF in early Winter ’22 with the
-              primary focus of the project maintaining the interoperable ability
-              to build from any Collection following IIIF Presentation API 2.0
-              or 3.0 specifications. In this version the decision was also made
-              to switch from Gatsby.js platform to Next.js.
+              primary focus of the project maintaining the the ability to build
+              an interoperable site from any IIIF Collection following IIIF
+              Presentation API 2.0 and 3.0 specifications. In this version the
+              decision was also made to switch from Gatsby.js platform to
+              Next.js.
+              <br />
+              <br />
+              [Next.js selection]
+              <br />
+              <br />
+              [Roadmap of project now.]
             </p>
           </div>
         </section>
@@ -91,11 +120,14 @@ export default function About() {
               </dd>
             </dl>
             <p>
-              The project name Canopy is a jocular title inspired by the
-              presentation, A Tree’s Strength Is Its Trunk: IIIF as Central
-              Operational Infrastructure, delivered by Maria Matienzo (Stanford
-              University) and Esme Cowles (Princeton University) at the CNI Fall
-              2020 Virtual Membership Meeting.
+              The project name Canopy is inspired by the presentation,{" "}
+              <a href="https://www.cni.org/topics/standards/a-trees-strength-is-its-trunk-iiif-as-central-operational-infrastructure">
+                A Tree’s Strength Is Its Trunk: IIIF as Central Operational
+                Infrastructure
+              </a>
+              , delivered by Maria Matienzo (Stanford University) and Esmé
+              Cowles (Princeton University) at the CNI Fall 2020 Virtual
+              Membership Meeting.
             </p>
           </div>
         </section>

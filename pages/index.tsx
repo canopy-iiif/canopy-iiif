@@ -55,6 +55,7 @@ export default function Index({ metadata, featured, collections }) {
             resources it references.
           </p>
           <a href="/about">Read More</a>
+          <a href="https://github.com/mathewjordan/canopy-iiif">View Code</a>
         </div>
         <Related collections={collections} title="Highlighted Works" />
       </Container>
