@@ -49,6 +49,7 @@ module.exports.build = (env) => {
           index: index,
           label: item.label,
           slug: slug,
+          thumbnail: item.thumbnail? item.thumbnail : [],
         };
       });
 
