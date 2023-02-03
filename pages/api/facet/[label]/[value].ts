@@ -17,6 +17,7 @@ export default function handler(request, response) {
       id: item.id,
       type: "Manifest",
       label: item.label,
+      thumbnail: item.thumbnail,
       homepage: [
         {
           id: `${origin}/works/${item.slug}`,

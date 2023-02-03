@@ -2,25 +2,27 @@ const axios = require("axios");
 const { getPresentation3 } = require("../context");
 const { getHomepageBySlug } = require("../homepage");
 const MANIFESTS = require("@/.canopy/manifests.json");
+const { getRepresentativeImage } = require("../image");
 
 async function createCollection(iiifResources, label = "") {
   const items = await getCollectionItems(iiifResources);
-
+  const complete_items = await Promise.all(items.map(async (resource) => await createItem(resource)))
   return {
     "@context": "https://iiif.io/api/presentation/3/context.json",
     id: `http://localhost/featured`,
     type: "Collection",
     label: { none: [label] },
-    items: items.map((resource) => createItem(resource)),
+    items: complete_items,
   };
 }
 
-function createItem(resource) {
+async function createItem(resource) {
   const { slug } = MANIFESTS.find((item) => item.id === resource.id);
+  const thumbnail =  await getRepresentativeImage(resource, 2000);
   return {
     id: resource.id,
     label: resource.label,
-    thumbnail: resource?.thumbnail ? resource?.thumbnail : [],
+    thumbnail: thumbnail ? thumbnail : [],
     homepage: getHomepageBySlug(slug, resource.label),
   };
 }

@@ -6,6 +6,7 @@ const { log } = require("./log");
 const { getRootCollection, getBulkManifests } = require("./request");
 const { buildIndexData } = require("./search");
 const { buildFacets } = require("./facets");
+const { getRepresentativeImage } = require("../iiif/image")
 
 module.exports.build = (env) => {
   const canopyDirectory = ".canopy";
@@ -42,27 +43,41 @@ module.exports.build = (env) => {
     const canopyManifests = canopyCollection.items
       .filter((item) => item.type === "Manifest")
       .map((item, index) => {
-        const slug = getSlug(getLabel(item.label)[0]);
         return {
           collectionId: item.parent,
           id: item.id,
           index: index,
           label: item.label,
-          slug: slug,
         };
       });
 
-    fs.writeFile(
-      `${canopyDirectory}/manifests.json`,
-      JSON.stringify(canopyManifests),
-      (err) => {
-        if (err) {
-          console.error(err);
-        }
-      }
-    );
-
     const responses = getBulkManifests(canopyManifests, 10);
+
+    responses
+      .then((manifests) => {
+        const allManifests = manifests.map((manifest, index) => {
+          // Break this into a function / service
+          const thumbnail = manifest.thumbnail? manifest.thumbnail : (
+            manifest.items[0].thumbnail? manifest.items[0].thumbnail : (
+              getRepresentativeImage(manifest, 400)? getRepresentativeImage(manifest, 400) : []
+            )
+          );
+          return {
+            ...canopyManifests.find(canopyManifest => canopyManifest.id === manifest.id),
+            slug: getSlug(getLabel(manifest.label).shift()),
+            thumbnail: thumbnail,
+          }
+        })
+        fs.writeFile(
+          `${canopyDirectory}/manifests.json`,
+          JSON.stringify(allManifests),
+          (err) => {
+            if (err) {
+              console.error(err);
+            }
+          }
+        );
+      })
 
     responses
       .then((manifests) => {
