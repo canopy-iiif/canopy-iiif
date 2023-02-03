@@ -6,7 +6,7 @@ const { getRepresentativeImage } = require("../image");
 
 async function createCollection(iiifResources, label = "") {
   const items = await getCollectionItems(iiifResources);
-  const complete_items = await Promise.all(items.map(async ( resource) => await createItem(resource)))
+  const complete_items = await Promise.all(items.map(async (resource) => await createItem(resource)))
   return {
     "@context": "https://iiif.io/api/presentation/3/context.json",
     id: `http://localhost/featured`,
