@@ -16,21 +16,21 @@ A purely IIIF sourced site generator using Next.js. Canopy is an experimental ap
 - 81 items
 - Provided by Northwestern University Libraries
 
-<img src="https://user-images.githubusercontent.com/7376450/201527692-745abc6e-4c6b-4367-aa8c-6cb31d749a95.png" width="200px" />
+<img src="https://user-images.githubusercontent.com/7376450/216725866-85ed609d-1e8b-4825-83de-7771cf1bf60e.png" width="400px" />
 
 ### [The Botanical photography of Alan S. Heilman](https://canopy-iiif-git-heilman-mathewjordan.vercel.app/)
 - IIIF Presentation API 3.0
 - 1120 items
 - Provided by University of Tennessee Libraries
 
-<img src="https://user-images.githubusercontent.com/7376450/201527565-243437c8-bb90-408b-82fa-d8798478c9ee.png" width="200px" />
+<img src="https://user-images.githubusercontent.com/7376450/201527565-243437c8-bb90-408b-82fa-d8798478c9ee.png" width="400px" />
 
 ### [Canonici](https://canopy-iiif-git-canonici-mathewjordan.vercel.app/)
 - IIIF Presentation API 2.0
 - 529 items
 - Provided by Bodleian Libraries, University of Oxford
 
-<img src="https://user-images.githubusercontent.com/7376450/216225553-9d8a121a-5705-47a2-8f9b-388bc8dd30b2.png" width="200px" />
+<img src="https://user-images.githubusercontent.com/7376450/216225553-9d8a121a-5705-47a2-8f9b-388bc8dd30b2.png" width="400px" />
 
 ## Roadmap
 
