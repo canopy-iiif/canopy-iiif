@@ -50,6 +50,7 @@ const getItem = (item, origin) => {
         label: item.label,
       },
     ],
+    thumbnail: item.thumbnail
   };
 };
 

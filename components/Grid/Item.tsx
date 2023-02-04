@@ -30,7 +30,7 @@ const GridItem = ({ data }) => {
         key={data.id}
         label={getLabel(item?.label)}
         path={path}
-        resource={resource}
+        resource={data.thumbnail}
         aspectRatio={aspectRatio}
       />
     </ItemStyled>
