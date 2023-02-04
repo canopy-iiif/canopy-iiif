@@ -15,7 +15,7 @@
     "@radix-ui/colors": "^0.1.8",
     "@radix-ui/react-icons": "^1.1.1",
     "@radix-ui/react-select": "^1.1.2",
-    "@samvera/bloom-iiif": "^0.4.1",
+    "@samvera/bloom-iiif": "^0.5.0",
     "@samvera/clover-iiif": "^1.13.1-rc.0",
     "@samvera/nectar-iiif": "^0.0.20",
     "@stitches/react": "^1.2.8",
