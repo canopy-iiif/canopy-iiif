@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import FACETS from "@/.canopy/facets.json";
+import MANIFESTS from "@/.canopy/manifests.json";
 import Layout from "@/components/layout";
 import Hero from "@/components/Hero/Hero";
 import Container from "@/components/Shared/Container";
@@ -7,6 +8,7 @@ import { createCollection } from "../services/iiif/constructors/collection";
 import { HeroWrapper } from "../components/Hero/Hero.styled";
 import Related from "../components/Related/Related";
 import { getRelatedFacetValue } from "../services/iiif/constructors/related";
+import Heading from "../components/Shared/Heading/Heading";
 
 export default function Index({ metadata, featured, collections }) {
   const [baseUrl, setBaseUrl] = useState("");
@@ -44,7 +46,7 @@ export default function Index({ metadata, featured, collections }) {
         <Hero collection={hero} />
       </HeroWrapper>
       <Container>
-        <h2>About Canopy</h2>
+        <Heading as="h2">About Canopy</Heading>
         <div>
           <p>
             <strong>Canopy IIIF</strong> is a purely{" "}
@@ -66,8 +68,11 @@ export default function Index({ metadata, featured, collections }) {
 export async function getStaticProps() {
   const featuredItems = process.env.CANOPY_CONFIG.featured as any as string[];
   const metadata = process.env.CANOPY_CONFIG.metadata as any as string[];
-
-  const featured = await createCollection(featuredItems);
+  const randomFeaturedItem =
+    MANIFESTS[Math.floor(Math.random() * MANIFESTS.length)];
+  const featured = await createCollection(
+    featuredItems ? featuredItems : [randomFeaturedItem.id]
+  );
 
   const collections = FACETS.map((facet) => {
     const value = getRelatedFacetValue(facet.label);

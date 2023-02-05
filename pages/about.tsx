@@ -1,13 +1,14 @@
 import React from "react";
 import Layout from "@/components/layout";
 import Container from "../components/Shared/Container";
+import Heading from "../components/Shared/Heading/Heading";
 
 export default function About() {
   return (
     <Layout>
       <Container>
         <div>
-          <h1>About</h1>
+          <Heading as="h1">About</Heading>
           <p>
             <strong>Canopy IIIF</strong> is a purely{" "}
             <a href="https://iiif.io/">IIIF</a> sourced site generator using
@@ -20,7 +21,7 @@ export default function About() {
         </div>
         <section>
           <header>
-            <h2>Basic Features</h2>
+            <Heading as="h2">Basic Features</Heading>
           </header>
           <div>
             <p>[content]</p>
@@ -28,7 +29,7 @@ export default function About() {
         </section>
         <section>
           <header>
-            <h2>Getting Started</h2>
+            <Heading as="h2">Getting Started</Heading>
           </header>
           <div>
             <p>[content]</p>
@@ -36,7 +37,7 @@ export default function About() {
         </section>
         <section>
           <header>
-            <h2>History</h2>
+            <Heading as="h2">History</Heading>
           </header>
           <div>
             <p>
@@ -90,7 +91,7 @@ export default function About() {
         </section>
         <section>
           <header>
-            <h2>Contributors and Acknowledgements</h2>
+            <Heading as="h2">Contributors</Heading>
           </header>
           <div>
             <dl>
@@ -119,6 +120,26 @@ export default function About() {
                 Product Owner and Team Lead, Northwestern University Libraries
               </dd>
             </dl>
+          </div>
+        </section>
+        <section>
+          <header>
+            <Heading as="h2">Colophon</Heading>
+          </header>
+          <div>
+            <p>
+              Mat Jordan, the primary author of Canopy IIIF, was born within the
+              original homelands of the Nimíipuu (Nez Percé) and hails from Nez
+              Perce County, Idaho, in the United States. Relating to this, the
+              source collection for the Canopy IIIF demonstration is provided
+              via IIIF from{" "}
+              <em>
+                <strong>Edward S. Curtis's The North American Indian</strong>,
+                Volume 8. The Nez Perces. Wallawalla. Umatilla. Cayuse. The
+                Chinookan tribes
+              </em>{" "}
+              collection and series, by Northwestern University Libraries.
+            </p>
             <p>
               The project name Canopy is inspired by the presentation,{" "}
               <a href="https://www.cni.org/topics/standards/a-trees-strength-is-its-trunk-iiif-as-central-operational-infrastructure">
@@ -128,23 +149,6 @@ export default function About() {
               , delivered by Maria Matienzo (Stanford University) and Esmé
               Cowles (Princeton University) at the CNI Fall 2020 Virtual
               Membership Meeting.
-            </p>
-          </div>
-        </section>
-        <section>
-          <header>
-            <h2>Colophon</h2>
-          </header>
-          <div>
-            <p>
-              Mat Jordan, the primary author of Canopy IIIF, was born within the
-              original homelands of the Nimíipuu (Nez Percé) and hails from Nez
-              Perce County, Idaho, in the United States. Relating to this fact,
-              the source collection for the Canopy IIIF demonstration is
-              delivered via IIIF from the Edward S. Curtis's The North American
-              Indian collection, Volume 8. The Nez Perces. Wallawalla. Umatilla.
-              Cayuse. The Chinookan tribes series, at Northwestern University
-              Libraries.
             </p>
             <p>
               This project is created using Next.js as a platform, with a

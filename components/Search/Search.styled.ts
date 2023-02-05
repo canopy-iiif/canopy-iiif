@@ -1,5 +1,5 @@
 import { styled } from "@/stitches";
-import { indigo, indigoA, slateA } from "@radix-ui/colors";
+import { indigoA } from "@radix-ui/colors";
 
 const SearchForm = styled("form", {
   position: "relative",
