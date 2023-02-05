@@ -35,9 +35,16 @@ export default function handler(request, response) {
     id: baseUrl,
     type: "Collection",
     label: {
-      none: [`${values.value} (${facet.label})`],
+      none: [
+        values.value
+      ],
     },
     items: sortItems(items, query.sort),
     partOf: [{ id: `${origin}/api/facet/${label}`, type: "Collection" }],
+    summary: {
+      none: [
+        facet.label
+      ]
+    }
   });
 }
