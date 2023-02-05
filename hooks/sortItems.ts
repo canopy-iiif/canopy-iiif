@@ -13,8 +13,16 @@ export const sortItems = (
   else if (sortType === "lexical") {
     return items.sort(
       (a,b) =>
-        (a.label.none[0] > b.label.none[0]) ? 1 : (
-          (b.label.none[0] > a.label.none[0]) ? -1 : 0
+        (a.label[Object.keys(a.label)[0]][0] > b.label[Object.keys(b.label)[0]][0]) ? 1 : (
+          (b.label[Object.keys(b.label)[0]][0] > a.label[Object.keys(a.label)[0]][0]) ? -1 : 0
+        )
+    )
+  }
+  else if (sortType === "reverse-lexical") {
+    return items.sort(
+      (a,b) =>
+        (b.label[Object.keys(b.label)[0]][0] > a.label[Object.keys(a.label)[0]][0]) ? 1 : (
+          (a.label[Object.keys(a.label)[0]][0] > b.label[Object.keys(b.label)[0]][0]) ? -1 : 0
         )
     )
   }
