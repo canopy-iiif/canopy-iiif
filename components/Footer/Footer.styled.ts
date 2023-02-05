@@ -12,6 +12,7 @@ const FooterStyled = styled("footer", {
   backgroundColor: "$slate4",
   boxShadow: `inset 3px 3px 8px  ${slateA.slateA7}`,
   padding: "$gr4 0",
+  marginTop: "$gr6",
 });
 
 const CollectionLink = styled("a", {

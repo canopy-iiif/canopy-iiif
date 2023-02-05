@@ -54,31 +54,30 @@ const Results = ({ pages, query }) => {
 
 const Search = () => {
   const router = useRouter();
-  const { q } = router.query;
+  const { query } = router;
 
-  const [facets, setFacets] = useState([]);
   const [pages, setPages] = useState<string[]>([]);
   const [params, setParams] = useState();
   const [summary, setSummary] = useState<InternationalString>();
+  const [q, setQ] = useState();
 
   useEffect(() => {
-    const activeFacets = getActiveFacets(router.query);
-    setFacets(activeFacets);
-  }, [router.query]);
-
-  useEffect(() => {
-    setPages([]);
+    const { q } = query;
+    const facets = getActiveFacets(query);
     const params = new URLSearchParams();
+
     if (q) params.append("q", q as string);
     if (facets)
       facets.forEach((facet) =>
         params.append(facet.label, facet.value as string)
       );
+
+    setPages([]);
     setParams(params);
-  }, [q, facets]);
+  }, [query]);
 
   useEffect(() => {
-    if (params !== undefined)
+    if (typeof params !== "undefined")
       axios.get(`/api/search`, { params }).then((result) => {
         setPages(result.data.items.map((item) => item.id));
         setSummary(result.data.summary);
