@@ -50,7 +50,7 @@ export default function handler(request, response) {
       {
         id: `${origin}/search?${query.label}=${query.value}`,
         type: "Text",
-        label: 'Test',
+        label: facet.label,
       },
     ],
   });
