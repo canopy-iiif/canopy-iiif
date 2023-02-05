@@ -45,6 +45,13 @@ export default function handler(request, response) {
       none: [
         facet.label
       ]
-    }
+    },
+    homepage: [
+      {
+        id: `${origin}/search?${query.label}=${query.value}`,
+        type: "Text",
+        label: 'Test',
+      },
+    ],
   });
 }
