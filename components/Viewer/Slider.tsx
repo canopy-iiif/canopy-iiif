@@ -1,49 +1,69 @@
+import React from "react";
 import dynamic from "next/dynamic";
 import "swiper/css";
 import { gr } from "@/styles/helpers/goldenRatio";
 import { rem } from "@/styles/global";
 import { width } from "@/styles/theme/media";
+import { SliderStyled } from "./Slider.styled";
+import { SwiperProps } from "swiper/react";
+
+type SwiperBreakpoints = SwiperProps["breakpoints"];
+
+const spaceBetween = (multiplier) => rem * gr(multiplier);
 
 const breakpoints: SwiperBreakpoints = {
   [width.xxs]: {
     slidesPerView: 2,
     slidesPerGroup: 2,
-    spaceBetween: rem,
+    spaceBetween: spaceBetween(1),
   },
   [width.xs]: {
     slidesPerView: 2,
     slidesPerGroup: 2,
-    spaceBetween: rem,
+    spaceBetween: spaceBetween(1),
   },
   [width.sm]: {
     slidesPerView: 3,
     slidesPerGroup: 3,
-    spaceBetween: rem,
+    spaceBetween: spaceBetween(1),
   },
   [width.md]: {
-    slidesPerView: 4,
-    slidesPerGroup: 4,
-    spaceBetween: rem * gr(1),
+    slidesPerView: 3,
+    slidesPerGroup: 3,
+    spaceBetween: spaceBetween(2),
   },
   [width.lg]: {
-    slidesPerView: 5,
-    slidesPerGroup: 5,
-    spaceBetween: rem * gr(1),
+    slidesPerView: 4,
+    slidesPerGroup: 4,
+    spaceBetween: spaceBetween(2),
   },
   [width.xl]: {
-    slidesPerView: 6,
-    slidesPerGroup: 6,
-    spaceBetween: rem * gr(2),
+    slidesPerView: 4,
+    slidesPerGroup: 4,
+    spaceBetween: spaceBetween(2),
   },
 };
 
-const Bloom: React.ComponentType<{ collectionId: string }> = dynamic(
-  () => import("@samvera/bloom-iiif"),
-  {
-    ssr: false,
-  }
-);
+const BloomIIIF: React.ComponentType<{
+  collectionId: string;
+  options: {
+    breakpoints: SwiperBreakpoints;
+    enablePreview: boolean;
+  };
+}> = dynamic(() => import("@samvera/bloom-iiif"), {
+  ssr: false,
+});
 
-const Slider = ({ collectionId }) => <Bloom collectionId={collectionId} />;
+const Slider = ({ collectionId }) => (
+  <SliderStyled>
+    <BloomIIIF
+      collectionId={collectionId}
+      options={{
+        enablePreview: false,
+        breakpoints: breakpoints,
+      }}
+    />
+  </SliderStyled>
+);
 
 export default Slider;
