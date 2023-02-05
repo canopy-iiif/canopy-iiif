@@ -76,7 +76,7 @@ export async function getStaticProps() {
 
   const collections = FACETS.map((facet) => {
     const value = getRelatedFacetValue(facet.label);
-    return `/api/facet/${facet.slug}/${value.slug}`;
+    return `/api/facet/${facet.slug}/${value.slug}?sort=random`;
   });
 
   return {

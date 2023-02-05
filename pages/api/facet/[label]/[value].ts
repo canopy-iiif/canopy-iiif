@@ -1,6 +1,7 @@
 import FACETS from "@/.canopy/facets.json";
 import MANIFESTS from "@/.canopy/manifests.json";
 import absoluteUrl from "next-absolute-url";
+import {sortItems} from "@/hooks/sortItems";
 
 export default function handler(request, response) {
   const { origin } = absoluteUrl(request);
@@ -34,9 +35,23 @@ export default function handler(request, response) {
     id: baseUrl,
     type: "Collection",
     label: {
-      none: [`${values.value} (${facet.label})`],
+      none: [
+        values.value
+      ],
     },
-    items: items,
+    items: sortItems(items, query.sort),
     partOf: [{ id: `${origin}/api/facet/${label}`, type: "Collection" }],
+    summary: {
+      none: [
+        facet.label
+      ]
+    },
+    homepage: [
+      {
+        id: `${origin}/search?${query.label}=${query.value}`,
+        type: "Text",
+        label: facet.label,
+      },
+    ],
   });
 }
