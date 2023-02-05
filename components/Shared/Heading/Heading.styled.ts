@@ -22,9 +22,9 @@ const StyledHeading = styled("h2", {
 
   "&[level=h2]": {
     margin: "$gr5 0 $gr4",
-    color: "$slate10",
+    color: "$slate11",
     fontSize: "$gr6",
-    fontWeight: "300",
+    fontWeight: "500",
     fontFamily: "$bookTight",
   },
 

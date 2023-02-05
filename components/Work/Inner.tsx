@@ -9,6 +9,7 @@ import FACETS from "@/.canopy/facets";
 import Link from "next/link";
 import React from "react";
 import Heading from "@/components/Shared/Heading/Heading";
+import { DefinitionListWrapper } from "../Shared/DefinitionList.styled";
 
 interface ValueAsListItemProps {
   searchParam?: string;
@@ -45,8 +46,10 @@ const WorkInner = ({ manifest }) => {
           <Label label={label} as="span" />
         </Heading>
         <Summary summary={summary} as="p" className="work-summary" />
-        <Metadata customValueContent={formattedValues} metadata={metadata} />
-        <RequiredStatement requiredStatement={requiredStatement} />
+        <DefinitionListWrapper>
+          <Metadata customValueContent={formattedValues} metadata={metadata} />
+          <RequiredStatement requiredStatement={requiredStatement} />
+        </DefinitionListWrapper>
       </WorkData>
     </StyledWorkInner>
   );
