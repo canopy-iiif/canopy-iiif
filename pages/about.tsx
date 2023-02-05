@@ -150,7 +150,8 @@ export default function About() {
               collection and series, by Northwestern University Libraries.
             </p>
             <p>
-              The project name Canopy is inspired by the presentation,{" "}
+              The project name &ldquo;Canopy&rdquo; is inspired by the
+              presentation,{" "}
               <a href="https://www.cni.org/topics/standards/a-trees-strength-is-its-trunk-iiif-as-central-operational-infrastructure">
                 A Tree’s Strength Is Its Trunk: IIIF as Central Operational
                 Infrastructure
