@@ -1,6 +1,5 @@
 import React from "react";
 import { useTheme } from "next-themes";
-import { styled } from "../../stitches";
 import { useEffect, useState } from "react";
 
 const ThemeMode = () => {
