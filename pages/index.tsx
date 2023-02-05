@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import FACETS from "@/.canopy/facets.json";
+import MANIFESTS from "@/.canopy/manifests.json";
 import Layout from "@/components/layout";
 import Hero from "@/components/Hero/Hero";
 import Container from "@/components/Shared/Container";
@@ -66,8 +67,11 @@ export default function Index({ metadata, featured, collections }) {
 export async function getStaticProps() {
   const featuredItems = process.env.CANOPY_CONFIG.featured as any as string[];
   const metadata = process.env.CANOPY_CONFIG.metadata as any as string[];
-
-  const featured = await createCollection(featuredItems);
+  const randomFeaturedItem =
+    MANIFESTS[Math.floor(Math.random() * MANIFESTS.length)];
+  const featured = await createCollection(
+    featuredItems ? featuredItems : [randomFeaturedItem.id]
+  );
 
   const collections = FACETS.map((facet) => {
     const value = getRelatedFacetValue(facet.label);

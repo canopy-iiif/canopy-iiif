@@ -32,17 +32,17 @@ const Results = ({ pages, query }) => {
 
   return (
     <Grid>
-      {data.map((result, index) => {
+      {data.map((item, index) => {
         if (data.length === index + 1) {
           return (
-            <span ref={data.length === index + 1 && loadMore} key={result.id}>
-              <Grid.Item data={result} />
+            <span ref={data.length === index + 1 && loadMore} key={item.id}>
+              <Grid.Item item={item} />
             </span>
           );
         } else {
           return (
-            <span key={result.id}>
-              <Grid.Item data={result} />
+            <span key={item.id}>
+              <Grid.Item item={item} />
             </span>
           );
         }

@@ -43,6 +43,7 @@ const getItem = (item, origin) => {
     id: item.id,
     type: "Manifest",
     label: item.label,
+    thumbnail: item.thumbnail,
     homepage: [
       {
         id: `${origin}/works/${item.slug}`,
