@@ -5,13 +5,7 @@ import Container from "../components/Shared/Container";
 import Link from "next/link";
 import Heading from "@/components/Shared/Heading/Heading";
 import { styled } from "@/stitches";
-import {
-  ArrowRightIcon,
-  BookmarkFilledIcon,
-  DoubleArrowRightIcon,
-  MinusIcon,
-  TriangleRightIcon,
-} from "@radix-ui/react-icons";
+import { MinusIcon } from "@radix-ui/react-icons";
 
 const ListItem = styled("li", {
   listStyle: "none",
