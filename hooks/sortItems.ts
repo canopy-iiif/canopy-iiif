@@ -1,6 +1,13 @@
+enum SortType {
+  lexical = "lexical",
+  random = "random",
+  reverse = "reverse",
+  "reverse-lexical" = "reverse-lexical"
+}
+
 export const sortItems = (
   items: Array,
-  sortType: string = "none"
+  sortType: SortType
 ) => {
   switch (sortType) {
     case "random":
