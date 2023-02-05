@@ -22,7 +22,7 @@ const defaults = {
 
   p: {
     fontFamily: "$book",
-    lineHeight: "1.47em",
+    lineHeight: "1.55em",
   },
 
   dl: {

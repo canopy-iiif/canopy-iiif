@@ -9,7 +9,7 @@ exports.prod = {
     "https://api.dc.library.northwestern.edu/api/v2/works/14a6aa15-9e12-47a7-9617-91f430d4f47b?as=iiif",
     "https://api.dc.library.northwestern.edu/api/v2/works/e82cc873-c7c3-4d8e-b8b1-d1130737216e?as=iiif",
   ],
-  metadata: ["Date", "Dimensions", "Genre", "Subject"],
+  metadata: ["Date", "Subject", "Genre", "Dimensions"],
 };
 
 /**
@@ -23,7 +23,7 @@ exports.dev = {
     "https://api.dc.library.northwestern.edu/api/v2/works/14a6aa15-9e12-47a7-9617-91f430d4f47b?as=iiif",
     "https://api.dc.library.northwestern.edu/api/v2/works/e82cc873-c7c3-4d8e-b8b1-d1130737216e?as=iiif",
   ],
-  metadata: ["Date", "Dimensions", "Genre", "Subject"],
+  metadata: ["Date", "Subject", "Genre", "Dimensions"],
 };
 
 exports.options = {

@@ -9,6 +9,7 @@ import { InternationalString } from "@iiif/presentation-3";
 import { Summary } from "@samvera/nectar-iiif";
 import Facets from "../components/Facets/Facets";
 import { getActiveFacets } from "@/services/facet/facets";
+import Heading from "@/components/Shared/Heading/Heading";
 
 const Results = ({ pages, query }) => {
   const [page, setPage] = useState(0);
@@ -95,9 +96,9 @@ const Search = () => {
             alignItems: "center",
           }}
         >
-          <h3 style={{ fontWeight: "300", opacity: "0.5" }}>
+          <Heading as="h2">
             {summary && <Summary summary={summary} as="span" />}
-          </h3>
+          </Heading>
           <Facets />
         </div>
         <Results pages={pages} query={params} />

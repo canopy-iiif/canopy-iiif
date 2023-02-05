@@ -8,6 +8,7 @@ import { createCollection } from "../services/iiif/constructors/collection";
 import { HeroWrapper } from "../components/Hero/Hero.styled";
 import Related from "../components/Related/Related";
 import { getRelatedFacetValue } from "../services/iiif/constructors/related";
+import Heading from "../components/Shared/Heading/Heading";
 
 export default function Index({ metadata, featured, collections }) {
   const [baseUrl, setBaseUrl] = useState("");
@@ -45,7 +46,7 @@ export default function Index({ metadata, featured, collections }) {
         <Hero collection={hero} />
       </HeroWrapper>
       <Container>
-        <h2>About Canopy</h2>
+        <Heading as="h2">About Canopy</Heading>
         <div>
           <p>
             <strong>Canopy IIIF</strong> is a purely{" "}

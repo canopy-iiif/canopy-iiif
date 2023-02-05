@@ -33,13 +33,13 @@ const breakpoints: SwiperBreakpoints = {
     spaceBetween: spaceBetween(2),
   },
   [width.lg]: {
-    slidesPerView: 4,
-    slidesPerGroup: 4,
+    slidesPerView: 5,
+    slidesPerGroup: 5,
     spaceBetween: spaceBetween(2),
   },
   [width.xl]: {
-    slidesPerView: 4,
-    slidesPerGroup: 4,
+    slidesPerView: 5,
+    slidesPerGroup: 5,
     spaceBetween: spaceBetween(2),
   },
 };

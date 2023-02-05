@@ -8,6 +8,7 @@ import { StyledWorkInner, WorkData } from "@/components/Work/Inner.styled";
 import FACETS from "@/.canopy/facets";
 import Link from "next/link";
 import React from "react";
+import Heading from "@/components/Shared/Heading/Heading";
 
 interface ValueAsListItemProps {
   searchParam?: string;
@@ -40,7 +41,9 @@ const WorkInner = ({ manifest }) => {
   return (
     <StyledWorkInner>
       <WorkData>
-        <Label label={label} as="h1" />
+        <Heading as="h1">
+          <Label label={label} as="span" />
+        </Heading>
         <Summary summary={summary} as="p" className="work-summary" />
         <Metadata customValueContent={formattedValues} metadata={metadata} />
         <RequiredStatement requiredStatement={requiredStatement} />
