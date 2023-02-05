@@ -1,5 +1,5 @@
 import { styled } from "@/stitches";
-import { indigoA } from "@radix-ui/colors";
+import { slateA } from "@radix-ui/colors";
 
 const FooterContent = styled("div", {
   display: "flex",
@@ -10,7 +10,7 @@ const FooterContent = styled("div", {
 
 const FooterStyled = styled("footer", {
   backgroundColor: "$slate4",
-  boxShadow: `inset 1px 1px 2px ${indigoA.indigoA4}`,
+  boxShadow: `inset 3px 3px 8px  ${slateA.slateA7}`,
   padding: "$gr4 0",
 });
 
@@ -24,8 +24,8 @@ const CollectionLink = styled("a", {
   svg: {
     marginRight: "$gr2",
     height: "$gr3",
-    fill: "inherit",
     color: "inherit",
+    fill: "inherit",
   },
 });
 

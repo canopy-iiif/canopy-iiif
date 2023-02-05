@@ -31,6 +31,8 @@ const Card = ({ resource }) => {
 
   const { ref, inView } = useInView();
 
+  if (!aspectRatio) return <></>;
+
   return (
     <Wrapper ref={ref}>
       <Link href={homepage[0].id}>

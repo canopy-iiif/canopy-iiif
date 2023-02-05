@@ -20,6 +20,10 @@ const defaults = {
     paddingTop: "61.25px",
   },
 
+  "a, a:visited": {
+    color: "$indigo11",
+  },
+
   p: {
     fontFamily: "$book",
     lineHeight: "1.55em",
