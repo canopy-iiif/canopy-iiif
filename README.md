@@ -25,6 +25,13 @@ A purely IIIF sourced site generator using Next.js. Canopy is an experimental ap
 
 <img src="https://user-images.githubusercontent.com/7376450/201527565-243437c8-bb90-408b-82fa-d8798478c9ee.png" width="400px" />
 
+### [The Chimney Tops 2 Wildfires In Memory And Art](https://canopy-iiif-git-rfta-artists-mathewjordan.vercel.app/)
+- IIIF Presentation API 3.0
+- 43 items
+- Provided by University of Tennessee Libraries
+
+<img src="https://user-images.githubusercontent.com/7376450/217075076-765ccd39-6949-4c91-b6c3-8017671a66fb.png" width="400px" />
+
 ### [Canonici](https://canopy-iiif-git-canonici-mathewjordan.vercel.app/)
 - IIIF Presentation API 2.0
 - 529 items
