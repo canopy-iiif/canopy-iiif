@@ -61,15 +61,11 @@ export const ContainerStyled = styled("div", {
   boxSizing: "border-box",
   padding: "0 $gr5",
 
-  "@xxs": {
-    padding: "0 $gr3",
+  "@xxl": {
+    padding: "0",
   },
 
-  "@xs": {
-    padding: "0 $gr3",
-  },
-
-  "@sm": {
+  "@lg": {
     padding: "0 $gr4",
   },
 
@@ -77,8 +73,16 @@ export const ContainerStyled = styled("div", {
     padding: "0 $gr4",
   },
 
-  "@xxl": {
-    padding: "0",
+  "@sm": {
+    padding: "0 $gr4",
+  },
+
+  "@xs": {
+    padding: "0 $gr3",
+  },
+
+  "@xxs": {
+    padding: "0 $gr3",
   },
 });
 

@@ -1,5 +1,6 @@
 import { styled } from "@/stitches";
 import { slateA } from "@radix-ui/colors";
+import { ButtonStyled } from "../Shared/Button/Button.styled";
 
 const Title = styled("span", {
   display: "flex",
@@ -7,12 +8,57 @@ const Title = styled("span", {
   fontFamily: "$bookTight",
   fontSize: "$gr5",
   fontWeight: "800",
+
+  "@sm": {
+    marginRight: "0",
+  },
+});
+
+const ResponsiveActions = styled("div", {
+  flexGrow: "1",
+  display: "none",
+  justifyContent: "flex-end",
+
+  button: {
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    background: "transparent",
+    border: "none",
+    fontSize: "$gr3",
+    height: "calc(($gr1 * 2) + $gr4 + 1px)",
+    cursor: "pointer",
+  },
+
+  "@sm": {
+    display: "flex",
+  },
 });
 
 const Actions = styled("div", {
   flexGrow: "1",
   display: "flex",
   justifyContent: "flex-end",
+
+  "@sm": {
+    flexDirection: "column-reverse",
+    backgroundColor: "$slate1",
+    position: "absolute",
+    width: "100%",
+    padding: "$gr1 0 $gr3",
+    overflow: "hidden",
+    left: "0",
+    top: "-10000px",
+    boxShadow: `1px 2px 2px ${slateA.slateA4}`,
+  },
+
+  variants: {
+    showNav: {
+      true: {
+        top: "calc($gr4 + ($gr2 * 2))",
+      },
+    },
+  },
 });
 
 const Content = styled("div", {
@@ -30,20 +76,28 @@ const Content = styled("div", {
   boxShadow: `3px 3px 8px ${slateA.slateA7}`,
   boxSizing: "border-box",
 
-  "@xxs": {
-    padding: "$gr1 $gr3",
+  "@xl": {
+    padding: "$gr1 $gr4",
   },
 
-  "@xs": {
-    padding: "$gr1 $gr3",
+  "@lg": {
+    padding: "$gr1 $gr4",
+  },
+
+  "@md": {
+    padding: "$gr1 $gr4",
   },
 
   "@sm": {
     padding: "$gr1 $gr4",
   },
 
-  "@md": {
-    padding: "$gr1 $gr4",
+  "@xs": {
+    padding: "$gr1 $gr3",
+  },
+
+  "@xxs": {
+    padding: "$gr1 $gr3",
   },
 
   [`&  ${Title} a`]: {
@@ -59,10 +113,10 @@ const Content = styled("div", {
 const Wrapper = styled("header", {
   position: "fixed",
   width: "100%",
-  zIndex: "2",
+  zIndex: "10",
   top: "0",
   display: "flex",
   flexDirection: "column",
 });
 
-export { Actions, Content, Title, Wrapper };
+export { Actions, Content, ResponsiveActions, Title, Wrapper };
