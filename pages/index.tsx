@@ -9,6 +9,8 @@ import { HeroWrapper } from "../components/Hero/Hero.styled";
 import Related from "../components/Related/Related";
 import { getRelatedFacetValue } from "../services/iiif/constructors/related";
 import Heading from "../components/Shared/Heading/Heading";
+import Button from "../components/Shared/Button/Button";
+import { ButtonWrapper } from "../components/Shared/Button/Button.styled";
 
 export default function Index({ metadata, featured, collections }) {
   const [baseUrl, setBaseUrl] = useState("");
@@ -56,8 +58,17 @@ export default function Index({ metadata, featured, collections }) {
             from a <a href="https://iiif.io/">IIIF Collection</a> and the
             resources it references.
           </p>
-          <a href="/about">Read More</a>
-          <a href="https://github.com/mathewjordan/canopy-iiif">View Code</a>
+          <ButtonWrapper>
+            <Button href="/about" buttonType="primary">
+              Read More
+            </Button>
+            <Button
+              href="https://github.com/mathewjordan/canopy-iiif"
+              buttonType="secondary"
+            >
+              View Code
+            </Button>
+          </ButtonWrapper>
         </div>
         <Related collections={collections} title="Highlighted Works" />
       </Container>
