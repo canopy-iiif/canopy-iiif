@@ -1,5 +1,12 @@
 import { styled } from "@/stitches";
-import { indigo, indigoA, slate, slateA, slateDarkA } from "@radix-ui/colors";
+import {
+  indigo,
+  indigoDarkA,
+  slate,
+  slateA,
+  slateDarkA,
+} from "@radix-ui/colors";
+import { ContainerStyled } from "../Shared/Container";
 
 /* eslint sort-keys: 0 */
 
@@ -17,17 +24,7 @@ const HeroStyled = styled("div", {
     position: "relative",
     overflow: "unset",
 
-    ".swiper-wrapper": {
-      "&::before": {
-        content: "",
-        display: "flex",
-        width: "100%",
-        height: "300px",
-        background: `linear-gradient(176deg, ${slateA.slateA10} 2%, ${slateA.slateA4} 10%, ${slateA.slateA1} 20%)`,
-        position: "absolute",
-        zIndex: "1",
-      },
-    },
+    ".swiper-wrapper": {},
 
     ".swiper-button-prev, .swiper-button-next": {
       color: slate.slate1,
@@ -46,63 +43,55 @@ const HeroStyled = styled("div", {
       display: "flex",
       backgroundColor: slate.slate12,
 
+      a: {
+        display: "flex",
+        color: `${slate.slate12}`,
+        textDecoration: "none",
+
+        "&:hover, &:focus": {
+          color: `${indigo.indigo11}`,
+        },
+      },
+
       figure: {
         width: "100%",
         position: "relative",
         margin: "0",
         padding: "0",
 
-        "&::before": {
-          content: "",
-          display: "flex",
-          width: "100%",
-          height: "100%",
-          background: `linear-gradient(7deg,  ${slateA.slateA11} 13%, ${slateA.slateA10} 30%, ${slateA.slateA1} 61.8%)`,
-          position: "absolute",
-          zIndex: "1",
-          bottom: "0",
-        },
-
         "img, video": {
+          position: "absolute",
           width: "100%",
           height: "100%",
-          position: "absolute",
-          zIndex: "0",
-          top: "0",
-          left: "0",
           objectFit: "cover",
         },
 
         figcaption: {
           position: "absolute",
-          zIndex: "10",
-          bottom: "$gr6",
+          zIndex: "3",
+          bottom: "0",
+          left: "0",
           display: "flex",
           flexDirection: "column",
           alignItems: "flex-start",
-          width: "$gr11",
           textAlign: "left",
+          backgroundColor: `${slateDarkA.slateA12}`,
+          boxShadow: `inset -3px -3px 8px  ${slateA.slateA4}`,
+          width: "100%",
 
-          a: {
-            color: slate.slate2,
-            textDecoration: "none",
+          [`> ${ContainerStyled}`]: {
+            justifyContent: "flex-end",
+          },
 
-            ".slide-label": {
-              fontFamily: "$bookTight",
-              fontSize: "$gr7",
-              fontWeight: "800",
-              display: "flex",
-              marginRight: "$gr2",
-              lineHeight: "1.15em",
-              transition: "$all",
-            },
-
-            "&:hover, &:focus": {
-              color: "$indigo6",
-              ".slide-label": {
-                marginRight: "$gr2",
-              },
-            },
+          ".slide-label": {
+            padding: "$gr3 0",
+            fontFamily: "$bookTight",
+            fontSize: "$gr4",
+            fontWeight: "800",
+            display: "flex",
+            marginRight: "$gr2",
+            lineHeight: "1.15em",
+            transition: "$all",
           },
 
           ".slide-summary": {

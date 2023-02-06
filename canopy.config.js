@@ -2,6 +2,7 @@
  * Configuration built by `npm run build`
  */
 exports.prod = {
+  label: { none: ["Canopy IIIF"] },
   collection:
     "https://digital.lib.utk.edu/assemble/collection/collections/heilman",
   featured: [
@@ -16,6 +17,7 @@ exports.prod = {
  * Configuration built by `npm run dev`
  */
 exports.dev = {
+  label: { none: ["Canopy IIIF"] },
   collection:
     "https://digital.lib.utk.edu/assemble/collection/collections/heilman",
   featured: [

@@ -1,6 +1,18 @@
 import { styled } from "@/stitches";
 
-const LQIP = styled("span", {});
+const Image = styled("img", {
+  position: "relative",
+  zIndex: "1",
+  width: "100%",
+  height: "100%",
+  objectFit: "contain",
+  transition: "$all",
+  opacity: 0,
+
+  [`&.loaded`]: {
+    opacity: 1,
+  },
+});
 
 const Wrapper = styled("figure", {
   backgroundColor: "$slate6",
@@ -15,20 +27,6 @@ const Wrapper = styled("figure", {
   borderRadius: "3px",
   boxShadow: "2px 2px 5px #0001",
   transition: "$all",
-
-  img: {
-    position: "relative",
-    zIndex: "1",
-    width: "100%",
-    height: "100%",
-    objectFit: "contain",
-    transition: "$all",
-    opacity: 0,
-
-    [`&.loaded`]: {
-      opacity: 1,
-    },
-  },
 });
 
-export { LQIP, Wrapper };
+export { Image, Wrapper };

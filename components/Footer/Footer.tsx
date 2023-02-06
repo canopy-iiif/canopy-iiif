@@ -1,23 +1,24 @@
 import React from "react";
 import IIIF from "@/components/SVG/IIIF";
+import ThemeMode from "./ThemeMode";
+import { CollectionLink, FooterContent, FooterStyled } from "./Footer.styled";
+import Container from "../Shared/Container";
 
 const { collection } = process.env.CANOPY_CONFIG;
 
 const Footer = () => {
   return (
-    <footer>
-      <a
-        href={collection}
-        target="_blank"
-        style={{
-          width: "1rem",
-          height: "1rem",
-          display: "inline-flex",
-        }}
-      >
-        <IIIF />
-      </a>
-    </footer>
+    <FooterStyled>
+      <Container>
+        <FooterContent>
+          <CollectionLink href={collection} target="_blank">
+            <IIIF />
+            Source Collection
+          </CollectionLink>
+          <ThemeMode />
+        </FooterContent>
+      </Container>
+    </FooterStyled>
   );
 };
 

@@ -1,27 +1,24 @@
-import { useEffect, useState } from "react";
-import { Label } from "@samvera/nectar-iiif";
+import React from "react";
+import Slider from "@/components/Viewer/Slider";
+import { RelatedStyled } from "./Related.styled";
+import Heading from "../Shared/Heading/Heading";
 
-const Related = ({ label }) => {
-  const [baseUrl, setBaseUrl] = useState("");
-  useEffect(() => {
-    const { host, protocol } = window.location;
-    const root = `${protocol}//${host}`;
-    setBaseUrl(root);
-  }, []);
+interface RelatedProps {
+  collections: string[];
+  title?: string;
+}
 
-  /**
-   * @todo: create graphql query to find related (or just 10 random) and IIIF collection endpoint
-   */
+const Related: React.FC<RelatedProps> = ({
+  collections,
+  title = "Related Works",
+}) => {
   return (
-    <>
-      <h2>
-        More Like <Label label={label} as="span" />
-      </h2>
-      <div>
-        @todo: create mvp method for getting related items as bloom
-        collection(s)
-      </div>
-    </>
+    <RelatedStyled>
+      {title && <Heading as="h2">{title}</Heading>}
+      {collections.map((id) => (
+        <Slider collectionId={id} key={id} />
+      ))}
+    </RelatedStyled>
   );
 };
 export default Related;
