@@ -1,6 +1,8 @@
 import React from "react";
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
+import Button from "../Shared/Button/Button";
+import { ButtonStyled } from "../Shared/Button/Button.styled";
 
 const ThemeMode = () => {
   const [mounted, setMounted] = useState(false);
@@ -24,7 +26,13 @@ const ThemeMode = () => {
   if (!mounted) return <></>;
 
   return (
-    <button onClick={() => handleTheme(theme as string)}>Toggle Theme</button>
+    <ButtonStyled
+      as="button"
+      onClick={() => handleTheme(theme as string)}
+      buttonSize="small"
+    >
+      Toggle Theme
+    </ButtonStyled>
   );
 };
 

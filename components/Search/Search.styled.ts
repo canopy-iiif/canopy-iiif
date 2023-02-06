@@ -12,7 +12,11 @@ const SearchForm = styled("form", {
   maxWidth: "$gr10",
   width: "100%",
   justifyContent: "space-between",
-  transition: "$all",
+  opacity: "1",
+
+  "@sm": {
+    maxWidth: "calc(100% - ($gr4 * 2))",
+  },
 
   variants: {
     isFocused: {

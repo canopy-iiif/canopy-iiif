@@ -7,6 +7,10 @@ const Highlight = styled("div", {
   height: "calc(($gr1 * 2) + $gr3)",
   borderRadius: "1.618rem",
   transition: "all 100ms ease-in-out",
+
+  "@sm": {
+    display: "none",
+  },
 });
 
 const Items = styled("div", {
@@ -18,6 +22,13 @@ const Items = styled("div", {
   flexGrow: "0",
   justifyContent: "flex-end",
 
+  "@sm": {
+    flexDirection: "column",
+    alignItems: "flex-start",
+    padding: "$gr1 $gr4 $gr3",
+    fontWeight: "500",
+  },
+
   a: {
     padding: "$gr2 $gr3",
     display: "inline-flex",
@@ -26,6 +37,12 @@ const Items = styled("div", {
     borderRadius: "2rem",
     position: "relative",
     transition: "all 100ms ease-in-out",
+
+    "@sm": {
+      padding: "0",
+      marginBottom: "$gr2",
+      transition: "none",
+    },
 
     [`&:hover`]: {
       color: "$indigo11 !important",

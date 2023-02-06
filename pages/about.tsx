@@ -3,6 +3,8 @@ import Layout from "@/components/layout";
 import Container from "../components/Shared/Container";
 import Heading from "../components/Shared/Heading/Heading";
 import { DefinitionListWrapper } from "../components/Shared/DefinitionList.styled";
+import { ButtonWrapper } from "../components/Shared/Button/Button.styled";
+import Button from "../components/Shared/Button/Button";
 
 export default function About() {
   return (
@@ -18,7 +20,14 @@ export default function About() {
             from a <a href="https://iiif.io/">IIIF Collection</a> and the
             resources it references.
           </p>
-          <a href="https://github.com/mathewjordan/canopy-iiif">View Code</a>
+          <ButtonWrapper>
+            <Button
+              href="https://github.com/mathewjordan/canopy-iiif"
+              buttonType="primary"
+            >
+              View Code
+            </Button>
+          </ButtonWrapper>
         </div>
         <section>
           <header>
