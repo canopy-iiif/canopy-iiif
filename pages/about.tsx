@@ -1,13 +1,17 @@
 import React from "react";
 import Layout from "@/components/layout";
 import Container from "../components/Shared/Container";
+import Heading from "../components/Shared/Heading/Heading";
+import { DefinitionListWrapper } from "../components/Shared/DefinitionList.styled";
+import { ButtonWrapper } from "../components/Shared/Button/Button.styled";
+import Button from "../components/Shared/Button/Button";
 
 export default function About() {
   return (
     <Layout>
       <Container>
         <div>
-          <h1>About</h1>
+          <Heading as="h1">About</Heading>
           <p>
             <strong>Canopy IIIF</strong> is a purely{" "}
             <a href="https://iiif.io/">IIIF</a> sourced site generator using
@@ -16,11 +20,18 @@ export default function About() {
             from a <a href="https://iiif.io/">IIIF Collection</a> and the
             resources it references.
           </p>
-          <a href="https://github.com/mathewjordan/canopy-iiif">View Code</a>
+          <ButtonWrapper>
+            <Button
+              href="https://github.com/mathewjordan/canopy-iiif"
+              buttonType="primary"
+            >
+              View Code
+            </Button>
+          </ButtonWrapper>
         </div>
         <section>
           <header>
-            <h2>Basic Features</h2>
+            <Heading as="h2">Basic Features</Heading>
           </header>
           <div>
             <p>[content]</p>
@@ -28,7 +39,7 @@ export default function About() {
         </section>
         <section>
           <header>
-            <h2>Getting Started</h2>
+            <Heading as="h2">Getting Started</Heading>
           </header>
           <div>
             <p>[content]</p>
@@ -36,7 +47,7 @@ export default function About() {
         </section>
         <section>
           <header>
-            <h2>History</h2>
+            <Heading as="h2">History</Heading>
           </header>
           <div>
             <p>
@@ -90,73 +101,104 @@ export default function About() {
         </section>
         <section>
           <header>
-            <h2>Contributors and Acknowledgements</h2>
+            <Heading as="h2">Contributors</Heading>
           </header>
           <div>
-            <dl>
-              <dt>Mat Jordan</dt>
-              <dd>Developer, Northwestern University Libraries</dd>
-              <dd>
-                Former Director of Technology Solutions, University of Tennessee
-                Libraries
-              </dd>
-              <dt>Mark Baggett</dt>
-              <dd>
-                Head, Digital Initiatives, University of Tennessee Libraries
-              </dd>
-              <dt>Emily Gore</dt>
-              <dd>
-                Associate University Librarian, University of Georgia Libraries
-              </dd>
-              <dd>
-                Former Assistant Dean of Libraries, University of Tennessee
-                Libraries
-              </dd>
-              <dt>Adam Arling</dt>
-              <dd>Senior Developer, Northwestern University Libraries</dd>
-              <dt>David Schober</dt>
-              <dd>
-                Product Owner and Team Lead, Northwestern University Libraries
-              </dd>
-            </dl>
-            <p>
-              The project name Canopy is inspired by the presentation,{" "}
-              <a href="https://www.cni.org/topics/standards/a-trees-strength-is-its-trunk-iiif-as-central-operational-infrastructure">
-                A Tree’s Strength Is Its Trunk: IIIF as Central Operational
-                Infrastructure
-              </a>
-              , delivered by Maria Matienzo (Stanford University) and Esmé
-              Cowles (Princeton University) at the CNI Fall 2020 Virtual
-              Membership Meeting.
-            </p>
+            <DefinitionListWrapper>
+              <dl>
+                <dt>Mat Jordan</dt>
+                <dd>Developer, Northwestern University Libraries</dd>
+                <dd>
+                  Former Director of Technology Solutions, University of
+                  Tennessee Libraries
+                </dd>
+                <dt>Mark Baggett</dt>
+                <dd>
+                  Head, Digital Initiatives, University of Tennessee Libraries
+                </dd>
+                <dt>Emily Gore</dt>
+                <dd>
+                  Associate University Librarian, University of Georgia
+                  Libraries
+                </dd>
+                <dd>
+                  Former Assistant Dean of Libraries, University of Tennessee
+                  Libraries
+                </dd>
+                <dt>Adam Arling</dt>
+                <dd>Senior Developer, Northwestern University Libraries</dd>
+                <dt>David Schober</dt>
+                <dd>
+                  Product Owner and Team Lead, Northwestern University Libraries
+                </dd>
+              </dl>
+            </DefinitionListWrapper>
           </div>
         </section>
         <section>
           <header>
-            <h2>Colophon</h2>
+            <Heading as="h2">Colophon</Heading>
           </header>
           <div>
             <p>
               Mat Jordan, the primary author of Canopy IIIF, was born within the
-              original homelands of the Nimíipuu (Nez Percé) and hails from Nez
-              Perce County, Idaho, in the United States. Relating to this fact,
-              the source collection for the Canopy IIIF demonstration is
-              delivered via IIIF from the Edward S. Curtis's The North American
-              Indian collection, Volume 8. The Nez Perces. Wallawalla. Umatilla.
-              Cayuse. The Chinookan tribes series, at Northwestern University
-              Libraries.
+              original homelands of the{" "}
+              <a href="https://wikipedia.org/wiki/Nez_Perce">
+                Nimíipuu (Nez Percé)
+              </a>{" "}
+              and hails from Nez Perce County, Idaho, in the United States.
+              Relating to this, the source collection for the Canopy IIIF
+              demonstration is provided{" "}
+              <a href="https://dc.library.northwestern.edu/collections/55ff2504-dd53-4943-b2cb-aeea46e77bc3">
+                <em>
+                  <strong>Edward S. Curtis's The North American Indian</strong>,
+                  Volume 8. The Nez Perces. Wallawalla. Umatilla. Cayuse. The
+                  Chinookan tribes
+                </em>{" "}
+              </a>
+              collection and series, by Northwestern University Libraries.
             </p>
             <p>
-              This project is created using Next.js as a platform, with a
-              FlexSearch index for search, IIIF Presentation API 3.0 delivering
-              content, Radix UI and Stitches used throughout for the user
-              interface, and various community modules from IIIF and Samvera
-              supporting the work presentation and resource delivery.
+              The project name &ldquo;Canopy&rdquo; is inspired by the
+              presentation,{" "}
+              <a href="https://www.cni.org/topics/standards/a-trees-strength-is-its-trunk-iiif-as-central-operational-infrastructure">
+                A Tree’s Strength Is Its Trunk: IIIF as Central Operational
+                Infrastructure
+              </a>
+              , delivered by María Matienzo (formerly Stanford University
+              Libraries) and Esmé Cowles (Princeton University Library) at the
+              CNI Fall 2020 Virtual Membership Meeting.
+            </p>
+            <p>
+              Canopy IIIF is created using{" "}
+              <a href="https://nextjs.org/">Next.js 13</a>, with a{" "}
+              <a href="https://github.com/nextapps-de/flexsearch">FlexSearch</a>{" "}
+              index for text search,{" "}
+              <a href="https://iiif.io/api/presentation/3.0/">
+                IIIF Presentation API 3.0
+              </a>{" "}
+              delivering resource content,{" "}
+              <a href="https://www.radix-ui.com/">Radix UI</a> and{" "}
+              <a href="https://stitches.dev/">Stitches</a> used throughout for
+              the user interface, and various community modules from{" "}
+              <a href="https://github.com/IIIF-Commons">IIIF Commons</a> and{" "}
+              <a href="https://samvera.org/">Samvera</a> supporting the work
+              presentation and resource delivery.
             </p>
             <p>
               This demonstration instance of Canopy IIIF is hosted on Vercel
               with a consistent build time under 40 seconds. The build process
-              includes metadata aggregation requests of 81 IIIF Manifests.
+              includes metadata aggregation requests of 81 IIIF Manifests. This
+              IIIF Collection and its Manifest resources are delivered via a
+              search response from the{" "}
+              <a href="https://api.dc.library.northwestern.edu/docs/v2/index.html">
+                Northwestern University Libraries Digital Collections API
+              </a>
+              . Referenced IIIF Image resources are delivered via{" "}
+              <a href="https://github.com/samvera/serverless-iiif">
+                Serverless IIIF
+              </a>
+              .
             </p>
           </div>
         </section>

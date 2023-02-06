@@ -39,45 +39,18 @@ const Hero: React.FC<HeroProps> = ({ collection }) => {
         {collection.items.map((item) => (
           <SwiperSlide key={item.id}>
             <figure>
-              <Thumbnail thumbnail={item.thumbnail} />
-              <Container className="slide-inner" isFlex>
+              <Link href={item.homepage[0].id}>
+                <Thumbnail thumbnail={item.thumbnail} />
                 <figcaption>
-                  <Link
-                    href={item.homepage[0].id}
-                    style={{
-                      display: "flex",
-                      alignItems: "center",
-                      alignContent: "center",
-                    }}
-                  >
+                  <Container className="slide-inner" isFlex>
                     <Label
                       label={item.label}
                       as="span"
                       className="slide-label"
                     />
-                    <ArrowRightIcon />
-                  </Link>
-                  {item.summary && (
-                    <Summary
-                      summary={item.summary}
-                      as="span"
-                      className="slide-summary"
-                    />
-                  )}
-                  {item.seeAlso &&
-                    item.seeAlso.map((entry) => (
-                      <Link href={entry.id} key={entry.id}>
-                        <Button isPrimary as="a" className="slide-see-also">
-                          {entry.label ? (
-                            <Label label={entry.label} />
-                          ) : (
-                            <span>Search Collection</span>
-                          )}
-                        </Button>
-                      </Link>
-                    ))}
+                  </Container>
                 </figcaption>
-              </Container>
+              </Link>
             </figure>
           </SwiperSlide>
         ))}

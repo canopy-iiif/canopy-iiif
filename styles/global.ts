@@ -1,5 +1,6 @@
 import { globalCss } from "@stitches/react";
-import media from "./theme/media";
+
+export const rem = 17;
 
 const defaults = {
   body: {
@@ -11,7 +12,7 @@ const defaults = {
 
   html: {
     fontFamily: "$book",
-    fontSize: "17.5px",
+    fontSize: `${19}px`,
     fontWeight: "500",
     fontSmooth: "always",
     webKitFontSmothing: "antialiased",
@@ -19,9 +20,13 @@ const defaults = {
     paddingTop: "61.25px",
   },
 
+  "a, a:visited": {
+    color: "$indigo11",
+  },
+
   p: {
     fontFamily: "$book",
-    lineHeight: "1.47em",
+    lineHeight: "1.55em",
   },
 
   dl: {

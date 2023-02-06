@@ -3,7 +3,8 @@ import { SearchContextStore } from "@/types/context/search";
 
 type Action =
   | { type: "updateQuery"; searchQuery: string }
-  | { type: "updateVisible"; searchVisible: boolean };
+  | { type: "updateVisible"; searchVisible: boolean }
+  | { type: "updateNav"; showNav: boolean };
 
 type Dispatch = (action: Action) => void;
 type State = SearchContextStore;
@@ -15,6 +16,7 @@ type SearchProviderProps = {
 const defaultState: SearchContextStore = {
   searchQuery: "",
   searchVisible: true,
+  showNav: false,
 };
 
 const SearchStateContext = React.createContext<
@@ -33,6 +35,12 @@ function searchReducer(state: State, action: Action) {
       return {
         ...state,
         searchVisible: action.searchVisible,
+      };
+    }
+    case "updateNav": {
+      return {
+        ...state,
+        showNav: action.showNav,
       };
     }
     default: {

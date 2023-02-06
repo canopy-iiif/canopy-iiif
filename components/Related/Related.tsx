@@ -1,5 +1,7 @@
 import React from "react";
 import Slider from "@/components/Viewer/Slider";
+import { RelatedStyled } from "./Related.styled";
+import Heading from "../Shared/Heading/Heading";
 
 interface RelatedProps {
   collections: string[];
@@ -11,12 +13,12 @@ const Related: React.FC<RelatedProps> = ({
   title = "Related Works",
 }) => {
   return (
-    <section>
-      {title && <h2>{title}</h2>}
+    <RelatedStyled>
+      {title && <Heading as="h2">{title}</Heading>}
       {collections.map((id) => (
         <Slider collectionId={id} key={id} />
       ))}
-    </section>
+    </RelatedStyled>
   );
 };
 export default Related;
