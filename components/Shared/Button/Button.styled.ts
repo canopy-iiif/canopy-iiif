@@ -6,6 +6,8 @@ const ButtonStyled = styled("button", {
   borderRadius: "2rem",
   textDecoration: "none",
   border: "none",
+  backgroundColor: "$slate2",
+  color: "$slate11 !important",
   boxShadow: `1px 1px 2px  ${slateA.slateA7}`,
   fontWeight: "500",
   fontSize: "$gr4",
@@ -16,7 +18,7 @@ const ButtonStyled = styled("button", {
     buttonType: {
       primary: {
         backgroundColor: "$indigo11",
-        color: "$indigo1 !important",
+        color: "$indigo2 !important",
 
         "&:hover, &:focus": {
           backgroundColor: "$indigo9",

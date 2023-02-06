@@ -1,8 +1,10 @@
+import Link from "next/link";
 import React, { ReactNode } from "react";
 import { ButtonStyled } from "./Button.styled";
+Link;
 
 interface ButtonProps {
-  buttonType: "primary" | "secondary";
+  buttonType?: "primary" | "secondary";
   children: ReactNode | ReactNode[];
   href?: string;
 }
@@ -12,7 +14,7 @@ const Button: React.FC<ButtonProps> = ({ buttonType, children, href }) => {
     <ButtonStyled
       href={href}
       buttonType={buttonType}
-      as={href ? "a" : "button"}
+      as={href ? Link : "button"}
     >
       {children}
     </ButtonStyled>

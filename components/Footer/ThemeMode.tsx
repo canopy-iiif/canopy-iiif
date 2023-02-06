@@ -30,7 +30,6 @@ const ThemeMode = () => {
       as="button"
       onClick={() => handleTheme(theme as string)}
       buttonSize="small"
-      buttonType="primary"
     >
       Toggle Theme
     </ButtonStyled>
