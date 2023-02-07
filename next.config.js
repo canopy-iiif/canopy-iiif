@@ -3,13 +3,15 @@ const {
   PHASE_PRODUCTION_BUILD,
 } = require("next/constants");
 
-const config = require("./canopy.config");
+const { getConfig, getOptions } = require("./services/config");
 
 module.exports = (phase) => {
   const isDev = phase === PHASE_DEVELOPMENT_SERVER;
   const isProd = phase === PHASE_PRODUCTION_BUILD;
 
-  const { prod, dev, options } = config;
+  const config = getConfig();
+  const options = getOptions();
+  const { prod, dev } = config;
 
   config.environment = (() => {
     if (isDev) return dev;

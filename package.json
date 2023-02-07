@@ -4,8 +4,8 @@
   "scripts": {
     "dev": "next -p 5001",
     "build": "next build",
-    "predev": "node aggregate dev",
-    "prebuild": "node aggregate",
+    "predev": "node canopy dev",
+    "prebuild": "node canopy",
     "start": "next start"
   },
   "dependencies": {
@@ -23,7 +23,6 @@
     "clsx": "^1.1.1",
     "flexsearch": "^0.7.31",
     "framer-motion": "^8.5.4",
-    "iiif-builder": "^1.0.4",
     "lodash": "^4.17.21",
     "next": "^13.0.0",
     "next-absolute-url": "^1.2.2",
