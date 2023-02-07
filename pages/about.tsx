@@ -141,17 +141,17 @@ export default function About() {
                 Nimíipuu (Nez Percé)
               </a>{" "}
               and hails from Nez Perce County, Idaho, in the United States.
-              Relating to this, the source collection for the Canopy IIIF
-              demonstration is{" "}
-              <a href="https://dc.library.northwestern.edu/collections/55ff2504-dd53-4943-b2cb-aeea46e77bc3">
-                <em>
-                  <strong>Edward S. Curtis's The North American Indian</strong>,
-                  Volume 8. The Nez Perces. Wallawalla. Umatilla. Cayuse. The
-                  Chinookan tribes
-                </em>{" "}
+              Relating to this, the{" "}
+              <a href="https://api.dc.library.northwestern.edu/api/v2/search?query=%22Nez%20Perc%C3%A9%22&as=iiif&size=200">
+                source IIIF Collection
+              </a>{" "}
+              for this demonstration is a query for{" "}
+              <a href="https://dc.library.northwestern.edu/search?q=%22Nez+Perc%C3%A9%22">
+                <em>"Nez Percé"</em>
               </a>
-              collection and series, provided by Northwestern University
-              Libraries.
+              , with results coming from the{" "}
+              <strong>Edward S. Curtis's The North American Indian</strong>{" "}
+              collection provided by Northwestern University Libraries.
             </p>
             <p>
               The project name &ldquo;Canopy&rdquo; is inspired by the
@@ -183,7 +183,7 @@ export default function About() {
             <p>
               This demonstration instance of Canopy IIIF is hosted on Vercel
               with a consistent build time under 40 seconds. The build process
-              includes metadata aggregation requests of 81 IIIF Manifests. This
+              includes metadata aggregation requests of 119 IIIF Manifests. This
               IIIF Collection and its Manifest resources are delivered via a
               search response from the{" "}
               <a href="https://api.dc.library.northwestern.edu/docs/v2/index.html">
