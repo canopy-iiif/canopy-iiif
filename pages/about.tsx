@@ -29,7 +29,7 @@ export default function About() {
             </Button>
           </ButtonWrapper>
         </div>
-        <section>
+        {/* <section>
           <header>
             <Heading as="h2">Basic Features</Heading>
           </header>
@@ -44,7 +44,7 @@ export default function About() {
           <div>
             <p>[content]</p>
           </div>
-        </section>
+        </section> */}
         <section>
           <header>
             <Heading as="h2">History</Heading>
@@ -90,12 +90,6 @@ export default function About() {
               Presentation API 2.0 and 3.0 specifications. In this version the
               decision was also made to switch from Gatsby.js platform to
               Next.js.
-              <br />
-              <br />
-              [Next.js selection]
-              <br />
-              <br />
-              [Roadmap of project now.]
             </p>
           </div>
         </section>

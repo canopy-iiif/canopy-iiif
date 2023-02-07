@@ -19,7 +19,7 @@ export default function Manifest({ manifest }) {
       <Viewer id={id} />
       <Container>
         <WorkInner manifest={manifest} />
-        <Related collections={collections} />
+        {/* <Related collections={collections} /> */}
       </Container>
     </Layout>
   );

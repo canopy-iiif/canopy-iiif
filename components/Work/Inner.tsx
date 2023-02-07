@@ -12,18 +12,27 @@ import Heading from "@/components/Shared/Heading/Heading";
 import { DefinitionListWrapper } from "../Shared/DefinitionList.styled";
 
 interface ValueAsListItemProps {
-  searchParam?: string;
+  searchParam: string;
+  searchValues: [
+    {
+      value: string;
+      slug: string;
+      doc_count: number;
+    }
+  ];
   value?: string;
 }
 
 export const ValueAsListItem: React.FC<ValueAsListItemProps> = ({
   searchParam,
+  searchValues,
   value,
 }) => {
   if (!value) return <></>;
+  const entry = searchValues?.find((entry) => entry.value === value);
   const search = `/search?${searchParam}=`;
   return (
-    <Link href={search.concat(encodeURIComponent(value))}>
+    <Link href={search.concat(encodeURIComponent(entry?.slug as string))}>
       <span dangerouslySetInnerHTML={{ __html: value }}></span>
     </Link>
   );
@@ -34,7 +43,9 @@ const WorkInner = ({ manifest }) => {
 
   const formattedValues = FACETS.map((value) => {
     return {
-      Content: <ValueAsListItem searchParam={value.slug} />,
+      Content: (
+        <ValueAsListItem searchParam={value.slug} searchValues={value.values} />
+      ),
       matchingLabel: { none: [value.label] },
     };
   });
