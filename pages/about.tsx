@@ -36,15 +36,58 @@ export default function About() {
           <div>
             <p>[content]</p>
           </div>
-        </section>
+        </section> */}
         <section>
           <header>
             <Heading as="h2">Getting Started</Heading>
+            <p>
+              Canopy IIF is a Next.js application where production and
+              development builds will follow{" "}
+              <a href="https://nextjs.org/docs/getting-started">
+                Next documentation
+              </a>{" "}
+              accordingly.
+            </p>
           </header>
           <div>
-            <p>[content]</p>
+            <Heading as="h3">Setup</Heading>
+            <Heading as="h4">Dependency Install</Heading>
+            <pre>
+              <code>npm install</code>
+            </pre>
+            <Heading as="h4">Running in Development</Heading>
+            <pre>
+              <code>npm run dev</code>
+            </pre>
+            <Heading as="h4">Building in Production</Heading>
+            <pre>
+              <code>npm run build</code>
+            </pre>
+            <Heading as="h4">Configuration</Heading>
+            Canopy IIIF uses a default configuration{" "}
+            <code>config/.default/canopy.default.json</code> for demonstration
+            purposes if a custom one is not set. The build process will read
+            from a custom configuration file at <code>config/canopy.json</code>{" "}
+            if it exists.
+            <Heading as="h5">Create a Custom Configuration</Heading>
+            <ol>
+              <li>
+                Find your <code>config/</code> directory
+              </li>
+              <li>
+                Rename <code>canopy.sample.json</code> to{" "}
+                <code>canopy.json</code>
+              </li>
+              <li>
+                Updates should be made to both the <strong>prod</strong> and{" "}
+                <strong>dev</strong> configurations. These configurations can
+                match eachother; however in some cases, development speed can be
+                aided by targeting a <em>smaller</em> IIIF Collection{" "}
+                <code>id</code> as a fixture.
+              </li>
+            </ol>
           </div>
-        </section> */}
+        </section>
         <section>
           <header>
             <Heading as="h2">History</Heading>
