@@ -142,7 +142,7 @@ export default function About() {
               </a>{" "}
               and hails from Nez Perce County, Idaho, in the United States.
               Relating to this, the source collection for the Canopy IIIF
-              demonstration is provided{" "}
+              demonstration is{" "}
               <a href="https://dc.library.northwestern.edu/collections/55ff2504-dd53-4943-b2cb-aeea46e77bc3">
                 <em>
                   <strong>Edward S. Curtis's The North American Indian</strong>,
@@ -150,7 +150,8 @@ export default function About() {
                   Chinookan tribes
                 </em>{" "}
               </a>
-              collection and series, by Northwestern University Libraries.
+              collection and series, provided by Northwestern University
+              Libraries.
             </p>
             <p>
               The project name &ldquo;Canopy&rdquo; is inspired by the
