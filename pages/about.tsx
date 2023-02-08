@@ -143,7 +143,7 @@ export default function About() {
               Curating Metadata allows implementers of Canopy IIIF to select
               metadata labels that provide use to end users. An optimal case is
               a label common to all or most manifests with some in diversity of
-              values across those resources. Metadata labels that curated will
+              values across those resources. Metadata labels that are curated will
               be automatically included as featured elements on the homepage,
               the metadata page, linking from works, and as facets on the search
               page.
