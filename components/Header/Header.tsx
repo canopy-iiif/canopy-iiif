@@ -13,6 +13,7 @@ const navItems = [
   { path: "/works", text: "Works", type: "link" },
   { path: "/metadata", text: "Metadata", type: "link" },
   { path: "/about", text: "About", type: "link" },
+  { path: "/map", text: "Map", type: "link" },
 ];
 
 const Header = () => {
