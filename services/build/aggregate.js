@@ -122,6 +122,17 @@ module.exports.build = (env) => {
             });
           });
 
+        log(`\nStoring Environmental variables\n`);
+        fs.writeFile(
+          `${canopyDirectory}/env.json`,
+          JSON.stringify(env),
+          (err) => {
+            if (err) {
+              console.error(err);
+            }
+          }
+        );
+
         log(`\nCreating facets...\n`);
         const canopyFacets = buildFacets(env.metadata, canopyMetadata);
         fs.writeFile(
