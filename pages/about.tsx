@@ -5,6 +5,7 @@ import Heading from "../components/Shared/Heading/Heading";
 import { DefinitionListWrapper } from "../components/Shared/DefinitionList.styled";
 import { ButtonWrapper } from "../components/Shared/Button/Button.styled";
 import Button from "../components/Shared/Button/Button";
+import Code from "../components/Shared/Code/Code";
 
 export default function About() {
   return (
@@ -36,15 +37,123 @@ export default function About() {
           <div>
             <p>[content]</p>
           </div>
-        </section>
+        </section> */}
         <section>
           <header>
             <Heading as="h2">Getting Started</Heading>
+            <p>
+              Canopy IIF is a Next.js application where production and
+              development builds will follow{" "}
+              <a href="https://nextjs.org/docs/getting-started">
+                Next documentation
+              </a>{" "}
+              accordingly.
+            </p>
           </header>
           <div>
-            <p>[content]</p>
+            <Heading as="h3">Setup</Heading>
+            <Heading as="h4">Install Dependencies</Heading>
+            <Code language="bash">npm i</Code>
+            <Heading as="h4">Running in Development</Heading>
+            <Code language="bash">npm run dev</Code>
+            <Heading as="h4">Building in Production</Heading>
+            <Code language="bash">npm run build</Code>
+            <Heading as="h3">Configuration</Heading>
+            Canopy IIIF uses a default configuration{" "}
+            <code>config/.default/canopy.default.json</code> for demonstration
+            purposes if a custom one is not set. The build process will read
+            from a custom configuration file at <code>config/canopy.json</code>{" "}
+            if it exists.
+            <Heading as="h4">Create a Custom Configuration</Heading>
+            <ol>
+              <li>
+                Find your <code>config/</code> directory
+              </li>
+              <li>
+                Rename <code>canopy.sample.json</code> to{" "}
+                <code>canopy.json</code>
+              </li>
+              <li>
+                Updates should be made to both the <strong>prod</strong> and{" "}
+                <strong>dev</strong> configurations.
+              </li>
+            </ol>
+            <Heading as="h4">Example Configuration</Heading>
+            <p>
+              Both the prod and dev environments have a configuration. These
+              configurations can match each other; however in some cases,
+              development speed can be aided by targeting a <em>smaller</em>{" "}
+              IIIF Collection <code>id</code> as a fixture.
+            </p>
+            <p>
+              <strong>Important:</strong> The <code>collection</code> property
+              is required and must be the <code>id</code> of the referenced
+              source IIIF Collection. Collections of Collections are not
+              currently supported.
+            </p>
+            <Code language="json">{`{
+  "prod": {
+    "label": { none: ["Hobhouse"] },
+    "collection": "https://iiif.bodleian.ox.ac.uk/iiif/collection/hobhouse",
+    "featured": [
+      "https://iiif.bodleian.ox.ac.uk/iiif/manifest/8da97e8c-4e12-457d-aad8-3327b3aec183.json",
+      "https://iiif.bodleian.ox.ac.uk/iiif/manifest/2968d5c7-3718-44ef-92ea-ee4cc58cc677.json"
+    ],
+    "metadata": ["Extent", "Title", "Date Statement", "Language"]
+  },
+  "dev": {
+    "label": { none: ["Hobhouse"] },
+    "collection": "https://iiif.bodleian.ox.ac.uk/iiif/collection/hobhouse",
+    "featured": [
+      "https://iiif.bodleian.ox.ac.uk/iiif/manifest/8da97e8c-4e12-457d-aad8-3327b3aec183.json",
+      "https://iiif.bodleian.ox.ac.uk/iiif/manifest/2968d5c7-3718-44ef-92ea-ee4cc58cc677.json"
+    ],
+    "metadata": ["Extent", "Title", "Date Statement", "Language"]
+  }
+}`}</Code>
+            <Heading as="h4">Configuration Options</Heading>
+            <Heading as="h5">Label as Site Title</Heading>
+            <p>
+              The Canopy IIIF site title is the Collection label of the set{" "}
+              <code>collection</code> resource. You can optionally override this
+              by providing a valid{" "}
+              <a href="">Presentation 3.0 label property</a>.
+            </p>
+            <Code language="json">{`"label": { none: ["Hobhouse"] }`}</Code>
+            <Heading as="h5">Curating Featured Manifests</Heading>
+            <p>
+              You can inform Canopy IIIF of featured Manifests by providing an
+              array of ids. These must be within the referenced{" "}
+              <code>collection</code> resource and the Manifest URIs must be an
+              exact match. These Manifests will render throughout the interface
+              in featured components.
+            </p>
+            <p>
+              <strong>Warning:</strong> In the current pre-release, featured
+              Manifests must have an Image body on the first Canvas.
+            </p>
+            <Code language="json">{`"featured": [
+  "https://iiif.bodleian.ox.ac.uk/iiif/manifest/8da97e8c-4e12-457d-aad8-3327b3aec183.json",
+  "https://iiif.bodleian.ox.ac.uk/iiif/manifest/2968d5c7-3718-44ef-92ea-ee4cc58cc677.json"
+]`}</Code>{" "}
+            <Heading as="h5">Curating Metadata</Heading>
+            <p>
+              Curating Metadata allows implementers of Canopy IIIF to select
+              metadata labels that provide use to end users. An optimal case is
+              a label common to all or most manifests with some in diversity of
+              values across those resources. Metadata labels that are curated
+              will be automatically included as featured elements on the
+              homepage, the metadata page, linking from works, and as facets on
+              the search page.
+            </p>
+            <p>
+              <strong>Note:</strong> Metadata labels are not yet BCP 47 language
+              code aware; however, aggregation processes will make exact string
+              comparisons regardless of language code.
+            </p>
+            <Code language="json">{`"metadata": ["Extent", "Title", "Date Statement", "Language"]`}</Code>
           </div>
-        </section> */}
+        </section>
         <section>
           <header>
             <Heading as="h2">History</Heading>

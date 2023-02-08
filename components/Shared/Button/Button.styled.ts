@@ -37,6 +37,10 @@ const ButtonStyled = styled("button", {
       small: {
         fontSize: "$gr3",
       },
+      tiny: {
+        padding: "$gr1 $gr2",
+        fontSize: "$gr2",
+      },
     },
   },
 });
