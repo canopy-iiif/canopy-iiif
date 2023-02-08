@@ -4,7 +4,7 @@ import Highlight, { defaultProps, Language } from "prism-react-renderer";
 // import { CopyIcon } from 'components/icons'
 import { theme } from "./prism-helpers";
 import { CodePre, CodeStyled } from "./Code.styled";
-import { ButtonStyled } from "@/Components/Shared/Button/Button.styled";
+import { ButtonStyled } from "@/components/Shared/Button/Button.styled";
 
 const Code = ({
   children,
