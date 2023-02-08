@@ -1,10 +1,10 @@
 import React from "react";
 import copy from "copy-to-clipboard";
 import Highlight, { defaultProps, Language } from "prism-react-renderer";
-// import { CopyIcon } from 'components/icons'
 import { theme } from "./prism-helpers";
 import { CodePre, CodeStyled } from "./Code.styled";
 import { ButtonStyled } from "@/components/Shared/Button/Button.styled";
+import { CopyIcon } from "@radix-ui/react-icons";
 
 const Code = ({
   children,
@@ -29,8 +29,10 @@ const Code = ({
             onClick={() => {
               copy(children);
             }}
+            css={{ display: "flex", alignItems: "center" }}
           >
-            Copy
+            Copy&nbsp;
+            <CopyIcon />
           </ButtonStyled>
           <CodePre style={style}>
             {tokens.map((line, i) => (
