@@ -8,12 +8,13 @@ import Search from "../Search/Search";
 import { Actions, ResponsiveActions } from "./Header.styled";
 import { HamburgerMenuIcon } from "@radix-ui/react-icons";
 import { useRouter } from "next/router";
+import env from "@/.canopy/env.json"
 
 const navItems = [
   { path: "/works", text: "Works", type: "link" },
   { path: "/metadata", text: "Metadata", type: "link" },
   { path: "/about", text: "About", type: "link" },
-  { path: "/map", text: "Map", type: "link" },
+  ...(env.map.enabled ? [{ path: "/map", text: "Map", type: "link" }] : [])
 ];
 
 const Header = () => {
