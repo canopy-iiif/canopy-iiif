@@ -76,7 +76,7 @@ export default function About() {
               <li>
                 Updates should be made to both the <strong>prod</strong> and{" "}
                 <strong>dev</strong> configurations. These configurations can
-                match eachother; however in some cases, development speed can be
+                match each other; however in some cases, development speed can be
                 aided by targeting a <em>smaller</em> IIIF Collection{" "}
                 <code>id</code> as a fixture.
               </li>
