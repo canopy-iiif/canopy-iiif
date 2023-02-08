@@ -5,7 +5,7 @@ import Heading from "../components/Shared/Heading/Heading";
 import { DefinitionListWrapper } from "../components/Shared/DefinitionList.styled";
 import { ButtonWrapper } from "../components/Shared/Button/Button.styled";
 import Button from "../components/Shared/Button/Button";
-import Code from "../components/Shared/Code";
+import Code from "../components/Shared/Code/Code";
 
 export default function About() {
   return (
@@ -84,25 +84,85 @@ export default function About() {
             <Heading as="h5">Example Configuration</Heading>
             <Code language="json">{`{
   "prod": {
-    "label": { "none": ["Canopy IIIF"] },
-    "collection": "https://api.dc.library.northwestern.edu/api/v2/search?query=%22Nez%20Perc%C3%A9%22&as=iiif&size=200",
+    "collection": "https://iiif.bodleian.ox.ac.uk/iiif/collection/hobhouse",
     "featured": [
-      "https://api.dc.library.northwestern.edu/api/v2/works/14a6aa15-9e12-47a7-9617-91f430d4f47b?as=iiif",
-      "https://api.dc.library.northwestern.edu/api/v2/works/e82cc873-c7c3-4d8e-b8b1-d1130737216e?as=iiif"
+      "https://iiif.bodleian.ox.ac.uk/iiif/manifest/8da97e8c-4e12-457d-aad8-3327b3aec183.json",
     ],
-    "metadata": ["Date", "Subject", "Genre", "Dimensions"]
+    "metadata": ["Title"]
   },
   "dev": {
-    "label": { "none": ["Canopy IIIF"] },
-    "collection": "https://api.dc.library.northwestern.edu/api/v2/search?query=%22Nez%20Perc%C3%A9%22&as=iiif&size=200",
+    "collection": "https://iiif.bodleian.ox.ac.uk/iiif/collection/hobhouse",
     "featured": [
-      "https://api.dc.library.northwestern.edu/api/v2/works/14a6aa15-9e12-47a7-9617-91f430d4f47b?as=iiif",
-      "https://api.dc.library.northwestern.edu/api/v2/works/e82cc873-c7c3-4d8e-b8b1-d1130737216e?as=iiif"
+      "https://iiif.bodleian.ox.ac.uk/iiif/manifest/8da97e8c-4e12-457d-aad8-3327b3aec183.json",
     ],
-    "metadata": ["Date", "Subject", "Genre", "Dimensions"]
+    "metadata": ["Title"]
   }
-}
-`}</Code>
+}`}</Code>
+            <Heading as="h5">Configuration Options</Heading>
+            <Heading as="h6">Label as Site Title</Heading>
+            <p>
+              The Canopy IIIF site title is the Collection label of the set{" "}
+              <code>collection</code> resource. You can override this by
+              providing a valid <a href="">Presentation 3.0 label property</a>.
+            </p>
+            <Code language="json">{`{
+  "prod": {
+    "label": { 
+      none: ["Hobhouse"]
+    },
+    "collection": "https://iiif.bodleian.ox.ac.uk/iiif/collection/hobhouse",
+    "featured": [
+      "https://iiif.bodleian.ox.ac.uk/iiif/manifest/8da97e8c-4e12-457d-aad8-3327b3aec183.json",
+    ],
+    "metadata": ["Title"]
+  },
+  ...
+}`}</Code>
+            <Heading as="h6">Curating Featured Manifests</Heading>
+            <p>
+              You can inform Canopy IIIF of featured Manifests by providing an
+              array of ids. These must be within the referenced{" "}
+              <code>collection</code> resource and the Manifest URIs must be an
+              exact match. These Manifests will render throughout the interface
+              in featured components.
+            </p>
+            <Code language="json">{`{
+  "prod": {
+    "collection": "https://iiif.bodleian.ox.ac.uk/iiif/collection/hobhouse",
+    "featured": [
+      "https://iiif.bodleian.ox.ac.uk/iiif/manifest/8da97e8c-4e12-457d-aad8-3327b3aec183.json",
+      "https://iiif.bodleian.ox.ac.uk/iiif/manifest/2968d5c7-3718-44ef-92ea-ee4cc58cc677.json",
+      "https://iiif.bodleian.ox.ac.uk/iiif/manifest/b73ca01f-aac8-4916-a7c6-3c8e67939a66.json",
+    ],
+    "metadata": ["Title"]
+  },
+  ...
+}`}</Code>{" "}
+            <Heading as="h6">Curating Metadata</Heading>
+            <p>
+              Curating Metadata allows implementers of Canopy IIIF to select
+              metadata labels that provide use to end users. An optimal case is
+              a label common to all or most manifests with some in diversity of
+              values across those resources. Metadata labels that curated will
+              be automatically included as featured elements on the homepage,
+              the metadata page, linking from works, and as facets on the search
+              page.
+            </p>
+            <p>
+              <strong>Note:</strong> Metadata labels are not yet BCP 47 language
+              code aware; however, aggregation processes will make exact string
+              comparisons regardless of language code.
+            </p>
+            <Code language="json">{`{
+  "prod": {
+    "collection": "https://iiif.bodleian.ox.ac.uk/iiif/collection/hobhouse",
+    "featured": [
+      "https://iiif.bodleian.ox.ac.uk/iiif/manifest/8da97e8c-4e12-457d-aad8-3327b3aec183.json",
+    ],
+    "metadata": ["Title", "Date Statement", "Language"]
+  },
+  ...
+}`}</Code>
           </div>
         </section>
         <section>
