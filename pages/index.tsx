@@ -11,6 +11,7 @@ import { getRelatedFacetValue } from "../services/iiif/constructors/related";
 import Heading from "../components/Shared/Heading/Heading";
 import Button from "../components/Shared/Button/Button";
 import { ButtonWrapper } from "../components/Shared/Button/Button.styled";
+import { ArrowRightIcon, GitHubLogoIcon } from "@radix-ui/react-icons";
 
 export default function Index({ metadata, featured, collections }) {
   const [baseUrl, setBaseUrl] = useState("");
@@ -60,13 +61,15 @@ export default function Index({ metadata, featured, collections }) {
           </p>
           <ButtonWrapper>
             <Button href="/about" buttonType="primary">
-              Read More
+              Read More &nbsp;
+              <ArrowRightIcon />
             </Button>
             <Button
               href="https://github.com/mathewjordan/canopy-iiif"
               buttonType="secondary"
             >
-              View Code
+              View Code &nbsp;
+              <GitHubLogoIcon />
             </Button>
           </ButtonWrapper>
         </div>

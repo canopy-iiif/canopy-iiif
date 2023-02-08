@@ -6,6 +6,7 @@ import { DefinitionListWrapper } from "../components/Shared/DefinitionList.style
 import { ButtonWrapper } from "../components/Shared/Button/Button.styled";
 import Button from "../components/Shared/Button/Button";
 import Code from "../components/Shared/Code/Code";
+import { GitHubLogoIcon } from "@radix-ui/react-icons";
 
 export default function About() {
   return (
@@ -26,7 +27,8 @@ export default function About() {
               href="https://github.com/mathewjordan/canopy-iiif"
               buttonType="primary"
             >
-              View Code
+              View Code &nbsp;
+              <GitHubLogoIcon />
             </Button>
           </ButtonWrapper>
         </div>
@@ -93,7 +95,7 @@ export default function About() {
             </p>
             <Code language="json">{`{
   "prod": {
-    "label": { none: ["Hobhouse"] },
+    "label": { "none": ["Hobhouse"] },
     "collection": "https://iiif.bodleian.ox.ac.uk/iiif/collection/hobhouse",
     "featured": [
       "https://iiif.bodleian.ox.ac.uk/iiif/manifest/8da97e8c-4e12-457d-aad8-3327b3aec183.json",
@@ -102,7 +104,7 @@ export default function About() {
     "metadata": ["Extent", "Title", "Date Statement", "Language"]
   },
   "dev": {
-    "label": { none: ["Hobhouse"] },
+    "label": { "none": ["Hobhouse"] },
     "collection": "https://iiif.bodleian.ox.ac.uk/iiif/collection/hobhouse",
     "featured": [
       "https://iiif.bodleian.ox.ac.uk/iiif/manifest/8da97e8c-4e12-457d-aad8-3327b3aec183.json",
@@ -119,7 +121,7 @@ export default function About() {
               by providing a valid{" "}
               <a href="">Presentation 3.0 label property</a>.
             </p>
-            <Code language="json">{`"label": { none: ["Hobhouse"] }`}</Code>
+            <Code language="json">{`"label": { "none": ["Hobhouse"] }`}</Code>
             <Heading as="h5">Curating Featured Manifests</Heading>
             <p>
               You can inform Canopy IIIF of featured Manifests by providing an
