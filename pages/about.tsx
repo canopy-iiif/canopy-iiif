@@ -5,6 +5,7 @@ import Heading from "../components/Shared/Heading/Heading";
 import { DefinitionListWrapper } from "../components/Shared/DefinitionList.styled";
 import { ButtonWrapper } from "../components/Shared/Button/Button.styled";
 import Button from "../components/Shared/Button/Button";
+import Code from "../components/Shared/Code";
 
 export default function About() {
   return (
@@ -52,17 +53,11 @@ export default function About() {
           <div>
             <Heading as="h3">Setup</Heading>
             <Heading as="h4">Dependency Install</Heading>
-            <pre>
-              <code>npm install</code>
-            </pre>
+            <Code language="bash">npm i</Code>
             <Heading as="h4">Running in Development</Heading>
-            <pre>
-              <code>npm run dev</code>
-            </pre>
+            <Code language="bash">npm run dev</Code>
             <Heading as="h4">Building in Production</Heading>
-            <pre>
-              <code>npm run build</code>
-            </pre>
+            <Code language="bash">npm run build</Code>
             <Heading as="h4">Configuration</Heading>
             Canopy IIIF uses a default configuration{" "}
             <code>config/.default/canopy.default.json</code> for demonstration
@@ -86,6 +81,28 @@ export default function About() {
                 <code>id</code> as a fixture.
               </li>
             </ol>
+            <Heading as="h5">Example Configuration</Heading>
+            <Code language="json">{`{
+  "prod": {
+    "label": { "none": ["Canopy IIIF"] },
+    "collection": "https://api.dc.library.northwestern.edu/api/v2/search?query=%22Nez%20Perc%C3%A9%22&as=iiif&size=200",
+    "featured": [
+      "https://api.dc.library.northwestern.edu/api/v2/works/14a6aa15-9e12-47a7-9617-91f430d4f47b?as=iiif",
+      "https://api.dc.library.northwestern.edu/api/v2/works/e82cc873-c7c3-4d8e-b8b1-d1130737216e?as=iiif"
+    ],
+    "metadata": ["Date", "Subject", "Genre", "Dimensions"]
+  },
+  "dev": {
+    "label": { "none": ["Canopy IIIF"] },
+    "collection": "https://api.dc.library.northwestern.edu/api/v2/search?query=%22Nez%20Perc%C3%A9%22&as=iiif&size=200",
+    "featured": [
+      "https://api.dc.library.northwestern.edu/api/v2/works/14a6aa15-9e12-47a7-9617-91f430d4f47b?as=iiif",
+      "https://api.dc.library.northwestern.edu/api/v2/works/e82cc873-c7c3-4d8e-b8b1-d1130737216e?as=iiif"
+    ],
+    "metadata": ["Date", "Subject", "Genre", "Dimensions"]
+  }
+}
+`}</Code>
           </div>
         </section>
         <section>
