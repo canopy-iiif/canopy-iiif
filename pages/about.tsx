@@ -52,19 +52,19 @@ export default function About() {
           </header>
           <div>
             <Heading as="h3">Setup</Heading>
-            <Heading as="h4">Dependency Install</Heading>
+            <Heading as="h4">Install Dependencies</Heading>
             <Code language="bash">npm i</Code>
             <Heading as="h4">Running in Development</Heading>
             <Code language="bash">npm run dev</Code>
             <Heading as="h4">Building in Production</Heading>
             <Code language="bash">npm run build</Code>
-            <Heading as="h4">Configuration</Heading>
+            <Heading as="h3">Configuration</Heading>
             Canopy IIIF uses a default configuration{" "}
             <code>config/.default/canopy.default.json</code> for demonstration
             purposes if a custom one is not set. The build process will read
             from a custom configuration file at <code>config/canopy.json</code>{" "}
             if it exists.
-            <Heading as="h5">Create a Custom Configuration</Heading>
+            <Heading as="h4">Create a Custom Configuration</Heading>
             <ol>
               <li>
                 Find your <code>config/</code> directory
@@ -75,50 +75,52 @@ export default function About() {
               </li>
               <li>
                 Updates should be made to both the <strong>prod</strong> and{" "}
-                <strong>dev</strong> configurations. These configurations can
-                match each other; however in some cases, development speed can be
-                aided by targeting a <em>smaller</em> IIIF Collection{" "}
-                <code>id</code> as a fixture.
+                <strong>dev</strong> configurations.
               </li>
             </ol>
-            <Heading as="h5">Example Configuration</Heading>
-            <Code language="json">{`{
-  "prod": {
-    "collection": "https://iiif.bodleian.ox.ac.uk/iiif/collection/hobhouse",
-    "featured": [
-      "https://iiif.bodleian.ox.ac.uk/iiif/manifest/8da97e8c-4e12-457d-aad8-3327b3aec183.json",
-    ],
-    "metadata": ["Title"]
-  },
-  "dev": {
-    "collection": "https://iiif.bodleian.ox.ac.uk/iiif/collection/hobhouse",
-    "featured": [
-      "https://iiif.bodleian.ox.ac.uk/iiif/manifest/8da97e8c-4e12-457d-aad8-3327b3aec183.json",
-    ],
-    "metadata": ["Title"]
-  }
-}`}</Code>
-            <Heading as="h5">Configuration Options</Heading>
-            <Heading as="h6">Label as Site Title</Heading>
+            <Heading as="h4">Example Configuration</Heading>
             <p>
-              The Canopy IIIF site title is the Collection label of the set{" "}
-              <code>collection</code> resource. You can override this by
-              providing a valid <a href="">Presentation 3.0 label property</a>.
+              Both the prod and dev environments have a configuration. These
+              configurations can match each other; however in some cases,
+              development speed can be aided by targeting a <em>smaller</em>{" "}
+              IIIF Collection <code>id</code> as a fixture.
+            </p>
+            <p>
+              <strong>Important:</strong> The <code>collection</code> property
+              is required and must be the <code>id</code> of the referenced
+              source IIIF Collection. Collections of Collections are not
+              currently supported.
             </p>
             <Code language="json">{`{
   "prod": {
-    "label": { 
-      none: ["Hobhouse"]
-    },
+    "label": { none: ["Hobhouse"] },
     "collection": "https://iiif.bodleian.ox.ac.uk/iiif/collection/hobhouse",
     "featured": [
       "https://iiif.bodleian.ox.ac.uk/iiif/manifest/8da97e8c-4e12-457d-aad8-3327b3aec183.json",
+      "https://iiif.bodleian.ox.ac.uk/iiif/manifest/2968d5c7-3718-44ef-92ea-ee4cc58cc677.json"
     ],
-    "metadata": ["Title"]
+    "metadata": ["Extent", "Title", "Date Statement", "Language"]
   },
-  ...
+  "dev": {
+    "label": { none: ["Hobhouse"] },
+    "collection": "https://iiif.bodleian.ox.ac.uk/iiif/collection/hobhouse",
+    "featured": [
+      "https://iiif.bodleian.ox.ac.uk/iiif/manifest/8da97e8c-4e12-457d-aad8-3327b3aec183.json",
+      "https://iiif.bodleian.ox.ac.uk/iiif/manifest/2968d5c7-3718-44ef-92ea-ee4cc58cc677.json"
+    ],
+    "metadata": ["Extent", "Title", "Date Statement", "Language"]
+  }
 }`}</Code>
-            <Heading as="h6">Curating Featured Manifests</Heading>
+            <Heading as="h4">Configuration Options</Heading>
+            <Heading as="h5">Label as Site Title</Heading>
+            <p>
+              The Canopy IIIF site title is the Collection label of the set{" "}
+              <code>collection</code> resource. You can optionally override this
+              by providing a valid{" "}
+              <a href="">Presentation 3.0 label property</a>.
+            </p>
+            <Code language="json">{`"label": { none: ["Hobhouse"] }`}</Code>
+            <Heading as="h5">Curating Featured Manifests</Heading>
             <p>
               You can inform Canopy IIIF of featured Manifests by providing an
               array of ids. These must be within the referenced{" "}
@@ -126,43 +128,30 @@ export default function About() {
               exact match. These Manifests will render throughout the interface
               in featured components.
             </p>
-            <Code language="json">{`{
-  "prod": {
-    "collection": "https://iiif.bodleian.ox.ac.uk/iiif/collection/hobhouse",
-    "featured": [
-      "https://iiif.bodleian.ox.ac.uk/iiif/manifest/8da97e8c-4e12-457d-aad8-3327b3aec183.json",
-      "https://iiif.bodleian.ox.ac.uk/iiif/manifest/2968d5c7-3718-44ef-92ea-ee4cc58cc677.json",
-      "https://iiif.bodleian.ox.ac.uk/iiif/manifest/b73ca01f-aac8-4916-a7c6-3c8e67939a66.json",
-    ],
-    "metadata": ["Title"]
-  },
-  ...
-}`}</Code>{" "}
-            <Heading as="h6">Curating Metadata</Heading>
+            <p>
+              <strong>Warning:</strong> In the current pre-release, featured
+              Manifests must have an Image body on the first Canvas.
+            </p>
+            <Code language="json">{`"featured": [
+  "https://iiif.bodleian.ox.ac.uk/iiif/manifest/8da97e8c-4e12-457d-aad8-3327b3aec183.json",
+  "https://iiif.bodleian.ox.ac.uk/iiif/manifest/2968d5c7-3718-44ef-92ea-ee4cc58cc677.json"
+]`}</Code>{" "}
+            <Heading as="h5">Curating Metadata</Heading>
             <p>
               Curating Metadata allows implementers of Canopy IIIF to select
               metadata labels that provide use to end users. An optimal case is
               a label common to all or most manifests with some in diversity of
-              values across those resources. Metadata labels that are curated will
-              be automatically included as featured elements on the homepage,
-              the metadata page, linking from works, and as facets on the search
-              page.
+              values across those resources. Metadata labels that are curated
+              will be automatically included as featured elements on the
+              homepage, the metadata page, linking from works, and as facets on
+              the search page.
             </p>
             <p>
               <strong>Note:</strong> Metadata labels are not yet BCP 47 language
               code aware; however, aggregation processes will make exact string
               comparisons regardless of language code.
             </p>
-            <Code language="json">{`{
-  "prod": {
-    "collection": "https://iiif.bodleian.ox.ac.uk/iiif/collection/hobhouse",
-    "featured": [
-      "https://iiif.bodleian.ox.ac.uk/iiif/manifest/8da97e8c-4e12-457d-aad8-3327b3aec183.json",
-    ],
-    "metadata": ["Title", "Date Statement", "Language"]
-  },
-  ...
-}`}</Code>
+            <Code language="json">{`"metadata": ["Extent", "Title", "Date Statement", "Language"]`}</Code>
           </div>
         </section>
         <section>
