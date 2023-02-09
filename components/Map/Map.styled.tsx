@@ -1,9 +1,12 @@
 import { styled } from "@/stitches";
 
 const MapStyled = styled("div", {
-  height: "500px",
+  height: "100vh",
+  position: "relative",
+  zIndex: "0",
+
   ".map-container": {
-    height: "500px",
+    height: "100%",
     width: "100%",
     figure: {
       width: "100%",
