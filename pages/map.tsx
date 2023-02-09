@@ -1,11 +1,9 @@
 import React from "react";
 import Layout from "@/components/layout";
-import Container from "../components/Shared/Container";
-import Heading from "../components/Shared/Heading/Heading";
 import MANIFESTS from "@/.canopy/manifests.json";
 import 'leaflet/dist/leaflet.css';
 import dynamic from 'next/dynamic'
-import { getBounds, getFeatures} from "../hooks/getFeatures";
+import { getBounds, getFeatures} from "@/services/getFeatures";
 
 const Map = dynamic(
   () => import('../components/Map/Map'),
