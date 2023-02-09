@@ -1,4 +1,4 @@
-import { Manifest } from "@hyperion-framework/types";
+import { Manifest } from "@iiif/presentation-3";
 
 export const getBounds = (items) => {
   return items.map(
