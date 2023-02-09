@@ -1,4 +1,7 @@
 {
+  "map": {
+    "enabled": false
+  },
   "search": {
     "enabled": true,
     "index": {

@@ -69,6 +69,7 @@ module.exports.build = (env) => {
           ),
           slug: getSlug(getLabel(manifest.label)[0]),
           thumbnail: thumbnail,
+          ...manifest.navPlace && {navPlace: manifest.navPlace}
         };
       });
       fs.writeFile(
