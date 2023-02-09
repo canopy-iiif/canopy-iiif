@@ -28,7 +28,7 @@ function getOptions() {
 
   try {
     data = fs.readFileSync(`./config/options.json`, {});
-  } catch (err) {}
+  } catch (err) { "Using default options for demonstration, please follow documentation for creating custom options."}
 
   const options = data ? data : defaultOptions;
 
