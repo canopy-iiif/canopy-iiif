@@ -1,12 +1,4 @@
 import { styled } from "@/stitches";
-import {
-  indigo,
-  indigoDarkA,
-  slate,
-  slateA,
-  slateDarkA,
-} from "@radix-ui/colors";
-import {ContainerStyled} from "../Shared/Container";
 
 const MapStyled = styled("div", {
   height: "500px",
