@@ -9,7 +9,6 @@ const SearchForm = styled("form", {
   margin: "0 $gr4",
   flexGrow: "1",
   flexShrink: "1",
-  maxWidth: "$gr10",
   width: "100%",
   justifyContent: "space-between",
   opacity: "1",
