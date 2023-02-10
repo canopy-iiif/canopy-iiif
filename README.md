@@ -1,4 +1,3 @@
-
 # Canopy IIIF
 
 A purely IIIF sourced site generator using Next.js. Canopy is an experimental application that will standup a browseable and searchable digital collections style site entirely from a IIIF Collection and the items it contains.
@@ -9,9 +8,10 @@ A purely IIIF sourced site generator using Next.js. Canopy is an experimental ap
 > **Warning**
 > Canopy is a work in progress and being built in public.
 
-## Examples 
+## Examples
 
 ### [Nez Percé (Nimíipuu)](https://canopy-iiif.vercel.app/)
+
 - IIIF Presentation API 3.0
 - 81 items
 - Provided by Northwestern University Libraries
@@ -19,6 +19,7 @@ A purely IIIF sourced site generator using Next.js. Canopy is an experimental ap
 <img src="https://user-images.githubusercontent.com/7376450/216725866-85ed609d-1e8b-4825-83de-7771cf1bf60e.png" width="400px" />
 
 ### [The Botanical photography of Alan S. Heilman](https://canopy-iiif-git-heilman-mathewjordan.vercel.app/)
+
 - IIIF Presentation API 3.0
 - 1120 items
 - Provided by University of Tennessee Libraries
@@ -26,6 +27,7 @@ A purely IIIF sourced site generator using Next.js. Canopy is an experimental ap
 <img src="https://user-images.githubusercontent.com/7376450/201527565-243437c8-bb90-408b-82fa-d8798478c9ee.png" width="400px" />
 
 ### [The Chimney Tops 2 Wildfires In Memory And Art](https://canopy-iiif-git-rfta-artists-mathewjordan.vercel.app/)
+
 - IIIF Presentation API 3.0
 - 43 items
 - Provided by University of Tennessee Libraries
@@ -33,6 +35,7 @@ A purely IIIF sourced site generator using Next.js. Canopy is an experimental ap
 <img src="https://user-images.githubusercontent.com/7376450/217075076-765ccd39-6949-4c91-b6c3-8017671a66fb.png" width="400px" />
 
 ### [Canonici](https://canopy-iiif-git-canonici-mathewjordan.vercel.app/)
+
 - IIIF Presentation API 2.0
 - 529 items
 - Provided by Bodleian Libraries, University of Oxford
@@ -42,6 +45,7 @@ A purely IIIF sourced site generator using Next.js. Canopy is an experimental ap
 ## Roadmap
 
 ### Content
+
 - [x] Manifest as a `/work/` page
 - [ ] Collection as a `/collection/` page
 - [ ] `seeAlso` OR `rendering` support for `text/markdown` as supplemental content
@@ -49,12 +53,14 @@ A purely IIIF sourced site generator using Next.js. Canopy is an experimental ap
 - [x] Homepage metadata sliders
 
 ### Data Aggregration
-- [x] Collection of Manifests (i.e. `depth === 1`) 
+
+- [x] Collection of Manifests (i.e. `depth === 1`)
 - [ ] Collection of Collections (i.e. `depth > 1`)
 - [x] Harvesting of curated metadata labels
 - [ ] Leveraging BCP 47 and internationalization
 
 ### Search
+
 - [x] Basic search on label(s)
 - [ ] No results language
 - [x] Search on summary and metadata entries
@@ -62,11 +68,13 @@ A purely IIIF sourced site generator using Next.js. Canopy is an experimental ap
 - [x] `next/link` routing from Work metadata to search page facets
 
 ### User Interface & Experience
+
 - [ ] Fully Responsive
 - [x] Continuous scroll & lazy load of search results
 - [ ] Custom theme support
 
 ### Configuration
+
 - [ ] Localization preferences
 - [x] Site title label override
 - [ ] Slug pattern options
@@ -86,32 +94,4 @@ npm run build
 
 ## Configuration
 
-Edit `canopy.config.js`
-
-```jsx
-/**
- * Configuration built by `npm run build`
- */
-exports.prod = {
-  collection: "https://canopy-iiif.vercel.app/fixtures/iiif/collection/nez-perce.json",
-  featured: [
-    "https://canopy-iiif.vercel.app/fixtures/iiif/manifest/nez-perce/02-lawyer.json",
-    "https://canopy-iiif.vercel.app/fixtures/iiif/manifest/nez-perce/08-map-territory.json",
-    "https://canopy-iiif.vercel.app/fixtures/iiif/manifest/nez-perce/14-joseph-dead-feast-lodge.json",
-  ],
-  metadata: ["Date", "Subject"],
-};
-
-/**
- * Configuration built by `npm run dev`
- */
-exports.dev = {
-  collection: "https://canopy-iiif.vercel.app/fixtures/iiif/collection/nez-perce.json",
-  featured: [
-    "https://canopy-iiif.vercel.app/fixtures/iiif/manifest/nez-perce/02-lawyer.json",
-    "https://canopy-iiif.vercel.app/fixtures/iiif/manifest/nez-perce/08-map-territory.json",
-    "https://canopy-iiif.vercel.app/fixtures/iiif/manifest/nez-perce/14-joseph-dead-feast-lodge.json",
-  ],
-  metadata: ["Date", "Subject"],
-};
-```
+Canopy IIIF uses a default configuration `config/.default/canopy.default.json` for demonstration purposes if a custom one is not set. The build process will read from a custom configuration file at `config/canopy.json` if it exists. Please review [configuration documentation](https://canopy-iiif.vercel.app/about) for customization of Canopy IIIF.
