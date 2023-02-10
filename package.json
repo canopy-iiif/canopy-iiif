@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "@iiif/parser": "^1.1.2",
-    "@iiif/vault": "^0.9.20",
+    "@iiif/vault": "^0.9.22",
     "@iiif/vault-helpers": "^0.9.11",
     "@radix-ui/colors": "^0.1.8",
     "@radix-ui/react-icons": "^1.1.1",
