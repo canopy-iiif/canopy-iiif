@@ -24,6 +24,8 @@ const Placeholder = styled("div", {
   backgroundColor: "$slate6",
   width: "100%",
   height: "100%",
+  overflow: "hidden",
+  borderRadius: "3px",
 });
 
 const Wrapper = styled("div", {
