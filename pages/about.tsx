@@ -66,21 +66,28 @@ export default function About() {
             purposes if a custom one is not set. The build process will read
             from a custom configuration file at <code>config/canopy.json</code>{" "}
             if it exists.
-            <Heading as="h4">Create a Custom Configuration</Heading>
+            <Heading as="h4">Create a Custom Canopy Configuration</Heading>
             <ol>
               <li>
                 Find your <code>config/</code> directory
               </li>
               <li>
-                Rename <code>canopy.sample.json</code> to{" "}
+                Copy <code>canopy.sample.json</code> to{" "}
                 <code>canopy.json</code>
               </li>
               <li>
-                Updates should be made to both the <strong>prod</strong> and{" "}
+                Make updates to both the <strong>prod</strong> and{" "}
                 <strong>dev</strong> configurations.
               </li>
+              <li>
+                Copy <code>options.sample.json</code> to{" "}
+                <code>option.json</code>
+              </li>
+              <li>
+                Modify <code>option.json</code> as needed.
+              </li>
             </ol>
-            <Heading as="h4">Example Configuration</Heading>
+            <Heading as="h4">Example Canopy Configuration</Heading>
             <p>
               Both the prod and dev environments have a configuration. These
               configurations can match each other; however in some cases,
@@ -113,7 +120,7 @@ export default function About() {
     "metadata": ["Extent", "Title", "Date Statement", "Language"]
   }
 }`}</Code>
-            <Heading as="h4">Configuration Options</Heading>
+            <Heading as="h4">Setting Options in canopy.json</Heading>
             <Heading as="h5">Label as Site Title</Heading>
             <p>
               The Canopy IIIF site title is the Collection label of the set{" "}
@@ -154,6 +161,23 @@ export default function About() {
               comparisons regardless of language code.
             </p>
             <Code language="json">{`"metadata": ["Extent", "Title", "Date Statement", "Language"]`}</Code>
+            <Heading as="h4">Setting Additional Options in options.js</Heading>
+            <Heading as="h5">Adding Map Route for navPlace Navigation</Heading>
+            <p>
+              A map route can be enabled to provide geographic discovery of works
+              via <code>options.json</code>. This feature builds markers off of
+              geographic point features found in <code>navPlace</code> properties
+              at the manifest level. To enable this option, set the option to
+              <code>true</code>.
+            </p>
+            <p>
+              <strong>Note:</strong> Currently, only <code>navPlace</code> properties
+              found at the <code>Manifest</code> level are displayed. Also, only
+              <code>Features</code> of <code>type: "Point"</code> are displayed.
+            </p>
+            <Code language="json">{`"map": {"enabled": false},`}</Code>
+            <Heading as="h5">Configuring Search</Heading>
+            <Heading as="h5">Configuring Theme</Heading>
           </div>
         </section>
         <section>
