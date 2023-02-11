@@ -18,6 +18,7 @@ const Map =({manifests, bounds}) => {
   if (bounds.length < 1){
     bounds = [[-0.09, 51.505]]
   }
+  console.log(manifests);
   return (
     <MapStyled>
       <MapContainer className={"map-container"} bounds={bounds} center={bounds[0].reverse()} zoom={8} scrollWheelZoom={false}>
