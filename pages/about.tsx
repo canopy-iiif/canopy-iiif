@@ -7,6 +7,7 @@ import { ButtonWrapper } from "../components/Shared/Button/Button.styled";
 import Button from "../components/Shared/Button/Button";
 import Code from "../components/Shared/Code/Code";
 import { GitHubLogoIcon } from "@radix-ui/react-icons";
+import Slider from "@/components/Viewer/Slider";
 
 export default function About() {
   return (
@@ -40,6 +41,14 @@ export default function About() {
             <p>[content]</p>
           </div>
         </section> */}
+        <section>
+          <header>
+            <Heading as="h2">Sample Sites</Heading>
+            <div>
+              <Slider collectionId="fixtures/iiif/collection/sample-sites.json"></Slider>
+            </div>
+          </header>
+        </section>
         <section>
           <header>
             <Heading as="h2">Getting Started</Heading>
@@ -175,9 +184,21 @@ export default function About() {
               found at the <code>Manifest</code> level are displayed. Also, only
               <code>Features</code> of <code>type: "Point"</code> are displayed.
             </p>
-            <Code language="json">{`"map": {"enabled": false},`}</Code>
+            <Code language="json">{`"map": {"enabled": true},`}</Code>
             <Heading as="h5">Configuring Search</Heading>
             <Heading as="h5">Configuring Theme</Heading>
+            <p>
+              The default theme for users can be set via <code>options.json</code>.
+              This feature sets the initial theme for users as <code>light</code>,
+              <code>dark</code>, or <code>system</code>. The <code>Toggle Theme</code>
+              button can also be enabled of disabled here.
+            </p>
+            <p>
+              <strong>Note:</strong> Currently, setting the theme here will only affect
+              brand new users to your site. It will not change the default theme for
+              users who have already visited.
+            </p>
+            <Code language="json">{`"theme": { "defaultTheme": "light", "toggleEnabled": false }`}</Code>
           </div>
         </section>
         <section>
