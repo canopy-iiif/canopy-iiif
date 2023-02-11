@@ -186,6 +186,35 @@ export default function About() {
             </p>
             <Code language="json">{`"map": {"enabled": true},`}</Code>
             <Heading as="h5">Configuring Search</Heading>
+            <p>
+              Search options can be configured in <code>options.json</code>. By
+              default, the search index is included but can be disabled by setting
+              <code>enabled: false</code>. If the search index is enabled, the
+              <code>label</code> property on the manifest is always indexed. The
+              properties of the <code>metadata</code> property are also indexed
+              by default, but this can be modified to have these values not be
+              indexed at all by setting <code>search.index.metadata.enabled</code>
+              to <code>false</code>. Furthermore, all <code>metatdata</code> values
+              can be indexed or only the properties that are specified in
+              <code>canopy.json</code> by modifying <code>search.index.metadata.all</code>.
+            </p>
+            <p>
+              The only property that can be indexed outside of <code>metadata</code>
+              and <code>label</code> currently is <code>summary</code>. This is
+              configured with <code>search.index.summary.enabled.</code>.
+            </p>
+            <Code language="json">{`"search": {
+  "enabled": true,
+  "index": {
+    "metadata": {
+      "enabled": true,
+      "all": false
+     },
+    "summary": {
+      "enabled": false
+     }
+  }
+}`}</Code>{" "}
             <Heading as="h5">Configuring Theme</Heading>
             <p>
               The default theme for users can be set via <code>options.json</code>.
