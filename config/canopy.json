@@ -1,0 +1,20 @@
+{
+  "prod": {
+    "label": { "none": ["Panoramic Images of Elgin P. Kintner"] },
+    "collection": "https://digital.lib.utk.edu/assemble/collection/gsmrc/kintner",
+    "featured": [
+      "https://digital.lib.utk.edu/assemble/manifest/kintner/4",
+      "https://digital.lib.utk.edu/assemble/manifest/kintner/43"
+    ],
+    "metadata": ["Date", "Place"]
+  },
+  "dev": {
+    "label": { "none": ["Panoramic Images of Elgin P. Kintner"] },
+    "collection": "https://digital.lib.utk.edu/assemble/collection/gsmrc/kintner",
+    "featured": [
+      "https://digital.lib.utk.edu/assemble/manifest/kintner/4",
+      "https://digital.lib.utk.edu/assemble/manifest/kintner/43"
+    ],
+    "metadata": ["Date", "Place"]
+  }
+}

@@ -1,16 +1,16 @@
 {
   "map": {
-    "enabled": false
+    "enabled": true
   },
   "search": {
     "enabled": true,
     "index": {
       "metadata": {
         "enabled": true,
-        "all": false
+        "all": true
       },
       "summary": {
-        "enabled": false
+        "enabled": true
       }
     }
   },
