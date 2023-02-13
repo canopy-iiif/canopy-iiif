@@ -5,7 +5,7 @@ export const getBounds = (items) => {
     (item) => {
       const pointFeatures = item.navPlace.features.filter(
         (feature) => feature.geometry.type === "Point")
-      const manifestCoordinates = pointFeatures.map((feature) => feature.geometry.coordinates.reverse())
+      const manifestCoordinates = pointFeatures.map((feature) => feature.geometry.coordinates)
       // This isn't exactly right.  Fix.
       return [...manifestCoordinates].shift()
     }
