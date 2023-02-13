@@ -165,16 +165,4 @@
       ]
     }
   ],
-  "homepage": [
-    {
-      "id": "https://canopy-iiif.vercel.app/",
-      "label": {
-        "en": [
-          "Canopy IIIF Collection"
-        ]
-      },
-      "type": "Text",
-      "format": "text\/html"
-    }
-  ]
 }
