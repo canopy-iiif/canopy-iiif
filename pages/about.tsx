@@ -44,7 +44,7 @@ export default function About() {
           <header>
             <Heading as="h2">Getting Started</Heading>
             <p>
-              Canopy IIF is a Next.js application where production and
+              Canopy IIIF is a Next.js application where production and
               development builds will follow{" "}
               <a href="https://nextjs.org/docs/getting-started">
                 Next documentation
