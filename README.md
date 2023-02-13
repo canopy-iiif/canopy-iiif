@@ -79,15 +79,25 @@ A purely IIIF sourced site generator using Next.js. Canopy is an experimental ap
 - [x] Site title label override
 - [ ] Slug pattern options
 
-## Technical Stuff
+## Setup
+
+### Install Dependencies
 
 ```shell
 # installation
-npm install
+npm i
+```
 
+### Running in Development
+
+```shell
 # development
 npm run dev
+```
 
+### Building in Production
+
+```shell
 # build
 npm run build
 ```
@@ -95,3 +105,4 @@ npm run build
 ## Configuration
 
 Canopy IIIF uses a default configuration `config/.default/canopy.default.json` for demonstration purposes if a custom one is not set. The build process will read from a custom configuration file at `config/canopy.json` if it exists. Please review [configuration documentation](https://canopy-iiif.vercel.app/about) for customization of Canopy IIIF.
+
