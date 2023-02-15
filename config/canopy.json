@@ -1,0 +1,18 @@
+{
+  "prod": {
+    "label": { "none": ["Rising from the Ashes: Reimagined"] },
+    "collection": "https://gist.githubusercontent.com/markpbaggett/caa8c737586da4f59e1c4ea334179183/raw/cd9af44457718241a3985c7ad867a0c176e59c27/rfta_combined.json",
+    "featured": [
+      "https://digital.lib.utk.edu/assemble/manifest/rftaart/6"
+    ],
+    "metadata": ["Interviewer", "Browse", "Subject", "Format", "Place", "Artist"]
+  },
+  "dev": {
+    "label": { "none": ["Rising from the Ashes: Reimagined"] },
+    "collection": "https://gist.githubusercontent.com/markpbaggett/caa8c737586da4f59e1c4ea334179183/raw/cd9af44457718241a3985c7ad867a0c176e59c27/rfta_combined.json",
+    "featured": [
+      "https://digital.lib.utk.edu/assemble/manifest/rftaart/6"
+    ],
+    "metadata": ["Interviewer", "Browse", "Subject", "Format", "Place", "Artist"]
+  }
+}
