@@ -28,8 +28,20 @@ const ListItem = styled("li", {
   },
 });
 
+interface MetadataItemProps {
+  value: string;
+  slug: string;
+  doc_count: number;
+  path: string;
+}
+
 export default function Metadata() {
-  const MetadataItem = ({ value, slug, doc_count, path }) => {
+  const MetadataItem: React.FC<MetadataItemProps> = ({
+    value,
+    slug,
+    doc_count,
+    path,
+  }) => {
     return (
       <ListItem>
         <MinusIcon />

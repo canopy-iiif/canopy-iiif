@@ -2,9 +2,9 @@ import React from "react";
 import { SearchContextStore } from "@/types/context/search";
 
 type Action =
+  | { type: "updateNav"; showNav: boolean }
   | { type: "updateQuery"; searchQuery: string }
-  | { type: "updateVisible"; searchVisible: boolean }
-  | { type: "updateNav"; showNav: boolean };
+  | { type: "updateVisible"; searchVisible: boolean };
 
 type Dispatch = (action: Action) => void;
 type State = SearchContextStore;

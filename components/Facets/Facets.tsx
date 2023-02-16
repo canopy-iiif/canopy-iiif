@@ -6,7 +6,7 @@ import React from "react";
 const Facets: React.FC = () => {
   return (
     <FacetsStyled>
-      {FACETS.map((facet) => (
+      {FACETS.map((facet: any) => (
         <FacetSelect facet={facet} key={facet.slug} />
       ))}
     </FacetsStyled>

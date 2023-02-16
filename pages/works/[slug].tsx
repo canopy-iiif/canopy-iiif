@@ -5,8 +5,13 @@ import WorkInner from "@/components/Work/Inner";
 import MANIFESTS from "@/.canopy/manifests.json";
 import { Vault } from "@iiif/vault";
 import Container from "../../components/Shared/Container";
+import { Manifest } from "@iiif/presentation-3";
 
-export default function Manifest({ manifest }) {
+interface WorkProps {
+  manifest: Manifest;
+}
+
+export default function Work({ manifest }: WorkProps) {
   const { id } = manifest;
 
   return (
@@ -20,8 +25,8 @@ export default function Manifest({ manifest }) {
   );
 }
 
-export async function getStaticProps({ params }) {
-  const { id } = MANIFESTS.find((item) => item.slug === params.slug);
+export async function getStaticProps({ params }: { params: any }) {
+  const { id } = MANIFESTS.find((item) => item.slug === params.slug) as any;
   const vault = new Vault();
   const manifest = await vault
     .loadManifest(id)

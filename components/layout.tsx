@@ -1,9 +1,9 @@
-import React from "react";
+import React, { ReactNode } from "react";
 import Header from "@/components/Header/Header";
 import Main from "./Shared/Main";
 import Footer from "./Footer/Footer";
 
-export default function Layout({ children }) {
+const Layout = ({ children }: { children: ReactNode }) => {
   return (
     <>
       <Header />
@@ -11,4 +11,6 @@ export default function Layout({ children }) {
       <Footer />
     </>
   );
-}
+};
+
+export default Layout;

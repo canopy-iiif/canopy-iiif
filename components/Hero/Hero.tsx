@@ -34,7 +34,7 @@ const Hero: React.FC<HeroProps> = ({ collection }) => {
         slidesPerView={1}
         speed={200}
       >
-        {collection.items.map((item) => (
+        {collection.items.map((item: any) => (
           <SwiperSlide key={item.id}>
             <figure>
               <Link href={item.homepage[0].id}>

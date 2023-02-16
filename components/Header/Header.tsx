@@ -9,13 +9,14 @@ import { Actions, ResponsiveActions } from "./Header.styled";
 import { HamburgerMenuIcon } from "@radix-ui/react-icons";
 import { useRouter } from "next/router";
 
+// @ts-ignore
 const mapEnabled = process.env.CANOPY_CONFIG.map.enabled;
 
 const navItems = [
   { path: "/works", text: "Works", type: "link" },
   { path: "/metadata", text: "Metadata", type: "link" },
   { path: "/about", text: "About", type: "link" },
-  ...(mapEnabled ? [{ path: "/map", text: "Map", type: "link" }] : [])
+  ...(mapEnabled ? [{ path: "/map", text: "Map", type: "link" }] : []),
 ];
 
 const Header = () => {

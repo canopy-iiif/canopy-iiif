@@ -8,7 +8,7 @@ enum SortType {
 }
 
 export const sortItems = (
-  items: Manifest[] | Collection[],
+  items: Collection[] | Manifest[],
   sortType: SortType
 ) => {
   switch (sortType) {
@@ -18,7 +18,7 @@ export const sortItems = (
         .sort((a, b) => a.sort - b.sort)
         .map(({ value }) => value);
     case "lexical":
-      return items.sort((a, b) =>
+      return items.sort((a: any, b: any) =>
         a.label[Object.keys(a.label)[0]][0] >
         b.label[Object.keys(b.label)[0]][0]
           ? 1
@@ -28,7 +28,7 @@ export const sortItems = (
           : 0
       );
     case "reverse-lexical":
-      return items.sort((a, b) =>
+      return items.sort((a: any, b: any) =>
         b.label[Object.keys(b.label)[0]][0] >
         a.label[Object.keys(a.label)[0]][0]
           ? 1

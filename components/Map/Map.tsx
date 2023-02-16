@@ -7,6 +7,7 @@ import { Label, Thumbnail } from "@samvera/nectar-iiif";
 import Container from "../Shared/Container";
 import { MapStyled } from "./Map.styled";
 import { getLabel } from "../../hooks/getLabel";
+import { InternationalString } from "@iiif/presentation-3";
 
 const icon = L.icon({
   iconUrl: "/images/marker-icon.png",
@@ -14,7 +15,12 @@ const icon = L.icon({
   iconAnchor: [12, 36],
 });
 
-const Map = ({ manifests, bounds }) => {
+interface MapProps {
+  manifests: any;
+  bounds: any;
+}
+
+const Map: React.FC<MapProps> = ({ manifests, bounds }) => {
   if (bounds.length < 1) {
     bounds = [[-0.09, 51.505]];
   }
@@ -31,8 +37,8 @@ const Map = ({ manifests, bounds }) => {
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
-        {manifests.map((item) =>
-          item.features.map((feature, index) => (
+        {manifests.map((item: any) =>
+          item.features.map((feature: any, index: any) => (
             <Marker
               position={feature.geometry.coordinates.reverse()}
               icon={icon}
@@ -45,7 +51,11 @@ const Map = ({ manifests, bounds }) => {
                     <figcaption>
                       <Container className="slide-inner" isFlex>
                         <Label
-                          label={getLabel(feature.properties.label)}
+                          label={
+                            getLabel(
+                              feature.properties.label
+                            ) as unknown as InternationalString
+                          }
                           as="span"
                           className="slide-label"
                         />

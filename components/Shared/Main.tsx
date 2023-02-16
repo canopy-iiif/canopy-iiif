@@ -1,7 +1,7 @@
-import React from "react";
+import React, { ReactNode } from "react";
 import { styled } from "@stitches/react";
 
-const Main = ({ children }) => {
+const Main = ({ children }: { children: ReactNode | ReactNode[] }) => {
   return <MainStyled>{children}</MainStyled>;
 };
 
