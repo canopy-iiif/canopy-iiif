@@ -1,18 +1,13 @@
 import Layout from "@/components/layout";
 import Viewer from "@/components/Viewer/Viewer";
-import Related from "@/components/Related/Related";
+// import Related from "@/components/Related/Related";
 import WorkInner from "@/components/Work/Inner";
 import MANIFESTS from "@/.canopy/manifests.json";
 import { Vault } from "@iiif/vault";
 import Container from "../../components/Shared/Container";
 
 export default function Manifest({ manifest }) {
-  const { id, label, metadata, requiredStatement, summary } = manifest;
-
-  const collections = [
-    "http://localhost:5001/api/facet/date/1910",
-    "http://localhost:5001/api/facet/subject/nez-perce-indians-topical",
-  ];
+  const { id } = manifest;
 
   return (
     <Layout>

@@ -1,6 +1,5 @@
 import { styled } from "@/stitches";
 import { slateA } from "@radix-ui/colors";
-import { ButtonStyled } from "../Shared/Button/Button.styled";
 
 const Title = styled("span", {
   display: "flex",

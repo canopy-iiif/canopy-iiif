@@ -81,8 +81,7 @@ export default function About() {
                 Find your <code>config/</code> directory
               </li>
               <li>
-                Copy <code>canopy.sample.json</code> to{" "}
-                <code>canopy.json</code>
+                Copy <code>canopy.sample.json</code> to <code>canopy.json</code>
               </li>
               <li>
                 Make updates to both the <strong>prod</strong> and{" "}
@@ -173,33 +172,40 @@ export default function About() {
             <Heading as="h4">Setting Additional Options in options.js</Heading>
             <Heading as="h5">Adding Map Route for navPlace Navigation</Heading>
             <p>
-              A map route can be enabled to provide geographic discovery of works
-              via <code>options.json</code>. This feature builds markers off of
-              geographic point features found in <code>navPlace</code> properties
-              at the manifest level. To enable this option, set the option to
+              A map route can be enabled to provide geographic discovery of
+              works via <code>options.json</code>. This feature builds markers
+              off of geographic point features found in <code>navPlace</code>{" "}
+              properties at the manifest level. To enable this option, set the
+              option to
               <code>true</code>.
             </p>
             <p>
-              <strong>Note:</strong> Currently, only <code>navPlace</code> properties
-              found at the <code>Manifest</code> level are displayed. Also, only
-              <code>Features</code> of <code>type: "Point"</code> are displayed.
+              <strong>Note:</strong> Currently, only <code>navPlace</code>{" "}
+              properties found at the <code>Manifest</code> level are displayed.
+              Also, only
+              <code>Features</code> of <code>type: &quot;Point&quot;</code> are
+              displayed.
             </p>
             <Code language="json">{`"map": {"enabled": true},`}</Code>
             <Heading as="h5">Configuring Search</Heading>
             <p>
               Search options can be configured in <code>options.json</code>. By
-              default, the search index is included but can be disabled by setting
+              default, the search index is included but can be disabled by
+              setting
               <code>enabled: false</code>. If the search index is enabled, the
               <code>label</code> property on the manifest is always indexed. The
               properties of the <code>metadata</code> property are also indexed
               by default, but this can be modified to have these values not be
-              indexed at all by setting <code>search.index.metadata.enabled</code>
-              to <code>false</code>. Furthermore, all <code>metatdata</code> values
-              can be indexed or only the properties that are specified in
-              <code>canopy.json</code> by modifying <code>search.index.metadata.all</code>.
+              indexed at all by setting{" "}
+              <code>search.index.metadata.enabled</code>
+              to <code>false</code>. Furthermore, all <code>metatdata</code>{" "}
+              values can be indexed or only the properties that are specified in
+              <code>canopy.json</code> by modifying{" "}
+              <code>search.index.metadata.all</code>.
             </p>
             <p>
-              The only property that can be indexed outside of <code>metadata</code>
+              The only property that can be indexed outside of{" "}
+              <code>metadata</code>
               and <code>label</code> currently is <code>summary</code>. This is
               configured with <code>search.index.summary.enabled.</code>.
             </p>
@@ -217,15 +223,16 @@ export default function About() {
 }`}</Code>{" "}
             <Heading as="h5">Configuring Theme</Heading>
             <p>
-              The default theme for users can be set via <code>options.json</code>.
-              This feature sets the initial theme for users as <code>light</code>,
-              <code>dark</code>, or <code>system</code>. The <code>Toggle Theme</code>
+              The default theme for users can be set via{" "}
+              <code>options.json</code>. This feature sets the initial theme for
+              users as <code>light</code>,<code>dark</code>, or{" "}
+              <code>system</code>. The <code>Toggle Theme</code>
               button can also be enabled of disabled here.
             </p>
             <p>
-              <strong>Note:</strong> Currently, setting the theme here will only affect
-              brand new users to your site. It will not change the default theme for
-              users who have already visited.
+              <strong>Note:</strong> Currently, setting the theme here will only
+              affect brand new users to your site. It will not change the
+              default theme for users who have already visited.
             </p>
             <Code language="json">{`"theme": { "defaultTheme": "light", "toggleEnabled": false }`}</Code>
           </div>
@@ -332,10 +339,10 @@ export default function About() {
               </a>{" "}
               for this demonstration is a query for{" "}
               <a href="https://dc.library.northwestern.edu/search?q=%22Nez+Perc%C3%A9%22">
-                <em>"Nez Percé"</em>
+                <em>&quot;Nez Percé&quot;</em>
               </a>
               , with results coming from the{" "}
-              <strong>Edward S. Curtis's The North American Indian</strong>{" "}
+              <strong>Edward S. Curtis&apos;s The North American Indian</strong>{" "}
               collection provided by Northwestern University Libraries.
             </p>
             <p>

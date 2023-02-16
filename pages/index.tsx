@@ -13,7 +13,7 @@ import Button from "../components/Shared/Button/Button";
 import { ButtonWrapper } from "../components/Shared/Button/Button.styled";
 import { ArrowRightIcon, GitHubLogoIcon } from "@radix-ui/react-icons";
 
-export default function Index({ metadata, featured, collections }) {
+export default function Index({ featured, collections }) {
   const [baseUrl, setBaseUrl] = useState("");
 
   const hero = {
