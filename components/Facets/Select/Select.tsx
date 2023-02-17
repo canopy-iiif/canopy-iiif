@@ -23,7 +23,7 @@ const FacetSelect: React.FC<FacetSelectProps> = ({ facet }) => {
         <Select.Value placeholder={facet.label} />
       </Select.Trigger>
       <Select.Portal>
-        <Select.Content>
+        <Select.Content style={{ zIndex: "5" }}>
           <Select.ScrollUpButton />
           <Select.Viewport>
             <Select.Group>

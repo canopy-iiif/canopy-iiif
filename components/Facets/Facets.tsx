@@ -1,16 +1,35 @@
-import FACETS from "@/.canopy/facets";
-import FacetSelect from "./Select/Select";
 import { FacetsStyled } from "./Facets.styled";
-import React from "react";
+import React, { useState } from "react";
+import FacetsModal from "./Modal";
+import FacetsActivate from "./Activate";
+import { FacetsProvider, useFacetsState } from "@/context/facets";
 
 const Facets: React.FC = () => {
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+  const { facetsDispatch } = useFacetsState();
+
+  const handleDialogChange = () => {
+    if (!isModalOpen)
+      facetsDispatch({
+        type: "updateFacetsModal",
+        facetsModal: {},
+      });
+
+    setIsModalOpen(!isModalOpen);
+  };
+
   return (
-    <FacetsStyled>
-      {FACETS.map((facet: any) => (
-        <FacetSelect facet={facet} key={facet.slug} />
-      ))}
+    <FacetsStyled open={isModalOpen} onOpenChange={handleDialogChange}>
+      <FacetsActivate />
+      <FacetsModal />
     </FacetsStyled>
   );
 };
 
-export default Facets;
+const FacetsWrapper = () => (
+  <FacetsProvider>
+    <Facets />
+  </FacetsProvider>
+);
+
+export default FacetsWrapper;
