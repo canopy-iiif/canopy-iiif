@@ -2,17 +2,23 @@
   "name": "canopy-iiif",
   "private": true,
   "scripts": {
-    "dev": "next -p 5001",
     "build": "next build",
+    "dev": "next -p 5001",
+    "lint": "next lint",
     "predev": "node canopy dev",
     "prebuild": "node canopy",
-    "start": "next start"
+    "start": "next start",
+    "ts-lint": "tsc --noEmit --incremental --watch",
+    "ts-lint-commit-hook": "tsc --noEmit"
   },
   "dependencies": {
     "@iiif/parser": "^1.1.2",
     "@iiif/vault": "^0.9.22",
     "@iiif/vault-helpers": "^0.9.11",
     "@radix-ui/colors": "^0.1.8",
+    "@radix-ui/react-accordion": "^1.1.0",
+    "@radix-ui/react-checkbox": "^1.0.1",
+    "@radix-ui/react-dialog": "^1.0.2",
     "@radix-ui/react-icons": "^1.1.1",
     "@radix-ui/react-select": "^1.1.2",
     "@samvera/bloom-iiif": "^0.5.0",
@@ -40,11 +46,17 @@
   },
   "devDependencies": {
     "@iiif/presentation-3": "^1.1.3",
+    "@types/leaflet": "^1.9.0",
     "@types/lodash": "^4.14.178",
     "@types/node": "^18.11.18",
     "@types/react": "^18.0.25",
     "@types/react-dom": "^18.0.8",
+    "@typescript-eslint/eslint-plugin": "^5.52.0",
     "charm": "^1.0.2",
+    "eslint": "^8.31.0",
+    "eslint-config-next": "^13.1.1",
+    "eslint-config-prettier": "^8.6.0",
+    "eslint-plugin-testing-library": "^5.2.1",
     "typescript": "^4.9.3"
   }
 }

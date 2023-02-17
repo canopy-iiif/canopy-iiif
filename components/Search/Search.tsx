@@ -47,9 +47,11 @@ const Search = () => {
 
   useEffect(() => search?.current?.focus(), [searchVisible]);
 
+  /* @ts-ignore */
   return (
     <SearchForm onSubmit={handleSubmit} isFocused={searchFocus}>
       <MagnifyingGlassIcon />
+      {/* @ts-ignore */}
       <SearchInput
         onChange={handleSearchChange}
         onFocus={handleSearchFocus}

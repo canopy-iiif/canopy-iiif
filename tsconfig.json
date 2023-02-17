@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "target": "es5",
+    "target": "ES6",
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
@@ -9,7 +9,7 @@
     "noEmit": true,
     "esModuleInterop": true,
     "module": "esnext",
-    "moduleResolution": "nodenext",
+    "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "preserve",
@@ -24,18 +24,13 @@
       "@/services/*": ["services/*"],
       "@/styles/*": ["styles/*"],
       "@/types/*": ["types/*"]
-    },
-    "plugins": [
-      {
-        "name": "next"
-      }
-    ]
+    }
   },
   "include": [
     "next-env.d.ts",
     ".next/types/**/*.ts",
-    "*.ts",
-    "*.tsx",
+    "**/*.ts",
+    "**/*.tsx",
     "**/*.js",
     "**/*.jsx",
     "types.d.ts"

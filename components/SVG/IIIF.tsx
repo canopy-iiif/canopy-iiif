@@ -1,7 +1,7 @@
 import React from "react";
 import { styled } from "@/stitches";
 
-const IIIF = ({ red = "#ed1d33", blue = "#2873ab" }) => {
+const IIIF = () => {
   return (
     <StyledIIIF viewBox="0 0 493.35999 441.33334" id="iiif-logo" version="1.1">
       <title>IIIF Manifest Options</title>

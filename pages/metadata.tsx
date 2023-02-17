@@ -28,8 +28,20 @@ const ListItem = styled("li", {
   },
 });
 
+interface MetadataItemProps {
+  value: string;
+  slug: string;
+  doc_count: number;
+  path: string;
+}
+
 export default function Metadata() {
-  const MetadataItem = ({ value, slug, doc_count, path }) => {
+  const MetadataItem: React.FC<MetadataItemProps> = ({
+    value,
+    slug,
+    doc_count,
+    path,
+  }) => {
     return (
       <ListItem>
         <MinusIcon />
@@ -46,11 +58,11 @@ export default function Metadata() {
           const path = `/search?${slug}=`;
 
           return (
-            <div>
+            <div key={slug}>
               <Heading as="h2">{label}</Heading>
               <ul>
                 {values.map((value) => (
-                  <MetadataItem {...value} path={path} />
+                  <MetadataItem {...value} path={path} key={value.slug} />
                 ))}
               </ul>
             </div>

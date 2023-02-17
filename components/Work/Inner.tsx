@@ -10,6 +10,7 @@ import Link from "next/link";
 import React from "react";
 import Heading from "@/components/Shared/Heading/Heading";
 import { DefinitionListWrapper } from "../Shared/DefinitionList.styled";
+import { Manifest } from "@iiif/presentation-3";
 
 interface ValueAsListItemProps {
   searchParam: string;
@@ -38,10 +39,14 @@ export const ValueAsListItem: React.FC<ValueAsListItemProps> = ({
   );
 };
 
-const WorkInner = ({ manifest }) => {
+interface WorkInnerProps {
+  manifest: Manifest;
+}
+
+const WorkInner: React.FC<WorkInnerProps> = ({ manifest }) => {
   const { label, metadata, requiredStatement, summary } = manifest;
 
-  const formattedValues = FACETS.map((value) => {
+  const formattedValues = FACETS.map((value: any) => {
     return {
       Content: (
         <ValueAsListItem searchParam={value.slug} searchValues={value.values} />
@@ -56,10 +61,19 @@ const WorkInner = ({ manifest }) => {
         <Heading as="h1">
           <Label label={label} as="span" />
         </Heading>
-        <Summary summary={summary} as="p" className="work-summary" />
+        {summary && (
+          <Summary summary={summary} as="p" className="work-summary" />
+        )}
         <DefinitionListWrapper>
-          <Metadata customValueContent={formattedValues} metadata={metadata} />
-          <RequiredStatement requiredStatement={requiredStatement} />
+          {metadata && (
+            <Metadata
+              customValueContent={formattedValues}
+              metadata={metadata}
+            />
+          )}
+          {requiredStatement && (
+            <RequiredStatement requiredStatement={requiredStatement} />
+          )}
         </DefinitionListWrapper>
       </WorkData>
     </StyledWorkInner>
