@@ -13,9 +13,9 @@ const SearchResults: React.FC<SearchResultsProps> = ({ pages, query }) => {
 
   useEffect(() => setPage(0), [query]);
 
-  const observer = useRef();
+  const observer = useRef<IntersectionObserver>();
   const loadMore = useCallback(
-    (node) => {
+    (node: HTMLElement) => {
       if (loading) return;
       if (observer.current) observer.current.disconnect();
       observer.current = new IntersectionObserver((entries) => {
@@ -29,9 +29,12 @@ const SearchResults: React.FC<SearchResultsProps> = ({ pages, query }) => {
 
   return (
     <Grid>
-      {data.map((item, index) =>
+      {data.map((item: any, index) =>
         data.length === index + 1 ? (
-          <span ref={data.length === index + 1 && loadMore} key={item.id}>
+          <span
+            ref={data.length === index + 1 ? loadMore : undefined}
+            key={item.id}
+          >
             <Grid.Item item={item} />
           </span>
         ) : (

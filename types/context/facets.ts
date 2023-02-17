@@ -1,6 +1,5 @@
 export interface FacetsContextStore {
-  recentFacet?: any;
-  userFacetsUnsubmitted: UrlFacets;
+  facetsModal: UrlFacets;
 }
 
 export type UrlFacets =

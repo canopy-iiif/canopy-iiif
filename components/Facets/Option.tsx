@@ -4,14 +4,18 @@ import { styled } from "@/stitches";
 
 const OptionLabel = styled("label", {});
 
-export const FacetsOption = ({ option }) => {
+interface FacetsOptionProps {
+  option: any;
+}
+
+export const FacetsOption: React.FC<FacetsOptionProps> = ({ option }) => {
   const id = `slug-prefix-here-${option.value}`;
   return (
     <span style={{ display: "flex" }}>
       <Checkbox.Root value={option.value} id={id}>
         <Checkbox.Indicator />
       </Checkbox.Root>
-      <OptionLabel for={id}>{option.value}</OptionLabel>
+      <OptionLabel htmlFor={id}>{option.value}</OptionLabel>
     </span>
   );
 };

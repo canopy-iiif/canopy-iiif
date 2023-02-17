@@ -26,7 +26,7 @@ const FacetsModal: React.FC = () => {
           </ContentHeader>
           <ContentBody>
             <Accordion.Root type="single">
-              {FACETS.map((facet) => (
+              {FACETS.map((facet: any) => (
                 <Facet {...facet} key={facet.slug} />
               ))}
             </Accordion.Root>

@@ -2,7 +2,17 @@ import * as Accordion from "@radix-ui/react-accordion";
 import React from "react";
 import FacetsOption from "./Option";
 
-export const FacetsFacet = ({ label, slug, values }) => {
+interface FacetsFacetProps {
+  label: string;
+  slug: string;
+  values: any;
+}
+
+export const FacetsFacet: React.FC<FacetsFacetProps> = ({
+  label,
+  slug,
+  values,
+}) => {
   return (
     <Accordion.Item value={slug}>
       <Accordion.Header asChild>
@@ -11,7 +21,7 @@ export const FacetsFacet = ({ label, slug, values }) => {
         </Accordion.Trigger>
       </Accordion.Header>
       <Accordion.Content>
-        {values.map((option) => (
+        {values.map((option: any) => (
           <FacetsOption option={option} key={option.slug} />
         ))}
       </Accordion.Content>
