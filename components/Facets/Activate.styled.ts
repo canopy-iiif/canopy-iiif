@@ -5,7 +5,6 @@ const FacetsActivateStyled = styled(Dialog.Trigger, {
   position: "relative",
   left: "0",
   transition: "$canopySlideIn",
-  minWidth: "$gr7",
   boxShadow: "none",
 });
 

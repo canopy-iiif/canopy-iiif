@@ -5,7 +5,7 @@ import { slateA } from "@radix-ui/colors";
 const FacetsModalContent = styled(Dialog.Content, {
   width: `calc(100% - $gr5 * 2)`,
   maxHeight: `calc(100% - $gr5 * 2)`,
-  background: "$slate1",
+  background: "$slate2",
   position: "fixed",
   top: `$gr5`,
   left: `$gr5`,
@@ -13,6 +13,20 @@ const FacetsModalContent = styled(Dialog.Content, {
   zIndex: "10",
   borderRadius: "3px",
   boxShadow: `8px 8px 19px ${slateA.slateA8}`,
+
+  "@lg": {
+    width: `calc(100% - $gr4 * 2)`,
+    maxHeight: `calc(100% - $gr4 * 2)`,
+    top: `$gr4`,
+    left: `$gr4`,
+  },
+
+  "@sm": {
+    width: `calc(100% - $gr3 * 2)`,
+    maxHeight: `calc(100% - $gr3 * 2)`,
+    top: `$gr3`,
+    left: `$gr3`,
+  },
 });
 
 const FacetsModalContentInner = styled("div", {
@@ -31,7 +45,7 @@ const FacetsModalContentBody = styled("div", {
 });
 
 const FacetsModalOverlay = styled(Dialog.Overlay, {
-  backgroundColor: "$slateA10",
+  backgroundColor: "$slateA8",
   position: "fixed",
   top: 0,
   left: 0,
@@ -41,7 +55,18 @@ const FacetsModalOverlay = styled(Dialog.Overlay, {
   placeItems: "center",
   overflowY: "auto",
   zIndex: "10",
-  transition: "$canopyOpacity",
+  transition: "$canopyAll",
+
+  "&::after": {
+    position: "fixed",
+    zIndex: "11",
+    background: "linear-gradient(180deg, $slate5, #0000)",
+    width: "100%",
+    height: "$gr9",
+    left: "0",
+    top: "0",
+    content: "",
+  },
 });
 
 const FacetsModalPortal = styled(Dialog.Portal, {});

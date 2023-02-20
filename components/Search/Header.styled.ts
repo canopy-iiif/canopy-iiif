@@ -10,9 +10,6 @@ const SearchHeaderFloat = styled("div", {
   width: "100%",
 
   [`> ${ContainerStyled}`]: {
-    paddingTop: "$gr4",
-    marginTop: "-$gr4",
-    background: "linear-gradient(180deg, $slateA6, #fff0)",
     display: "flex",
     justifyContent: "space-between",
     alignItems: "center",
@@ -23,12 +20,21 @@ const SearchHeaderStyled = styled("div", {
   height: "$gr5",
   padding: "$gr4 0 $gr3",
 
+  "@sm": {
+    height: "$gr5",
+    padding: "$gr3 0 $gr2",
+  },
+
   "#canopy-search-summary": {
     opacity: "1",
     transition: "$canopyOpacity",
     fontSize: "$gr4",
     color: "$slate11",
     fontWeight: "300",
+
+    "@sm": {
+      fontSize: "$gr3",
+    },
   },
 
   variants: {

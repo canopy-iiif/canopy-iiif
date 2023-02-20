@@ -85,7 +85,7 @@ const HeroStyled = styled("div", {
             display: "flex",
             marginRight: "$gr2",
             lineHeight: "1.15em",
-            transition: "$all",
+            transition: "$canopyAll",
           },
 
           ".slide-summary": {

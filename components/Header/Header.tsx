@@ -32,7 +32,7 @@ const Header = () => {
   const handleShowNav = () => setShowNav(!showNav);
 
   return (
-    <Wrapper isVisible={headerVisible}>
+    <Wrapper isVisible={headerVisible || pathname !== "/search" ? true : false}>
       <Content>
         <Title>
           <Link href="/">

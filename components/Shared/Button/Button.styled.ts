@@ -2,7 +2,7 @@ import { styled } from "@/stitches";
 import { slateA } from "@radix-ui/colors";
 
 const ButtonStyled = styled("button", {
-  padding: "$gr2 $gr3",
+  padding: "$gr2 $gr4",
   borderRadius: "2rem",
   textDecoration: "none",
   border: "none",
@@ -12,7 +12,12 @@ const ButtonStyled = styled("button", {
   fontWeight: "500",
   fontSize: "$gr4",
   cursor: "pointer",
-  transition: "$all",
+  transition: "$canopyAll",
+
+  "@sm": {
+    padding: "$gr2 $gr3",
+    fontSize: "$gr3",
+  },
 
   variants: {
     buttonType: {
