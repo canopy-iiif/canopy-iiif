@@ -1,5 +1,8 @@
+import { InternationalString } from "@iiif/presentation-3";
+
 export interface SearchContextStore {
+  headerVisible: boolean;
   searchQuery: string;
-  searchVisible: boolean;
   searchHeaderFixed: boolean;
+  searchSummary?: InternationalString;
 }

@@ -1,21 +1,19 @@
 import React, { useEffect, useRef, useState } from "react";
 import Container from "@/components/Shared/Container";
 import Facets from "@/components/Facets/Facets";
-import Heading from "@/components/Shared/Heading/Heading";
-import { InternationalString } from "@iiif/presentation-3";
 import Layout from "@/components/layout";
 import {
   SearchHeaderFloat,
   SearchHeaderStyled,
 } from "@/components/Search/Header.styled";
 import SearchResults from "@/components/Search/Results";
-import { Summary } from "@samvera/nectar-iiif";
 import axios from "axios";
 import { getActiveFacets } from "@/services/facet/facets";
 import { useRouter } from "next/router";
 import useElementPosition from "@/hooks/useElementPosition";
 import { useSearchState } from "@/context/search";
 import { headerHeight } from "@/styles/global";
+import { Summary } from "@samvera/nectar-iiif";
 
 const Search = () => {
   const router = useRouter();
@@ -23,14 +21,13 @@ const Search = () => {
 
   const [pages, setPages] = useState<string[]>([]);
   const [params, setParams] = useState();
-  const [summary, setSummary] = useState<InternationalString>();
 
   const searchHeaderRef = useRef<HTMLDivElement>(null);
   const scrollPosition = useElementPosition(searchHeaderRef);
 
   const {
     searchDispatch,
-    searchState: { searchHeaderFixed },
+    searchState: { searchHeaderFixed, searchSummary },
   } = useSearchState();
 
   useEffect(() => {
@@ -61,21 +58,32 @@ const Search = () => {
     if (typeof params !== "undefined")
       axios.get(`/api/search`, { params }).then((result) => {
         setPages(result.data.items.map((item: any) => item.id));
-        setSummary(result.data.summary);
+
+        result.data.summary &&
+          searchDispatch({
+            type: "updateSearchSummary",
+            searchSummary: result.data.summary,
+          });
       });
   }, [params]);
 
   return (
     <Layout>
-      <Container containerType="wide">
-        <SearchHeaderStyled ref={searchHeaderRef} isFixed={searchHeaderFixed}>
-          <SearchHeaderFloat>
-            <Heading as="span">
-              {summary && <Summary summary={summary} as="span" />}{" "}
-            </Heading>
+      <SearchHeaderStyled ref={searchHeaderRef} isFixed={searchHeaderFixed}>
+        <SearchHeaderFloat>
+          <Container containerType="wide">
             <Facets />
-          </SearchHeaderFloat>
-        </SearchHeaderStyled>
+            {searchSummary && (
+              <Summary
+                as="span"
+                id="canopy-search-summary"
+                summary={searchSummary}
+              />
+            )}
+          </Container>
+        </SearchHeaderFloat>
+      </SearchHeaderStyled>
+      <Container containerType="wide">
         <SearchResults pages={pages} query={params} />
       </Container>
     </Layout>

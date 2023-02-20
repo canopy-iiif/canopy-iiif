@@ -1,10 +1,12 @@
 import React from "react";
 import { SearchContextStore } from "@/types/context/search";
+import { InternationalString } from "@iiif/presentation-3";
 
 type Action =
-  | { type: "updateQuery"; searchQuery: string }
+  | { type: "updateHeaderVisible"; headerVisible: boolean }
   | { type: "updateSearchHeaderFixed"; searchHeaderFixed: boolean }
-  | { type: "updateVisible"; searchVisible: boolean };
+  | { type: "updateSearchQuery"; searchQuery: string }
+  | { type: "updateSearchSummary"; searchSummary: InternationalString };
 
 type Dispatch = (action: Action) => void;
 type State = SearchContextStore;
@@ -14,9 +16,10 @@ type SearchProviderProps = {
 };
 
 const defaultState: SearchContextStore = {
+  headerVisible: true,
   searchQuery: "",
-  searchVisible: true,
   searchHeaderFixed: false,
+  searchSummary: { none: [""] },
 };
 
 const SearchStateContext = React.createContext<
@@ -25,22 +28,28 @@ const SearchStateContext = React.createContext<
 
 function searchReducer(state: State, action: Action) {
   switch (action.type) {
-    case "updateQuery": {
+    case "updateSearchQuery": {
       return {
         ...state,
         searchQuery: action.searchQuery,
       };
     }
-    case "updateVisible": {
+    case "updateHeaderVisible": {
       return {
         ...state,
-        searchVisible: action.searchVisible,
+        headerVisible: action.headerVisible,
       };
     }
     case "updateSearchHeaderFixed": {
       return {
         ...state,
         searchHeaderFixed: action.searchHeaderFixed,
+      };
+    }
+    case "updateSearchSummary": {
+      return {
+        ...state,
+        searchSummary: action.searchSummary,
       };
     }
     default: {

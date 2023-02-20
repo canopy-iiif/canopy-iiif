@@ -116,6 +116,16 @@ const Wrapper = styled("header", {
   top: "0",
   display: "flex",
   flexDirection: "column",
+  transition: "$canopyOpacity",
+  opacity: "1",
+
+  variants: {
+    isVisible: {
+      false: {
+        opacity: "0",
+      },
+    },
+  },
 });
 
 export { Actions, Content, ResponsiveActions, Title, Wrapper };

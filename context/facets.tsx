@@ -12,7 +12,7 @@ type FacetsProviderProps = {
   initialState?: FacetsContextStore;
 };
 
-const defaultState: FacetsContextStore = {
+export const defaultState: FacetsContextStore = {
   facetsModal: {},
 };
 
@@ -21,6 +21,8 @@ const FacetsStateContext = React.createContext<
 >(undefined);
 
 function facetsReducer(state: State, action: Action) {
+  console.log(`state`, state);
+  console.log(`action`, action);
   switch (action.type) {
     case "updateFacetsModal": {
       return {

@@ -8,6 +8,7 @@ import Search from "../Search/Search";
 import { Actions, ResponsiveActions } from "./Header.styled";
 import { HamburgerMenuIcon } from "@radix-ui/react-icons";
 import { useRouter } from "next/router";
+import { useSearchState } from "@/context/search";
 
 // @ts-ignore
 const mapEnabled = process.env.CANOPY_CONFIG.map.enabled;
@@ -23,13 +24,15 @@ const Header = () => {
   const [showNav, setShowNav] = useState(false);
   const router = useRouter();
   const { pathname, query } = router;
+  const { searchState } = useSearchState();
+  const { headerVisible } = searchState;
 
   useEffect(() => setShowNav(false), [pathname, query]);
 
   const handleShowNav = () => setShowNav(!showNav);
 
   return (
-    <Wrapper>
+    <Wrapper isVisible={headerVisible}>
       <Content>
         <Title>
           <Link href="/">

@@ -13,10 +13,9 @@ import { useSearchState } from "@/context/search";
 const Search = () => {
   const router = useRouter();
   const { searchDispatch, searchState } = useSearchState();
-  const { searchQuery, searchVisible } = searchState;
+  const { searchQuery } = searchState;
 
   const [query, setQuery] = useState<string>(searchQuery);
-  const [searchFocus, setSearchFocus] = useState<boolean>(false);
   const search = useRef<HTMLInputElement>(null);
 
   const handleSubmit = (e: SyntheticEvent<HTMLFormElement>) => {
@@ -27,15 +26,12 @@ const Search = () => {
         q: query,
       },
     });
-    searchDispatch({ type: "updateQuery", searchQuery: query });
+    searchDispatch({ type: "updateSearchQuery", searchQuery: query });
   };
 
   const handleSearchChange = (e: ChangeEvent<HTMLInputElement>) => {
     setQuery(e.target.value);
   };
-
-  const handleSearchFocus = (e: FocusEvent) =>
-    e.type === "focus" ? setSearchFocus(true) : setSearchFocus(false);
 
   useEffect(() => {
     if (router) {
@@ -45,22 +41,11 @@ const Search = () => {
     }
   }, [router]);
 
-  useEffect(() => search?.current?.focus(), [searchVisible]);
-
-  /* @ts-ignore */
   return (
-    <SearchForm onSubmit={handleSubmit} isFocused={searchFocus}>
+    <SearchForm onSubmit={handleSubmit}>
       <MagnifyingGlassIcon />
-      {/* @ts-ignore */}
-      <SearchInput
-        onChange={handleSearchChange}
-        onFocus={handleSearchFocus}
-        onBlur={handleSearchFocus}
-        ref={search}
-      />
-      <SearchSubmit type="submit" css={searchFocus ? { zIndex: 1 } : {}}>
-        Search
-      </SearchSubmit>
+      <SearchInput onChange={handleSearchChange} ref={search} />
+      <SearchSubmit type="submit">Search</SearchSubmit>
     </SearchForm>
   );
 };

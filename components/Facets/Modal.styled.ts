@@ -10,7 +10,7 @@ const FacetsModalContent = styled(Dialog.Content, {
   top: `$gr5`,
   left: `$gr5`,
   overflowY: "auto",
-  zIndex: "2",
+  zIndex: "10",
   borderRadius: "3px",
   boxShadow: `8px 8px 19px ${slateA.slateA8}`,
 });
@@ -40,7 +40,8 @@ const FacetsModalOverlay = styled(Dialog.Overlay, {
   display: "grid",
   placeItems: "center",
   overflowY: "auto",
-  zIndex: "1",
+  zIndex: "10",
+  transition: "$canopyOpacity",
 });
 
 const FacetsModalPortal = styled(Dialog.Portal, {});

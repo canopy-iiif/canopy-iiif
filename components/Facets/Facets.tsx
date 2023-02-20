@@ -3,10 +3,13 @@ import React, { useState } from "react";
 import FacetsModal from "./Modal";
 import FacetsActivate from "./Activate";
 import { FacetsProvider, useFacetsState } from "@/context/facets";
+import { useSearchState } from "@/context/search";
 
-const Facets: React.FC = () => {
+const Facets = () => {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const { facetsDispatch } = useFacetsState();
+  const { searchDispatch, searchState } = useSearchState();
+  const { headerVisible } = searchState;
 
   const handleDialogChange = () => {
     if (!isModalOpen)
@@ -14,6 +17,11 @@ const Facets: React.FC = () => {
         type: "updateFacetsModal",
         facetsModal: {},
       });
+
+    searchDispatch({
+      type: "updateHeaderVisible",
+      headerVisible: !headerVisible,
+    });
 
     setIsModalOpen(!isModalOpen);
   };
