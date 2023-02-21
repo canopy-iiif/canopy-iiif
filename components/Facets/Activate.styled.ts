@@ -3,7 +3,7 @@ import * as Dialog from "@radix-ui/react-dialog";
 
 const FacetsActivateStyled = styled(Dialog.Trigger, {
   position: "relative",
-  left: "0",
+  right: "0",
   transition: "$canopySlideIn",
   boxShadow: "none",
 });

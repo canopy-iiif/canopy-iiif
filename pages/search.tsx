@@ -72,7 +72,6 @@ const Search = () => {
       <SearchHeaderStyled ref={searchHeaderRef} isFixed={searchHeaderFixed}>
         <SearchHeaderFloat>
           <Container containerType="wide">
-            <Facets />
             {searchSummary && (
               <Summary
                 as="span"
@@ -80,6 +79,7 @@ const Search = () => {
                 summary={searchSummary}
               />
             )}
+            <Facets />
           </Container>
         </SearchHeaderFloat>
       </SearchHeaderStyled>

@@ -46,8 +46,8 @@ const SearchHeaderStyled = styled("div", {
           },
 
           [`${FacetsActivateStyled}`]: {
-            left: "50%",
-            transform: "translate(-50%)",
+            right: "50%",
+            transform: "translate(50%)",
             backfaceVisibility: "hidden",
             webkitFontSmoothing: "subpixel-antialiased",
             boxShadow: "2px 2px 5px #0003",

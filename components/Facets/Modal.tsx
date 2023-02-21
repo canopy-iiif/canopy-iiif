@@ -19,10 +19,10 @@ const FacetsModal: React.FC = () => {
       <Content>
         <ContentInner>
           <ContentHeader>
-            <Dialog.Close>Close</Dialog.Close>
             <Dialog.Title asChild>
-              <span>Filters</span>
+              <span>Filter</span>
             </Dialog.Title>
+            <Dialog.Close>Close</Dialog.Close>
           </ContentHeader>
           <ContentBody>
             <Accordion.Root type="single">

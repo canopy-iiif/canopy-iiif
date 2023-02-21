@@ -6,7 +6,7 @@ const time = 250;
 const transitions = {
   canopyAll: `all ${time}ms ${timingFunction}`,
   canopyOpacity: `opacity ${time}ms ${timingFunction}`,
-  canopySlideIn: `left ${time * gr(2)}ms ${timingFunction}`,
+  canopySlideIn: `right ${time * gr(2)}ms ${timingFunction}`,
 };
 
 export default transitions;
