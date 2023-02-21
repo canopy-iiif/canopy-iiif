@@ -7,7 +7,7 @@ import Container from "../Shared/Container";
 import { MapStyled } from "./Map.styled";
 import { getLabel } from "../../hooks/getLabel";
 import { InternationalString } from "@iiif/presentation-3";
-import { getBounds } from "@/services/getFeatures";
+import { getBounds, getCenter } from "@/services/getFeatures";
 
 const icon = L.icon({
   iconUrl: "/images/marker-icon.png",
@@ -21,13 +21,14 @@ interface MapProps {
 
 const Map: React.FC<MapProps> = ({ manifests }) => {
   const bounds = getBounds(manifests);
+  const center = getCenter(bounds);
 
   return (
     <MapStyled>
       {bounds.length > 0 ? (
         <MapContainer
           className={"map-container"}
-          center={bounds[0]}
+          center={center}
           zoom={3}
           scrollWheelZoom={false}
         >
