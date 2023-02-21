@@ -19,7 +19,9 @@ export default function handler(
   const { q, page } = query;
 
   const baseUrl = origin + url;
-  const activeFacets = getActiveFacets(query);
+  const { searchParams } = new URL(baseUrl);
+
+  const activeFacets = getActiveFacets(searchParams);
   const results = getResults(origin, q, activeFacets);
   const pages = getPages(results, 10);
   const items = page

@@ -1,11 +1,3 @@
 export interface FacetsContextStore {
-  facetsModal: UrlFacets;
+  facetsActive: any;
 }
-
-export type UrlFacets =
-  | {
-      [key: string]: never;
-    }
-  | {
-      [key: string]: string[];
-    };

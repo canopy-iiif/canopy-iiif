@@ -27,7 +27,15 @@ const FacetsModal: React.FC = () => {
           <ContentBody>
             <Accordion.Root type="single">
               {FACETS.map((facet: any) => (
-                <Facet {...facet} key={facet.slug} />
+                <Facet
+                  {...facet}
+                  key={facet.slug}
+                  // activeValues={
+                  //   activeFacets.find(
+                  //     (entry: any) => entry.label === facet.slug
+                  //   )?.value
+                  // }
+                />
               ))}
             </Accordion.Root>
             {/* <FacetSelect facet={facet} key={facet.slug} /> */}

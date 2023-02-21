@@ -1,9 +1,9 @@
-import React from "react";
-import { FacetsContextStore, UrlFacets } from "@/types/context/facets";
+import React, { createContext, useContext, useReducer } from "react";
+import { FacetsContextStore } from "@/types/context/facets";
 
 type Action = {
-  type: "updateFacetsModal";
-  facetsModal: UrlFacets;
+  type: "updateFacetsActive";
+  facetsActive: any;
 };
 type Dispatch = (action: Action) => void;
 type State = FacetsContextStore;
@@ -12,20 +12,20 @@ type FacetsProviderProps = {
   initialState?: FacetsContextStore;
 };
 
-export const defaultState: FacetsContextStore = {
-  facetsModal: {},
+const defaultState: FacetsContextStore = {
+  facetsActive: [],
 };
 
-const FacetsStateContext = React.createContext<
+const FacetsStateContext = createContext<
   { facetsState: State; facetsDispatch: Dispatch } | undefined
 >(undefined);
 
 function facetsReducer(state: State, action: Action) {
   switch (action.type) {
-    case "updateFacetsModal": {
+    case "updateFacetsActive": {
       return {
         ...state,
-        facetsModal: action.facetsModal,
+        facetsActive: action.facetsActive,
       };
     }
   }
@@ -35,7 +35,7 @@ function FacetsProvider({
   initialState = defaultState,
   children,
 }: FacetsProviderProps) {
-  const [state, dispatch] = React.useReducer(facetsReducer, initialState);
+  const [state, dispatch] = useReducer(facetsReducer, initialState);
   const value = { facetsDispatch: dispatch, facetsState: state };
   return (
     <FacetsStateContext.Provider value={value}>
@@ -45,7 +45,7 @@ function FacetsProvider({
 }
 
 function useFacetsState() {
-  const context = React.useContext(FacetsStateContext);
+  const context = useContext(FacetsStateContext);
   if (context === undefined) {
     throw new Error("useFacetsState must be used within a FacetsProvider");
   }
