@@ -28,7 +28,7 @@ const Map: React.FC<MapProps> = ({ manifests }) => {
       {bounds.length > 0 ? (
         <MapContainer
           className={"map-container"}
-          center={center}
+          center={[center[0], center[1]]}
           zoom={3}
           scrollWheelZoom={false}
         >
