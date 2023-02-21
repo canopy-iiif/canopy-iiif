@@ -2,11 +2,11 @@ import { Manifest } from "@iiif/presentation-3";
 
 export const getBounds = (items: any) => {
   const boundsPerItem = items.map((item: any) => {
-    const pointFeatures = item.navPlace.features.filter(
+    const pointFeatures = item.features.filter(
       (feature: any) => feature.geometry.type === "Point"
     );
     const manifestCoordinates = pointFeatures.map(
-      (feature: any) => feature.geometry.coordinates
+      (feature: any) => [feature.geometry.coordinates[1], feature.geometry.coordinates[0]]
     );
     return [...manifestCoordinates];
   });
