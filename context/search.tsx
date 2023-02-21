@@ -5,7 +5,7 @@ import { InternationalString } from "@iiif/presentation-3";
 type Action =
   | { type: "updateHeaderVisible"; headerVisible: boolean }
   | { type: "updateSearchHeaderFixed"; searchHeaderFixed: boolean }
-  | { type: "updateSearchQuery"; searchQuery: string }
+  | { type: "updateSearchParams"; searchParams: URLSearchParams }
   | { type: "updateSearchSummary"; searchSummary: InternationalString };
 
 type Dispatch = (action: Action) => void;
@@ -17,8 +17,8 @@ type SearchProviderProps = {
 
 const defaultState: SearchContextStore = {
   headerVisible: true,
-  searchQuery: "",
   searchHeaderFixed: false,
+  searchParams: new URLSearchParams(),
   searchSummary: { none: [""] },
 };
 
@@ -28,12 +28,6 @@ const SearchStateContext = React.createContext<
 
 function searchReducer(state: State, action: Action) {
   switch (action.type) {
-    case "updateSearchQuery": {
-      return {
-        ...state,
-        searchQuery: action.searchQuery,
-      };
-    }
     case "updateHeaderVisible": {
       return {
         ...state,
@@ -44,6 +38,12 @@ function searchReducer(state: State, action: Action) {
       return {
         ...state,
         searchHeaderFixed: action.searchHeaderFixed,
+      };
+    }
+    case "updateSearchParams": {
+      return {
+        ...state,
+        searchParams: action.searchParams,
       };
     }
     case "updateSearchSummary": {

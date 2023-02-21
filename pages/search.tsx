@@ -8,19 +8,17 @@ import {
 } from "@/components/Search/Header.styled";
 import SearchResults from "@/components/Search/Results";
 import axios from "axios";
-import { getActiveFacets } from "@/services/facet/facets";
-import { useRouter } from "next/router";
+import { useSearchParams } from "next/navigation";
 import useElementPosition from "@/hooks/useElementPosition";
 import { useSearchState } from "@/context/search";
 import { headerHeight } from "@/styles/global";
 import { Summary } from "@samvera/nectar-iiif";
 
 const Search = () => {
-  const router = useRouter();
-  const { query } = router;
+  const searchParams: URLSearchParams = useSearchParams();
 
   const [pages, setPages] = useState<string[]>([]);
-  const [params, setParams] = useState();
+  const [params, setParams] = useState<URLSearchParams>();
 
   const searchHeaderRef = useRef<HTMLDivElement>(null);
   const scrollPosition = useElementPosition(searchHeaderRef);
@@ -31,19 +29,9 @@ const Search = () => {
   } = useSearchState();
 
   useEffect(() => {
-    const { q } = query;
-    const facets = getActiveFacets(query);
-    const params = new URLSearchParams();
-
-    if (q) params.append("q", q as string);
-    if (facets)
-      facets.forEach((facet: any) =>
-        params.append(facet.label, facet.value as string)
-      );
-
     setPages([]);
-    setParams(params as any);
-  }, [query]);
+    setParams(new URLSearchParams(searchParams.toString()));
+  }, [searchParams]);
 
   useEffect(
     () =>
@@ -55,7 +43,12 @@ const Search = () => {
   );
 
   useEffect(() => {
-    if (typeof params !== "undefined")
+    if (typeof params !== "undefined") {
+      searchDispatch({
+        searchParams: params,
+        type: "updateSearchParams",
+      });
+
       axios.get(`/api/search`, { params }).then((result) => {
         setPages(result.data.items.map((item: any) => item.id));
 
@@ -65,7 +58,8 @@ const Search = () => {
             searchSummary: result.data.summary,
           });
       });
-  }, [params]);
+    }
+  }, [params, searchDispatch]);
 
   return (
     <Layout>
