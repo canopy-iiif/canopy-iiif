@@ -2,9 +2,13 @@ import * as Select from "@radix-ui/react-select";
 import { useRouter } from "next/router";
 import React from "react";
 
-const FacetSelect = ({ facet }) => {
+interface FacetSelectProps {
+  facet: any;
+}
+
+const FacetSelect: React.FC<FacetSelectProps> = ({ facet }) => {
   const router = useRouter();
-  const handeValueChange = (value) =>
+  const handeValueChange = (value: any) =>
     router.push({
       pathname: "/search",
       query: {
@@ -24,7 +28,7 @@ const FacetSelect = ({ facet }) => {
           <Select.Viewport>
             <Select.Group>
               <Select.Label>{facet.label}</Select.Label>
-              {facet.values.map((option) => (
+              {facet.values.map((option: any) => (
                 <Select.Item value={option.slug} key={option.slug}>
                   <Select.ItemText>{option.value}</Select.ItemText>
                   <Select.ItemIndicator />

@@ -1,21 +1,23 @@
-const getPageCollection = (manifests, pages, page) => {
-  const target = pages.find((item) => item.page === page);
-  return target.items.map((id) => manifests.find((item) => item.id === id));
+const getPageCollection = (manifests: any, pages: any, page: any) => {
+  const target = pages.find((item: any) => item.page === page);
+  return target.items.map((id: any) =>
+    manifests.find((item: any) => item.id === id)
+  );
 };
 
-const getPages = (manifests, size) => {
+const getPages = (manifests: any, size: any) => {
   const count = Math.ceil(manifests.length / size);
   const pages = Array.from(Array(count).keys());
 
   return pages.map((index) => {
     const start = size * index;
     const end = size * (index + 1);
-    const items = manifests.slice(start, end).map((item) => item.id);
+    const items = manifests.slice(start, end).map((item: any) => item.id);
     return { page: index + 1, items: items };
   });
 };
 
-const getPartOf = (baseUrl) => {
+const getPartOf = (baseUrl: any) => {
   const url = new URL(baseUrl);
   url.searchParams.delete("page");
   return [
@@ -26,8 +28,8 @@ const getPartOf = (baseUrl) => {
   ];
 };
 
-const getTopCollection = (pages, baseUrl) => {
-  return pages.map((item) => {
+const getTopCollection = (pages: any, baseUrl: any) => {
+  return pages.map((item: any) => {
     const url = new URL(baseUrl);
     url.searchParams.append("page", item.page);
     return {
@@ -38,7 +40,7 @@ const getTopCollection = (pages, baseUrl) => {
   });
 };
 
-const getItem = (item, origin) => {
+const getItem = (item: any, origin: any) => {
   return {
     id: item.id,
     type: "Manifest",

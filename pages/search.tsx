@@ -11,21 +11,27 @@ import Facets from "../components/Facets/Facets";
 import { getActiveFacets } from "@/services/facet/facets";
 import Heading from "@/components/Shared/Heading/Heading";
 
-const Results = ({ pages, query }) => {
+const Results = ({ pages, query }: { pages: any; query: any }) => {
   const [page, setPage] = useState(0);
-  const { data, error, loading, more } = usePageResults(pages, page, query);
+  const { data, loading, more } = usePageResults(pages, page, query);
 
   useEffect(() => setPage(0), [query]);
 
-  const observer = useRef();
+  const observer = useRef(null);
   const loadMore = useCallback(
-    (node) => {
+    (node: any) => {
       if (loading) return;
+
+      // @ts-ignore
       if (observer.current) observer.current.disconnect();
+
+      // @ts-ignore
       observer.current = new IntersectionObserver((entries) => {
         if (entries[0].isIntersecting && more)
           setPage((prevPage) => prevPage + 1);
       });
+
+      // @ts-ignore
       if (node) observer.current.observe(node);
     },
     [loading, more]
@@ -36,12 +42,14 @@ const Results = ({ pages, query }) => {
       {data.map((item, index) => {
         if (data.length === index + 1) {
           return (
+            // @ts-ignore
             <span ref={data.length === index + 1 && loadMore} key={item.id}>
               <Grid.Item item={item} />
             </span>
           );
         } else {
           return (
+            // @ts-ignore
             <span key={item.id}>
               <Grid.Item item={item} />
             </span>
@@ -59,7 +67,6 @@ const Search = () => {
   const [pages, setPages] = useState<string[]>([]);
   const [params, setParams] = useState();
   const [summary, setSummary] = useState<InternationalString>();
-  const [q, setQ] = useState();
 
   useEffect(() => {
     const { q } = query;
@@ -68,18 +75,18 @@ const Search = () => {
 
     if (q) params.append("q", q as string);
     if (facets)
-      facets.forEach((facet) =>
+      facets.forEach((facet: any) =>
         params.append(facet.label, facet.value as string)
       );
 
     setPages([]);
-    setParams(params);
+    setParams(params as any);
   }, [query]);
 
   useEffect(() => {
     if (typeof params !== "undefined")
       axios.get(`/api/search`, { params }).then((result) => {
-        setPages(result.data.items.map((item) => item.id));
+        setPages(result.data.items.map((item: any) => item.id));
         setSummary(result.data.summary);
       });
   }, [params]);
