@@ -1,15 +1,16 @@
 import { MapContainer, TileLayer, Marker, Popup, FeatureGroup } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
-import L from "leaflet";
+import Leaflet from "leaflet";
 import Link from "next/link";
 import { Label, Thumbnail } from "@samvera/nectar-iiif";
 import Container from "../Shared/Container";
 import { MapStyled } from "./Map.styled";
 import { getLabel } from "../../hooks/getLabel";
 import { InternationalString } from "@iiif/presentation-3";
-import { getBounds, getCenter } from "@/services/getFeatures";
+import { getBounds } from "@/services/getFeatures";
+import { useRef, useState, useEffect } from "react";
 
-const icon = L.icon({
+const icon = Leaflet.icon({
   iconUrl: "/images/marker-icon.png",
   iconSize: [24, 36],
   iconAnchor: [12, 36],
@@ -20,17 +21,27 @@ interface MapProps {
 }
 
 const Map: React.FC<MapProps> = ({ manifests }) => {
-  const bounds = getBounds(manifests);
-  const center = getCenter(bounds);
+  const defaultBounds: Leaflet.LatLngBoundsExpression = [[51.505, -0.09]];
+  const mapRef = useRef<Leaflet.Map>(null);
+  const [bounds, setBounds] = useState<Leaflet.LatLngBoundsExpression>(defaultBounds);
+
+  useEffect( () => {
+    setBounds(getBounds(manifests));
+  }, [manifests])
+
+  useEffect(() => {
+    if (mapRef.current && bounds) {
+      mapRef.current.fitBounds(bounds);
+    }
+  }, [mapRef, bounds]);
 
   return (
     <MapStyled>
-      {bounds.length > 0 ? (
         <MapContainer
           className={"map-container"}
-          center={[center[0], center[1]]}
-          zoom={3}
+          bounds={bounds}
           scrollWheelZoom={false}
+          ref = {mapRef}
         >
           <TileLayer
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
@@ -69,19 +80,6 @@ const Map: React.FC<MapProps> = ({ manifests }) => {
             )}
           </FeatureGroup>
         </MapContainer>
-      ) : (
-        <MapContainer
-          className={"map-container"}
-          center={[51.505, -0.09]}
-          zoom={11}
-          scrollWheelZoom={false}
-        >
-          <TileLayer
-            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-          />
-        </MapContainer>
-      )}
     </MapStyled>
   );
 };

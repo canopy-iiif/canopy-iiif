@@ -13,14 +13,6 @@ export const getBounds = (items: any) => {
   return [].concat(...boundsPerItem);
 };
 
-export const getCenter = (items: [number, number][]) => {
-  const highest_long = Math.max(...items.map(subArray => subArray[1]));
-  const lowest_long = Math.min(...items.map(subArray => subArray[1]));
-  const highest_lat = Math.max(...items.map(subArray => subArray[0]));
-  const lowest_lat = Math.min(...items.map(subArray => subArray[0]));
-  return [(highest_lat + lowest_lat)/2, (highest_long + lowest_long)/2]
-}
-
 export const getFeatures = (manifests: [Manifest]) => {
   return manifests.map((manifest: any) => {
     // Spread this ...
