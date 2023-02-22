@@ -1,16 +1,16 @@
 import { Manifest } from "@iiif/presentation-3";
 
 export const getBounds = (items: any) => {
-  return items.map((item: any) => {
-    const pointFeatures = item.navPlace.features.filter(
+  const boundsPerItem = items.map((item: any) => {
+    const pointFeatures = item.features.filter(
       (feature: any) => feature.geometry.type === "Point"
     );
     const manifestCoordinates = pointFeatures.map(
-      (feature: any) => feature.geometry.coordinates
+      (feature: any) => [feature.geometry.coordinates[1], feature.geometry.coordinates[0]]
     );
-    // This isn't exactly right.  Fix.
-    return [...manifestCoordinates].shift();
+    return [...manifestCoordinates];
   });
+  return [].concat(...boundsPerItem);
 };
 
 export const getFeatures = (manifests: [Manifest]) => {

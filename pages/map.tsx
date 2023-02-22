@@ -3,7 +3,7 @@ import Layout from "@/components/layout";
 import MANIFESTS from "@/.canopy/manifests.json";
 import "leaflet/dist/leaflet.css";
 import dynamic from "next/dynamic";
-import { getBounds, getFeatures } from "@/services/getFeatures";
+import { getFeatures } from "@/services/getFeatures";
 
 const Map = dynamic(
   () => import("../components/Map/Map"),
@@ -16,11 +16,10 @@ export default function MapPage() {
     (manifest) => manifest.navPlace
   );
   const features: any = getFeatures(navPlace_Manifests);
-  const bounds = getBounds(navPlace_Manifests);
   return (
     <Layout>
       <div>
-        <Map manifests={features} bounds={bounds} />
+        <Map manifests={features} />
       </div>
     </Layout>
   );
