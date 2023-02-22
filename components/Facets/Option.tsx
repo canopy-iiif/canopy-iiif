@@ -1,22 +1,42 @@
-import * as Checkbox from "@radix-ui/react-checkbox";
-import React from "react";
-import { styled } from "@/stitches";
-
-const OptionLabel = styled("label", {});
+import React, { useState } from "react";
+import { CheckIcon } from "@radix-ui/react-icons";
+import {
+  OptionCheckbox,
+  OptionCheckboxIndicator,
+  OptionLabel,
+  OptionStyled,
+} from "./Option.styled";
 
 interface FacetsOptionProps {
+  active: boolean;
+  identifier: string;
   option: any;
 }
 
-export const FacetsOption: React.FC<FacetsOptionProps> = ({ option }) => {
-  const id = `slug-prefix-here-${option.value}`;
+export const FacetsOption: React.FC<FacetsOptionProps> = ({
+  active,
+  identifier,
+  option,
+}) => {
+  const [checked, setChecked] = useState(active);
+  const handleCheckedChange = () => setChecked(!checked);
+
   return (
-    <span style={{ display: "flex" }}>
-      <Checkbox.Root value={option.value} id={id}>
-        <Checkbox.Indicator />
-      </Checkbox.Root>
-      <OptionLabel htmlFor={id}>{option.value}</OptionLabel>
-    </span>
+    <OptionStyled>
+      <OptionCheckbox
+        value={option.value}
+        id={identifier}
+        checked={checked}
+        onCheckedChange={handleCheckedChange}
+      >
+        <OptionCheckboxIndicator asChild>
+          <CheckIcon />
+        </OptionCheckboxIndicator>
+      </OptionCheckbox>
+      <OptionLabel htmlFor={identifier} isChecked={checked}>
+        {option.value}
+      </OptionLabel>
+    </OptionStyled>
   );
 };
 

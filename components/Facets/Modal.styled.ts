@@ -1,47 +1,100 @@
 import { styled } from "@/stitches";
 import * as Dialog from "@radix-ui/react-dialog";
 import { slateA } from "@radix-ui/colors";
+import { maxWidths } from "@/styles/theme/containers";
 
 const FacetsModalContent = styled(Dialog.Content, {
   width: `calc(100% - $gr5 * 2)`,
+  maxWidth: maxWidths.default,
   maxHeight: `calc(100% - $gr5 * 2)`,
   background: "$slate2",
   position: "fixed",
   top: `$gr5`,
-  left: `$gr5`,
+  left: `50%`,
   overflowY: "auto",
   zIndex: "10",
   borderRadius: "3px",
-  boxShadow: `8px 8px 19px ${slateA.slateA8}`,
+  boxShadow: `5px 5px 13px ${slateA.slateA7}`,
+  borderTop: "1px solid $slateA1",
+  borderBottom: "1px solid $slateA4",
+  transform: "translateX(-50%)",
 
   "@lg": {
     width: `calc(100% - $gr4 * 2)`,
     maxHeight: `calc(100% - $gr4 * 2)`,
     top: `$gr4`,
-    left: `$gr4`,
   },
 
   "@sm": {
     width: `calc(100% - $gr3 * 2)`,
     maxHeight: `calc(100% - $gr3 * 2)`,
     top: `$gr3`,
-    left: `$gr3`,
   },
 });
 
 const FacetsModalContentInner = styled("div", {
   display: "flex",
   flexDirection: "column",
+  flexWrap: "nowrap",
 });
 
 const FacetsModalContentHeader = styled("header", {
   display: "flex",
   justifyContent: "space-between",
-  padding: "$gr4",
+  padding: "$gr3 $gr4",
+  color: "$slate9",
+  fontSize: "$gr3",
+  fontFamily: "$bookTight",
+  fontWeight: "300",
+  flexGrow: "0",
+  flexShrink: "0",
+  alignItems: "center",
+
+  "@sm": {
+    padding: "$gr2 $gr3",
+  },
+});
+
+const FacetsModalContentFooter = styled("footer", {
+  display: "flex",
+  justifyContent: "space-between",
+  padding: "$gr3 $gr4",
+  flexGrow: "0",
+  flexShrink: "0",
+
+  "@sm": {
+    padding: "$gr2 $gr3",
+  },
 });
 
 const FacetsModalContentBody = styled("div", {
-  padding: "$gr4",
+  padding: "$gr3 $gr4",
+  borderTop: "1px solid $slate4",
+  borderBottom: "1px solid $slate4",
+  height: "100%",
+  flexGrow: "1",
+  flexShrink: "1",
+  overflow: "scroll",
+
+  "@sm": {
+    padding: "$gr2 $gr3",
+  },
+});
+
+const FacetsModalTitle = styled(Dialog.Title, {});
+
+const FacetsModalClose = styled(Dialog.Close, {
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
+  border: "none",
+  borderRadius: "50%",
+  color: "$slate10",
+  background: "transparent",
+  cursor: "pointer",
+  width: "$gr4",
+  height: "$gr4",
+  transition: "$canopyAll",
 });
 
 const FacetsModalOverlay = styled(Dialog.Overlay, {
@@ -57,10 +110,14 @@ const FacetsModalOverlay = styled(Dialog.Overlay, {
   zIndex: "10",
   transition: "$canopyAll",
 
+  "&:hover": {
+    backgroundColor: "$slateA9",
+  },
+
   "&::after": {
     position: "fixed",
     zIndex: "11",
-    background: "linear-gradient(180deg, $slate5, #0000)",
+    background: "linear-gradient(180deg, $slate2, #0000)",
     width: "100%",
     height: "$gr9",
     left: "0",
@@ -72,10 +129,13 @@ const FacetsModalOverlay = styled(Dialog.Overlay, {
 const FacetsModalPortal = styled(Dialog.Portal, {});
 
 export {
+  FacetsModalClose,
   FacetsModalContent,
+  FacetsModalContentFooter,
   FacetsModalContentInner,
   FacetsModalContentHeader,
   FacetsModalContentBody,
   FacetsModalOverlay,
   FacetsModalPortal,
+  FacetsModalTitle,
 };

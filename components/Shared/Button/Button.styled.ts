@@ -2,7 +2,7 @@ import { styled } from "@/stitches";
 import { slateA } from "@radix-ui/colors";
 
 const ButtonStyled = styled("button", {
-  padding: "$gr2 $gr4",
+  padding: "$gr2 $gr3",
   borderRadius: "2rem",
   textDecoration: "none",
   border: "none",
@@ -35,6 +35,18 @@ const ButtonStyled = styled("button", {
 
         "&:hover, &:focus": {
           backgroundColor: "$slate6",
+        },
+      },
+      transparent: {
+        backgroundColor: "transparent",
+        boxShadow: "none",
+        color: "$slate11 !important",
+        textDecoration: "underline",
+        paddingLeft: "0",
+        paddingRight: "0",
+
+        "&:hover, &:focus": {
+          backgroundColor: "transparent",
         },
       },
     },

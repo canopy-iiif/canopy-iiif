@@ -1,7 +1,12 @@
 import { useFacetsState } from "@/context/facets";
-import * as Accordion from "@radix-ui/react-accordion";
+import { ChevronDownIcon } from "@radix-ui/react-icons";
 import React, { useEffect, useState } from "react";
-import { FacetsFacetActivate, FacetsFacetHeader } from "./Facet.styled";
+import {
+  FacetsFacetActivate,
+  FacetsFacetContent,
+  FacetsFacetHeader,
+  FacetsFacetStyled,
+} from "./Facet.styled";
 import FacetsOption from "./Option";
 
 interface FacetsFacetProps {
@@ -18,7 +23,10 @@ export const FacetsFacet: React.FC<FacetsFacetProps> = ({
   const { facetsState } = useFacetsState();
   const { facetsActive } = facetsState;
 
-  const [activeValues, setActiveValues] = useState("Any");
+  const [active, setActive] = useState({
+    slug: null,
+    value: "Any",
+  });
 
   useEffect(() => {
     const activeSlug = facetsActive.find(
@@ -26,24 +34,36 @@ export const FacetsFacet: React.FC<FacetsFacetProps> = ({
     )?.value;
 
     if (activeSlug)
-      setActiveValues(
-        values.find((entry: any) => entry.slug === activeSlug)?.value
-      );
+      setActive({
+        slug: activeSlug,
+        value: values.find((entry: any) => entry.slug === activeSlug)?.value,
+      });
   }, [facetsActive, slug, values]);
 
   return (
-    <Accordion.Item value={slug}>
+    <FacetsFacetStyled value={slug}>
       <FacetsFacetHeader asChild>
         <FacetsFacetActivate>
-          {label} <span>{activeValues}</span>
+          <span>
+            {label} <ChevronDownIcon />
+          </span>
+          <span>{active.value}</span>
         </FacetsFacetActivate>
       </FacetsFacetHeader>
-      <Accordion.Content>
-        {values.map((option: any) => (
-          <FacetsOption option={option} key={option.slug} />
-        ))}
-      </Accordion.Content>
-    </Accordion.Item>
+      <FacetsFacetContent>
+        {values.map((option: any, index: number) => {
+          const identifier = `${slug}-${option.slug}-${index}`;
+          return (
+            <FacetsOption
+              active={active.slug === option.slug}
+              key={identifier}
+              identifier={identifier}
+              option={option}
+            />
+          );
+        })}
+      </FacetsFacetContent>
+    </FacetsFacetStyled>
   );
 };
 

@@ -4,7 +4,7 @@ import { ButtonStyled } from "./Button.styled";
 Link;
 
 interface ButtonProps {
-  buttonType?: "primary" | "secondary";
+  buttonType?: "primary" | "secondary" | "transparent";
   children: ReactNode | ReactNode[];
   href?: string;
 }
