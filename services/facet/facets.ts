@@ -1,12 +1,12 @@
 import FACETS from "@/.canopy/facets";
 
-export const getActiveFacets = (query: any) => {
+export const getActiveFacets = (searchParams: URLSearchParams) => {
   return FACETS.map((facet: any) => facet.slug)
-    .filter((facet: any) => query[facet])
-    .map((facet: any) => {
-      const value = query[facet];
+    .filter((key: string) => searchParams.has(key))
+    .map((key: string) => {
+      const value = searchParams.get(key);
       return {
-        label: facet,
+        label: key,
         value: value,
       };
     });
