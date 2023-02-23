@@ -12,7 +12,12 @@ const ButtonStyled = styled("button", {
   fontWeight: "500",
   fontSize: "$gr4",
   cursor: "pointer",
-  transition: "$all",
+  transition: "$canopyAll",
+
+  "@sm": {
+    padding: "$gr2 $gr3",
+    fontSize: "$gr3",
+  },
 
   variants: {
     buttonType: {
@@ -32,10 +37,26 @@ const ButtonStyled = styled("button", {
           backgroundColor: "$slate6",
         },
       },
+      transparent: {
+        backgroundColor: "transparent",
+        boxShadow: "none",
+        color: "$slate11 !important",
+        textDecoration: "underline",
+        paddingLeft: "0",
+        paddingRight: "0",
+
+        "&:hover, &:focus": {
+          backgroundColor: "transparent",
+        },
+      },
     },
     buttonSize: {
       small: {
         fontSize: "$gr3",
+      },
+      tiny: {
+        padding: "$gr1 $gr2",
+        fontSize: "$gr2",
       },
     },
   },

@@ -1,14 +1,19 @@
 import COLLECTIONS from "@/.canopy/collections.json";
 import MANIFESTS from "@/.canopy/manifests.json";
 import absoluteUrl from "next-absolute-url";
+import type { NextApiRequest, NextApiResponse } from "next";
+import { Collection } from "@iiif/presentation-3";
 
-export default function handler(request, response) {
+export default function handler(
+  request: NextApiRequest,
+  response: NextApiResponse<Collection>
+) {
   const { origin } = absoluteUrl(request);
-  const source = COLLECTIONS.find((collection) => !collection.parent);
+  const source: any = COLLECTIONS.find((collection) => !collection.parent);
 
-  const items = MANIFESTS.map((item) => {
+  const items = MANIFESTS.map((item: any) => {
     delete item.slug;
-    delete item.index;
+    delete item?.index;
     return item;
   });
 
@@ -22,6 +27,7 @@ export default function handler(request, response) {
     seeAlso: [
       {
         id: source.id,
+        // @ts-ignore
         type: "Collection",
         format: "application/ld+json",
         label: source.label,

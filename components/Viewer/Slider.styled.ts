@@ -11,6 +11,7 @@ const SliderStyled = styled("div", {
   [`& .bloom-header-summary`]: {
     display: "block",
     fontSize: "$gr3 !important",
+    color: "$slate11 ",
   },
 
   ".swiper-slide": {
@@ -34,11 +35,21 @@ const SliderStyled = styled("div", {
     margin: "$gr1 0",
 
     "> span": {
+      textOverflow: "ellipsis",
+      display: "-webkit-box",
+      WebkitBoxOrient: "vertical",
+      WebkitLineClamp: "3",
+      overflow: "hidden",
+      whiteSpace: "normal",
       fontWeight: "500",
       fontSize: "$gr4",
       fontFamily: "$bookTight",
       textDecoration: "none !important",
     },
+  },
+
+  [`& a figcaption, & a:visited figcaption`]: {
+    color: "$slate12",
   },
 
   [`& a:hover figcaption, & a:focus figcaption`]: {

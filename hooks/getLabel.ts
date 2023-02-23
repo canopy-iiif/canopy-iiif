@@ -1,9 +1,9 @@
-import { InternationalString } from "@hyperion-framework/types";
+import { InternationalString } from "@iiif/presentation-3";
 
 // Get string from a IIIF pres 3 label by language code
 export const getLabel = (
   label: InternationalString,
-  language: string = "none"
+  language: string | "none" = "none"
 ) => {
   /*
    * If no label exists, return a hardcoded string.

@@ -1,6 +1,7 @@
 import { globalCss } from "@stitches/react";
 
 export const rem = 17;
+export const headerHeight = 66.5;
 
 const defaults = {
   body: {
@@ -17,7 +18,7 @@ const defaults = {
     fontSmooth: "always",
     webKitFontSmothing: "antialiased",
     mozOsxFontSmoth: "grayscale",
-    paddingTop: "61.25px",
+    paddingTop: `${headerHeight}px`,
   },
 
   "a, a:visited": {

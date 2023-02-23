@@ -4,7 +4,7 @@ import ThemeMode from "./ThemeMode";
 import { CollectionLink, FooterContent, FooterStyled } from "./Footer.styled";
 import Container from "../Shared/Container";
 
-const { collection } = process.env.CANOPY_CONFIG;
+const { collection } = process.env.CANOPY_CONFIG as any;
 
 const Footer = () => {
   return (
