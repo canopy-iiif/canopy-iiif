@@ -9,6 +9,7 @@ import { Actions, ResponsiveActions } from "./Header.styled";
 import { HamburgerMenuIcon } from "@radix-ui/react-icons";
 import { useRouter } from "next/router";
 import { useSearchState } from "@/context/search";
+import { InternationalString } from "@iiif/presentation-3";
 
 // @ts-ignore
 const mapEnabled = process.env.CANOPY_CONFIG.map.enabled;
@@ -36,7 +37,10 @@ const Header = () => {
       <Content>
         <Title>
           <Link href="/">
-            <Label label={collections[0].label} as="span" />
+            <Label
+              label={collections[0].label as InternationalString}
+              as="span"
+            />
           </Link>
         </Title>
         <ResponsiveActions>
