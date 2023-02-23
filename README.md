@@ -1,3 +1,5 @@
+<img src="https://user-images.githubusercontent.com/7376450/221054302-923faa8b-19b9-4e90-a856-22d0ab9131c0.png" width="500px" />
+
 # Canopy IIIF
 
 A purely IIIF sourced site generator using Next.js. Canopy is an experimental application that will standup a browseable and searchable digital collections style site entirely from a IIIF Collection and the items it contains.
@@ -22,9 +24,15 @@ A purely IIIF sourced site generator using Next.js. Canopy is an experimental ap
 - 1120 items
 - Provided by University of Tennessee Libraries
 
+### [Panoramic Images of Elgin P. Kintner](https://canopy-iiif-git-kintnerexamplesite-mathewjordan.vercel.app/)
+
+- IIIF Presentation API 3.0 w/ navPlace
+- 55 items
+- Provided by University of Tennessee Libraries
+
 ### [The Chimney Tops 2 Wildfires In Memory And Art](https://canopy-iiif-git-rfta-artists-mathewjordan.vercel.app/)
 
-- IIIF Presentation API 3.0
+- IIIF Presentation API 3.0 w/ Video Canvases
 - 43 items
 - Provided by University of Tennessee Libraries
 
