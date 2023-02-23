@@ -24,6 +24,9 @@ const Placeholder = styled("div", {
   backgroundColor: "$slate6",
   width: "100%",
   height: "100%",
+  overflowY: "hidden",
+  borderRadius: "3px",
+  transition: "$canopyAll",
 });
 
 const Wrapper = styled("div", {
@@ -37,13 +40,13 @@ const Wrapper = styled("div", {
     width: "100%",
     color: "$slate12",
     textDecoration: "none !important",
-    transition: "$all",
+    transition: "$canopyAll",
 
     [`&:hover, &:focus`]: {
       color: "$indigo10",
 
-      figure: {
-        transform: "scale3d(1.03, 1.03, 1.03)",
+      [`${Placeholder}`]: {
+        transform: "scale3d(1.02, 1.02, 1.02)",
         boxShadow: "3px 3px 8px #0002",
       },
     },

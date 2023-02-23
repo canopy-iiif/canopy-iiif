@@ -11,17 +11,23 @@ import { getRelatedFacetValue } from "../services/iiif/constructors/related";
 import Heading from "../components/Shared/Heading/Heading";
 import Button from "../components/Shared/Button/Button";
 import { ButtonWrapper } from "../components/Shared/Button/Button.styled";
+import { ArrowRightIcon, GitHubLogoIcon } from "@radix-ui/react-icons";
 
-export default function Index({ metadata, featured, collections }) {
+interface IndexProps {
+  featured: any;
+  collections: string[];
+}
+
+const Index: React.FC<IndexProps> = ({ featured, collections }) => {
   const [baseUrl, setBaseUrl] = useState("");
 
   const hero = {
     ...featured,
-    items: featured.items.map((item) => {
+    items: featured.items.map((item: any) => {
       return {
         ...item,
         thumbnail: [
-          ...item.thumbnail.map((entry) => {
+          ...item.thumbnail.map((entry: any) => {
             return { ...entry, height: 1000, width: 1000 };
           }),
         ],
@@ -60,13 +66,15 @@ export default function Index({ metadata, featured, collections }) {
           </p>
           <ButtonWrapper>
             <Button href="/about" buttonType="primary">
-              Read More
+              Read More &nbsp;
+              <ArrowRightIcon />
             </Button>
             <Button
               href="https://github.com/mathewjordan/canopy-iiif"
               buttonType="secondary"
             >
-              View Code
+              View Code &nbsp;
+              <GitHubLogoIcon />
             </Button>
           </ButtonWrapper>
         </div>
@@ -74,11 +82,15 @@ export default function Index({ metadata, featured, collections }) {
       </Container>
     </Layout>
   );
-}
+};
 
 export async function getStaticProps() {
+  // @ts-ignore
   const featuredItems = process.env.CANOPY_CONFIG.featured as any as string[];
+
+  // @ts-ignore
   const metadata = process.env.CANOPY_CONFIG.metadata as any as string[];
+
   const randomFeaturedItem =
     MANIFESTS[Math.floor(Math.random() * MANIFESTS.length)];
   const featured = await createCollection(
@@ -95,3 +107,5 @@ export async function getStaticProps() {
     revalidate: 3600,
   };
 }
+
+export default Index;

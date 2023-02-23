@@ -1,6 +1,5 @@
 import { styled } from "@/stitches";
 import { slateA } from "@radix-ui/colors";
-import { ButtonStyled } from "../Shared/Button/Button.styled";
 
 const Title = styled("span", {
   display: "flex",
@@ -117,6 +116,16 @@ const Wrapper = styled("header", {
   top: "0",
   display: "flex",
   flexDirection: "column",
+  transition: "$canopyOpacity",
+  opacity: "1",
+
+  variants: {
+    isVisible: {
+      false: {
+        opacity: "0",
+      },
+    },
+  },
 });
 
 export { Actions, Content, ResponsiveActions, Title, Wrapper };

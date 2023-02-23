@@ -1,0 +1,21 @@
+{
+  "map": {
+    "enabled": false
+  },
+  "search": {
+    "enabled": true,
+    "index": {
+      "metadata": {
+        "enabled": true,
+        "all": false
+      },
+      "summary": {
+        "enabled": false
+      }
+    }
+  },
+  "theme": {
+    "defaultTheme": "light",
+    "toggleEnabled": false
+  }
+}

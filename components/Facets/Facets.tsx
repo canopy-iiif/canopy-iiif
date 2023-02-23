@@ -1,16 +1,55 @@
-import FACETS from "@/.canopy/facets";
-import FacetSelect from "./Select/Select";
 import { FacetsStyled } from "./Facets.styled";
-import React from "react";
+import React, { useEffect, useState } from "react";
+import FacetsModal from "./Modal";
+import FacetsActivate from "./Activate";
+import { FacetsProvider, useFacetsState } from "@/context/facets";
+import { useSearchState } from "@/context/search";
+import { useRouter } from "next/router";
 
-const Facets: React.FC = () => {
+const Facets = () => {
+  const { asPath } = useRouter();
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+  const { facetsDispatch } = useFacetsState();
+  const { searchDispatch, searchState } = useSearchState();
+  const { headerVisible, searchParams } = searchState;
+
+  useEffect(() => {
+    facetsDispatch({
+      type: "updateFacetsActive",
+      facetsActive: searchParams,
+    });
+  }, [searchParams, facetsDispatch]);
+
+  const handleDialogChange = () => {
+    setIsModalOpen(!isModalOpen);
+    searchDispatch({
+      type: "updateHeaderVisible",
+      headerVisible: !headerVisible,
+    });
+  };
+
+  useEffect(() => {
+    setIsModalOpen(false);
+    searchDispatch({
+      type: "updateHeaderVisible",
+      headerVisible: true,
+    });
+  }, [asPath, searchDispatch]);
+
   return (
-    <FacetsStyled>
-      {FACETS.map((facet) => (
-        <FacetSelect facet={facet} key={facet.slug} />
-      ))}
+    <FacetsStyled open={isModalOpen} onOpenChange={handleDialogChange}>
+      <FacetsActivate />
+      <FacetsModal handleSubmit={handleDialogChange} />
     </FacetsStyled>
   );
 };
 
-export default Facets;
+const FacetsWrapper = () => {
+  return (
+    <FacetsProvider>
+      <Facets />
+    </FacetsProvider>
+  );
+};
+
+export default FacetsWrapper;

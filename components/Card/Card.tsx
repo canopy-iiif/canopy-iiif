@@ -9,7 +9,11 @@ import { m, LazyMotion, domAnimation, MotionConfig } from "framer-motion";
 import { useEffect, useState } from "react";
 import { Label } from "@samvera/nectar-iiif";
 
-const Card = ({ resource }) => {
+interface CardProps {
+  resource: any;
+}
+
+const Card: React.FC<CardProps> = ({ resource }) => {
   const [aspectRatio, setAspectRatio] = useState<number>();
   const { label, homepage, thumbnail } = resource;
 

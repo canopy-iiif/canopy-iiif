@@ -5,17 +5,16 @@ import { getDocuments } from "@/services/search/documents";
 import { getItem } from "./response";
 import _ from "lodash";
 
-const getResults = (origin, q, activeFacets) => {
-  const documents = !q
-    ? INDEX.map((doc) => doc.id)
-    : getDocuments(q, `${origin}/api`);
+const getResults = (origin: any, q: any, activeFacets: any) => {
+  const documents = !q ? INDEX.map((doc) => doc.id) : getDocuments(q);
 
-  const applyFacets = (activeFacets) => {
-    const docs = activeFacets.map((facet) => {
+  const applyFacets = (activeFacets: any) => {
+    const docs = activeFacets.map((facet: any) => {
+      // @ts-ignore
       const value = FACETS.find(
         (entry) => entry.slug === facet.label
       ).values.find((entry) => entry.slug === facet.value);
-      return value.docs;
+      return value?.docs;
     });
 
     return MANIFESTS.filter((item) =>

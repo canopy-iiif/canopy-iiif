@@ -9,7 +9,7 @@ import { SwiperProps } from "swiper/react";
 
 type SwiperBreakpoints = SwiperProps["breakpoints"];
 
-const spaceBetween = (multiplier) => rem * gr(multiplier);
+const spaceBetween = (multiplier: number) => rem * gr(multiplier);
 
 const breakpoints: SwiperBreakpoints = {
   [width.xxs]: {
@@ -54,7 +54,7 @@ const BloomIIIF: React.ComponentType<{
   ssr: false,
 });
 
-const Slider = ({ collectionId }) => (
+const Slider = ({ collectionId }: { collectionId: string }) => (
   <SliderStyled>
     <BloomIIIF
       collectionId={collectionId}

@@ -1,8 +1,11 @@
 import React from "react";
 import { Wrapper } from "@/components/Nav/Nav.styled";
 import NavItems from "@/components/Nav/Items";
+interface NavProps {
+  items: any;
+}
 
-const Nav = ({ items }) => {
+const Nav: React.FC<NavProps> = ({ items }) => {
   return (
     <Wrapper>
       <NavItems items={items} />
