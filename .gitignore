@@ -35,7 +35,3 @@ yarn-error.log*
 
 .canopy
 .vscode
-
-# config
-config/canopy.json
-config/options.json
