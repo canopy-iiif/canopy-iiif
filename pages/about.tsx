@@ -7,6 +7,7 @@ import { ButtonWrapper } from "../components/Shared/Button/Button.styled";
 import Button from "../components/Shared/Button/Button";
 import Code from "../components/Shared/Code/Code";
 import { GitHubLogoIcon } from "@radix-ui/react-icons";
+import Slider from "@/components/Viewer/Slider";
 
 export default function About() {
   return (
@@ -42,9 +43,17 @@ export default function About() {
         </section> */}
         <section>
           <header>
+            <Heading as="h2">Sample Sites</Heading>
+            <div>
+              <Slider collectionId="fixtures/iiif/collection/sample-sites.json"></Slider>
+            </div>
+          </header>
+        </section>
+        <section>
+          <header>
             <Heading as="h2">Getting Started</Heading>
             <p>
-              Canopy IIF is a Next.js application where production and
+              Canopy IIIF is a Next.js application where production and
               development builds will follow{" "}
               <a href="https://nextjs.org/docs/getting-started">
                 Next documentation
@@ -66,21 +75,27 @@ export default function About() {
             purposes if a custom one is not set. The build process will read
             from a custom configuration file at <code>config/canopy.json</code>{" "}
             if it exists.
-            <Heading as="h4">Create a Custom Configuration</Heading>
+            <Heading as="h4">Create a Custom Canopy Configuration</Heading>
             <ol>
               <li>
                 Find your <code>config/</code> directory
               </li>
               <li>
-                Rename <code>canopy.sample.json</code> to{" "}
-                <code>canopy.json</code>
+                Copy <code>canopy.sample.json</code> to <code>canopy.json</code>
               </li>
               <li>
-                Updates should be made to both the <strong>prod</strong> and{" "}
+                Make updates to both the <strong>prod</strong> and{" "}
                 <strong>dev</strong> configurations.
               </li>
+              <li>
+                Copy <code>options.sample.json</code> to{" "}
+                <code>option.json</code>
+              </li>
+              <li>
+                Modify <code>option.json</code> as needed.
+              </li>
             </ol>
-            <Heading as="h4">Example Configuration</Heading>
+            <Heading as="h4">Example Canopy Configuration</Heading>
             <p>
               Both the prod and dev environments have a configuration. These
               configurations can match each other; however in some cases,
@@ -113,7 +128,7 @@ export default function About() {
     "metadata": ["Extent", "Title", "Date Statement", "Language"]
   }
 }`}</Code>
-            <Heading as="h4">Configuration Options</Heading>
+            <Heading as="h4">Setting Options in canopy.json</Heading>
             <Heading as="h5">Label as Site Title</Heading>
             <p>
               The Canopy IIIF site title is the Collection label of the set{" "}
@@ -154,6 +169,72 @@ export default function About() {
               comparisons regardless of language code.
             </p>
             <Code language="json">{`"metadata": ["Extent", "Title", "Date Statement", "Language"]`}</Code>
+            <Heading as="h4">Setting Additional Options in options.js</Heading>
+            <Heading as="h5">Adding Map Route for navPlace Navigation</Heading>
+            <p>
+              A map route can be enabled to provide geographic discovery of
+              works via <code>options.json</code>. This feature builds markers
+              off of geographic point features found in <code>navPlace</code>{" "}
+              properties at the manifest level. To enable this option, set the
+              option to
+              <code>true</code>.
+            </p>
+            <p>
+              <strong>Note:</strong> Currently, only <code>navPlace</code>{" "}
+              properties found at the <code>Manifest</code> level are displayed.
+              Also, only
+              <code>Features</code> of <code>type: &quot;Point&quot;</code> are
+              displayed.
+            </p>
+            <Code language="json">{`"map": {"enabled": true},`}</Code>
+            <Heading as="h5">Configuring Search</Heading>
+            <p>
+              Search options can be configured in <code>options.json</code>. By
+              default, the search index is included but can be disabled by
+              setting
+              <code>enabled: false</code>. If the search index is enabled, the
+              <code>label</code> property on the manifest is always indexed. The
+              properties of the <code>metadata</code> property are also indexed
+              by default, but this can be modified to have these values not be
+              indexed at all by setting{" "}
+              <code>search.index.metadata.enabled</code>
+              to <code>false</code>. Furthermore, all <code>metatdata</code>{" "}
+              values can be indexed or only the properties that are specified in
+              <code>canopy.json</code> by modifying{" "}
+              <code>search.index.metadata.all</code>.
+            </p>
+            <p>
+              The only property that can be indexed outside of{" "}
+              <code>metadata</code>
+              and <code>label</code> currently is <code>summary</code>. This is
+              configured with <code>search.index.summary.enabled.</code>.
+            </p>
+            <Code language="json">{`"search": {
+  "enabled": true,
+  "index": {
+    "metadata": {
+      "enabled": true,
+      "all": false
+     },
+    "summary": {
+      "enabled": false
+     }
+  }
+}`}</Code>{" "}
+            <Heading as="h5">Configuring Theme</Heading>
+            <p>
+              The default theme for users can be set via{" "}
+              <code>options.json</code>. This feature sets the initial theme for
+              users as <code>light</code>,<code>dark</code>, or{" "}
+              <code>system</code>. The <code>Toggle Theme</code>
+              button can also be enabled of disabled here.
+            </p>
+            <p>
+              <strong>Note:</strong> Currently, setting the theme here will only
+              affect brand new users to your site. It will not change the
+              default theme for users who have already visited.
+            </p>
+            <Code language="json">{`"theme": { "defaultTheme": "light", "toggleEnabled": false }`}</Code>
           </div>
         </section>
         <section>
@@ -258,10 +339,10 @@ export default function About() {
               </a>{" "}
               for this demonstration is a query for{" "}
               <a href="https://dc.library.northwestern.edu/search?q=%22Nez+Perc%C3%A9%22">
-                <em>"Nez Percé"</em>
+                <em>&quot;Nez Percé&quot;</em>
               </a>
               , with results coming from the{" "}
-              <strong>Edward S. Curtis's The North American Indian</strong>{" "}
+              <strong>Edward S. Curtis&apos;s The North American Indian</strong>{" "}
               collection provided by Northwestern University Libraries.
             </p>
             <p>

@@ -14,6 +14,15 @@ const MapStyled = styled("div", {
       padding: "0",
     },
   },
+
+  "figure": {
+    "img": {
+      width: "100%",
+    },
+    "video": {
+      display: "none"
+    }
+  },
 });
 
 export { MapStyled };

@@ -3,7 +3,14 @@ import { Image, Wrapper } from "@/components/Figure/Figure.styled";
 import clsx from "clsx";
 import { getResourceImage } from "@/hooks/getResourceImage";
 
-const Figure = ({
+interface FigureProps {
+  resource: any;
+  region?: string;
+  size?: string;
+  isCover?: boolean;
+}
+
+const Figure: React.FC<FigureProps> = ({
   resource,
   region = "full",
   size = "400,",
@@ -11,16 +18,19 @@ const Figure = ({
 }) => {
   const [image, setImage] = useState();
   const [loaded, setLoaded] = useState(false);
-  const imgRef = useRef();
+  const imgRef = useRef(null);
 
   useEffect(() => {
     setImage(getResourceImage(resource, size, region));
+
+    // @ts-ignore
     if (imgRef?.current && imgRef?.current?.complete) setLoaded(true);
   }, []);
 
   return (
     <Wrapper>
       <Image
+        alt=""
         src={image}
         ref={imgRef}
         style={

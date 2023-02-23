@@ -3,7 +3,11 @@ import React, { useRef, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 
-const NavItems = ({ items }) => {
+interface NavItemsProps {
+  items: any;
+}
+
+const NavItems: React.FC<NavItemsProps> = ({ items }) => {
   const router = useRouter();
 
   const [itemBoundingBox, setItemBoundingBox] = useState(null);
@@ -17,9 +21,11 @@ const NavItems = ({ items }) => {
   const highlightRef = useRef(null);
   const wrapperRef = useRef(null);
 
-  const repositionHighlight = (e, item) => {
+  const repositionHighlight = (e: any, item: any) => {
     setItemBoundingBox(e.target.getBoundingClientRect());
-    setWrapperBoundingBox(wrapperRef.current.getBoundingClientRect());
+
+    // @ts-ignore
+    setWrapperBoundingBox(wrapperRef?.current?.getBoundingClientRect());
     setIsHoveredFromNull(!highlightedItem);
     setHighlightedItem(item);
   };
@@ -32,8 +38,11 @@ const NavItems = ({ items }) => {
     highlightStyles = {
       transitionDuration: isHoveredFromNull ? "0ms" : "200ms",
       opacity: highlightedItem ? 0.25 : 0,
+
+      // @ts-ignore
       width: `${itemBoundingBox.width}px`,
       transform: `translate(${
+        // @ts-ignore
         itemBoundingBox.left - wrapperBoundingBox.left
       }px)`,
     };
@@ -42,7 +51,7 @@ const NavItems = ({ items }) => {
   return (
     <Items ref={wrapperRef} onMouseLeave={resetHighlight}>
       <Highlight ref={highlightRef} css={highlightStyles} />
-      {items.map((item) => (
+      {items.map((item: any) => (
         <Link
           href={item.path}
           key={item.path}

@@ -36,7 +36,7 @@ const options = {
   showInformationToggle: false,
 };
 
-const Viewer = ({ id }) => (
+const Viewer = ({ id }: { id: string }) => (
   <Clover id={id} options={options} customTheme={customTheme} />
 );
 

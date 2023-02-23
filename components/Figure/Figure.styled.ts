@@ -6,7 +6,7 @@ const Image = styled("img", {
   width: "100%",
   height: "100%",
   objectFit: "contain",
-  transition: "$all",
+  transition: "$canopyAll",
   opacity: 0,
 
   [`&.loaded`]: {
@@ -26,7 +26,7 @@ const Wrapper = styled("figure", {
   zIndex: "0",
   borderRadius: "3px",
   boxShadow: "2px 2px 5px #0001",
-  transition: "$all",
+  transition: "$canopyAll",
 });
 
 export { Image, Wrapper };
