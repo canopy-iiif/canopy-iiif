@@ -11,14 +11,16 @@ const FacetsActivate: React.FC = () => {
   const { facetsState } = useFacetsState();
   const { facetsActive } = facetsState;
 
+  const { length } = Array.from(facetsActive.keys()).filter(
+    (key) => key !== "q"
+  );
+
   return (
     <FacetsActivateStyled asChild>
       <ButtonStyled buttonType="primary">
         Filter <MixerHorizontalIcon />
-        {facetsActive.length > 0 && (
-          <FacetsActivateIndicator>
-            {facetsActive.length}
-          </FacetsActivateIndicator>
+        {length > 0 && (
+          <FacetsActivateIndicator>{length}</FacetsActivateIndicator>
         )}
       </ButtonStyled>
     </FacetsActivateStyled>

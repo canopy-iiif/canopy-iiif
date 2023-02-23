@@ -69,8 +69,6 @@ const FacetsModalContentFooter = styled("footer", {
 
 const FacetsModalContentBody = styled("div", {
   padding: "$gr3 $gr4",
-  borderTop: "1px solid $slate4",
-  borderBottom: "1px solid $slate4",
   height: "100%",
   flexGrow: "1",
   flexShrink: "1",

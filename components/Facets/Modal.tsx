@@ -10,14 +10,36 @@ import {
   FacetsModalPortal as Portal,
   FacetsModalTitle as ContentTitle,
 } from "./Modal.styled";
-import Button from "../Shared/Button/Button";
 import Facet from "./Facet";
 import FACETS from "@/.canopy/facets";
 import React from "react";
 import { Cross2Icon } from "@radix-ui/react-icons";
-import * as ScrollArea from "@radix-ui/react-scroll-area";
+import { ButtonStyled } from "../Shared/Button/Button.styled";
+import { useFacetsState } from "@/context/facets";
+import { useRouter } from "next/router";
 
-const FacetsModal: React.FC = () => {
+interface FacetsModalProps {
+  handleSubmit: () => void;
+}
+
+const FacetsModal: React.FC<FacetsModalProps> = ({ handleSubmit }) => {
+  const { facetsState, facetsDispatch } = useFacetsState();
+  const { facetsActive } = facetsState;
+  const router = useRouter();
+
+  const handleClearAll = () => {
+    FACETS.forEach((facet: any) => facetsActive.delete(facet.slug));
+    facetsDispatch({
+      type: "updateFacetsActive",
+      facetsActive: facetsActive,
+    });
+  };
+
+  const handleViewResults = () => {
+    router.push({ pathname: "/search", query: facetsActive.toString() });
+    handleSubmit();
+  };
+
   return (
     <Portal>
       <Overlay />
@@ -32,23 +54,19 @@ const FacetsModal: React.FC = () => {
             </ContentClose>
           </ContentHeader>
           <ContentBody>
-            <ScrollArea.Root>
-              <ScrollArea.Viewport>
-                <Accordion.Root type="single" collapsible={true}>
-                  {FACETS.map((facet: any) => (
-                    <Facet {...facet} key={facet.slug} />
-                  ))}
-                </Accordion.Root>
-              </ScrollArea.Viewport>
-              <ScrollArea.Scrollbar orientation="vertical">
-                <ScrollArea.Thumb />
-              </ScrollArea.Scrollbar>
-              <ScrollArea.Corner />
-            </ScrollArea.Root>
+            <Accordion.Root type="single" collapsible={true}>
+              {FACETS.map((facet: any) => (
+                <Facet {...facet} key={facet.slug} />
+              ))}
+            </Accordion.Root>
           </ContentBody>
           <ContentFooter>
-            <Button buttonType="transparent">Clear all</Button>
-            <Button buttonType="primary">View 26 Results</Button>
+            <ButtonStyled buttonType="transparent" onClick={handleClearAll}>
+              Clear all
+            </ButtonStyled>
+            <ButtonStyled buttonType="primary" onClick={handleViewResults}>
+              View Results
+            </ButtonStyled>
           </ContentFooter>
         </ContentInner>
       </Content>

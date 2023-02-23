@@ -19,6 +19,11 @@ const OptionLabel = styled("label", {
   "&:hover, &:focus": {
     color: "$indigo11",
   },
+
+  span: {
+    color: "$slate11 !important",
+    fontSize: "$gr2",
+  },
 });
 
 const OptionCheckbox = styled(Checkbox.Root, {
@@ -34,7 +39,7 @@ const OptionCheckbox = styled(Checkbox.Root, {
   background: "$slate4",
   boxShadow: "inset 1px 1px 2px #0002",
   border: "none",
-  borderRadius: "3px",
+  borderRadius: "50%", // 3px for checkbox
   cursor: "pointer",
   transition: "$canopyAll",
   flexShrink: "0",
@@ -46,7 +51,7 @@ const OptionCheckbox = styled(Checkbox.Root, {
     content: "",
     background: "linear-gradient(-45deg, $indigo11, $indigo8)",
     opacity: "0",
-    borderRadius: "3px",
+    borderRadius: "50%", // 3px for checkbox
     transition: "$canopyAll",
     zIndex: "0",
   },

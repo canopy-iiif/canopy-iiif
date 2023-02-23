@@ -23,22 +23,32 @@ export const FacetsFacet: React.FC<FacetsFacetProps> = ({
   const { facetsState } = useFacetsState();
   const { facetsActive } = facetsState;
 
+  /**
+   *
+   */
+  const params = facetsActive?.toString();
+  const defaultValue = {
+    slug: "",
+    value: "Any",
+  };
+
   const [active, setActive] = useState({
-    slug: null,
+    slug: "",
     value: "Any",
   });
 
   useEffect(() => {
-    const activeSlug = facetsActive.find(
-      (entry: any) => entry.label === slug
-    )?.value;
-
-    if (activeSlug)
-      setActive({
-        slug: activeSlug,
-        value: values.find((entry: any) => entry.slug === activeSlug)?.value,
-      });
-  }, [facetsActive, slug, values]);
+    const activeSlug = facetsActive?.get(slug);
+    setActive(
+      activeSlug
+        ? {
+            slug: activeSlug,
+            value: values.find((entry: any) => entry.slug === activeSlug)
+              ?.value,
+          }
+        : defaultValue
+    );
+  }, [facetsActive, params, slug, values]);
 
   return (
     <FacetsFacetStyled value={slug}>
@@ -56,6 +66,7 @@ export const FacetsFacet: React.FC<FacetsFacetProps> = ({
           return (
             <FacetsOption
               active={active.slug === option.slug}
+              facet={slug}
               key={identifier}
               identifier={identifier}
               option={option}

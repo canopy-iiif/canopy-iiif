@@ -4,9 +4,10 @@ import FacetsModal from "./Modal";
 import FacetsActivate from "./Activate";
 import { FacetsProvider, useFacetsState } from "@/context/facets";
 import { useSearchState } from "@/context/search";
-import { getActiveFacets } from "@/services/facet/facets";
+import { useRouter } from "next/router";
 
 const Facets = () => {
+  const { asPath } = useRouter();
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const { facetsDispatch } = useFacetsState();
   const { searchDispatch, searchState } = useSearchState();
@@ -15,7 +16,7 @@ const Facets = () => {
   useEffect(() => {
     facetsDispatch({
       type: "updateFacetsActive",
-      facetsActive: getActiveFacets(searchParams),
+      facetsActive: searchParams,
     });
   }, [searchParams, facetsDispatch]);
 
@@ -27,10 +28,18 @@ const Facets = () => {
     });
   };
 
+  useEffect(() => {
+    setIsModalOpen(false);
+    searchDispatch({
+      type: "updateHeaderVisible",
+      headerVisible: true,
+    });
+  }, [asPath, searchDispatch]);
+
   return (
     <FacetsStyled open={isModalOpen} onOpenChange={handleDialogChange}>
       <FacetsActivate />
-      <FacetsModal />
+      <FacetsModal handleSubmit={handleDialogChange} />
     </FacetsStyled>
   );
 };
