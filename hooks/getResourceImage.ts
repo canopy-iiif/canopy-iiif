@@ -1,7 +1,9 @@
-export const getResourceImage = (resource, size = "600,", region = "full") => {
+export const getResourceImage = (
+  resource: any,
+  size = "600,",
+  region = "full"
+) => {
   if (Array.isArray(resource)) resource = resource[0];
-
-  let image = resource.id;
 
   if (!resource.service) return resource.id;
 

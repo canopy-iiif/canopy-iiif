@@ -5,6 +5,9 @@ import Heading from "../components/Shared/Heading/Heading";
 import { DefinitionListWrapper } from "../components/Shared/DefinitionList.styled";
 import { ButtonWrapper } from "../components/Shared/Button/Button.styled";
 import Button from "../components/Shared/Button/Button";
+import Code from "../components/Shared/Code/Code";
+import { GitHubLogoIcon } from "@radix-ui/react-icons";
+import Slider from "@/components/Viewer/Slider";
 
 export default function About() {
   return (
@@ -25,24 +28,213 @@ export default function About() {
               href="https://github.com/mathewjordan/canopy-iiif"
               buttonType="primary"
             >
-              View Code
+              View Code &nbsp;
+              <GitHubLogoIcon />
             </Button>
           </ButtonWrapper>
         </div>
-        <section>
+        {/* <section>
           <header>
             <Heading as="h2">Basic Features</Heading>
           </header>
           <div>
             <p>[content]</p>
           </div>
+        </section> */}
+        <section>
+          <header>
+            <Heading as="h2">Sample Sites</Heading>
+            <div>
+              <Slider collectionId="fixtures/iiif/collection/sample-sites.json"></Slider>
+            </div>
+          </header>
         </section>
         <section>
           <header>
             <Heading as="h2">Getting Started</Heading>
+            <p>
+              Canopy IIIF is a Next.js application where production and
+              development builds will follow{" "}
+              <a href="https://nextjs.org/docs/getting-started">
+                Next documentation
+              </a>{" "}
+              accordingly.
+            </p>
           </header>
           <div>
-            <p>[content]</p>
+            <Heading as="h3">Setup</Heading>
+            <Heading as="h4">Install Dependencies</Heading>
+            <Code language="bash">npm i</Code>
+            <Heading as="h4">Running in Development</Heading>
+            <Code language="bash">npm run dev</Code>
+            <Heading as="h4">Building in Production</Heading>
+            <Code language="bash">npm run build</Code>
+            <Heading as="h3">Configuration</Heading>
+            Canopy IIIF uses a default configuration{" "}
+            <code>config/.default/canopy.default.json</code> for demonstration
+            purposes if a custom one is not set. The build process will read
+            from a custom configuration file at <code>config/canopy.json</code>{" "}
+            if it exists.
+            <Heading as="h4">Create a Custom Canopy Configuration</Heading>
+            <ol>
+              <li>
+                Find your <code>config/</code> directory
+              </li>
+              <li>
+                Copy <code>canopy.sample.json</code> to <code>canopy.json</code>
+              </li>
+              <li>
+                Make updates to both the <strong>prod</strong> and{" "}
+                <strong>dev</strong> configurations.
+              </li>
+              <li>
+                Copy <code>options.sample.json</code> to{" "}
+                <code>option.json</code>
+              </li>
+              <li>
+                Modify <code>option.json</code> as needed.
+              </li>
+            </ol>
+            <Heading as="h4">Example Canopy Configuration</Heading>
+            <p>
+              Both the prod and dev environments have a configuration. These
+              configurations can match each other; however in some cases,
+              development speed can be aided by targeting a <em>smaller</em>{" "}
+              IIIF Collection <code>id</code> as a fixture.
+            </p>
+            <p>
+              <strong>Important:</strong> The <code>collection</code> property
+              is required and must be the <code>id</code> of the referenced
+              source IIIF Collection. Collections of Collections are not
+              currently supported.
+            </p>
+            <Code language="json">{`{
+  "prod": {
+    "label": { "none": ["Hobhouse"] },
+    "collection": "https://iiif.bodleian.ox.ac.uk/iiif/collection/hobhouse",
+    "featured": [
+      "https://iiif.bodleian.ox.ac.uk/iiif/manifest/8da97e8c-4e12-457d-aad8-3327b3aec183.json",
+      "https://iiif.bodleian.ox.ac.uk/iiif/manifest/2968d5c7-3718-44ef-92ea-ee4cc58cc677.json"
+    ],
+    "metadata": ["Extent", "Title", "Date Statement", "Language"]
+  },
+  "dev": {
+    "label": { "none": ["Hobhouse"] },
+    "collection": "https://iiif.bodleian.ox.ac.uk/iiif/collection/hobhouse",
+    "featured": [
+      "https://iiif.bodleian.ox.ac.uk/iiif/manifest/8da97e8c-4e12-457d-aad8-3327b3aec183.json",
+      "https://iiif.bodleian.ox.ac.uk/iiif/manifest/2968d5c7-3718-44ef-92ea-ee4cc58cc677.json"
+    ],
+    "metadata": ["Extent", "Title", "Date Statement", "Language"]
+  }
+}`}</Code>
+            <Heading as="h4">Setting Options in canopy.json</Heading>
+            <Heading as="h5">Label as Site Title</Heading>
+            <p>
+              The Canopy IIIF site title is the Collection label of the set{" "}
+              <code>collection</code> resource. You can optionally override this
+              by providing a valid{" "}
+              <a href="">Presentation 3.0 label property</a>.
+            </p>
+            <Code language="json">{`"label": { "none": ["Hobhouse"] }`}</Code>
+            <Heading as="h5">Curating Featured Manifests</Heading>
+            <p>
+              You can inform Canopy IIIF of featured Manifests by providing an
+              array of ids. These must be within the referenced{" "}
+              <code>collection</code> resource and the Manifest URIs must be an
+              exact match. These Manifests will render throughout the interface
+              in featured components.
+            </p>
+            <p>
+              <strong>Warning:</strong> In the current pre-release, featured
+              Manifests must have an Image body on the first Canvas.
+            </p>
+            <Code language="json">{`"featured": [
+  "https://iiif.bodleian.ox.ac.uk/iiif/manifest/8da97e8c-4e12-457d-aad8-3327b3aec183.json",
+  "https://iiif.bodleian.ox.ac.uk/iiif/manifest/2968d5c7-3718-44ef-92ea-ee4cc58cc677.json"
+]`}</Code>{" "}
+            <Heading as="h5">Curating Metadata</Heading>
+            <p>
+              Curating Metadata allows implementers of Canopy IIIF to select
+              metadata labels that provide use to end users. An optimal case is
+              a label common to all or most manifests with some in diversity of
+              values across those resources. Metadata labels that are curated
+              will be automatically included as featured elements on the
+              homepage, the metadata page, linking from works, and as facets on
+              the search page.
+            </p>
+            <p>
+              <strong>Note:</strong> Metadata labels are not yet BCP 47 language
+              code aware; however, aggregation processes will make exact string
+              comparisons regardless of language code.
+            </p>
+            <Code language="json">{`"metadata": ["Extent", "Title", "Date Statement", "Language"]`}</Code>
+            <Heading as="h4">Setting Additional Options in options.js</Heading>
+            <Heading as="h5">Adding Map Route for navPlace Navigation</Heading>
+            <p>
+              A map route can be enabled to provide geographic discovery of
+              works via <code>options.json</code>. This feature builds markers
+              off of geographic point features found in <code>navPlace</code>{" "}
+              properties at the manifest level. To enable this option, set the
+              option to
+              <code>true</code>.
+            </p>
+            <p>
+              <strong>Note:</strong> Currently, only <code>navPlace</code>{" "}
+              properties found at the <code>Manifest</code> level are displayed.
+              Also, only
+              <code>Features</code> of <code>type: &quot;Point&quot;</code> are
+              displayed.
+            </p>
+            <Code language="json">{`"map": {"enabled": true},`}</Code>
+            <Heading as="h5">Configuring Search</Heading>
+            <p>
+              Search options can be configured in <code>options.json</code>. By
+              default, the search index is included but can be disabled by
+              setting
+              <code>enabled: false</code>. If the search index is enabled, the
+              <code>label</code> property on the manifest is always indexed. The
+              properties of the <code>metadata</code> property are also indexed
+              by default, but this can be modified to have these values not be
+              indexed at all by setting{" "}
+              <code>search.index.metadata.enabled</code>
+              to <code>false</code>. Furthermore, all <code>metatdata</code>{" "}
+              values can be indexed or only the properties that are specified in
+              <code>canopy.json</code> by modifying{" "}
+              <code>search.index.metadata.all</code>.
+            </p>
+            <p>
+              The only property that can be indexed outside of{" "}
+              <code>metadata</code>
+              and <code>label</code> currently is <code>summary</code>. This is
+              configured with <code>search.index.summary.enabled.</code>.
+            </p>
+            <Code language="json">{`"search": {
+  "enabled": true,
+  "index": {
+    "metadata": {
+      "enabled": true,
+      "all": false
+     },
+    "summary": {
+      "enabled": false
+     }
+  }
+}`}</Code>{" "}
+            <Heading as="h5">Configuring Theme</Heading>
+            <p>
+              The default theme for users can be set via{" "}
+              <code>options.json</code>. This feature sets the initial theme for
+              users as <code>light</code>,<code>dark</code>, or{" "}
+              <code>system</code>. The <code>Toggle Theme</code>
+              button can also be enabled of disabled here.
+            </p>
+            <p>
+              <strong>Note:</strong> Currently, setting the theme here will only
+              affect brand new users to your site. It will not change the
+              default theme for users who have already visited.
+            </p>
+            <Code language="json">{`"theme": { "defaultTheme": "light", "toggleEnabled": false }`}</Code>
           </div>
         </section>
         <section>
@@ -90,12 +282,6 @@ export default function About() {
               Presentation API 2.0 and 3.0 specifications. In this version the
               decision was also made to switch from Gatsby.js platform to
               Next.js.
-              <br />
-              <br />
-              [Next.js selection]
-              <br />
-              <br />
-              [Roadmap of project now.]
             </p>
           </div>
         </section>
@@ -147,16 +333,17 @@ export default function About() {
                 Nimíipuu (Nez Percé)
               </a>{" "}
               and hails from Nez Perce County, Idaho, in the United States.
-              Relating to this, the source collection for the Canopy IIIF
-              demonstration is provided{" "}
-              <a href="https://dc.library.northwestern.edu/collections/55ff2504-dd53-4943-b2cb-aeea46e77bc3">
-                <em>
-                  <strong>Edward S. Curtis's The North American Indian</strong>,
-                  Volume 8. The Nez Perces. Wallawalla. Umatilla. Cayuse. The
-                  Chinookan tribes
-                </em>{" "}
+              Relating to this, the{" "}
+              <a href="https://api.dc.library.northwestern.edu/api/v2/search?query=%22Nez%20Perc%C3%A9%22&as=iiif&size=200">
+                source IIIF Collection
+              </a>{" "}
+              for this demonstration is a query for{" "}
+              <a href="https://dc.library.northwestern.edu/search?q=%22Nez+Perc%C3%A9%22">
+                <em>&quot;Nez Percé&quot;</em>
               </a>
-              collection and series, by Northwestern University Libraries.
+              , with results coming from the{" "}
+              <strong>Edward S. Curtis&apos;s The North American Indian</strong>{" "}
+              collection provided by Northwestern University Libraries.
             </p>
             <p>
               The project name &ldquo;Canopy&rdquo; is inspired by the
@@ -188,7 +375,7 @@ export default function About() {
             <p>
               This demonstration instance of Canopy IIIF is hosted on Vercel
               with a consistent build time under 40 seconds. The build process
-              includes metadata aggregation requests of 81 IIIF Manifests. This
+              includes metadata aggregation requests of 119 IIIF Manifests. This
               IIIF Collection and its Manifest resources are delivered via a
               search response from the{" "}
               <a href="https://api.dc.library.northwestern.edu/docs/v2/index.html">

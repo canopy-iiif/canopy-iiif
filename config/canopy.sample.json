@@ -1,0 +1,20 @@
+{
+  "prod": {
+    "label": { "none": ["Collection Title"] },
+    "collection": "https://example.org/iiif/collection.json",
+    "featured": [
+      "https://example.org/manifest-1.json",
+      "https://example.org/manifest-2.json"
+    ],
+    "metadata": ["Date", "Subject"]
+  },
+  "dev": {
+    "label": { "none": ["Collection Title"] },
+    "collection": "https://example.org/iiif/collection.json",
+    "featured": [
+      "https://example.org/manifest-1.json",
+      "https://example.org/manifest-2.json"
+    ],
+    "metadata": ["Date", "Subject"]
+  }
+}

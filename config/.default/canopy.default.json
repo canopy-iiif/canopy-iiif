@@ -1,0 +1,20 @@
+{
+  "prod": {
+    "label": { "none": ["Canopy IIIF"] },
+    "collection": "https://api.dc.library.northwestern.edu/api/v2/search?query=%22Nez%20Perc%C3%A9%22&as=iiif&size=200",
+    "featured": [
+      "https://api.dc.library.northwestern.edu/api/v2/works/14a6aa15-9e12-47a7-9617-91f430d4f47b?as=iiif",
+      "https://api.dc.library.northwestern.edu/api/v2/works/e82cc873-c7c3-4d8e-b8b1-d1130737216e?as=iiif"
+    ],
+    "metadata": ["Date", "Subject", "Genre", "Dimensions"]
+  },
+  "dev": {
+    "label": { "none": ["Canopy IIIF"] },
+    "collection": "https://api.dc.library.northwestern.edu/api/v2/search?query=%22Nez%20Perc%C3%A9%22&as=iiif&size=200",
+    "featured": [
+      "https://api.dc.library.northwestern.edu/api/v2/works/14a6aa15-9e12-47a7-9617-91f430d4f47b?as=iiif",
+      "https://api.dc.library.northwestern.edu/api/v2/works/e82cc873-c7c3-4d8e-b8b1-d1130737216e?as=iiif"
+    ],
+    "metadata": ["Date", "Subject", "Genre", "Dimensions"]
+  }
+}

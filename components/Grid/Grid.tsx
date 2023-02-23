@@ -1,10 +1,17 @@
-import React from "react";
-import GridItem from "@/components/Grid/Item";
-import GridLoadMore from "@/components/Grid/LoadMore";
+import React, { ReactNode } from "react";
+import GridItem, { GridItemProps } from "@/components/Grid/Item";
 import { GridStyled } from "@/components/Grid/Grid.styled";
 import { width } from "@/styles/theme/media";
 
-const Grid = ({ children }) => {
+interface GridProps {
+  children: ReactNode | ReactNode[];
+}
+
+interface GridComposition {
+  Item: React.FC<GridItemProps>;
+}
+
+const Grid: GridComposition & React.FC<GridProps> = ({ children }) => {
   const columns = {
     default: 6,
     [width.xl]: 5,
@@ -15,13 +22,16 @@ const Grid = ({ children }) => {
   };
 
   return (
-    <GridStyled breakpointCols={columns} columnClassName="canopy-grid-column">
+    <GridStyled
+      breakpointCols={columns}
+      className="canopy-grid"
+      columnClassName="canopy-grid-column"
+    >
       {children}
     </GridStyled>
   );
 };
 
 Grid.Item = GridItem;
-Grid.LoadMore = GridLoadMore;
 
 export default Grid;

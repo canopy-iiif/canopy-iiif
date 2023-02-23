@@ -1,0 +1,22 @@
+{
+  "prod": {
+    "label": { "none": ["The Chimney Tops 2 Wildfires In Memory And Art"] },
+    "collection": "https://digital.lib.utk.edu/assemble/collection/collections/rftacuratedart",
+    "featured": [
+      "https://digital.lib.utk.edu/assemble/manifest/rftaart/6",
+      "https://digital.lib.utk.edu/assemble/manifest/rftaart/41",
+      "https://digital.lib.utk.edu/assemble/manifest/rftaart/37"
+    ],
+    "metadata": ["Artist", "Subject", "Format"]
+  },
+  "dev": {
+    "label": { "none": ["The Chimney Tops 2 Wildfires In Memory And Art"] },
+    "collection": "https://digital.lib.utk.edu/assemble/collection/collections/rftacuratedart",
+    "featured": [
+      "https://digital.lib.utk.edu/assemble/manifest/rftaart/6",
+      "https://digital.lib.utk.edu/assemble/manifest/rftaart/41",
+      "https://digital.lib.utk.edu/assemble/manifest/rftaart/37"
+    ],
+    "metadata": ["Artist", "Subject", "Format"]
+  }
+}

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 
-const usePageResults = (pages, page, query) => {
+const usePageResults = (pages: any, page: any, query: any) => {
   const [data, setData] = useState([]);
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(true);
@@ -23,6 +23,7 @@ const usePageResults = (pages, page, query) => {
       axios
         .get(pages[page])
         .then((result) => {
+          // @ts-ignore
           setData((prevResults) => [...prevResults, ...result.data.items]);
           setMore(pages.length > page);
           setLoading(false);
