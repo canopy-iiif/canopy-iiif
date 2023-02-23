@@ -38,7 +38,7 @@ const Header = () => {
         <Title>
           <Link href="/">
             <Label
-              label={collections[0].label as InternationalString}
+              label={collections[0].label as unknown as InternationalString}
               as="span"
             />
           </Link>
