@@ -1,4 +1,4 @@
-import { MapContainer, TileLayer, Marker, Popup, FeatureGroup } from "react-leaflet";
+import { MapContainer, TileLayer, Marker, Popup, FeatureGroup, LayersControl, } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import Leaflet from "leaflet";
 import Link from "next/link";
@@ -22,6 +22,21 @@ interface MapProps {
 
 const Map: React.FC<MapProps> = ({ manifests }) => {
   const defaultBounds: Leaflet.LatLngBoundsExpression = [[51.505, -0.09]];
+  const OpenStreetMap = (
+    <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors' />
+  );
+  const CartoDB = (
+    <TileLayer url="http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png" attribution=''/>
+  );
+  const CartoDBDark = (
+    <TileLayer url="http://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png" attribution=''/>
+  );
+  const Stamen = (
+    <TileLayer url="https://stamen-tiles-{s}.a.ssl.fastly.net/toner/{z}/{x}/{y}.png" attribution=''/>
+  );
+  const OpenTopoMap = (
+    <TileLayer url="https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png" attribution=''/>
+  );
   const mapRef = useRef<Leaflet.Map>(null);
   const [bounds, setBounds] = useState<Leaflet.LatLngBoundsExpression>(defaultBounds);
 
@@ -43,10 +58,23 @@ const Map: React.FC<MapProps> = ({ manifests }) => {
           scrollWheelZoom={false}
           ref = {mapRef}
         >
-          <TileLayer
-            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-          />
+          <LayersControl position="topright">
+            <LayersControl.BaseLayer name="OpenStreetMap" checked>
+              {OpenStreetMap}
+            </LayersControl.BaseLayer>
+            <LayersControl.BaseLayer name="OpenTopoMap">
+              {OpenTopoMap}
+            </LayersControl.BaseLayer>
+            <LayersControl.BaseLayer name="CartoDB Lite">
+              {CartoDB}
+            </LayersControl.BaseLayer>
+            <LayersControl.BaseLayer name="CartoDB Dark">
+              {CartoDBDark}
+            </LayersControl.BaseLayer>
+            <LayersControl.BaseLayer name="Stamen">
+              {Stamen}
+            </LayersControl.BaseLayer>
+          </LayersControl>
           <FeatureGroup>
             {manifests.map((item: any) =>
               item.features.map((feature: any, index: any) => (
