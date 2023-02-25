@@ -21,22 +21,9 @@ interface MapProps {
 }
 
 const Map: React.FC<MapProps> = ({ manifests }) => {
+  // @ts-ignore
+  const tileLayers = process.env.CANOPY_CONFIG.map.tileLayers;
   const defaultBounds: Leaflet.LatLngBoundsExpression = [[51.505, -0.09]];
-  const OpenStreetMap = (
-    <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors' />
-  );
-  const CartoDB = (
-    <TileLayer url="http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png" attribution='&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href= "https://carto.com/about-carto/">CARTO</a>'/>
-  );
-  const CartoDBDark = (
-    <TileLayer url="http://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png" attribution='&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href= "https://carto.com/about-carto/">CARTO</a>'/>
-  );
-  const Stamen = (
-    <TileLayer url="https://stamen-tiles-{s}.a.ssl.fastly.net/toner/{z}/{x}/{y}.png" attribution='Map tiles by <a href="http://stamen.com">Stamen Design</a>, under <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a>. Data by <a href="http://openstreetmap.org">OpenStreetMap</a>, under <a href="http://www.openstreetmap.org/copyright">ODbL</a>.'/>
-  );
-  const OpenTopoMap = (
-    <TileLayer url="https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png" attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'/>
-  );
   const mapRef = useRef<Leaflet.Map>(null);
   const [bounds, setBounds] = useState<Leaflet.LatLngBoundsExpression>(defaultBounds);
 
@@ -59,21 +46,20 @@ const Map: React.FC<MapProps> = ({ manifests }) => {
           ref = {mapRef}
         >
           <LayersControl position="topright">
-            <LayersControl.BaseLayer name="OpenStreetMap" checked>
-              {OpenStreetMap}
-            </LayersControl.BaseLayer>
-            <LayersControl.BaseLayer name="OpenTopoMap">
-              {OpenTopoMap}
-            </LayersControl.BaseLayer>
-            <LayersControl.BaseLayer name="CartoDB Lite">
-              {CartoDB}
-            </LayersControl.BaseLayer>
-            <LayersControl.BaseLayer name="CartoDB Dark">
-              {CartoDBDark}
-            </LayersControl.BaseLayer>
-            <LayersControl.BaseLayer name="Stamen">
-              {Stamen}
-            </LayersControl.BaseLayer>
+            {tileLayers.map((tile: any, index: number) => {
+              if (index === 0) {
+                return (
+                  <LayersControl.BaseLayer name={tile.name} checked>
+                    <TileLayer url={tile.url} attribution={tile.attribution}/>
+                  </LayersControl.BaseLayer>
+                )
+              }
+              return (
+                <LayersControl.BaseLayer name={tile.name} >
+                  <TileLayer url={tile.url} attribution={tile.attribution}/>
+                </LayersControl.BaseLayer>
+              )
+            })}
           </LayersControl>
           <FeatureGroup>
             {manifests.map((item: any) =>
