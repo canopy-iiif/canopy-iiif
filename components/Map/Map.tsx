@@ -49,13 +49,13 @@ const Map: React.FC<MapProps> = ({ manifests }) => {
             {tileLayers.map((tile: any, index: number) => {
               if (index === 0) {
                 return (
-                  <LayersControl.BaseLayer name={tile.name} checked>
+                  <LayersControl.BaseLayer key={index} name={tile.name} checked>
                     <TileLayer url={tile.url} attribution={tile.attribution}/>
                   </LayersControl.BaseLayer>
                 )
               }
               return (
-                <LayersControl.BaseLayer name={tile.name} >
+                <LayersControl.BaseLayer key={index} name={tile.name} >
                   <TileLayer url={tile.url} attribution={tile.attribution}/>
                 </LayersControl.BaseLayer>
               )
