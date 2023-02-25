@@ -187,6 +187,30 @@ export default function About() {
               displayed.
             </p>
             <Code language="json">{`"map": {"enabled": true},`}</Code>
+            <p>
+              The map's tile layers are also configured here, giving users the
+              ability to choose and customize layers for their project.
+              Additional services, such as MapBox, can be easily integrated
+              following this pattern. Each tile layer defined here will appear
+              as an option in the layer control of the map. The name property
+              defines the text next to the radio button. The url property is
+              the link to the tile layer.  Finally, the attribution property
+              defines the text that appears at the bottom of the map in case
+              the tile layer requires any specific attribution on use. The
+              first tile layer in the array will be used as the default map.
+            </p>
+            <Code language="json">{`"tileLayers": [
+  {
+    "name": "OpenStreetMap",
+    "url": "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+    "attribution": "&copy; OpenStreetMap contributors"
+  },
+  {
+    "name": "OpenTopoMap",
+    "url": "https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png",
+    "attribution": "&copy; OpenStreetMap contributors"
+  },
+]`}</Code>
             <Heading as="h5">Configuring Search</Heading>
             <p>
               Search options can be configured in <code>options.json</code>. By
