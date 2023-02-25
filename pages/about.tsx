@@ -188,7 +188,7 @@ export default function About() {
             </p>
             <Code language="json">{`"map": {"enabled": true},`}</Code>
             <p>
-              The map's tile layers are also configured here, giving users the
+              The map&apos;s tile layers are also configured here, giving users the
               ability to choose and customize layers for their project.
               Additional services, such as MapBox, can be easily integrated
               following this pattern. Each tile layer defined here will appear
