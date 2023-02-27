@@ -36,12 +36,12 @@ const SearchForm = styled("form", {
     marginLeft: "$gr2",
     position: "relative",
     zIndex: "1",
-    transition: "$all",
+    transition: "$canopyAll",
   },
 });
 
 const SearchInput = styled("input", {
-  transition: "$all",
+  transition: "$canopyAll",
   cursor: "select",
   fontSize: "$gr3",
   fontFamily: "$book",
@@ -79,7 +79,7 @@ const SearchSubmit = styled("button", {
   border: "none",
   color: "$indigo12",
   cursor: "pointer",
-  transition: "$all",
+  transition: "$canopyAll",
   zIndex: "1",
 
   "&:hover, &:focus": {
