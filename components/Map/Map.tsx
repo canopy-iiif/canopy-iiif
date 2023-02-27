@@ -1,4 +1,4 @@
-import { MapContainer, TileLayer, Marker, Popup, FeatureGroup } from "react-leaflet";
+import { MapContainer, TileLayer, Marker, Popup, FeatureGroup, LayersControl, } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import Leaflet from "leaflet";
 import Link from "next/link";
@@ -21,6 +21,8 @@ interface MapProps {
 }
 
 const Map: React.FC<MapProps> = ({ manifests }) => {
+  // @ts-ignore
+  const tileLayers = process.env.CANOPY_CONFIG.map.tileLayers;
   const defaultBounds: Leaflet.LatLngBoundsExpression = [[51.505, -0.09]];
   const mapRef = useRef<Leaflet.Map>(null);
   const [bounds, setBounds] = useState<Leaflet.LatLngBoundsExpression>(defaultBounds);
@@ -43,10 +45,22 @@ const Map: React.FC<MapProps> = ({ manifests }) => {
           scrollWheelZoom={false}
           ref = {mapRef}
         >
-          <TileLayer
-            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-          />
+          <LayersControl position="topright">
+            {tileLayers.map((tile: any, index: number) => {
+              if (index === 0) {
+                return (
+                  <LayersControl.BaseLayer key={index} name={tile.name} checked>
+                    <TileLayer url={tile.url} attribution={tile.attribution}/>
+                  </LayersControl.BaseLayer>
+                )
+              }
+              return (
+                <LayersControl.BaseLayer key={index} name={tile.name} >
+                  <TileLayer url={tile.url} attribution={tile.attribution}/>
+                </LayersControl.BaseLayer>
+              )
+            })}
+          </LayersControl>
           <FeatureGroup>
             {manifests.map((item: any) =>
               item.features.map((feature: any, index: any) => (
