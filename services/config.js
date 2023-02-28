@@ -1,10 +1,7 @@
 const fs = require("fs");
 
-function getConfig() {
-  const defaultData = fs.readFileSync(
-    `./config/.default/canopy.default.json`,
-    {}
-  );
+function getConfig(path = `./config/.default/canopy.default.json`) {
+  const defaultData = fs.readFileSync(path, {});
 
   let data;
   try {
@@ -20,16 +17,15 @@ function getConfig() {
   return JSON.parse(config);
 }
 
-function getOptions() {
-  let defaultOptions = fs.readFileSync(
-    `./config/.default/options.default.json`,
-    {}
-  );
+function getOptions(path = `./config/.default/options.default.json`) {
+  let defaultOptions = fs.readFileSync(path, {});
 
   let data;
   try {
     data = fs.readFileSync(`./config/options.json`, {});
-  } catch (err) { "Using default options for demonstration, please follow documentation for creating custom options."}
+  } catch (err) {
+    ("Using default options for demonstration, please follow documentation for creating custom options.");
+  }
 
   const options = data ? data : defaultOptions;
 

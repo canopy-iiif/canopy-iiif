@@ -3,7 +3,12 @@ const { getConfig, getOptions } = require("./services/config");
 const args = process.argv;
 
 (() => {
-  const config = getConfig();
+  const path = args
+    .find((value) => value.includes("--path="))
+    ?.split("=")
+    ?.pop();
+
+  const config = getConfig(path);
   const options = getOptions();
   const { prod, dev } = config;
 
