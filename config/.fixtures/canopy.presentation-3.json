@@ -1,0 +1,16 @@
+{
+  "prod": {
+    "collection": "https://api.dc.library.northwestern.edu/api/v2/collections/c373ecd2-2c45-45f2-9f9e-52dc244870bd?as=iiif",
+    "featured": [
+      "https://api.dc.library.northwestern.edu/api/v2/works/2de0355c-8e48-4478-93af-8cbd1437bd16?as=iiif"
+    ],
+    "metadata": ["Date", "Subject", "Genre", "Dimensions"]
+  },
+  "dev": {
+    "collection": "https://api.dc.library.northwestern.edu/api/v2/collections/c373ecd2-2c45-45f2-9f9e-52dc244870bd?as=iiif",
+    "featured": [
+      "https://api.dc.library.northwestern.edu/api/v2/works/2de0355c-8e48-4478-93af-8cbd1437bd16?as=iiif"
+    ],
+    "metadata": ["Date", "Subject", "Genre", "Dimensions"]
+  }
+}
