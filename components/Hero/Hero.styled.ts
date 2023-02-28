@@ -35,16 +35,12 @@ const HeroStyled = styled("div", {
 
     ".swiper-slide": {
       display: "flex",
-      backgroundColor: slate.slate12,
+      backgroundColor: "$slate6",
 
       a: {
         display: "flex",
-        color: `${slate.slate12}`,
+        color: `$slate12`,
         textDecoration: "none",
-
-        "&:hover, &:focus": {
-          color: `${indigo.indigo11}`,
-        },
       },
 
       figure: {
@@ -60,6 +56,20 @@ const HeroStyled = styled("div", {
           objectFit: "cover",
         },
 
+        "&::before": {
+          position: "absolute",
+          zIndex: "2",
+          bottom: "0",
+          left: "0",
+          backgroundColor: `$slate4`,
+          width: "100%",
+          content: "_",
+          color: "transparent",
+          display: "block",
+          opacity: "0.92",
+          padding: "$gr3 0",
+        },
+
         figcaption: {
           position: "absolute",
           zIndex: "3",
@@ -69,19 +79,19 @@ const HeroStyled = styled("div", {
           flexDirection: "column",
           alignItems: "flex-start",
           textAlign: "left",
-          backgroundColor: `${slateDarkA.slateA12}`,
           boxShadow: `inset -3px -3px 8px  ${slateA.slateA4}`,
           width: "100%",
 
           [`> ${ContainerStyled}`]: {
             justifyContent: "flex-end",
+            alignItems: "center",
           },
 
           ".slide-label": {
             padding: "$gr3 0",
             fontFamily: "$bookTight",
             fontSize: "$gr4",
-            fontWeight: "800",
+            fontWeight: "500",
             display: "flex",
             marginRight: "$gr2",
             lineHeight: "1.15em",
@@ -92,7 +102,7 @@ const HeroStyled = styled("div", {
             fontFamily: "$book",
             fontSize: "$gr3",
             display: "block",
-            color: "$slate3",
+            color: "$slate12",
             lineHeight: "1.15em",
           },
 

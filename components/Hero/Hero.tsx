@@ -9,6 +9,7 @@ import { HeroStyled } from "@/components/Hero/Hero.styled";
 import Link from "next/link";
 import React from "react";
 import Container from "../Shared/Container";
+import { ArrowRightIcon } from "@radix-ui/react-icons";
 
 interface HeroProps {
   collection?: any;
@@ -46,6 +47,7 @@ const Hero: React.FC<HeroProps> = ({ collection }) => {
                       as="span"
                       className="slide-label"
                     />
+                    <ArrowRightIcon />
                   </Container>
                 </figcaption>
               </Link>
