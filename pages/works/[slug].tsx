@@ -26,6 +26,7 @@ export default function Work({ manifest }: WorkProps) {
 }
 
 export async function getStaticProps({ params }: { params: any }) {
+  console.log(`MANIFESTS`, MANIFESTS);
   const { id } = MANIFESTS.find((item) => item.slug === params.slug) as any;
   const vault = new Vault();
   const manifest = await vault
