@@ -1,5 +1,5 @@
 import { styled } from "@/stitches";
-import { indigo, slate, slateA, slateDarkA } from "@radix-ui/colors";
+import { slate, slateA, slateDarkA } from "@radix-ui/colors";
 import { ContainerStyled } from "../Shared/Container";
 
 /* eslint sort-keys: 0 */
