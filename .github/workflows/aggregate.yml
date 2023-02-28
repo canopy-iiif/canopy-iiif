@@ -9,5 +9,7 @@ jobs:
         run: npm install
       - name: IIIF Presentation API 2.x Collection
         run: npm run prebuild -- --path=./config/.fixtures/canopy.presentation-2.json
+        run: npm run test-build
       - name: IIIF Presentation API 3.0 Collection
         run: npm run prebuild -- --path=./config/.fixtures/canopy.presentation-3.json
+        run: npm run test-build
