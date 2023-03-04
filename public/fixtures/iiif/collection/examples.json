@@ -1,26 +1,18 @@
 {
-  "@context": [
-    "http://iiif.io/api/presentation/3/context.json"
-  ],
+  "@context": ["http://iiif.io/api/presentation/3/context.json"],
   "id": "https://canopy-iiif.vercel.app/fixtures/iiif/collection/sample-sites.json",
   "type": "Collection",
   "viewingDirection": "left-to-right",
-  "behavior": [
-    "unordered"
-  ],
+  "behavior": ["unordered"],
   "label": {
-    "en": [
-      "Canopy IIIF Sample Sites"
-    ]
+    "none": ["Example Sites"]
   },
   "items": [
     {
       "id": "https://api.dc.library.northwestern.edu/api/v2/search?query=%22Nez%20Perc%C3%A9%22&as=iiif&size=200",
       "type": "Collection",
       "label": {
-        "none": [
-          "Nez Percé (Nimíipuu)"
-        ]
+        "none": ["Nez Percé (Nimíipuu)"]
       },
       "thumbnail": [
         {
@@ -28,19 +20,17 @@
           "height": 400,
           "width": 400,
           "type": "Image",
-          "format": "image\/jpeg"
+          "format": "image/jpeg"
         }
       ],
       "homepage": [
         {
           "id": "https://canopy-iiif.vercel.app/",
           "label": {
-            "en": [
-              "Nez Percé (Nimíipuu) Collection"
-            ]
+            "en": ["Nez Percé (Nimíipuu) Collection"]
           },
           "type": "Text",
-          "format": "text\/html"
+          "format": "text/html"
         }
       ]
     },
@@ -48,9 +38,7 @@
       "id": "https://digital.lib.utk.edu/assemble/collection/collections/heilman",
       "type": "Collection",
       "label": {
-        "none": [
-          "The Botanical photography of Alan S. Heilman"
-        ]
+        "none": ["The Botanical photography of Alan S. Heilman"]
       },
       "thumbnail": [
         {
@@ -58,19 +46,17 @@
           "height": 233,
           "width": 339,
           "type": "Image",
-          "format": "image\/jpeg"
+          "format": "image/jpeg"
         }
       ],
       "homepage": [
         {
           "id": "https://canopy-iiif-git-heilman-mathewjordan.vercel.app/",
           "label": {
-            "en": [
-              "The Botanical photography of Alan S. Heilman"
-            ]
+            "en": ["The Botanical photography of Alan S. Heilman"]
           },
           "type": "Text",
-          "format": "text\/html"
+          "format": "text/html"
         }
       ]
     },
@@ -78,9 +64,7 @@
       "id": "https://digital.lib.utk.edu/assemble/collection/collections/rftacuratedart",
       "type": "Collection",
       "label": {
-        "none": [
-          "The Chimney Tops 2 Wildfires In Memory And Art"
-        ]
+        "none": ["The Chimney Tops 2 Wildfires In Memory And Art"]
       },
       "thumbnail": [
         {
@@ -88,19 +72,17 @@
           "height": 224,
           "width": 300,
           "type": "Image",
-          "format": "image\/jpeg"
+          "format": "image/jpeg"
         }
       ],
       "homepage": [
         {
           "id": "https://canopy-iiif-git-rfta-artists-mathewjordan.vercel.app/",
           "label": {
-            "en": [
-              "The Chimney Tops 2 Wildfires In Memory And Art"
-            ]
+            "en": ["The Chimney Tops 2 Wildfires In Memory And Art"]
           },
           "type": "Text",
-          "format": "text\/html"
+          "format": "text/html"
         }
       ]
     },
@@ -108,9 +90,7 @@
       "id": "https://iiif.bodleian.ox.ac.uk/iiif/collection/canonici",
       "type": "Collection",
       "label": {
-        "none": [
-          "Canonici"
-        ]
+        "none": ["Canonici"]
       },
       "thumbnail": [
         {
@@ -118,19 +98,17 @@
           "height": 258,
           "width": 171,
           "type": "Image",
-          "format": "image\/jpeg"
+          "format": "image/jpeg"
         }
       ],
       "homepage": [
         {
           "id": "https://canopy-iiif-git-canonici-mathewjordan.vercel.app/",
           "label": {
-            "en": [
-              "Canonici"
-            ]
+            "en": ["Canonici"]
           },
           "type": "Text",
-          "format": "text\/html"
+          "format": "text/html"
         }
       ]
     },
@@ -138,9 +116,7 @@
       "id": "https://digital.lib.utk.edu/assemble/collection/gsmrc/kintner",
       "type": "Collection",
       "label": {
-        "none": [
-          "Panoramic Images of Elgin P. Kintner"
-        ]
+        "none": ["Panoramic Images of Elgin P. Kintner"]
       },
       "thumbnail": [
         {
@@ -148,19 +124,17 @@
           "height": 150,
           "width": 525,
           "type": "Image",
-          "format": "image\/jpeg"
+          "format": "image/jpeg"
         }
       ],
       "homepage": [
         {
           "id": "https://canopy-iiif-git-kintnerexamplesite-mathewjordan.vercel.app",
           "label": {
-            "en": [
-              "Panoramic Images of Elgin P. Kintner"
-            ]
+            "en": ["Panoramic Images of Elgin P. Kintner"]
           },
           "type": "Text",
-          "format": "text\/html"
+          "format": "text/html"
         }
       ]
     }

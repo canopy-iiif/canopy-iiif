@@ -1,5 +1,5 @@
 const aggregate = require("./services/build/aggregate");
-const { getConfig, getOptions } = require("./services/config");
+const { getConfig, getOptions, getNavigation } = require("./services/config");
 const args = process.argv;
 
 (() => {
@@ -10,6 +10,7 @@ const args = process.argv;
 
   const config = getConfig(path);
   const options = getOptions();
+  const navigation = getNavigation();
   const { prod, dev } = config;
 
   config.environment = args.includes("dev") ? dev : prod;
@@ -18,6 +19,7 @@ const args = process.argv;
   const env = {
     CANOPY_CONFIG: {
       ...config.environment,
+      navigation: navigation,
       ...config.options,
     },
   };
