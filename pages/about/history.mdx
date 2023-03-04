@@ -1,0 +1,47 @@
+import Basic from "@/components/Layouts/Basic";
+
+# Project History
+
+Canopy was initially conceived at the University of Tennessee Libraries in the Summer '21 as a statically generated web application for the [Rising from the Ashes: The Chimney Tops 2 Wildfires Oral History Project](https://rfta.lib.utk.edu/). The primary goal of the project was to allow IIIF resources hosted in another repository to be enhanced and remixed without any duplication of the source material. [Gatsby.js](https://www.gatsbyjs.com/) was chosen as the static site generator to deliver materials sourced from a single IIIF Collection and present IIIF Manifests of diverse content resource types including: Sound, Video, and Image. Various front end user interface components were also created to help in this presentation, along with search and faceting functionality built around [lunr.js](https://lunrjs.com/).
+
+The original Canopy was generated from a single IIIF Collection; however, the components delivering the user interface became heavily tailored to the source material of the Rising from the Ashes project, thus limiting the reuse of the codebase for other collections. The original Canopy featured a heavily integrated IIIF A/V Viewer designed to deliver Sound and Video resources. This A/V viewer would eventually evolve into a partial inspiration for [Clover IIIF](https://samvera-labs.github.io/clover-iiif/).
+
+Canopy was reimagined as Canopy IIIF in early Winter '22 with the primary focus of the project maintaining the the ability to build an interoperable site from any IIIF Collection following IIIF Presentation API 2.0 and 3.0 specifications. In this version the decision was also made to switch from Gatsby.js platform to Next.js.
+
+## Contributors
+
+**Mat Jordan**
+
+- Developer, Northwestern University Libraries
+- Former Director of Technology Solutions, University of Tennessee Libraries
+
+**Mark Baggett**
+
+- Head, Digital Initiatives, University of Tennessee Libraries
+
+**Emily Gore**
+
+- Associate University Librarian, University of Georgia Libraries
+- Former Assistant Dean of Libraries, University of Tennessee Libraries
+
+**Adam Arling**
+
+- Senior Developer, Northwestern University Libraries
+
+**David Schober**
+
+- Product Owner and Team Lead, Northwestern University Libraries
+
+## Colophon
+
+Mat Jordan, the primary author of Canopy IIIF, was born within the original homelands of the [Nimíipuu (Nez Percé)](https://wikipedia.org/wiki/Nez_Perce) and is rooted from Nez Perce County, Idaho, in the United States. Relating to this, the [source IIIF Collection](https://api.dc.library.northwestern.edu/api/v2/search?query=%22Nez%20Perc%C3%A9%22&as=iiif&size=200) for this demonstration is a query for [_"Nez Percé"_](https://dc.library.northwestern.edu/search?q=%22Nez+Perc%C3%A9%22), with results coming from the **Edward S. Curtis's The North American Indian** collection provided by Northwestern University Libraries.
+
+The project name "Canopy" is inspired by the presentation, [A Tree's Strength Is Its Trunk: IIIF as Central Operational Infrastructure](https://www.cni.org/topics/standards/a-trees-strength-is-its-trunk-iiif-as-central-operational-infrastructure), delivered by María Matienzo (formerly Stanford University Libraries) and Esmé Cowles (Princeton University Library) at the CNI Fall 2020 Virtual Membership Meeting.
+
+Canopy IIIF is created using [Next.js 13](https://nextjs.org/), with a [FlexSearch](https://github.com/nextapps-de/flexsearch) index for text search, [IIIF Presentation API 3.0](https://iiif.io/api/presentation/3.0/) delivering resource content, [Radix UI](https://www.radix-ui.com/) and [Stitches](https://stitches.dev/) used throughout for the user interface, and various community modules from [IIIF Commons](https://github.com/IIIF-Commons) and [Samvera](https://samvera.org/) supporting the work presentation and resource delivery.
+
+This demonstration instance of Canopy IIIF is hosted on Vercel with a consistent build time under 40 seconds. The build process includes metadata aggregation requests of 119 IIIF Manifests. This IIIF Collection and its Manifest resources are delivered via a search response from the [Northwestern University Libraries Digital Collections API](https://api.dc.library.northwestern.edu/docs/v2/index.html). Referenced IIIF Image resources are delivered via [Serverless IIIF](https://github.com/samvera/serverless-iiif).
+
+export default ({ children }) => (
+  <Basic content={children} navigation="about" />
+);

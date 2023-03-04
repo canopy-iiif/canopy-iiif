@@ -6,11 +6,15 @@ import Link from "next/link";
 import Heading from "@/components/Shared/Heading/Heading";
 import { styled } from "@/stitches";
 import { MinusIcon } from "@radix-ui/react-icons";
+import {
+  ContentStyled,
+  ContentWrapper,
+} from "@/components/Shared/Content.styled";
 
 const ListItem = styled("li", {
   listStyle: "none",
   padding: "0",
-  margin: "0 0 $gr1",
+  lineHeight: "unset",
 
   svg: {
     content: "",
@@ -53,21 +57,25 @@ export default function Metadata() {
   return (
     <Layout>
       <Container>
-        <Heading as="h1">Metadata</Heading>
-        {FACETS.map(({ label, slug, values }) => {
-          const path = `/search?${slug}=`;
+        <ContentWrapper>
+          <ContentStyled>
+            <Heading as="h1">Metadata</Heading>
+            {FACETS.map(({ label, slug, values }) => {
+              const path = `/search?${slug}=`;
 
-          return (
-            <div key={slug}>
-              <Heading as="h2">{label}</Heading>
-              <ul>
-                {values.map((value) => (
-                  <MetadataItem {...value} path={path} key={value.slug} />
-                ))}
-              </ul>
-            </div>
-          );
-        })}
+              return (
+                <div key={slug}>
+                  <Heading as="h2">{label}</Heading>
+                  <ul>
+                    {values.map((value) => (
+                      <MetadataItem {...value} path={path} key={value.slug} />
+                    ))}
+                  </ul>
+                </div>
+              );
+            })}
+          </ContentStyled>
+        </ContentWrapper>
       </Container>
     </Layout>
   );

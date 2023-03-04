@@ -30,6 +30,15 @@ const defaults = {
     lineHeight: "1.55em",
   },
 
+  "ul, ol": {
+    fontFamily: "$book",
+    lineHeight: "1.55em",
+
+    li: {
+      paddingBottom: "$gr1",
+    },
+  },
+
   dl: {
     dt: {
       fontWeight: "800",
