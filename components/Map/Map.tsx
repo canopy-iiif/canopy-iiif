@@ -28,7 +28,8 @@ const Map: React.FC<MapProps> = ({ manifests }) => {
   const [bounds, setBounds] = useState<Leaflet.LatLngBoundsExpression>(defaultBounds);
 
   useEffect( () => {
-    setBounds(getBounds(manifests));
+    const manifestBounds = getBounds(manifests);
+    setBounds(manifestBounds.length > 0 ? manifestBounds : defaultBounds);
   }, [manifests])
 
   useEffect(() => {
