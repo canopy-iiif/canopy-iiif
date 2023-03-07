@@ -1,4 +1,4 @@
-import React, { ReactNode } from "react";
+import React from "react";
 import { Wrapper } from "@/components/Nav/Nav.styled";
 import NavItems from "@/components/Nav/Items";
 
