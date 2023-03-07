@@ -29,7 +29,7 @@ const Map: React.FC<MapProps> = ({ manifests }) => {
 
   useEffect( () => {
     const manifestBounds = getBounds(manifests);
-    setBounds(manifestBounds.length > 0 ? manifestBounds : defaultBounds);
+    manifestBounds.length > 0 && setBounds(manifestBounds);
   }, [manifests])
 
   useEffect(() => {
