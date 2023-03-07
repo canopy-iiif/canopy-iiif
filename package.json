@@ -33,6 +33,7 @@
     "copy-to-clipboard": "^3.3.3",
     "flexsearch": "^0.7.31",
     "framer-motion": "^8.5.4",
+    "html-react-parser": "^3.0.12",
     "leaflet": "^1.9.3",
     "lodash": "^4.17.21",
     "next": "^13.0.0",

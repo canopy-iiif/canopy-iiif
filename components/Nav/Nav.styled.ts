@@ -2,7 +2,6 @@ import { styled } from "@/stitches";
 
 const Items = styled("div", {
   display: "flex",
-  fontSize: "$gr4",
   fontFamily: "$bookTight",
   flexGrow: "0",
 
@@ -75,6 +74,14 @@ const Wrapper = styled("nav", {
   alignItems: "center",
   zIndex: "1",
   flexGrow: "0",
+  fontSize: "$gr4",
+
+  nav: {
+    fontSize: "$gr3",
+    paddingLeft: "$gr3",
+    marginBottom: "$gr2",
+    borderLeft: "1px solid $slate6",
+  },
 });
 
 export { Items, Wrapper };
