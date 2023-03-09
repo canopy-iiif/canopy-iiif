@@ -1,4 +1,5 @@
 import {
+  AsideFixedContent,
   AsideStyled,
   ContentStyled,
   ContentWrapper,
@@ -43,11 +44,13 @@ const LayoutsBasic = ({
         <ContentWrapper aside={true}>
           {navigation && (
             <AsideStyled>
-              <Nav
-                items={navItems}
-                subNavigation={subNavigation}
-                orientation="vertical"
-              />
+              <AsideFixedContent>
+                <Nav
+                  items={navItems}
+                  subNavigation={subNavigation}
+                  orientation="vertical"
+                />
+              </AsideFixedContent>
             </AsideStyled>
           )}
           <ContentStyled>{content}</ContentStyled>

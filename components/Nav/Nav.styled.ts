@@ -78,9 +78,17 @@ const Wrapper = styled("nav", {
 
   nav: {
     fontSize: "$gr3",
-    paddingLeft: "$gr3",
-    marginBottom: "$gr2",
-    borderLeft: "1px solid $slate6",
+    margin: "$gr2 0",
+    padding: "0 $gr3",
+    borderLeft: "2px solid $slate4",
+
+    "a:first-child": {
+      paddingTop: 0,
+    },
+
+    "a:last-child": {
+      paddingBottom: 0,
+    },
   },
 });
 
