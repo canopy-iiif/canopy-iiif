@@ -1,11 +1,12 @@
 import { Items } from "@/components/Nav/Nav.styled";
 import NavItemsLink from "@/components/Nav/ItemsLink";
 import React from "react";
+import { NavigationItem } from "@/types/navigation";
 
 interface NavItemsProps {
-  items: any;
+  items: NavigationItem[];
   orientation: "horizontal" | "vertical";
-  subNavigation?: any;
+  subNavigation?: NavigationItem[];
 }
 const NavItems: React.FC<NavItemsProps> = ({
   items,
@@ -14,7 +15,7 @@ const NavItems: React.FC<NavItemsProps> = ({
 }) => {
   return (
     <Items orientation={orientation}>
-      {items.map((item: any) => (
+      {items.map((item) => (
         <NavItemsLink {...item} key={item.path} subNavigation={subNavigation} />
       ))}
     </Items>

@@ -1,12 +1,13 @@
 import Link from "next/link";
 import Nav from "@/components/Nav/Nav";
+import { NavigationItem } from "@/types/navigation";
 import { useRouter } from "next/router";
 import { useRef } from "react";
 
 interface NavItemsLinkProps {
   path: string;
   text: string;
-  subNavigation?: any;
+  subNavigation?: NavigationItem[];
 }
 
 const NavItemsLink: React.FC<NavItemsLinkProps> = ({

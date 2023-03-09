@@ -1,11 +1,12 @@
 import React from "react";
 import { Wrapper } from "@/components/Nav/Nav.styled";
 import NavItems from "@/components/Nav/Items";
+import { NavigationItem } from "@/types/navigation";
 
 interface NavProps {
-  items: any;
+  items: NavigationItem[];
   orientation?: "horizontal" | "vertical";
-  subNavigation?: any;
+  subNavigation?: NavigationItem[];
 }
 
 const Nav: React.FC<NavProps> = ({
