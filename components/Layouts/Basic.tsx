@@ -9,17 +9,20 @@ import Layout from "@/components/layout";
 import Nav from "@/components/Nav/Nav";
 import { renderToStaticMarkup } from "react-dom/server";
 import { getSlug } from "@/services/build/slug";
+import { NavigationItem } from "@/types/navigation";
 
 const LayoutsBasic = ({
   content,
   navigation,
 }: {
   content: ReactElement;
-  navigation?: string;
+  navigation?: NavigationItem[];
 }) => {
   // @ts-ignore
-  const navItems = process.env.CANOPY_CONFIG.navigation[navigation];
-  const [subNavigation, setSubNavigation] = useState<any>();
+  const navItems = process.env.CANOPY_CONFIG.navigation[
+    navigation
+  ] as NavigationItem[];
+  const [subNavigation, setSubNavigation] = useState<NavigationItem[]>();
 
   useEffect(() => {
     const html = document.createElement("html");
@@ -28,7 +31,7 @@ const LayoutsBasic = ({
       const { textContent } = element;
       return {
         path: `#${getSlug(textContent)}`,
-        text: textContent,
+        text: textContent ? textContent : "",
       };
     });
     setSubNavigation(h2);
