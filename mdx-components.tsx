@@ -1,13 +1,18 @@
+import Code from "@/components/Shared/Code/Code";
+import { CodeInline } from "@/components/Shared/Code/Code.styled";
+import Heading from "@/components/Shared/Heading/Heading";
 import type { MDXComponents } from "mdx/types";
 import { ReactElement } from "react";
-import Code from "./components/Shared/Code/Code";
-import { CodeInline } from "./components/Shared/Code/Code.styled";
-import Heading from "./components/Shared/Heading/Heading";
+import { getSlug } from "@/services/build/slug";
 
 export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
     h1: ({ children }) => <Heading as="h1">{children}</Heading>,
-    h2: ({ children }) => <Heading as="h2">{children}</Heading>,
+    h2: ({ children }) => (
+      <Heading as="h2" id={getSlug(children)}>
+        {children}
+      </Heading>
+    ),
     h3: ({ children }) => <Heading as="h3">{children}</Heading>,
     code: ({ children }) => <CodeInline>{children}</CodeInline>,
 

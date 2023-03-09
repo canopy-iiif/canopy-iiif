@@ -6,6 +6,7 @@ type HeadingElements = "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "span";
 interface HeadingProps {
   as?: HeadingElements;
   css?: CSS;
+  id?: string;
   isHidden?: boolean;
   children: ReactNode | ReactNode[];
 }
@@ -13,10 +14,11 @@ interface HeadingProps {
 const Heading: React.FC<HeadingProps> = ({
   as = "h2",
   css = {},
+  id,
   isHidden = false,
   children,
 }) => (
-  <StyledHeading as={as} isHidden={isHidden} data-level={as} css={css}>
+  <StyledHeading as={as} isHidden={isHidden} data-level={as} css={css} id={id}>
     <>{children}</>
   </StyledHeading>
 );

@@ -1,26 +1,22 @@
 import { Items } from "@/components/Nav/Nav.styled";
-import Link from "next/link";
+import NavItemsLink from "@/components/Nav/ItemsLink";
 import React from "react";
-import { useRouter } from "next/router";
+import { NavigationItem } from "@/types/navigation";
 
 interface NavItemsProps {
-  items: any;
+  items: NavigationItem[];
   orientation: "horizontal" | "vertical";
+  subNavigation?: NavigationItem[];
 }
-
-const NavItems: React.FC<NavItemsProps> = ({ items, orientation }) => {
-  const router = useRouter();
-
+const NavItems: React.FC<NavItemsProps> = ({
+  items,
+  orientation,
+  subNavigation,
+}) => {
   return (
     <Items orientation={orientation}>
-      {items.map((item: any) => (
-        <Link
-          href={item.path}
-          key={item.path}
-          className={router.pathname == item.path ? "active" : ""}
-        >
-          {item.text}
-        </Link>
+      {items.map((item) => (
+        <NavItemsLink {...item} key={item.path} subNavigation={subNavigation} />
       ))}
     </Items>
   );

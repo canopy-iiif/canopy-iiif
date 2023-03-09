@@ -1,22 +1,42 @@
-import Container from "@/components/Shared/Container";
-import Layout from "@/components/layout";
-import { ReactNode } from "react";
 import {
+  AsideFixedContent,
   AsideStyled,
   ContentStyled,
   ContentWrapper,
-} from "../Shared/Content.styled";
-import Nav from "../Nav/Nav";
+} from "@/components/Shared/Content.styled";
+import { ReactElement, useEffect, useState } from "react";
+import Container from "@/components/Shared/Container";
+import Layout from "@/components/layout";
+import Nav from "@/components/Nav/Nav";
+import { renderToStaticMarkup } from "react-dom/server";
+import { getSlug } from "@/services/build/slug";
+import { NavigationItem } from "@/types/navigation";
 
 const LayoutsBasic = ({
   content,
   navigation,
 }: {
-  content: ReactNode;
-  navigation?: string;
+  content: ReactElement;
+  navigation?: NavigationItem[];
 }) => {
   // @ts-ignore
-  const navItems = process.env.CANOPY_CONFIG.navigation[navigation];
+  const navItems = process.env.CANOPY_CONFIG.navigation[
+    navigation
+  ] as NavigationItem[];
+  const [subNavigation, setSubNavigation] = useState<NavigationItem[]>();
+
+  useEffect(() => {
+    const html = document.createElement("html");
+    html.innerHTML = renderToStaticMarkup(content);
+    const h2 = Object.values(html.getElementsByTagName("h2")).map((element) => {
+      const { textContent } = element;
+      return {
+        path: `#${getSlug(textContent)}`,
+        text: textContent ? textContent : "",
+      };
+    });
+    setSubNavigation(h2);
+  }, [content]);
 
   return (
     <Layout>
@@ -24,7 +44,13 @@ const LayoutsBasic = ({
         <ContentWrapper aside={true}>
           {navigation && (
             <AsideStyled>
-              <Nav items={navItems} orientation="vertical" />
+              <AsideFixedContent>
+                <Nav
+                  items={navItems}
+                  subNavigation={subNavigation}
+                  orientation="vertical"
+                />
+              </AsideFixedContent>
             </AsideStyled>
           )}
           <ContentStyled>{content}</ContentStyled>
