@@ -1,4 +1,11 @@
 {
+  "locales": [
+    {
+      "config": "locales/en.json",
+      "label": "English",
+      "lang": "en"
+    }
+  ],
   "map": {
     "enabled": false,
     "tileLayers": [
