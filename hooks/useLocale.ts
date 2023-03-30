@@ -6,9 +6,11 @@ function getLocale(locales: any, lang = "en") {
 }
 
 const LocaleString = (property: string) => {
-  const { canopyState } = useCanopyState();
-  const { locale } = canopyState;
-  return locale[property];
+  const {
+    canopyState: { locale },
+  } = useCanopyState();
+
+  return locale[property] as string;
 };
 
 export { getLocale, LocaleString };

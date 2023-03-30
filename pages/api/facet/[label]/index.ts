@@ -36,7 +36,7 @@ export default function handler(
     id: baseUrl,
     type: "Collection",
     label: { none: [facet.label] },
-    summary: { none: [`${facet.values.length} Terms`] },
+    summary: { none: [`${facet.values.length}`] },
     items: items,
   });
 }

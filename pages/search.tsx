@@ -13,6 +13,7 @@ import useElementPosition from "@/hooks/useElementPosition";
 import { useCanopyState } from "@/context/canopy";
 import { headerHeight } from "@/styles/global";
 import { Summary } from "@samvera/nectar-iiif";
+import { LocaleString } from "@/hooks/useLocale";
 
 const Search = () => {
   const searchParams: URLSearchParams = useSearchParams();
@@ -67,11 +68,10 @@ const Search = () => {
         <SearchHeaderFloat>
           <Container containerType="wide">
             {searchSummary && (
-              <Summary
-                as="span"
-                id="canopy-search-summary"
-                summary={searchSummary}
-              />
+              <span id="canopy-search-summary">
+                <Summary as="span" summary={searchSummary} />{" "}
+                {LocaleString("searchResults")}
+              </span>
             )}
             <Facets />
           </Container>

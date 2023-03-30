@@ -12,6 +12,7 @@ import Heading from "../components/Shared/Heading/Heading";
 import Button from "../components/Shared/Button/Button";
 import { ButtonWrapper } from "../components/Shared/Button/Button.styled";
 import { ArrowRightIcon, GitHubLogoIcon } from "@radix-ui/react-icons";
+import { LocaleString } from "@/hooks/useLocale";
 
 interface IndexProps {
   featured: any;
@@ -78,7 +79,10 @@ const Index: React.FC<IndexProps> = ({ featured, collections }) => {
             </Button>
           </ButtonWrapper>
         </div>
-        <Related collections={collections} title="Highlighted Works" />
+        <Related
+          collections={collections}
+          title={LocaleString("homepageHighlightedWorks")}
+        />
       </Container>
     </Layout>
   );
