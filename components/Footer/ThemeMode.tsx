@@ -8,16 +8,16 @@ const ThemeMode = () => {
   const [mounted, setMounted] = useState(false);
   const { theme, setTheme } = useTheme();
 
+  const toggleTheme = LocaleString("footerToggleTheme");
+
   useEffect(() => setMounted(true), []);
 
   const handleTheme = (currentTheme: string) => {
     switch (currentTheme) {
       case "light":
-        console.log("dark");
         setTheme("dark");
         break;
       case "dark":
-        console.log("light");
         setTheme("light");
         break;
     }
@@ -31,7 +31,7 @@ const ThemeMode = () => {
       onClick={() => handleTheme(theme as string)}
       buttonSize="small"
     >
-      {LocaleString("footerToggleTheme")}
+      {toggleTheme}
     </ButtonStyled>
   );
 };
