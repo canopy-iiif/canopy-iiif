@@ -1,6 +1,6 @@
 import { InternationalString } from "@iiif/presentation-3";
 
-export interface SearchContextStore {
+export interface CanopyContextStore {
   headerVisible: boolean;
   searchHeaderFixed: boolean;
   searchParams: URLSearchParams;

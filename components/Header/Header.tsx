@@ -8,7 +8,7 @@ import Search from "../Search/Search";
 import { Actions, ResponsiveActions } from "./Header.styled";
 import { HamburgerMenuIcon } from "@radix-ui/react-icons";
 import { useRouter } from "next/router";
-import { useSearchState } from "@/context/search";
+import { useCanopyState } from "@/context/canopy";
 
 // @ts-ignore
 const navItems = process.env.CANOPY_CONFIG.navigation.primary;
@@ -17,8 +17,8 @@ const Header = () => {
   const [showNav, setShowNav] = useState(false);
   const router = useRouter();
   const { pathname, query } = router;
-  const { searchState } = useSearchState();
-  const { headerVisible } = searchState;
+  const { canopyState } = useCanopyState();
+  const { headerVisible } = canopyState;
 
   useEffect(() => setShowNav(false), [pathname, query]);
 

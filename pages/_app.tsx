@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import globalStyles from "../styles/global";
 import { darkTheme } from "../stitches";
 import { ThemeProvider } from "next-themes";
-import { SearchProvider } from "../context/search";
+import { CanopyProvider } from "../context/canopy";
 import { AppProps } from "next/app";
 import { ObjectLiteral } from "@/types";
 
@@ -30,7 +30,7 @@ export default function CanopyAppProps({
         light: "light",
       }}
     >
-      <SearchProvider>{mounted && <Component {...pageProps} />}</SearchProvider>
+      <CanopyProvider>{mounted && <Component {...pageProps} />}</CanopyProvider>
     </ThemeProvider>
   );
 }

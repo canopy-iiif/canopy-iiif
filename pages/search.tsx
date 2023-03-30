@@ -10,7 +10,7 @@ import SearchResults from "@/components/Search/Results";
 import axios from "axios";
 import { useSearchParams } from "next/navigation";
 import useElementPosition from "@/hooks/useElementPosition";
-import { useSearchState } from "@/context/search";
+import { useCanopyState } from "@/context/canopy";
 import { headerHeight } from "@/styles/global";
 import { Summary } from "@samvera/nectar-iiif";
 
@@ -24,9 +24,9 @@ const Search = () => {
   const scrollPosition = useElementPosition(searchHeaderRef);
 
   const {
-    searchDispatch,
-    searchState: { searchHeaderFixed, searchSummary },
-  } = useSearchState();
+    canopyDispatch,
+    canopyState: { searchHeaderFixed, searchSummary },
+  } = useCanopyState();
 
   useEffect(() => {
     setPages([]);
@@ -35,16 +35,16 @@ const Search = () => {
 
   useEffect(
     () =>
-      searchDispatch({
+      canopyDispatch({
         searchHeaderFixed: scrollPosition > -headerHeight,
         type: "updateSearchHeaderFixed",
       }),
-    [searchDispatch, scrollPosition]
+    [canopyDispatch, scrollPosition]
   );
 
   useEffect(() => {
     if (typeof params !== "undefined") {
-      searchDispatch({
+      canopyDispatch({
         searchParams: params,
         type: "updateSearchParams",
       });
@@ -53,13 +53,13 @@ const Search = () => {
         setPages(result.data.items.map((item: any) => item.id));
 
         result.data.summary &&
-          searchDispatch({
+          canopyDispatch({
             type: "updateSearchSummary",
             searchSummary: result.data.summary,
           });
       });
     }
-  }, [params, searchDispatch]);
+  }, [params, canopyDispatch]);
 
   return (
     <Layout>

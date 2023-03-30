@@ -1,5 +1,5 @@
 import React from "react";
-import { SearchContextStore } from "@/types/context/search";
+import { CanopyContextStore } from "@/types/context/canopy";
 import { InternationalString } from "@iiif/presentation-3";
 
 type Action =
@@ -9,24 +9,24 @@ type Action =
   | { type: "updateSearchSummary"; searchSummary: InternationalString };
 
 type Dispatch = (action: Action) => void;
-type State = SearchContextStore;
-type SearchProviderProps = {
+type State = CanopyContextStore;
+type CanopyProviderProps = {
   children: React.ReactNode;
-  initialState?: SearchContextStore;
+  initialState?: CanopyContextStore;
 };
 
-const defaultState: SearchContextStore = {
+const defaultState: CanopyContextStore = {
   headerVisible: true,
   searchHeaderFixed: false,
   searchParams: new URLSearchParams(),
   searchSummary: { none: [""] },
 };
 
-const SearchStateContext = React.createContext<
-  { searchState: State; searchDispatch: Dispatch } | undefined
+const CanopyStateContext = React.createContext<
+  { canopyState: State; canopyDispatch: Dispatch } | undefined
 >(undefined);
 
-function searchReducer(state: State, action: Action) {
+function canopyReducer(state: State, action: Action) {
   switch (action.type) {
     case "updateHeaderVisible": {
       return {
@@ -53,30 +53,31 @@ function searchReducer(state: State, action: Action) {
       };
     }
     default: {
+      console.log(action);
       throw new Error(`Unhandled action type`);
     }
   }
 }
 
-function SearchProvider({
+function CanopyProvider({
   initialState = defaultState,
   children,
-}: SearchProviderProps) {
-  const [state, dispatch] = React.useReducer(searchReducer, initialState);
-  const value = { searchDispatch: dispatch, searchState: state };
+}: CanopyProviderProps) {
+  const [state, dispatch] = React.useReducer(canopyReducer, initialState);
+  const value = { canopyDispatch: dispatch, canopyState: state };
   return (
-    <SearchStateContext.Provider value={value}>
+    <CanopyStateContext.Provider value={value}>
       {children}
-    </SearchStateContext.Provider>
+    </CanopyStateContext.Provider>
   );
 }
 
-function useSearchState() {
-  const context = React.useContext(SearchStateContext);
+function useCanopyState() {
+  const context = React.useContext(CanopyStateContext);
   if (context === undefined) {
-    throw new Error("useSearchState must be used within a SearchProvider");
+    throw new Error("useCanopyState must be used within a CanopyProvider");
   }
   return context;
 }
 
-export { SearchProvider, useSearchState };
+export { CanopyProvider, useCanopyState };
