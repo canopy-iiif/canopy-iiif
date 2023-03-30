@@ -1,5 +1,9 @@
 const aggregate = require("./services/build/aggregate");
-const { getConfig, getOptions, getNavigation } = require("./services/config");
+const {
+  getConfig,
+  getOptions,
+  getNavigation,
+} = require("./services/build/config");
 const args = process.argv;
 
 (() => {

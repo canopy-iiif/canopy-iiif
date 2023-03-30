@@ -8,7 +8,7 @@ import React, {
 import { SearchForm, SearchInput, SearchSubmit } from "../Search/Search.styled";
 import { MagnifyingGlassIcon } from "@radix-ui/react-icons";
 import { useRouter } from "next/router";
-import { localeString } from "@/services/locales";
+import { LocaleString } from "@/hooks/useLocale";
 
 const Search = () => {
   const [value, setValue] = useState<string>();
@@ -43,7 +43,7 @@ const Search = () => {
     <SearchForm onSubmit={handleSubmit}>
       <MagnifyingGlassIcon />
       <SearchInput onChange={handleSearchChange} ref={search} />
-      <SearchSubmit type="submit">{localeString("searchButton")}</SearchSubmit>
+      <SearchSubmit type="submit">{LocaleString("searchButton")}</SearchSubmit>
     </SearchForm>
   );
 };

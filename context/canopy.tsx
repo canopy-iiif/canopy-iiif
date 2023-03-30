@@ -16,7 +16,9 @@ type CanopyProviderProps = {
 };
 
 const defaultState: CanopyContextStore = {
+  config: {},
   headerVisible: true,
+  locale: {},
   searchHeaderFixed: false,
   searchParams: new URLSearchParams(),
   searchSummary: { none: [""] },
@@ -80,4 +82,4 @@ function useCanopyState() {
   return context;
 }
 
-export { CanopyProvider, useCanopyState };
+export { CanopyProvider, defaultState, useCanopyState };

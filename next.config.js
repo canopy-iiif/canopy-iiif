@@ -3,7 +3,11 @@ const {
   PHASE_PRODUCTION_BUILD,
 } = require("next/constants");
 
-const { getConfig, getOptions, getNavigation } = require("./services/config");
+const {
+  getConfig,
+  getOptions,
+  getNavigation,
+} = require("./services/build/config");
 
 const withMDX = require("@next/mdx")({
   extension: /\.mdx?$/,
