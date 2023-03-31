@@ -1,8 +1,15 @@
 import { useCanopyState } from "@/context/canopy";
 
-function getLocale(locales: any, lang = "en") {
-  const { config } = locales.find((locale: any) => locale.lang === lang);
-  return require(`config/${config}`);
+function getLocale(locales: any, lang: string) {
+  const current = lang
+    ? locales.find((locale: any) => locale.lang === lang)
+    : locales[0];
+
+  return {
+    config: require(`config/${current.config}`),
+    label: current.label,
+    lang: current.lang,
+  };
 }
 
 const LocaleString = (property: string) => {
@@ -10,7 +17,9 @@ const LocaleString = (property: string) => {
     canopyState: { locale },
   } = useCanopyState();
 
-  return locale[property] as string;
+  const { config } = locale;
+
+  return config[property] as string;
 };
 
 export { getLocale, LocaleString };
