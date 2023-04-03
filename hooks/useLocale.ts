@@ -1,5 +1,11 @@
 import { useCanopyState } from "@/context/canopy";
 
+function getDefaultLang(locales: any) {
+  const { language } = new Intl.Locale(window?.navigator?.language);
+  const canopyLanguage = locales.find((entry: any) => entry.lang === language);
+  return canopyLanguage ? canopyLanguage?.lang : locales[0].lang;
+}
+
 function getLocale(locales: any, lang: string) {
   const current = lang
     ? locales.find((locale: any) => locale.lang === lang)
@@ -22,4 +28,4 @@ const LocaleString = (property: string) => {
   return config[property] as string;
 };
 
-export { getLocale, LocaleString };
+export { getDefaultLang, getLocale, LocaleString };

@@ -5,7 +5,7 @@ import { ThemeProvider } from "next-themes";
 import { CanopyProvider, defaultState } from "../context/canopy";
 import { AppProps } from "next/app";
 import { ObjectLiteral } from "@/types";
-import { getLocale } from "@/hooks/useLocale";
+import { getDefaultLang, getLocale } from "@/hooks/useLocale";
 
 interface CanopyAppProps extends AppProps {
   pageProps: ObjectLiteral;
@@ -20,11 +20,18 @@ export default function CanopyAppProps({
   const config: any = process.env.CANOPY_CONFIG;
   const { locales, theme } = config;
 
-  const defaultLang = locales[0].lang;
-  const locale = getLocale(locales, defaultLang);
-
   const [mounted, setMounted] = useState(false);
+  const [locale, setLocale] = useState<any>();
+
   useEffect(() => setMounted(true), []);
+
+  useEffect(() => {
+    if (mounted && !locale) {
+      const defaultLang = getDefaultLang(locales);
+      const defaultLocale = getLocale(locales, defaultLang);
+      setLocale(defaultLocale);
+    }
+  }, [locale, locales, mounted]);
 
   return (
     <ThemeProvider
@@ -35,15 +42,17 @@ export default function CanopyAppProps({
         light: "light",
       }}
     >
-      <CanopyProvider
-        initialState={{
-          ...defaultState,
-          config: config,
-          locale: locale,
-        }}
-      >
-        {mounted && <Component {...pageProps} />}
-      </CanopyProvider>
+      {locale && (
+        <CanopyProvider
+          initialState={{
+            ...defaultState,
+            config: config,
+            locale: locale,
+          }}
+        >
+          {mounted && <Component {...pageProps} />}
+        </CanopyProvider>
+      )}
     </ThemeProvider>
   );
 }
