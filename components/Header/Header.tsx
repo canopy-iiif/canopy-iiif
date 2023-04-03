@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
+import Locale from "@/components/Shared/Locale/Locale";
 import Nav from "@/components/Nav/Nav";
+import Search from "@/components/Search/Search";
 import { Content, Title, Wrapper } from "@/components/Header/Header.styled";
 import collections from "@/.canopy/collections.json";
 import { Label } from "@samvera/nectar-iiif";
-import Search from "../Search/Search";
 import { Actions, ResponsiveActions } from "./Header.styled";
 import { HamburgerMenuIcon } from "@radix-ui/react-icons";
 import { useRouter } from "next/router";
 import { useCanopyState } from "@/context/canopy";
-import Locale from "../Shared/Locale/Locale";
 
 // @ts-ignore
 const navItems = process.env.CANOPY_CONFIG.navigation.primary;

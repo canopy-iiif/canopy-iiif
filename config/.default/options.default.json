@@ -4,11 +4,6 @@
       "config": "locales/en.json",
       "label": "English",
       "lang": "en"
-    },
-    {
-      "config": "locales/no.json",
-      "label": "Norsk",
-      "lang": "no"
     }
   ],
   "map": {

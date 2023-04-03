@@ -1,6 +1,7 @@
 import { useCanopyState } from "@/context/canopy";
 import { getLocale } from "@/hooks/useLocale";
 import React, { ChangeEvent } from "react";
+import { LocaleStyled } from "./Locale.styled";
 
 const Locale: React.FC = () => {
   const { canopyState, canopyDispatch } = useCanopyState();
@@ -13,20 +14,24 @@ const Locale: React.FC = () => {
     });
   };
 
+  if (config?.locales.length <= 1) return null;
+
   return (
-    <select onChange={handleChange}>
-      {config?.locales.map((option) => {
-        return (
-          <option
-            key={option.lang}
-            value={option.lang}
-            selected={option.lang === locale.lang}
-          >
-            {option.label}
-          </option>
-        );
-      })}
-    </select>
+    <LocaleStyled>
+      <select onChange={handleChange}>
+        {config?.locales.map((option: any) => {
+          return (
+            <option
+              key={option.lang}
+              value={option.lang}
+              selected={option.lang === locale.lang}
+            >
+              {option.label}
+            </option>
+          );
+        })}
+      </select>
+    </LocaleStyled>
   );
 };
 
