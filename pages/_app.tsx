@@ -19,7 +19,9 @@ export default function CanopyAppProps({
 
   const config: any = process.env.CANOPY_CONFIG;
   const { locales, theme } = config;
-  const locale = getLocale(locales);
+
+  const defaultLang = locales[0].lang;
+  const locale = getLocale(locales, defaultLang);
 
   const [mounted, setMounted] = useState(false);
   useEffect(() => setMounted(true), []);
