@@ -9,7 +9,6 @@ import { getResults } from "@/services/search/results";
 import { getActiveFacets } from "@/services/facet/facets";
 import type { NextApiRequest, NextApiResponse } from "next";
 import { Collection } from "@iiif/presentation-3";
-import { LocaleString } from "@/hooks/useLocale";
 
 export default function handler(
   request: NextApiRequest,
