@@ -9,6 +9,7 @@ import { Actions, ResponsiveActions } from "./Header.styled";
 import { HamburgerMenuIcon } from "@radix-ui/react-icons";
 import { useRouter } from "next/router";
 import { useCanopyState } from "@/context/canopy";
+import Locale from "../Shared/Locale/Locale";
 
 // @ts-ignore
 const navItems = process.env.CANOPY_CONFIG.navigation.primary;
@@ -40,6 +41,7 @@ const Header = () => {
         <Actions showNav={showNav}>
           <Search />
           <Nav items={navItems} />
+          <Locale />
         </Actions>
       </Content>
     </Wrapper>

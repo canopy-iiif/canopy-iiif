@@ -4,6 +4,7 @@ import { InternationalString } from "@iiif/presentation-3";
 
 type Action =
   | { type: "updateHeaderVisible"; headerVisible: boolean }
+  | { type: "updateLocale"; locale: any }
   | { type: "updateSearchHeaderFixed"; searchHeaderFixed: boolean }
   | { type: "updateSearchParams"; searchParams: URLSearchParams }
   | { type: "updateSearchSummary"; searchSummary: InternationalString };
@@ -34,6 +35,12 @@ function canopyReducer(state: State, action: Action) {
       return {
         ...state,
         headerVisible: action.headerVisible,
+      };
+    }
+    case "updateLocale": {
+      return {
+        ...state,
+        locale: action.locale,
       };
     }
     case "updateSearchHeaderFixed": {
