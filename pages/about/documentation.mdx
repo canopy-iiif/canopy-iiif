@@ -100,6 +100,39 @@ Curating Metadata allows implementers of Canopy IIIF to select metadata labels t
 
 ## Additional Options
 
+### Locale Preferences
+
+Canopy IIIF supports locale preferences for user interface language. The default configuration language is English; however, additional languages can be defined. For more information, [see Locale](#locale).
+
+```json
+"locales": [
+  {
+    "config": "locales/en.json",
+    "label": "English",
+    "lang": "en"
+  }
+]
+```
+
+If _more than one_ locale is defined in the `config/options.json`, a select element will render in the header allowing users to toggle the defined languages. In addition, Canopy will attempt to align the language set by the user's browser with the available options. As a fallback, the first locale defined in the array will be set.
+
+As an example, if a visitor with `en-US` visited a Canopy instance that included both `no` and `en` as language options, the `en` locale configuration would be the default locale. Whereas, if a user visited this same instance with `fr` as their browser language, the default locale would be the `no` configuration.
+
+```json
+"locales": [
+  {
+    "config": "locales/no.json",
+    "label": "Norsk",
+    "lang": "no"
+  },
+  {
+    "config": "locales/en.json",
+    "label": "English",
+    "lang": "en"
+  }
+]
+```
+
 ### Search Index
 
 Search options can be configured in `config/options.json`. By default, the search index is included but can be disabled by setting `enabled: false`. If the search index is enabled, the label property on the manifest is always indexed. The properties of the `metadata` property are also indexed by default, but this can be modified to have these values not be indexed at all by setting `search.index.metadata.enabled` to `false`. Furthermore, all `metadata` values may be indexed OR you may specify only the properties that are specified in `config/canopy.json` by modifying `search.index.metadata.all`.
@@ -156,6 +189,29 @@ The map's tile layers are also configured here, giving users the ability to choo
     "attribution": "&copy; OpenStreetMap contributors"
   }
 ]
+```
+
+## Locale
+
+User interface language strings are set through a locale configuration file located in the `config/locales` directory. Persons customizing a Canopy instance can add new language configurations to support their preferred locales. We welcome all pull requests to add new locales to the Canopy IIIF project.
+
+### Example
+
+_English_ configuration found at `config/locales/en.json`
+
+```json
+{
+  "footerSourceCollection": "Source Collection",
+  "footerToggleTheme": "Toggle Theme",
+  "homepageHighlightedWorks": "Highlighted Works",
+  "searchButton": "Search",
+  "searchResults": "Results",
+  "searchFilter": "Filter",
+  "searchFilterAny": "Any",
+  "searchFilterClear": "Clear All",
+  "searchFilterClose": "Close",
+  "searchFilterSubmit": "View Results"
+}
 ```
 
 ## Contextual Content

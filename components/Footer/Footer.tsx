@@ -3,6 +3,7 @@ import IIIF from "@/components/SVG/IIIF";
 import ThemeMode from "./ThemeMode";
 import { CollectionLink, FooterContent, FooterStyled } from "./Footer.styled";
 import Container from "../Shared/Container";
+import { LocaleString } from "@/hooks/useLocale";
 
 const { collection } = process.env.CANOPY_CONFIG as any;
 
@@ -13,7 +14,7 @@ const Footer = () => {
         <FooterContent>
           <CollectionLink href={collection} target="_blank">
             <IIIF />
-            Source Collection
+            {LocaleString("footerSourceCollection")}
           </CollectionLink>
           <ThemeMode />
         </FooterContent>

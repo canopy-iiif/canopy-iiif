@@ -2,21 +2,22 @@ import React from "react";
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
 import { ButtonStyled } from "../Shared/Button/Button.styled";
+import { LocaleString } from "@/hooks/useLocale";
 
 const ThemeMode = () => {
   const [mounted, setMounted] = useState(false);
   const { theme, setTheme } = useTheme();
+
+  const toggleTheme = LocaleString("footerToggleTheme");
 
   useEffect(() => setMounted(true), []);
 
   const handleTheme = (currentTheme: string) => {
     switch (currentTheme) {
       case "light":
-        console.log("dark");
         setTheme("dark");
         break;
       case "dark":
-        console.log("light");
         setTheme("light");
         break;
     }
@@ -30,7 +31,7 @@ const ThemeMode = () => {
       onClick={() => handleTheme(theme as string)}
       buttonSize="small"
     >
-      Toggle Theme
+      {toggleTheme}
     </ButtonStyled>
   );
 };

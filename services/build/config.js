@@ -47,4 +47,8 @@ function getOptions(path = `./config/.default/options.default.json`) {
   return JSON.parse(options);
 }
 
-module.exports = { getConfig, getNavigation, getOptions };
+module.exports = {
+  getConfig,
+  getNavigation,
+  getOptions,
+};

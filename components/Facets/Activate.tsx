@@ -6,6 +6,7 @@ import {
   FacetsActivateIndicator,
   FacetsActivateStyled,
 } from "./Activate.styled";
+import { LocaleString } from "@/hooks/useLocale";
 
 const FacetsActivate: React.FC = () => {
   const { facetsState } = useFacetsState();
@@ -18,7 +19,7 @@ const FacetsActivate: React.FC = () => {
   return (
     <FacetsActivateStyled asChild>
       <ButtonStyled buttonType="primary">
-        Filter <MixerHorizontalIcon />
+        {LocaleString("searchFilter")} <MixerHorizontalIcon />
         {length > 0 && (
           <FacetsActivateIndicator>{length}</FacetsActivateIndicator>
         )}
