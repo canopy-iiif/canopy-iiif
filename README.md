@@ -75,7 +75,7 @@ A purely IIIF sourced site generator using Next.js. Canopy is an experimental ap
 
 ### Configuration
 
-- [ ] Localization preferences
+- [x] Localization preferences
 - [x] Site title label override
 - [ ] Slug pattern options
 
