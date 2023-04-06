@@ -2,19 +2,18 @@ import { styled } from "@/stitches";
 
 const Items = styled("div", {
   display: "flex",
-  fontFamily: "$bookTight",
+  fontFamily: "$book",
+  fontWeight: "500",
   flexGrow: "0",
 
   variants: {
     orientation: {
       horizontal: {
         justifyContent: "flex-end",
-        fontWeight: "800",
       },
       vertical: {
         flexDirection: "column",
         alignItems: "flex-start",
-        fontWeight: "500",
         padding: "0",
 
         a: {

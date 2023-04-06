@@ -23,8 +23,8 @@ const StyledHeading = styled("h2", {
   "&[data-level=h2]": {
     margin: "$gr5 0 $gr4",
     color: "$slate11",
-    fontSize: "$gr7",
-    fontWeight: "500",
+    fontSize: "$gr6",
+    fontWeight: "200",
     fontFamily: "$bookTight",
   },
 

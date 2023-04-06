@@ -1,7 +1,7 @@
 import { globalCss } from "@stitches/react";
 
 export const rem = 17;
-export const headerHeight = 66.5;
+export const headerHeight = 59.5;
 
 const defaults = {
   body: {
@@ -13,7 +13,7 @@ const defaults = {
 
   html: {
     fontFamily: "$book",
-    fontSize: `${19}px`,
+    fontSize: `${17}px`,
     fontWeight: "500",
     fontSmooth: "always",
     webKitFontSmothing: "antialiased",

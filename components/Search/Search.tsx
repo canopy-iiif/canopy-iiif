@@ -41,8 +41,8 @@ const Search = () => {
 
   return (
     <SearchForm onSubmit={handleSubmit}>
-      <MagnifyingGlassIcon />
       <SearchInput onChange={handleSearchChange} ref={search} />
+      <MagnifyingGlassIcon />
       <SearchSubmit type="submit">{LocaleString("searchButton")}</SearchSubmit>
     </SearchForm>
   );

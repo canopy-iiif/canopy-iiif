@@ -5,7 +5,6 @@ import Container from "../components/Shared/Container";
 import Link from "next/link";
 import Heading from "@/components/Shared/Heading/Heading";
 import { styled } from "@/stitches";
-import { MinusIcon } from "@radix-ui/react-icons";
 import {
   ContentStyled,
   ContentWrapper,
@@ -16,18 +15,8 @@ const ListItem = styled("li", {
   padding: "0",
   lineHeight: "unset",
 
-  svg: {
-    content: "",
-    display: "block",
-    position: "absolute",
-    borderRadius: "50%",
-    marginLeft: "-$gr4",
-    marginTop: "5px",
-    color: "$indigo11",
-  },
-
   em: {
-    fontSize: "$gr3",
+    fontSize: "$gr2",
     fontStyle: "normal",
   },
 });
@@ -48,7 +37,6 @@ export default function Metadata() {
   }) => {
     return (
       <ListItem>
-        <MinusIcon />
         <Link href={`${path}${slug}`}>{value}</Link> <em>({doc_count})</em>
       </ListItem>
     );
@@ -66,7 +54,7 @@ export default function Metadata() {
               return (
                 <div key={slug}>
                   <Heading as="h2">{label}</Heading>
-                  <ul>
+                  <ul style={{ padding: "0" }}>
                     {values.map((value) => (
                       <MetadataItem {...value} path={path} key={value.slug} />
                     ))}

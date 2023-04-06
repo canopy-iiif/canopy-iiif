@@ -60,18 +60,34 @@ const HeroStyled = styled("div", {
           objectFit: "cover",
         },
 
-        figcaption: {
+        "&::before": {
+          backgroundColor: `$slate1`,
+          opacity: "0.92",
+          color: "transparent",
+          width: "100%",
+          padding: "$gr3 0",
+          fontSize: "$gr4",
+          lineHeight: "1.15em",
           position: "absolute",
           zIndex: "3",
+          bottom: "0",
+          left: "0",
+          content: "-",
+          boxShadow: `-1px -1px 2px  ${slateA.slateA3}`,
+        },
+
+        figcaption: {
+          position: "absolute",
+          zIndex: "4",
           bottom: "0",
           left: "0",
           display: "flex",
           flexDirection: "column",
           alignItems: "flex-start",
           textAlign: "left",
-          backgroundColor: `${slateDarkA.slateA12}`,
-          boxShadow: `inset -3px -3px 8px  ${slateA.slateA4}`,
+          backgroundColor: `transparent`,
           width: "100%",
+          color: "$slate12",
 
           [`> ${ContainerStyled}`]: {
             justifyContent: "flex-end",
@@ -84,23 +100,7 @@ const HeroStyled = styled("div", {
             fontWeight: "800",
             display: "flex",
             marginRight: "$gr2",
-            lineHeight: "1.15em",
             transition: "$canopyAll",
-          },
-
-          ".slide-summary": {
-            fontFamily: "$book",
-            fontSize: "$gr3",
-            display: "block",
-            color: "$slate3",
-            lineHeight: "1.15em",
-          },
-
-          ".slide-see-also": {
-            marginTop: "$gr2",
-            fontSize: "$gr4",
-            textShadow: "none",
-            textTransform: "none",
           },
         },
       },
