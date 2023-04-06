@@ -1,12 +1,12 @@
 {
   "footerSourceCollection": "Kildesamling",
-  "footerToggleTheme": "Slå av/på tema",
-  "homepageHighlightedWorks": "Uthevede verk",
+  "footerToggleTheme": "Skift tema",
+  "homepageHighlightedWorks": "Fremhevete verk",
   "searchButton": "Søk",
-  "searchResults": "Resultater",
-  "searchFilter": "Raffinere",
-  "searchFilterAny": "Noen",
-  "searchFilterClear": "Rydd alt",
+  "searchResults": "resultat",
+  "searchFilter": "Filter",
+  "searchFilterAny": "Alle",
+  "searchFilterClear": "Fjern filter",
   "searchFilterClose": "Lukk",
-  "searchFilterSubmit": "Se resultater"
+  "searchFilterSubmit": "Se treff"
 }
