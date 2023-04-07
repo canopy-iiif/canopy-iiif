@@ -30,6 +30,11 @@ const customTheme = {
 const options = {
   canvasBackgroundColor: `$slate6`,
   canvasHeight: `600px`,
+  openSeadragon: {
+    gestureSettingsMouse: {
+      scrollToZoom: false,
+    },
+  },
   renderAbout: false,
   showTitle: false,
   showIIIFBadge: false,
