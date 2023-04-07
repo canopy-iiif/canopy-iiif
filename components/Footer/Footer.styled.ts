@@ -9,9 +9,9 @@ const FooterContent = styled("div", {
 });
 
 const FooterStyled = styled("footer", {
-  backgroundColor: "$slate4",
-  boxShadow: `inset 3px 3px 8px  ${slateA.slateA7}`,
-  padding: "$gr4 0",
+  backgroundColor: "$slate1",
+  boxShadow: `inset 1px 1px 3px  ${slateA.slateA6}`,
+  padding: "$gr3 0",
   marginTop: "$gr6",
 });
 

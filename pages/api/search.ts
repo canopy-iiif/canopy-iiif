@@ -37,8 +37,12 @@ export default function handler(
     label: { none: [q ? q : `All Results`] },
     items: items,
     ...(page
-      ? { summary: { none: [`${results.length} Results`] } }
-      : { summary: { none: [`${results.length} Results`] } }),
+      ? {
+          summary: {
+            none: [`${results.length}}`],
+          },
+        }
+      : { summary: { none: [`${results.length}`] } }),
     ...(page && { partOf: getPartOf(baseUrl) }),
   });
 }

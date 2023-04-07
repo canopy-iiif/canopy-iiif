@@ -3,15 +3,15 @@ import React, { useEffect, useState } from "react";
 import FacetsModal from "./Modal";
 import FacetsActivate from "./Activate";
 import { FacetsProvider, useFacetsState } from "@/context/facets";
-import { useSearchState } from "@/context/search";
+import { useCanopyState } from "@/context/canopy";
 import { useRouter } from "next/router";
 
 const Facets = () => {
   const { asPath } = useRouter();
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const { facetsDispatch } = useFacetsState();
-  const { searchDispatch, searchState } = useSearchState();
-  const { headerVisible, searchParams } = searchState;
+  const { canopyDispatch, canopyState } = useCanopyState();
+  const { headerVisible, searchParams } = canopyState;
 
   useEffect(() => {
     facetsDispatch({
@@ -22,7 +22,7 @@ const Facets = () => {
 
   const handleDialogChange = () => {
     setIsModalOpen(!isModalOpen);
-    searchDispatch({
+    canopyDispatch({
       type: "updateHeaderVisible",
       headerVisible: !headerVisible,
     });
@@ -30,11 +30,11 @@ const Facets = () => {
 
   useEffect(() => {
     setIsModalOpen(false);
-    searchDispatch({
+    canopyDispatch({
       type: "updateHeaderVisible",
       headerVisible: true,
     });
-  }, [asPath, searchDispatch]);
+  }, [asPath, canopyDispatch]);
 
   return (
     <FacetsStyled open={isModalOpen} onOpenChange={handleDialogChange}>

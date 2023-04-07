@@ -1,0 +1,13 @@
+name: Test IIIF Collection Aggregation
+on: push
+jobs:
+  aggregate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install dependencies
+        run: npm install
+      - name: IIIF Presentation API 2.x Collection
+        run: npm run prebuild -- --path=./config/.fixtures/canopy.presentation-2.json
+      - name: IIIF Presentation API 3.0 Collection
+        run: npm run prebuild -- --path=./config/.fixtures/canopy.presentation-3.json

@@ -6,6 +6,7 @@ const StyledWorkInner = styled("section", {
   maxWidth: "1280px",
   margin: "auto",
   position: "relative",
+  paddingTop: "$gr3",
 
   ".work-summary": {
     fontSize: "$gr5",
