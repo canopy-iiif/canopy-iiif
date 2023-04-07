@@ -1,6 +1,54 @@
 import { styled } from "@/stitches";
 import { indigoA } from "@radix-ui/colors";
 
+const SearchInput = styled("input", {
+  transition: "$canopyAll",
+  cursor: "select",
+  fontSize: "$gr3",
+  fontFamily: "$book",
+  fontWeight: "500",
+  color: "$slate12",
+  backgroundColor: "$slate2",
+  padding: "0 $gr3 0 calc($gr4 + $gr2)",
+  border: "1px solid $slate6",
+  borderRadius: "2rem",
+  height: "calc($gr4 + $gr1 * 2)",
+  flexGrow: "1",
+  position: "absolute",
+  right: "0",
+  width: "calc(100% - ($gr3 + $gr4 + $gr2))",
+  zIndex: "0",
+
+  "&:active, &:focus": {
+    color: "$indigo12",
+    backgroundColor: "$indigo4",
+    outline: "none",
+    flexShrink: "1",
+    border: "1px solid $indigo7",
+    boxShadow: `inset 1px 1px 1px ${indigoA.indigoA4}`,
+  },
+});
+
+const SearchSubmit = styled("button", {
+  padding: "0 $gr3",
+  height: "calc($gr4 + $gr1 * 2)",
+  fontSize: "$gr3",
+  fontWeight: "500",
+  fontFamily: "$book",
+  borderRadius: "2rem ",
+  backgroundColor: "transparent",
+  color: "$slate9",
+  cursor: "pointer",
+  transition: "$canopyAll",
+  zIndex: "1",
+  border: "none",
+
+  "&:hover, &:focus": {
+    color: "$indigo11",
+    opacity: "1",
+  },
+});
+
 const SearchForm = styled("form", {
   position: "relative",
   display: "flex",
@@ -32,58 +80,21 @@ const SearchForm = styled("form", {
   },
 
   svg: {
-    color: "$indigo8",
+    color: "$slate9",
     marginLeft: "$gr2",
     position: "relative",
     zIndex: "1",
     transition: "$canopyAll",
   },
-});
 
-const SearchInput = styled("input", {
-  transition: "$canopyAll",
-  cursor: "select",
-  fontSize: "$gr3",
-  fontFamily: "$book",
-  fontWeight: "500",
-  color: "$slate12",
-  backgroundColor: "$indigo3",
-  padding: "0 $gr3 0 calc($gr4 + $gr2)",
-  border: "none",
-  borderRadius: "1.618rem",
-  height: "calc(($gr1 * 2) + $gr3)",
-  outline: "1px solid $indigo5",
-  boxShadow: `inset 1px 1px 2px ${indigoA.indigoA4}`,
-  flexGrow: "1",
-  position: "absolute",
-  right: "0",
-  width: "calc(100% - ($gr3 + $gr4 + $gr2))",
-  zIndex: "0",
+  "&:focus-within": {
+    svg: {
+      color: "$indigo9",
+    },
 
-  "&:active, &:focus": {
-    color: "$indigo12",
-    backgroundColor: "$indigo4",
-    outline: "2px solid $indigo9",
-    border: "none",
-    flexShrink: "1",
-    boxShadow: `2px 2px 5px ${indigoA.indigoA7}`,
-  },
-});
-
-const SearchSubmit = styled("button", {
-  padding: "$gr1 $gr3",
-  fontSize: "$gr4",
-  fontWeight: "800",
-  fontFamily: "$bookTight",
-  backgroundColor: "transparent",
-  border: "none",
-  color: "$indigo12",
-  cursor: "pointer",
-  transition: "$canopyAll",
-  zIndex: "1",
-
-  "&:hover, &:focus": {
-    color: "$indigo11",
+    [`> ${SearchSubmit}`]: {
+      color: "$indigo11",
+    },
   },
 });
 

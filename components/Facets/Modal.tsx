@@ -17,6 +17,7 @@ import { Cross2Icon } from "@radix-ui/react-icons";
 import { ButtonStyled } from "../Shared/Button/Button.styled";
 import { useFacetsState } from "@/context/facets";
 import { useRouter } from "next/router";
+import { LocaleString } from "@/hooks/useLocale";
 
 interface FacetsModalProps {
   handleSubmit: () => void;
@@ -47,9 +48,9 @@ const FacetsModal: React.FC<FacetsModalProps> = ({ handleSubmit }) => {
         <ContentInner>
           <ContentHeader>
             <ContentTitle asChild>
-              <span>Filter</span>
+              <span>{LocaleString("searchFilter")}</span>
             </ContentTitle>
-            <ContentClose>
+            <ContentClose aria-label={LocaleString("searchFilterClose")}>
               <Cross2Icon />
             </ContentClose>
           </ContentHeader>
@@ -62,10 +63,10 @@ const FacetsModal: React.FC<FacetsModalProps> = ({ handleSubmit }) => {
           </ContentBody>
           <ContentFooter>
             <ButtonStyled buttonType="transparent" onClick={handleClearAll}>
-              Clear all
+              {LocaleString("searchFilterClear")}
             </ButtonStyled>
             <ButtonStyled buttonType="primary" onClick={handleViewResults}>
-              View Results
+              {LocaleString("searchFilterSubmit")}
             </ButtonStyled>
           </ContentFooter>
         </ContentInner>

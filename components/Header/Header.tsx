@@ -1,31 +1,25 @@
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
+import Locale from "@/components/Shared/Locale/Locale";
 import Nav from "@/components/Nav/Nav";
+import Search from "@/components/Search/Search";
 import { Content, Title, Wrapper } from "@/components/Header/Header.styled";
 import collections from "@/.canopy/collections.json";
 import { Label } from "@samvera/nectar-iiif";
-import Search from "../Search/Search";
 import { Actions, ResponsiveActions } from "./Header.styled";
 import { HamburgerMenuIcon } from "@radix-ui/react-icons";
 import { useRouter } from "next/router";
-import { useSearchState } from "@/context/search";
+import { useCanopyState } from "@/context/canopy";
 
 // @ts-ignore
-const mapEnabled = process.env.CANOPY_CONFIG.map.enabled;
-
-const navItems = [
-  { path: "/works", text: "Works", type: "link" },
-  { path: "/metadata", text: "Metadata", type: "link" },
-  { path: "/about", text: "About", type: "link" },
-  ...(mapEnabled ? [{ path: "/map", text: "Map", type: "link" }] : []),
-];
+const navItems = process.env.CANOPY_CONFIG.navigation.primary;
 
 const Header = () => {
   const [showNav, setShowNav] = useState(false);
   const router = useRouter();
   const { pathname, query } = router;
-  const { searchState } = useSearchState();
-  const { headerVisible } = searchState;
+  const { canopyState } = useCanopyState();
+  const { headerVisible } = canopyState;
 
   useEffect(() => setShowNav(false), [pathname, query]);
 
@@ -47,6 +41,7 @@ const Header = () => {
         <Actions showNav={showNav}>
           <Search />
           <Nav items={navItems} />
+          <Locale />
         </Actions>
       </Content>
     </Wrapper>

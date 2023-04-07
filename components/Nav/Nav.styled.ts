@@ -1,26 +1,38 @@
 import { styled } from "@/stitches";
 
-const Highlight = styled("div", {
-  backgroundColor: "$indigo7",
-  position: "absolute",
-  left: "0",
-  height: "calc(($gr1 * 2) + $gr3)",
-  borderRadius: "1.618rem",
-  transition: "all 100ms ease-in-out",
-
-  "@sm": {
-    display: "none",
-  },
-});
-
 const Items = styled("div", {
   display: "flex",
-  alignItems: "center",
-  fontSize: "$gr4",
-  fontWeight: "800",
-  fontFamily: "$bookTight",
+  fontFamily: "$book",
+  fontWeight: "500",
   flexGrow: "0",
-  justifyContent: "flex-end",
+
+  variants: {
+    orientation: {
+      horizontal: {
+        justifyContent: "flex-end",
+      },
+      vertical: {
+        flexDirection: "column",
+        alignItems: "flex-start",
+        padding: "0",
+
+        a: {
+          color: "$slate10",
+          padding: "$gr1 0 $gr2",
+          marginBottom: "0",
+
+          [`&.active`]: {
+            fontWeight: "800",
+            color: "$indigo12 !important",
+          },
+
+          [`&:hover`]: {
+            color: "$indigo11",
+          },
+        },
+      },
+    },
+  },
 
   "@sm": {
     flexDirection: "column",
@@ -36,7 +48,7 @@ const Items = styled("div", {
     textDecoration: "none",
     borderRadius: "2rem",
     position: "relative",
-    transition: "all 100ms ease-in-out",
+    transition: "$canopyAll",
 
     "@sm": {
       padding: "0",
@@ -57,9 +69,26 @@ const Items = styled("div", {
 const Wrapper = styled("nav", {
   position: "relative",
   display: "flex",
+  flexDirection: "row",
   alignItems: "center",
   zIndex: "1",
   flexGrow: "0",
+  fontSize: "$gr4",
+
+  nav: {
+    fontSize: "$gr3",
+    margin: "$gr2 0",
+    padding: "0 $gr3",
+    borderLeft: "2px solid $slate4",
+
+    "a:first-child": {
+      paddingTop: 0,
+    },
+
+    "a:last-child": {
+      paddingBottom: 0,
+    },
+  },
 });
 
-export { Highlight, Items, Wrapper };
+export { Items, Wrapper };
