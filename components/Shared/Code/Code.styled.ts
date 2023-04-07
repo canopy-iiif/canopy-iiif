@@ -22,4 +22,13 @@ const CodePre = styled("pre", {
   zIndex: "0",
 });
 
-export { CodeStyled, CodePre };
+const CodeInline = styled("code", {
+  backgroundColor: "$indigo3",
+  padding: "3px $gr1",
+  borderRadius: "5px",
+  fontSize: "$gr3",
+  color: "$indigo11",
+  boxShadow: `1px 1px 1px  ${indigoA.indigoA6}`,
+});
+
+export { CodeStyled, CodeInline, CodePre };

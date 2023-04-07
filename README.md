@@ -1,3 +1,5 @@
+<img src="https://user-images.githubusercontent.com/7376450/221054302-923faa8b-19b9-4e90-a856-22d0ab9131c0.png" width="500px" />
+
 # Canopy IIIF
 
 A purely IIIF sourced site generator using Next.js. Canopy is an experimental application that will standup a browseable and searchable digital collections style site entirely from a IIIF Collection and the items it contains.
@@ -13,10 +15,8 @@ A purely IIIF sourced site generator using Next.js. Canopy is an experimental ap
 ### [Nez Percé (Nimíipuu)](https://canopy-iiif.vercel.app/)
 
 - IIIF Presentation API 3.0
-- 81 items
+- 119 items
 - Provided by Northwestern University Libraries
-
-<img src="https://user-images.githubusercontent.com/7376450/216725866-85ed609d-1e8b-4825-83de-7771cf1bf60e.png" width="400px" />
 
 ### [The Botanical photography of Alan S. Heilman](https://canopy-iiif-git-heilman-mathewjordan.vercel.app/)
 
@@ -24,23 +24,23 @@ A purely IIIF sourced site generator using Next.js. Canopy is an experimental ap
 - 1120 items
 - Provided by University of Tennessee Libraries
 
-<img src="https://user-images.githubusercontent.com/7376450/201527565-243437c8-bb90-408b-82fa-d8798478c9ee.png" width="400px" />
+### [Panoramic Images of Elgin P. Kintner](https://canopy-iiif-git-kintnerexamplesite-mathewjordan.vercel.app/)
+
+- IIIF Presentation API 3.0 w/ navPlace
+- 55 items
+- Provided by University of Tennessee Libraries
 
 ### [The Chimney Tops 2 Wildfires In Memory And Art](https://canopy-iiif-git-rfta-artists-mathewjordan.vercel.app/)
 
-- IIIF Presentation API 3.0
+- IIIF Presentation API 3.0 w/ Video Canvases
 - 43 items
 - Provided by University of Tennessee Libraries
-
-<img src="https://user-images.githubusercontent.com/7376450/217075076-765ccd39-6949-4c91-b6c3-8017671a66fb.png" width="400px" />
 
 ### [Canonici](https://canopy-iiif-git-canonici-mathewjordan.vercel.app/)
 
 - IIIF Presentation API 2.0
 - 529 items
 - Provided by Bodleian Libraries, University of Oxford
-
-<img src="https://user-images.githubusercontent.com/7376450/216225553-9d8a121a-5705-47a2-8f9b-388bc8dd30b2.png" width="400px" />
 
 ## Roadmap
 
@@ -64,18 +64,18 @@ A purely IIIF sourced site generator using Next.js. Canopy is an experimental ap
 - [x] Basic search on label(s)
 - [ ] No results language
 - [x] Search on summary and metadata entries
-- [ ] Search page facets on curated metadata
+- [x] Search page facets on curated metadata
 - [x] `next/link` routing from Work metadata to search page facets
 
 ### User Interface & Experience
 
-- [ ] Fully Responsive
+- [x] Fully Responsive
 - [x] Continuous scroll & lazy load of search results
 - [ ] Custom theme support
 
 ### Configuration
 
-- [ ] Localization preferences
+- [x] Localization preferences
 - [x] Site title label override
 - [ ] Slug pattern options
 

@@ -18,6 +18,8 @@ const FacetsModalContent = styled(Dialog.Content, {
   borderTop: "1px solid $slateA1",
   borderBottom: "1px solid $slateA4",
   transform: "translateX(-50%)",
+  overflow: "clip",
+  display: "flex",
 
   "@lg": {
     width: `calc(100% - $gr4 * 2)`,
@@ -36,18 +38,19 @@ const FacetsModalContentInner = styled("div", {
   display: "flex",
   flexDirection: "column",
   flexWrap: "nowrap",
+  width: "100%",
+  overflow: "scroll",
 });
 
 const FacetsModalContentHeader = styled("header", {
   display: "flex",
+  flexGrow: "0",
   justifyContent: "space-between",
   padding: "$gr3 $gr4",
   color: "$slate9",
   fontSize: "$gr3",
   fontFamily: "$bookTight",
   fontWeight: "300",
-  flexGrow: "0",
-  flexShrink: "0",
   alignItems: "center",
 
   "@sm": {
@@ -57,10 +60,9 @@ const FacetsModalContentHeader = styled("header", {
 
 const FacetsModalContentFooter = styled("footer", {
   display: "flex",
+  flexGrow: "0",
   justifyContent: "space-between",
   padding: "$gr3 $gr4",
-  flexGrow: "0",
-  flexShrink: "0",
 
   "@sm": {
     padding: "$gr2 $gr3",
@@ -68,11 +70,13 @@ const FacetsModalContentFooter = styled("footer", {
 });
 
 const FacetsModalContentBody = styled("div", {
-  padding: "$gr3 $gr4",
-  height: "100%",
+  display: "flex",
+  flexDirection: "column",
   flexGrow: "1",
-  flexShrink: "1",
-  overflow: "scroll",
+  borderTop: "1px solid $slate4",
+  borderBottom: "1px solid $slate4",
+  overflowY: "scroll !important",
+  padding: "$gr3 $gr4",
 
   "@sm": {
     padding: "$gr2 $gr3",

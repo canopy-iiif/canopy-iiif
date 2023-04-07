@@ -3,6 +3,19 @@ import { styled } from "@/stitches";
 const SliderStyled = styled("div", {
   marginBottom: "$gr5",
 
+  "@xs": {
+    "& > div > div": {
+      alignItems: "center",
+      textAlign: "center",
+
+      "& > div": {
+        "&:last-child": {
+          paddingTop: "$gr2",
+        },
+      },
+    },
+  },
+
   [`& .bloom-header-label`]: {
     fontSize: "$gr5 !important",
     fontWeight: "800 !important",
