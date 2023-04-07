@@ -1,0 +1,16 @@
+{
+  "prod": {
+    "collection": "https://iiif.bodleian.ox.ac.uk/iiif/collection/canonici",
+    "featured": [
+      "https://iiif.bodleian.ox.ac.uk/iiif/manifest/24e5a942-2aa4-4b04-9023-77f2542b5f94.json"
+    ],
+    "metadata": ["Language", "Place of Origin", "Materials"]
+  },
+  "dev": {
+    "collection": "https://iiif.bodleian.ox.ac.uk/iiif/collection/canonici",
+    "featured": [
+      "https://iiif.bodleian.ox.ac.uk/iiif/manifest/24e5a942-2aa4-4b04-9023-77f2542b5f94.json"
+    ],
+    "metadata": ["Language", "Place of Origin", "Materials"]
+  }
+}
