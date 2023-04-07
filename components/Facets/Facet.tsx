@@ -8,6 +8,7 @@ import {
   FacetsFacetStyled,
 } from "./Facet.styled";
 import FacetsOption from "./Option";
+import { LocaleString } from "@/hooks/useLocale";
 
 interface FacetsFacetProps {
   label: string;
@@ -29,12 +30,12 @@ export const FacetsFacet: React.FC<FacetsFacetProps> = ({
   const params = facetsActive?.toString();
   const defaultValue = {
     slug: "",
-    value: "Any",
+    value: LocaleString("searchFilterAny"),
   };
 
   const [active, setActive] = useState({
     slug: "",
-    value: "Any",
+    value: LocaleString("searchFilterAny"),
   });
 
   useEffect(() => {

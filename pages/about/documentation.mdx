@@ -1,0 +1,260 @@
+import Basic from "@/components/Layouts/Basic";
+
+# Documentation
+
+Canopy IIIF is a Next.js application where production and development builds will follow Next documentation accordingly.
+
+## Setup
+
+### Install Dependencies
+
+```bash
+npm install
+```
+
+### Running in Development
+
+```bash
+npm run dev
+```
+
+### Building in Production
+
+```bash
+npm run build
+```
+
+## Getting Started
+
+Canopy IIIF uses a default configuration `config/.default/canopy.default.json` for demonstration purposes if a custom one is not set. The build process will read from a custom configuration file at config/canopy.json if it exists.
+
+### Custom Configuration
+
+1. Find your `config/` directory
+2. Copy `canopy.sample.json` to `canopy.json`
+3. Make updates to both the **prod** and **dev** configurations
+4. Copy `options.sample.json` to `option.json`
+5. Modify `option.json` as needed
+
+### Example Configuration
+
+Both the prod and dev environments have a configuration. These configurations can match each other; however in some cases, development speed can be aided by targeting a smaller IIIF Collection id as a fixture.
+
+**Important:** The collection property is required and must be the id of the referenced source IIIF Collection. Collections of Collections are not currently supported.
+
+```json
+{
+  "prod": {
+    "label": { "none": ["Hobhouse"] },
+    "collection": "https://iiif.bodleian.ox.ac.uk/iiif/collection/hobhouse",
+    "featured": [
+      "https://iiif.bodleian.ox.ac.uk/iiif/manifest/8da97e8c-4e12-457d-aad8-3327b3aec183.json",
+      "https://iiif.bodleian.ox.ac.uk/iiif/manifest/2968d5c7-3718-44ef-92ea-ee4cc58cc677.json"
+    ],
+    "metadata": ["Extent", "Title", "Date Statement", "Language"]
+  },
+  "dev": {
+    "label": { "none": ["Hobhouse"] },
+    "collection": "https://iiif.bodleian.ox.ac.uk/iiif/collection/hobhouse",
+    "featured": [
+      "https://iiif.bodleian.ox.ac.uk/iiif/manifest/8da97e8c-4e12-457d-aad8-3327b3aec183.json",
+      "https://iiif.bodleian.ox.ac.uk/iiif/manifest/2968d5c7-3718-44ef-92ea-ee4cc58cc677.json"
+    ],
+    "metadata": ["Extent", "Title", "Date Statement", "Language"]
+  }
+}
+```
+
+## Customization
+
+### Site Title
+
+The Canopy IIIF site title is the Collection `label` of the set collection resource. You can optionally override this by providing a valid [Presentation 3.0 label](https://iiif.io/api/presentation/3.0/#label) property.
+
+```json
+"label": { "none": ["Hobhouse"] }
+```
+
+### Featured Manifests
+
+You can inform Canopy IIIF of featured Manifests by providing an array of ids. These must be within the referenced collection resource and the Manifest URIs must be an exact match. These Manifests will render throughout the interface in featured components.
+
+**Warning:** In the current pre-release, featured Manifests must have an Image body on the first Canvas.
+
+```json
+"featured": [
+  "https://iiif.bodleian.ox.ac.uk/iiif/manifest/8da97e8c-4e12-457d-aad8-3327b3aec183.json",
+  "https://iiif.bodleian.ox.ac.uk/iiif/manifest/2968d5c7-3718-44ef-92ea-ee4cc58cc677.json"
+]
+```
+
+### Metadata and Facets
+
+Curating Metadata allows implementers of Canopy IIIF to select metadata labels that provide use to end users. An optimal case is a label common to all or most manifests with some in diversity of values across those resources. Metadata labels that are curated will be automatically included as featured elements on the homepage, the metadata page, linking from works, and as facets on the search page.
+
+**Note:** Metadata labels are not yet BCP 47 language code aware; however, aggregation processes will make exact string comparisons regardless of language code.
+
+```json
+"metadata": ["Extent", "Title", "Date Statement", "Language"]
+```
+
+## Additional Options
+
+### Locale Preferences
+
+Canopy IIIF supports locale preferences for user interface language. The default configuration language is English; however, additional languages can be defined. For more information, [see Locale](#locale).
+
+```json
+"locales": [
+  {
+    "config": "locales/en.json",
+    "label": "English",
+    "lang": "en"
+  }
+]
+```
+
+If _more than one_ locale is defined in the `config/options.json`, a select element will render in the header allowing users to toggle the defined languages. In addition, Canopy will attempt to align the language set by the user's browser with the available options. As a fallback, the first locale defined in the array will be set.
+
+As an example, if a visitor with `en-US` visited a Canopy instance that included both `no` and `en` as language options, the `en` locale configuration would be the default locale. Whereas, if a user visited this same instance with `fr` as their browser language, the default locale would be the `no` configuration.
+
+```json
+"locales": [
+  {
+    "config": "locales/no.json",
+    "label": "Norsk",
+    "lang": "no"
+  },
+  {
+    "config": "locales/en.json",
+    "label": "English",
+    "lang": "en"
+  }
+]
+```
+
+### Search Index
+
+Search options can be configured in `config/options.json`. By default, the search index is included but can be disabled by setting `enabled: false`. If the search index is enabled, the label property on the manifest is always indexed. The properties of the `metadata` property are also indexed by default, but this can be modified to have these values not be indexed at all by setting `search.index.metadata.enabled` to `false`. Furthermore, all `metadata` values may be indexed OR you may specify only the properties that are specified in `config/canopy.json` by modifying `search.index.metadata.all`.
+
+The only property that can be indexed outside of `metadata` and `label` currently is `summary`. This is configured with `search.index.summary.enabled` .
+
+```json
+"search": {
+  "enabled": true,
+  "index": {
+    "metadata": {
+      "enabled": true,
+      "all": false
+     },
+    "summary": {
+      "enabled": false
+     }
+  }
+}
+```
+
+### Theme Mode
+
+The default theme for users can be set via `config/options.json`. This feature sets the initial theme for users as **light**, **dark**, or **system**. The _Toggle Theme_ button can also be enabled or disabled here.
+
+**Note:** Theme settings are stored in the users local browser storage. Setting the theme will only affect new users to your site. It will not change the default theme for users who have already visited.
+
+```json
+"theme": { "defaultTheme": "light", "toggleEnabled": false }
+```
+
+### Maps (navPlace)
+
+A map route can be enabled to provide geographic discovery of works via `config/options.json`. This feature builds markers off of geographic point features found in [navPlace](https://iiif.io/api/extension/navplace/) properties at the Manifest level. To enable this option, set the option to `true`.
+
+**Note:** Currently, only `navPlace` properties found at the Manifest level are displayed. Also, onlyFeatures of type: "Point" are displayed.
+
+```json
+"map": { "enabled": true }
+```
+
+The map's tile layers are also configured here, giving users the ability to choose and customize layers for their project. Additional services, such as MapBox, can be easily integrated following this pattern. Each tile layer defined here will appear as an option in the layer control of the map. The name property defines the text next to the radio button. The url property is the link to the tile layer. Finally, the attribution property defines the text that appears at the bottom of the map in case the tile layer requires any specific attribution on use. The first tile layer in the array will be used as the default map.
+
+```json
+"tileLayers": [
+  {
+    "name": "OpenStreetMap",
+    "url": "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+    "attribution": "&copy; OpenStreetMap contributors"
+  },
+  {
+    "name": "OpenTopoMap",
+    "url": "https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png",
+    "attribution": "&copy; OpenStreetMap contributors"
+  }
+]
+```
+
+## Locale
+
+User interface language strings are set through a locale configuration file located in the `config/locales` directory. Persons customizing a Canopy instance can add new language configurations to support their preferred locales. We welcome all pull requests to add new locales to the Canopy IIIF project.
+
+### Example
+
+_English_ configuration found at `config/locales/en.json`
+
+```json
+{
+  "footerSourceCollection": "Source Collection",
+  "footerToggleTheme": "Toggle Theme",
+  "homepageHighlightedWorks": "Highlighted Works",
+  "searchButton": "Search",
+  "searchResults": "Results",
+  "searchFilter": "Filter",
+  "searchFilterAny": "Any",
+  "searchFilterClear": "Clear All",
+  "searchFilterClose": "Close",
+  "searchFilterSubmit": "View Results"
+}
+```
+
+## Contextual Content
+
+Canopy allows for easy creation of contextual content that supports the automatically generated content at `/`, `search/` and `works/`. For the purpose of easy content generation Canopy utilizes [MDX](https://mdxjs.com/) which _"allows you to use JSX in your markdown content."_
+
+### Creating a Page
+
+Individual pages for Canopy IIIF are created with the `pages/` directory. Following Next.js conventions, if you create the page `pages/contact.mdx`, an accessibile path will be created at `/contact`. MDX pages will need a defined layout from `@/components/Layouts/`. Addditional JSX components can be imported and integrated between markdown syntax. The final line of your file should be an export which outputs the _children_ (content) to the provided layout component.
+
+```jsx
+import Basic from "@/components/Layouts/Basic";
+import Button from "@/components/Button/Button";
+
+# Contact
+
+Thank you for your interest.
+
+For resource requests, please complete a request form or contact us at [email@example.org](mailto:email@example.org).
+
+<Button url="https://example.org/requests">Submit Request</Button>
+
+export default ({ children }) => <Basic content={children} />;
+
+;
+```
+
+### Avoiding Conflicts
+
+To avoid potential code conflicts on future release updates, it is advised not to update the following integrated Canopy pages:
+
+```
+pages/
+-- api/
+-- works/
+-- index.tsx
+-- map.tsx
+-- metadata.tsx
+-- search.tsx
+```
+
+**Note:** Future considerations will be delivered upon for updating content within these pages.
+
+export default ({ children }) => (
+  <Basic content={children} navigation="about" />
+);

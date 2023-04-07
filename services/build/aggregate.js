@@ -1,7 +1,7 @@
 const { getCanopyCollection } = require("./shape");
 const { getEntries, getLabel } = require("../iiif/label");
 const fs = require("fs");
-const { getSlug } = require("./slug");
+const { getUniqueSlug } = require("./slug");
 const { log } = require("./log");
 const { getRootCollection, getBulkManifests } = require("./request");
 const { buildIndexData } = require("./search");
@@ -54,6 +54,7 @@ module.exports.build = (env) => {
     const responses = getBulkManifests(canopyManifests, 10);
 
     responses.then((manifests) => {
+      let rootSlugs = {};
       const allManifests = manifests.map((manifest, index) => {
         // Break this into a function / service
         const thumbnail = manifest.thumbnail
@@ -63,13 +64,19 @@ module.exports.build = (env) => {
           : getRepresentativeImage(manifest, 400)
           ? getRepresentativeImage(manifest, 400)
           : [];
+
+        const string = getLabel(manifest.label)[0];
+
+        const { slug, allSlugs } = getUniqueSlug(string, rootSlugs);
+        rootSlugs = allSlugs;
+
         return {
           ...canopyManifests.find(
             (canopyManifest) => canopyManifest.id === manifest.id
           ),
-          slug: getSlug(getLabel(manifest.label)[0]),
+          slug: slug,
           thumbnail: thumbnail,
-          ...manifest.navPlace && {navPlace: manifest.navPlace}
+          ...(manifest.navPlace && { navPlace: manifest.navPlace }),
         };
       });
       fs.writeFile(

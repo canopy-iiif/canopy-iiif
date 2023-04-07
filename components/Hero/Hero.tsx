@@ -30,7 +30,6 @@ const Hero: React.FC<HeroProps> = ({ collection }) => {
         loop={true}
         modules={[Autoplay, EffectFade, Keyboard, Navigation]}
         navigation={collection?.items?.length > 1}
-        preloadImages={false}
         slidesPerView={1}
         speed={200}
       >

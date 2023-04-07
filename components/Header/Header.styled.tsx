@@ -3,9 +3,9 @@ import { slateA } from "@radix-ui/colors";
 
 const Title = styled("span", {
   display: "flex",
-  marginRight: "$gr3",
+  marginRight: "$gr2",
   fontFamily: "$bookTight",
-  fontSize: "$gr5",
+  fontSize: "$gr4",
   fontWeight: "800",
 
   "@sm": {
@@ -72,7 +72,7 @@ const Content = styled("div", {
   lineHeight: "1.5rem",
   alignItems: "center",
   zIndex: "1",
-  boxShadow: `3px 3px 8px ${slateA.slateA7}`,
+  boxShadow: `1px 1px 3px ${slateA.slateA6}`,
   boxSizing: "border-box",
 
   "@xl": {

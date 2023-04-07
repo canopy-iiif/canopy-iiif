@@ -3,9 +3,9 @@ import Viewer from "@/components/Viewer/Viewer";
 // import Related from "@/components/Related/Related";
 import WorkInner from "@/components/Work/Inner";
 import MANIFESTS from "@/.canopy/manifests.json";
-import { Vault } from "@iiif/vault";
-import Container from "../../components/Shared/Container";
+import Container from "@/components/Shared/Container";
 import { Manifest } from "@iiif/presentation-3";
+import { upgrade } from "@iiif/parser/upgrader";
 
 interface WorkProps {
   manifest: Manifest;
@@ -27,13 +27,9 @@ export default function Work({ manifest }: WorkProps) {
 
 export async function getStaticProps({ params }: { params: any }) {
   const { id } = MANIFESTS.find((item) => item.slug === params.slug) as any;
-  const vault = new Vault();
-  const manifest = await vault
-    .loadManifest(id)
-    .then((data) => data)
-    .catch((error) => {
-      console.error(`Manifest ${id} failed to load: ${error}`);
-    });
+  const manifest = await fetch(id)
+    .then((response) => response.json())
+    .then(upgrade);
 
   return {
     props: { manifest },

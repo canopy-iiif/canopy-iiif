@@ -1,0 +1,34 @@
+{
+  "primary": [
+    {
+      "path": "/works",
+      "text": "Works"
+    },
+    {
+      "path": "/metadata",
+      "text": "Metadata"
+    },
+    {
+      "path": "/map",
+      "text": "Map"
+    },
+    {
+      "path": "/about",
+      "text": "About"
+    }
+  ],
+  "about": [
+    {
+      "path": "/about",
+      "text": "About"
+    },
+    {
+      "path": "/about/documentation",
+      "text": "Documentation"
+    },
+    {
+      "path": "/about/history",
+      "text": "Project History"
+    }
+  ]
+}
