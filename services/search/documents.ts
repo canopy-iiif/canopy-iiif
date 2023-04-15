@@ -4,17 +4,15 @@ import { Document } from "flexsearch";
 const getDocuments = (q: string) => {
   //@ts-ignore
   const index = new Document({
+    charset: "latin:extra",
+    tokenize: "full",
     depth: 2,
     document: {
-      index: [
-        { field: "label", tokenize: "full" },
-        { field: "metadata" },
-        { field: "summary" },
-      ],
+      index: [{ field: "label" }, { field: "metadata" }, { field: "summary" }],
     },
     optimize: true,
     resolution: 9,
-    tokenize: "forward",
+    bidirectional: 1,
   });
 
   //@ts-ignore
