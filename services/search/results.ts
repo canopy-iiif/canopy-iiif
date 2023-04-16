@@ -26,12 +26,12 @@ const getResults = (origin: any, q: any, activeFacets: any) => {
     activeFacets.length === 0 ? MANIFESTS : applyFacets(activeFacets);
 
   // @ts-ignore
-  const results = documents.map((doc) => {
-    const item = items.find((item) => item.index === doc);
-    return getItem(item, origin);
-  });
-
-  return results;
+  return documents
+    .filter((doc: number) => items.some((item) => item.index === doc))
+    .map((doc: number) => {
+      const item = items.find((item) => item.index === doc);
+      return getItem(item, origin);
+    });
 };
 
 export { getResults };
