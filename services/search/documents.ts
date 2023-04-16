@@ -5,23 +5,39 @@ const getDocuments = (q: string) => {
   //@ts-ignore
   const index = new Document({
     charset: "latin:extra",
-    tokenize: "full",
-    depth: 2,
-    document: {
-      index: [{ field: "label" }, { field: "metadata" }, { field: "summary" }],
-    },
     optimize: true,
-    resolution: 9,
-    bidirectional: 1,
+    tokenize: "strict",
+    bidirectional: false,
+    document: {
+      index: [
+        {
+          field: "label",
+          tokenize: "extra",
+          resolution: 9,
+          depth: 3,
+          bidirectional: true,
+        },
+        {
+          field: "metadata",
+          resolution: 2,
+        },
+        {
+          field: "summary",
+          resolution: 1,
+        },
+      ],
+    },
   });
 
   //@ts-ignore
   INDEX.forEach((doc) => index.add(doc));
 
   //@ts-ignore
-  const results = index.search(q);
+  const results = index.search(q).reduce((acc, curr) => {
+    return [...new Set([...acc, ...curr.result])];
+  }, []);
 
-  return results.length > 0 ? results[0].result : [];
+  return results.length > 0 ? results : [];
 };
 
 export { getDocuments };
