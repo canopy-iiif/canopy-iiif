@@ -25,11 +25,13 @@ const getResults = (origin: any, q: any, activeFacets: any) => {
   const items =
     activeFacets.length === 0 ? MANIFESTS : applyFacets(activeFacets);
 
-  return documents
-    ? items
-        .filter((item) => documents.includes(item.index))
-        .map((item) => getItem(item, origin))
-    : [];
+  // @ts-ignore
+  const results = documents.map((doc) => {
+    const item = items.find((item) => item.index === doc);
+    return getItem(item, origin);
+  });
+
+  return results;
 };
 
 export { getResults };
