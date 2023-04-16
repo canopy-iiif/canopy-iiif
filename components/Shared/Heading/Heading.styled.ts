@@ -18,6 +18,10 @@ const StyledHeading = styled("h2", {
     fontSize: "$gr8",
     fontWeight: "800",
     fontFamily: "$bookTight",
+
+    "@sm": {
+      fontSize: "$gr7",
+    },
   },
 
   "&[data-level=h2]": {
@@ -26,6 +30,10 @@ const StyledHeading = styled("h2", {
     fontSize: "$gr6",
     fontWeight: "200",
     fontFamily: "$bookTight",
+
+    "@sm": {
+      fontSize: "$gr5",
+    },
   },
 
   "&[data-level=h3]": {
@@ -34,6 +42,10 @@ const StyledHeading = styled("h2", {
     fontSize: "$gr5",
     fontWeight: "800",
     fontFamily: "$bookTight",
+
+    "@sm": {
+      fontSize: "$gr4",
+    },
   },
 
   "&[data-level=h4]": {},

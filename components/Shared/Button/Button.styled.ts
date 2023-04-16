@@ -6,9 +6,9 @@ const ButtonStyled = styled("button", {
   borderRadius: "2rem",
   textDecoration: "none",
   border: "none",
-  backgroundColor: "$slate2",
+  backgroundColor: "$slate3",
   color: "$slate11 !important",
-  boxShadow: `1px 1px 2px  ${slateA.slateA7}`,
+  boxShadow: `1px 1px 2px  ${slateA.slateA6}`,
   fontWeight: "500",
   fontSize: "$gr4",
   cursor: "pointer",
@@ -30,7 +30,7 @@ const ButtonStyled = styled("button", {
         },
       },
       secondary: {
-        backgroundColor: "$slate4",
+        backgroundColor: "$slate3",
         color: "$slate11 !important",
 
         "&:hover, &:focus": {
