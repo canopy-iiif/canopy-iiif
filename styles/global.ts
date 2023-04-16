@@ -8,7 +8,7 @@ const defaults = {
     margin: 0,
     padding: 0,
     fontWeight: "400",
-    backgroundColor: "$slate2",
+    backgroundColor: "$slate1",
   },
 
   html: {
