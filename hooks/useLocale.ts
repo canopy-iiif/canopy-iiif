@@ -6,13 +6,15 @@ function getDefaultLang(locales: any) {
   return canopyLanguage ? canopyLanguage?.lang : locales[0].lang;
 }
 
-function getLocale(locales: any, lang: string) {
+async function getLocale(locales: any, lang: string) {
   const current = lang
     ? locales.find((locale: any) => locale.lang === lang)
     : locales[0];
 
+  const config = await import(`config/${current?.config}`);
+
   return {
-    config: require(`config/${current.config}`),
+    config: config,
     label: current.label,
     lang: current.lang,
   };
