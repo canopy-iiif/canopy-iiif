@@ -32,6 +32,7 @@ const Placeholder = styled("div", {
 const Wrapper = styled("div", {
   display: "flex",
   width: "100%",
+  maxWidth: "240px",
   position: "relative",
 
   a: {

@@ -7,9 +7,9 @@ const Locale: React.FC = () => {
   const { canopyState, canopyDispatch } = useCanopyState();
   const { locale, config } = canopyState;
 
-  const handleChange = (e: ChangeEvent<HTMLSelectElement>) => {
+  const handleChange = async (e: ChangeEvent<HTMLSelectElement>) => {
     canopyDispatch({
-      locale: getLocale(config?.locales, e?.target?.value),
+      locale: await getLocale(config?.locales, e?.target?.value),
       type: "updateLocale",
     });
   };

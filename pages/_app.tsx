@@ -27,9 +27,11 @@ export default function CanopyAppProps({
 
   useEffect(() => {
     if (mounted && !locale) {
-      const defaultLang = getDefaultLang(locales);
-      const defaultLocale = getLocale(locales, defaultLang);
-      setLocale(defaultLocale);
+      (async () => {
+        const defaultLang = getDefaultLang(locales);
+        const defaultLocale = await getLocale(locales, defaultLang);
+        setLocale(defaultLocale);
+      })();
     }
   }, [locale, locales, mounted]);
 
