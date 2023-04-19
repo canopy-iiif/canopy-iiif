@@ -12,6 +12,11 @@ const StyledWorkInner = styled("section", {
     fontSize: "$gr5",
     color: "$slate10",
     marginBottom: "$gr5",
+
+    "@sm": {
+      fontSize: "$gr4",
+      marginBottom: "$gr4",
+    },
   },
 });
 
