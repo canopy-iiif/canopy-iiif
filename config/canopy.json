@@ -1,0 +1,18 @@
+{
+  "prod": {
+    "label": { "none": ["Maktaba"] },
+    "collection": "https://api.dc.library.northwestern.edu/api/v2/collections/59ec43f9-a96c-4314-9b44-9923790b371c?as=iiif&size=250&sort=id%3Aasc",
+    "featured": [
+      "https://api.dc.library.northwestern.edu/api/v2/works/01871556-952d-489c-816f-644c9622daa7?as=iiif"
+    ],
+    "metadata": ["Date", "Subject"]
+  },
+  "dev": {
+    "label": { "none": ["Maktaba"] },
+    "collection": "https://api.dc.library.northwestern.edu/api/v2/collections/59ec43f9-a96c-4314-9b44-9923790b371c?as=iiif&size=250&sort=id%3Aasc",
+    "featured": [
+      "https://api.dc.library.northwestern.edu/api/v2/works/01871556-952d-489c-816f-644c9622daa7?as=iiif"
+    ],
+    "metadata": ["Date", "Subject"]
+  }
+}
