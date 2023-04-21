@@ -3,6 +3,7 @@
   "private": true,
   "scripts": {
     "build": "next build",
+    "build:static": "next build && next export",
     "dev": "next -p 5001",
     "lint": "next lint",
     "predev": "node canopy dev",
