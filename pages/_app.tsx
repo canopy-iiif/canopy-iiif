@@ -6,6 +6,7 @@ import { CanopyProvider, defaultState } from "../context/canopy";
 import { AppProps } from "next/app";
 import { ObjectLiteral } from "@/types";
 import { getDefaultLang, getLocale } from "@/hooks/useLocale";
+import { CanopyEnvironment, CanopyLocale } from "@/types/canopy";
 
 interface CanopyAppProps extends AppProps {
   pageProps: ObjectLiteral;
@@ -17,11 +18,11 @@ export default function CanopyAppProps({
 }: CanopyAppProps) {
   globalStyles();
 
-  const config: any = process.env.CANOPY_CONFIG;
+  const config = process.env.CANOPY_CONFIG as unknown as CanopyEnvironment;
   const { locales, theme } = config;
 
   const [mounted, setMounted] = useState(false);
-  const [locale, setLocale] = useState<any>();
+  const [locale, setLocale] = useState<CanopyLocale>();
 
   useEffect(() => setMounted(true), []);
 
@@ -30,7 +31,7 @@ export default function CanopyAppProps({
       (async () => {
         const defaultLang = getDefaultLang(locales);
         const defaultLocale = await getLocale(locales, defaultLang);
-        setLocale(defaultLocale);
+        setLocale(defaultLocale as CanopyLocale);
       })();
     }
   }, [locale, locales, mounted]);
