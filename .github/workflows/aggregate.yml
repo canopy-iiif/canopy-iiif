@@ -1,4 +1,4 @@
-name: Test IIIF Collection Aggregation
+name: Test IIIF Collection Aggregation/Build
 on: push
 jobs:
   aggregate:
@@ -7,7 +7,11 @@ jobs:
       - uses: actions/checkout@v2
       - name: Install dependencies
         run: npm install
-      - name: IIIF Presentation API 2.x Collection
+      - name: IIIF Presentation API 2.x Collection (Aggregation)
         run: npm run prebuild -- --path=./config/.fixtures/canopy.presentation-2.json
-      - name: IIIF Presentation API 3.0 Collection
+      - name: IIIF Presentation API 2.x Collection (Build)
+        run: npm run test-build
+      - name: IIIF Presentation API 3.0 Collection (Aggregation)
         run: npm run prebuild -- --path=./config/.fixtures/canopy.presentation-3.json
+      - name: IIIF Presentation API 3.0 Collection (Build)
+        run: npm run test-build
