@@ -26,7 +26,7 @@ async function createItem(resource) {
       id: resource.id,
       label: resource.label,
       thumbnail: thumbnail ? thumbnail : [],
-      homepage: getHomepageBySlug(slug, resource.label),
+      homepage: getHomepageBySlug(item.slug, resource.label),
     };
   } else {
     return {
