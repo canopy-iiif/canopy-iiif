@@ -9,11 +9,13 @@
     "predev": "node canopy dev",
     "prebuild": "node canopy",
     "start": "next start",
+    "test-build": "next build",
     "ts-lint": "tsc --noEmit --incremental --watch",
     "ts-lint-commit-hook": "tsc --noEmit"
   },
   "dependencies": {
     "@iiif/parser": "^1.1.2",
+    "@iiif/vault-helpers": "^0.10.0",
     "@mdx-js/loader": "^2.3.0",
     "@next/mdx": "^13.2.3",
     "@radix-ui/colors": "^0.1.8",
