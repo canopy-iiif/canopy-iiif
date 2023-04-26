@@ -26,6 +26,7 @@ export interface CanopyEnvironment {
   label: InternationalString;
   collection: string;
   featured: string[];
+  locales: CanopyLocale[];
   metadata: string[];
   map: { enabled: boolean };
   search: {
@@ -49,6 +50,12 @@ export interface CanopyFacetShape {
   label: string;
   slug: string;
   values: CanopyFacetValueShape[];
+}
+
+export interface CanopyLocale {
+  config: string;
+  label: string;
+  lang: string;
 }
 
 export interface CanopyManifestShape {
