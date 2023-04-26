@@ -9,6 +9,7 @@
     "predev": "node canopy dev",
     "prebuild": "node canopy",
     "start": "next start",
+    "test-build": "next build",
     "ts-lint": "tsc --noEmit --incremental --watch",
     "ts-lint-commit-hook": "tsc --noEmit"
   },
