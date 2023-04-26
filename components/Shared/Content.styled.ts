@@ -5,15 +5,11 @@ import { headerHeight } from "@/styles/global";
 
 const AsideFixedContent = styled("div", {
   position: "fixed",
-  width: "300px",
+  width: "275px",
   paddingTop: "calc($gr4 + $gr3)",
   marginTop: "-$gr4",
   maxHeight: `calc(100% - $gr5 - ${headerHeight}px)`,
   overflow: "scroll",
-
-  "@md": {
-    width: "240px",
-  },
 
   "@xs": {
     position: "relative",
@@ -25,11 +21,7 @@ const AsideFixedContent = styled("div", {
 });
 
 const AsideStyled = styled("aside", {
-  width: "300px",
-
-  "@md": {
-    width: "240px",
-  },
+  width: "275px",
 
   "@xs": {
     position: "relative",
@@ -42,11 +34,7 @@ const AsideStyled = styled("aside", {
 
 const ContentStyled = styled("div", {
   flexShrink: 1,
-  width: "calc(100% - 300px)",
-
-  "@md": {
-    width: "calc(100% - 240px)",
-  },
+  width: "calc(100% - 275px)",
 
   "@xs": {
     width: "100%",

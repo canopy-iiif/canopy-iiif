@@ -97,7 +97,7 @@ const HeroStyled = styled("div", {
             padding: "$gr3 0",
             fontFamily: "$bookTight",
             fontSize: "$gr4",
-            fontWeight: "800",
+            fontWeight: "500",
             display: "flex",
             marginRight: "$gr2",
             transition: "$canopyAll",
