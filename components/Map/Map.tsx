@@ -14,7 +14,7 @@ import Container from "../Shared/Container";
 import { MapStyled } from "./Map.styled";
 import { getLabel } from "../../hooks/getLabel";
 import { InternationalString } from "@iiif/presentation-3";
-import { getBounds } from "@/services/getFeatures";
+import { getBounds } from "@/services/iiif/navPlace";
 import { useRef, useState, useEffect } from "react";
 
 const icon = Leaflet.icon({
