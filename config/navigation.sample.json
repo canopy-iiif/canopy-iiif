@@ -27,6 +27,10 @@
       "text": "Documentation"
     },
     {
+      "path": "/about/example",
+      "text": "Markdown Example"
+    },
+    {
       "path": "/about/history",
       "text": "Project History"
     }

@@ -27,7 +27,7 @@ const StyledHeading = styled("h2", {
   "&[data-level=h2]": {
     margin: "$gr5 0 $gr4",
     color: "$slate11",
-    fontSize: "$gr6",
+    fontSize: "$gr7",
     fontWeight: "200",
     fontFamily: "$bookTight",
 
@@ -38,7 +38,7 @@ const StyledHeading = styled("h2", {
 
   "&[data-level=h3]": {
     margin: "$gr5 0 $gr3",
-    color: "$indigo12",
+    color: "$slate12",
     fontSize: "$gr5",
     fontWeight: "800",
     fontFamily: "$bookTight",
