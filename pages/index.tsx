@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import FACETS from "@/.canopy/facets.json";
-import MANIFESTS from "@/.canopy/manifests.json";
 import Layout from "@/components/layout";
 import Hero from "@/components/Hero/Hero";
 import Container from "@/components/Shared/Container";
@@ -13,6 +12,7 @@ import Button from "../components/Shared/Button/Button";
 import { ButtonWrapper } from "../components/Shared/Button/Button.styled";
 import { ArrowRightIcon, GitHubLogoIcon } from "@radix-ui/react-icons";
 import { LocaleString } from "@/hooks/useLocale";
+import { canopyManifests } from "@/services/constants/canopy";
 
 interface IndexProps {
   featured: any;
@@ -89,6 +89,7 @@ const Index: React.FC<IndexProps> = ({ featured, collections }) => {
 };
 
 export async function getStaticProps() {
+  const manifests = canopyManifests();
   // @ts-ignore
   const featuredItems = process.env.CANOPY_CONFIG.featured as any as string[];
 
@@ -96,7 +97,7 @@ export async function getStaticProps() {
   const metadata = process.env.CANOPY_CONFIG.metadata as any as string[];
 
   const randomFeaturedItem =
-    MANIFESTS[Math.floor(Math.random() * MANIFESTS.length)];
+    manifests[Math.floor(Math.random() * manifests.length)];
   const featured = await createCollection(
     featuredItems ? featuredItems : [randomFeaturedItem.id]
   );

@@ -1,22 +1,23 @@
+import { CanopyLocale } from "@/types/canopy";
 import { useCanopyState } from "@/context/canopy";
 
-function getDefaultLang(locales: any) {
+function getDefaultLang(locales: CanopyLocale[]) {
   const { language } = new Intl.Locale(window?.navigator?.language);
-  const canopyLanguage = locales.find((entry: any) => entry.lang === language);
+  const canopyLanguage = locales.find((entry) => entry.lang === language);
   return canopyLanguage ? canopyLanguage?.lang : locales[0].lang;
 }
 
-async function getLocale(locales: any, lang: string) {
+async function getLocale(locales: CanopyLocale[], lang: string) {
   const current = lang
-    ? locales.find((locale: any) => locale.lang === lang)
+    ? locales.find((locale) => locale.lang === lang)
     : locales[0];
 
   const config = await import(`config/${current?.config}`);
 
   return {
     config: config,
-    label: current.label,
-    lang: current.lang,
+    label: current?.label,
+    lang: current?.lang,
   };
 }
 
