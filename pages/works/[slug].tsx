@@ -27,9 +27,7 @@ export default function Work({ manifest }: WorkProps) {
 
 export async function getStaticProps({ params }: { params: any }) {
   const { id } = MANIFESTS.find((item) => item.slug === params.slug) as any;
-
-  const controller = new AbortController();
-  const manifest = await fetch(id, { signal: controller.signal });
+  const manifest = await fetch(id);
 
   /**
    * scrub the manifest of any provider property
