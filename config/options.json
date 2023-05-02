@@ -48,7 +48,7 @@
       }
     }
   },
-  "static": false,
+  "static": true,
   "theme": {
     "defaultTheme": "light",
     "toggleEnabled": false

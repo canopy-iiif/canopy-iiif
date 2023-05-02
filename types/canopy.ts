@@ -36,6 +36,7 @@ export interface CanopyEnvironment {
       summary: { enabled: boolean };
     };
   };
+  static: boolean;
   theme: { defaultTheme: string; toggleEnabled: boolean };
 }
 
