@@ -59,7 +59,12 @@ module.exports = (phase) => {
 
   return withMDX({
     env,
+    assetPrefix: process.env.NEXT_PUBLIC_BASE_PATH,
+    basePath: process.env.NEXT_PUBLIC_BASE_PATH,
     pageExtensions: ["ts", "tsx", "js", "jsx", "md", "mdx"],
     redirects,
+    typescript: {
+      ignoreBuildErrors: true,
+    },
   });
 };

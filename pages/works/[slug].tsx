@@ -5,7 +5,7 @@ import WorkInner from "@/components/Work/Inner";
 import MANIFESTS from "@/.canopy/manifests.json";
 import Container from "@/components/Shared/Container";
 import { Manifest } from "@iiif/presentation-3";
-import { upgrade } from "@iiif/parser/upgrader";
+import { fetch } from "@iiif/vault-helpers/fetch";
 
 interface WorkProps {
   manifest: Manifest;
@@ -27,9 +27,12 @@ export default function Work({ manifest }: WorkProps) {
 
 export async function getStaticProps({ params }: { params: any }) {
   const { id } = MANIFESTS.find((item) => item.slug === params.slug) as any;
-  const manifest = await fetch(id)
-    .then((response) => response.json())
-    .then(upgrade);
+  const manifest = await fetch(id);
+
+  /**
+   * scrub the manifest of any provider property
+   */
+  delete manifest.provider;
 
   return {
     props: { manifest },

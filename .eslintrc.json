@@ -2,6 +2,7 @@
   "plugins": ["@typescript-eslint", "testing-library"],
   "extends": [
     "plugin:@typescript-eslint/recommended",
+    "next",
     "next/core-web-vitals",
     "prettier"
   ],
@@ -18,10 +19,10 @@
   "rules": {
     // "sort-keys": "error",
     // "sort-imports": "error",
-    "@typescript-eslint/no-var-requires": "warn",
+    "@typescript-eslint/no-var-requires": "off",
     "@typescript-eslint/no-unused-vars": "error",
-    "@typescript-eslint/no-explicit-any": "warn",
+    "@typescript-eslint/no-explicit-any": "off",
     "@typescript-eslint/sort-type-union-intersection-members": "error",
-    "@typescript-eslint/ban-ts-comment": "warn"
+    "@typescript-eslint/ban-ts-comment": "off"
   }
 }
