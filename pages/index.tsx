@@ -10,7 +10,7 @@ import { getRelatedFacetValue } from "../services/iiif/constructors/related";
 import Heading from "../components/Shared/Heading/Heading";
 import Button from "../components/Shared/Button/Button";
 import { ButtonWrapper } from "../components/Shared/Button/Button.styled";
-import { ArrowRightIcon, GitHubLogoIcon } from "@radix-ui/react-icons";
+import { ArrowRightIcon } from "@radix-ui/react-icons";
 import { LocaleString } from "@/hooks/useLocale";
 import { canopyManifests } from "@/services/constants/canopy";
 
