@@ -55,27 +55,24 @@ const Index: React.FC<IndexProps> = ({ featured, collections }) => {
         <Hero collection={hero} />
       </HeroWrapper>
       <Container>
-        <Heading as="h2">About Canopy</Heading>
+        <Heading as="h2">About Maktaba وأنا أكتب</Heading>
         <div>
           <p>
-            <strong>Canopy IIIF</strong> is a purely{" "}
-            <a href="https://iiif.io/">IIIF</a> sourced site generator using
-            Next.js. Canopy is an experimental application that will standup a
-            browseable and searchable digital collections style site entirely
-            from a <a href="https://iiif.io/">IIIF Collection</a> and the
-            resources it references.
+            Fusce id velit ut tortor pretium viverra. وأنا أكتب{" "}
+            <i>Suspendisse</i> in est ante in nibh mauris cursus.{" "}
+            <a href="http://example.com">Mattis molestie</a> a iaculis at erat
+            pellentesque adipiscing. وأنا أكتب Commodo ullamcorper a lacus
+            vestibulum sed arcu non odio. In cursus turpis وأنا أكتب massa
+            tincidunt dui ut ornare lectus.{" "}
+            <a href="http://another-example.com">Sed velit dignissim</a> sodales
+            ut eu sem. وأنا أكتب <i>Integer</i> eget aliquet nibh praesent
+            tristique magna sit amet. Mi bibendum neque egestas congue quisque.
           </p>
+
           <ButtonWrapper>
             <Button href="/about" buttonType="primary">
               Read More &nbsp;
               <ArrowRightIcon />
-            </Button>
-            <Button
-              href="https://github.com/mathewjordan/canopy-iiif"
-              buttonType="secondary"
-            >
-              View Code &nbsp;
-              <GitHubLogoIcon />
             </Button>
           </ButtonWrapper>
         </div>

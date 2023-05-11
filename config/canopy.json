@@ -3,7 +3,8 @@
     "label": { "none": ["Maktaba"] },
     "collection": "https://api.dc.library.northwestern.edu/api/v2/collections/59ec43f9-a96c-4314-9b44-9923790b371c?as=iiif&size=250&sort=id%3Aasc",
     "featured": [
-      "https://api.dc.library.northwestern.edu/api/v2/works/01871556-952d-489c-816f-644c9622daa7?as=iiif"
+      "https://api.dc.library.northwestern.edu/api/v2/works/b091b665-862e-4c89-b2a7-41b44d067eb9?as=iiif",
+      "https://api.dc.library.northwestern.edu/api/v2/works/37b9a5c8-b9c4-4b26-b7fe-9b3701d8b22a?as=iiif"
     ],
     "metadata": ["Date", "Subject"]
   },
@@ -11,7 +12,8 @@
     "label": { "none": ["Maktaba"] },
     "collection": "https://api.dc.library.northwestern.edu/api/v2/collections/59ec43f9-a96c-4314-9b44-9923790b371c?as=iiif&size=250&sort=id%3Aasc",
     "featured": [
-      "https://api.dc.library.northwestern.edu/api/v2/works/01871556-952d-489c-816f-644c9622daa7?as=iiif"
+      "https://api.dc.library.northwestern.edu/api/v2/works/b091b665-862e-4c89-b2a7-41b44d067eb9?as=iiif",
+      "https://api.dc.library.northwestern.edu/api/v2/works/37b9a5c8-b9c4-4b26-b7fe-9b3701d8b22a?as=iiif"
     ],
     "metadata": ["Date", "Subject"]
   }
