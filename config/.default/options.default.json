@@ -7,7 +7,7 @@
     }
   ],
   "map": {
-    "enabled": false,
+    "enabled": true,
     "tileLayers": [
       {
         "name": "OpenStreetMap",
