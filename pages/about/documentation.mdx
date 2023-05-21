@@ -139,6 +139,12 @@ Search options can be configured in `config/options.json`. By default, the searc
 
 The only property that can be indexed outside of `metadata` and `label` currently is `summary`. This is configured with `search.index.summary.enabled` .
 
+#### FlexSearch
+
+Users can customize their [FlexSearch configuration](https://github.com/nextapps-de/flexsearch#options) using `search.flexSearch` to fit around the source Collection and its Manifest `label`, `metadata`, and `summary` properties. Customizations range from defining language-specific options such as `charset` and `stemmer`, as well as scoring options like `resolution` and `depth`.
+
+#### Default Search Configuration
+
 ```json
 "search": {
   "enabled": true,
@@ -150,6 +156,31 @@ The only property that can be indexed outside of `metadata` and `label` currentl
     "summary": {
       "enabled": false
      }
+  },
+  flexSearch: {
+    "charset": "latin:extra",
+    "optimize": true,
+    "tokenize": "strict",
+    "bidirectional": false,
+    "document": {
+      "index": [
+        {
+          "field": "label",
+          "tokenize": "full",
+          "resolution": 9,
+          "depth": 3,
+          "bidirectional": true
+        },
+        {
+          "field": "metadata",
+          "resolution": 2
+        },
+        {
+          "field": "summary",
+          "resolution": 1
+        }
+      ]
+    }
   }
 }
 ```
