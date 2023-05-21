@@ -148,16 +148,7 @@ Users can customize their [FlexSearch configuration](https://github.com/nextapps
 ```json
 "search": {
   "enabled": true,
-  "index": {
-    "metadata": {
-      "enabled": true,
-      "all": false
-     },
-    "summary": {
-      "enabled": false
-     }
-  },
-  flexSearch: {
+  "flexSearch": {
     "charset": "latin:extra",
     "optimize": true,
     "tokenize": "strict",
@@ -181,6 +172,15 @@ Users can customize their [FlexSearch configuration](https://github.com/nextapps
         }
       ]
     }
+  },
+  "index": {
+    "metadata": {
+      "enabled": true,
+      "all": false
+     },
+    "summary": {
+      "enabled": false
+     }
   }
 }
 ```
