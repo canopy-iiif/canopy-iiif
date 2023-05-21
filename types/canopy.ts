@@ -1,5 +1,4 @@
 import { InternationalString } from "@iiif/presentation-3";
-import {} from "flexsearch";
 
 export interface CanopyCollectionShape {
   "@context": string;
