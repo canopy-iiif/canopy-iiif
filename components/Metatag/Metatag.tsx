@@ -16,8 +16,8 @@ const Metatag: React.FunctionComponent<MetatagProps> = ({ label, summary, thumbn
 
   return (
     <NextSeo
-      title={labelValue}
-      description={summaryValue}
+      title={labelValue ? labelValue[0] : undefined}
+      description={summaryValue ? summaryValue[0] : undefined}
       openGraph={
         {
           title: labelValue,
