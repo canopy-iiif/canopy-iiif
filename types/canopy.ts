@@ -35,6 +35,7 @@ export interface CanopyEnvironment {
       metadata: { enabled: boolean; all: boolean };
       summary: { enabled: boolean };
     };
+    flexSearch: any;
   };
   static: boolean;
   theme: { defaultTheme: string; toggleEnabled: boolean };
