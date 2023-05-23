@@ -3,6 +3,7 @@ import React, { useEffect } from 'react';
 import Head from 'next/head';
 import { getValues } from '@/hooks/getValues';
 import {InternationalString} from "@iiif/presentation-3";
+import {getResourceImage} from "@/hooks/getResourceImage";
 
 interface MetatagProps {
   label: InternationalString;
@@ -13,6 +14,7 @@ interface MetatagProps {
 const Metatag: React.FunctionComponent<MetatagProps> = ({ label, summary, thumbnail }) => {
   const labelValue = getValues(label);
   const summaryValue = getValues(summary);
+  const thumbnailValue = getResourceImage(thumbnail);
 
   return (
     <NextSeo
@@ -24,7 +26,7 @@ const Metatag: React.FunctionComponent<MetatagProps> = ({ label, summary, thumbn
           description: summaryValue,
           images: [
             {
-              url: thumbnail[0].id,
+              url: thumbnailValue,
               alt: `Image of ${labelValue}`
             }
           ]
