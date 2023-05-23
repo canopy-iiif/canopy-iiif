@@ -3,7 +3,6 @@ import {
   Metadata,
   RequiredStatement,
   Summary,
-  Thumbnail,
 } from "@samvera/nectar-iiif";
 import { StyledWorkInner, WorkData } from "@/components/Work/Inner.styled";
 import FACETS from "@/.canopy/facets";
@@ -13,8 +12,6 @@ import Heading from "@/components/Shared/Heading/Heading";
 import Metatag from "@/components/Metatag/Metatag";
 import { DefinitionListWrapper } from "../Shared/DefinitionList.styled";
 import { Manifest } from "@iiif/presentation-3";
-import { NextSeo } from 'next-seo';
-import { getLabel } from "@/hooks/getLabel";
 
 interface ValueAsListItemProps {
   searchParam: string;
