@@ -27,7 +27,7 @@ const Metatag: React.FunctionComponent<MetatagProps> = ({ label, summary, thumbn
           images: [
             {
               url: thumbnailValue,
-              alt: ${labelValue}
+              alt: labelValue
             }
           ]
         }
