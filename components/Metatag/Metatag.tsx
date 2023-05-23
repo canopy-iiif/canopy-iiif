@@ -2,8 +2,8 @@ import { NextSeo } from 'next-seo';
 import React, { useEffect } from 'react';
 import Head from 'next/head';
 import { getValues } from '@/hooks/getValues';
-import {InternationalString} from "@iiif/presentation-3";
-import {getResourceImage} from "@/hooks/getResourceImage";
+import { InternationalString } from "@iiif/presentation-3";
+import { getResourceImage } from "@/hooks/getResourceImage";
 
 interface MetatagProps {
   label: InternationalString;
@@ -27,7 +27,7 @@ const Metatag: React.FunctionComponent<MetatagProps> = ({ label, summary, thumbn
           images: [
             {
               url: thumbnailValue,
-              alt: `Image of ${labelValue}`
+              alt: ${labelValue}
             }
           ]
         }

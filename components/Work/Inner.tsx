@@ -3,14 +3,18 @@ import {
   Metadata,
   RequiredStatement,
   Summary,
+  Thumbnail,
 } from "@samvera/nectar-iiif";
 import { StyledWorkInner, WorkData } from "@/components/Work/Inner.styled";
 import FACETS from "@/.canopy/facets";
 import Link from "next/link";
 import React from "react";
 import Heading from "@/components/Shared/Heading/Heading";
+import Metatag from "@/components/Metatag/Metatag";
 import { DefinitionListWrapper } from "../Shared/DefinitionList.styled";
 import { Manifest } from "@iiif/presentation-3";
+import { NextSeo } from 'next-seo';
+import { getLabel } from "@/hooks/getLabel";
 
 interface ValueAsListItemProps {
   searchParam: string;
@@ -44,8 +48,7 @@ interface WorkInnerProps {
 }
 
 const WorkInner: React.FC<WorkInnerProps> = ({ manifest }) => {
-  const { label, metadata, requiredStatement, summary } = manifest;
-
+  const { label, metadata, requiredStatement, summary, thumbnail } = manifest;
   const formattedValues = FACETS.map((value: any) => {
     return {
       Content: (
@@ -56,27 +59,30 @@ const WorkInner: React.FC<WorkInnerProps> = ({ manifest }) => {
   });
 
   return (
-    <StyledWorkInner>
-      <WorkData>
-        <Heading as="h1">
-          <Label label={label} as="span" />
-        </Heading>
-        {summary && (
-          <Summary summary={summary} as="p" className="work-summary" />
-        )}
-        <DefinitionListWrapper>
-          {metadata && (
-            <Metadata
-              customValueContent={formattedValues}
-              metadata={metadata}
-            />
+    <>
+      <Metatag label={label} summary={summary} thumbnail={thumbnail} />
+      <StyledWorkInner>
+        <WorkData>
+          <Heading as="h1">
+            <Label label={label} as="span" />
+          </Heading>
+          {summary && (
+            <Summary summary={summary} as="p" className="work-summary" />
           )}
-          {requiredStatement && (
-            <RequiredStatement requiredStatement={requiredStatement} />
-          )}
-        </DefinitionListWrapper>
-      </WorkData>
-    </StyledWorkInner>
+          <DefinitionListWrapper>
+            {metadata && (
+              <Metadata
+                customValueContent={formattedValues}
+                metadata={metadata}
+              />
+            )}
+            {requiredStatement && (
+              <RequiredStatement requiredStatement={requiredStatement} />
+            )}
+          </DefinitionListWrapper>
+        </WorkData>
+      </StyledWorkInner>
+    </>
   );
 };
 
