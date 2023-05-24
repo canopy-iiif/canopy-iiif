@@ -74,7 +74,7 @@
         "all": false
       },
       "summary": {
-        "enabled": false
+        "enabled": true
       }
     }
   },
