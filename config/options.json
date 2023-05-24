@@ -44,7 +44,7 @@
   "search": {
     "enabled": true,
     "flexSearch": {
-      "charset": "latin:extra",
+      "charset": ["latin:extra", "arabic:extra"],
       "optimize": true,
       "tokenize": "strict",
       "bidirectional": false,
@@ -63,7 +63,7 @@
           },
           {
             "field": "summary",
-            "resolution": 1
+            "resolution": 3
           }
         ]
       }
