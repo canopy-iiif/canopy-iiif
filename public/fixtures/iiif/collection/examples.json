@@ -5,20 +5,25 @@
   "viewingDirection": "left-to-right",
   "behavior": ["unordered"],
   "label": {
-    "none": ["Example Sites"]
+    "none": ["Canopy IIIF Instances"]
+  },
+  "summary": {
+    "none": [
+      "Various examples of Canopy IIIF instances built from distinct IIIF Collections"
+    ]
   },
   "items": [
     {
-      "id": "https://api.dc.library.northwestern.edu/api/v2/search?query=%22Nez%20Perc%C3%A9%22&as=iiif&size=200",
+      "id": "https://digital.lib.utk.edu/assemble/collection/gsmrc/wcc",
       "type": "Collection",
       "label": {
-        "none": ["Nez Percé (Nimíipuu)"]
+        "none": ["William Cox Cochran"]
       },
       "thumbnail": [
         {
-          "id": "https://api.dc.library.northwestern.edu/api/v2/works/148ba59e-4a04-482c-a452-120b8da90ba5/thumbnail",
-          "height": 400,
-          "width": 400,
+          "id": "https://digital.lib.utk.edu/iiif/2/collections~islandora~object~wcc%3A350~datastream~JP2/full/!300,300/0/default.jpg",
+          "height": 300,
+          "width": 300,
           "type": "Image",
           "format": "image/jpeg"
         }
@@ -27,7 +32,33 @@
         {
           "id": "https://canopy-iiif.vercel.app/",
           "label": {
-            "en": ["Nez Percé (Nimíipuu) Collection"]
+            "none": ["William Cox Cochran"]
+          },
+          "type": "Text",
+          "format": "text/html"
+        }
+      ]
+    },
+    {
+      "id": "https://api.dc.library.northwestern.edu/api/v2/search?query=%22maktaba%20grant%22&as=iiif&size=100",
+      "type": "Collection",
+      "label": {
+        "none": ["Maktaba"]
+      },
+      "thumbnail": [
+        {
+          "id": "https://api.dc.library.northwestern.edu/api/v2/works/b091b665-862e-4c89-b2a7-41b44d067eb9/thumbnail?aspect=square",
+          "height": 300,
+          "width": 300,
+          "type": "Image",
+          "format": "image/jpeg"
+        }
+      ],
+      "homepage": [
+        {
+          "id": "https://canopy-iiif-git-maktaba-mathewjordan.vercel.app/",
+          "label": {
+            "none": ["Maktaba"]
           },
           "type": "Text",
           "format": "text/html"
