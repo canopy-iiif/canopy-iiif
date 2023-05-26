@@ -6,6 +6,8 @@ import MANIFESTS from "@/.canopy/manifests.json";
 import Container from "@/components/Shared/Container";
 import { Manifest } from "@iiif/presentation-3";
 import { fetch } from "@iiif/vault-helpers/fetch";
+import { NextSeo } from "next-seo";
+
 
 interface WorkProps {
   manifest: Manifest;
@@ -13,15 +15,31 @@ interface WorkProps {
 
 export default function Work({ manifest }: WorkProps) {
   const { id } = manifest;
+  const config = process.env.CANOPY_CONFIG as unknown as CanopyEnvironment;
+  const titleTemplate = `${config.label.none[0]} | %s`;
 
   return (
-    <Layout>
-      <Viewer id={id} />
-      <Container>
-        <WorkInner manifest={manifest} />
-        {/* <Related collections={collections} /> */}
-      </Container>
-    </Layout>
+    <>
+      <NextSeo
+        titleTemplate={titleTemplate}
+        defaultTitle={config.label.none[0]}
+        additionalLinkTags={
+          [
+            {
+              rel: 'icon',
+              href: '/images/favicon.ico',
+            }
+          ]
+        }
+      />
+      <Layout>
+        <Viewer id={id} />
+        <Container>
+          <WorkInner manifest={manifest} />
+          {/* <Related collections={collections} /> */}
+        </Container>
+      </Layout>
+    </>
   );
 }
 

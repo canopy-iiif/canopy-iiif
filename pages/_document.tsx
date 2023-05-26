@@ -6,7 +6,7 @@ import Document, {
   NextScript,
   DocumentContext,
 } from "next/document";
-import BaseTag from "@/components/Metatag/Basetag";
+
 
 class CanopyDocument extends Document {
   static async getInitialProps(ctx: DocumentContext) {
@@ -19,7 +19,6 @@ class CanopyDocument extends Document {
     return (
       <Html>
         <Head>
-          <BaseTag />
           <link rel="preconnect" href="https://fonts.googleapis.com" />
           <link
             rel="preconnect"
