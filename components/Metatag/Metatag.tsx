@@ -23,6 +23,7 @@ const Metatag: React.FunctionComponent<MetatagProps> = ({ label, summary, thumbn
     setBaseUrl(root);
   }, []);
   const canonicalUrl = ( baseUrl + (router.asPath === "/" ? "": router.asPath)).split("?")[0];
+  console.log('Metatag')
 
   return (
     <NextSeo
