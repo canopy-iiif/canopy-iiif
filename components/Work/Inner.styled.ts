@@ -18,6 +18,17 @@ const StyledWorkInner = styled("section", {
       marginBottom: "$gr4",
     },
   },
+
+  "dl, .work-summary": {
+    img: {
+      maxHeight: "3rem !important",
+      margin: "$gr1 0",
+
+      "@sm": {
+        maxHeight: "2rem !important",
+      },
+    },
+  },
 });
 
 export { StyledWorkInner, WorkData };
