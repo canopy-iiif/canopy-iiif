@@ -9,7 +9,6 @@ import FACETS from "@/.canopy/facets";
 import Link from "next/link";
 import React from "react";
 import Heading from "@/components/Shared/Heading/Heading";
-import Metatag from "@/components/Metatag/Metatag";
 import { DefinitionListWrapper } from "../Shared/DefinitionList.styled";
 import { Manifest } from "@iiif/presentation-3";
 
@@ -45,7 +44,7 @@ interface WorkInnerProps {
 }
 
 const WorkInner: React.FC<WorkInnerProps> = ({ manifest }) => {
-  const { label, metadata, requiredStatement, summary, thumbnail } = manifest;
+  const { label, metadata, requiredStatement, summary } = manifest;
   const formattedValues = FACETS.map((value: any) => {
     return {
       Content: (
@@ -57,7 +56,6 @@ const WorkInner: React.FC<WorkInnerProps> = ({ manifest }) => {
 
   return (
     <>
-      <Metatag label={label} summary={summary} thumbnail={thumbnail} />
       <StyledWorkInner>
         <WorkData>
           <Heading as="h1">
