@@ -21,11 +21,11 @@ const StyledWorkInner = styled("section", {
 
   "dl, .work-summary": {
     img: {
-      maxHeight: "3rem !important",
+      maxHeight: "$gr5 !important",
       margin: "$gr1 0",
 
       "@sm": {
-        maxHeight: "2rem !important",
+        maxHeight: "$gr4 !important",
       },
     },
   },
