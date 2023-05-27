@@ -16,6 +16,7 @@ module.exports.build = (env) => {
     const canopyCollection = getCanopyCollection({
       ...json,
       label: env.label ? env.label : json.label,
+      summary: env.summary ? env.summary : json.summary,
     });
 
     try {

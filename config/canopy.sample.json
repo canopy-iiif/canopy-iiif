@@ -1,6 +1,11 @@
 {
   "prod": {
     "label": { "none": ["Collection Title"] },
+    "summary": {
+      "none": [
+        "a IIIF Collection sourced site generator in Next.js for digital collections, humanities, and exhibitions"
+      ]
+    },
     "collection": "https://example.org/iiif/collection.json",
     "featured": [
       "https://example.org/manifest-1.json",
@@ -10,6 +15,11 @@
   },
   "dev": {
     "label": { "none": ["Collection Title"] },
+    "summary": {
+      "none": [
+        "a IIIF Collection sourced site generator in Next.js for digital collections, humanities, and exhibitions"
+      ]
+    },
     "collection": "https://example.org/iiif/collection.json",
     "featured": [
       "https://example.org/manifest-1.json",

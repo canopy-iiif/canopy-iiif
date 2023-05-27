@@ -8,6 +8,7 @@ import Container from "@/components/Shared/Container";
 import { Manifest } from "@iiif/presentation-3";
 import { fetch } from "@iiif/vault-helpers/fetch";
 import { shuffle } from "lodash";
+import { buildManifestSEO } from "@/services/seo";
 
 interface WorkProps {
   manifest: Manifest;
@@ -32,7 +33,12 @@ export async function getStaticProps({ params }: { params: any }) {
   const { id, index } = MANIFESTS.find(
     (item) => item.slug === params.slug
   ) as any;
-  const manifest = await fetch(id);
+  const manifest = (await fetch(id)) as Manifest;
+
+  /**
+   * build the seo object
+   */
+  const seo = await buildManifestSEO(manifest, `/works/${params.slug}`);
 
   const related = FACETS.map((facet) => {
     const value = shuffle(
@@ -47,7 +53,7 @@ export async function getStaticProps({ params }: { params: any }) {
   delete manifest.provider;
 
   return {
-    props: { manifest, related },
+    props: { manifest, related, seo },
   };
 }
 
