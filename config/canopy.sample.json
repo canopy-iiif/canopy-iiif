@@ -2,9 +2,7 @@
   "prod": {
     "label": { "none": ["Collection Title"] },
     "summary": {
-      "none": [
-        "a IIIF Collection sourced site generator in Next.js for digital collections, humanities, and exhibitions"
-      ]
+      "none": ["Brief description of the site and its contents."]
     },
     "collection": "https://example.org/iiif/collection.json",
     "featured": [
@@ -16,9 +14,7 @@
   "dev": {
     "label": { "none": ["Collection Title"] },
     "summary": {
-      "none": [
-        "a IIIF Collection sourced site generator in Next.js for digital collections, humanities, and exhibitions"
-      ]
+      "none": ["Brief description of the site and its contents."]
     },
     "collection": "https://example.org/iiif/collection.json",
     "featured": [
