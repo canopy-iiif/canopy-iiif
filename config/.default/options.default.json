@@ -1,4 +1,5 @@
 {
+  "url": "https://canopy-iiif.vercel.app",
   "locales": [
     {
       "config": "locales/en.json",

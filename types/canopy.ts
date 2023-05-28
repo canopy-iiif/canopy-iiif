@@ -23,9 +23,9 @@ export interface CanopyCollectionShape {
 }
 
 export interface CanopyEnvironment {
-  label: InternationalString;
   collection: string;
   featured: string[];
+  label: InternationalString;
   locales: CanopyLocale[];
   metadata: string[];
   map: { enabled: boolean };
@@ -38,7 +38,9 @@ export interface CanopyEnvironment {
     flexSearch: any;
   };
   static: boolean;
+  summary: InternationalString;
   theme: { defaultTheme: string; toggleEnabled: boolean };
+  url: string;
 }
 
 export interface CanopyFacetValueShape {
