@@ -1,6 +1,9 @@
 {
   "prod": {
     "label": { "none": ["Collection Title"] },
+    "summary": {
+      "none": ["Brief description of the site and its contents."]
+    },
     "collection": "https://example.org/iiif/collection.json",
     "featured": [
       "https://example.org/manifest-1.json",
@@ -10,6 +13,9 @@
   },
   "dev": {
     "label": { "none": ["Collection Title"] },
+    "summary": {
+      "none": ["Brief description of the site and its contents."]
+    },
     "collection": "https://example.org/iiif/collection.json",
     "featured": [
       "https://example.org/manifest-1.json",

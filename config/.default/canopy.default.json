@@ -1,6 +1,11 @@
 {
   "prod": {
     "label": { "none": ["Canopy IIIF"] },
+    "summary": {
+      "none": [
+        "a IIIF Collection sourced site generator in Next.js for digital collections, humanities, and exhibitions"
+      ]
+    },
     "collection": "https://digital.lib.utk.edu/assemble/collection/gsmrc/wcc",
     "featured": [
       "https://digital.lib.utk.edu/assemble/manifest/wcc/350",
@@ -11,6 +16,11 @@
   },
   "dev": {
     "label": { "none": ["Canopy IIIF"] },
+    "summary": {
+      "none": [
+        "a IIIF Collection sourced site generator in Next.js for digital collections, humanities, and exhibitions"
+      ]
+    },
     "collection": "https://digital.lib.utk.edu/assemble/collection/gsmrc/wcc",
     "featured": [
       "https://digital.lib.utk.edu/assemble/manifest/wcc/350",

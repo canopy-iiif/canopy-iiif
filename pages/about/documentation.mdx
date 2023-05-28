@@ -46,6 +46,7 @@ Both the prod and dev environments have a configuration. These configurations ca
 {
   "prod": {
     "label": { "none": ["Hobhouse"] },
+    "summary": { "none": ["Manuscripts from the archive of Emily Hobhouse."] },
     "collection": "https://iiif.bodleian.ox.ac.uk/iiif/collection/hobhouse",
     "featured": [
       "https://iiif.bodleian.ox.ac.uk/iiif/manifest/8da97e8c-4e12-457d-aad8-3327b3aec183.json",
@@ -55,6 +56,7 @@ Both the prod and dev environments have a configuration. These configurations ca
   },
   "dev": {
     "label": { "none": ["Hobhouse"] },
+    "summary": { "none": ["Manuscripts from the archive of Emily Hobhouse."] },
     "collection": "https://iiif.bodleian.ox.ac.uk/iiif/collection/hobhouse",
     "featured": [
       "https://iiif.bodleian.ox.ac.uk/iiif/manifest/8da97e8c-4e12-457d-aad8-3327b3aec183.json",
@@ -67,12 +69,15 @@ Both the prod and dev environments have a configuration. These configurations ca
 
 ## Customization
 
-### Site Title
+### Site Title and Description
 
-The Canopy IIIF site title is the Collection `label` of the set collection resource. You can optionally override this by providing a valid [Presentation 3.0 label](https://iiif.io/api/presentation/3.0/#label) property.
+The Canopy IIIF site title and description are respectively the `label` and `summary` of the set Collection resource. You can optionally override this by providing a valid Presentation 3.0 [label](https://iiif.io/api/presentation/3.0/#label) and/or [summary](https://iiif.io/api/presentation/3.0/#summary) property.
 
 ```json
-"label": { "none": ["Hobhouse"] }
+{
+  "label": { "none": ["Hobhouse"] },
+  "summary": { "none": ["Manuscripts from the archive of Emily Hobhouse."] }
+}
 ```
 
 ### Featured Manifests
