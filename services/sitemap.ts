@@ -5,9 +5,9 @@ function formatDate(date) {
   return date.toISOString().split('T')[0];
 }
 
-function buildUrl(url, domain, location, currentDate) {
+function buildUrl(url, domain, location, currentDate, divider) {
   return `<url>
-    <loc>${domain}/${url[location]}</loc>
+    <loc>${domain}${divider}${url[location]}</loc>
     <lastmod>${currentDate}</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
@@ -17,7 +17,7 @@ function buildUrl(url, domain, location, currentDate) {
 function buildUrls(urls, domain, location, divider = '') {
   const currentDate = formatDate(new Date());
   return urls
-    .map((url) => buildUrl(url, domain, location, currentDate))
+    .map((url) => buildUrl(url, domain, location, currentDate, divider))
     .join('');
 }
 
