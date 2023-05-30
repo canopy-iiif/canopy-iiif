@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://canopy-iiif.vercel.app
+
+# Sitemaps
+Sitemap: https://canopy-iiif.vercel.app/sitemap.xml
