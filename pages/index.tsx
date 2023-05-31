@@ -71,7 +71,7 @@ const Index: React.FC<IndexProps> = ({ featured, collections }) => {
               <ArrowRightIcon />
             </Button>
             <Button
-              href="https://github.com/mathewjordan/canopy-iiif"
+              href="https://github.com/canopy-iiif/canopy-iiif"
               buttonType="secondary"
             >
               View Code &nbsp;
