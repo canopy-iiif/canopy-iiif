@@ -62,8 +62,11 @@ const Index: React.FC<IndexProps> = ({ featured, collections }) => {
             <a href="https://iiif.io/">IIIF</a> sourced site generator using
             Next.js. Canopy is an experimental application that will standup a
             browseable and searchable digital collections style site entirely
-            from a <a href="https://iiif.io/">IIIF Collection</a> and the
-            resources it references.
+            from a{" "}
+            <a href="https://iiif.io/api/presentation/3.0/#51-collection">
+              IIIF Collection
+            </a>{" "}
+            and the resources it references.
           </p>
           <ButtonWrapper>
             <Button href="/about" buttonType="primary">
