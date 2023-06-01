@@ -142,7 +142,7 @@ module.exports.build = (env) => {
           }
         );
 
-        log(`Building search index...\n`);
+        log(`Building search entries...\n`);
         const canopyIndex = buildIndexData(canopySearch);
         fs.writeFile(
           `${canopyDirectory}/index.json`,

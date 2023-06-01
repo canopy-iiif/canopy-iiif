@@ -5,8 +5,20 @@ import { getDocuments } from "@/services/search/documents";
 import { getItem } from "./response";
 import _ from "lodash";
 
-const getResults = (origin: any, q: any, activeFacets: any) => {
-  const documents = !q ? INDEX.map((doc) => doc.id) : getDocuments(q);
+// @ts-nocheck
+
+const getResults = (
+  origin: any,
+  q: any,
+  activeFacets: any,
+  flexSearch?: any
+) => {
+  const documents = !q
+    ? INDEX.map((doc) => doc.id)
+    : getDocuments(
+        q,
+        flexSearch || process?.env?.CANOPY_CONFIG?.search?.flexSearch
+      );
 
   const applyFacets = (activeFacets: any) => {
     const docs = activeFacets.map((facet: any) => {

@@ -14,6 +14,7 @@ import { useCanopyState } from "@/context/canopy";
 import { headerHeight } from "@/styles/global";
 import { Summary } from "@samvera/nectar-iiif";
 import { LocaleString } from "@/hooks/useLocale";
+import { staticSearchRequest } from "@/services/search/static";
 
 const Search = () => {
   const searchParams: URLSearchParams = useSearchParams();
@@ -26,7 +27,7 @@ const Search = () => {
 
   const {
     canopyDispatch,
-    canopyState: { searchHeaderFixed, searchSummary },
+    canopyState: { config, searchHeaderFixed, searchSummary },
   } = useCanopyState();
 
   useEffect(() => {
@@ -50,17 +51,28 @@ const Search = () => {
         type: "updateSearchParams",
       });
 
-      axios.get(`/api/search`, { params }).then((result) => {
-        setPages(result.data.items.map((item: any) => item.id));
+      const isStatic = config?.static;
+      const flexSearch = config?.search?.flexSearch;
+      const url = config?.url;
 
-        result.data.summary &&
+      const data = isStatic
+        ? staticSearchRequest({
+            params,
+            url,
+            flexSearch,
+          })
+        : axios.get(`/api/search`, { params }).then((result) => result.data);
+
+      data.then(async (collection: any) => {
+        setPages(collection.items.map((item: any) => item.id));
+        collection.summary &&
           canopyDispatch({
             type: "updateSearchSummary",
-            searchSummary: result.data.summary,
+            searchSummary: collection.summary,
           });
       });
     }
-  }, [params, canopyDispatch]);
+  }, [config, params, canopyDispatch]);
 
   return (
     <Layout>
