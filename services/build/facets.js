@@ -67,11 +67,13 @@ exports.buildFacets = (labels, metadata, manifestData, url) => {
         }
       );
 
+      console.log(label);
+
       label.values.forEach((value) => {
         const valueDirectory = `${labelDirectory}/${value.slug}`;
         const valueCollection = this.buildFacetValueCollection(
           value,
-          label.slug,
+          { label: label.label, slug: label.slug },
           url,
           manifestData
         );
@@ -142,19 +144,19 @@ exports.buildFacetValueCollection = (value, label, url, manifests) => {
 
   const collection = {
     "@context": "https://iiif.io/api/presentation/3/context.json",
-    id: `${url}/api/facet/${label}/${value.slug}.json`,
+    id: `${url}/api/facet/${label.slug}/${value.slug}.json`,
     type: "Collection",
     label: {
       none: [value.value],
     },
     items,
-    partOf: [{ id: `${url}/api/facet/${label}.json`, type: "Collection" }],
+    partOf: [{ id: `${url}/api/facet/${label.slug}.json`, type: "Collection" }],
     summary: {
-      none: [`${items.length}`],
+      none: [label.label],
     },
     homepage: [
       {
-        id: `${url}/search?${label}=${value.slug}`,
+        id: `${url}/search?${label.slug}=${value.slug}`,
         type: "Text",
         label: { none: [value.value] },
       },

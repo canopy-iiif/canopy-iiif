@@ -1,5 +1,7 @@
 // @ts-nocheck
 
+import fs from "fs";
+import path from "path";
 import { sortItems } from "@/hooks/sortItems";
 import type { NextApiRequest, NextApiResponse } from "next";
 import { Collection } from "@iiif/presentation-3";
@@ -19,6 +21,18 @@ export default function handler(
   const jsonString = fs.readFileSync(filePath, "utf8");
   const data = JSON.parse(jsonString);
 
+  const collection = {
+    ...data,
+    id: data.id.replace(".json", ""),
+    items: sortItems(data.items, sort || "random"),
+    partOf: data.partOf.map((entry: any) => {
+      return {
+        ...entry,
+        id: entry.id.replace(".json", ""),
+      };
+    }),
+  };
+
   response.setHeader("Access-Control-Allow-Origin", "*");
-  response.status(200).json(data);
+  response.status(200).json(collection);
 }

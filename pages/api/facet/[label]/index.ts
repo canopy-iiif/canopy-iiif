@@ -18,6 +18,17 @@ export default function handler(
   const jsonString = fs.readFileSync(filePath, "utf8");
   const data = JSON.parse(jsonString);
 
+  const collection = {
+    ...data,
+    id: data.id.replace(".json", ""),
+    items: data.items.map((entry: any) => {
+      return {
+        ...entry,
+        id: entry.id.replace(".json", ""),
+      };
+    }),
+  };
+
   response.setHeader("Access-Control-Allow-Origin", "*");
-  response.status(200).json(data);
+  response.status(200).json(collection);
 }

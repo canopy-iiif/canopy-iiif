@@ -44,7 +44,7 @@ export async function getStaticProps({ params }: { params: any }) {
     const value = shuffle(
       facet.values.filter((entry) => entry.docs.includes(index))
     );
-    return `/api/facet/${facet.slug}/${value[0]?.slug}?sort=random`;
+    return `/api/facet/${facet.slug}/${value[0]?.slug}.json?sort=random`;
   });
 
   /**
