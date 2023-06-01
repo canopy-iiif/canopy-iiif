@@ -67,8 +67,6 @@ exports.buildFacets = (labels, metadata, manifestData, url) => {
         }
       );
 
-      console.log(label);
-
       label.values.forEach((value) => {
         const valueDirectory = `${labelDirectory}/${value.slug}`;
         const valueCollection = this.buildFacetValueCollection(

@@ -9,6 +9,7 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
+      NEXT_PUBLIC_URL: https://canopy-iiif.github.io
       NEXT_PUBLIC_BASE_PATH: /canopy-iiif
 
     strategy:

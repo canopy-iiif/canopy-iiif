@@ -1,3 +1,4 @@
+require("dotenv").config();
 const aggregate = require("./services/build/aggregate");
 const {
   getConfig,
@@ -18,18 +19,17 @@ const args = process.argv;
   const { prod, dev } = config;
 
   config.environment = args.includes("dev") ? dev : prod;
-  config.options = {
-    ...options,
-    url: args.includes("dev")
-      ? `http://localhost:5001`
-      : config.environment.url,
-  };
+  config.options = options;
 
   const env = {
     CANOPY_CONFIG: {
       ...config.environment,
       navigation: navigation,
       ...config.options,
+      url: args.includes("dev")
+        ? `http://localhost:5001`
+        : process.env.NEXT_PUBLIC_URL,
+      basePath: args.includes("dev") ? `` : process.env.NEXT_PUBLIC_BASE_PATH,
     },
   };
 

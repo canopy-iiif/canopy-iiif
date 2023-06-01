@@ -44,6 +44,7 @@ module.exports = (phase) => {
       ...config.environment,
       navigation: navigation,
       ...config.options,
+      url: isDev ? `http://localhost:5001` : process.env.NEXT_PUBLIC_URL,
     },
   };
 

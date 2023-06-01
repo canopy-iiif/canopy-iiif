@@ -93,11 +93,11 @@ const Index: React.FC<IndexProps> = ({ featured, collections }) => {
 
 export async function getStaticProps() {
   const manifests = canopyManifests();
-  // @ts-ignore
-  const featuredItems = process.env.CANOPY_CONFIG.featured as any as string[];
 
   // @ts-ignore
-  const metadata = process.env.CANOPY_CONFIG.metadata as any as string[];
+  const { featuredItems, metadata, url } = process.env
+    .CANOPY_CONFIG as any as string[];
+  const { NEXT_PUBLIC_BASE_PATH } = process.env;
 
   const randomFeaturedItem =
     manifests[Math.floor(Math.random() * manifests.length)];
@@ -107,7 +107,7 @@ export async function getStaticProps() {
 
   const collections = FACETS.map((facet) => {
     const value = getRelatedFacetValue(facet.label);
-    return `/api/facet/${facet.slug}/${value.slug}.json?sort=random`;
+    return `${url}${NEXT_PUBLIC_BASE_PATH}/api/facet/${facet.slug}/${value.slug}.json?sort=random`;
   });
 
   return {
