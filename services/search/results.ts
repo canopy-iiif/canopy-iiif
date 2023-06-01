@@ -11,14 +11,11 @@ const getResults = (
   origin: any,
   q: any,
   activeFacets: any,
-  flexSearch?: any
+  flexSearch: any
 ) => {
   const documents = !q
     ? INDEX.map((doc) => doc.id)
-    : getDocuments(
-        q,
-        flexSearch || process?.env?.CANOPY_CONFIG?.search?.flexSearch
-      );
+    : getDocuments(q, flexSearch);
 
   const applyFacets = (activeFacets: any) => {
     const docs = activeFacets.map((facet: any) => {

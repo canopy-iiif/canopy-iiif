@@ -53,18 +53,18 @@ const Search = () => {
       const flexSearch = config?.search?.flexSearch;
       const url = config?.url;
 
-      searchRequest({
+      const { items, summary } = searchRequest({
         params,
         url,
         flexSearch,
-      }).then((collection: any) => {
-        setPages(collection.items.map((item: any) => item.id));
-        collection.summary &&
-          canopyDispatch({
-            type: "updateSearchSummary",
-            searchSummary: collection.summary,
-          });
       });
+
+      setPages(items.map((item: any) => item.id));
+      summary &&
+        canopyDispatch({
+          type: "updateSearchSummary",
+          searchSummary: summary,
+        });
     }
   }, [config, params, canopyDispatch]);
 

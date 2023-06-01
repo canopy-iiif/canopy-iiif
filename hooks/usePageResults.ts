@@ -32,15 +32,15 @@ const usePageResults = (pages: any, page: any, query: any) => {
       const flexSearch = config?.search?.flexSearch;
       const url = config?.url;
 
-      searchRequest({
+      const { items } = searchRequest({
         params,
         url,
         flexSearch,
-      }).then((collection: any) => {
-        setData((prevResults) => [...prevResults, ...collection.items]);
-        setMore(pages.length > page);
-        setLoading(false);
       });
+
+      setData((prevResults) => [...prevResults, ...items]);
+      setMore(pages.length > page);
+      setLoading(false);
     }
   }, [config, pages, page]);
 

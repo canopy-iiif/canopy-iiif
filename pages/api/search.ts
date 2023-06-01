@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 import absoluteUrl from "next-absolute-url";
 import type { NextApiRequest, NextApiResponse } from "next";
 import { Collection } from "@iiif/presentation-3";
@@ -15,6 +17,7 @@ export default function handler(
   const collection = searchRequest({
     params: searchParams,
     url: baseUrl,
+    flexSearch: process?.env?.CANOPY_CONFIG?.search?.flexSearch,
   }) as unknown as Collection;
 
   response.setHeader("Access-Control-Allow-Origin", "*");

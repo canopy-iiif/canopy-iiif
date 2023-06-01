@@ -3,7 +3,7 @@
 import INDEX from "@/.canopy/index.json";
 import { Document } from "flexsearch";
 
-const getDocuments = (q: string, flexSearch: boolean) => {
+const getDocuments = (q: string, flexSearch: any) => {
   const index = new Document(flexSearch);
   INDEX.forEach((doc) => index.add(doc));
 

@@ -15,7 +15,7 @@ const searchRequest = ({
 }: {
   params: URLSearchParams;
   url: string;
-  flexSearch?: any;
+  flexSearch: any;
 }) => {
   const activeFacets = getActiveFacets(params);
   const q = params?.get("q");
