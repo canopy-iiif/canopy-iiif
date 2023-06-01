@@ -8,14 +8,14 @@ import {
   getTopCollection,
 } from "./response";
 
-const staticSearchRequest = async ({
+const searchRequest = ({
   params,
   url,
   flexSearch,
 }: {
   params: URLSearchParams;
   url: string;
-  flexSearch: any;
+  flexSearch?: any;
 }) => {
   const activeFacets = getActiveFacets(params);
   const q = params?.get("q");
@@ -31,7 +31,7 @@ const staticSearchRequest = async ({
 
   return {
     "@context": "https://iiif.io/api/presentation/3/context.json",
-    id: baseUrl,
+    id: baseUrl.toString(),
     type: "Collection",
     // @ts-ignore
     label: { none: [q ? q : `All Results`] },
@@ -47,4 +47,4 @@ const staticSearchRequest = async ({
   };
 };
 
-export { staticSearchRequest };
+export { searchRequest };

@@ -7,14 +7,13 @@ import {
   SearchHeaderStyled,
 } from "@/components/Search/Header.styled";
 import SearchResults from "@/components/Search/Results";
-import axios from "axios";
 import { useSearchParams } from "next/navigation";
 import useElementPosition from "@/hooks/useElementPosition";
 import { useCanopyState } from "@/context/canopy";
 import { headerHeight } from "@/styles/global";
 import { Summary } from "@samvera/nectar-iiif";
 import { LocaleString } from "@/hooks/useLocale";
-import { staticSearchRequest } from "@/services/search/static";
+import { searchRequest } from "@/services/search/request";
 
 const Search = () => {
   const searchParams: URLSearchParams = useSearchParams();
@@ -51,19 +50,14 @@ const Search = () => {
         type: "updateSearchParams",
       });
 
-      const isStatic = config?.static;
       const flexSearch = config?.search?.flexSearch;
       const url = config?.url;
 
-      const data = isStatic
-        ? staticSearchRequest({
-            params,
-            url,
-            flexSearch,
-          })
-        : axios.get(`/api/search`, { params }).then((result) => result.data);
-
-      data.then(async (collection: any) => {
+      searchRequest({
+        params,
+        url,
+        flexSearch,
+      }).then((collection: any) => {
         setPages(collection.items.map((item: any) => item.id));
         collection.summary &&
           canopyDispatch({
