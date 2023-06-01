@@ -1,12 +1,12 @@
 import { URLSearchParams } from "url";
-import { getActiveFacets } from "../facet/facets";
-import { getResults } from "./results";
+import { getActiveFacets } from "@/services/facet/facets";
+import { getResults } from "@/services/search/results";
 import {
   getPageCollection,
   getPages,
   getPartOf,
   getTopCollection,
-} from "./response";
+} from "@/services/search/response";
 
 const searchRequest = ({
   params,

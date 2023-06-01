@@ -2,7 +2,7 @@ import INDEX from "@/.canopy/index.json";
 import FACETS from "@/.canopy/facets.json";
 import MANIFESTS from "@/.canopy/manifests.json";
 import { getDocuments } from "@/services/search/documents";
-import { getItem } from "./response";
+import { getItem } from "@/services/search/response";
 import _ from "lodash";
 
 // @ts-nocheck
