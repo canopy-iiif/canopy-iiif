@@ -1,4 +1,5 @@
 const _ = require("lodash");
+const fs = require("fs");
 const { getUniqueSlug } = require("./slug");
 
 const getFacetValues = (label, unique, counts, metadata) => {
@@ -22,13 +23,13 @@ const getFacetValues = (label, unique, counts, metadata) => {
     });
 };
 
-exports.buildFacets = (labels, metadata) => {
+exports.buildFacets = (labels, metadata, manifestData, url) => {
   const unique = _.uniqBy(metadata, "value");
   const counts = _.countBy(metadata, "value");
 
   let rootSlugs = {};
 
-  return (facets = labels.map((label) => {
+  const canopyFacets = (facets = labels.map((label) => {
     const values = getFacetValues(label, unique, counts, metadata);
 
     const { slug, allSlugs } = getUniqueSlug(label, rootSlugs);
@@ -40,4 +41,127 @@ exports.buildFacets = (labels, metadata) => {
       values: _.orderBy(values, ["doc_count", "value"], ["desc", "asc"]),
     };
   }));
+
+  // static api directory
+  const api = `public/api`;
+
+  try {
+    // create api directory if it doesn't exist
+    if (!fs.existsSync(api)) fs.mkdirSync(api);
+
+    // create facet directory if it doesn't exist
+    if (!fs.existsSync(`${api}/facet`)) fs.mkdirSync(`${api}/facet`);
+
+    canopyFacets.forEach((label) => {
+      const labelDirectory = `${api}/facet/${label.slug}`;
+      const labelCollection = this.buildFacetLabelCollection(label, url);
+
+      if (!fs.existsSync(labelDirectory)) fs.mkdirSync(labelDirectory);
+      fs.writeFile(
+        `${labelDirectory}.json`,
+        JSON.stringify(labelCollection),
+        (err) => {
+          if (err) {
+            console.error(err);
+          }
+        }
+      );
+
+      console.log(label);
+
+      label.values.forEach((value) => {
+        const valueDirectory = `${labelDirectory}/${value.slug}`;
+        const valueCollection = this.buildFacetValueCollection(
+          value,
+          { label: label.label, slug: label.slug },
+          url,
+          manifestData
+        );
+
+        fs.writeFile(
+          `${valueDirectory}.json`,
+          JSON.stringify(valueCollection),
+          (err) => {
+            if (err) {
+              console.error(err);
+            }
+          }
+        );
+      });
+    });
+  } catch (err) {
+    console.error(err);
+  }
+
+  return canopyFacets;
+};
+exports.buildFacetLabelCollection = (label, url) => {
+  const items = label.values.map((value) => {
+    return {
+      id: `${url}/api/facet/${label.slug}/${value.slug}.json`,
+      type: "Collection",
+      label: { none: [value.value] },
+      summary: { none: [`${value.doc_count} Items`] },
+      homepage: [
+        {
+          id: `${url}/search?${label.slug}=${value.slug}`,
+          type: "Text",
+          label: { none: [value.value] },
+        },
+      ],
+    };
+  });
+
+  const collection = {
+    "@context": "https://iiif.io/api/presentation/3/context.json",
+    id: `${url}/api/facet/${label.slug}.json`,
+    type: "Collection",
+    label: { none: [label.label] },
+    summary: { none: [`${label.values.length}`] },
+    items: items,
+  };
+
+  return collection;
+};
+
+exports.buildFacetValueCollection = (value, label, url, manifests) => {
+  const items = value.docs.map((doc) => {
+    const item = manifests.find((manifest) => manifest.index === doc);
+    return {
+      id: item.id,
+      type: "Manifest",
+      label: item.label,
+      thumbnail: item.thumbnail,
+      homepage: [
+        {
+          id: `${url}/works/${item.slug}`,
+          type: "Text",
+          label: item.label,
+        },
+      ],
+    };
+  });
+
+  const collection = {
+    "@context": "https://iiif.io/api/presentation/3/context.json",
+    id: `${url}/api/facet/${label.slug}/${value.slug}.json`,
+    type: "Collection",
+    label: {
+      none: [value.value],
+    },
+    items,
+    partOf: [{ id: `${url}/api/facet/${label.slug}.json`, type: "Collection" }],
+    summary: {
+      none: [label.label],
+    },
+    homepage: [
+      {
+        id: `${url}/search?${label.slug}=${value.slug}`,
+        type: "Text",
+        label: { none: [value.value] },
+      },
+    ],
+  };
+
+  return collection;
 };

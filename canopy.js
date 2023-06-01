@@ -18,7 +18,12 @@ const args = process.argv;
   const { prod, dev } = config;
 
   config.environment = args.includes("dev") ? dev : prod;
-  config.options = options;
+  config.options = {
+    ...options,
+    url: args.includes("dev")
+      ? `http://localhost:5001`
+      : config.environment.url,
+  };
 
   const env = {
     CANOPY_CONFIG: {

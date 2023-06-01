@@ -1,11 +1,18 @@
+// @ts-nocheck
+
 import { useEffect, useState } from "react";
-import axios from "axios";
+import { useCanopyState } from "@/context/canopy";
+import { searchRequest } from "@/services/search/request";
 
 const usePageResults = (pages: any, page: any, query: any) => {
   const [data, setData] = useState([]);
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(true);
   const [more, setMore] = useState(false);
+
+  const {
+    canopyState: { config },
+  } = useCanopyState();
 
   const reset = () => {
     setData([]);
@@ -19,17 +26,23 @@ const usePageResults = (pages: any, page: any, query: any) => {
   useEffect(() => {
     setLoading(true);
     setError(false);
-    pages.length > 0 &&
-      axios
-        .get(pages[page])
-        .then((result) => {
-          // @ts-ignore
-          setData((prevResults) => [...prevResults, ...result.data.items]);
-          setMore(pages.length > page);
-          setLoading(false);
-        })
-        .catch((error) => setError(error));
-  }, [pages, page]);
+
+    if (pages?.length > 0 && pages[page]) {
+      const params = new URL(pages[page]).searchParams;
+      const flexSearch = config?.search?.flexSearch;
+      const url = config?.url;
+
+      const { items } = searchRequest({
+        params,
+        url,
+        flexSearch,
+      });
+
+      setData((prevResults) => [...prevResults, ...items]);
+      setMore(pages.length > page);
+      setLoading(false);
+    }
+  }, [config, pages, page]);
 
   return {
     data,

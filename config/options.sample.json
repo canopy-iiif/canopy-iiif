@@ -74,7 +74,6 @@
       }
     }
   },
-  "static": false,
   "theme": {
     "defaultTheme": "light",
     "toggleEnabled": false

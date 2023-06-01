@@ -1,5 +1,5 @@
-import FACETS from "@/.canopy/facets.json";
-import absoluteUrl from "next-absolute-url";
+import fs from "fs";
+import path from "path";
 import type { NextApiRequest, NextApiResponse } from "next";
 import { Collection } from "@iiif/presentation-3";
 
@@ -7,36 +7,28 @@ export default function handler(
   request: NextApiRequest,
   response: NextApiResponse<Collection>
 ) {
-  const { origin } = absoluteUrl(request);
-  const { query, url } = request;
+  const { query } = request;
   const { label } = query;
 
-  const baseUrl = origin + url;
+  const filePath = path.join(
+    process.cwd(),
+    `public/api/facet`,
+    `${label}.json`
+  );
+  const jsonString = fs.readFileSync(filePath, "utf8");
+  const data = JSON.parse(jsonString);
 
-  const facet: any = FACETS.find((entry) => entry.slug === label);
-  const items: any = facet.values.map((value: any) => {
-    return {
-      id: `${baseUrl}/${value.slug}`,
-      type: "Collection",
-      label: { none: [value.value] },
-      summary: { none: [`${value.doc_count} Items`] },
-      homepage: [
-        {
-          id: `${origin}/search?${label}=${value.slug}`,
-          type: "Text",
-          label: { none: "" },
-        },
-      ],
-    };
-  });
+  const collection = {
+    ...data,
+    id: data.id.replace(".json", ""),
+    items: data.items.map((entry: any) => {
+      return {
+        ...entry,
+        id: entry.id.replace(".json", ""),
+      };
+    }),
+  };
 
   response.setHeader("Access-Control-Allow-Origin", "*");
-  response.status(200).json({
-    "@context": "https://iiif.io/api/presentation/3/context.json",
-    id: baseUrl,
-    type: "Collection",
-    label: { none: [facet.label] },
-    summary: { none: [`${facet.values.length}`] },
-    items: items,
-  });
+  response.status(200).json(collection);
 }

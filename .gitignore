@@ -36,5 +36,6 @@ yarn-error.log*
 .canopy
 .vscode
 
+public/api
 public/robots.txt
 public/sitemap*
