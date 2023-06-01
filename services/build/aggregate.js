@@ -54,7 +54,7 @@ module.exports.build = (env) => {
 
     const responses = getBulkManifests(canopyManifests, 10);
 
-    responses.then((manifests) => {
+    const manifestData = responses.then((manifests) => {
       let rootSlugs = {};
       const allManifests = manifests.map((manifest, index) => {
         // Break this into a function / service
@@ -80,6 +80,7 @@ module.exports.build = (env) => {
           ...(manifest.navPlace && { navPlace: manifest.navPlace }),
         };
       });
+
       fs.writeFile(
         `${canopyDirectory}/manifests.json`,
         JSON.stringify(allManifests),
@@ -89,6 +90,8 @@ module.exports.build = (env) => {
           }
         }
       );
+
+      return allManifests;
     });
 
     responses
@@ -130,29 +133,36 @@ module.exports.build = (env) => {
             });
           });
 
-        log(`\nCreating facets...\n`);
-        const canopyFacets = buildFacets(env.metadata, canopyMetadata);
-        fs.writeFile(
-          `${canopyDirectory}/facets.json`,
-          JSON.stringify(canopyFacets),
-          (err) => {
-            if (err) {
-              console.error(err);
+        manifestData.then((manifests) => {
+          log(`\nCreating facets...\n`);
+          const canopyFacets = buildFacets(
+            env.metadata,
+            canopyMetadata,
+            manifests,
+            env.url
+          );
+          fs.writeFile(
+            `${canopyDirectory}/facets.json`,
+            JSON.stringify(canopyFacets),
+            (err) => {
+              if (err) {
+                console.error(err);
+              }
             }
-          }
-        );
+          );
 
-        log(`Building search entries...\n`);
-        const canopyIndex = buildIndexData(canopySearch);
-        fs.writeFile(
-          `${canopyDirectory}/index.json`,
-          JSON.stringify(canopyIndex),
-          (err) => {
-            if (err) {
-              console.error(err);
+          log(`Building search entries...\n`);
+          const canopyIndex = buildIndexData(canopySearch);
+          fs.writeFile(
+            `${canopyDirectory}/index.json`,
+            JSON.stringify(canopyIndex),
+            (err) => {
+              if (err) {
+                console.error(err);
+              }
             }
-          }
-        );
+          );
+        });
       })
       .then(() => {
         log(`\n...Ready\n\n`);
