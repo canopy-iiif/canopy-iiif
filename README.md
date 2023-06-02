@@ -104,3 +104,7 @@ npm run build
 ## Configuration
 
 Canopy IIIF uses a default configuration `config/.default/canopy.default.json` for demonstration purposes if a custom one is not set. The build process will read from a custom configuration file at `config/canopy.json` if it exists. Please review [configuration documentation](https://canopy-iiif.vercel.app/about) for customization of Canopy IIIF.
+
+## License
+
+This project is [licensed](https://github.com/canopy-iiif/canopy-iiif/blob/main/LICENSE) under the MIT License.
