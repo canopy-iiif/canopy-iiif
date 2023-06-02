@@ -2,7 +2,7 @@ import 'leaflet.markercluster';
 import { createPathComponent } from '@react-leaflet/core';
 import L from 'leaflet';
 
-const MarkerClusterGroup = createPathComponent(({children: _c, ...props}, ctx) => {
+const MarkerClusterGroup = createPathComponent(({ ...props}, ctx) => {
   const clusterProps: Record<string, any> = {};
   const clusterEvents: Record < string, any >= {};
 
