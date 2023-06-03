@@ -18,6 +18,7 @@ const MapStyled = styled("div", {
   "figure": {
     "img": {
       width: "100%",
+      maxHeight: "275px",
     },
     "video": {
       display: "none"
