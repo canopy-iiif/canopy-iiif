@@ -5,15 +5,17 @@ import { getLabel } from "./iiif/label";
 import { getRepresentativeImage } from "./iiif/image";
 
 const buildManifestSEO = async (manifest: Manifest, path: string) => {
-  const { url, label } = process.env
+  const { url, label, basePath } = process.env
     ?.CANOPY_CONFIG as unknown as CanopyEnvironment;
+  const baseUrl = basePath ? `${url}${basePath}` : url;
+
   const images = await getRepresentativeImage(manifest);
   const title = getLabel(manifest.label).join(" - ");
 
   return {
     title: `${title} - ${getLabel(label).join(" - ")}`,
     description: getLabel(manifest.summary).join(" - "),
-    canonical: `${url}${path}`,
+    canonical: `${baseUrl}${path}`,
     openGraph: {
       images: images.map((item: any) => {
         return {
