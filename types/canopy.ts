@@ -23,9 +23,10 @@ export interface CanopyCollectionShape {
 }
 
 export interface CanopyEnvironment {
-  label: InternationalString;
   collection: string;
   featured: string[];
+  label: InternationalString;
+  locales: CanopyLocale[];
   metadata: string[];
   map: { enabled: boolean };
   search: {
@@ -34,8 +35,13 @@ export interface CanopyEnvironment {
       metadata: { enabled: boolean; all: boolean };
       summary: { enabled: boolean };
     };
+    flexSearch: any;
   };
+  static: boolean;
+  summary: InternationalString;
   theme: { defaultTheme: string; toggleEnabled: boolean };
+  url: string;
+  basePath?: string;
 }
 
 export interface CanopyFacetValueShape {
@@ -49,6 +55,12 @@ export interface CanopyFacetShape {
   label: string;
   slug: string;
   values: CanopyFacetValueShape[];
+}
+
+export interface CanopyLocale {
+  config: string;
+  label: string;
+  lang: string;
 }
 
 export interface CanopyManifestShape {

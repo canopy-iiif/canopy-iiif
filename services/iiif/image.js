@@ -1,6 +1,6 @@
 const axios = require("axios");
 
-const getService = async (service, preferredWidth = 1000) => {
+const getService = async (service, preferredWidth = 1200) => {
   if (service.hasOwnProperty("@id")) {
     try {
       const response = await axios.get(`${service["@id"]}/info.json`);
@@ -22,7 +22,7 @@ const getService = async (service, preferredWidth = 1000) => {
   }
 };
 
-exports.getRepresentativeImage = async (resource, preferredSize = 1000) => {
+exports.getRepresentativeImage = async (resource, preferredSize = 1200) => {
   const firstCanvas = resource.items[0].items[0].items[0];
   const firstCanvasService = await getService(
     firstCanvas.body.service[0],

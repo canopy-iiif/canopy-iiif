@@ -1,10 +1,9 @@
-<img src="https://user-images.githubusercontent.com/7376450/221054302-923faa8b-19b9-4e90-a856-22d0ab9131c0.png" width="500px" />
-
 # Canopy IIIF
 
 A purely IIIF sourced site generator using Next.js. Canopy is an experimental application that will standup a browseable and searchable digital collections style site entirely from a IIIF Collection and the items it contains.
 
-- [Demo](https://canopy-iiif.vercel.app/)
+- [Demo (Vercel)](https://canopy-iiif.vercel.app/)
+- [Demo (Static)](https://canopy-iiif.github.io/canopy-iiif/)
 - [Documentation](https://canopy-iiif.vercel.app/about)
 
 > **Warning**
@@ -12,11 +11,11 @@ A purely IIIF sourced site generator using Next.js. Canopy is an experimental ap
 
 ## Examples
 
-### [Nez Percé (Nimíipuu)](https://canopy-iiif.vercel.app/)
+### [Demo](https://canopy-iiif.vercel.app/)
 
 - IIIF Presentation API 3.0
-- 119 items
-- Provided by Northwestern University Libraries
+- 90 items
+- Provided by University of Tennessee Libraries
 
 ### [The Botanical photography of Alan S. Heilman](https://canopy-iiif-git-heilman-mathewjordan.vercel.app/)
 
@@ -106,3 +105,6 @@ npm run build
 
 Canopy IIIF uses a default configuration `config/.default/canopy.default.json` for demonstration purposes if a custom one is not set. The build process will read from a custom configuration file at `config/canopy.json` if it exists. Please review [configuration documentation](https://canopy-iiif.vercel.app/about) for customization of Canopy IIIF.
 
+## License
+
+This project is [licensed](https://github.com/canopy-iiif/canopy-iiif/blob/main/LICENSE) under the MIT License.

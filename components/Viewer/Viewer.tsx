@@ -27,7 +27,7 @@ const customTheme = {
   },
 };
 
-const options = {
+const defaultOptions = {
   canvasBackgroundColor: `$slate6`,
   canvasHeight: `600px`,
   openSeadragon: {
@@ -41,8 +41,12 @@ const options = {
   showInformationToggle: false,
 };
 
-const Viewer = ({ id }: { id: string }) => (
-  <Clover id={id} options={options} customTheme={customTheme} />
+const Viewer = ({ id, options }: { id: string; options?: any }) => (
+  <Clover
+    id={id}
+    options={{ ...defaultOptions, ...options }}
+    customTheme={customTheme}
+  />
 );
 
 export default Viewer;

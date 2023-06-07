@@ -9,6 +9,7 @@ const { buildFacets } = require("./facets");
 const { getRepresentativeImage } = require("../iiif/image");
 
 module.exports.build = (env) => {
+  const { baseUrl } = env;
   const canopyDirectory = ".canopy";
   log(`Building Canopy from IIIF Collection...\n`);
   log(`${env.collection}\n\n`, "yellow");
@@ -16,6 +17,7 @@ module.exports.build = (env) => {
     const canopyCollection = getCanopyCollection({
       ...json,
       label: env.label ? env.label : json.label,
+      summary: env.summary ? env.summary : json.summary,
     });
 
     try {
@@ -53,7 +55,7 @@ module.exports.build = (env) => {
 
     const responses = getBulkManifests(canopyManifests, 10);
 
-    responses.then((manifests) => {
+    const manifestData = responses.then((manifests) => {
       let rootSlugs = {};
       const allManifests = manifests.map((manifest, index) => {
         // Break this into a function / service
@@ -79,6 +81,7 @@ module.exports.build = (env) => {
           ...(manifest.navPlace && { navPlace: manifest.navPlace }),
         };
       });
+
       fs.writeFile(
         `${canopyDirectory}/manifests.json`,
         JSON.stringify(allManifests),
@@ -88,6 +91,8 @@ module.exports.build = (env) => {
           }
         }
       );
+
+      return allManifests;
     });
 
     responses
@@ -129,29 +134,36 @@ module.exports.build = (env) => {
             });
           });
 
-        log(`\nCreating facets...\n`);
-        const canopyFacets = buildFacets(env.metadata, canopyMetadata);
-        fs.writeFile(
-          `${canopyDirectory}/facets.json`,
-          JSON.stringify(canopyFacets),
-          (err) => {
-            if (err) {
-              console.error(err);
+        manifestData.then((manifests) => {
+          log(`\nCreating facets...\n`);
+          const canopyFacets = buildFacets(
+            env.metadata,
+            canopyMetadata,
+            manifests,
+            baseUrl
+          );
+          fs.writeFile(
+            `${canopyDirectory}/facets.json`,
+            JSON.stringify(canopyFacets),
+            (err) => {
+              if (err) {
+                console.error(err);
+              }
             }
-          }
-        );
+          );
 
-        log(`Building search index...\n`);
-        const canopyIndex = buildIndexData(canopySearch);
-        fs.writeFile(
-          `${canopyDirectory}/index.json`,
-          JSON.stringify(canopyIndex),
-          (err) => {
-            if (err) {
-              console.error(err);
+          log(`Building search entries...\n`);
+          const canopyIndex = buildIndexData(canopySearch);
+          fs.writeFile(
+            `${canopyDirectory}/index.json`,
+            JSON.stringify(canopyIndex),
+            (err) => {
+              if (err) {
+                console.error(err);
+              }
             }
-          }
-        );
+          );
+        });
       })
       .then(() => {
         log(`\n...Ready\n\n`);

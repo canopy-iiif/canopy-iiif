@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import FACETS from "@/.canopy/facets.json";
-import MANIFESTS from "@/.canopy/manifests.json";
 import Layout from "@/components/layout";
 import Hero from "@/components/Hero/Hero";
 import Container from "@/components/Shared/Container";
@@ -13,6 +12,8 @@ import Button from "../components/Shared/Button/Button";
 import { ButtonWrapper } from "../components/Shared/Button/Button.styled";
 import { ArrowRightIcon, GitHubLogoIcon } from "@radix-ui/react-icons";
 import { LocaleString } from "@/hooks/useLocale";
+import { canopyManifests } from "@/services/constants/canopy";
+import { CanopyEnvironment } from "@/types/canopy";
 
 interface IndexProps {
   featured: any;
@@ -62,8 +63,11 @@ const Index: React.FC<IndexProps> = ({ featured, collections }) => {
             <a href="https://iiif.io/">IIIF</a> sourced site generator using
             Next.js. Canopy is an experimental application that will standup a
             browseable and searchable digital collections style site entirely
-            from a <a href="https://iiif.io/">IIIF Collection</a> and the
-            resources it references.
+            from a{" "}
+            <a href="https://iiif.io/api/presentation/3.0/#51-collection">
+              IIIF Collection
+            </a>{" "}
+            and the resources it references.
           </p>
           <ButtonWrapper>
             <Button href="/about" buttonType="primary">
@@ -71,7 +75,7 @@ const Index: React.FC<IndexProps> = ({ featured, collections }) => {
               <ArrowRightIcon />
             </Button>
             <Button
-              href="https://github.com/mathewjordan/canopy-iiif"
+              href="https://github.com/canopy-iiif/canopy-iiif"
               buttonType="secondary"
             >
               View Code &nbsp;
@@ -89,21 +93,21 @@ const Index: React.FC<IndexProps> = ({ featured, collections }) => {
 };
 
 export async function getStaticProps() {
-  // @ts-ignore
-  const featuredItems = process.env.CANOPY_CONFIG.featured as any as string[];
+  const manifests = canopyManifests();
 
   // @ts-ignore
-  const metadata = process.env.CANOPY_CONFIG.metadata as any as string[];
+  const { featuredItems, metadata, baseUrl } = process.env
+    ?.CANOPY_CONFIG as unknown as CanopyEnvironment;
 
   const randomFeaturedItem =
-    MANIFESTS[Math.floor(Math.random() * MANIFESTS.length)];
+    manifests[Math.floor(Math.random() * manifests.length)];
   const featured = await createCollection(
     featuredItems ? featuredItems : [randomFeaturedItem.id]
   );
 
   const collections = FACETS.map((facet) => {
     const value = getRelatedFacetValue(facet.label);
-    return `/api/facet/${facet.slug}/${value.slug}?sort=random`;
+    return `${baseUrl}/api/facet/${facet.slug}/${value.slug}.json?sort=random`;
   });
 
   return {
