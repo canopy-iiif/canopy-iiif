@@ -9,8 +9,7 @@ const { buildFacets } = require("./facets");
 const { getRepresentativeImage } = require("../iiif/image");
 
 module.exports.build = (env) => {
-  const { url, basePath } = env;
-  const baseUrl = basePath ? `${url}${basePath}` : url;
+  const { baseUrl } = env;
   const canopyDirectory = ".canopy";
   log(`Building Canopy from IIIF Collection...\n`);
   log(`${env.collection}\n\n`, "yellow");

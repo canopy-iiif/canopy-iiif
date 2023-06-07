@@ -21,15 +21,20 @@ const args = process.argv;
   config.environment = args.includes("dev") ? dev : prod;
   config.options = options;
 
+  const url = args.includes("dev")
+    ? `http://localhost:5001`
+    : process.env.NEXT_PUBLIC_URL;
+  const basePath = process.env.NEXT_PUBLIC_BASE_PATH;
+  const baseUrl = basePath ? `${url}${basePath}` : url;
+
   const env = {
     CANOPY_CONFIG: {
       ...config.environment,
       navigation: navigation,
       ...config.options,
-      url: args.includes("dev")
-        ? `http://localhost:5001`
-        : process.env.NEXT_PUBLIC_URL,
-      basePath: args.includes("dev") ? `` : process.env.NEXT_PUBLIC_BASE_PATH,
+      url,
+      basePath,
+      baseUrl,
     },
   };
 

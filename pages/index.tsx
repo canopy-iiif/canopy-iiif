@@ -13,6 +13,7 @@ import { ButtonWrapper } from "../components/Shared/Button/Button.styled";
 import { ArrowRightIcon, GitHubLogoIcon } from "@radix-ui/react-icons";
 import { LocaleString } from "@/hooks/useLocale";
 import { canopyManifests } from "@/services/constants/canopy";
+import { CanopyEnvironment } from "@/types/canopy";
 
 interface IndexProps {
   featured: any;
@@ -95,9 +96,8 @@ export async function getStaticProps() {
   const manifests = canopyManifests();
 
   // @ts-ignore
-  const { featuredItems, metadata, url, basePath } = process.env
-    .CANOPY_CONFIG as any as string[];
-  const baseUrl = basePath ? `${url}${basePath}` : url;
+  const { featuredItems, metadata, baseUrl } = process.env
+    ?.CANOPY_CONFIG as unknown as CanopyEnvironment;
 
   const randomFeaturedItem =
     manifests[Math.floor(Math.random() * manifests.length)];

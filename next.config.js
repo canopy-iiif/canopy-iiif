@@ -39,12 +39,18 @@ module.exports = (phase) => {
 
   config.options = options;
 
+  const url = isDev ? `http://localhost:5001` : process.env.NEXT_PUBLIC_URL;
+  const basePath = process.env.NEXT_PUBLIC_BASE_PATH;
+  const baseUrl = basePath ? `${url}${basePath}` : url;
+
   const env = {
     CANOPY_CONFIG: {
       ...config.environment,
       navigation: navigation,
       ...config.options,
-      url: isDev ? `http://localhost:5001` : process.env.NEXT_PUBLIC_URL,
+      url,
+      basePath,
+      baseUrl,
     },
   };
 

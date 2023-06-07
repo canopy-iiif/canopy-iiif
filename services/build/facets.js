@@ -23,7 +23,7 @@ const getFacetValues = (label, unique, counts, metadata) => {
     });
 };
 
-exports.buildFacets = (labels, metadata, manifestData, url) => {
+exports.buildFacets = (labels, metadata, manifestData, baseUrl) => {
   const unique = _.uniqBy(metadata, "value");
   const counts = _.countBy(metadata, "value");
 
@@ -54,7 +54,7 @@ exports.buildFacets = (labels, metadata, manifestData, url) => {
 
     canopyFacets.forEach((label) => {
       const labelDirectory = `${api}/facet/${label.slug}`;
-      const labelCollection = this.buildFacetLabelCollection(label, url);
+      const labelCollection = this.buildFacetLabelCollection(label, baseUrl);
 
       if (!fs.existsSync(labelDirectory)) fs.mkdirSync(labelDirectory);
       fs.writeFile(
@@ -72,7 +72,7 @@ exports.buildFacets = (labels, metadata, manifestData, url) => {
         const valueCollection = this.buildFacetValueCollection(
           value,
           { label: label.label, slug: label.slug },
-          url,
+          baseUrl,
           manifestData
         );
 
@@ -93,16 +93,16 @@ exports.buildFacets = (labels, metadata, manifestData, url) => {
 
   return canopyFacets;
 };
-exports.buildFacetLabelCollection = (label, url) => {
+exports.buildFacetLabelCollection = (label, baseUrl) => {
   const items = label.values.map((value) => {
     return {
-      id: `${url}/api/facet/${label.slug}/${value.slug}.json`,
+      id: `${baseUrl}/api/facet/${label.slug}/${value.slug}.json`,
       type: "Collection",
       label: { none: [value.value] },
       summary: { none: [`${value.doc_count} Items`] },
       homepage: [
         {
-          id: `${url}/search?${label.slug}=${value.slug}`,
+          id: `${baseUrl}/search?${label.slug}=${value.slug}`,
           type: "Text",
           label: { none: [value.value] },
         },
@@ -112,7 +112,7 @@ exports.buildFacetLabelCollection = (label, url) => {
 
   const collection = {
     "@context": "https://iiif.io/api/presentation/3/context.json",
-    id: `${url}/api/facet/${label.slug}.json`,
+    id: `${baseUrl}/api/facet/${label.slug}.json`,
     type: "Collection",
     label: { none: [label.label] },
     summary: { none: [`${label.values.length}`] },
@@ -122,7 +122,7 @@ exports.buildFacetLabelCollection = (label, url) => {
   return collection;
 };
 
-exports.buildFacetValueCollection = (value, label, url, manifests) => {
+exports.buildFacetValueCollection = (value, label, baseUrl, manifests) => {
   const items = value.docs.map((doc) => {
     const item = manifests.find((manifest) => manifest.index === doc);
     return {
@@ -132,7 +132,7 @@ exports.buildFacetValueCollection = (value, label, url, manifests) => {
       thumbnail: item.thumbnail,
       homepage: [
         {
-          id: `${url}/works/${item.slug}`,
+          id: `${baseUrl}/works/${item.slug}`,
           type: "Text",
           label: item.label,
         },
@@ -142,19 +142,21 @@ exports.buildFacetValueCollection = (value, label, url, manifests) => {
 
   const collection = {
     "@context": "https://iiif.io/api/presentation/3/context.json",
-    id: `${url}/api/facet/${label.slug}/${value.slug}.json`,
+    id: `${baseUrl}/api/facet/${label.slug}/${value.slug}.json`,
     type: "Collection",
     label: {
       none: [value.value],
     },
     items,
-    partOf: [{ id: `${url}/api/facet/${label.slug}.json`, type: "Collection" }],
+    partOf: [
+      { id: `${baseUrl}/api/facet/${label.slug}.json`, type: "Collection" },
+    ],
     summary: {
       none: [label.label],
     },
     homepage: [
       {
-        id: `${url}/search?${label.slug}=${value.slug}`,
+        id: `${baseUrl}/search?${label.slug}=${value.slug}`,
         type: "Text",
         label: { none: [value.value] },
       },
