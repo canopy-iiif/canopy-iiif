@@ -9,6 +9,7 @@ const MarkerClusterGroup = createPathComponent(({ ...props}, ctx) => {
   Object.entries(props).forEach(([propName, prop]) => propName.startsWith('on') ? (clusterEvents[propName] = prop)
     : (clusterProps[propName] = prop));
 
+  // @ts-ignore
   const markerClusterGroup = L.markerClusterGroup(clusterProps);
 
   Object.entries(clusterEvents).forEach(([eventAsProp, callback]) => {
