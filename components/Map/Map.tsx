@@ -18,7 +18,7 @@ import { getLabel } from "../../hooks/getLabel";
 import { InternationalString } from "@iiif/presentation-3";
 import { getBounds } from "@/services/iiif/navPlace";
 import { useRef, useState, useEffect } from "react";
-import MarkerClusterGroup from "./MarkerClusterGroup";
+import MarkerClusterGroup from "@/components/Map/MarkerClusterGroup";
 
 const icon = Leaflet.icon({
   iconUrl: "/images/marker-icon.png",
