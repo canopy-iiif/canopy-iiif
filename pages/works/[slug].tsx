@@ -9,6 +9,7 @@ import { Manifest } from "@iiif/presentation-3";
 import { fetch } from "@iiif/vault-helpers/fetch";
 import { shuffle } from "lodash";
 import { buildManifestSEO } from "@/services/seo";
+import { CanopyEnvironment } from "@/types/canopy";
 
 interface WorkProps {
   manifest: Manifest;
@@ -30,7 +31,8 @@ export default function Work({ manifest, related }: WorkProps) {
 }
 
 export async function getStaticProps({ params }: { params: any }) {
-  const { url, basePath } = process.env;
+  const { url, basePath } = process.env
+    ?.CANOPY_CONFIG as unknown as CanopyEnvironment;
   const baseUrl = basePath ? `${url}${basePath}` : url;
 
   const { id, index } = MANIFESTS.find(
@@ -42,7 +44,6 @@ export async function getStaticProps({ params }: { params: any }) {
    * build the seo object
    */
   const seo = await buildManifestSEO(manifest, `/works/${params.slug}`);
-
   const related = FACETS.map((facet) => {
     const value = shuffle(
       facet.values.filter((entry) => entry.docs.includes(index))
