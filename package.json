@@ -34,6 +34,7 @@
     "flexsearch": "^0.7.31",
     "framer-motion": "^10.9.4",
     "leaflet": "^1.9.3",
+    "leaflet.markercluster": "^1.5.3",
     "lodash": "^4.17.21",
     "next": "^13.0.0",
     "next-absolute-url": "^1.2.2",

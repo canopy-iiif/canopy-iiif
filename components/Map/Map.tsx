@@ -7,6 +7,8 @@ import {
   LayersControl,
 } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
+import "leaflet.markercluster/dist/MarkerCluster.css";
+import "leaflet.markercluster/dist/MarkerCluster.Default.css";
 import Leaflet from "leaflet";
 import Link from "next/link";
 import { Label, Thumbnail } from "@samvera/nectar-iiif";
@@ -16,6 +18,7 @@ import { getLabel } from "../../hooks/getLabel";
 import { InternationalString } from "@iiif/presentation-3";
 import { getBounds } from "@/services/iiif/navPlace";
 import { useRef, useState, useEffect } from "react";
+import MarkerClusterGroup from "@/components/Map/MarkerClusterGroup";
 
 const icon = Leaflet.icon({
   iconUrl: "/images/marker-icon.png",
@@ -70,6 +73,7 @@ const Map: React.FC<MapProps> = ({ manifests }) => {
             );
           })}
         </LayersControl>
+        <MarkerClusterGroup>
         <FeatureGroup>
           {manifests.map((item: any) =>
             item.features.map((feature: any, index: any) => (
@@ -105,6 +109,7 @@ const Map: React.FC<MapProps> = ({ manifests }) => {
             ))
           )}
         </FeatureGroup>
+        </MarkerClusterGroup>
       </MapContainer>
     </MapStyled>
   );
