@@ -41,6 +41,7 @@ export interface CanopyEnvironment {
   summary: InternationalString;
   theme: { defaultTheme: string; toggleEnabled: boolean };
   url: string;
+  basePath?: string;
 }
 
 export interface CanopyFacetValueShape {

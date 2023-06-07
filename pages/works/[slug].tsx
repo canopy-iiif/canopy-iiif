@@ -30,6 +30,9 @@ export default function Work({ manifest, related }: WorkProps) {
 }
 
 export async function getStaticProps({ params }: { params: any }) {
+  const { url, basePath } = process.env;
+  const baseUrl = basePath ? `${url}${basePath}` : url;
+
   const { id, index } = MANIFESTS.find(
     (item) => item.slug === params.slug
   ) as any;
@@ -44,7 +47,7 @@ export async function getStaticProps({ params }: { params: any }) {
     const value = shuffle(
       facet.values.filter((entry) => entry.docs.includes(index))
     );
-    return `/api/facet/${facet.slug}/${value[0]?.slug}.json?sort=random`;
+    return `${baseUrl}/api/facet/${facet.slug}/${value[0]?.slug}.json?sort=random`;
   });
 
   /**

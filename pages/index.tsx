@@ -95,9 +95,9 @@ export async function getStaticProps() {
   const manifests = canopyManifests();
 
   // @ts-ignore
-  const { featuredItems, metadata, url } = process.env
+  const { featuredItems, metadata, url, basePath } = process.env
     .CANOPY_CONFIG as any as string[];
-  const { NEXT_PUBLIC_BASE_PATH } = process.env;
+  const baseUrl = basePath ? `${url}${basePath}` : url;
 
   const randomFeaturedItem =
     manifests[Math.floor(Math.random() * manifests.length)];
@@ -107,7 +107,7 @@ export async function getStaticProps() {
 
   const collections = FACETS.map((facet) => {
     const value = getRelatedFacetValue(facet.label);
-    return `${url}${NEXT_PUBLIC_BASE_PATH}/api/facet/${facet.slug}/${value.slug}.json?sort=random`;
+    return `${baseUrl}/api/facet/${facet.slug}/${value.slug}.json?sort=random`;
   });
 
   return {
