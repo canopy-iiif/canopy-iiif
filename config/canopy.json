@@ -1,0 +1,18 @@
+{
+  "prod": {
+    "label": { "none": ["Nez Perce"] },
+    "collection": "https://api.dc.library.northwestern.edu/api/v2/search?query=%22nez%20perce%22&as=iiif&size=200",
+    "featured": [
+      "https://api.dc.library.northwestern.edu/api/v2/works/a47935b0-a872-4c28-9bab-f61489acf803?as=iiif"
+    ],
+    "metadata": ["Subject", "Date", "Dimensions"]
+  },
+  "dev": {
+    "label": { "none": ["Nez Perce"] },
+    "collection": "https://api.dc.library.northwestern.edu/api/v2/search?query=%22nez%20perce%22&as=iiif&size=200",
+    "featured": [
+      "https://api.dc.library.northwestern.edu/api/v2/works/a47935b0-a872-4c28-9bab-f61489acf803?as=iiif"
+    ],
+    "metadata": ["Subject", "Date", "Dimensions"]
+  }
+}
