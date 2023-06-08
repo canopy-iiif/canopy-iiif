@@ -10,29 +10,30 @@ import {
 
 const searchRequest = ({
   params,
-  url,
+  baseUrl,
   flexSearch,
 }: {
   params: URLSearchParams;
-  url: string;
+  baseUrl: string;
   flexSearch: any;
 }) => {
   const activeFacets = getActiveFacets(params);
   const q = params?.get("q");
   const page = params?.get("page");
-  const baseUrl = new URL(`${url}/search`);
-  baseUrl.search = params?.toString();
+  const searchUrl = new URL(`${baseUrl}/search`);
+  searchUrl.search = params?.toString();
 
-  const results = getResults(url, q, activeFacets, flexSearch);
+  const results = getResults(baseUrl, q, activeFacets, flexSearch);
   const pages = getPages(results, 10);
   const items = page
     ? getPageCollection(results, pages, parseInt(page as string))
-    : getTopCollection(pages, baseUrl);
+    : getTopCollection(pages, searchUrl);
 
   return {
     "@context": "https://iiif.io/api/presentation/3/context.json",
-    id: baseUrl.toString(),
+    id: searchUrl.toString(),
     type: "Collection",
+
     // @ts-ignore
     label: { none: [q ? q : `All Results`] },
     items: items,
@@ -43,7 +44,7 @@ const searchRequest = ({
           },
         }
       : { summary: { none: [`${results.length}`] } }),
-    ...(page && { partOf: getPartOf(baseUrl) }),
+    ...(page && { partOf: getPartOf(searchUrl) }),
   };
 };
 
