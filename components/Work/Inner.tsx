@@ -44,7 +44,7 @@ interface WorkInnerProps {
 }
 
 const WorkInner: React.FC<WorkInnerProps> = ({ manifest }) => {
-  const { label, metadata, requiredStatement, summary } = manifest;
+  const { id, label, metadata, requiredStatement, summary } = manifest;
 
   const formattedValues = FACETS.map((value: any) => {
     return {
@@ -74,6 +74,12 @@ const WorkInner: React.FC<WorkInnerProps> = ({ manifest }) => {
           {requiredStatement && (
             <RequiredStatement requiredStatement={requiredStatement} />
           )}
+          <dl>
+            <dt>IIIF Manifest</dt>
+            <dd>
+              <Link href={id}>{id}</Link>
+            </dd>
+          </dl>
         </DefinitionListWrapper>
       </WorkData>
     </StyledWorkInner>
