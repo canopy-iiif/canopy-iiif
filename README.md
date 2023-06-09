@@ -1,6 +1,6 @@
 # Canopy IIIF
 
-A purely IIIF sourced site generator using Next.js. Canopy is an experimental application that will standup a browseable and searchable digital collections style site entirely from a IIIF Collection and the items it contains.
+A purely IIIF sourced static site generator using Next.js. Canopy is an application that will build a browseable and searchable digital collections style static site entirely from a IIIF Collection and the items it contains.
 
 - [Demo (Vercel)](https://canopy-iiif.vercel.app/)
 - [Demo (Static)](https://canopy-iiif.github.io/canopy-iiif/)
@@ -11,22 +11,23 @@ A purely IIIF sourced site generator using Next.js. Canopy is an experimental ap
 
 ## Examples
 
-### [Demo](https://canopy-iiif.vercel.app/)
+### [Nez Perce](https://canopy-iiif-git-nez-perce-iiif.vercel.app/)
+
+- IIIF Presentation API 3.0
+- 119 items
+- Provided by Northwestern University Libraries
+
+### [William Cox Cochran Photographic Collection](https://canopy-iiif.vercel.app/)
 
 - IIIF Presentation API 3.0
 - 90 items
 - Provided by University of Tennessee Libraries
+- `navPlace` + Map
 
 ### [The Botanical photography of Alan S. Heilman](https://canopy-iiif-git-heilman-mathewjordan.vercel.app/)
 
 - IIIF Presentation API 3.0
 - 1120 items
-- Provided by University of Tennessee Libraries
-
-### [Panoramic Images of Elgin P. Kintner](https://canopy-iiif-git-kintnerexamplesite-mathewjordan.vercel.app/)
-
-- IIIF Presentation API 3.0 w/ navPlace
-- 55 items
 - Provided by University of Tennessee Libraries
 
 ### [The Chimney Tops 2 Wildfires In Memory And Art](https://canopy-iiif-git-rfta-artists-mathewjordan.vercel.app/)
@@ -47,7 +48,6 @@ A purely IIIF sourced site generator using Next.js. Canopy is an experimental ap
 
 - [x] Manifest as a `/work/` page
 - [ ] Collection as a `/collection/` page
-- [ ] `seeAlso` OR `rendering` support for `text/markdown` as supplemental content
 - [ ] Documentation for best-practice incorporating non-IIIF front matter
 - [x] Homepage metadata sliders
 
