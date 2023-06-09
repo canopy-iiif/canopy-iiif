@@ -51,11 +51,11 @@ const Search = () => {
       });
 
       const flexSearch = config?.search?.flexSearch;
-      const url = config?.url;
+      const baseUrl = config?.baseUrl;
 
       const { items, summary } = searchRequest({
         params,
-        url,
+        baseUrl,
         flexSearch,
       });
 

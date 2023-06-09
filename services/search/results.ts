@@ -8,7 +8,7 @@ import _ from "lodash";
 // @ts-nocheck
 
 const getResults = (
-  origin: any,
+  baseUrl: any,
   q: any,
   activeFacets: any,
   flexSearch: any
@@ -39,7 +39,7 @@ const getResults = (
     .filter((doc: number) => items.some((item) => item.index === doc))
     .map((doc: number) => {
       const item = items.find((item) => item.index === doc);
-      return getItem(item, origin);
+      return getItem(item, baseUrl);
     });
 };
 

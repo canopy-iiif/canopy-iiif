@@ -40,7 +40,7 @@ const getTopCollection = (pages: any, baseUrl: any) => {
   });
 };
 
-const getItem = (item: any, origin: any) => {
+const getItem = (item: any, baseUrl: any) => {
   return {
     id: item.id,
     type: "Manifest",
@@ -48,7 +48,7 @@ const getItem = (item: any, origin: any) => {
     thumbnail: item.thumbnail,
     homepage: [
       {
-        id: `${origin}/works/${item.slug}`,
+        id: `${baseUrl}/works/${item.slug}`,
         type: "Text",
         label: item.label,
       },

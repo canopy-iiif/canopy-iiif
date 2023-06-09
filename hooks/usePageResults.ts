@@ -29,12 +29,12 @@ const usePageResults = (pages: any, page: any, query: any) => {
 
     if (pages?.length > 0 && pages[page]) {
       const params = new URL(pages[page]).searchParams;
+      const baseUrl = config?.baseUrl;
       const flexSearch = config?.search?.flexSearch;
-      const url = config?.url;
 
       const { items } = searchRequest({
         params,
-        url,
+        baseUrl,
         flexSearch,
       });
 
