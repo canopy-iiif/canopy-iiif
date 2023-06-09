@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import FACETS from "@/.canopy/facets.json";
 import Layout from "@/components/layout";
 import Hero from "@/components/Hero/Hero";
@@ -14,6 +14,7 @@ import { ArrowRightIcon, GitHubLogoIcon } from "@radix-ui/react-icons";
 import { LocaleString } from "@/hooks/useLocale";
 import { canopyManifests } from "@/services/constants/canopy";
 import { CanopyEnvironment } from "@/types/canopy";
+import { useCanopyState } from "@/context/canopy";
 
 interface IndexProps {
   featured: any;
@@ -21,7 +22,10 @@ interface IndexProps {
 }
 
 const Index: React.FC<IndexProps> = ({ featured, collections }) => {
-  const [baseUrl, setBaseUrl] = useState("");
+  const { canopyState } = useCanopyState();
+  const {
+    config: { baseUrl },
+  } = canopyState;
 
   const hero = {
     ...featured,
@@ -43,12 +47,6 @@ const Index: React.FC<IndexProps> = ({ featured, collections }) => {
       };
     }),
   };
-
-  useEffect(() => {
-    const { host, protocol } = window.location;
-    const baseUrl = `${protocol}//${host}`;
-    setBaseUrl(baseUrl);
-  }, []);
 
   return (
     <Layout>
