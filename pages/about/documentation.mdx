@@ -291,6 +291,15 @@ pages/
 
 **Note:** Future considerations will be delivered upon for updating content within these pages.
 
+### Environment Variables
+
+When you are ready to host your project online, you need to set the `NEXT_PUBLIC_URL` environment variable to the URL of your site. This is used to generate the canonical URL for each page.
+
+```
+NEXT_PUBLIC_URL = "https://canopy-iiif.vercel.app"
+NEXT_PUBLIC_BASE_PATH = ""
+```
+
 export default ({ children }) => (
   <Basic content={children} navigation="about" />
 );
