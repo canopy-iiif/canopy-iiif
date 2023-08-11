@@ -293,7 +293,11 @@ pages/
 
 ### Environment Variables
 
-When you are ready to host your project online, you need to set the `NEXT_PUBLIC_URL` environment variable to the URL of your site. This is used to generate the canonical URL for each page.
+When you are ready to deploy your site, you need to modify the `.env` to reflect how your site is hosted.components
+
+The `NEXT_PUBLIC_URL` variable is used to declare the canonical URL of your site. This base path is critical to routing of works in Canopy and SEO.
+
+If you plan to howst your site in subdirectory or subdomain, you will need to set the `NEXT_PUBLIC_BASE_PATH` to reflect this.
 
 ```
 NEXT_PUBLIC_URL = "https://canopy-iiif.vercel.app"
