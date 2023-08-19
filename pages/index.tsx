@@ -21,15 +21,15 @@ interface IndexProps {
   collections: string[];
 }
 
-const Index: React.FC<IndexProps> = ({ featured, collections }) => {
+const Index: React.FC<IndexProps> = ({ featuredItem, collections }) => {
   const { canopyState } = useCanopyState();
   const {
     config: { baseUrl },
   } = canopyState;
 
   const hero = {
-    ...featured,
-    items: featured.items.map((item: any) => {
+    ...featuredItem,
+    items: featuredItem.items.map((item: any) => {
       return {
         ...item,
         thumbnail: [
@@ -94,13 +94,13 @@ export async function getStaticProps() {
   const manifests = canopyManifests();
 
   // @ts-ignore
-  const { featuredItems, metadata, baseUrl } = process.env
+  const { featured, metadata, baseUrl } = process.env
     ?.CANOPY_CONFIG as unknown as CanopyEnvironment;
 
   const randomFeaturedItem =
     manifests[Math.floor(Math.random() * manifests.length)];
-  const featured = await createCollection(
-    featuredItems ? featuredItems : [randomFeaturedItem.id]
+  const featuredItem = await createCollection(
+    featured ? featured : [randomFeaturedItem.id]
   );
 
   const collections = FACETS.map((facet) => {
@@ -109,7 +109,7 @@ export async function getStaticProps() {
   });
 
   return {
-    props: { metadata, featured, collections },
+    props: { metadata, featuredItem, collections },
     revalidate: 3600,
   };
 }
