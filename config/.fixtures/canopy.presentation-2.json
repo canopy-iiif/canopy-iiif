@@ -1,0 +1,18 @@
+{
+  "prod": {
+    "collection": "https://iiif.bodleian.ox.ac.uk/iiif/collection/hobhouse",
+    "featured": [
+      "https://iiif.bodleian.ox.ac.uk/iiif/manifest/8da97e8c-4e12-457d-aad8-3327b3aec183.json",
+      "https://iiif.bodleian.ox.ac.uk/iiif/manifest/2968d5c7-3718-44ef-92ea-ee4cc58cc677.json"
+    ],
+    "metadata": ["Extent", "Date Statement"]
+  },
+  "dev": {
+    "collection": "https://iiif.bodleian.ox.ac.uk/iiif/collection/hobhouse",
+    "featured": [
+      "https://iiif.bodleian.ox.ac.uk/iiif/manifest/8da97e8c-4e12-457d-aad8-3327b3aec183.json",
+      "https://iiif.bodleian.ox.ac.uk/iiif/manifest/2968d5c7-3718-44ef-92ea-ee4cc58cc677.json"
+    ],
+    "metadata": ["Extent", "Date Statement"]
+  }
+}

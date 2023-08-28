@@ -1,0 +1,32 @@
+{
+  "prod": {
+    "label": { "none": ["Canopy IIIF"] },
+    "summary": {
+      "none": [
+        "a IIIF Collection sourced site generator in Next.js for digital collections, humanities, and exhibitions"
+      ]
+    },
+    "collection": "https://digital.lib.utk.edu/assemble/collection/gsmrc/wcc",
+    "featured": [
+      "https://digital.lib.utk.edu/assemble/manifest/wcc/350",
+      "https://digital.lib.utk.edu/assemble/manifest/wcc/313",
+      "https://digital.lib.utk.edu/assemble/manifest/wcc/356"
+    ],
+    "metadata": ["Subject", "Date", "Place"]
+  },
+  "dev": {
+    "label": { "none": ["Canopy IIIF"] },
+    "summary": {
+      "none": [
+        "a IIIF Collection sourced site generator in Next.js for digital collections, humanities, and exhibitions"
+      ]
+    },
+    "collection": "https://digital.lib.utk.edu/assemble/collection/gsmrc/wcc",
+    "featured": [
+      "https://digital.lib.utk.edu/assemble/manifest/wcc/350",
+      "https://digital.lib.utk.edu/assemble/manifest/wcc/313",
+      "https://digital.lib.utk.edu/assemble/manifest/wcc/356"
+    ],
+    "metadata": ["Subject", "Date", "Place"]
+  }
+}
