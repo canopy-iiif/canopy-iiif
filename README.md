@@ -1,110 +1,34 @@
-# Canopy IIIF
+This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-A purely IIIF sourced static site generator using Next.js. Canopy is an application that will build a browseable and searchable digital collections style static site entirely from a IIIF Collection and the items it contains.
+## Getting Started
 
-- [Demo (Vercel)](https://canopy-iiif.vercel.app/)
-- [Demo (Static)](https://canopy-iiif.github.io/canopy-iiif/)
-- [Documentation](https://canopy-iiif.vercel.app/about)
+First, run the development server:
 
-> **Warning**
-> Canopy is a work in progress and being built in public.
-
-## Examples
-
-### [Nez Perce](https://canopy-iiif-git-nez-perce-iiif.vercel.app/)
-
-- IIIF Presentation API 3.0
-- 119 items
-- Provided by Northwestern University Libraries
-
-### [William Cox Cochran Photographic Collection](https://canopy-iiif.vercel.app/)
-
-- IIIF Presentation API 3.0
-- 90 items
-- Provided by University of Tennessee Libraries
-- `navPlace` + Map
-
-### [The Botanical photography of Alan S. Heilman](https://canopy-iiif-git-heilman-mathewjordan.vercel.app/)
-
-- IIIF Presentation API 3.0
-- 1120 items
-- Provided by University of Tennessee Libraries
-
-### [The Chimney Tops 2 Wildfires In Memory And Art](https://canopy-iiif-git-rfta-artists-mathewjordan.vercel.app/)
-
-- IIIF Presentation API 3.0 w/ Video Canvases
-- 43 items
-- Provided by University of Tennessee Libraries
-
-### [Canonici](https://canopy-iiif-git-canonici-mathewjordan.vercel.app/)
-
-- IIIF Presentation API 2.0
-- 529 items
-- Provided by Bodleian Libraries, University of Oxford
-
-## Roadmap
-
-### Content
-
-- [x] Manifest as a `/work/` page
-- [ ] Collection as a `/collection/` page
-- [ ] Documentation for best-practice incorporating non-IIIF front matter
-- [x] Homepage metadata sliders
-
-### Data Aggregration
-
-- [x] Collection of Manifests (i.e. `depth === 1`)
-- [ ] Collection of Collections (i.e. `depth > 1`)
-- [x] Harvesting of curated metadata labels
-- [ ] Leveraging BCP 47 and internationalization
-
-### Search
-
-- [x] Basic search on label(s)
-- [ ] No results language
-- [x] Search on summary and metadata entries
-- [x] Search page facets on curated metadata
-- [x] `next/link` routing from Work metadata to search page facets
-
-### User Interface & Experience
-
-- [x] Fully Responsive
-- [x] Continuous scroll & lazy load of search results
-- [ ] Custom theme support
-
-### Configuration
-
-- [x] Localization preferences
-- [x] Site title label override
-- [ ] Slug pattern options
-
-## Setup
-
-### Install Dependencies
-
-```shell
-# installation
-npm i
-```
-
-### Running in Development
-
-```shell
-# development
+```bash
 npm run dev
+# or
+yarn dev
+# or
+pnpm dev
 ```
 
-### Building in Production
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-```shell
-# build
-npm run build
-```
+You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-## Configuration
+This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
-Canopy IIIF uses a default configuration `config/.default/canopy.default.json` for demonstration purposes if a custom one is not set. The build process will read from a custom configuration file at `config/canopy.json` if it exists. Please review [configuration documentation](https://canopy-iiif.vercel.app/about) for customization of Canopy IIIF.
+## Learn More
 
-## License
+To learn more about Next.js, take a look at the following resources:
 
-This project is [licensed](https://github.com/canopy-iiif/canopy-iiif/blob/main/LICENSE) under the MIT License.
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+
+## Deploy on Vercel
+
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
