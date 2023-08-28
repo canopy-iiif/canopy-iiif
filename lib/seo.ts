@@ -1,5 +1,5 @@
 import { CanopyEnvironment } from "@/types/canopy";
-import MANIFESTS from "@/.canopy/manifests.json";
+import MANIFESTS from "@canopy/manifests.json";
 import { Manifest } from "@iiif/presentation-3";
 import { getLabel } from "./iiif/label";
 import { getRepresentativeImage } from "./iiif/image";
