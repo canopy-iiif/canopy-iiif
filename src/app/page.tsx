@@ -1,11 +1,24 @@
 "use client";
 
-import CloverViewer from "@samvera/clover-iiif/viewer";
+import Link from "next/link";
+import dynamic from "next/dynamic";
+
+const CloverViewer = dynamic(() => import("@samvera/clover-iiif/viewer"), {
+  ssr: false,
+});
+
+const iiifContent = "/api/facet/place/great-smoky-mountains-nc-and-tenn.json";
 
 export default function Home() {
   return (
     <main>
-      <CloverViewer iiifContent="http://localhost:5001/api/facet/place/great-smoky-mountains-nc-and-tenn.json" />
+      <p>
+        Output for:{" "}
+        <Link href={iiifContent} style={{ color: "blue" }} target="_blank">
+          {iiifContent}
+        </Link>
+      </p>
+      <CloverViewer iiifContent="/api/facet/place/great-smoky-mountains-nc-and-tenn.json" />
       {/* <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
         <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
           Get started by editing&nbsp;
