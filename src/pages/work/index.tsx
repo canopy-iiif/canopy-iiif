@@ -1,7 +1,4 @@
-"use client";
-
-import { Box, Container } from "@radix-ui/themes";
-
+import { Box } from "@radix-ui/themes";
 import dynamic from "next/dynamic";
 
 const CloverViewer = dynamic(() => import("@samvera/clover-iiif/viewer"), {

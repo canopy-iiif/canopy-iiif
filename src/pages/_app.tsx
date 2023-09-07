@@ -3,9 +3,10 @@ import "./globals.css";
 
 import { Theme, ThemeOptions } from "@radix-ui/themes";
 
-import { Header } from "@/components";
 import { Inter } from "next/font/google";
+import Layout from "./_layout";
 import type { Metadata } from "next";
+import React from "react";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -23,19 +24,12 @@ export const theme: ThemeOptions = {
   radius: "medium",
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function CanopyAppProps({ Component, pageProps }) {
   return (
-    <html lang="en">
-      <body>
-        <Theme {...theme}>
-          <Header title="My Custom Canopy" />
-          {children}
-        </Theme>
-      </body>
-    </html>
+    <Theme>
+      <Layout>
+        <Component {...pageProps} />
+      </Layout>
+    </Theme>
   );
 }

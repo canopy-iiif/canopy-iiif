@@ -1,5 +1,3 @@
-"use client";
-
 import { Card } from "@canopy-iiif/components";
 
 export default function Search() {
