@@ -1,10 +1,10 @@
 require("dotenv").config();
-const aggregate = require("./services/build/aggregate");
 const {
+  buildCanopy,
   getConfig,
   getOptions,
   getNavigation,
-} = require("./services/build/config");
+} = require("@canopy-iiif/lib");
 const args = process.argv;
 
 (() => {
@@ -38,7 +38,5 @@ const args = process.argv;
     },
   };
 
-  aggregate.build(env.CANOPY_CONFIG);
+  buildCanopy(env);
 })();
-
-module.exports = { getConfig };
