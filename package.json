@@ -12,6 +12,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@canopy-iiif/components": "^0.1.2",
     "@canopy-iiif/lib": "^0.1.2",
     "@radix-ui/react-icons": "^1.3.0",
     "@radix-ui/themes": "^1.1.2",

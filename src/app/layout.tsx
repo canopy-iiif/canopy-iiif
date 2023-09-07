@@ -1,9 +1,9 @@
-import "./globals.css";
 import "@radix-ui/themes/styles.css";
+import "./globals.css";
 
 import { Theme, ThemeOptions } from "@radix-ui/themes";
 
-import Header from "@/components/Header/Header";
+import { Header } from "@/components";
 import { Inter } from "next/font/google";
 import type { Metadata } from "next";
 
@@ -32,7 +32,7 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <Theme {...theme}>
-          <Header />
+          <Header title="My Custom Canopy" />
           {children}
         </Theme>
       </body>
