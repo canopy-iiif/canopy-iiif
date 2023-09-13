@@ -1,10 +1,10 @@
 require("dotenv").config();
-const aggregate = require("./services/build/aggregate");
+const aggregate = require("./src/lib/build/aggregate");
 const {
   getConfig,
   getOptions,
   getNavigation,
-} = require("./services/build/config");
+} = require("./src/lib/build/config");
 const args = process.argv;
 
 (() => {

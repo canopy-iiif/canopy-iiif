@@ -7,7 +7,7 @@ const {
   getConfig,
   getOptions,
   getNavigation,
-} = require("./services/build/config");
+} = require("./src/lib/build/config");
 
 const withMDX = require("@next/mdx")({
   extension: /\.mdx?$/,
