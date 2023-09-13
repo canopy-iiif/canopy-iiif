@@ -9,7 +9,7 @@ import Facets from "@/components/Facets/Facets";
 import Layout from "@/components/layout";
 import { LocaleString } from "@/hooks/useLocale";
 import SearchResults from "@/components/Search/Results";
-import { Summary } from "@samvera/nectar-iiif";
+import { Summary } from "@samvera/clover-iiif/primitives";
 import { headerHeight } from "@/styles/global";
 import { searchRequest } from "@/lib/search/request";
 import { useCanopyState } from "@/context/canopy";

@@ -5,7 +5,7 @@ import { LazyMotion, MotionConfig, domAnimation, m } from "framer-motion";
 import { useEffect, useState } from "react";
 
 import Figure from "@/components/Figure/Figure";
-import { Label } from "@samvera/nectar-iiif";
+import { Label } from "@samvera/clover-iiif/primitives";
 import Link from "next/link";
 import { getJsonByURI } from "@/lib/utils";
 import { getPresentation3 } from "@/lib/iiif/context";

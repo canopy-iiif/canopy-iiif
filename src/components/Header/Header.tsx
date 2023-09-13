@@ -3,7 +3,7 @@ import { Content, Title, Wrapper } from "@/components/Header/Header.styled";
 import React, { useEffect, useState } from "react";
 
 import { HamburgerMenuIcon } from "@radix-ui/react-icons";
-import { Label } from "@samvera/nectar-iiif";
+import { Label } from "@samvera/clover-iiif/primitives";
 import Link from "next/link";
 import Locale from "@/components/Shared/Locale/Locale";
 import Nav from "@/components/Nav/Nav";

@@ -1,13 +1,16 @@
 import React from "react";
 import dynamic from "next/dynamic";
 
-const Clover: React.ComponentType<{
+const CloverViewer: React.ComponentType<{
   customTheme: any;
-  id: string;
+  iiifContent: string;
   options: any;
-}> = dynamic(() => import("@samvera/clover-iiif"), {
-  ssr: false,
-});
+}> = dynamic(
+  () => import("@samvera/clover-iiif").then((Clover) => Clover.Viewer),
+  {
+    ssr: false,
+  }
+);
 
 const customTheme = {
   colors: {
@@ -35,15 +38,18 @@ const defaultOptions = {
       scrollToZoom: false,
     },
   },
-  renderAbout: false,
+  informationPanel: {
+    open: false,
+    renderAbout: false,
+    renderToggle: false,
+  },
   showTitle: false,
   showIIIFBadge: false,
-  showInformationToggle: false,
 };
 
 const Viewer = ({ id, options }: { id: string; options?: any }) => (
-  <Clover
-    id={id}
+  <CloverViewer
+    iiifContent={id}
     options={{ ...defaultOptions, ...options }}
     customTheme={customTheme}
   />

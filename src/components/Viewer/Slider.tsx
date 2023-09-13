@@ -1,11 +1,12 @@
-import React from "react";
-import dynamic from "next/dynamic";
 import "swiper/css";
+
+import CloverSlider from "@samvera/clover-iiif/slider";
+import React from "react";
+import { SliderStyled } from "./Slider.styled";
+import { SwiperProps } from "swiper/react";
 import { gr } from "@/styles/helpers/goldenRatio";
 import { rem } from "@/styles/global";
 import { width } from "@/styles/theme/media";
-import { SliderStyled } from "./Slider.styled";
-import { SwiperProps } from "swiper/react";
 
 type SwiperBreakpoints = SwiperProps["breakpoints"];
 
@@ -44,22 +45,11 @@ const breakpoints: SwiperBreakpoints = {
   },
 };
 
-const BloomIIIF: React.ComponentType<{
-  collectionId: string;
-  options: {
-    breakpoints: SwiperBreakpoints;
-    enablePreview: boolean;
-  };
-}> = dynamic(() => import("@samvera/bloom-iiif"), {
-  ssr: false,
-});
-
 const Slider = ({ collectionId }: { collectionId: string }) => (
   <SliderStyled>
-    <BloomIIIF
-      collectionId={collectionId}
+    <CloverSlider
+      iiifContent={collectionId}
       options={{
-        enablePreview: false,
         breakpoints: breakpoints,
       }}
     />

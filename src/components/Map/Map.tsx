@@ -10,7 +10,7 @@ import {
   Popup,
   TileLayer,
 } from "react-leaflet";
-import { Label, Thumbnail } from "@samvera/nectar-iiif";
+import { Label, Thumbnail } from "@samvera/clover-iiif/primitives";
 import { useEffect, useRef, useState } from "react";
 
 import Container from "../Shared/Container";
@@ -90,7 +90,7 @@ const Map: React.FC<MapProps> = ({ manifests }) => {
                   <Popup>
                     <figure>
                       <Link href={item.slug}>
-                        <Thumbnail thumbnail={item.thumbnail} />
+                        <Thumbnail thumbnail={item.thumbnail} />{" "}
                         <figcaption>
                           <Container className="slide-inner" isFlex>
                             <Label

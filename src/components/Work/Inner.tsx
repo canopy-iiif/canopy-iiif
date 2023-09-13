@@ -3,14 +3,15 @@ import {
   Metadata,
   RequiredStatement,
   Summary,
-} from "@samvera/nectar-iiif";
+} from "@samvera/clover-iiif/primitives";
 import { StyledWorkInner, WorkData } from "@/components/Work/Inner.styled";
-import FACETS from "@/.canopy/facets";
-import Link from "next/link";
-import React from "react";
-import Heading from "@/components/Shared/Heading/Heading";
+
 import { DefinitionListWrapper } from "../Shared/DefinitionList.styled";
+import FACETS from "@/.canopy/facets";
+import Heading from "@/components/Shared/Heading/Heading";
+import Link from "next/link";
 import { Manifest } from "@iiif/presentation-3";
+import React from "react";
 
 interface ValueAsListItemProps {
   searchParam: string;

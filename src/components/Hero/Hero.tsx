@@ -2,13 +2,15 @@ import "swiper/css";
 import "swiper/css/effect-fade";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
+
 import { Autoplay, EffectFade, Keyboard, Navigation } from "swiper";
-import { Label, Thumbnail } from "@samvera/nectar-iiif";
+import { Label, Thumbnail } from "@samvera/clover-iiif/primitives";
 import { Swiper, SwiperSlide } from "swiper/react";
+
+import Container from "../Shared/Container";
 import { HeroStyled } from "@/components/Hero/Hero.styled";
 import Link from "next/link";
 import React from "react";
-import Container from "../Shared/Container";
 
 interface HeroProps {
   collection?: any;
