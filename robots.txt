@@ -3,7 +3,7 @@ User-agent: *
 Allow: /
 
 # Host
-Host: undefined
+Host: https://canopy-iiif.github.io
 
 # Sitemaps
-Sitemap: undefined/sitemap.xml
+Sitemap: https://canopy-iiif.github.io/sitemap.xml
