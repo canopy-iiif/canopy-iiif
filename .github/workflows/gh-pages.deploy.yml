@@ -14,21 +14,26 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [14.x]
+        node-version: [18.x]
 
     steps:
-      - name: Get files
-        uses: actions/checkout@v2
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v2
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
-      - name: Install packages
+
+      - name: Install
         run: npm ci
-      - name: Export static files
+
+      - name: Build
         run: npm run build:static
-      - name: Add .nojekyll file
+
+      - name: Bypass Jekyll
         run: touch ./out/.nojekyll
+
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@v4
         with:

@@ -1,6 +1,6 @@
 {
   "prod": {
-    "label": { "none": ["Nez Perce"] },
+    "label": { "none": ["Canopy IIIF"] },
     "collection": "https://api.dc.library.northwestern.edu/api/v2/search?query=%22nez%20perce%22&as=iiif&size=250",
     "featured": [
       "https://api.dc.library.northwestern.edu/api/v2/works/cd5e1b9c-370b-40e5-b3d9-defc1d8e0777?as=iiif"
@@ -8,7 +8,7 @@
     "metadata": ["Subject", "Date", "Dimensions"]
   },
   "dev": {
-    "label": { "none": ["Nez Perce"] },
+    "label": { "none": ["Canopy IIIF"] },
     "collection": "https://api.dc.library.northwestern.edu/api/v2/search?query=%22nez%20perce%22&as=iiif&size=250",
     "featured": [
       "https://api.dc.library.northwestern.edu/api/v2/works/cd5e1b9c-370b-40e5-b3d9-defc1d8e0777?as=iiif"
