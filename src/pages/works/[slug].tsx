@@ -21,7 +21,7 @@ export default function Work({ manifest, related }: WorkProps) {
 
   return (
     <Layout>
-      <Viewer id={id} />
+      <Viewer iiifContent={id} />
       <Container>
         <WorkInner manifest={manifest} />
         <Related collections={related} />

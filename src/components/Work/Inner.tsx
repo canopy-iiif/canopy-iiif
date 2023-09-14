@@ -11,6 +11,7 @@ import FACETS from "@/.canopy/facets";
 import Heading from "@/components/Shared/Heading/Heading";
 import Link from "next/link";
 import { Manifest } from "@iiif/presentation-3";
+import ManifestId from "./ManifestId";
 import React from "react";
 
 interface ValueAsListItemProps {
@@ -75,12 +76,7 @@ const WorkInner: React.FC<WorkInnerProps> = ({ manifest }) => {
           {requiredStatement && (
             <RequiredStatement requiredStatement={requiredStatement} />
           )}
-          <dl>
-            <dt>IIIF Manifest</dt>
-            <dd>
-              <Link href={id}>{id}</Link>
-            </dd>
-          </dl>
+          <ManifestId manifestId={id} />
         </DefinitionListWrapper>
       </WorkData>
     </StyledWorkInner>

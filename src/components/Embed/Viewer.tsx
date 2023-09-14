@@ -1,17 +1,22 @@
 import Viewer from "@/components/Viewer/Viewer";
 
-const EmbedViewer = ({ id }: { id: string }) => {
-  return (
-    <Viewer
-      id={id}
-      options={{
-        showTitle: true,
-        showIIIFBadge: false,
-        showInformationToggle: false,
-        renderAbout: false,
-      }}
-    />
-  );
+const defaultOptions = {
+  showTitle: true,
+  showIIIFBadge: false,
+  informationPanel: {
+    open: false,
+    renderToggle: false,
+  },
+};
+
+const EmbedViewer = ({
+  iiifContent,
+  options = defaultOptions,
+}: {
+  iiifContent: string;
+  options: any;
+}) => {
+  return <Viewer iiifContent={iiifContent} options={options} />;
 };
 
 export default EmbedViewer;

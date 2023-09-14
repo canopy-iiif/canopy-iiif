@@ -18,6 +18,7 @@ const StyledHeading = styled("h2", {
     fontWeight: "400",
     fontFamily: "$display",
     letterSpacing: "-0.02em",
+    lineHeight: "1.1",
 
     "@sm": {
       fontSize: "$gr7",

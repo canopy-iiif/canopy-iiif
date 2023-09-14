@@ -10,9 +10,10 @@ const StyledWorkInner = styled("section", {
 
   ".work-summary": {
     fontSize: "$gr5",
-    fontFamily: "$display",
+    fontFamily: "$sans",
+    fontWeight: "300",
     color: "$slate11",
-    marginBottom: "$gr5",
+    marginBottom: "$gr4",
 
     "@sm": {
       fontSize: "$gr4",

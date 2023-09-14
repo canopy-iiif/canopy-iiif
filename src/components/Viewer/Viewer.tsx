@@ -47,9 +47,15 @@ const defaultOptions = {
   showIIIFBadge: false,
 };
 
-const Viewer = ({ id, options }: { id: string; options?: any }) => (
+const Viewer = ({
+  iiifContent,
+  options,
+}: {
+  iiifContent: string;
+  options?: any;
+}) => (
   <CloverViewer
-    iiifContent={id}
+    iiifContent={iiifContent}
     options={{ ...defaultOptions, ...options }}
     customTheme={customTheme}
   />

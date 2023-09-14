@@ -42,7 +42,6 @@ const defaults = {
   dl: {
     dt: {
       fontWeight: "400",
-      paddingBottom: "$gr1",
     },
     dd: {
       marginInlineStart: "0",
