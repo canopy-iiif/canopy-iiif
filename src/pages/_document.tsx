@@ -1,11 +1,12 @@
-import React from "react";
 import Document, {
-  Html,
+  DocumentContext,
   Head,
+  Html,
   Main,
   NextScript,
-  DocumentContext,
 } from "next/document";
+
+import React from "react";
 
 class CanopyDocument extends Document {
   static async getInitialProps(ctx: DocumentContext) {
@@ -17,18 +18,7 @@ class CanopyDocument extends Document {
   render() {
     return (
       <Html>
-        <Head>
-          <link rel="preconnect" href="https://fonts.googleapis.com" />
-          <link
-            rel="preconnect"
-            href="https://fonts.gstatic.com"
-            crossOrigin=""
-          />
-          <link
-            href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,300;0,500;0,800;1,300;1,500;1,800&family=Inter:wght@300;500;800&display=swap"
-            rel="stylesheet"
-          />
-        </Head>
+        <Head />
         <body>
           <Main />
           <NextScript />

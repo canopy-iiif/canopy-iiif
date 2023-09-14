@@ -2,7 +2,7 @@ import { styled } from "@/src/styles/stitches";
 
 const Items = styled("div", {
   display: "flex",
-  fontFamily: "$book",
+  fontFamily: "$sans",
   fontWeight: "500",
   flexGrow: "0",
 

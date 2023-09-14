@@ -12,7 +12,7 @@ const defaults = {
   },
 
   html: {
-    fontFamily: "$book",
+    fontFamily: "$sans",
     fontSize: `${17}px`,
     fontWeight: "500",
     fontSmooth: "always",
@@ -26,12 +26,12 @@ const defaults = {
   },
 
   p: {
-    fontFamily: "$book",
+    fontFamily: "$sans",
     lineHeight: "1.55em",
   },
 
   "ul, ol": {
-    fontFamily: "$book",
+    fontFamily: "$sans",
     lineHeight: "1.55em",
 
     li: {
@@ -41,7 +41,7 @@ const defaults = {
 
   dl: {
     dt: {
-      fontWeight: "800",
+      fontWeight: "400",
       paddingBottom: "$gr1",
     },
     dd: {

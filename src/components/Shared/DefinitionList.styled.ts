@@ -6,7 +6,7 @@ const DefinitionListWrapper = styled("div", {
   dl: {
     dt: {
       padding: "$gr3 0 $gr2",
-      fontFamily: "$bookTight",
+      fontFamily: "$display",
     },
 
     dd: {

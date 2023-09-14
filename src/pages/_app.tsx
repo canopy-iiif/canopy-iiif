@@ -1,11 +1,12 @@
 import { CanopyEnvironment, CanopyLocale } from "@/types/canopy";
 import { CanopyProvider, defaultState } from "../context/canopy";
 import React, { useEffect, useState } from "react";
+import { dm_sans, dm_serif_display } from "../styles/theme/fonts";
 import { getDefaultLang, getLocale } from "@/hooks/useLocale";
 
 import { AppProps } from "next/app";
 import { NextSeo } from "next-seo";
-import { ObjectLiteral } from "@/types";
+import { ObjectLiteral } from "@/src/types";
 import { ThemeProvider } from "next-themes";
 import { buildDefaultSEO } from "@/lib/seo";
 import { darkTheme } from "../styles/stitches";
@@ -44,6 +45,12 @@ export default function CanopyAppProps({
 
   return (
     <>
+      <style jsx global>{`
+        html {
+          --canopy-sans-font: ${dm_sans.style.fontFamily};
+          --canopy-display-font: ${dm_serif_display.style.fontFamily};
+        }
+      `}</style>
       <NextSeo {...seo} />
       <ThemeProvider
         attribute="class"

@@ -25,8 +25,8 @@ const customTheme = {
     secondaryMuted: "$slate2",
   },
   fonts: {
-    sans: `$book`,
-    display: `$bookTight`,
+    sans: `$sans`,
+    display: `$display`,
   },
 };
 

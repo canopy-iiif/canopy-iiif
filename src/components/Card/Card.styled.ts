@@ -7,7 +7,7 @@ const Content = styled("div", {
     margin: "0",
     fontWeight: "400",
     fontSize: "$gr4",
-    fontFamily: "$bookTight",
+    fontFamily: "$sans",
     textDecoration: "none !important",
   },
 

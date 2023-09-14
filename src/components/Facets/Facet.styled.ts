@@ -9,7 +9,7 @@ const FacetsFacetActivate = styled(Accordion.Trigger, {
   padding: "$gr2 0",
   backgroundColor: "transparent",
   border: "none",
-  fontFamily: "$bookTight",
+  fontFamily: "$display",
   fontSize: "$gr4",
   cursor: "pointer",
   borderTop: "1px solid $slate4",

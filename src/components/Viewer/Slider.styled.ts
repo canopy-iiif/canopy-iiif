@@ -16,15 +16,21 @@ const SliderStyled = styled("div", {
     },
   },
 
-  [`& .bloom-header-label`]: {
-    fontSize: "$gr5 !important",
-    fontWeight: "800 !important",
+  [`& .clover-slider-header-label`]: {
+    fontSize: "$gr6",
+    fontFamily: "$sans",
+    fontWeight: "300 !important",
+    letterSpacing: "-0.01em",
   },
 
-  [`& .bloom-header-summary`]: {
+  [`& .clover-slider-header-summary`]: {
     display: "block",
     fontSize: "$gr3 !important",
     color: "$slate11 ",
+  },
+
+  [`& .clover-slider-header-view-all`]: {
+    color: "$slate1",
   },
 
   ".swiper-slide": {
@@ -54,9 +60,9 @@ const SliderStyled = styled("div", {
       WebkitLineClamp: "3",
       overflow: "hidden",
       whiteSpace: "normal",
-      fontWeight: "500",
+      fontWeight: "400",
       fontSize: "$gr4",
-      fontFamily: "$bookTight",
+      fontFamily: "$sans",
       textDecoration: "none !important",
     },
   },

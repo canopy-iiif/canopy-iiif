@@ -14,10 +14,10 @@ const StyledHeading = styled("h2", {
 
   "&[data-level=h1]": {
     margin: "$gr4 0",
-    color: "$slate12",
     fontSize: "$gr8",
-    fontWeight: "800",
-    fontFamily: "$bookTight",
+    fontWeight: "400",
+    fontFamily: "$display",
+    letterSpacing: "-0.02em",
 
     "@sm": {
       fontSize: "$gr7",
@@ -26,10 +26,10 @@ const StyledHeading = styled("h2", {
 
   "&[data-level=h2]": {
     margin: "$gr5 0 $gr4",
-    color: "$slate11",
     fontSize: "$gr7",
-    fontWeight: "200",
-    fontFamily: "$bookTight",
+    fontWeight: "400",
+    fontFamily: "$display",
+    letterSpacing: "-0.01em",
 
     "@sm": {
       fontSize: "$gr5",
@@ -38,10 +38,11 @@ const StyledHeading = styled("h2", {
 
   "&[data-level=h3]": {
     margin: "$gr5 0 $gr3",
-    color: "$slate12",
-    fontSize: "$gr5",
-    fontWeight: "800",
-    fontFamily: "$bookTight",
+    color: "$slate11",
+    fontSize: "$gr6",
+    fontWeight: "300",
+    fontFamily: "$sans",
+    letterSpacing: "-0.01em",
 
     "@sm": {
       fontSize: "$gr4",

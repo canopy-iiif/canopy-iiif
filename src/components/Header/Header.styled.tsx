@@ -4,9 +4,10 @@ import { styled } from "@/src/styles/stitches";
 const Title = styled("span", {
   display: "flex",
   marginRight: "$gr2",
-  fontFamily: "$bookTight",
-  fontSize: "$gr4",
-  fontWeight: "800",
+  fontFamily: "$display",
+  fontSize: "$gr6",
+  fontWeight: "400",
+  letterSpacing: "-0.01em",
 
   "@sm": {
     marginRight: "0",

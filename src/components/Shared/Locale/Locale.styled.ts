@@ -10,7 +10,7 @@ const LocaleStyled = styled("div", {
     color: "$slate9",
     background: "none",
     border: "none",
-    fontFamily: "$bookTight",
+    fontFamily: "$display",
     fontSize: "$gr3",
     cursor: "pointer",
 

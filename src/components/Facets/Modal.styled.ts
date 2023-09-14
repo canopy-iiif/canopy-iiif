@@ -50,7 +50,7 @@ const FacetsModalContentHeader = styled("header", {
   padding: "$gr3 $gr4",
   color: "$slate9",
   fontSize: "$gr3",
-  fontFamily: "$bookTight",
+  fontFamily: "$display",
   fontWeight: "300",
   alignItems: "center",
 
