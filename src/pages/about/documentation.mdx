@@ -275,12 +275,12 @@ export default ({ children }) => <Basic content={children} />;
 ;
 ```
 
-### Avoiding Conflicts
+## Avoiding Conflicts
 
 To avoid potential code conflicts on future release updates, it is advised not to update the following integrated Canopy pages:
 
 ```
-pages/
+src/pages/
 -- api/
 -- works/
 -- index.tsx
@@ -291,13 +291,17 @@ pages/
 
 **Note:** Future considerations will be delivered upon for updating content within these pages.
 
+## Deployment
+
+When you are ready to deploy your site, you will need to modify environment variables to reflect how your site is hosted.
+
 ### Environment Variables
 
-When you are ready to deploy your site, you need to modify the `.env` to reflect how your site is hosted.components
+Edit the `.env` file at the root of the working directory to reflect your site's configuration.
 
-The `NEXT_PUBLIC_URL` variable is used to declare the canonical URL of your site. This base path is critical to routing of works in Canopy and SEO.
+The `NEXT_PUBLIC_URL` variable is used to declare the base URL of your site. This base url is critical to routing of works in Canopy and wiring up canonical links in SEO.
 
-If you plan to howst your site in subdirectory or subdomain, you will need to set the `NEXT_PUBLIC_BASE_PATH` to reflect this.
+If you plan to host your site in a subdirectory or subdomain, you will need to set the `NEXT_PUBLIC_BASE_PATH`to reflect this. For example, if your site is hosted at _https://example.org/exhibit_, you would set the value to `/canopy`.
 
 ```
 NEXT_PUBLIC_URL = "https://canopy-iiif.vercel.app"
