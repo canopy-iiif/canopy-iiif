@@ -21,11 +21,21 @@ async function createCollection(iiifResources, label = "") {
 async function createItem(resource) {
   const item = MANIFESTS.find((item) => item.id === resource.id);
   if (item?.slug) {
-    const thumbnail = await getRepresentativeImage(resource, 2000);
+    const { best } = await getRepresentativeImage(resource, 2000);
     return {
       id: resource.id,
       label: resource.label,
-      thumbnail: thumbnail ? thumbnail : [],
+      thumbnail: best
+        ? [
+            {
+              id: best.id,
+              type: "Image",
+              format: "image/jpeg",
+              width: best.width,
+              height: best.height,
+            },
+          ]
+        : [],
       homepage: getHomepageBySlug(item.slug, resource.label),
     };
   } else {

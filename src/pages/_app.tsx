@@ -5,6 +5,7 @@ import { dm_sans, dm_serif_display } from "../styles/theme/fonts";
 import { getDefaultLang, getLocale } from "@/hooks/useLocale";
 
 import { AppProps } from "next/app";
+import COLLECTIONS from "@/.canopy/collections.json";
 import { NextSeo } from "next-seo";
 import { ObjectLiteral } from "@/src/types";
 import { ThemeProvider } from "next-themes";
@@ -23,8 +24,16 @@ export default function CanopyAppProps({
   globalStyles();
 
   const config = process.env.CANOPY_CONFIG as unknown as CanopyEnvironment;
+  const root = COLLECTIONS.find((collection) => collection.depth === 0);
+  const label = root?.label;
+
   const { locales, theme } = config;
-  const seo = pageProps.seo ? pageProps.seo : buildDefaultSEO(config);
+  const seo = pageProps.seo
+    ? pageProps.seo
+    : buildDefaultSEO({
+        ...config,
+        label,
+      });
 
   const [locale, setLocale] = useState<CanopyLocale>();
   const [mounted, setMounted] = useState(false);
