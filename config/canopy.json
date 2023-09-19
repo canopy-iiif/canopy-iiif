@@ -1,0 +1,18 @@
+{
+  "prod": {
+    "collection": "https://cdm16877.contentdm.oclc.org/iiif/p16877coll10/manifest.json",
+    "featured": [
+      "https://cdm16877.contentdm.oclc.org/iiif/p16877coll10:193/manifest.json",
+      "https://cdm16877.contentdm.oclc.org/iiif/p16877coll10:210/manifest.json"
+    ],
+    "metadata": ["Subject", "Location"]
+  },
+  "dev": {
+    "collection": "https://cdm16877.contentdm.oclc.org/iiif/p16877coll10/manifest.json",
+    "featured": [
+      "https://cdm16877.contentdm.oclc.org/iiif/p16877coll10:193/manifest.json",
+      "https://cdm16877.contentdm.oclc.org/iiif/p16877coll10:210/manifest.json"
+    ],
+    "metadata": ["Subject", "Location"]
+  }
+}

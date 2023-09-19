@@ -1,172 +1,146 @@
 const { getCanopyCollection } = require("./shape");
 const { getEntries, getLabel } = require("../iiif/label");
-const fs = require("fs");
 const { getUniqueSlug } = require("./slug");
 const { log } = require("./log");
 const { getRootCollection, getBulkManifests } = require("./request");
 const { buildIndexData } = require("./search");
 const { buildFacets } = require("./facets");
-const { getRepresentativeImage } = require("../iiif/image");
 
-module.exports.build = (env) => {
+const fs = require("fs").promises;
+const fsSync = require("fs");
+
+module.exports.build = async (env) => {
   const { baseUrl } = env;
   const canopyDirectory = ".canopy";
+
   log(`Building Canopy from IIIF Collection...\n`);
   log(`${env.collection}\n\n`, "yellow");
-  getRootCollection(env.collection).then((json) => {
-    const canopyCollection = getCanopyCollection({
-      ...json,
-      label: env.label ? env.label : json.label,
-      summary: env.summary ? env.summary : json.summary,
-    });
 
-    try {
-      if (!fs.existsSync(canopyDirectory)) {
-        fs.mkdirSync(canopyDirectory);
-      }
-    } catch (err) {
-      console.error(err);
-    }
+  /**
+   * Create Canopy directory if it doesn't exist.
+   */
+  if (!fsSync.existsSync(canopyDirectory)) {
+    await fs.mkdir(canopyDirectory);
+  }
 
-    fs.writeFile(
-      `${canopyDirectory}/collections.json`,
-      JSON.stringify([canopyCollection]),
-      (err) => {
-        if (err) {
-          console.error(err);
-        }
-      }
-    );
+  /**
+   * Retrieve IIIF Collection for Canopy and write to file.
+   */
+  const json = await getRootCollection(env.collection);
+  const canopyCollection = getCanopyCollection({
+    ...json,
+    label: env.label || json.label,
+    summary: env.summary || json.summary,
+  });
 
-    /**
-     * create manifest listing
-     */
-    log(`Creating Manifest listing...\n`);
-    const canopyManifests = canopyCollection.items
-      .filter((item) => item.type === "Manifest")
-      .map((item, index) => {
-        return {
-          collectionId: item.parent,
-          id: item.id,
-          index: index,
-          label: item.label,
-        };
-      });
+  await fs.writeFile(
+    `${canopyDirectory}/collections.json`,
+    JSON.stringify([canopyCollection])
+  );
 
-    const responses = getBulkManifests(canopyManifests, 10);
+  /**
+   * Filter items to only include Manifests, add index, and
+   * then retrieve all in bulk in chunks of set amount (10).
+   */
+  log(`Creating Manifest listing...\n`);
+  const manifestListing = canopyCollection.items
+    .filter((item) => item.type === "Manifest")
+    .map((item, index) => ({
+      collectionId: item.parent,
+      id: item.id,
+      index,
+      label: item.label,
+    }));
 
-    const manifestData = responses.then((manifests) => {
-      let rootSlugs = {};
-      const allManifests = manifests.map((manifest) => {
-        // Break this into a function / service
-        const thumbnail = manifest.thumbnail
-          ? manifest.thumbnail
-          : manifest.items[0].thumbnail
-          ? manifest.items[0].thumbnail
-          : getRepresentativeImage(manifest, 400)
-          ? getRepresentativeImage(manifest, 400)
-          : [];
+  const manifests = await getBulkManifests(manifestListing, 10);
 
-        const string = getLabel(manifest.label)[0];
+  /**
+   * Prepare Manifests for Canopy and write to file.
+   */
+  let rootSlugs = {};
+  const canopyManifests = manifests.map((manifest) => {
+    // Get the earlier defined index of the Manifest in the collection.
+    const { index } = manifestListing.find((item) => item.id === manifest.id);
 
-        const { slug, allSlugs } = getUniqueSlug(string, rootSlugs);
-        rootSlugs = allSlugs;
+    // Create a unique slug for the Manifest.
+    const string = getLabel(manifest.label)[0];
+    const { slug, allSlugs } = getUniqueSlug(string, rootSlugs);
+    rootSlugs = allSlugs;
 
-        return {
-          ...canopyManifests.find(
-            (canopyManifest) => canopyManifest.id === manifest.id
+    // Return the Manifest with an index, slug, and prescribed thumbnail.
+    return {
+      ...manifest,
+      index,
+      slug,
+      thumbnail: manifest.thumbnail,
+    };
+  });
+
+  await fs.writeFile(
+    `${canopyDirectory}/manifests.json`,
+    JSON.stringify(canopyManifests)
+  );
+
+  /**
+   * Prepare facet metadata and search index for Canopy and write to file.
+   */
+  let canopyMetadata = [];
+  let canopySearch = [];
+  manifests
+    .filter((manifest) => manifest?.type === "Manifest")
+    .forEach((manifest) => {
+      const settings = env.search.index;
+      canopySearch.push({
+        index: manifest.index,
+        label: manifest.label,
+        ...(settings.summary.enabled && { summary: manifest.summary }),
+        ...(settings.metadata.enabled && {
+          metadata: manifest.metadata.filter((entry) =>
+            settings.metadata.all
+              ? entry
+              : env.metadata.includes(getEntries(entry.label)[0])
           ),
-          slug: slug,
-          thumbnail: thumbnail,
-          ...(manifest.navPlace && { navPlace: manifest.navPlace }),
-        };
+        }),
       });
 
-      fs.writeFile(
-        `${canopyDirectory}/manifests.json`,
-        JSON.stringify(allManifests),
-        (err) => {
-          if (err) {
-            console.error(err);
-          }
-        }
-      );
-
-      return allManifests;
-    });
-
-    responses
-      .then((manifests) => {
-        let canopyMetadata = [];
-        let canopySearch = [];
-
-        manifests
-          .filter((manifest) => manifest?.type === "Manifest")
-          .forEach((manifest) => {
-            // pack search array
-            const settings = env.search.index;
-            canopySearch.push({
+      manifest.metadata.forEach((metadata) => {
+        const metadataLabel = getEntries(metadata.label)[0];
+        const metadataValues = getEntries(metadata.value);
+        if (env.metadata.includes(metadataLabel)) {
+          metadataValues.forEach((value) => {
+            canopyMetadata.push({
               index: manifest.index,
-              label: manifest.label,
-              ...(settings.summary.enabled && { summary: manifest.summary }),
-              ...(settings.metadata.enabled && {
-                metadata: manifest.metadata.filter((entry) =>
-                  settings.metadata.all
-                    ? entry
-                    : env.metadata.includes(getEntries(entry.label)[0])
-                ),
-              }),
-            });
-
-            // pack metadata array
-            manifest.metadata.forEach((metadata) => {
-              const metadataLabel = getEntries(metadata.label)[0];
-              const metadataValues = getEntries(metadata.value);
-              if (env.metadata.includes(metadataLabel)) {
-                metadataValues.forEach((value) => {
-                  canopyMetadata.push({
-                    index: manifest.index,
-                    label: metadataLabel,
-                    value,
-                  });
-                });
-              }
+              label: metadataLabel,
+              value,
             });
           });
-
-        manifestData.then((manifests) => {
-          log(`\nCreating facets...\n`);
-          const canopyFacets = buildFacets(
-            env.metadata,
-            canopyMetadata,
-            manifests,
-            baseUrl
-          );
-          fs.writeFile(
-            `${canopyDirectory}/facets.json`,
-            JSON.stringify(canopyFacets),
-            (err) => {
-              if (err) {
-                console.error(err);
-              }
-            }
-          );
-
-          log(`Building search entries...\n`);
-          const canopyIndex = buildIndexData(canopySearch);
-          fs.writeFile(
-            `${canopyDirectory}/index.json`,
-            JSON.stringify(canopyIndex),
-            (err) => {
-              if (err) {
-                console.error(err);
-              }
-            }
-          );
-        });
-      })
-      .then(() => {
-        log(`\n...Ready\n\n`);
+        }
       });
-  });
+    });
+
+  log(`\nCreating facets...\n`);
+  const canopyFacets = await buildFacets(
+    env.metadata,
+    canopyMetadata,
+    canopyManifests,
+    baseUrl
+  );
+  await fs.writeFile(
+    `${canopyDirectory}/facets.json`,
+    JSON.stringify(canopyFacets)
+  );
+
+  log(`Building search entries...\n`);
+  const canopyIndex = buildIndexData(canopySearch);
+  await fs.writeFile(
+    `${canopyDirectory}/index.json`,
+    JSON.stringify(canopyIndex)
+  );
+
+  /**
+   * Good to go. 🚀
+   */
+  log(`\n...Ready\n\n`);
+
+  return;
 };

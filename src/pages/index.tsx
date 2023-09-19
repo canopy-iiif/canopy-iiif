@@ -18,7 +18,7 @@ import { getRelatedFacetValue } from "../lib/iiif/constructors/related";
 import { useCanopyState } from "@/context/canopy";
 
 interface IndexProps {
-  featured: any;
+  featuredItem: any;
   collections: string[];
 }
 
@@ -33,11 +33,6 @@ const Index: React.FC<IndexProps> = ({ featuredItem, collections }) => {
     items: featuredItem.items.map((item: any) => {
       return {
         ...item,
-        thumbnail: [
-          ...item.thumbnail.map((entry: any) => {
-            return { ...entry, height: 1000, width: 1000 };
-          }),
-        ],
         homepage: [
           {
             id: `${baseUrl}/works/`,

@@ -23,7 +23,7 @@ const getFacetValues = (label, unique, counts, metadata) => {
     });
 };
 
-exports.buildFacets = (labels, metadata, manifestData, baseUrl) => {
+exports.buildFacets = async (labels, metadata, manifestData, baseUrl) => {
   const unique = _.uniqBy(metadata, "value");
   const counts = _.countBy(metadata, "value");
 
@@ -93,6 +93,7 @@ exports.buildFacets = (labels, metadata, manifestData, baseUrl) => {
 
   return canopyFacets;
 };
+
 exports.buildFacetLabelCollection = (label, baseUrl) => {
   const items = label.values.map((value) => {
     return {
