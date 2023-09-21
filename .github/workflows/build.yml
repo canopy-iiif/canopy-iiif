@@ -1,7 +1,7 @@
-name: Test IIIF Collection Aggregation/Build
+name: Test IIIF Collection Build
 on: push
 jobs:
-  aggregate:
+  test-build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2

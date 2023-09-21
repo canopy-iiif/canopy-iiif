@@ -1,14 +1,7 @@
 const { log } = require("./log");
 
 function all(items, fn) {
-  const promises = items
-    .filter((item) => item)
-    .map((item) => {
-      if (item) {
-        log(`${item.id}\n`, "yellow");
-      }
-      return fn(item);
-    });
+  const promises = items.filter((item) => item).map((item) => fn(item));
   return Promise.all(promises);
 }
 
@@ -30,7 +23,9 @@ function series(items, info, fn) {
   return items
     .reduce((acc, item, index) => {
       acc = acc.then(() => {
-        log(`\nChunk (${index + 1}/${items.length})\n`);
+        log(`\nChunk (${index + 1}/${items.length})\n`, "yellow", {
+          dim: true,
+        });
         return fn(item).then((res) => result.push(res));
       });
       return acc;

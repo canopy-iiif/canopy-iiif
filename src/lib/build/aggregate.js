@@ -42,7 +42,6 @@ module.exports.build = async (env) => {
    * Filter items to only include Manifests, add index, and
    * then retrieve all in bulk in chunks of set amount (10).
    */
-  log(`Creating Manifest listing...\n`);
   const manifestListing = canopyCollection.items
     .filter((item) => item.type === "Manifest")
     .map((item, index) => ({
@@ -52,34 +51,50 @@ module.exports.build = async (env) => {
       label: item.label,
     }));
 
+  log(`Creating Manifest listing...\n`);
+
   const manifests = await getBulkManifests(manifestListing, 10);
 
   /**
    * Prepare Manifests for Canopy and write to file.
    */
   let rootSlugs = {};
-  const canopyManifests = manifests.map((manifest) => {
-    // Get the earlier defined index of the Manifest in the collection.
-    const { index } = manifestListing.find((item) => item.id === manifest.id);
+  const canopyManifests = manifests
+    .map((manifest) => {
+      // Get the earlier defined index of the Manifest in the collection.
+      const manifestListed = manifestListing.find(
+        (item) => item.id === manifest?.id
+      );
 
-    // Create a unique slug for the Manifest.
-    const string = getLabel(manifest.label)[0];
-    const { slug, allSlugs } = getUniqueSlug(string, rootSlugs);
-    rootSlugs = allSlugs;
+      if (!manifestListed) return;
 
-    // Return the Manifest with an index, slug, and prescribed thumbnail.
-    return {
-      ...manifest,
-      index,
-      slug,
-      thumbnail: manifest.thumbnail,
-    };
-  });
+      const { index } = manifestListed;
+
+      // Create a unique slug for the Manifest.
+      const string = getLabel(manifest.label)[0];
+      const { slug, allSlugs } = getUniqueSlug(string, rootSlugs);
+      rootSlugs = allSlugs;
+
+      // Return the Manifest with an index, slug, and prescribed thumbnail.
+      return {
+        ...manifest,
+        index,
+        slug,
+        thumbnail: manifest.thumbnail,
+      };
+    })
+    .filter((manifest) => manifest);
 
   await fs.writeFile(
     `${canopyDirectory}/manifests.json`,
     JSON.stringify(canopyManifests)
   );
+
+  /**
+   * Log the success ratio of Manifests retrieved.
+   */
+  const successRatio = `${canopyManifests.length}/${manifests.length}`;
+  log(`\n${successRatio} Manifests(s) retrieved successfully.\n`);
 
   /**
    * Prepare facet metadata and search index for Canopy and write to file.
@@ -140,7 +155,7 @@ module.exports.build = async (env) => {
   /**
    * Good to go. 🚀
    */
-  log(`\n...Ready\n\n`);
+  log(`\n...Ready 🚀\n\n`, "blue", { bright: true });
 
   return;
 };

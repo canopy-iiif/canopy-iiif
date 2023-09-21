@@ -17,7 +17,7 @@ export default function handler(
 
   const collection = searchRequest({
     params: searchParams,
-    url: baseUrl,
+    baseUrl,
     flexSearch: process?.env?.CANOPY_CONFIG?.search?.flexSearch,
   }) as unknown as Collection;
 

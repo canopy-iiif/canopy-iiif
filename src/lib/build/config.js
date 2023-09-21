@@ -3,6 +3,10 @@ const fs = require("fs");
 function getConfig(path = `./config/.default/canopy.default.json`) {
   const defaultData = fs.readFileSync(path, {});
 
+  if (path.includes("./config/.fixtures/")) {
+    return JSON.parse(defaultData);
+  }
+
   let data;
   try {
     data = fs.readFileSync(`./config/canopy.json`, {});

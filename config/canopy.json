@@ -1,0 +1,18 @@
+{
+  "prod": {
+    "collection": "https://raw.githubusercontent.com/mathewjordan/iiif/main/collection/ia/ncdir-dev.json",
+    "featured": [
+      "https://iiif.archive.org/iiif/millersshelbyncc53mill/manifest.json",
+      "https://iiif.archive.org/iiif/wilsondir19121913hill/manifest.json"
+    ],
+    "metadata": ["creator", "date"]
+  },
+  "dev": {
+    "collection": "https://raw.githubusercontent.com/mathewjordan/iiif/main/collection/ia/ncdir-dev.json",
+    "featured": [
+      "https://iiif.archive.org/iiif/millersshelbyncc53mill/manifest.json",
+      "https://iiif.archive.org/iiif/wilsondir19121913hill/manifest.json"
+    ],
+    "metadata": ["creator", "date"]
+  }
+}
