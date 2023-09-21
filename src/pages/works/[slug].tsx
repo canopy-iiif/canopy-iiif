@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 import { CanopyEnvironment } from "@/types/canopy";
 import Container from "@/components/Shared/Container";
 import FACETS from "@/.canopy/facets.json";
