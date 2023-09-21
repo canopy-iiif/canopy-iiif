@@ -1,18 +1,12 @@
 {
   "prod": {
-    "collection": "https://raw.githubusercontent.com/mathewjordan/iiif/main/collection/ia/ncdir-dev.json",
-    "featured": [
-      "https://iiif.archive.org/iiif/millersshelbyncc53mill/manifest.json",
-      "https://iiif.archive.org/iiif/wilsondir19121913hill/manifest.json"
-    ],
-    "metadata": ["creator", "date"]
+    "collection": "https://digital.lib.utk.edu/assemble/collection/gsmrc/roth",
+    "featured": ["https://digital.lib.utk.edu/assemble/manifest/roth/10"],
+    "metadata": ["Subject", "Date"]
   },
   "dev": {
-    "collection": "https://raw.githubusercontent.com/mathewjordan/iiif/main/collection/ia/ncdir-dev.json",
-    "featured": [
-      "https://iiif.archive.org/iiif/millersshelbyncc53mill/manifest.json",
-      "https://iiif.archive.org/iiif/wilsondir19121913hill/manifest.json"
-    ],
-    "metadata": ["creator", "date"]
+    "collection": "https://digital.lib.utk.edu/assemble/collection/gsmrc/roth",
+    "featured": ["https://digital.lib.utk.edu/assemble/manifest/roth/10"],
+    "metadata": ["Subject", "Date"]
   }
 }
