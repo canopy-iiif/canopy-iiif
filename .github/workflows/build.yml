@@ -1,5 +1,6 @@
-name: Test IIIF Collection Aggregation/Build
-on: push
+name: Test IIIF Collection Build
+on: pull_request
+  types: [opened, synchronize, reopened]
 jobs:
   aggregate:
     runs-on: ubuntu-latest

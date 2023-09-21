@@ -1,14 +1,7 @@
 const { log } = require("./log");
 
 function all(items, fn) {
-  const promises = items
-    .filter((item) => item)
-    .map((item) => {
-      if (item) {
-        log(`${item.id}\n`, "yellow");
-      }
-      return fn(item);
-    });
+  const promises = items.filter((item) => item).map((item) => fn(item));
   return Promise.all(promises);
 }
 

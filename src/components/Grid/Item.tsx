@@ -1,6 +1,6 @@
-import React from "react";
 import Card from "@/components/Card/Card";
 import { GridItem as ItemStyled } from "@/components/Grid/Grid.styled";
+import React from "react";
 
 export interface GridItemProps {
   item: any;

@@ -1,9 +1,11 @@
-import React, { useState, useEffect, useRef } from "react";
 import { Image, Wrapper } from "@/components/Figure/Figure.styled";
+import React, { useEffect, useRef, useState } from "react";
+
 import clsx from "clsx";
 import { getResourceImage } from "@/hooks/getResourceImage";
 
 interface FigureProps {
+  alt: string;
   resource: any;
   region?: string;
   size?: string;
@@ -11,6 +13,7 @@ interface FigureProps {
 }
 
 const Figure: React.FC<FigureProps> = ({
+  alt,
   resource,
   region = "full",
   size = "400,",
@@ -30,7 +33,7 @@ const Figure: React.FC<FigureProps> = ({
   return (
     <Wrapper>
       <Image
-        alt=""
+        alt={alt}
         src={image}
         ref={imgRef}
         style={
