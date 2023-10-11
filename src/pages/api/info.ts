@@ -1,8 +1,9 @@
-import COLLECTIONS from "@/.canopy/collections.json";
-import MANIFESTS from "@/.canopy/manifests.json";
-import absoluteUrl from "next-absolute-url";
 import type { NextApiRequest, NextApiResponse } from "next";
+
+import COLLECTIONS from "@.canopy/collections.json";
 import { Collection } from "@iiif/presentation-3";
+import MANIFESTS from "@.canopy/manifests.json";
+import absoluteUrl from "next-absolute-url";
 
 export default function handler(
   request: NextApiRequest,

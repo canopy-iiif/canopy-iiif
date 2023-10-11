@@ -1,4 +1,4 @@
-import { styled } from "@/src/styles/stitches";
+import { styled } from "@styles/stitches";
 
 /* eslint sort-keys: 0 */
 

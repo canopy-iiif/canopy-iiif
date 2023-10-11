@@ -8,7 +8,7 @@ import { Label, Thumbnail } from "@samvera/clover-iiif/primitives";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 import Container from "../Shared/Container";
-import { HeroStyled } from "@/components/Hero/Hero.styled";
+import { HeroStyled } from "@components/Hero/Hero.styled";
 import Link from "next/link";
 import React from "react";
 

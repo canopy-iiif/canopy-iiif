@@ -1,6 +1,6 @@
-import React from "react";
-import { CanopyContextStore } from "@/types/context/canopy";
+import { CanopyContextStore } from "@customTypes/context/canopy";
 import { InternationalString } from "@iiif/presentation-3";
+import React from "react";
 
 type Action =
   | { type: "updateHeaderVisible"; headerVisible: boolean }

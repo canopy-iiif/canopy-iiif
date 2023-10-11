@@ -1,5 +1,5 @@
-import { CanopyLocale } from "@/types/canopy";
-import { useCanopyState } from "@/context/canopy";
+import { CanopyLocale } from "@customTypes/canopy";
+import { useCanopyState } from "@context/canopy";
 
 function getDefaultLang(locales: CanopyLocale[]) {
   const { language } = new Intl.Locale(window?.navigator?.language);

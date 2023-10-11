@@ -2,8 +2,8 @@
 
 import { useEffect, useState } from "react";
 
-import { searchRequest } from "@/lib/search/request";
-import { useCanopyState } from "@/context/canopy";
+import { searchRequest } from "@lib/search/request";
+import { useCanopyState } from "@context/canopy";
 
 const usePageResults = (pages: any, page: any, query: any) => {
   const [data, setData] = useState([]);

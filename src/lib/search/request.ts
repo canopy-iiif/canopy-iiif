@@ -3,11 +3,11 @@ import {
   getPages,
   getPartOf,
   getTopCollection,
-} from "@/lib/search/response";
+} from "@lib/search/response";
 
 import { URLSearchParams } from "url";
-import { getActiveFacets } from "@/lib/facet/facets";
-import { getResults } from "@/lib/search/results";
+import { getActiveFacets } from "@lib/facet/facets";
+import { getResults } from "@lib/search/results";
 
 const searchRequest = ({
   params,

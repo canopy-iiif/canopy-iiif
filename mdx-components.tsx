@@ -1,10 +1,10 @@
-import Blockquote from "@/components/Shared/Markdown/Blockquote";
-import Code from "@/components/Shared/Code/Code";
-import { CodeInline } from "@/components/Shared/Code/Code.styled";
-import Heading from "@/components/Shared/Heading/Heading";
+import Blockquote from "@components/Shared/Markdown/Blockquote";
+import Code from "@components/Shared/Code/Code";
+import { CodeInline } from "@components/Shared/Code/Code.styled";
+import Heading from "@components/Shared/Heading/Heading";
 import type { MDXComponents } from "mdx/types";
 import { ReactElement } from "react";
-import { getSlug } from "@/lib/build/slug";
+import { getSlug } from "@lib/build/slug";
 
 export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {

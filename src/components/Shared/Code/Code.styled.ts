@@ -1,5 +1,5 @@
 import { indigoA } from "@radix-ui/colors";
-import { styled } from "@/src/styles/stitches";
+import { styled } from "@styles/stitches";
 
 const CodeStyled = styled("div", {
   position: "relative",

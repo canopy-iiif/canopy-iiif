@@ -1,4 +1,4 @@
-import Basic from "@/components/Layouts/Basic";
+import Basic from "@components/Layouts/Basic";
 
 # Documentation
 
@@ -256,11 +256,11 @@ Canopy allows for easy creation of contextual content that supports the automati
 
 ### Creating a Page
 
-Individual pages for Canopy IIIF are created with the `pages/` directory. Following Next.js conventions, if you create the page `pages/contact.mdx`, an accessibile path will be created at `/contact`. MDX pages will need a defined layout from `@/components/Layouts/`. Addditional JSX components can be imported and integrated between markdown syntax. The final line of your file should be an export which outputs the _children_ (content) to the provided layout component.
+Individual pages for Canopy IIIF are created with the `pages/` directory. Following Next.js conventions, if you create the page `pages/contact.mdx`, an accessibile path will be created at `/contact`. MDX pages will need a defined layout from `@components/Layouts/`. Addditional JSX components can be imported and integrated between markdown syntax. The final line of your file should be an export which outputs the _children_ (content) to the provided layout component.
 
 ```jsx
-import Basic from "@/components/Layouts/Basic";
-import Button from "@/components/Button/Button";
+import Basic from "@components/Layouts/Basic";
+import Button from "@components/Button/Button";
 
 # Contact
 

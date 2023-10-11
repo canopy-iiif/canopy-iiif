@@ -18,8 +18,8 @@ import { InternationalString } from "@iiif/presentation-3";
 import Leaflet from "leaflet";
 import Link from "next/link";
 import { MapStyled } from "./Map.styled";
-import MarkerClusterGroup from "@/components/Map/MarkerClusterGroup";
-import { getBounds } from "@/lib/iiif/navPlace";
+import MarkerClusterGroup from "@components/Map/MarkerClusterGroup";
+import { getBounds } from "@lib/iiif/navPlace";
 import { getLabel } from "../../hooks/getLabel";
 
 const icon = Leaflet.icon({

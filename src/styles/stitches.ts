@@ -5,7 +5,7 @@ import {
   media,
   sizes,
   transitions,
-} from "@/styles/theme";
+} from "@styles/theme";
 
 import { createStitches } from "@stitches/react";
 

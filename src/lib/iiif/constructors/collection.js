@@ -1,4 +1,4 @@
-const MANIFESTS = require("@/.canopy/manifests.json");
+const MANIFESTS = require("@.canopy/manifests.json");
 const axios = require("axios");
 const { getPresentation3 } = require("../context");
 const { getHomepageBySlug } = require("../homepage");

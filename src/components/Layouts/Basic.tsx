@@ -3,14 +3,14 @@ import {
   AsideStyled,
   ContentStyled,
   ContentWrapper,
-} from "@/components/Shared/Content.styled";
+} from "@components/Shared/Content.styled";
 import { ReactElement, useEffect, useState } from "react";
 
-import Container from "@/components/Shared/Container";
-import Layout from "@/components/layout";
-import Nav from "@/components/Nav/Nav";
-import { NavigationItem } from "@/types/navigation";
-import { getSlug } from "@/lib/build/slug";
+import Container from "@components/Shared/Container";
+import Layout from "@components/layout";
+import Nav from "@components/Nav/Nav";
+import { NavigationItem } from "@customTypes/navigation";
+import { getSlug } from "@lib/build/slug";
 import { renderToStaticMarkup } from "react-dom/server";
 
 const LayoutsBasic = ({

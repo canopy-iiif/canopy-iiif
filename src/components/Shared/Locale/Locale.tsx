@@ -1,7 +1,8 @@
-import { useCanopyState } from "@/context/canopy";
-import { getLocale } from "@/hooks/useLocale";
 import React, { ChangeEvent } from "react";
+
 import { LocaleStyled } from "./Locale.styled";
+import { getLocale } from "@hooks/useLocale";
+import { useCanopyState } from "@context/canopy";
 
 const Locale: React.FC = () => {
   const { canopyState, canopyDispatch } = useCanopyState();

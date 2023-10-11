@@ -1,6 +1,6 @@
 import * as Accordion from "@radix-ui/react-accordion";
 
-import { styled } from "@/src/styles/stitches";
+import { styled } from "@styles/stitches";
 
 const FacetsFacetActivate = styled(Accordion.Trigger, {
   display: "flex",

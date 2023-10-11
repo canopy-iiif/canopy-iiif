@@ -1,5 +1,6 @@
 import React, { createContext, useContext, useReducer } from "react";
-import { FacetsContextStore } from "@/types/context/facets";
+
+import { FacetsContextStore } from "@customTypes/context/facets";
 
 type Action = {
   type: "updateFacetsActive";

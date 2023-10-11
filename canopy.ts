@@ -1,10 +1,7 @@
 require("dotenv").config();
+const buildConfig = require("./src/lib/build/config");
 const aggregate = require("./src/lib/build/aggregate");
-const {
-  getConfig,
-  getOptions,
-  getNavigation,
-} = require("./src/lib/build/config");
+
 const args = process.argv;
 
 (() => {
@@ -13,9 +10,9 @@ const args = process.argv;
     ?.split("=")
     ?.pop();
 
-  const config = getConfig(path);
-  const options = getOptions();
-  const navigation = getNavigation();
+  const config = buildConfig.getConfig(path);
+  const options = buildConfig.getOptions();
+  const navigation = buildConfig.getNavigation();
   const { prod, dev } = config;
 
   config.environment = args.includes("dev") ? dev : prod;
@@ -40,5 +37,3 @@ const args = process.argv;
 
   aggregate.build(env.CANOPY_CONFIG);
 })();
-
-module.exports = { getConfig };

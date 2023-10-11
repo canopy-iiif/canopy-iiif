@@ -1,13 +1,14 @@
-import COLLECTIONS from "@/.canopy/collections.json";
-import FACETS from "@/.canopy/facets.json";
-import INDEX from "@/.canopy/index.json";
-import MANIFESTS from "@/.canopy/manifests.json";
 import {
   CanopyCollections,
   CanopyFacets,
   CanopyManifests,
   CanopySearch,
-} from "@/types/canopy";
+} from "@customTypes/canopy";
+
+import COLLECTIONS from "@.canopy/collections.json";
+import FACETS from "@.canopy/facets.json";
+import INDEX from "@.canopy/index.json";
+import MANIFESTS from "@.canopy/manifests.json";
 
 const canopyCollections = () => COLLECTIONS as unknown as CanopyCollections;
 const canopyFacets = () => FACETS as unknown as CanopyFacets;

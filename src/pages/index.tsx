@@ -2,20 +2,20 @@ import { ArrowRightIcon, GitHubLogoIcon } from "@radix-ui/react-icons";
 
 import Button from "../components/Shared/Button/Button";
 import { ButtonWrapper } from "../components/Shared/Button/Button.styled";
-import { CanopyEnvironment } from "@/types/canopy";
-import Container from "@/components/Shared/Container";
-import FACETS from "@/.canopy/facets.json";
+import { CanopyEnvironment } from "@customTypes/canopy";
+import Container from "@components/Shared/Container";
+import FACETS from "@.canopy/facets.json";
 import Heading from "../components/Shared/Heading/Heading";
-import Hero from "@/components/Hero/Hero";
+import Hero from "@components/Hero/Hero";
 import { HeroWrapper } from "../components/Hero/Hero.styled";
-import Layout from "@/components/layout";
-import { LocaleString } from "@/hooks/useLocale";
+import Layout from "@components/layout";
+import { LocaleString } from "@hooks/useLocale";
 import React from "react";
 import Related from "../components/Related/Related";
-import { canopyManifests } from "@/lib/constants/canopy";
+import { canopyManifests } from "@lib/constants/canopy";
 import { createCollection } from "../lib/iiif/constructors/collection";
 import { getRelatedFacetValue } from "../lib/iiif/constructors/related";
-import { useCanopyState } from "@/context/canopy";
+import { useCanopyState } from "@context/canopy";
 
 interface IndexProps {
   featuredItem: any;

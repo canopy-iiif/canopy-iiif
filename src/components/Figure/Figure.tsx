@@ -1,8 +1,8 @@
-import { Image, Wrapper } from "@/components/Figure/Figure.styled";
+import { Image, Wrapper } from "@components/Figure/Figure.styled";
 import React, { useEffect, useRef, useState } from "react";
 
 import clsx from "clsx";
-import { getResourceImage } from "@/hooks/getResourceImage";
+import { getResourceImage } from "@hooks/getResourceImage";
 
 interface FigureProps {
   alt: string;

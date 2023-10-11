@@ -6,6 +6,7 @@ import Document, {
   NextScript,
 } from "next/document";
 
+import { GoogleFontImport } from "@styles/theme/fonts";
 import React from "react";
 
 class CanopyDocument extends Document {
@@ -18,7 +19,9 @@ class CanopyDocument extends Document {
   render() {
     return (
       <Html>
-        <Head />
+        <Head>
+          <GoogleFontImport />
+        </Head>
         <body>
           <Main />
           <NextScript />

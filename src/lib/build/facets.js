@@ -29,7 +29,19 @@ exports.buildFacets = async (labels, metadata, manifestData, baseUrl) => {
 
   let rootSlugs = {};
 
-  const canopyFacets = (facets = labels.map((label) => {
+  // const canopyFacets = (facets = labels.map((label) => {
+  //   const values = getFacetValues(label, unique, counts, metadata);
+
+  //   const { slug, allSlugs } = getUniqueSlug(label, rootSlugs);
+  //   rootSlugs = allSlugs;
+
+  //   return {
+  //     label: label,
+  //     slug: slug,
+  //     values: _.orderBy(values, ["doc_count", "value"], ["desc", "asc"]),
+  //   };
+  // }));
+  const canopyFacets = labels.map((label) => {
     const values = getFacetValues(label, unique, counts, metadata);
 
     const { slug, allSlugs } = getUniqueSlug(label, rootSlugs);
@@ -40,7 +52,7 @@ exports.buildFacets = async (labels, metadata, manifestData, baseUrl) => {
       slug: slug,
       values: _.orderBy(values, ["doc_count", "value"], ["desc", "asc"]),
     };
-  }));
+  });
 
   // static api directory
   const api = `public/api`;

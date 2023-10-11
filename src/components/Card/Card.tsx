@@ -1,23 +1,25 @@
 import * as AspectRatio from "@radix-ui/react-aspect-ratio";
 
-import { Content, Placeholder, Wrapper } from "@/components/Card/Card.styled";
+import { Content, Placeholder, Wrapper } from "@components/Card/Card.styled";
 import { LazyMotion, MotionConfig, domAnimation, m } from "framer-motion";
 
-import Figure from "@/components/Figure/Figure";
+import Figure from "@components/Figure/Figure";
 import { Label } from "@samvera/clover-iiif/primitives";
 import Link from "next/link";
-import { getLabel } from "@/src/lib/iiif/label";
-import { getRandomItem } from "@/src/lib/utils";
+import { SearchResponseItem } from "@customTypes/search/search";
+import { getLabel } from "@lib/iiif/label";
+import { getRandomItem } from "@lib/utils";
 import { useInView } from "react-intersection-observer";
 
 interface CardProps {
-  resource: any;
+  resource: SearchResponseItem;
 }
 
 const Card: React.FC<CardProps> = ({ resource }) => {
   let aspectRatio = 1;
 
   const { label, homepage, thumbnail } = resource;
+  // @ts-ignore
   const { width, height } = getRandomItem(thumbnail);
 
   if (width && height) aspectRatio = width / height;
@@ -27,7 +29,7 @@ const Card: React.FC<CardProps> = ({ resource }) => {
 
   return (
     <Wrapper ref={ref}>
-      <Link href={homepage[0].id}>
+      <Link href={homepage && homepage[0].id ? homepage[0].id : ""}>
         <AspectRatio.Root ratio={aspectRatio}>
           <Placeholder>
             <MotionConfig transition={{ duration: 1 }}>

@@ -1,6 +1,6 @@
 import { ContainerStyled } from "../Shared/Container";
 import { FacetsActivateStyled } from "../Facets/Activate.styled";
-import { styled } from "@/src/styles/stitches";
+import { styled } from "@styles/stitches";
 
 const SearchHeaderFloat = styled("div", {
   display: "flex",

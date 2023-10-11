@@ -1,10 +1,11 @@
+import { CodePre, CodeStyled } from "./Code.styled";
+import Highlight, { Language, defaultProps } from "prism-react-renderer";
+
+import { ButtonStyled } from "@components/Shared/Button/Button.styled";
+import { CopyIcon } from "@radix-ui/react-icons";
 import React from "react";
 import copy from "copy-to-clipboard";
-import Highlight, { defaultProps, Language } from "prism-react-renderer";
 import { theme } from "./prism-helpers";
-import { CodePre, CodeStyled } from "./Code.styled";
-import { ButtonStyled } from "@/components/Shared/Button/Button.styled";
-import { CopyIcon } from "@radix-ui/react-icons";
 
 const Code = ({
   children,

@@ -1,10 +1,11 @@
 // @ts-nocheck
 
+import type { NextApiRequest, NextApiResponse } from "next";
+
+import { Collection } from "@iiif/presentation-3";
 import fs from "fs";
 import path from "path";
-import { sortItems } from "@/hooks/sortItems";
-import type { NextApiRequest, NextApiResponse } from "next";
-import { Collection } from "@iiif/presentation-3";
+import { sortItems } from "@hooks/sortItems";
 
 export default function handler(
   request: NextApiRequest,

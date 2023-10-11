@@ -1,6 +1,6 @@
 import * as Dialog from "@radix-ui/react-dialog";
 
-import { styled } from "@/src/styles/stitches";
+import { styled } from "@styles/stitches";
 
 const FacetsActivateIndicator = styled("span", {
   position: "absolute",

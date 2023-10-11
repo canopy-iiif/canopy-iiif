@@ -1,7 +1,7 @@
 // @ts-nocheck
 
-import INDEX from "@/.canopy/index.json";
 import { Document } from "flexsearch";
+import INDEX from "@.canopy/index.json";
 
 const getDocuments = (q: string, flexSearch: any) => {
   const index = new Document(flexSearch);

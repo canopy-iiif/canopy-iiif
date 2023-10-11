@@ -1,5 +1,5 @@
 import { slateA } from "@radix-ui/colors";
-import { styled } from "@/src/styles/stitches";
+import { styled } from "@styles/stitches";
 
 const ButtonStyled = styled("button", {
   padding: "$gr2 $gr3",

@@ -1,7 +1,7 @@
+import NavItems from "@components/Nav/Items";
+import { NavigationItem } from "@customTypes/navigation";
 import React from "react";
-import { Wrapper } from "@/components/Nav/Nav.styled";
-import NavItems from "@/components/Nav/Items";
-import { NavigationItem } from "@/types/navigation";
+import { Wrapper } from "@components/Nav/Nav.styled";
 
 interface NavProps {
   items: NavigationItem[];

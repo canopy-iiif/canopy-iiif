@@ -1,5 +1,5 @@
 import React from "react";
-import { styled } from "@/src/styles/stitches";
+import { styled } from "@styles/stitches";
 
 const IIIF = () => {
   return (

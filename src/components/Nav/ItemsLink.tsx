@@ -1,8 +1,8 @@
 import Link from "next/link";
-import Nav from "@/components/Nav/Nav";
-import { NavigationItem } from "@/types/navigation";
-import { useRouter } from "next/router";
+import Nav from "@components/Nav/Nav";
+import { NavigationItem } from "@customTypes/navigation";
 import { useRef } from "react";
+import { useRouter } from "next/router";
 
 interface NavItemsLinkProps {
   path: string;

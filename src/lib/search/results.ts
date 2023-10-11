@@ -1,9 +1,9 @@
-import FACETS from "@/.canopy/facets.json";
-import INDEX from "@/.canopy/index.json";
-import MANIFESTS from "@/.canopy/manifests.json";
+import FACETS from "@.canopy/facets.json";
+import INDEX from "@.canopy/index.json";
+import MANIFESTS from "@.canopy/manifests.json";
 import _ from "lodash";
-import { getDocuments } from "@/lib/search/documents";
-import { getItem } from "@/lib/search/response";
+import { getDocuments } from "@lib/search/documents";
+import { getItem } from "@lib/search/response";
 
 // @ts-nocheck
 
