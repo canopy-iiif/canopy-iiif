@@ -6,8 +6,8 @@
     "build:static": "npm run build && next export",
     "dev": "next -p 5001",
     "lint": "next lint",
-    "predev": "node canopy dev",
-    "prebuild": "node canopy",
+    "predev": "ts-node canopy.ts dev",
+    "prebuild": "ts-node canopy.ts",
     "postbuild": "next-sitemap",
     "start": "next start",
     "test-build": "next build",
@@ -63,6 +63,7 @@
     "eslint-config-next": "^13.3.4",
     "eslint-config-prettier": "^8.8.0",
     "eslint-plugin-testing-library": "^5.10.3",
+    "ts-node": "^10.9.1",
     "typescript": "^5.0.2"
   }
 }

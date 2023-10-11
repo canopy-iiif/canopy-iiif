@@ -1,10 +1,12 @@
 const fs = require("fs");
 
-function getConfig(path = `./config/.default/canopy.default.json`) {
-  const defaultData = fs.readFileSync(path, {});
+import type { CanopyBuildConfig } from "../../types/build";
+
+const getConfig = (path = `./config/.default/canopy.default.json`) => {
+  const defaultData: string = fs.readFileSync(path, {});
 
   if (path.includes("./config/.fixtures/")) {
-    return JSON.parse(defaultData);
+    return JSON.parse(defaultData) as CanopyBuildConfig;
   }
 
   let data;
@@ -18,11 +20,11 @@ function getConfig(path = `./config/.default/canopy.default.json`) {
 
   const config = data ? data : defaultData;
 
-  return JSON.parse(config);
-}
+  return JSON.parse(config) as CanopyBuildConfig;
+};
 
 function getNavigation(path = `./config/.default/navigation.default.json`) {
-  let defaultNavigation = fs.readFileSync(path, {});
+  const defaultNavigation = fs.readFileSync(path, {});
 
   let data;
   try {
@@ -37,7 +39,7 @@ function getNavigation(path = `./config/.default/navigation.default.json`) {
 }
 
 function getOptions(path = `./config/.default/options.default.json`) {
-  let defaultOptions = fs.readFileSync(path, {});
+  const defaultOptions = fs.readFileSync(path, {});
 
   let data;
   try {

@@ -1,10 +1,13 @@
+import {
+  type CanopyBuildNavigation,
+  type CanopyBuildConfig,
+  type CanopyConfig,
+} from "./src/types/build";
+
 require("dotenv").config();
+const buildConfig = require("./src/lib/build/config");
 const aggregate = require("./src/lib/build/aggregate");
-const {
-  getConfig,
-  getOptions,
-  getNavigation,
-} = require("./src/lib/build/config");
+
 const args = process.argv;
 
 (() => {
@@ -13,9 +16,9 @@ const args = process.argv;
     ?.split("=")
     ?.pop();
 
-  const config = getConfig(path);
-  const options = getOptions();
-  const navigation = getNavigation();
+  const config: CanopyBuildConfig = buildConfig.getConfig(path);
+  const options = buildConfig.getOptions();
+  const navigation: CanopyBuildNavigation = buildConfig.getNavigation();
   const { prod, dev } = config;
 
   config.environment = args.includes("dev") ? dev : prod;
@@ -27,7 +30,9 @@ const args = process.argv;
   const basePath = process.env.NEXT_PUBLIC_BASE_PATH;
   const baseUrl = basePath ? `${url}${basePath}` : url;
 
-  const env = {
+  const env: {
+    CANOPY_CONFIG: CanopyConfig;
+  } = {
     CANOPY_CONFIG: {
       ...config.environment,
       navigation: navigation,
@@ -40,5 +45,3 @@ const args = process.argv;
 
   aggregate.build(env.CANOPY_CONFIG);
 })();
-
-module.exports = { getConfig };
