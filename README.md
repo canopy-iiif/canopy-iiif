@@ -23,19 +23,7 @@ A purely IIIF sourced static site generator using Next.js. Canopy is an applicat
 - 90 items
 - Provided by University of Tennessee Libraries
 - `navPlace` + Map
-
-### [The Botanical photography of Alan S. Heilman](https://canopy-iiif-git-heilman-mathewjordan.vercel.app/)
-
-- IIIF Presentation API 3.0
-- 1120 items
-- Provided by University of Tennessee Libraries
-
-### [The Chimney Tops 2 Wildfires In Memory And Art](https://canopy-iiif-git-rfta-artists-mathewjordan.vercel.app/)
-
-- IIIF Presentation API 3.0 w/ Video Canvases
-- 43 items
-- Provided by University of Tennessee Libraries
-
+- 
 ### [Canonici](https://canopy-iiif-git-canonici-mathewjordan.vercel.app/)
 
 - IIIF Presentation API 2.0
