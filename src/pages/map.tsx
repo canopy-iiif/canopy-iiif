@@ -1,10 +1,10 @@
 import "leaflet/dist/leaflet.css";
 
-import Layout from "@/components/layout";
+import Layout from "@components/layout";
 import React from "react";
-import { canopyManifests } from "@/lib/constants/canopy";
+import { canopyManifests } from "@lib/constants/canopy";
 import dynamic from "next/dynamic";
-import { getFeatures } from "@/lib/iiif/navPlace";
+import { getFeatures } from "@lib/iiif/navPlace";
 
 const Map = dynamic(() => import("../components/Map/Map"), { ssr: false });
 

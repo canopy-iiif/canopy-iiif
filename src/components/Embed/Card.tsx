@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
-import Card from "@/components/Card/Card";
-import { canopyManifests } from "@/lib/constants/canopy";
+import Card from "@components/Card/Card";
+import { canopyManifests } from "@lib/constants/canopy";
 
 const EmbedCard = ({ id }: { id: string }) => {
   const [resource, setResource] = useState<any>();

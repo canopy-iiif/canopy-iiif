@@ -1,5 +1,5 @@
 import Masonry from "react-masonry-css";
-import { styled } from "@/src/styles/stitches";
+import { styled } from "@styles/stitches";
 
 const GridItem = styled("div", {
   paddingBottom: "$gr5",

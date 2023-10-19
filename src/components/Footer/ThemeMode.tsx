@@ -1,8 +1,9 @@
+import { useEffect, useState } from "react";
+
+import { ButtonStyled } from "../Shared/Button/Button.styled";
+import { LocaleString } from "@hooks/useLocale";
 import React from "react";
 import { useTheme } from "next-themes";
-import { useEffect, useState } from "react";
-import { ButtonStyled } from "../Shared/Button/Button.styled";
-import { LocaleString } from "@/hooks/useLocale";
 
 const ThemeMode = () => {
   const [mounted, setMounted] = useState(false);

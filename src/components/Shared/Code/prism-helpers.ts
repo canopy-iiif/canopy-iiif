@@ -1,5 +1,5 @@
 import { PrismTheme } from "prism-react-renderer";
-import { rem } from "@/styles/global";
+import { rem } from "@styles/global";
 
 export const theme: PrismTheme = {
   plain: {

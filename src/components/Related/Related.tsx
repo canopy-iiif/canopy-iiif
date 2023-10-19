@@ -1,7 +1,7 @@
-import React from "react";
-import Slider from "@/components/Viewer/Slider";
-import { RelatedStyled } from "./Related.styled";
 import Heading from "../Shared/Heading/Heading";
+import React from "react";
+import { RelatedStyled } from "./Related.styled";
+import Slider from "@components/Viewer/Slider";
 
 interface RelatedProps {
   collections: string[];

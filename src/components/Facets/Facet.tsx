@@ -1,14 +1,15 @@
-import { useFacetsState } from "@/context/facets";
-import { ChevronDownIcon } from "@radix-ui/react-icons";
-import React, { useEffect, useState } from "react";
 import {
   FacetsFacetActivate,
   FacetsFacetContent,
   FacetsFacetHeader,
   FacetsFacetStyled,
 } from "./Facet.styled";
+import React, { useEffect, useState } from "react";
+
+import { ChevronDownIcon } from "@radix-ui/react-icons";
 import FacetsOption from "./Option";
-import { LocaleString } from "@/hooks/useLocale";
+import { LocaleString } from "@hooks/useLocale";
+import { useFacetsState } from "@context/facets";
 
 interface FacetsFacetProps {
   label: string;

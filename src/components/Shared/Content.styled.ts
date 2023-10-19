@@ -1,5 +1,5 @@
-import { headerHeight } from "@/styles/global";
-import { styled } from "@/src/styles/stitches";
+import { headerHeight } from "@styles/global";
+import { styled } from "@styles/stitches";
 
 /* eslint sort-keys: 0 */
 

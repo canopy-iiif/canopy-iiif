@@ -1,4 +1,4 @@
-import FACETS from "@/.canopy/facets.json";
+import FACETS from "@.canopy/facets.json";
 import { shuffle } from "lodash";
 
 export const getRelatedFacetValue = (

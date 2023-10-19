@@ -1,4 +1,4 @@
-import FACETS from "@/.canopy/facets";
+import FACETS from "@.canopy/facets";
 
 export const getActiveFacets = (searchParams: URLSearchParams) => {
   return FACETS.map((facet: any) => facet.slug)

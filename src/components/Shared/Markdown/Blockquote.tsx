@@ -1,6 +1,6 @@
 import React, { ReactNode } from "react";
 
-import { styled } from "@/src/styles/stitches";
+import { styled } from "@styles/stitches";
 
 interface BlockquoteProps {
   children: ReactNode | ReactNode[];

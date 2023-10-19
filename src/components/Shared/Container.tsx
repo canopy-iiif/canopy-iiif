@@ -1,5 +1,5 @@
-import { maxWidths } from "@/styles/theme/containers";
-import { styled } from "@/src/styles/stitches";
+import { maxWidths } from "@styles/theme/containers";
+import { styled } from "@styles/stitches";
 
 interface ContainerProps {
   isFlex?: boolean;

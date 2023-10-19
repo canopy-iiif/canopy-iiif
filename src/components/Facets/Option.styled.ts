@@ -1,7 +1,7 @@
 import * as Checkbox from "@radix-ui/react-checkbox";
 
 import { indigoA } from "@radix-ui/colors";
-import { styled } from "@/src/styles/stitches";
+import { styled } from "@styles/stitches";
 
 const OptionLabel = styled("label", {
   transition: "$canopyAll",

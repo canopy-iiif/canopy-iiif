@@ -1,7 +1,7 @@
-import { Items } from "@/components/Nav/Nav.styled";
-import NavItemsLink from "@/components/Nav/ItemsLink";
+import { Items } from "@components/Nav/Nav.styled";
+import NavItemsLink from "@components/Nav/ItemsLink";
+import { NavigationItem } from "@customTypes/navigation";
 import React from "react";
-import { NavigationItem } from "@/types/navigation";
 
 interface NavItemsProps {
   items: NavigationItem[];

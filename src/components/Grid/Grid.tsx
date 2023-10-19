@@ -1,7 +1,8 @@
+import GridItem, { GridItemProps } from "@components/Grid/Item";
 import React, { ReactNode } from "react";
-import GridItem, { GridItemProps } from "@/components/Grid/Item";
-import { GridStyled } from "@/components/Grid/Grid.styled";
-import { width } from "@/styles/theme/media";
+
+import { GridStyled } from "@components/Grid/Grid.styled";
+import { width } from "@styles/theme/media";
 
 interface GridProps {
   children: ReactNode | ReactNode[];

@@ -1,8 +1,8 @@
 import * as Dialog from "@radix-ui/react-dialog";
 
-import { maxWidths } from "@/styles/theme/containers";
+import { maxWidths } from "@styles/theme/containers";
 import { slateA } from "@radix-ui/colors";
-import { styled } from "@/src/styles/stitches";
+import { styled } from "@styles/stitches";
 
 const FacetsModalContent = styled(Dialog.Content, {
   width: `calc(100% - $gr5 * 2)`,

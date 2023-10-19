@@ -1,4 +1,4 @@
-import Viewer from "@/components/Viewer/Viewer";
+import Viewer from "@components/Viewer/Viewer";
 
 const defaultOptions = {
   showTitle: true,

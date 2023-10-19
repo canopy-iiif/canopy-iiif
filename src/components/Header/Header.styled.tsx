@@ -1,5 +1,5 @@
 import { slateA } from "@radix-ui/colors";
-import { styled } from "@/src/styles/stitches";
+import { styled } from "@styles/stitches";
 
 const Title = styled("span", {
   display: "flex",

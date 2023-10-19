@@ -2,18 +2,18 @@ import React, { useEffect, useRef, useState } from "react";
 import {
   SearchHeaderFloat,
   SearchHeaderStyled,
-} from "@/components/Search/Header.styled";
+} from "@components/Search/Header.styled";
 
-import Container from "@/components/Shared/Container";
-import Facets from "@/components/Facets/Facets";
-import Layout from "@/components/layout";
-import { LocaleString } from "@/hooks/useLocale";
-import SearchResults from "@/components/Search/Results";
+import Container from "@components/Shared/Container";
+import Facets from "@components/Facets/Facets";
+import Layout from "@components/layout";
+import { LocaleString } from "@hooks/useLocale";
+import SearchResults from "@components/Search/Results";
 import { Summary } from "@samvera/clover-iiif/primitives";
-import { headerHeight } from "@/styles/global";
-import { searchRequest } from "@/lib/search/request";
-import { useCanopyState } from "@/context/canopy";
-import useElementPosition from "@/hooks/useElementPosition";
+import { headerHeight } from "@styles/global";
+import { searchRequest } from "@lib/search/request";
+import { useCanopyState } from "@context/canopy";
+import useElementPosition from "@hooks/useElementPosition";
 import { useSearchParams } from "next/navigation";
 
 const Search = () => {

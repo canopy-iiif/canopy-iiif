@@ -1,23 +1,25 @@
 import * as Accordion from "@radix-ui/react-accordion";
+
 import {
-  FacetsModalClose as ContentClose,
   FacetsModalContent as Content,
   FacetsModalContentBody as ContentBody,
+  FacetsModalClose as ContentClose,
   FacetsModalContentFooter as ContentFooter,
   FacetsModalContentHeader as ContentHeader,
   FacetsModalContentInner as ContentInner,
+  FacetsModalTitle as ContentTitle,
   FacetsModalOverlay as Overlay,
   FacetsModalPortal as Portal,
-  FacetsModalTitle as ContentTitle,
 } from "./Modal.styled";
-import Facet from "./Facet";
-import FACETS from "@/.canopy/facets";
-import React from "react";
-import { Cross2Icon } from "@radix-ui/react-icons";
+
 import { ButtonStyled } from "../Shared/Button/Button.styled";
-import { useFacetsState } from "@/context/facets";
+import { Cross2Icon } from "@radix-ui/react-icons";
+import FACETS from "@.canopy/facets";
+import Facet from "./Facet";
+import { LocaleString } from "@hooks/useLocale";
+import React from "react";
+import { useFacetsState } from "@context/facets";
 import { useRouter } from "next/router";
-import { LocaleString } from "@/hooks/useLocale";
 
 interface FacetsModalProps {
   handleSubmit: () => void;

@@ -4,9 +4,10 @@ import {
   OptionLabel,
   OptionStyled,
 } from "./Option.styled";
+
 import { CheckIcon } from "@radix-ui/react-icons";
 import React from "react";
-import { useFacetsState } from "@/context/facets";
+import { useFacetsState } from "@context/facets";
 
 interface FacetsOptionProps {
   active: boolean;

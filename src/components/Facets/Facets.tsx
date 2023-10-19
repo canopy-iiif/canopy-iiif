@@ -1,9 +1,10 @@
-import { FacetsStyled } from "./Facets.styled";
+import { FacetsProvider, useFacetsState } from "@context/facets";
 import React, { useEffect, useState } from "react";
-import FacetsModal from "./Modal";
+
 import FacetsActivate from "./Activate";
-import { FacetsProvider, useFacetsState } from "@/context/facets";
-import { useCanopyState } from "@/context/canopy";
+import FacetsModal from "./Modal";
+import { FacetsStyled } from "./Facets.styled";
+import { useCanopyState } from "@context/canopy";
 import { useRouter } from "next/router";
 
 const Facets = () => {

@@ -1,4 +1,4 @@
-import { styled } from "@/src/styles/stitches";
+import { styled } from "@styles/stitches";
 
 const Content = styled("div", {
   padding: "$gr3 0 0",

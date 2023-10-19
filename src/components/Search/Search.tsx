@@ -5,10 +5,15 @@ import React, {
   useRef,
   useState,
 } from "react";
-import { SearchForm, SearchInput, SearchSubmit } from "../Search/Search.styled";
+import {
+  SearchForm,
+  SearchInput,
+  SearchSubmit,
+} from "@components/Search/Search.styled";
+
+import { LocaleString } from "@hooks/useLocale";
 import { MagnifyingGlassIcon } from "@radix-ui/react-icons";
 import { useRouter } from "next/router";
-import { LocaleString } from "@/hooks/useLocale";
 
 const Search = () => {
   const [value, setValue] = useState<string>();
@@ -40,7 +45,7 @@ const Search = () => {
   }, [router]);
 
   return (
-    <SearchForm onSubmit={handleSubmit}>
+    <SearchForm onSubmit={handleSubmit} data-testid="search-form">
       <SearchInput onChange={handleSearchChange} ref={search} />
       <MagnifyingGlassIcon />
       <SearchSubmit type="submit">{LocaleString("searchButton")}</SearchSubmit>

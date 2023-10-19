@@ -4,7 +4,7 @@ import type { NextApiRequest, NextApiResponse } from "next";
 
 import { Collection } from "@iiif/presentation-3";
 import absoluteUrl from "next-absolute-url";
-import { searchRequest } from "@/lib/search/request";
+import { searchRequest } from "@lib/search/request";
 
 export default function handler(
   request: NextApiRequest,

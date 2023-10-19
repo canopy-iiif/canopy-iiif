@@ -1,15 +1,15 @@
 // @ts-nocheck
 
-import { CanopyEnvironment } from "@/types/canopy";
-import Container from "@/components/Shared/Container";
-import FACETS from "@/.canopy/facets.json";
-import Layout from "@/components/layout";
-import MANIFESTS from "@/.canopy/manifests.json";
+import { CanopyEnvironment } from "@customTypes/canopy";
+import Container from "@components/Shared/Container";
+import FACETS from "@.canopy/facets.json";
+import Layout from "@components/layout";
+import MANIFESTS from "@.canopy/manifests.json";
 import { Manifest } from "@iiif/presentation-3";
-import Related from "@/components/Related/Related";
-import Viewer from "@/components/Viewer/Viewer";
-import WorkInner from "@/components/Work/Inner";
-import { buildManifestSEO } from "@/lib/seo";
+import Related from "@components/Related/Related";
+import Viewer from "@components/Viewer/Viewer";
+import WorkInner from "@components/Work/Inner";
+import { buildManifestSEO } from "@lib/seo";
 import { fetch } from "@iiif/vault-helpers/fetch";
 import { shuffle } from "lodash";
 

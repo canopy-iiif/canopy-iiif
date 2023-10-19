@@ -1,12 +1,13 @@
-import { useFacetsState } from "@/context/facets";
-import { MixerHorizontalIcon } from "@radix-ui/react-icons";
-import React from "react";
-import { ButtonStyled } from "../Shared/Button/Button.styled";
 import {
   FacetsActivateIndicator,
   FacetsActivateStyled,
 } from "./Activate.styled";
-import { LocaleString } from "@/hooks/useLocale";
+
+import { ButtonStyled } from "../Shared/Button/Button.styled";
+import { LocaleString } from "@hooks/useLocale";
+import { MixerHorizontalIcon } from "@radix-ui/react-icons";
+import React from "react";
+import { useFacetsState } from "@context/facets";
 
 const FacetsActivate: React.FC = () => {
   const { facetsState } = useFacetsState();

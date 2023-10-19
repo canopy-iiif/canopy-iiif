@@ -1,9 +1,10 @@
 import React, { useCallback, useEffect, useRef, useState } from "react";
-import Grid from "@/components/Grid/Grid";
-import usePageResults from "@/hooks/usePageResults";
+
+import Grid from "@components/Grid/Grid";
+import usePageResults from "@hooks/usePageResults";
 
 interface SearchResultsProps {
-  pages: any;
+  pages: Array<string>;
   query: any;
 }
 

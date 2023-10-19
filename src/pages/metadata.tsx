@@ -1,15 +1,15 @@
 import {
   ContentStyled,
   ContentWrapper,
-} from "@/components/Shared/Content.styled";
+} from "@components/Shared/Content.styled";
 
 import Container from "../components/Shared/Container";
-import FACETS from "@/.canopy/facets.json";
-import Heading from "@/components/Shared/Heading/Heading";
-import Layout from "@/components/layout";
+import FACETS from "@.canopy/facets.json";
+import Heading from "@components/Shared/Heading/Heading";
+import Layout from "@components/layout";
 import Link from "next/link";
 import React from "react";
-import { styled } from "@/src/styles/stitches";
+import { styled } from "@styles/stitches";
 
 const ListItem = styled("li", {
   listStyle: "none",

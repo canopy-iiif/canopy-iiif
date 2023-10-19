@@ -1,9 +1,10 @@
-import React from "react";
-import IIIF from "@/components/SVG/IIIF";
-import ThemeMode from "./ThemeMode";
 import { CollectionLink, FooterContent, FooterStyled } from "./Footer.styled";
+
 import Container from "../Shared/Container";
-import { LocaleString } from "@/hooks/useLocale";
+import IIIF from "@components/SVG/IIIF";
+import { LocaleString } from "@hooks/useLocale";
+import React from "react";
+import ThemeMode from "./ThemeMode";
 
 const { collection } = process.env.CANOPY_CONFIG as any;
 

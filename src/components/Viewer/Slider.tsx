@@ -4,9 +4,9 @@ import CloverSlider from "@samvera/clover-iiif/slider";
 import React from "react";
 import { SliderStyled } from "./Slider.styled";
 import { SwiperProps } from "swiper/react";
-import { gr } from "@/styles/helpers/goldenRatio";
-import { rem } from "@/styles/global";
-import { width } from "@/styles/theme/media";
+import { gr } from "@styles/helpers/goldenRatio";
+import { rem } from "@styles/global";
+import { width } from "@styles/theme/media";
 
 type SwiperBreakpoints = SwiperProps["breakpoints"];
 
