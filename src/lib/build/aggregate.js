@@ -44,12 +44,14 @@ module.exports.build = async (env) => {
    */
   const manifestListing = canopyCollection.items
     .filter((item) => item.type === "Manifest")
-    .map((item, index) => ({
-      collectionId: item.parent,
-      id: item.id,
-      index,
-      label: item.label,
-    }));
+    .map((item, index) => {
+      return {
+        collectionId: item.parent,
+        id: item.id,
+        index,
+        label: item.label,
+      };
+    });
 
   log(`Creating Manifest listing...\n`);
 
@@ -133,7 +135,7 @@ module.exports.build = async (env) => {
       });
     });
 
-  log(`\nCreating facets...\n`);
+  log(`\nCreating facets as IIIF Collections...\n`);
   const canopyFacets = await buildFacets(
     env.metadata,
     canopyMetadata,
@@ -145,7 +147,7 @@ module.exports.build = async (env) => {
     JSON.stringify(canopyFacets)
   );
 
-  log(`Building search entries...\n`);
+  log(`\nBuilding search entries...\n`);
   const canopyIndex = buildIndexData(canopySearch);
   await fs.writeFile(
     `${canopyDirectory}/index.json`,
