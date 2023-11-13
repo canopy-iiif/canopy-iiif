@@ -1,7 +1,6 @@
 import "leaflet/dist/leaflet.css";
 import "leaflet.markercluster/dist/MarkerCluster.css";
 import "leaflet.markercluster/dist/MarkerCluster.Default.css";
-
 import {
   FeatureGroup,
   LayersControl,
@@ -12,31 +11,33 @@ import {
 } from "react-leaflet";
 import { Label, Thumbnail } from "@samvera/clover-iiif/primitives";
 import { useEffect, useRef, useState } from "react";
-
-import Container from "../Shared/Container";
+import Container from "@components/Shared/Container";
 import { InternationalString } from "@iiif/presentation-3";
 import Leaflet from "leaflet";
 import Link from "next/link";
-import { MapStyled } from "./Map.styled";
+import { MapStyled } from "@components/Map/Map.styled";
 import MarkerClusterGroup from "@components/Map/MarkerClusterGroup";
 import { getBounds } from "@lib/iiif/navPlace";
-import { getLabel } from "../../hooks/getLabel";
-
-const icon = Leaflet.icon({
-  iconUrl: "/images/marker-icon.png",
-  iconSize: [24, 36],
-  iconAnchor: [12, 36],
-});
+import { getLabel } from "@hooks/getLabel";
 
 interface MapProps {
   manifests: any;
 }
 
+interface MapVars {
+  defaultBounds: Leaflet.LatLngBoundsExpression;
+  enabled: boolean;
+  icon: Leaflet.IconOptions;
+  tileLayers: any;
+}
+
 const Map: React.FC<MapProps> = ({ manifests }) => {
   // @ts-ignore
-  const tileLayers = process.env.CANOPY_CONFIG.map.tileLayers;
-  const defaultBounds: Leaflet.LatLngBoundsExpression = [[51.505, -0.09]];
+  const mapVars: MapVars = process.env.CANOPY_CONFIG.map;
+  const tileLayers = mapVars.tileLayers;
+  const defaultBounds: Leaflet.LatLngBoundsExpression = mapVars.defaultBounds;
   const mapRef = useRef<Leaflet.Map>(null);
+  const icon = Leaflet.icon(mapVars.icon);
   const [bounds, setBounds] =
     useState<Leaflet.LatLngBoundsExpression>(defaultBounds);
 
