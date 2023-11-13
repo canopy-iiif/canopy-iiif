@@ -28,7 +28,7 @@ interface MapVars {
   defaultBounds: Leaflet.LatLngBoundsExpression;
   enabled: boolean;
   icon: Leaflet.IconOptions;
-  tileLayers: any;
+  tileLayers: Leaflet.TileLayer[];
 }
 
 const Map: React.FC<MapProps> = ({ manifests }) => {
