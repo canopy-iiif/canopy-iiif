@@ -1,6 +1,7 @@
 const _ = require("lodash");
 const fs = require("fs");
 const { getUniqueSlug } = require("./slug");
+const { log } = require("./log");
 
 const getFacetValues = (label, unique, counts, metadata) => {
   let rootSlugs = {};
@@ -29,18 +30,6 @@ exports.buildFacets = async (labels, metadata, manifestData, baseUrl) => {
 
   let rootSlugs = {};
 
-  // const canopyFacets = (facets = labels.map((label) => {
-  //   const values = getFacetValues(label, unique, counts, metadata);
-
-  //   const { slug, allSlugs } = getUniqueSlug(label, rootSlugs);
-  //   rootSlugs = allSlugs;
-
-  //   return {
-  //     label: label,
-  //     slug: slug,
-  //     values: _.orderBy(values, ["doc_count", "value"], ["desc", "asc"]),
-  //   };
-  // }));
   const canopyFacets = labels.map((label) => {
     const values = getFacetValues(label, unique, counts, metadata);
 
@@ -136,22 +125,36 @@ exports.buildFacetLabelCollection = (label, baseUrl) => {
 };
 
 exports.buildFacetValueCollection = (value, label, baseUrl, manifests) => {
-  const items = value.docs.map((doc) => {
-    const item = manifests.find((manifest) => manifest.index === doc);
-    return {
-      id: item.id,
-      type: "Manifest",
-      label: item.label,
-      thumbnail: item.thumbnail,
-      homepage: [
-        {
-          id: `${baseUrl}/works/${item.slug}`,
-          type: "Text",
+  const items = value.docs
+    .map((doc) => {
+      try {
+        const item = manifests.find((manifest) => manifest.index === doc);
+
+        if (!item.id) {
+          throw new Error(
+            `No manifest found for document ${doc} while creating: /api/facet/${label.slug}/${value.slug}.json\nThe Collection for this facet will be created but the document entry for the Manifest will be omitted. This might occur when the dereferenceable Manifest 'id' value does match with the source Collection 'items' Manifest 'id' entry.\n`
+          );
+        }
+
+        return {
+          id: item.id,
+          type: "Manifest",
           label: item.label,
-        },
-      ],
-    };
-  });
+          thumbnail: item.thumbnail,
+          homepage: [
+            {
+              id: `${baseUrl}/works/${item.slug}`,
+              type: "Text",
+              label: item.label,
+            },
+          ],
+        };
+      } catch (error) {
+        log(error.toString(), "red");
+        return;
+      }
+    })
+    .filter((item) => item?.id);
 
   const collection = {
     "@context": "https://iiif.io/api/presentation/3/context.json",
@@ -175,6 +178,8 @@ exports.buildFacetValueCollection = (value, label, baseUrl, manifests) => {
       },
     ],
   };
+
+  log(`↓ /api/facet/${label.slug}/${value.slug}.json \n`, "green");
 
   return collection;
 };
