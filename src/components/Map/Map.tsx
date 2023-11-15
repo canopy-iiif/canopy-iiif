@@ -35,7 +35,7 @@ const Map: React.FC<MapProps> = ({ manifests }) => {
   // @ts-ignore
   const mapVars: MapVars = process.env.CANOPY_CONFIG.map;
   const tileLayers = mapVars.tileLayers;
-  const defaultBounds: Leaflet.LatLngBoundsExpression = mapVars.defaultBounds;
+  const defaultBounds = mapVars.defaultBounds;
   const mapRef = useRef<Leaflet.Map>(null);
   const icon = Leaflet.icon(mapVars.icon);
   const [bounds, setBounds] =
