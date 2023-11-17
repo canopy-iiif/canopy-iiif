@@ -257,25 +257,23 @@ _English_ configuration found at `config/locales/en.json`
 
 Canopy allows for easy creation of contextual content that supports the automatically generated content at `/`, `search/` and `works/`. For the purpose of easy content generation Canopy utilizes [MDX](https://mdxjs.com/) which _"allows you to use JSX in your markdown content."_
 
-### Creating a Page
+### Creating Content
 
-Individual pages for Canopy IIIF are created with the `pages/` directory. Following Next.js conventions, if you create the page `pages/contact.mdx`, an accessibile path will be created at `/contact`. MDX pages will need a defined layout from `@components/Layouts/`. Addditional JSX components can be imported and integrated between markdown syntax. The final line of your file should be an export which outputs the _children_ (content) to the provided layout component.
+Canopy IIIF is designed to work with Markdown using the [MDX](https://mdxjs.com/) library. This allows us to cleanly leverage custom Canopy components alongside our Markdown content. Markdown content can be edited in the `/content` directory at the root of your Canopy IIIF project.
+
+This page is output from the `/content/about/documentation.mdx` file. See the [Markdown Example](https://canopy-iiif.github.io/canopy-iiif/about/example) page for additional information.
 
 ```jsx
-import Basic from "@components/Layouts/Basic";
-import Button from "@components/Button/Button";
+---
+title: Documentation
+navigation: "about"
+---
 
-# Contact
+# Documentation
 
-Thank you for your interest.
+Canopy IIIF is a Next.js application where production and development builds will follow Next documentation accordingly.
 
-For resource requests, please complete a request form or contact us at [email@example.org](mailto:email@example.org).
-
-<Button url="https://example.org/requests">Submit Request</Button>
-
-export default ({ children }) => <Basic content={children} />;
-
-;
+## Content continues...
 ```
 
 ## Avoiding Conflicts
