@@ -45,10 +45,10 @@ const breakpoints: SwiperBreakpoints = {
   },
 };
 
-const Slider = ({ collectionId }: { collectionId: string }) => (
+const Slider = ({ iiifContent }: { iiifContent: string }) => (
   <SliderStyled>
     <CloverSlider
-      iiifContent={collectionId}
+      iiifContent={iiifContent}
       options={{
         breakpoints: breakpoints,
       }}

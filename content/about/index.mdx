@@ -1,4 +1,7 @@
-import Basic from "@components/Layouts/Basic";
+---
+title: About
+navigation: "about"
+---
 
 # About
 
@@ -15,7 +18,3 @@ Canopy IIIF offers solutions to many use cases including:
 ## Features
 
 Canopy IIIF extends the features of Next.js to produce a full-text search index using FlexSearch, provides support for both IIIF Presentation API 2.x and 3.0 specifications, and automatically generates facets based on the curated metadata labels and values found within Manifests. The platform’s API routes return IIIF collections and allow for users to reference IIIF resources internally and externally. In addition to these features, the product roadmap and planned features include expanding internationalization support, generating interactive maps and timelines based on the presence of navPlace and navDate properties, and leveraging IIIF Content State and Change Discovery APIs.
-
-export default ({ children }) => (
-  <Basic content={children} navigation="about" />
-);

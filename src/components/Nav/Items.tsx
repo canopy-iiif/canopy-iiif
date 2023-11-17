@@ -15,7 +15,7 @@ const NavItems: React.FC<NavItemsProps> = ({
 }) => {
   return (
     <Items orientation={orientation}>
-      {items.map((item) => (
+      {items?.map((item) => (
         <NavItemsLink {...item} key={item.path} subNavigation={subNavigation} />
       ))}
     </Items>

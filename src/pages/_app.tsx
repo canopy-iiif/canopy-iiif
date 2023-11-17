@@ -7,14 +7,15 @@ import { getDefaultLang, getLocale } from "@hooks/useLocale";
 import { AppProps } from "next/app";
 import COLLECTIONS from "@.canopy/collections.json";
 import { NextSeo } from "next-seo";
-import { ObjectLiteral } from "@customTypes/index";
 import { ThemeProvider } from "next-themes";
 import { buildDefaultSEO } from "@lib/seo";
 import { darkTheme } from "../styles/stitches";
 import globalStyles from "../styles/global";
 
 interface CanopyAppProps extends AppProps {
-  pageProps: ObjectLiteral;
+  pageProps: {
+    [key: string]: any;
+  };
 }
 
 export default function CanopyAppProps({

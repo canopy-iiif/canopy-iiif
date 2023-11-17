@@ -1,0 +1,66 @@
+---
+title: "Another Markdown Example"
+navigation: "about"
+referencedManifests:
+  - "https://api.dc.library.northwestern.edu/api/v2/works/84aec8c1-42e8-4e2c-a6b2-1c7e3790217f?as=iiif"
+  - "https://api.dc.library.northwestern.edu/api/v2/works/431db4ca-a452-496e-91dc-3a266e4a2d83?as=iiif"
+  - "https://api.dc.library.northwestern.edu/api/v2/works/588a6527-88b6-4b70-ae6c-f42aceea9efb?as=iiif"
+  - "https://api.dc.library.northwestern.edu/api/v2/works/83fbe94b-6db7-463e-9942-6beb256aa606?as=iiif"
+---
+
+# Another Markdown Example
+
+In this particular example, we are creating mock content adding context to a work represented by a
+specific Manifest. To do so we add the Manifest URI to the `referencedManifests` list in front matter,
+and then use a combintation of `<Viewer/>` and `<ReferencedItems/>` components to output a deep-zoom
+IIIF viewer and a link to the respective `/work` page.
+
+## The IIIF Viewer
+
+A IIIF viewer is a React component that takes a single property, `iiifContent`, which is the URI to the
+IIIF manifest. The component will then fetch the Manifest and render a deep-zoom viewer. The viewer is
+responsive and will resize to fit the container it is placed in.
+
+<Viewer iiifContent="https://api.dc.library.northwestern.edu/api/v2/works/84aec8c1-42e8-4e2c-a6b2-1c7e3790217f?as=iiif" />
+
+## The Referenced Items
+
+The `<ReferencedItems/>` automatically outputs a grid of items that are referenced by the current page.
+
+<ReferencedItems />
+
+## Example MDX
+
+```jsx
+---
+title: "Another Markdown Example"
+navigation: "about"
+referencedManifests:
+  - "https://api.dc.library.northwestern.edu/api/v2/works/84aec8c1-42e8-4e2c-a6b2-1c7e3790217f?as=iiif"
+  - "https://api.dc.library.northwestern.edu/api/v2/works/431db4ca-a452-496e-91dc-3a266e4a2d83?as=iiif"
+  - "https://api.dc.library.northwestern.edu/api/v2/works/588a6527-88b6-4b70-ae6c-f42aceea9efb?as=iiif"
+  - "https://api.dc.library.northwestern.edu/api/v2/works/83fbe94b-6db7-463e-9942-6beb256aa606?as=iiif"
+---
+
+# Another Markdown Example
+
+In this particular example, we are creating mock content adding context to a work represented by a
+specific Manifest. To do so we add the Manifest URI to the `referencedManifests` list in front matter,
+and then use a combintation of `<Viewer/>` and `<ReferencedItems/>` components to output a deep-zoom
+IIIF viewer and a link to the respective `/work` page.
+
+## The IIIF Viewer
+
+A IIIF viewer is a React component that takes a single property, `iiifContent`, which is the URI to the
+IIIF manifest. The component will then fetch the Manifest and render a deep-zoom viewer. The viewer is
+responsive and will resize to fit the container it is placed in.
+
+<Viewer iiifContent="https://api.dc.library.northwestern.edu/api/v2/works/84aec8c1-42e8-4e2c-a6b2-1c7e3790217f?as=iiif" />
+
+## The Referenced Items
+
+The `<ReferencedItems/>` automatically outputs a grid of items that are referenced by the current page.
+
+<ReferencedItems />
+
+```

@@ -9,10 +9,6 @@ const {
   getNavigation,
 } = require("./src/lib/build/config.ts");
 
-const withMDX = require("@next/mdx")({
-  extension: /\.mdx?$/,
-});
-
 module.exports = (phase) => {
   const isDev = phase === PHASE_DEVELOPMENT_SERVER;
   const isProd = phase === PHASE_PRODUCTION_BUILD;
@@ -64,7 +60,7 @@ module.exports = (phase) => {
     ];
   };
 
-  return withMDX({
+  return {
     env,
     assetPrefix: process.env.NEXT_PUBLIC_BASE_PATH,
     basePath: process.env.NEXT_PUBLIC_BASE_PATH,
@@ -73,5 +69,5 @@ module.exports = (phase) => {
     typescript: {
       ignoreBuildErrors: true,
     },
-  });
+  };
 };

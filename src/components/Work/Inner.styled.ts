@@ -31,6 +31,12 @@ const StyledWorkInner = styled("section", {
       },
     },
   },
+
+  aside: {
+    width: "38.2%",
+    flexShrink: 0,
+    padding: "$gr3 0 $gr2 $gr6",
+  },
 });
 
 export { StyledWorkInner, WorkData };

@@ -1,6 +1,7 @@
+import { IIIFExternalWebResource, Manifest } from "@iiif/presentation-3";
+
 import { CanopyEnvironment } from "@customTypes/canopy";
 import MANIFESTS from "@.canopy/manifests.json";
-import { Manifest } from "@iiif/presentation-3";
 import { getLabel } from "./iiif/label";
 import { getRandomItem } from "./utils";
 
@@ -45,7 +46,7 @@ const buildDefaultSEO = (config: any) => {
     if (thumbnail?.length > 0) return thumbnail[0];
   });
 
-  const defaultImage = getRandomItem(candidates);
+  const defaultImage = getRandomItem(candidates as IIIFExternalWebResource[]);
 
   return {
     title,

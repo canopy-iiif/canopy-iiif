@@ -16,7 +16,7 @@ const Related: React.FC<RelatedProps> = ({
     <RelatedStyled>
       {title && <Heading as="h2">{title}</Heading>}
       {collections.map((id) => (
-        <Slider collectionId={id} key={id} />
+        <Slider iiifContent={id} key={id} />
       ))}
     </RelatedStyled>
   );

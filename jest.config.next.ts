@@ -1,3 +1,6 @@
+// This file is ignored...but keeping for future reference
+
+// @ts-ignore
 import type { JestConfigWithTsJest } from "ts-jest";
 import nextJest from "next/jest.js";
 

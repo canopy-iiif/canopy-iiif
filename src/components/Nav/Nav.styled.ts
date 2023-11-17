@@ -10,6 +10,10 @@ const Items = styled("div", {
     orientation: {
       horizontal: {
         justifyContent: "flex-end",
+
+        a: {
+          whiteSpace: "nowrap",
+        },
       },
       vertical: {
         flexDirection: "column",
@@ -23,11 +27,11 @@ const Items = styled("div", {
 
           [`&.active`]: {
             fontWeight: "800",
-            color: "$indigo12 !important",
+            color: "$slate12 !important",
           },
 
           [`&:hover`]: {
-            color: "$indigo11",
+            color: "$indigo12",
           },
         },
       },
