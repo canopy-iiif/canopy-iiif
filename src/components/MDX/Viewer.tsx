@@ -9,7 +9,7 @@ const defaultOptions = {
   },
 };
 
-const EmbedViewer = ({
+const MDXViewer = ({
   iiifContent,
   options = defaultOptions,
 }: {
@@ -19,4 +19,4 @@ const EmbedViewer = ({
   return <Viewer iiifContent={iiifContent} options={options} />;
 };
 
-export default EmbedViewer;
+export default MDXViewer;

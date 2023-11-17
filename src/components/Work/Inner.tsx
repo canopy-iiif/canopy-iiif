@@ -7,12 +7,14 @@ import {
 import { StyledWorkInner, WorkData } from "@components/Work/Inner.styled";
 
 import { DefinitionListWrapper } from "../Shared/DefinitionList.styled";
-import FACETS from "@.canopy/facets";
+import FACETS from "@.canopy/facets.json";
 import Heading from "@components/Shared/Heading/Heading";
 import Link from "next/link";
 import { Manifest } from "@iiif/presentation-3";
 import ManifestId from "./ManifestId";
 import React from "react";
+import ReferencingContent from "@components/Work/ReferencingContent";
+import { type NavigationItem } from "@src/customTypes/navigation";
 
 interface ValueAsListItemProps {
   searchParam: string;
@@ -43,9 +45,13 @@ export const ValueAsListItem: React.FC<ValueAsListItemProps> = ({
 
 interface WorkInnerProps {
   manifest: Manifest;
+  referencingContent?: NavigationItem[];
 }
 
-const WorkInner: React.FC<WorkInnerProps> = ({ manifest }) => {
+const WorkInner: React.FC<WorkInnerProps> = ({
+  manifest,
+  referencingContent,
+}) => {
   const { id, label, metadata, requiredStatement, summary } = manifest;
 
   const formattedValues = FACETS.map((value: any) => {
@@ -66,18 +72,25 @@ const WorkInner: React.FC<WorkInnerProps> = ({ manifest }) => {
         {summary && (
           <Summary summary={summary} as="p" className="work-summary" />
         )}
-        <DefinitionListWrapper>
-          {metadata && (
-            <Metadata
-              customValueContent={formattedValues}
-              metadata={metadata}
-            />
-          )}
-          {requiredStatement && (
-            <RequiredStatement requiredStatement={requiredStatement} />
-          )}
-          <ManifestId manifestId={id} />
-        </DefinitionListWrapper>
+        <div style={{ display: "flex" }}>
+          <DefinitionListWrapper>
+            {metadata && (
+              <Metadata
+                customValueContent={formattedValues}
+                metadata={metadata}
+              />
+            )}
+            {requiredStatement && (
+              <RequiredStatement requiredStatement={requiredStatement} />
+            )}
+            <ManifestId manifestId={id} />
+          </DefinitionListWrapper>
+          <aside>
+            {referencingContent && referencingContent.length > 0 && (
+              <ReferencingContent referencingContent={referencingContent} />
+            )}
+          </aside>
+        </div>
       </WorkData>
     </StyledWorkInner>
   );

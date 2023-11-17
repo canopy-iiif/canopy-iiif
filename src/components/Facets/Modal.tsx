@@ -14,7 +14,7 @@ import {
 
 import { ButtonStyled } from "../Shared/Button/Button.styled";
 import { Cross2Icon } from "@radix-ui/react-icons";
-import FACETS from "@.canopy/facets";
+import FACETS from "../../../.canopy/facets.json";
 import Facet from "./Facet";
 import { LocaleString } from "@hooks/useLocale";
 import React from "react";

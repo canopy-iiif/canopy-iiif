@@ -38,17 +38,20 @@ const NavItemsLink: React.FC<NavItemsLinkProps> = ({
     }
   };
 
+  const { query, pathname } = router;
+  const constructedPath = pathname.replace(/\[.*\]/, query?.slug as string);
+
   return (
     <>
       <Link
         href={path}
-        className={router.pathname == path ? "active" : ""}
+        className={path === constructedPath ? "active" : ""}
         onClick={handleOnClick}
         ref={linkRef}
       >
         {text}
       </Link>
-      {subNavigation && path === router.pathname && (
+      {subNavigation && path === constructedPath && (
         <Nav items={subNavigation} orientation={"vertical"} />
       )}
     </>

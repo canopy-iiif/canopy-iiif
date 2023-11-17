@@ -4,25 +4,21 @@ import {
   ContentStyled,
   ContentWrapper,
 } from "@components/Shared/Content.styled";
-import { ReactElement, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 import Container from "@components/Shared/Container";
+import FrontMatterContext from "@src/context/front-matter";
 import Layout from "@components/layout";
+import { LayoutFrontMatter } from "@src/customTypes/content";
 import Nav from "@components/Nav/Nav";
 import { NavigationItem } from "@customTypes/navigation";
 import { getSlug } from "@lib/build/slug";
 import { renderToStaticMarkup } from "react-dom/server";
 
-const LayoutsBasic = ({
-  content,
-  navigation,
-}: {
-  content: ReactElement;
-  navigation?: NavigationItem[];
-}) => {
+const LayoutsBasic = ({ content, frontMatter }: LayoutFrontMatter) => {
   // @ts-ignore
   const navItems = process.env.CANOPY_CONFIG.navigation[
-    navigation
+    frontMatter.navigation
   ] as NavigationItem[];
   const [subNavigation, setSubNavigation] = useState<NavigationItem[]>();
 
@@ -41,22 +37,24 @@ const LayoutsBasic = ({
 
   return (
     <Layout>
-      <Container containerType="wide">
-        <ContentWrapper aside={true}>
-          {navigation && (
-            <AsideStyled>
-              <AsideFixedContent>
-                <Nav
-                  items={navItems}
-                  subNavigation={subNavigation}
-                  orientation="vertical"
-                />
-              </AsideFixedContent>
-            </AsideStyled>
-          )}
-          <ContentStyled>{content}</ContentStyled>
-        </ContentWrapper>
-      </Container>
+      <FrontMatterContext.Provider value={frontMatter}>
+        <Container containerType="wide">
+          <ContentWrapper aside={true}>
+            {frontMatter.navigation && (
+              <AsideStyled>
+                <AsideFixedContent>
+                  <Nav
+                    items={navItems}
+                    subNavigation={subNavigation}
+                    orientation="vertical"
+                  />
+                </AsideFixedContent>
+              </AsideStyled>
+            )}
+            <ContentStyled>{content}</ContentStyled>
+          </ContentWrapper>
+        </Container>
+      </FrontMatterContext.Provider>
     </Layout>
   );
 };

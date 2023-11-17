@@ -14,24 +14,24 @@ const CloverViewer: React.ComponentType<{
 
 const customTheme = {
   colors: {
-    accent: "$indigo10",
-    accentAlt: "$indigo11",
-    accentMuted: "$indigo8",
-    primary: "$slate12",
-    primaryAlt: "$slate12",
-    primaryMuted: "$slate10",
-    secondary: "$slate1",
-    secondaryAlt: "$slate3",
-    secondaryMuted: "$slate2",
+    accent: "var(--colors-indigo10)",
+    accentAlt: "var(--colors-indigo11)",
+    accentMuted: "var(--colors-indigo8)",
+    primary: "var(--colors-slate12)",
+    primaryAlt: "var(--colors-slate12)",
+    primaryMuted: "var(--colors-slate10)",
+    secondary: "var(--colors-slate1)",
+    secondaryAlt: "var(--colors-slate3)",
+    secondaryMuted: "var(--colors-slate2)",
   },
   fonts: {
-    sans: `$sans`,
-    display: `$display`,
+    sans: `var(--canopy-sans-font)`,
+    display: `var(--canopy-display-font)`,
   },
 };
 
 const defaultOptions = {
-  canvasBackgroundColor: `$slate6`,
+  canvasBackgroundColor: "var(--colors-slate4)",
   canvasHeight: `600px`,
   openSeadragon: {
     gestureSettingsMouse: {

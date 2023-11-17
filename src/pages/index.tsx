@@ -1,36 +1,43 @@
-import { ArrowRightIcon, GitHubLogoIcon } from "@radix-ui/react-icons";
-
-import Button from "../components/Shared/Button/Button";
-import { ButtonWrapper } from "../components/Shared/Button/Button.styled";
 import { CanopyEnvironment } from "@customTypes/canopy";
+import CanopyMDXRemote from "@src/components/MDX";
 import Container from "@components/Shared/Container";
 import FACETS from "@.canopy/facets.json";
-import Heading from "../components/Shared/Heading/Heading";
 import Hero from "@components/Hero/Hero";
 import { HeroWrapper } from "../components/Hero/Hero.styled";
 import Layout from "@components/layout";
 import { LocaleString } from "@hooks/useLocale";
+import { MDXRemoteSource } from "@customTypes/content";
 import React from "react";
 import Related from "../components/Related/Related";
 import { canopyManifests } from "@lib/constants/canopy";
 import { createCollection } from "../lib/iiif/constructors/collection";
+import { getMarkdownContent } from "@src/lib/contentHelpers";
 import { getRelatedFacetValue } from "../lib/iiif/constructors/related";
 import { useCanopyState } from "@context/canopy";
 
 interface IndexProps {
-  featuredItem: any;
-  collections: string[];
+  featuredItems: any;
+  frontMatter: {
+    [key: string]: any;
+  };
+  metadataCollections: string[];
+  source: MDXRemoteSource;
 }
 
-const Index: React.FC<IndexProps> = ({ featuredItem, collections }) => {
+const Index: React.FC<IndexProps> = ({
+  featuredItems,
+  frontMatter,
+  metadataCollections,
+  source,
+}) => {
   const { canopyState } = useCanopyState();
   const {
     config: { baseUrl },
   } = canopyState;
 
   const hero = {
-    ...featuredItem,
-    items: featuredItem.items.map((item: any) => {
+    ...featuredItems,
+    items: featuredItems.items.map((item: any) => {
       return {
         ...item,
         homepage: [
@@ -46,67 +53,61 @@ const Index: React.FC<IndexProps> = ({ featuredItem, collections }) => {
 
   return (
     <Layout>
-      <HeroWrapper>
-        <Hero collection={hero} />
-      </HeroWrapper>
+      {frontMatter.showHero && (
+        <HeroWrapper>
+          <Hero collection={hero} />
+        </HeroWrapper>
+      )}
       <Container>
-        <Heading as="h2">About Canopy</Heading>
         <div>
-          <p>
-            <strong>Canopy IIIF</strong> is a purely{" "}
-            <a href="https://iiif.io/">IIIF</a> sourced site generator using
-            Next.js. Canopy is an experimental application that will standup a
-            browseable and searchable digital collections style site entirely
-            from a{" "}
-            <a href="https://iiif.io/api/presentation/3.0/#51-collection">
-              IIIF Collection
-            </a>{" "}
-            and the resources it references.
-          </p>
-          <ButtonWrapper>
-            <Button href="/about" buttonType="primary">
-              Read More &nbsp;
-              <ArrowRightIcon />
-            </Button>
-            <Button
-              href="https://github.com/canopy-iiif/canopy-iiif"
-              buttonType="secondary"
-            >
-              View Code &nbsp;
-              <GitHubLogoIcon />
-            </Button>
-          </ButtonWrapper>
+          <CanopyMDXRemote {...source} />{" "}
         </div>
-        <Related
-          collections={collections}
-          title={LocaleString("homepageHighlightedWorks")}
-        />
+        {frontMatter.showHighlighted && (
+          <Related
+            collections={metadataCollections}
+            title={LocaleString("homepageHighlightedWorks")}
+          />
+        )}
       </Container>
     </Layout>
   );
 };
 
 export async function getStaticProps() {
+  // Get Front Matter and Markdown content from default content folder: /content/index.mdx
+  const { frontMatter, source } = await getMarkdownContent({
+    slug: "index",
+    directory: "",
+  });
+
+  /**
+   * Handle presentation logic below, determined by Front Matter config?
+   */
+
   const manifests = canopyManifests();
 
   // @ts-ignore
-  const { featured, metadata, baseUrl } = process.env
+  const { featured, baseUrl } = process.env
     ?.CANOPY_CONFIG as unknown as CanopyEnvironment;
 
   const randomFeaturedItem =
     manifests[Math.floor(Math.random() * manifests.length)];
-  const featuredItem = await createCollection(
+  const featuredItems = await createCollection(
     featured ? featured : [randomFeaturedItem.id]
   );
 
-  const collections = FACETS.map((facet) => {
+  const metadataCollections = FACETS.map((facet) => {
     const value = getRelatedFacetValue(facet.label);
     return `${baseUrl}/api/facet/${facet.slug}/${value.slug}.json?sort=random`;
   });
 
   return {
-    props: { metadata, featuredItem, collections },
-    revalidate: 3600,
+    props: {
+      metadataCollections,
+      featuredItems,
+      frontMatter,
+      source,
+    },
   };
 }
 
