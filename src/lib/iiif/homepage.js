@@ -2,10 +2,10 @@
  *
  */
 
-exports.getHomepageBySlug = (slug = "", label = "") => {
+exports.getHomepageBySlug = (slug = "", label = "", baseUrl) => {
   return [
     {
-      id: slug,
+      id: `${baseUrl}/works/${slug}`,
       type: "Text",
       label: label,
     },

@@ -4,10 +4,10 @@ const { getPresentation3 } = require("../context");
 const { getHomepageBySlug } = require("../homepage");
 const { getRepresentativeImage } = require("../image");
 
-async function createCollection(iiifResources, label = "") {
+async function createCollection(iiifResources, baseUrl, label = "") {
   const items = await getCollectionItems(iiifResources);
   const complete_items = await Promise.all(
-    items.map(async (resource) => await createItem(resource))
+    items.map(async (resource) => await createItem(resource, baseUrl))
   );
   return {
     "@context": "https://iiif.io/api/presentation/3/context.json",
@@ -18,7 +18,7 @@ async function createCollection(iiifResources, label = "") {
   };
 }
 
-async function createItem(resource) {
+async function createItem(resource, baseUrl) {
   const item = MANIFESTS.find((item) => item.id === resource.id);
   if (item?.slug) {
     const { best } = await getRepresentativeImage(resource, 2000);
@@ -36,7 +36,7 @@ async function createItem(resource) {
             },
           ]
         : [],
-      homepage: getHomepageBySlug(item.slug, resource.label),
+      homepage: getHomepageBySlug(item.slug, resource.label, baseUrl),
     };
   } else {
     return {

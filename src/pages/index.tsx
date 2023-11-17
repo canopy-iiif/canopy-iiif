@@ -13,7 +13,6 @@ import { canopyManifests } from "@lib/constants/canopy";
 import { createCollection } from "../lib/iiif/constructors/collection";
 import { getMarkdownContent } from "@src/lib/contentHelpers";
 import { getRelatedFacetValue } from "../lib/iiif/constructors/related";
-import { useCanopyState } from "@context/canopy";
 
 interface IndexProps {
   featuredItems: any;
@@ -30,37 +29,16 @@ const Index: React.FC<IndexProps> = ({
   metadataCollections,
   source,
 }) => {
-  const { canopyState } = useCanopyState();
-  const {
-    config: { baseUrl },
-  } = canopyState;
-
-  const hero = {
-    ...featuredItems,
-    items: featuredItems.items.map((item: any) => {
-      return {
-        ...item,
-        homepage: [
-          {
-            id: `${baseUrl}/works/`,
-            type: "Text",
-            label: item.label,
-          },
-        ],
-      };
-    }),
-  };
-
   return (
     <Layout>
       {frontMatter.showHero && (
         <HeroWrapper>
-          <Hero collection={hero} />
+          <Hero collection={featuredItems} />
         </HeroWrapper>
       )}
       <Container>
         <div>
-          <CanopyMDXRemote {...source} />{" "}
+          <CanopyMDXRemote {...source} />
         </div>
         {frontMatter.showHighlighted && (
           <Related
@@ -93,7 +71,8 @@ export async function getStaticProps() {
   const randomFeaturedItem =
     manifests[Math.floor(Math.random() * manifests.length)];
   const featuredItems = await createCollection(
-    featured ? featured : [randomFeaturedItem.id]
+    featured ? featured : [randomFeaturedItem.id],
+    baseUrl
   );
 
   const metadataCollections = FACETS.map((facet) => {
