@@ -29,13 +29,17 @@ export async function getStaticPaths() {
   );
 
   const fileNames = fs.readdirSync(contentDirectoryPath);
-  const paths = fileNames.map((fileName) => {
-    return {
-      params: {
-        slug: getSlugFromFileName(fileName),
-      },
-    };
-  });
+  const paths = fileNames
+    .filter((filename) => {
+      return path.extname(filename).toLowerCase() === ".mdx";
+    })
+    .map((fileName) => {
+      return {
+        params: {
+          slug: getSlugFromFileName(fileName),
+        },
+      };
+    });
   return {
     paths,
     fallback: false,
