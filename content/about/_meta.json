@@ -12,6 +12,10 @@
     "text": "Markdown Example"
   },
   {
+    "path": "/about/another-example",
+    "text": "Another Markdown Example"
+  },
+  {
     "path": "/about/history",
     "text": "Project History"
   }

@@ -2,21 +2,23 @@ import { useEffect, useState } from "react";
 
 import { NavigationItem } from "@src/customTypes/navigation";
 
-const useNavigation = ({ relativePath = "" }: { relativePath?: string }) => {
-  const [navigation, setNavigation] = useState<NavigationItem[]>([]);
+const useNavigation = ({ relativePath }: { relativePath?: string }) => {
+  const [navigation, setNavigation] = useState<NavigationItem[]>();
 
   useEffect(() => {
     (async () => {
       try {
+        if (typeof relativePath === "undefined") return;
+
         const contentDirectory = "content/";
         const directory = relativePath
           ? `${contentDirectory}${relativePath}`
           : contentDirectory;
 
         const data = await import(`../../${directory}_meta.json`);
-        const json = transformObjectWithGetters(
+        const json: NavigationItem[] = transformObjectWithGetters(
           data?.default
-        ) as NavigationItem[];
+        );
 
         setNavigation(json);
       } catch (error) {
@@ -48,7 +50,7 @@ function transformObjectWithGetters(obj: any) {
     }
   }
 
-  return result;
+  return result as NavigationItem[];
 }
 
 export default useNavigation;

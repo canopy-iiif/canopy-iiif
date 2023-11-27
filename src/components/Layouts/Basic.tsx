@@ -18,7 +18,9 @@ import useNavigation from "@src/hooks/useNavigation";
 
 const LayoutsBasic = ({ content, frontMatter }: LayoutFrontMatter) => {
   // path relative to the `content/` directory
-  const navigationPath = `${frontMatter.navigation}/`;
+  const navigationPath = frontMatter.navigation
+    ? `${frontMatter.navigation}/`
+    : undefined;
 
   const { navigation } = useNavigation({
     relativePath: navigationPath,
@@ -42,17 +44,15 @@ const LayoutsBasic = ({ content, frontMatter }: LayoutFrontMatter) => {
     <Layout>
       <FrontMatterContext.Provider value={frontMatter}>
         <Container containerType="wide">
-          <ContentWrapper aside={true}>
-            {frontMatter.navigation && (
+          <ContentWrapper aside={Boolean(navigation)}>
+            {frontMatter.navigation && navigation && (
               <AsideStyled>
                 <AsideFixedContent>
-                  {navigation && (
-                    <Nav
-                      items={navigation}
-                      subNavigation={subNavigation}
-                      orientation="vertical"
-                    />
-                  )}
+                  <Nav
+                    items={navigation}
+                    subNavigation={subNavigation}
+                    orientation="vertical"
+                  />
                 </AsideFixedContent>
               </AsideStyled>
             )}
