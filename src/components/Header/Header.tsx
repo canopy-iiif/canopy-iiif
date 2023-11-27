@@ -10,10 +10,8 @@ import Nav from "@components/Nav/Nav";
 import Search from "@components/Search/Search";
 import collections from "@.canopy/collections.json";
 import { useCanopyState } from "@context/canopy";
+import useNavigation from "@src/hooks/useNavigation";
 import { useRouter } from "next/router";
-
-// @ts-ignore
-const navItems = process.env.CANOPY_CONFIG.navigation.primary;
 
 const Header = () => {
   const [showNav, setShowNav] = useState(false);
@@ -22,7 +20,11 @@ const Header = () => {
   const { canopyState } = useCanopyState();
   const { headerVisible } = canopyState;
 
-  useEffect(() => setShowNav(false), [pathname, query]);
+  const { navigation } = useNavigation({ relativePath: "" });
+
+  useEffect(() => {
+    setShowNav(false);
+  }, [pathname, query]);
 
   const handleShowNav = () => setShowNav(!showNav);
 
@@ -41,7 +43,7 @@ const Header = () => {
         </ResponsiveActions>
         <Actions showNav={showNav}>
           <Search />
-          <Nav items={navItems} />
+          {navigation && <Nav items={navigation} />}
           <Locale />
         </Actions>
       </Content>

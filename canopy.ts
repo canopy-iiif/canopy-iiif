@@ -12,7 +12,6 @@ const args = process.argv;
 
   const config = buildConfig.getConfig(path);
   const options = buildConfig.getOptions();
-  const navigation = buildConfig.getNavigation();
   const { prod, dev } = config;
 
   config.environment = args.includes("dev") ? dev : prod;
@@ -27,7 +26,6 @@ const args = process.argv;
   const env = {
     CANOPY_CONFIG: {
       ...config.environment,
-      navigation: navigation,
       ...config.options,
       url,
       basePath,
