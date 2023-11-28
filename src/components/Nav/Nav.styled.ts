@@ -18,7 +18,7 @@ const Items = styled("div", {
       vertical: {
         flexDirection: "column",
         alignItems: "flex-start",
-        padding: "0",
+        padding: "0 0 $gr4",
 
         a: {
           color: "$slate10",
@@ -26,7 +26,6 @@ const Items = styled("div", {
           marginBottom: "0",
 
           [`&.active`]: {
-            fontWeight: "800",
             color: "$slate12 !important",
           },
 
@@ -84,6 +83,10 @@ const Wrapper = styled("nav", {
     margin: "$gr2 0",
     padding: "0 $gr3",
     borderLeft: "2px solid $slate4",
+
+    [`& ${Items}`]: {
+      paddingBottom: "0",
+    },
 
     "a:first-child": {
       paddingTop: 0,

@@ -54,11 +54,6 @@ const ContentWrapper = styled("div", {
           flexDirection: "column",
         },
       },
-      false: {
-        [`& ${ContentStyled}`]: {
-          width: "100%",
-        },
-      },
     },
   },
 

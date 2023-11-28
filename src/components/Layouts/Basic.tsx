@@ -45,14 +45,16 @@ const LayoutsBasic = ({ content, frontMatter }: LayoutFrontMatter) => {
       <FrontMatterContext.Provider value={frontMatter}>
         <Container containerType="wide">
           <ContentWrapper aside={Boolean(navigation)}>
-            {frontMatter.navigation && navigation && (
+            {frontMatter.navigation && (
               <AsideStyled>
                 <AsideFixedContent>
-                  <Nav
-                    items={navigation}
-                    subNavigation={subNavigation}
-                    orientation="vertical"
-                  />
+                  {navigation && (
+                    <Nav
+                      items={navigation}
+                      subNavigation={subNavigation}
+                      orientation="vertical"
+                    />
+                  )}
                 </AsideFixedContent>
               </AsideStyled>
             )}

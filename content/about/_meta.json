@@ -13,7 +13,7 @@
   },
   {
     "path": "/about/another-example",
-    "text": "Another Markdown Example"
+    "text": "Another  Example"
   },
   {
     "path": "/about/history",
