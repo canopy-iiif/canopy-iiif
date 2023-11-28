@@ -25,3 +25,17 @@ export default function MapPage() {
     </Layout>
   );
 }
+
+export async function getStaticProps() {
+  const enabled =  process.env.CANOPY_CONFIG.map.enabled;
+
+  if (!enabled) {
+    return {
+      notFound: true,
+    }
+  }
+
+  return {
+    props: { }
+  }
+}
