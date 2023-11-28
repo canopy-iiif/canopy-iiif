@@ -5,18 +5,19 @@ import React from "react";
 import { canopyManifests } from "@lib/constants/canopy";
 import dynamic from "next/dynamic";
 import { getFeatures } from "@lib/iiif/navPlace";
+import { Manifest } from "@iiif/presentation-3";
 
 const Map = dynamic(() => import("../components/Map/Map"), { ssr: false });
 
-export default function MapPage() {
-  const manifests = canopyManifests();
-  const navPlace_Manifests = manifests.filter(
-    // @ts-ignore
-    (manifest) => manifest.navPlace
-  );
+interface MapPageProps {
+  manifests: Manifest[];
+}
 
-  // @ts-ignore
-  const features: any = getFeatures(navPlace_Manifests);
+export default function MapPage({ manifests }: MapPageProps) {
+  console.log(manifests);
+  const navPlaceManifests = manifests.filter((manifest) => manifest.navPlace);
+  const features = getFeatures(navPlaceManifests);
+
   return (
     <Layout>
       <div>
@@ -35,7 +36,17 @@ export async function getStaticProps() {
     }
   }
 
-  return {
-    props: { }
+  try {
+    return {
+      props: {
+        manifests: canopyManifests(),
+      },
+    };
+  } catch (error) {
+    console.error("Error fetching data:", error);
+
+    return {
+      notFound: true
+    };
   }
 }
