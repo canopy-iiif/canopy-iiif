@@ -14,7 +14,6 @@ interface MapPageProps {
 }
 
 export default function MapPage({ manifests }: MapPageProps) {
-  console.log(manifests);
   const navPlaceManifests = manifests.filter((manifest) => manifest.navPlace);
   const features = getFeatures(navPlaceManifests);
 
