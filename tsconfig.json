@@ -16,6 +16,7 @@
       "@*": ["*"],
       "@components/*": ["src/components/*"],
       "@config/*": ["config/*"],
+      "@content/*": ["content/*"],
       "@context/*": ["src/context/*"],
       "@customTypes/*": ["src/customTypes/*"],
       "@hooks/*": ["src/hooks/*"],

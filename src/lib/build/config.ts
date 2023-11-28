@@ -21,21 +21,6 @@ const getConfig = (path = `./config/.default/canopy.default.json`) => {
   return JSON.parse(config);
 };
 
-function getNavigation(path = `./config/.default/navigation.default.json`) {
-  const defaultNavigation = fs.readFileSync(path, {});
-
-  let data;
-  try {
-    data = fs.readFileSync(`./config/navigation.json`, {});
-  } catch (err) {
-    ("Using default navigation for demonstration, please follow documentation for creating custom navigation.");
-  }
-
-  const navigation = data ? data : defaultNavigation;
-
-  return JSON.parse(navigation);
-}
-
 function getOptions(path = `./config/.default/options.default.json`) {
   const defaultOptions = fs.readFileSync(path, {});
 
@@ -53,6 +38,5 @@ function getOptions(path = `./config/.default/options.default.json`) {
 
 module.exports = {
   getConfig,
-  getNavigation,
   getOptions,
 };

@@ -14,12 +14,17 @@ import Nav from "@components/Nav/Nav";
 import { NavigationItem } from "@customTypes/navigation";
 import { getSlug } from "@lib/build/slug";
 import { renderToStaticMarkup } from "react-dom/server";
+import useNavigation from "@src/hooks/useNavigation";
 
 const LayoutsBasic = ({ content, frontMatter }: LayoutFrontMatter) => {
-  // @ts-ignore
-  const navItems = process.env.CANOPY_CONFIG.navigation[
-    frontMatter.navigation
-  ] as NavigationItem[];
+  // path relative to the `content/` directory
+  const navigationPath = frontMatter.navigation
+    ? `${frontMatter.navigation}/`
+    : undefined;
+
+  const { navigation } = useNavigation({
+    relativePath: navigationPath,
+  });
   const [subNavigation, setSubNavigation] = useState<NavigationItem[]>();
 
   useEffect(() => {
@@ -39,15 +44,17 @@ const LayoutsBasic = ({ content, frontMatter }: LayoutFrontMatter) => {
     <Layout>
       <FrontMatterContext.Provider value={frontMatter}>
         <Container containerType="wide">
-          <ContentWrapper aside={true}>
+          <ContentWrapper aside={Boolean(navigation)}>
             {frontMatter.navigation && (
               <AsideStyled>
                 <AsideFixedContent>
-                  <Nav
-                    items={navItems}
-                    subNavigation={subNavigation}
-                    orientation="vertical"
-                  />
+                  {navigation && (
+                    <Nav
+                      items={navigation}
+                      subNavigation={subNavigation}
+                      orientation="vertical"
+                    />
+                  )}
                 </AsideFixedContent>
               </AsideStyled>
             )}

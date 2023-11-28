@@ -1,0 +1,22 @@
+[
+  {
+    "path": "/about",
+    "text": "About"
+  },
+  {
+    "path": "/about/documentation",
+    "text": "Documentation"
+  },
+  {
+    "path": "/about/example",
+    "text": "Markdown Example"
+  },
+  {
+    "path": "/about/another-example",
+    "text": "Another  Example"
+  },
+  {
+    "path": "/about/history",
+    "text": "Project History"
+  }
+]
