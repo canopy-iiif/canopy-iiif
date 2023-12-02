@@ -1,35 +1,15 @@
-import { NavigationItem } from "../navigation";
-
-type CanopyBuildConfig = {
-  dev: CanopyBuildConfigValues;
-  environment: CanopyBuildConfigValues;
-  options: any;
-  prod: CanopyBuildConfigValues;
-};
-
 type CanopyBuildConfigValues = {
-  label: { none: Array<string> };
   collection: string;
-  featured: Array<string>;
+  featured?: Array<string>;
+  label?: { none: Array<string> };
   metadata: Array<string>;
+  summary?: { none: Array<string> };
 };
 
-type CanopyBuildNavigation = {
-  primary: Array<NavigationItem>;
-  secondary: Array<NavigationItem>;
-};
-
-type CanopyConfig = {
-  environment: CanopyBuildConfigValues;
-  options: any;
+interface CanopyConfig extends CanopyBuildConfigValues {
   url: string;
   basePath: string;
   baseUrl: string;
-};
+}
 
-export {
-  type CanopyBuildConfig,
-  type CanopyBuildConfigValues,
-  type CanopyBuildNavigation,
-  type CanopyConfig,
-};
+export { type CanopyBuildConfigValues, type CanopyConfig };

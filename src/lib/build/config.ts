@@ -1,6 +1,9 @@
 const fs = require("fs");
 
-const getConfig = (path = `./config/.default/canopy.default.json`) => {
+const getConfig = (
+  path = `./config/.default/canopy.default.json`,
+  isDev = false
+) => {
   const defaultData = fs.readFileSync(path, {});
 
   if (path.includes("./config/.fixtures/")) {
@@ -16,27 +19,39 @@ const getConfig = (path = `./config/.default/canopy.default.json`) => {
     );
   }
 
-  const config = data ? data : defaultData;
+  const defaultConfig = JSON.parse(defaultData);
+  const config = data && JSON.parse(data);
 
-  return JSON.parse(config);
-};
-
-function getOptions(path = `./config/.default/options.default.json`) {
-  const defaultOptions = fs.readFileSync(path, {});
-
-  let data;
-  try {
-    data = fs.readFileSync(`./config/options.json`, {});
-  } catch (err) {
-    ("Using default options for demonstration, please follow documentation for creating custom options.");
+  /**
+   * If the user has not specified metadata, but has specified a collection,
+   * we need to create an empty array for the metadata.
+   */
+  if (config?.collection && config?.metadata === undefined) {
+    config.metadata = [];
   }
 
-  const options = data ? data : defaultOptions;
+  /**
+   * If the user has not specified featured, but has specified a collection,
+   * we need to set featured to undefined.
+   */
+  if (config?.collection && config?.featured === undefined) {
+    config.featured = undefined;
+  }
 
-  return JSON.parse(options);
-}
+  /**
+   * Check if we are in dev mode and if the user has specified a dev collection.
+   * If so, we need to override the collection with the dev collection.
+   */
+  if (isDev && config?.devCollection) {
+    config.collection = config.devCollection;
+  }
+
+  return {
+    ...defaultConfig,
+    ...config,
+  };
+};
 
 module.exports = {
   getConfig,
-  getOptions,
 };

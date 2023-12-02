@@ -103,10 +103,11 @@ module.exports.build = async (env) => {
    */
   let canopyMetadata = [];
   let canopySearch = [];
+
   manifests
     .filter((manifest) => manifest?.type === "Manifest")
     .forEach((manifest) => {
-      const settings = env.search.index;
+      const settings = env?.search?.index;
       canopySearch.push({
         index: manifest.index,
         label: manifest.label,

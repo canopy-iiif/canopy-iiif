@@ -76,8 +76,8 @@ export async function getStaticProps() {
   );
 
   const metadataCollections = FACETS.map((facet) => {
-    const value = getRelatedFacetValue(facet.label);
-    return `${baseUrl}/api/facet/${facet.slug}/${value.slug}.json?sort=random`;
+    const value = getRelatedFacetValue(facet?.label);
+    return `${baseUrl}/api/facet/${facet?.slug}/${value?.slug}.json?sort=random`;
   });
 
   return {
