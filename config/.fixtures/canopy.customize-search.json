@@ -1,0 +1,44 @@
+{
+  "collection": "https://api.dc.library.northwestern.edu/api/v2/collections/c373ecd2-2c45-45f2-9f9e-52dc244870bd?as=iiif",
+  "featured": [
+    "https://api.dc.library.northwestern.edu/api/v2/works/2de0355c-8e48-4478-93af-8cbd1437bd16?as=iiif"
+  ],
+  "metadata": ["Date", "Subject"],
+  "search": {
+    "enabled": true,
+    "flexSearch": {
+      "charset": ["latin:extra"],
+      "optimize": true,
+      "tokenize": "strict",
+      "bidirectional": false,
+      "document": {
+        "index": [
+          {
+            "field": "label",
+            "tokenize": "full",
+            "resolution": 9,
+            "depth": 3,
+            "bidirectional": true
+          },
+          {
+            "field": "metadata",
+            "resolution": 2
+          },
+          {
+            "field": "summary",
+            "resolution": 1
+          }
+        ]
+      }
+    },
+    "index": {
+      "metadata": {
+        "enabled": true,
+        "all": true
+      },
+      "summary": {
+        "enabled": true
+      }
+    }
+  }
+}

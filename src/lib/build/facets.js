@@ -30,7 +30,7 @@ exports.buildFacets = async (labels, metadata, manifestData, baseUrl) => {
 
   let rootSlugs = {};
 
-  const canopyFacets = labels.map((label) => {
+  const canopyFacets = labels?.map((label) => {
     const values = getFacetValues(label, unique, counts, metadata);
 
     const { slug, allSlugs } = getUniqueSlug(label, rootSlugs);
@@ -53,7 +53,7 @@ exports.buildFacets = async (labels, metadata, manifestData, baseUrl) => {
     // create facet directory if it doesn't exist
     if (!fs.existsSync(`${api}/facet`)) fs.mkdirSync(`${api}/facet`);
 
-    canopyFacets.forEach((label) => {
+    canopyFacets?.forEach((label) => {
       const labelDirectory = `${api}/facet/${label.slug}`;
       const labelCollection = this.buildFacetLabelCollection(label, baseUrl);
 

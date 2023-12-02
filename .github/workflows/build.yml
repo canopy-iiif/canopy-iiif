@@ -15,3 +15,11 @@ jobs:
         run: npm run prebuild -- --path=./config/.fixtures/canopy.presentation-3.json
       - name: IIIF Presentation API 3.0 Collection (Build)
         run: npm run test-build
+      - name: Customize Search (Aggregation)
+        run: npm run prebuild -- --path=./config/.fixtures/canopy.customize-search.json
+      - name: Customize Search (Build)
+        run: npm run test-build
+      - name: Minimal Configuration (Aggregation)
+        run: npm run prebuild -- --path=./config/.fixtures/canopy.minimal.json
+      - name: Minimal Configuration (Build)
+        run: npm run test-build

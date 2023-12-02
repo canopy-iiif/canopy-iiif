@@ -124,7 +124,7 @@ module.exports.build = async (env) => {
       manifest.metadata.forEach((metadata) => {
         const metadataLabel = getEntries(metadata.label)[0];
         const metadataValues = getEntries(metadata.value);
-        if (env.metadata.includes(metadataLabel)) {
+        if (env?.metadata?.includes(metadataLabel)) {
           metadataValues.forEach((value) => {
             canopyMetadata.push({
               index: manifest.index,
@@ -145,7 +145,7 @@ module.exports.build = async (env) => {
   );
   await fs.writeFile(
     `${canopyDirectory}/facets.json`,
-    JSON.stringify(canopyFacets)
+    JSON.stringify(canopyFacets ? canopyFacets : [])
   );
 
   log(`\nBuilding search entries...\n`);
