@@ -110,9 +110,9 @@ module.exports.build = async (env) => {
       const settings = env?.search?.index;
       canopySearch.push({
         index: manifest.index,
-        label: manifest.label,
-        ...(settings.summary.enabled && { summary: manifest.summary }),
-        ...(settings.metadata.enabled && {
+        label: manifest?.label,
+        ...(settings?.summary?.enabled && { summary: manifest.summary }),
+        ...(settings?.metadata?.enabled && {
           metadata: manifest.metadata.filter((entry) =>
             settings.metadata.all
               ? entry
