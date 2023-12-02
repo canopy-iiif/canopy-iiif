@@ -1,18 +1,14 @@
 const fs = require("fs");
 
-const getConfig = (
-  path = `./config/.default/canopy.default.json`,
-  isDev = false
-) => {
-  const defaultData = fs.readFileSync(path, {});
-
-  if (path.includes("./config/.fixtures/")) {
-    return JSON.parse(defaultData);
-  }
+const getConfig = (path = "./config/canopy.json", isDev = false) => {
+  const defaultData = fs.readFileSync(
+    `./config/.default/canopy.default.json`,
+    {}
+  );
 
   let data;
   try {
-    data = fs.readFileSync(`./config/canopy.json`, {});
+    data = fs.readFileSync(path, {});
   } catch (err) {
     console.log(
       "Using sample data for demonstration, please follow documentation for creating a custom Canopy configuration."
