@@ -11,6 +11,7 @@
     "postbuild": "next-sitemap",
     "start": "next start",
     "test": "jest --watch",
+    "test:ci": "jest --ci",
     "test-build": "next build",
     "ts-lint": "tsc --noEmit --incremental --watch",
     "ts-lint-commit-hook": "tsc --noEmit"
