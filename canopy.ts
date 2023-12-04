@@ -14,7 +14,7 @@ const args = process.argv;
   const config = buildConfig.getConfig(path, isDev);
 
   const url = isDev ? `http://localhost:5001` : process.env.NEXT_PUBLIC_URL;
-  const basePath = process.env.NEXT_PUBLIC_BASE_PATH;
+  const basePath = isDev ? `` : process.env.NEXT_PUBLIC_BASE_PATH;
   const baseUrl = basePath ? `${url}${basePath}` : url;
 
   const env = {

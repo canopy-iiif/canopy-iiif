@@ -7,13 +7,14 @@ module.exports = (phase) => {
   const config = getConfig(undefined, isDev);
 
   const url = isDev ? `http://localhost:5001` : process.env.NEXT_PUBLIC_URL;
-  const basePath = process.env.NEXT_PUBLIC_BASE_PATH;
+  const basePath = isDev ? `` : process.env.NEXT_PUBLIC_BASE_PATH;
   const baseUrl = basePath ? `${url}${basePath}` : url;
 
   const env = {
     CANOPY_CONFIG: {
       ...config,
       url,
+      assetPrefix: basePath,
       basePath,
       baseUrl,
     },
@@ -31,8 +32,6 @@ module.exports = (phase) => {
 
   return {
     env,
-    assetPrefix: process.env.NEXT_PUBLIC_BASE_PATH,
-    basePath: process.env.NEXT_PUBLIC_BASE_PATH,
     pageExtensions: ["ts", "tsx", "js", "jsx", "md", "mdx"],
     redirects,
     typescript: {
