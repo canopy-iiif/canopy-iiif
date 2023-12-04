@@ -3,15 +3,27 @@ on: push
 jobs:
   test-build:
     runs-on: ubuntu-latest
+    # Only run if the repository is canopy-iiif/canopy-iiif
+    if: github.repository == 'canopy-iiif/canopy-iiif'
     steps:
       - uses: actions/checkout@v2
       - name: Install dependencies
         run: npm install
-      - name: IIIF Presentation API 2.x Collection (Aggregation)
+      - name: Unit testing
+        run: npm run test:ci
+      - name: 2.x Collection (Aggregation)
         run: npm run prebuild -- --path=./config/.fixtures/canopy.presentation-2.json
-      - name: IIIF Presentation API 2.x Collection (Build)
+      - name: 2.x Collection (Build)
         run: npm run test-build
-      - name: IIIF Presentation API 3.0 Collection (Aggregation)
+      - name: 3.0 Collection (Aggregation)
         run: npm run prebuild -- --path=./config/.fixtures/canopy.presentation-3.json
-      - name: IIIF Presentation API 3.0 Collection (Build)
+      - name: 3.0 Collection (Build)
+        run: npm run test-build
+      - name: Customize Search (Aggregation)
+        run: npm run prebuild -- --path=./config/.fixtures/canopy.customize-search.json
+      - name: Customize Search (Build)
+        run: npm run test-build
+      - name: Minimal Configuration (Aggregation)
+        run: npm run prebuild -- --path=./config/.fixtures/canopy.minimal.json
+      - name: Minimal Configuration (Build)
         run: npm run test-build

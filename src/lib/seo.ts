@@ -40,7 +40,7 @@ const buildDefaultSEO = (config: any) => {
   const description = getLabel(summary).join(" - ");
   const featured = config.featured;
 
-  const candidates = featured.map((item: any) => {
+  const candidates = featured?.map((item: any) => {
     const manifest = MANIFESTS.find((manifest: any) => manifest?.id === item);
     const thumbnail = manifest?.thumbnail as any[];
     if (thumbnail?.length > 0) return thumbnail[0];

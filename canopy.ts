@@ -10,23 +10,16 @@ const args = process.argv;
     ?.split("=")
     ?.pop();
 
-  const config = buildConfig.getConfig(path);
-  const options = buildConfig.getOptions();
-  const { prod, dev } = config;
+  const isDev = args.includes("dev");
+  const config = buildConfig.getConfig(path, isDev);
 
-  config.environment = args.includes("dev") ? dev : prod;
-  config.options = options;
-
-  const url = args.includes("dev")
-    ? `http://localhost:5001`
-    : process.env.NEXT_PUBLIC_URL;
+  const url = isDev ? `http://localhost:5001` : process.env.NEXT_PUBLIC_URL;
   const basePath = process.env.NEXT_PUBLIC_BASE_PATH;
   const baseUrl = basePath ? `${url}${basePath}` : url;
 
   const env = {
     CANOPY_CONFIG: {
-      ...config.environment,
-      ...config.options,
+      ...config,
       url,
       basePath,
       baseUrl,

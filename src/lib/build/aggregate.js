@@ -103,15 +103,16 @@ module.exports.build = async (env) => {
    */
   let canopyMetadata = [];
   let canopySearch = [];
+
   manifests
     .filter((manifest) => manifest?.type === "Manifest")
     .forEach((manifest) => {
-      const settings = env.search.index;
+      const settings = env?.search?.index;
       canopySearch.push({
         index: manifest.index,
-        label: manifest.label,
-        ...(settings.summary.enabled && { summary: manifest.summary }),
-        ...(settings.metadata.enabled && {
+        label: manifest?.label,
+        ...(settings?.summary?.enabled && { summary: manifest.summary }),
+        ...(settings?.metadata?.enabled && {
           metadata: manifest.metadata.filter((entry) =>
             settings.metadata.all
               ? entry
@@ -123,7 +124,7 @@ module.exports.build = async (env) => {
       manifest.metadata.forEach((metadata) => {
         const metadataLabel = getEntries(metadata.label)[0];
         const metadataValues = getEntries(metadata.value);
-        if (env.metadata.includes(metadataLabel)) {
+        if (env?.metadata?.includes(metadataLabel)) {
           metadataValues.forEach((value) => {
             canopyMetadata.push({
               index: manifest.index,
@@ -144,7 +145,7 @@ module.exports.build = async (env) => {
   );
   await fs.writeFile(
     `${canopyDirectory}/facets.json`,
-    JSON.stringify(canopyFacets)
+    JSON.stringify(canopyFacets ? canopyFacets : [])
   );
 
   log(`\nBuilding search entries...\n`);

@@ -36,14 +36,14 @@ const Hero: React.FC<HeroProps> = ({ collection }) => {
         speed={200}
       >
         {collection.items.map((item: any) => (
-          <SwiperSlide key={item.id}>
+          <SwiperSlide key={item?.id}>
             <figure>
-              <Link href={item.homepage[0].id}>
-                <Thumbnail thumbnail={item.thumbnail} />
+              <Link href={item?.homepage[0]?.id ? item?.homepage[0]?.id : "/"}>
+                <Thumbnail thumbnail={item?.thumbnail} />
                 <figcaption>
                   <Container className="slide-inner" isFlex>
                     <Label
-                      label={item.label}
+                      label={item?.label}
                       as="span"
                       className="slide-label"
                     />
