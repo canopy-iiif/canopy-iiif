@@ -26,10 +26,13 @@ export async function getStaticProps() {
     directory: "",
   });
 
+  const pageTitle = frontMatter?.title ? frontMatter?.title : "404";
+
   return {
     props: {
       frontMatter,
       source,
+      pageTitle,
     },
   };
 }

@@ -29,11 +29,13 @@ export default function CanopyAppProps({
   const label = root?.label;
 
   const { locales, theme } = config;
+
   const seo = pageProps.seo
     ? pageProps.seo
     : buildDefaultSEO({
         ...config,
         label,
+        pageTitle: pageProps?.pageTitle,
       });
 
   const [locale, setLocale] = useState<CanopyLocale>();
