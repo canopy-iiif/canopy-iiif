@@ -61,7 +61,7 @@ export async function getStaticProps() {
   const pageTitle = frontMatter?.title ? frontMatter?.title : "Home";
 
   /**
-   * Handle presentation logic below, determined by Front Matter config?
+   * Handle presentation logic below
    */
 
   const manifests = canopyManifests();

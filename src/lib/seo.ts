@@ -17,7 +17,9 @@ const buildManifestSEO = async (manifest: Manifest, path: string) => {
 
   return {
     title: `${title} - ${getLabel(label).join(" - ")}`,
-    description: getLabel(manifest.summary).join(" - "),
+    ...(manifest.summary && {
+      description: getLabel(manifest.summary).join(" - "),
+    }),
     canonical: `${baseUrl}${path}`,
     openGraph: {
       images: images?.map((item: any) => {
