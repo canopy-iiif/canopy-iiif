@@ -19,6 +19,21 @@ const getConfig = (path = "./config/canopy.json", isDev = false) => {
   const config = data && JSON.parse(data);
 
   /**
+   * If the user has not specified a collection in `./config/canopy.json`,
+   * we need to set the label and summary to default demonstration values.
+   */
+  if (!config?.collection) {
+    defaultConfig.label = {
+      none: ["Canopy IIIF"],
+    };
+    defaultConfig.summary = {
+      none: [
+        "a IIIF Collection sourced site generator in Next.js for digital collections, humanities, and exhibitions",
+      ],
+    };
+  }
+
+  /**
    * If the user has not specified metadata, but has specified a collection,
    * we need to create an empty array for the metadata.
    */

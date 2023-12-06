@@ -15,6 +15,7 @@ export type FrontMatterContentItem = {
   referencedManifests?: string[];
   navigation?: string;
   title?: string;
+  description?: string;
 };
 
 export type FrontMatterPageProps = {

@@ -91,4 +91,12 @@ const Search = () => {
   );
 };
 
+export async function getStaticProps() {
+  const pageTitle = "Search";
+
+  return {
+    props: { pageTitle },
+  };
+}
+
 export default Search;

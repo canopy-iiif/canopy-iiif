@@ -4,6 +4,7 @@ import CanopyMDXRemote from "@src/components/MDX";
 import { FrontMatterPageProps } from "@customTypes/content";
 import { GetStaticPropsContext } from "next";
 import LayoutsBasic from "@src/components/Layouts/Basic";
+import { buildContentSEO } from "@src/lib/seo";
 
 /**
  * Specifies the relative path of the directory containing the Markdown.
@@ -43,11 +44,16 @@ export async function getStaticPaths() {
  * files.
  */
 export async function getStaticProps({ params }: GetStaticPropsContext) {
+  const slug = params?.slug as string;
+  const path = `/${CONTENT_DIRECTORY}/${slug}`;
+  const { frontMatter, source } = await getMarkdownContent({
+    slug,
+    directory: CONTENT_DIRECTORY,
+  });
+  const seo = buildContentSEO(frontMatter, path);
+
   return {
-    props: await getMarkdownContent({
-      slug: (params?.slug as string) || "",
-      directory: CONTENT_DIRECTORY,
-    }),
+    props: { frontMatter, seo, source },
   };
 }
 

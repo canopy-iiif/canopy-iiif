@@ -1,12 +1,17 @@
 import { IIIFExternalWebResource, Manifest } from "@iiif/presentation-3";
 
+import COLLECTIONS from "@.canopy/collections.json";
 import { CanopyEnvironment } from "@customTypes/canopy";
+import { FrontMatterContentItem } from "@src/customTypes/content";
 import MANIFESTS from "@.canopy/manifests.json";
 import { getLabel } from "./iiif/label";
 import { getRandomItem } from "./utils";
 
+const root = COLLECTIONS.find((collection) => collection.depth === 0);
+const label = root?.label;
+
 const buildManifestSEO = async (manifest: Manifest, path: string) => {
-  const { url, label, basePath } = process.env
+  const { url, basePath } = process.env
     ?.CANOPY_CONFIG as unknown as CanopyEnvironment;
   const baseUrl = basePath ? `${url}${basePath}` : url;
 
@@ -16,7 +21,9 @@ const buildManifestSEO = async (manifest: Manifest, path: string) => {
 
   return {
     title: `${title} - ${getLabel(label).join(" - ")}`,
-    description: getLabel(manifest.summary).join(" - "),
+    ...(manifest.summary && {
+      description: getLabel(manifest.summary).join(" - "),
+    }),
     canonical: `${baseUrl}${path}`,
     openGraph: {
       images: images?.map((item: any) => {
@@ -32,11 +39,26 @@ const buildManifestSEO = async (manifest: Manifest, path: string) => {
   };
 };
 
-const buildDefaultSEO = (config: any) => {
-  const label = config.label ? config.label : "";
-  const summary = config.summary ? config.summary : "";
+const buildContentSEO = (frontMatter: FrontMatterContentItem, path: string) => {
+  const { url, basePath } = process.env
+    ?.CANOPY_CONFIG as unknown as CanopyEnvironment;
+  const baseUrl = basePath ? `${url}${basePath}` : url;
+  const title = frontMatter?.title || "";
+  const description = frontMatter?.description;
 
-  const title = getLabel(label).join(" - ");
+  return {
+    title: `${title} - ${getLabel(label).join(" - ")}`,
+    ...(description && { description }),
+    canonical: `${baseUrl}${path}`,
+  };
+};
+
+const buildDefaultSEO = (config: any) => {
+  const summary = config.summary ? config.summary : "";
+  const siteTitle = getLabel(label).join(" - ");
+  const title = config.pageTitle
+    ? `${config.pageTitle} - ${siteTitle}`
+    : siteTitle;
   const description = getLabel(summary).join(" - ");
   const featured = config.featured;
 
@@ -65,4 +87,4 @@ const buildDefaultSEO = (config: any) => {
   };
 };
 
-export { buildDefaultSEO, buildManifestSEO };
+export { buildContentSEO, buildDefaultSEO, buildManifestSEO };

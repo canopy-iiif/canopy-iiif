@@ -58,8 +58,10 @@ export async function getStaticProps() {
     directory: "",
   });
 
+  const pageTitle = frontMatter?.title ? frontMatter?.title : "Home";
+
   /**
-   * Handle presentation logic below, determined by Front Matter config?
+   * Handle presentation logic below
    */
 
   const manifests = canopyManifests();
@@ -85,6 +87,7 @@ export async function getStaticProps() {
       metadataCollections,
       featuredItems,
       frontMatter,
+      pageTitle,
       source,
     },
   };
