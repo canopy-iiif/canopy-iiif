@@ -71,7 +71,9 @@ export default function Metadata() {
 }
 
 export async function getStaticProps() {
+  const pageTitle = "Metadata";
+
   return {
-    props: {},
+    props: { pageTitle },
   };
 }

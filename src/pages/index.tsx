@@ -9,6 +9,7 @@ import { LocaleString } from "@hooks/useLocale";
 import { MDXRemoteSource } from "@customTypes/content";
 import React from "react";
 import Related from "../components/Related/Related";
+import { buildContentSEO } from "@src/lib/seo";
 import { canopyManifests } from "@lib/constants/canopy";
 import { createCollection } from "../lib/iiif/constructors/collection";
 import { getMarkdownContent } from "@src/lib/contentHelpers";
@@ -58,6 +59,8 @@ export async function getStaticProps() {
     directory: "",
   });
 
+  const pageTitle = frontMatter?.title ? frontMatter?.title : "Home";
+
   /**
    * Handle presentation logic below, determined by Front Matter config?
    */
@@ -85,6 +88,7 @@ export async function getStaticProps() {
       metadataCollections,
       featuredItems,
       frontMatter,
+      pageTitle,
       source,
     },
   };

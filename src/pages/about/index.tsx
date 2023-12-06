@@ -1,6 +1,7 @@
 import CanopyMDXRemote from "@src/components/MDX";
 import { FrontMatterPageProps } from "@customTypes/content";
 import LayoutsBasic from "@src/components/Layouts/Basic";
+import { buildContentSEO } from "@src/lib/seo";
 import { getMarkdownContent } from "@lib/contentHelpers";
 
 /**
@@ -29,11 +30,15 @@ const ContentPage = ({ source, frontMatter }: FrontMatterPageProps) => {
  * files.
  */
 export async function getStaticProps() {
+  const path = `/${CONTENT_DIRECTORY}`;
+  const { frontMatter, source } = await getMarkdownContent({
+    slug: "index",
+    directory: CONTENT_DIRECTORY,
+  });
+  const seo = buildContentSEO(frontMatter, path);
+
   return {
-    props: await getMarkdownContent({
-      slug: "index",
-      directory: CONTENT_DIRECTORY,
-    }),
+    props: { frontMatter, seo, source },
   };
 }
 
