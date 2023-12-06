@@ -1,12 +1,14 @@
 # Canopy IIIF
 
-A purely IIIF sourced static site generator using Next.js. Canopy is an application that will build a browseable and searchable digital collections style static site entirely from a IIIF Collection and the items it contains.
+An open-source static site generator designed for fast creation, contextualization, and customization of a discovery-focused digital scholarship and collections website using [IIIF](https://iiif.io/) APIs.
 
 [![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz_small.svg)](https://stackblitz.com/fork/github/canopy-iiif/canopy-iiif)
 
 - [Demo (Static)](https://canopy-iiif.github.io/canopy-iiif/)
 - [Demo (Vercel)](https://canopy-iiif.vercel.app/)
 - [Documentation](https://canopy-iiif.github.io/docs/)
+
+![collage of canopy iiif views](https://github.com/canopy-iiif/canopy-iiif/assets/7376450/1779a0ce-1f62-4e9b-8186-110264c81bba)
 
 ## Setup
 
