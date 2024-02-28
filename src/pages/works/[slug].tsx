@@ -23,12 +23,13 @@ export default function Work({
   manifest,
   referencingContent,
   related,
+  cloverOptions,
 }: WorkProps) {
   const { id } = manifest;
 
   return (
     <Layout>
-      <Viewer iiifContent={id} />
+      <Viewer iiifContent={id} options={cloverOptions} />
       <Container>
         <WorkInner
           manifest={manifest}
@@ -41,7 +42,7 @@ export default function Work({
 }
 
 export async function getStaticProps({ params }: { params: any }) {
-  const { url, basePath } = process.env
+  const { url, basePath, cloverOptions } = process.env
     ?.CANOPY_CONFIG as unknown as CanopyEnvironment;
   const baseUrl = basePath ? `${url}${basePath}` : url;
 
@@ -76,7 +77,7 @@ export async function getStaticProps({ params }: { params: any }) {
   delete manifest.provider;
 
   return {
-    props: { manifest, related, seo, referencingContent },
+    props: { manifest, related, seo, referencingContent, cloverOptions },
   };
 }
 
