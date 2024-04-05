@@ -45,6 +45,16 @@ Users authoring content can bring a pan-zoom compatible IIIF Viewer into their c
 
 <Viewer iiifContent="https://api.dc.library.northwestern.edu/api/v2/works/cd5e1b9c-370b-40e5-b3d9-defc1d8e0777?as=iiif" />
 
+## Inserting a IIIF Image (Single Image)
+
+Users can also add a single IIIF Image to their content by using the `<Image />` component. The image can be rendered with a specified height. The label will be displayed below the image.
+
+<Image
+  height="400px"
+  src="https://iiif.dc.library.northwestern.edu/iiif/2/edf54840-38c9-4a00-b180-0c038d77c6d2/full/1200,/0/default.jpg"
+  label="List of Plates: Volume Eight: Edward S. Curtis's The North American Indian"
+/>
+
 ## Inserting a Card
 
 Users can also add a figure representing a Manifest to their content by using the `<Card />` component. The figure will include a rendered thumbnail for the Manifest, the label, and a link to the respective `/work` page. A Card does not create automatic linking from a `/work` page back to content pages.
@@ -101,6 +111,16 @@ When authoring markdown content, users can reference IIIF Manifests in front mat
 Users authoring content can bring a pan-zoom compatible IIIF Viewer into their content by using the `<Viewer />` component. The viewer will automatically be sized to the width of the content container.
 
 <Viewer iiifContent="https://api.dc.library.northwestern.edu/api/v2/works/cd5e1b9c-370b-40e5-b3d9-defc1d8e0777?as=iiif" />
+
+## Inserting a IIIF Image (Single Image)
+
+Users can also add a single IIIF Image to their content by using the `<Image />` component. The image can be rendered with a specified height. The label will be displayed below the image.
+
+<Image
+  height="400px"
+  src="https://iiif.dc.library.northwestern.edu/iiif/2/edf54840-38c9-4a00-b180-0c038d77c6d2/full/1200,/0/default.jpg"
+  label="List of Plates: Volume Eight: Edward S. Curtis's The North American Indian"
+/>
 
 ## Inserting a Card
 
