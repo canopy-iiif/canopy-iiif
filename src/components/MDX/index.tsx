@@ -9,7 +9,9 @@ import Card from "@components/MDX/Card";
 import Code from "@components/Shared/Code/Code";
 import { CodeInline } from "@components/Shared/Code/Code.styled";
 import Heading from "@components/Shared/Heading/Heading";
+import Image from "@components/MDX/Image";
 import ReferencedItems from "@src/components/MDX/ReferencedItems";
+import Scroll from "@components/MDX/Scroll";
 import Slider from "@components/MDX/Slider";
 import Viewer from "@components/MDX/Viewer";
 import { getSlug } from "@src/lib/build/slug";
@@ -21,7 +23,9 @@ const customComponents = {
   Button,
   ButtonWrapper,
   Card,
+  Image,
   ReferencedItems,
+  Scroll,
   Slider,
   Viewer,
 };
