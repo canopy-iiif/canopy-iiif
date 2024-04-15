@@ -9,12 +9,12 @@ import { StyledWorkInner, WorkData } from "@components/Work/Inner.styled";
 import { DefinitionListWrapper } from "../Shared/DefinitionList.styled";
 import FACETS from "@.canopy/facets.json";
 import Heading from "@components/Shared/Heading/Heading";
-import Link from "next/link";
 import { Manifest } from "@iiif/presentation-3";
 import ManifestId from "./ManifestId";
 import React from "react";
 import ReferencingContent from "@components/Work/ReferencingContent";
 import { type NavigationItem } from "@src/customTypes/navigation";
+import { Link } from "@radix-ui/themes";
 
 interface ValueAsListItemProps {
   searchParam: string;

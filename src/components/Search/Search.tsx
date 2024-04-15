@@ -5,14 +5,12 @@ import React, {
   useRef,
   useState,
 } from "react";
-import {
-  SearchForm,
-  SearchInput,
-  SearchSubmit,
-} from "@components/Search/Search.styled";
 
+import Button from "../Shared/Button/Button";
 import { LocaleString } from "@hooks/useLocale";
 import { MagnifyingGlassIcon } from "@radix-ui/react-icons";
+import { SearchForm } from "@components/Search/Search.styled";
+import { TextField } from "@radix-ui/themes";
 import { useRouter } from "next/router";
 
 const Search = () => {
@@ -46,9 +44,22 @@ const Search = () => {
 
   return (
     <SearchForm onSubmit={handleSubmit} data-testid="search-form">
-      <SearchInput onChange={handleSearchChange} ref={search} />
-      <MagnifyingGlassIcon />
-      <SearchSubmit type="submit">{LocaleString("searchButton")}</SearchSubmit>
+      <TextField.Root
+        onChange={handleSearchChange}
+        ref={search}
+        size="3"
+        style={{ width: "100%" }}
+        variant="surface"
+      >
+        <TextField.Slot side="left" pl="3">
+          <MagnifyingGlassIcon height="20" width="20" />
+        </TextField.Slot>
+        <TextField.Slot side="right" pr="2" gap="0">
+          <Button size="1" type="submit">
+            {LocaleString("searchButton")}
+          </Button>
+        </TextField.Slot>
+      </TextField.Root>
     </SearchForm>
   );
 };

@@ -1,5 +1,6 @@
 import React from "react";
 import dynamic from "next/dynamic";
+import { styled } from "@src/styles/stitches";
 
 const CloverViewer: React.ComponentType<{
   customTheme: any;
@@ -13,17 +14,6 @@ const CloverViewer: React.ComponentType<{
 );
 
 const customTheme = {
-  colors: {
-    accent: "var(--colors-indigo10)",
-    accentAlt: "var(--colors-indigo11)",
-    accentMuted: "var(--colors-indigo8)",
-    primary: "var(--colors-slate12)",
-    primaryAlt: "var(--colors-slate12)",
-    primaryMuted: "var(--colors-slate10)",
-    secondary: "var(--colors-slate1)",
-    secondaryAlt: "var(--colors-slate3)",
-    secondaryMuted: "var(--colors-slate2)",
-  },
   fonts: {
     sans: `var(--canopy-sans-font)`,
     display: `var(--canopy-display-font)`,
@@ -31,7 +21,7 @@ const customTheme = {
 };
 
 const defaultOptions = {
-  canvasBackgroundColor: "var(--colors-slate4)",
+  canvasBackgroundColor: "var(--gray-3)",
   canvasHeight: `600px`,
   openSeadragon: {
     gestureSettingsMouse: {
@@ -54,11 +44,28 @@ const Viewer = ({
   iiifContent: string;
   options?: any;
 }) => (
-  <CloverViewer
-    iiifContent={iiifContent}
-    options={{ ...defaultOptions, ...options }}
-    customTheme={customTheme}
-  />
+  <StyledCloverViewer>
+    <CloverViewer
+      iiifContent={iiifContent}
+      options={{ ...defaultOptions, ...options }}
+      customTheme={customTheme}
+    />
+  </StyledCloverViewer>
 );
+
+const StyledCloverViewer = styled("div", {
+  ".clover-viewer-header": {
+    "span.label": {
+      fontSize: "$gr4",
+    },
+    "& button": {
+      backgroundColor: "var(--gray-1)",
+
+      "> span[data-testid=select-button-value]": {
+        fontSize: "$gr4",
+      },
+    },
+  },
+});
 
 export default Viewer;

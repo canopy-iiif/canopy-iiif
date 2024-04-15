@@ -29,7 +29,7 @@ const MDXImage = ({
 };
 
 const StyledMDXImage = styled("div", {
-  backgroundColor: "var(--colors-slate4)",
+  backgroundColor: "var(--gray-3)",
 });
 
 const StyledMDXImageFigure = styled("figure", {

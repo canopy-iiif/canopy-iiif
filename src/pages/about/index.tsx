@@ -1,6 +1,6 @@
 import CanopyMDXRemote from "@src/components/MDX";
 import { FrontMatterPageProps } from "@customTypes/content";
-import LayoutsBasic from "@src/components/Layouts/Basic";
+import LayoutsBasicSidebar from "@src/components/Layouts/BasicSidebar";
 import { buildContentSEO } from "@src/lib/seo";
 import { getMarkdownContent } from "@lib/contentHelpers";
 
@@ -16,10 +16,9 @@ const CONTENT_DIRECTORY = "about";
  */
 const ContentPage = ({ source, frontMatter }: FrontMatterPageProps) => {
   return (
-    <LayoutsBasic
-      content={<CanopyMDXRemote {...source} />}
-      frontMatter={frontMatter}
-    />
+    <LayoutsBasicSidebar frontMatter={frontMatter}>
+      <CanopyMDXRemote {...source} />
+    </LayoutsBasicSidebar>
   );
 };
 

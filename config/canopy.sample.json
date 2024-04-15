@@ -9,5 +9,12 @@
   "label": { "none": ["Collection Title"] },
   "summary": {
     "none": ["Brief description of the site and its contents."]
+  },
+  "theme": {
+    "defaultTheme": "light",
+    "accentColor": "red",
+    "grayColor": "mauve",
+    "radius": "small",
+    "scaling": "100%"
   }
 }

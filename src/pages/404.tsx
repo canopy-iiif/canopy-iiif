@@ -1,5 +1,5 @@
 import CanopyMDXRemote from "@src/components/MDX";
-import LayoutsBasic from "@src/components/Layouts/Basic";
+import LayoutsBasic from "@src/components/Layouts/BasicSidebar";
 import { MDXRemoteSource } from "@customTypes/content";
 import React from "react";
 import { getMarkdownContent } from "@src/lib/contentHelpers";

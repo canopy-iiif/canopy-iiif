@@ -1,4 +1,5 @@
 import { InternationalString } from "@iiif/presentation-3";
+import { ThemeProps } from "@radix-ui/themes";
 
 export interface CanopyCollectionShape {
   "@context": string;
@@ -22,6 +23,11 @@ export interface CanopyCollectionShape {
   }>;
 }
 
+export interface CanopyTheme extends ThemeProps {
+  defaultTheme: string;
+  toggleEnabled: boolean;
+}
+
 export interface CanopyEnvironment {
   collection: string;
   featured: string[];
@@ -39,7 +45,7 @@ export interface CanopyEnvironment {
   };
   static: boolean;
   summary: InternationalString;
-  theme: { defaultTheme: string; toggleEnabled: boolean };
+  theme: CanopyTheme;
   url: string;
   basePath?: string;
 }

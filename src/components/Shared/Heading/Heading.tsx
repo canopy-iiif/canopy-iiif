@@ -1,4 +1,5 @@
 import React, { ReactNode } from "react";
+
 import { CSS } from "@stitches/react/types/css-util";
 import { StyledHeading } from "./Heading.styled";
 

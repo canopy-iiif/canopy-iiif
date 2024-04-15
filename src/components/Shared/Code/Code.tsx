@@ -24,16 +24,13 @@ const Code = ({
       {({ style, tokens, getLineProps, getTokenProps }) => (
         <CodeStyled>
           <ButtonStyled
-            buttonSize="tiny"
-            buttonType="primary"
+            size="1"
             aria-label="Copy Code"
             onClick={() => {
               copy(children);
             }}
-            css={{ display: "flex", alignItems: "center" }}
           >
-            Copy&nbsp;
-            <CopyIcon />
+            Copy <CopyIcon />
           </ButtonStyled>
           <CodePre style={style}>
             {tokens.map((line, i) => (

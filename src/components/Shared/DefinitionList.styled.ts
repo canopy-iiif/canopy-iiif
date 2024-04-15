@@ -5,8 +5,10 @@ import { styled } from "@styles/stitches";
 const DefinitionListWrapper = styled("div", {
   dl: {
     dt: {
-      padding: "$gr3 0 $gr2",
-      fontFamily: "$display",
+      padding: "$gr2 0 $gr1",
+      fontWeight: "500",
+      color: "var(--gray-10)",
+      fontSize: "$gr2",
     },
 
     dd: {

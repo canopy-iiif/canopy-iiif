@@ -5,7 +5,7 @@ const { getManifestThumbnail } = require("./thumbnail");
 const { logResponse } = require("./log");
 
 exports.getRootCollection = (id) =>
-  axios.get(id).then((response) => response.data);
+  axios.get(id).then((response) => getPresentation3(response.data));
 
 exports.getBulkManifests = async (items, chunkSize) =>
   await chunks(

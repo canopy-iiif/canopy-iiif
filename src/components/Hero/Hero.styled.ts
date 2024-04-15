@@ -1,4 +1,4 @@
-import { indigo, slate, slateA, slateDarkA } from "@radix-ui/colors";
+import { grayA, grayDark } from "@radix-ui/colors";
 
 import { ContainerStyled } from "../Shared/Container";
 import { styled } from "@styles/stitches";
@@ -10,7 +10,7 @@ const HeroStyled = styled("div", {
   width: "100%",
   height: "100%",
   zIndex: "0",
-  backgroundColor: slate.slate12,
+  backgroundColor: "var(--gray-12)",
 
   ".swiper": {
     backgroundColor: "transparent",
@@ -22,29 +22,29 @@ const HeroStyled = styled("div", {
     ".swiper-wrapper": {},
 
     ".swiper-button-prev, .swiper-button-next": {
-      color: slate.slate1,
+      color: "var(--gray-1)",
     },
 
     ".swiper-pagination-bullet": {
-      backgroundColor: slateDarkA.slateA7,
+      backgroundColor: "var(--gray-a7)",
       opacity: "1",
     },
 
     ".swiper-pagination-bullet-active": {
-      backgroundColor: slate.slate1,
+      backgroundColor: "var(--gray-a1)",
     },
 
     ".swiper-slide": {
       display: "flex",
-      backgroundColor: slate.slate12,
+      backgroundColor: "var(--gray-6)",
 
       a: {
         display: "flex",
-        color: `${slate.slate12}`,
+        color: "var(--gray-12)",
         textDecoration: "none",
 
         "&:hover, &:focus": {
-          color: `${indigo.indigo11}`,
+          color: "var(--accent-11)",
         },
       },
 
@@ -62,11 +62,12 @@ const HeroStyled = styled("div", {
         },
 
         "&::before": {
-          backgroundColor: `$slate1`,
-          opacity: "0.92",
+          background: `linear-gradient(-2deg, ${grayA.grayA12} 30px, rgba(0, 0, 0, 0) 150px)`,
           color: "transparent",
+          opacity: "0.92",
           width: "100%",
-          padding: "$gr3 0",
+          height: "100%",
+          padding: "$gr6 0 $gr3",
           fontSize: "$gr5",
           lineHeight: "1.15em",
           position: "absolute",
@@ -74,7 +75,6 @@ const HeroStyled = styled("div", {
           bottom: "0",
           left: "0",
           content: "-",
-          boxShadow: `-1px -1px 2px  ${slateA.slateA3}`,
         },
 
         figcaption: {
@@ -88,7 +88,7 @@ const HeroStyled = styled("div", {
           textAlign: "left",
           backgroundColor: `transparent`,
           width: "100%",
-          color: "$slate12",
+          color: grayDark.gray12,
 
           [`> ${ContainerStyled}`]: {
             justifyContent: "flex-end",
@@ -96,13 +96,11 @@ const HeroStyled = styled("div", {
 
           ".slide-label": {
             padding: "$gr3 0",
-            fontFamily: "$display",
-            fontSize: "$gr5",
-            fontWeight: "400",
+            fontSize: "$gr3",
             display: "flex",
-            marginRight: "$gr2",
+            fontWeight: "500",
             transition: "$canopyAll",
-            letterSpacing: "-0.01em",
+            textShadow: `2px 2x 5px var(--gray-a2)`,
           },
         },
       },
@@ -114,7 +112,7 @@ const HeroWrapper = styled("div", {
   height: "calc(100vh - 61.25px)",
   minHeight: "300px",
   maxHeight: "500px",
-  backgroundColor: slate.slate12,
+  backgroundColor: "var(--gray-12)",
   position: "relative",
   zIndex: "1",
 });

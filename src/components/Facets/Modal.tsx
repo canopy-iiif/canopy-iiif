@@ -1,18 +1,9 @@
 import * as Accordion from "@radix-ui/react-accordion";
 
-import {
-  FacetsModalContent as Content,
-  FacetsModalContentBody as ContentBody,
-  FacetsModalClose as ContentClose,
-  FacetsModalContentFooter as ContentFooter,
-  FacetsModalContentHeader as ContentHeader,
-  FacetsModalContentInner as ContentInner,
-  FacetsModalTitle as ContentTitle,
-  FacetsModalOverlay as Overlay,
-  FacetsModalPortal as Portal,
-} from "./Modal.styled";
+import { Dialog, Flex, IconButton } from "@radix-ui/themes";
 
 import { ButtonStyled } from "../Shared/Button/Button.styled";
+import { FacetsModalContentInner as ContentInner } from "./Modal.styled";
 import { Cross2Icon } from "@radix-ui/react-icons";
 import FACETS from "../../../.canopy/facets.json";
 import Facet from "./Facet";
@@ -21,11 +12,7 @@ import React from "react";
 import { useFacetsState } from "@context/facets";
 import { useRouter } from "next/router";
 
-interface FacetsModalProps {
-  handleSubmit: () => void;
-}
-
-const FacetsModal: React.FC<FacetsModalProps> = ({ handleSubmit }) => {
+const FacetsModal = () => {
   const { facetsState, facetsDispatch } = useFacetsState();
   const { facetsActive } = facetsState;
   const router = useRouter();
@@ -36,44 +23,51 @@ const FacetsModal: React.FC<FacetsModalProps> = ({ handleSubmit }) => {
       type: "updateFacetsActive",
       facetsActive: facetsActive,
     });
+    handleViewResults();
   };
 
   const handleViewResults = () => {
     router.push({ pathname: "/search", query: facetsActive.toString() });
-    handleSubmit();
   };
 
   return (
-    <Portal>
-      <Overlay />
-      <Content>
-        <ContentInner>
-          <ContentHeader>
-            <ContentTitle asChild>
+    <Dialog.Content>
+      <ContentInner>
+        <Flex mb="3" align="center" justify="between" asChild>
+          <header>
+            <Dialog.Title as="h3" mb="0" size="4">
               <span>{LocaleString("searchFilter")}</span>
-            </ContentTitle>
-            <ContentClose aria-label={LocaleString("searchFilterClose")}>
-              <Cross2Icon />
-            </ContentClose>
-          </ContentHeader>
-          <ContentBody>
-            <Accordion.Root type="single" collapsible={true}>
-              {FACETS.map((facet: any) => (
-                <Facet {...facet} key={facet.slug} />
-              ))}
-            </Accordion.Root>
-          </ContentBody>
-          <ContentFooter>
-            <ButtonStyled buttonType="transparent" onClick={handleClearAll}>
-              {LocaleString("searchFilterClear")}
-            </ButtonStyled>
-            <ButtonStyled buttonType="primary" onClick={handleViewResults}>
-              {LocaleString("searchFilterSubmit")}
-            </ButtonStyled>
-          </ContentFooter>
-        </ContentInner>
-      </Content>
-    </Portal>
+            </Dialog.Title>
+            <Dialog.Close aria-label={LocaleString("searchFilterClose")}>
+              <IconButton variant="soft" size="2" style={{ cursor: "pointer" }}>
+                <Cross2Icon />
+              </IconButton>
+            </Dialog.Close>
+          </header>
+        </Flex>
+        <div>
+          <Accordion.Root type="single" collapsible={true}>
+            {FACETS.map((facet: any) => (
+              <Facet {...facet} key={facet.slug} />
+            ))}
+          </Accordion.Root>
+        </div>
+        <Flex mt="5" style={{ justifyContent: "space-between" }} asChild>
+          <footer>
+            <Dialog.Close>
+              <ButtonStyled variant="soft" onClick={handleClearAll}>
+                {LocaleString("searchFilterClear")}
+              </ButtonStyled>
+            </Dialog.Close>
+            <Dialog.Close>
+              <ButtonStyled onClick={handleViewResults}>
+                {LocaleString("searchFilterSubmit")}
+              </ButtonStyled>
+            </Dialog.Close>
+          </footer>
+        </Flex>
+      </ContentInner>
+    </Dialog.Content>
   );
 };
 

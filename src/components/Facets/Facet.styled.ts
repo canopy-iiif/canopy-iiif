@@ -5,30 +5,37 @@ import { styled } from "@styles/stitches";
 const FacetsFacetActivate = styled(Accordion.Trigger, {
   display: "flex",
   justifyContent: "space-between",
+  alignItems: "center",
   width: "100%",
   padding: "$gr2 0",
   backgroundColor: "transparent",
   border: "none",
-  fontFamily: "$display",
-  fontSize: "$gr4",
   cursor: "pointer",
-  borderTop: "1px solid $slate4",
+  borderTop: "1px solid var(--gray-4)",
+  fontSize: "$gr3",
+
+  "> span": {
+    display: "flex",
+    alignItems: "center",
+    gap: "$gr1",
+  },
 
   "&:hover, &:focus": {
-    color: "$indigo11",
+    color: "var(--accent-11)",
   },
+
   svg: {
     transition: "$canopyAll",
     transform: "rotate(-90deg)",
-    color: "$slate10",
+    color: "var(--gray-10)",
   },
 
   "&[aria-expanded='true']": {
-    color: "$slate12 !important",
+    color: "var(--gray-12) !important",
     fontWeight: "800",
 
     svg: {
-      color: "$slate12 !important",
+      color: "var(--gray-12) !important",
       transform: "rotate(0deg)",
     },
   },

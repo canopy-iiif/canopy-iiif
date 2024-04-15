@@ -2,26 +2,10 @@ import { styled } from "@styles/stitches";
 
 const Content = styled("div", {
   padding: "$gr3 0 0",
-
-  h4: {
-    margin: "0",
-    fontWeight: "400",
-    fontSize: "$gr4",
-    fontFamily: "$sans",
-    textDecoration: "none !important",
-  },
-
-  span: {
-    display: "block",
-    margin: "0.25rem 0 0",
-    fontWeight: "300",
-    fontSize: "0.8333rem",
-    color: "$slate10",
-  },
 });
 
 const Placeholder = styled("div", {
-  backgroundColor: "$slate6",
+  backgroundColor: "var(--gray-3)",
   width: "100%",
   height: "100%",
   overflowY: "hidden",
@@ -32,23 +16,30 @@ const Placeholder = styled("div", {
 const Wrapper = styled("div", {
   display: "flex",
   width: "100%",
-  maxWidth: "240px",
   position: "relative",
+  flexGrow: 1,
+  flexShrink: 0,
+  maxWidth: "275px",
+
+  img: {
+    width: "100%",
+    height: "100%",
+    objectFit: "cover",
+  },
 
   a: {
     display: "flex",
     flexDirection: "column",
     width: "100%",
-    color: "$slate12",
+    color: "var(--gray-12)",
     textDecoration: "none !important",
     transition: "$canopyAll",
 
     [`&:hover, &:focus`]: {
-      color: "$indigo10",
+      color: "var(--accent-11)",
 
       [`${Placeholder}`]: {
-        transform: "scale3d(1.02, 1.02, 1.02)",
-        boxShadow: "3px 3px 8px #0002",
+        transform: "scale3d(1.03, 1.03, 1.03)",
       },
     },
   },

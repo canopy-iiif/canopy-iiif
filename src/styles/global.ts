@@ -1,19 +1,17 @@
 import { globalCss } from "@stitches/react";
 
-export const rem = 17;
-export const headerHeight = 59.5;
+export const rem = 20;
+export const headerHeight = 60.533333;
 
 const defaults = {
   body: {
     margin: 0,
     padding: 0,
-    fontWeight: "400",
-    backgroundColor: "$slate1",
   },
 
   html: {
     fontFamily: "$sans",
-    fontSize: `${17}px`,
+    fontSize: `${rem}px`,
     fontWeight: "500",
     fontSmooth: "always",
     webKitFontSmothing: "antialiased",
@@ -21,19 +19,7 @@ const defaults = {
     paddingTop: `${headerHeight}px`,
   },
 
-  "a, a:visited": {
-    color: "$indigo11",
-  },
-
-  p: {
-    fontFamily: "$sans",
-    lineHeight: "1.55em",
-  },
-
   "ul, ol": {
-    fontFamily: "$sans",
-    lineHeight: "1.55em",
-
     li: {
       paddingBottom: "$gr1",
     },

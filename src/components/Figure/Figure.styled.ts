@@ -8,6 +8,7 @@ const Image = styled("img", {
   objectFit: "contain",
   transition: "$canopyAll",
   opacity: 0,
+  color: "transparent",
 
   [`&.loaded`]: {
     opacity: 1,
@@ -15,7 +16,7 @@ const Image = styled("img", {
 });
 
 const Wrapper = styled("figure", {
-  backgroundColor: "$slate6",
+  backgroundColor: "var(--gray-3)",
   display: "flex",
   width: "100%",
   height: "100%",
@@ -25,7 +26,7 @@ const Wrapper = styled("figure", {
   overflow: "hidden",
   zIndex: "0",
   borderRadius: "3px",
-  boxShadow: "2px 2px 5px #0001",
+  boxShadow: "2px 2px 5px var(--gray-a4)",
   transition: "$canopyAll",
 });
 

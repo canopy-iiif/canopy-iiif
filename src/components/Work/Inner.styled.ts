@@ -8,12 +8,23 @@ const StyledWorkInner = styled("section", {
   position: "relative",
   paddingTop: "$gr3",
 
+  h1: {
+    fontFamily: "$display",
+    fontSize: "$gr7",
+    letterSpacing: "-0.025em",
+    lineHeight: "1.1em",
+    margin: "$gr3 0",
+
+    "@sm": {
+      fontSize: "$gr5",
+      marginBottom: "$gr4",
+    },
+  },
+
   ".work-summary": {
     fontSize: "$gr5",
-    fontFamily: "$sans",
     fontWeight: "300",
-    color: "$slate11",
-    marginBottom: "$gr4",
+    marginBottom: "$gr3",
 
     "@sm": {
       fontSize: "$gr4",

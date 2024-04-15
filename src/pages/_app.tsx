@@ -1,16 +1,18 @@
+import "@radix-ui/themes/styles.css";
+
 import { CanopyEnvironment, CanopyLocale } from "@customTypes/canopy";
 import { CanopyProvider, defaultState } from "../context/canopy";
 import React, { useEffect, useState } from "react";
-import { dm_sans, dm_serif_display } from "../styles/theme/fonts";
+import { dm_sans, dm_serif_display } from "@styles/theme/fonts";
 import { getDefaultLang, getLocale } from "@hooks/useLocale";
 
 import { AppProps } from "next/app";
 import COLLECTIONS from "@.canopy/collections.json";
 import { NextSeo } from "next-seo";
+import { Theme } from "@radix-ui/themes";
 import { ThemeProvider } from "next-themes";
 import { buildDefaultSEO } from "@lib/seo";
-import { darkTheme } from "../styles/stitches";
-import globalStyles from "../styles/global";
+import globalStyles from "@styles/global";
 
 interface CanopyAppProps extends AppProps {
   pageProps: {
@@ -29,6 +31,14 @@ export default function CanopyAppProps({
   const label = root?.label;
 
   const { locales, theme } = config;
+
+  const radixTheme = {
+    accentColor: theme.accentColor,
+    grayColor: theme.grayColor,
+    panelBackground: theme.panelBackground,
+    radius: theme.radius,
+    scaling: theme.scaling,
+  };
 
   const seo = pageProps.seo
     ? pageProps.seo
@@ -67,10 +77,6 @@ export default function CanopyAppProps({
       <ThemeProvider
         attribute="class"
         defaultTheme={theme.defaultTheme ? theme.defaultTheme : "light"}
-        value={{
-          dark: darkTheme.className,
-          light: "light",
-        }}
       >
         {locale && (
           <CanopyProvider
@@ -80,7 +86,11 @@ export default function CanopyAppProps({
               locale: locale,
             }}
           >
-            {mounted && <Component {...pageProps} />}
+            {mounted && (
+              <Theme {...radixTheme}>
+                <Component {...pageProps} />
+              </Theme>
+            )}
           </CanopyProvider>
         )}
       </ThemeProvider>

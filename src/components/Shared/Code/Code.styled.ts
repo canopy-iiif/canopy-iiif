@@ -1,34 +1,34 @@
-import { indigoA } from "@radix-ui/colors";
+import { ScrollArea } from "@radix-ui/themes";
 import { styled } from "@styles/stitches";
 
-const CodeStyled = styled("div", {
+const CodeStyled = styled(ScrollArea, {
+  backgroundColor: "var(--accent-2)",
+  boxShadow: `inset 1px 1px 2px var(--accent-a4)`,
   position: "relative",
-
+  maxHeight: "61.8vh",
+  borderRadius: "max(var(--radius-1))",
   button: {
     position: "absolute",
-    marginTop: "-$gr2",
+    marginTop: "$gr3",
     right: "$gr3",
   },
 });
 
 const CodePre = styled("pre", {
-  backgroundColor: "$indigo3",
-  padding: "$gr3",
-  borderRadius: "5px",
+  color: "var(--accent-11)",
+  fontSize: "$gr2",
+  padding: "$gr2 $gr3 ",
   lineHeight: "1.382em",
-  overflowX: "scroll",
-  overflowY: "visible",
-  boxShadow: `inset 1px 1px 2px  ${indigoA.indigoA3}`,
   zIndex: "0",
 });
 
 const CodeInline = styled("code", {
-  backgroundColor: "$indigo3",
+  backgroundColor: "var(--accent-2)",
+  color: "var(--accent-11)",
   padding: "3px $gr1",
-  borderRadius: "5px",
-  fontSize: "$gr3",
-  color: "$indigo11",
-  boxShadow: `1px 1px 1px  ${indigoA.indigoA6}`,
+  borderRadius: "max(var(--radius-1), var(--radius-full))",
+  fontSize: "$gr2",
+  boxShadow: `1px 1px 1px var(--accent-a4)`,
 });
 
 export { CodeStyled, CodeInline, CodePre };
