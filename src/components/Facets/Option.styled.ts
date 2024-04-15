@@ -1,6 +1,5 @@
 import * as Checkbox from "@radix-ui/react-checkbox";
 
-import { indigoA } from "@radix-ui/colors";
 import { styled } from "@styles/stitches";
 
 const OptionLabel = styled("label", {
@@ -11,19 +10,19 @@ const OptionLabel = styled("label", {
   variants: {
     isChecked: {
       true: {
-        color: "$slate12 !important",
-        fontWeight: "800",
+        color: "var(--gray-12) !important",
+        fontWeight: "700",
       },
     },
   },
 
   "&:hover, &:focus": {
-    color: "$indigo11",
+    color: "var(--accent-11)",
   },
 
   span: {
-    color: "$slate11 !important",
-    fontSize: "$gr2",
+    color: "var(--gray-10) !important",
+    fontSize: "$gr1",
   },
 });
 
@@ -37,8 +36,8 @@ const OptionCheckbox = styled(Checkbox.Root, {
   width: "$gr3",
   height: "$gr3",
   margin: "0 $gr1 0 0",
-  background: "$slate4",
-  boxShadow: "inset 1px 1px 2px #0002",
+  background: "var(--gray-3)",
+  boxShadow: "inset 1px 1px 2px var(--gray-a4)",
   border: "none",
   borderRadius: "50%", // 3px for checkbox
   cursor: "pointer",
@@ -50,7 +49,7 @@ const OptionCheckbox = styled(Checkbox.Root, {
     width: "100%",
     height: "100%",
     content: "",
-    background: "linear-gradient(-45deg, $indigo11, $indigo8)",
+    background: "linear-gradient(-45deg, var(--accent-11), var(--accent-8))",
     opacity: "0",
     borderRadius: "50%", // 3px for checkbox
     transition: "$canopyAll",
@@ -58,8 +57,6 @@ const OptionCheckbox = styled(Checkbox.Root, {
   },
 
   "&[aria-checked='true']": {
-    boxShadow: "1px 1px 2px ${indigoA.indigoA4}",
-
     "&::before": {
       opacity: "1",
     },
@@ -69,15 +66,15 @@ const OptionCheckbox = styled(Checkbox.Root, {
 const OptionCheckboxIndicator = styled(Checkbox.Indicator, {
   position: "absolute",
   zIndex: "1",
-  color: "$indigo1",
-  textShadow: `1px 1px 2px ${indigoA.indigoA12}`,
+  color: "var(--accent-1)",
+  textShadow: `1px 1px 2px var(--accent-a12)`,
 });
 
 const OptionStyled = styled("span", {
   display: "flex",
   margin: "0 0 $gr1",
-  fontSize: "$gr3",
-  color: "$slate11",
+  color: "var(--gray-11)",
+  fontSize: "$gr2",
 
   "&:last-child": {
     margin: "0",

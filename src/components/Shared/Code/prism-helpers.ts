@@ -1,26 +1,24 @@
 import { PrismTheme } from "prism-react-renderer";
-import { rem } from "@styles/global";
 
 export const theme: PrismTheme = {
   plain: {
-    color: "var(--colors-indigo12)",
-    fontSize: rem * 0.9,
+    color: "var(--accent-12)",
     fontFamily: "Menlo, monospace",
   },
   styles: [
     {
       types: ["boolean", "string"],
       style: {
-        color: "var(--colors-indigo10)",
+        color: "var(--accent-10)",
       },
     },
     {
       types: ["operator"],
-      style: { color: "var(--colors-indigo11)" },
+      style: { color: "var(--accent-11)" },
     },
     {
       types: ["punctuation"],
-      style: { color: "var(--colors-indigo8)" },
+      style: { color: "var(--accent-8)" },
     },
   ],
 };

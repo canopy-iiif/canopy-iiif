@@ -1,18 +1,15 @@
 import { FacetsProvider, useFacetsState } from "@context/facets";
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 
+import { Dialog } from "@radix-ui/themes";
 import FacetsActivate from "./Activate";
 import FacetsModal from "./Modal";
-import { FacetsStyled } from "./Facets.styled";
-import { useCanopyState } from "@context/canopy";
-import { useRouter } from "next/router";
+import { useCanopyState } from "@src/context/canopy";
 
 const Facets = () => {
-  const { asPath } = useRouter();
-  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const { facetsDispatch } = useFacetsState();
-  const { canopyDispatch, canopyState } = useCanopyState();
-  const { headerVisible, searchParams } = canopyState;
+  const { canopyState } = useCanopyState();
+  const { searchParams } = canopyState;
 
   useEffect(() => {
     facetsDispatch({
@@ -21,27 +18,11 @@ const Facets = () => {
     });
   }, [searchParams, facetsDispatch]);
 
-  const handleDialogChange = () => {
-    setIsModalOpen(!isModalOpen);
-    canopyDispatch({
-      type: "updateHeaderVisible",
-      headerVisible: !headerVisible,
-    });
-  };
-
-  useEffect(() => {
-    setIsModalOpen(false);
-    canopyDispatch({
-      type: "updateHeaderVisible",
-      headerVisible: true,
-    });
-  }, [asPath, canopyDispatch]);
-
   return (
-    <FacetsStyled open={isModalOpen} onOpenChange={handleDialogChange}>
+    <Dialog.Root>
       <FacetsActivate />
-      <FacetsModal handleSubmit={handleDialogChange} />
-    </FacetsStyled>
+      <FacetsModal />
+    </Dialog.Root>
   );
 };
 

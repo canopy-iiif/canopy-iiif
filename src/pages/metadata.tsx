@@ -7,7 +7,7 @@ import Container from "../components/Shared/Container";
 import FACETS from "@.canopy/facets.json";
 import Heading from "@components/Shared/Heading/Heading";
 import Layout from "@components/layout";
-import Link from "next/link";
+import { Link } from "@radix-ui/themes";
 import React from "react";
 import { styled } from "@styles/stitches";
 
@@ -17,7 +17,7 @@ const ListItem = styled("li", {
   lineHeight: "unset",
 
   em: {
-    fontSize: "$gr2",
+    fontSize: "$gr1",
     fontStyle: "normal",
   },
 });

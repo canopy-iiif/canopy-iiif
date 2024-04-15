@@ -28,11 +28,7 @@ const ThemeMode = () => {
   if (!mounted || !canopyState.config.theme.toggleEnabled) return <></>;
 
   return (
-    <ButtonStyled
-      as="button"
-      onClick={() => handleTheme(theme as string)}
-      buttonSize="small"
-    >
+    <ButtonStyled onClick={() => handleTheme(theme as string)}>
       {toggleTheme}
     </ButtonStyled>
   );

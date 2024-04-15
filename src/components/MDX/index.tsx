@@ -1,8 +1,9 @@
 //@ts-nocheck
 
+import * as RadixThemes from "@radix-ui/themes";
+
 import { MDXRemote, MDXRemoteProps } from "next-mdx-remote";
 
-import Blockquote from "@components/Shared/Markdown/Blockquote";
 import Button from "@components/Shared/Button/Button";
 import { ButtonWrapper } from "@components/Shared/Button/Button.styled";
 import Card from "@components/MDX/Card";
@@ -40,7 +41,10 @@ const components = {
   h4: (props) => <Heading as="h4" {...props} />,
   h5: (props) => <Heading as="h5" {...props} />,
   code: (props) => <CodeInline {...props} />,
-  blockquote: (props) => <Blockquote {...props} />,
+  a: (props) => <RadixThemes.Link {...props} />,
+  em: (props) => <RadixThemes.Em {...props} />,
+  strong: (props) => <RadixThemes.Strong {...props} />,
+  blockquote: (props) => <RadixThemes.Blockquote {...props} />,
   pre: (props) => {
     const string = props?.children?.props?.children;
     const language = props?.children?.props?.className?.replace(

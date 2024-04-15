@@ -2,23 +2,23 @@ import Masonry from "react-masonry-css";
 import { styled } from "@styles/stitches";
 
 const GridItem = styled("div", {
-  paddingBottom: "$gr5",
+  paddingBottom: "$gr4",
   zIndex: "1",
 
   "@xxs": {
-    paddingBottom: "$gr3",
+    paddingBottom: "$gr2",
   },
 
   "@xs": {
-    paddingBottom: "$gr3",
+    paddingBottom: "$gr2",
   },
 
   "@sm": {
-    paddingBottom: "$gr4",
+    paddingBottom: "$gr3",
   },
 
   "@md": {
-    paddingBottom: "$gr4",
+    paddingBottom: "$gr3",
   },
 });
 
@@ -30,22 +30,22 @@ const GridStyled = styled(Masonry, {
   zIndex: "1",
 
   ".canopy-grid-column": {
-    marginLeft: "$gr5",
+    marginLeft: "$gr4",
 
     "@xxs": {
-      marginLeft: "$gr3",
+      marginLeft: "$gr2",
     },
 
     "@xs": {
-      marginLeft: "$gr3",
+      marginLeft: "$gr2",
     },
 
     "@sm": {
-      marginLeft: "$gr4",
+      marginLeft: "$gr3",
     },
 
     "@md": {
-      marginLeft: "$gr4",
+      marginLeft: "$gr3",
     },
 
     "&:first-child": {

@@ -24,7 +24,7 @@ export type FrontMatterPageProps = {
 };
 
 export type LayoutFrontMatter = {
-  content: ReactElement;
+  children: ReactElement;
   frontMatter: FrontMatterContentItem;
 };
 

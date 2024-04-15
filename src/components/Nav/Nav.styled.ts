@@ -3,7 +3,6 @@ import { styled } from "@styles/stitches";
 const Items = styled("div", {
   display: "flex",
   fontFamily: "$sans",
-  fontWeight: "500",
   flexGrow: "0",
 
   variants: {
@@ -21,16 +20,17 @@ const Items = styled("div", {
         padding: "0 0 $gr4",
 
         a: {
-          color: "$slate10",
-          padding: "$gr1 0 $gr2",
+          color: "var(--gray-11)",
+          padding: "$gr1 0 ",
           marginBottom: "0",
 
           [`&.active`]: {
-            color: "$slate12 !important",
+            color: "var(--gray-12) !important",
+            fontWeight: "700",
           },
 
           [`&:hover`]: {
-            color: "$indigo12",
+            color: "var(--accent-10)",
           },
         },
       },
@@ -40,31 +40,30 @@ const Items = styled("div", {
   "@sm": {
     flexDirection: "column",
     alignItems: "flex-start",
-    padding: "$gr1 $gr4 $gr3",
-    fontWeight: "500",
+    padding: "0 $gr3 $gr3",
   },
 
   a: {
-    padding: "$gr2 $gr3",
+    padding: "$gr1 $gr2",
     display: "inline-flex",
-    color: "$slate12",
+    color: "var(--gray-12)",
     textDecoration: "none",
     borderRadius: "2rem",
     position: "relative",
     transition: "$canopyAll",
+    fontSize: "$gr3",
 
     "@sm": {
       padding: "0",
-      marginBottom: "$gr2",
       transition: "none",
     },
 
     [`&:hover`]: {
-      color: "$indigo11 !important",
+      color: "var(--accent-10)",
     },
 
     [`&.active`]: {
-      color: "$indigo11",
+      color: "var(--accent-11)",
     },
   },
 });
@@ -76,13 +75,13 @@ const Wrapper = styled("nav", {
   alignItems: "center",
   zIndex: "1",
   flexGrow: "0",
-  fontSize: "$gr4",
+  fontWeight: "500",
 
   nav: {
-    fontSize: "$gr3",
-    margin: "$gr2 0",
+    margin: "$gr1 0 $gr2",
     padding: "0 $gr3",
-    borderLeft: "2px solid $slate4",
+    borderLeft: "3px solid var(--gray-4)",
+    fontWeight: "400",
 
     [`& ${Items}`]: {
       paddingBottom: "0",

@@ -9,17 +9,16 @@ navigation: "about"
 Using a single [IIIF Presentation Collection](https://iiif.io/api/presentation/3.0/#overview-collection) as a data source, Canopy IIIF (Canopy) generates a browseable, searchable, customizable, and contextually-driven static site using Next.js without duplicating content.
 
 <ButtonWrapper>
+  <Button href="https://canopy-iiif.github.io/docs/" target="_blank">
+    Read Docs
+  </Button>
   <Button
-    children="Read Docs"
-    href="https://canopy-iiif.github.io/docs/"
-    target="_blank"
-    buttonType="primary"
-  />
-  <Button
-    children="View Code"
     href="https://github.com/canopy-iiif/canopy-iiif"
     target="_blank"
-  />
+    variant="surface"
+  >
+    View Code
+  </Button>
 </ButtonWrapper>
 
 ## Use Cases
@@ -37,10 +36,6 @@ Canopy _“makes easy”_ the creation of digital exhibits for libraries, archiv
 
 ## Colophon
 
-Mat Jordan, the primary author of Canopy IIIF, was born within the original homelands of the [Nimíipuu (Nez Percé)](https://wikipedia.org/wiki/Nez_Perce) and is rooted from Nez Perce County, Idaho, in the United States. Relating to this, the [source IIIF Collection](https://api.dc.library.northwestern.edu/api/v2/search?query=%22Nez%20Perc%C3%A9%22&as=iiif&size=200) for this demonstration is a query for [_"Nez Percé"_](https://dc.library.northwestern.edu/search?q=%22Nez+Perc%C3%A9%22), with results coming from the **Edward S. Curtis's The North American Indian** collection provided by Northwestern University Libraries.
+Canopy IIIF was originally developed by Mat Jordan and Mark Baggett at The University of Tennessee in support of the Rising From The Ashes Oral History Project. The project name "Canopy" is inspired by the presentation, [A Tree's Strength Is Its Trunk: IIIF as Central Operational Infrastructure](https://www.cni.org/topics/standards/a-trees-strength-is-its-trunk-iiif-as-central-operational-infrastructure), delivered by M.A. Matienzo (formerly Stanford University Libraries) and Esmé Cowles (Princeton University Library) at the CNI Fall 2020 Virtual Membership Meeting.
 
-The project name "Canopy" is inspired by the presentation, [A Tree's Strength Is Its Trunk: IIIF as Central Operational Infrastructure](https://www.cni.org/topics/standards/a-trees-strength-is-its-trunk-iiif-as-central-operational-infrastructure), delivered by M.A. Matienzo (formerly Stanford University Libraries) and Esmé Cowles (Princeton University Library) at the CNI Fall 2020 Virtual Membership Meeting.
-
-Canopy IIIF is created using [Next.js 13](https://nextjs.org/), with a [FlexSearch](https://github.com/nextapps-de/flexsearch) index for text search, [IIIF Presentation API 3.0](https://iiif.io/api/presentation/3.0/) delivering resource content, [Radix UI](https://www.radix-ui.com/) and [Stitches](https://stitches.dev/) used throughout for the user interface, and various community modules from [IIIF Commons](https://github.com/IIIF-Commons) and [Samvera](https://samvera.org/) supporting the work presentation and resource delivery.
-
-This demonstration instance of Canopy IIIF is hosted on Vercel with a consistent build time under 40 seconds. The build process includes metadata aggregation requests of 119 IIIF Manifests. This IIIF Collection and its Manifest resources are delivered via a search response from the [Northwestern University Libraries Digital Collections API](https://api.dc.library.northwestern.edu/docs/v2/index.html). Referenced IIIF Image resources are delivered via [Serverless IIIF](https://github.com/samvera/serverless-iiif).
+Canopy IIIF is created using [Next.js 13](https://nextjs.org/), with a [FlexSearch](https://github.com/nextapps-de/flexsearch) index for text search, [IIIF Presentation API 3.0](https://iiif.io/api/presentation/3.0/) delivering resource content, [Radix UI](https://www.radix-ui.com/) and [Stitches](https://stitches.dev/) used throughout for the user interface, and various community modules from [IIIF Commons](https://github.com/IIIF-Commons) and [Samvera](https://samvera.org/) supporting presentation and resource delivery.

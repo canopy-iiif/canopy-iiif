@@ -1,11 +1,18 @@
 import * as AspectRatio from "@radix-ui/react-aspect-ratio";
 
+import {
+  Box,
+  Inset,
+  Link,
+  Card as RadixThemesCard,
+  Text,
+} from "@radix-ui/themes";
 import { Content, Placeholder, Wrapper } from "@components/Card/Card.styled";
 import { LazyMotion, MotionConfig, domAnimation, m } from "framer-motion";
 
 import Figure from "@components/Figure/Figure";
 import { Label } from "@samvera/clover-iiif/primitives";
-import Link from "next/link";
+import React from "react";
 import { SearchResponseItem } from "@customTypes/search/search";
 import { getLabel } from "@lib/iiif/label";
 import { getRandomItem } from "@lib/utils";
@@ -28,27 +35,42 @@ const Card: React.FC<CardProps> = ({ resource }) => {
   const alt = getLabel(label);
 
   return (
-    <Wrapper ref={ref}>
-      <Link href={homepage && homepage[0].id ? homepage[0].id : ""}>
-        <AspectRatio.Root ratio={aspectRatio}>
-          <Placeholder>
-            <MotionConfig transition={{ duration: 1 }}>
-              {inView && resource && (
-                <LazyMotion features={domAnimation}>
-                  <m.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
-                    <Figure resource={thumbnail} alt={alt} />
-                  </m.div>
-                </LazyMotion>
-              )}
-            </MotionConfig>
-          </Placeholder>
-        </AspectRatio.Root>
-        <Content>
-          <Label label={label} as="h4" />
-        </Content>
-      </Link>
+    <Wrapper as={Box} ref={ref}>
+      <RadixThemesCard
+        size="2"
+        style={{ width: "100%" }}
+        variant="classic"
+        asChild
+      >
+        <Link href={homepage && homepage[0].id ? homepage[0].id : ""}>
+          <Inset clip="padding-box" side="top">
+            <AspectRatio.Root ratio={aspectRatio}>
+              <Placeholder>
+                <MotionConfig transition={{ duration: 1 }}>
+                  {inView && resource && (
+                    <LazyMotion features={domAnimation}>
+                      <m.div
+                        style={{ height: "100%" }}
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                      >
+                        <Figure resource={thumbnail} alt={alt} />
+                      </m.div>
+                    </LazyMotion>
+                  )}
+                </MotionConfig>
+              </Placeholder>
+            </AspectRatio.Root>
+          </Inset>
+          <Text size="2" asChild>
+            <Content>
+              <Label label={label} />
+            </Content>
+          </Text>
+        </Link>
+      </RadixThemesCard>
     </Wrapper>
   );
 };
 
-export default Card;
+export default React.memo(Card);

@@ -7,7 +7,7 @@ const LocaleStyled = styled("div", {
   paddingLeft: "$gr2",
 
   select: {
-    color: "$slate9",
+    color: "var(--gray-10)",
     background: "none",
     border: "none",
     fontFamily: "$display",
@@ -15,7 +15,7 @@ const LocaleStyled = styled("div", {
     cursor: "pointer",
 
     "&:hover, &:focus": {
-      color: "$indigo11",
+      color: "var(--accent-11)",
     },
   },
 });

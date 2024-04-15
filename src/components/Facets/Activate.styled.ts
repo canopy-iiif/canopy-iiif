@@ -1,5 +1,5 @@
-import * as Dialog from "@radix-ui/react-dialog";
-
+import { Dialog } from "@radix-ui/themes";
+import { grayA } from "@radix-ui/colors";
 import { styled } from "@styles/stitches";
 
 const FacetsActivateIndicator = styled("span", {
@@ -12,16 +12,42 @@ const FacetsActivateIndicator = styled("span", {
   width: "$gr3",
   height: "$gr3",
   fontSize: "$gr1",
-  color: "$indigo1",
-  backgroundColor: "$indigo12",
+  color: "var(--accent-1)",
+  backgroundColor: "var(--accent-12)",
   borderRadius: "50%",
 });
 
 const FacetsActivateStyled = styled(Dialog.Trigger, {
   position: "relative",
   right: "0",
-  transition: "$canopySlideIn",
   boxShadow: "none",
+  transition: "$canopySlideIn",
 });
 
-export { FacetsActivateIndicator, FacetsActivateStyled };
+const FacetsActivateFloatingWrapper = styled("div", {
+  display: "flex",
+  position: "fixed",
+  left: "0",
+  zIndex: "5",
+  width: "100%",
+
+  variants: {
+    isScrolling: {
+      true: {
+        [`${FacetsActivateStyled}`]: {
+          right: "50%",
+          transform: "translate(50%)",
+          backfaceVisibility: "hidden",
+          webkitFontSmoothing: "subpixel-antialiased",
+          boxShadow: `5px 5px 38px ${grayA.grayA9}`,
+        },
+      },
+    },
+  },
+});
+
+export {
+  FacetsActivateFloatingWrapper,
+  FacetsActivateIndicator,
+  FacetsActivateStyled,
+};

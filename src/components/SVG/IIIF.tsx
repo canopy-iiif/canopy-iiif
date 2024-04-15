@@ -42,7 +42,7 @@ const IIIF = () => {
 };
 
 const StyledIIIF = styled("svg", {
-  fill: "$indigo1",
+  fill: "var(--accent-1)",
 });
 
 export default IIIF;

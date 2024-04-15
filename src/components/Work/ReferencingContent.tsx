@@ -24,14 +24,14 @@ const ReferencingContent = ({
 export default ReferencingContent;
 
 const StyledReferencingContent = styled("div", {
-  border: "1px solid var(--colors-slate4)",
+  border: "1px solid var(--gray-4)",
   borderRadius: "0.382rem",
   padding: "$gr3 $gr4 $gr2",
   margin: "-$gr1 0 $gr4",
-  boxShadow: "5px 5px 11px #0001",
+  boxShadow: "5px 5px 11px var(--gray-a4)",
 
   a: {
-    color: "$indigo10 !important",
+    color: "var(--accent-11) !important",
     padding: "$gr1 0 $gr2",
     marginBottom: "0",
     textDecoration: "underline",

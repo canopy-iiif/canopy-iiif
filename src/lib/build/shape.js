@@ -1,19 +1,17 @@
-const { getPresentation3 } = require("../iiif/context");
 const { getLabel } = require("../iiif/label");
 const { getSlug } = require("./slug");
 
 exports.getCanopyCollection = (json, depth = 0, parent = null) => {
   if (!json) return null;
 
-  const resource = getPresentation3(json);
-  const children = getCollectionItems(resource);
+  const children = getCollectionItems(json);
 
   return {
     "@context": "https://iiif.io/api/presentation/3/context.json",
     id: json.id,
     type: "Collection",
-    label: resource.label,
-    slug: getSlug(getLabel(resource.label)[0]),
+    label: json.label,
+    slug: getSlug(getLabel(json.label)[0]),
     depth: depth,
     parent: parent,
     manifests: children.manifests,

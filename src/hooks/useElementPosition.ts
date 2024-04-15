@@ -8,7 +8,7 @@ const useElementPosition = (element: RefObject<HTMLDivElement>) => {
       setPosition(window.pageYOffset);
 
       if (element.current)
-        setPosition(window.pageYOffset - element.current.offsetTop);
+        setPosition(window.pageYOffset - element?.current.offsetTop);
     };
 
     window.addEventListener("scroll", updatePosition);
