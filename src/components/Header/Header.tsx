@@ -1,10 +1,11 @@
 import { Actions, ResponsiveActions } from "./Header.styled";
 import { Content, Wrapper } from "@components/Header/Header.styled";
-import { Heading, Link } from "@radix-ui/themes";
 import React, { useEffect, useState } from "react";
 
 import { HamburgerMenuIcon } from "@radix-ui/react-icons";
+import { Heading } from "@radix-ui/themes";
 import { Label } from "@samvera/clover-iiif/primitives";
+import Link from "next/link";
 import Locale from "@components/Shared/Locale/Locale";
 import Nav from "@components/Nav/Nav";
 import Search from "@components/Search/Search";
@@ -33,9 +34,9 @@ const Header = () => {
       <Content>
         <Link
           href="/"
-          underline="none"
           style={{
             color: "var(--gray-12)",
+            textDecoration: "none",
           }}
         >
           <Heading
