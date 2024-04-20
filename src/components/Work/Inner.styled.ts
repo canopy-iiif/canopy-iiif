@@ -44,6 +44,7 @@ const StyledWorkInner = styled("section", {
     ul: {
       listStyle: "none",
       listStyleType: "none",
+      margin: "0",
       paddingInlineStart: "0px",
     }
   },
