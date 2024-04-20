@@ -11,6 +11,7 @@ import FACETS from "@.canopy/facets.json";
 import Heading from "@components/Shared/Heading/Heading";
 import { Manifest } from "@iiif/presentation-3";
 import ManifestId from "./ManifestId";
+import AlternateFormat from "./AlternateFormat";
 import React from "react";
 import ReferencingContent from "@components/Work/ReferencingContent";
 import { type NavigationItem } from "@src/customTypes/navigation";
@@ -52,7 +53,7 @@ const WorkInner: React.FC<WorkInnerProps> = ({
   manifest,
   referencingContent,
 }) => {
-  const { id, label, metadata, requiredStatement, summary } = manifest;
+  const { id, label, metadata, rendering, requiredStatement, summary } = manifest;
 
   const formattedValues = FACETS.map((value: any) => {
     return {
@@ -82,6 +83,9 @@ const WorkInner: React.FC<WorkInnerProps> = ({
             )}
             {requiredStatement && (
               <RequiredStatement requiredStatement={requiredStatement} />
+            )}
+            {rendering && (
+              <AlternateFormat rendering={rendering}/>
             )}
             <ManifestId manifestId={id} />
           </DefinitionListWrapper>

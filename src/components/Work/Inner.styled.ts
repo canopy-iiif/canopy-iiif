@@ -41,6 +41,11 @@ const StyledWorkInner = styled("section", {
         maxHeight: "$gr4 !important",
       },
     },
+    ul: {
+      listStyle: "none",
+      listStyleType: "none",
+      paddingInlineStart: "0px",
+    }
   },
 
   aside: {
