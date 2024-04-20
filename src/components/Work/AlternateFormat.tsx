@@ -1,6 +1,5 @@
 import React from "react";
 import {
-  PrimitivesExternalWebResource,
   Rendering
 } from "@samvera/clover-iiif/primitives";
 
