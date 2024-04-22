@@ -3,7 +3,7 @@ import {
   Rendering
 } from "@samvera/clover-iiif/primitives";
 
-const AlernateFormat = ({ rendering }: { rendering }) => {
+const AlternateFormat = ({ rendering }: { rendering }) => {
   return (
     <dl>
       <dt>Alternate Formats</dt>
@@ -14,4 +14,4 @@ const AlernateFormat = ({ rendering }: { rendering }) => {
   );
 };
 
-export default AlernateFormat;
+export default AlternateFormat;

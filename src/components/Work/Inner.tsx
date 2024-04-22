@@ -11,7 +11,7 @@ import FACETS from "@.canopy/facets.json";
 import Heading from "@components/Shared/Heading/Heading";
 import { Manifest } from "@iiif/presentation-3";
 import ManifestId from "./ManifestId";
-import AlternateFormat from "./AlternateFormat";
+import LinkingProperty from "@components/Work/LinkingProperty";
 import React from "react";
 import ReferencingContent from "@components/Work/ReferencingContent";
 import { type NavigationItem } from "@src/customTypes/navigation";
@@ -53,7 +53,7 @@ const WorkInner: React.FC<WorkInnerProps> = ({
   manifest,
   referencingContent,
 }) => {
-  const { id, label, metadata, rendering, requiredStatement, summary } = manifest;
+  const { id, homepage, label, metadata, partOf, rendering, requiredStatement, seeAlso, summary } = manifest;
 
   const formattedValues = FACETS.map((value: any) => {
     return {
@@ -85,7 +85,16 @@ const WorkInner: React.FC<WorkInnerProps> = ({
               <RequiredStatement requiredStatement={requiredStatement} />
             )}
             {rendering && (
-              <AlternateFormat rendering={rendering}/>
+              <LinkingProperty value={rendering} kind={"rendering"} />
+            )}
+            {seeAlso && (
+              <LinkingProperty value={seeAlso} kind={"seeAlso"} />
+            )}
+            {homepage && (
+              <LinkingProperty value={homepage} kind={"homepage"} />
+            )}
+            {partOf && (
+              <LinkingProperty value={partOf} kind={"partOf"} />
             )}
             <ManifestId manifestId={id} />
           </DefinitionListWrapper>
