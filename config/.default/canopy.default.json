@@ -68,5 +68,21 @@
   "theme": {
     "defaultTheme": "light",
     "toggleEnabled": false
+  },
+  "cloverOptions": {
+    "canvasBackgroundColor": "var(--colors-slate4)",
+    "canvasHeight": "600px",
+    "openSeadragon": {
+      "gestureSettingsMouse": {
+        "scrollToZoom": false
+      }
+    },
+    "informationPanel": {
+      "open": false,
+      "renderAbout": false,
+      "renderToggle": false
+    },
+    "showTitle": false,
+    "showIIIFBadge": false
   }
 }
