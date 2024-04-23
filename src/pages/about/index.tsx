@@ -17,7 +17,7 @@ const CONTENT_DIRECTORY = "about";
 const ContentPage = ({ source, frontMatter }: FrontMatterPageProps) => {
   return (
     <LayoutsBasicSidebar frontMatter={frontMatter}>
-      <CanopyMDXRemote {...source} />
+      <CanopyMDXRemote source={source} />
     </LayoutsBasicSidebar>
   );
 };

@@ -19,7 +19,7 @@ const CONTENT_DIRECTORY = "about";
 const ContentPageSlug = ({ source, frontMatter }: FrontMatterPageProps) => {
   return (
     <LayoutsBasicSidebar frontMatter={frontMatter}>
-      <CanopyMDXRemote {...source} />
+      <CanopyMDXRemote source={source} />
     </LayoutsBasicSidebar>
   );
 };

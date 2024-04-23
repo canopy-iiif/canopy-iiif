@@ -2,10 +2,10 @@ import { CanopyEnvironment } from "@customTypes/canopy";
 import CanopyMDXRemote from "@src/components/MDX";
 import Container from "@components/Shared/Container";
 import FACETS from "@.canopy/facets.json";
+import Heading from "@src/components/Shared/Heading/Heading";
 import Hero from "@components/Hero/Hero";
 import { HeroWrapper } from "../components/Hero/Hero.styled";
 import LayoutsBasic from "@src/components/Layouts/Basic";
-import { LocaleString } from "@hooks/useLocale";
 import { MDXRemoteSource } from "@customTypes/content";
 import React from "react";
 import Related from "../components/Related/Related";
@@ -40,13 +40,13 @@ const Index: React.FC<IndexProps> = ({
         )}
         <Container>
           <Section size="2">
-            <CanopyMDXRemote {...source} />
+            <CanopyMDXRemote source={source} />
           </Section>
           {frontMatter.showHighlighted && (
-            <Related
-              collections={metadataCollections}
-              title={LocaleString("homepageHighlightedWorks")}
-            />
+            <>
+              <Heading as="h2">Highlighted Items</Heading>
+              <Related collections={metadataCollections} />
+            </>
           )}
         </Container>
       </>

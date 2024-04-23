@@ -1,0 +1,44 @@
+<Work.Viewer />
+
+<Container>
+  <Section pb="4">
+    <Work.Title size="8" mb="5" />
+    <Work.Summary size="4" color="gray" />
+  </Section>
+
+  <Section size="1">
+    <Tabs.Root defaultValue="details">
+      <Tabs.List>
+        <Tabs.Trigger value="details">Item Details</Tabs.Trigger>
+        <Tabs.Trigger value="essays">Referencing Content</Tabs.Trigger>
+        <Tabs.Trigger value="annotations">Transcriptions and Translations</Tabs.Trigger>
+      </Tabs.List>
+
+      <Box pt="3">
+        <Tabs.Content value="details">
+          <Work.Metadata />
+          <Work.RequiredStatement />
+          <Work.ManifestId />
+        </Tabs.Content>
+
+        <Tabs.Content value="annotations">
+          <Work.Scroll />
+        </Tabs.Content>
+
+        <Tabs.Content value="essays">
+          <Work.ReferencingContent />
+        </Tabs.Content>
+
+      </Box>
+    </Tabs.Root>
+
+  </Section>
+
+  <Section size="1">
+    ## Related Works
+
+    <Work.Related />
+
+  </Section>
+
+</Container>

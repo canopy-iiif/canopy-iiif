@@ -5,7 +5,7 @@ import { Dialog, Flex, IconButton } from "@radix-ui/themes";
 import { ButtonStyled } from "../Shared/Button/Button.styled";
 import { FacetsModalContentInner as ContentInner } from "./Modal.styled";
 import { Cross2Icon } from "@radix-ui/react-icons";
-import FACETS from "../../../.canopy/facets.json";
+import FACETS from "@.canopy/facets.json";
 import Facet from "./Facet";
 import { LocaleString } from "@hooks/useLocale";
 import React from "react";

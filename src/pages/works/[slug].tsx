@@ -1,42 +1,60 @@
 import { CanopyEnvironment } from "@customTypes/canopy";
-import Container from "@components/Shared/Container";
 import FACETS from "@.canopy/facets.json";
-import Layout from "@components/layout";
 import MANIFESTS from "@.canopy/manifests.json";
 import { Manifest } from "@iiif/presentation-3";
 import { type NavigationItem } from "@src/customTypes/navigation";
 import Related from "@components/Related/Related";
-import Viewer from "@components/Viewer/Viewer";
-import WorkInner from "@components/Work/Inner";
 import { buildManifestSEO } from "@lib/seo";
 import { fetch } from "@iiif/vault-helpers/fetch";
 import { getReferencingContent } from "@src/lib/content/reference/server";
 import { shuffle } from "lodash";
+import LayoutsWork from "@src/components/Layouts/Work";
+import { getMarkdownContent } from "@src/lib/contentHelpers";
+import CanopyMDXRemote from "@src/components/MDX";
+import WorkManifestId from "@src/components/Work/ManifestId";
+import WorkMetadata from "@src/components/Work/Metadata";
+import WorkTitle from "@src/components/Work/Title";
+import WorkSummary from "@src/components/Work/Summary";
+import WorkViewer from "@src/components/Work/Viewer";
+import WorkScroll from "@src/components/Work/Scroll";
+import WorkReferencingContent from "@src/components/Work/ReferencingContent";
+import WorkRequiredStatement from "@src/components/Work/RequiredStatement";
 
 interface WorkProps {
   manifest: Manifest;
   related: any;
   referencingContent: NavigationItem[];
+  source: any;
 }
 
-export default function Work({
+export default function WorkPage({
   manifest,
   referencingContent,
   related,
+  source,
 }: WorkProps) {
-  const { id } = manifest;
+  const { id, label, metadata, requiredStatement, summary } = manifest;
+
+  const Work = () => <></>;
+
+  Work.ManifestId = () => <WorkManifestId manifestId={id} />;
+  Work.Metadata = () => <WorkMetadata metadata={metadata} />;
+  Work.RequiredStatement = () => (
+    <WorkRequiredStatement requiredStatement={requiredStatement} />
+  );
+  Work.Related = () => <Related collections={related} />;
+  Work.ReferencingContent = () => (
+    <WorkReferencingContent referencingContent={referencingContent} />
+  );
+  Work.Scroll = (props) => <WorkScroll {...props} iiifContent={id} />;
+  Work.Summary = (props) => <WorkSummary {...props} summary={summary} />;
+  Work.Title = (props) => <WorkTitle {...props} label={label} />;
+  Work.Viewer = (props) => <WorkViewer {...props} iiifContent={id} />;
 
   return (
-    <Layout>
-      <Viewer iiifContent={id} />
-      <Container>
-        <WorkInner
-          manifest={manifest}
-          referencingContent={referencingContent}
-        />
-        <Related collections={related} />
-      </Container>
-    </Layout>
+    <LayoutsWork>
+      <CanopyMDXRemote source={source} customComponents={{ Work }} />
+    </LayoutsWork>
   );
 }
 
@@ -70,13 +88,18 @@ export async function getStaticProps({ params }: { params: any }) {
     srcDir: ["content"],
   });
 
+  const { frontMatter, source } = await getMarkdownContent({
+    slug: "_layout",
+    directory: "works",
+  });
+
   /**
    * scrub the manifest of any provider property
    */
   delete manifest.provider;
 
   return {
-    props: { manifest, related, seo, referencingContent },
+    props: { manifest, related, seo, referencingContent, source, frontMatter },
   };
 }
 

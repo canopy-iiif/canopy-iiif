@@ -1,4 +1,4 @@
-import Link from "next/link";
+import CanopyLink from "@components/Shared/Link";
 import Nav from "@components/Nav/Nav";
 import { NavigationItem } from "@customTypes/navigation";
 import { useRef } from "react";
@@ -43,14 +43,14 @@ const NavItemsLink: React.FC<NavItemsLinkProps> = ({
 
   return (
     <>
-      <Link
+      <CanopyLink
         href={path}
         className={path === constructedPath ? "active" : ""}
         onClick={handleOnClick}
         ref={linkRef}
       >
         {text}
-      </Link>
+      </CanopyLink>
       {subNavigation && path === constructedPath && (
         <Nav items={subNavigation} orientation={"vertical"} />
       )}
