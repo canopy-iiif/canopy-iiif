@@ -9,6 +9,8 @@ import { ButtonWrapper } from "@components/Shared/Button/Button.styled";
 import Card from "@components/MDX/Card";
 import Code from "@components/Shared/Code/Code";
 import { CodeInline } from "@components/Shared/Code/Code.styled";
+import Container from "@components/Shared/Container";
+import Header from "../Header/Header";
 import Heading from "@components/Shared/Heading/Heading";
 import Image from "@components/MDX/Image";
 import ReferencedItems from "@src/components/MDX/ReferencedItems";
@@ -20,10 +22,12 @@ import { getSlug } from "@src/lib/build/slug";
 /**
  * Declare custom React components available in MDX content
  */
-const customComponents = {
+const canopyComponents = {
   Button,
   ButtonWrapper,
   Card,
+  Container,
+  Header,
   Image,
   ReferencedItems,
   Scroll,
@@ -34,7 +38,7 @@ const customComponents = {
 /**
  * Define custom React components to render Markdown elements
  */
-const components = {
+const markdownComponents = {
   h1: (props) => <Heading as="h1" {...props} />,
   h2: (props) => <Heading as="h2" id={getSlug(props?.children)} {...props} />,
   h3: (props) => <Heading as="h3" {...props} />,
@@ -53,11 +57,26 @@ const components = {
     );
     return <Code language={language}>{string?.trim()}</Code>;
   },
-  ...customComponents,
 };
 
-const CanopyMDXRemote = (source: MDXRemoteProps) => {
-  return <MDXRemote {...source} components={components} />;
+const CanopyMDXRemote = ({
+  source,
+  customComponents,
+}: {
+  source: MDXRemoteProps;
+  customComponents?: Record<string, any>;
+}) => {
+  return (
+    <MDXRemote
+      {...source}
+      components={{
+        ...RadixThemes,
+        ...markdownComponents,
+        ...canopyComponents,
+        ...customComponents,
+      }}
+    />
+  );
 };
 
 export default CanopyMDXRemote;

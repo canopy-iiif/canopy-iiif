@@ -1,0 +1,67 @@
+{
+  "label": { "none": ["Maktaba"] },
+  "summary": {
+    "none": [
+      "A digital collection of 20 African Arabic manuscripts from University of Illinois at Urbana-Champaign and Northwestern University with images, translations, and brief essays."
+    ]
+  },
+  "collection": "https://iiif-maktaba.dc.rdc-staging.library.northwestern.edu/collection.json",
+  "metadata": ["Date", "Subject"],
+  "locales": [
+    {
+      "config": "locales/en.json",
+      "label": "English إنجليزي",
+      "lang": "en"
+    },
+    {
+      "config": "locales/ar.json",
+      "label": "Arabic عربي",
+      "lang": "ar"
+    }
+  ],
+  "search": {
+    "enabled": true,
+    "flexSearch": {
+      "bidirectional": false,
+      "charset": ["latin:extra", "arabic:extra"],
+      "document": {
+        "index": [
+          {
+            "bidirectional": true,
+            "depth": 3,
+            "field": "label",
+            "resolution": 9,
+            "tokenize": "full"
+          },
+          {
+            "field": "metadata",
+            "resolution": 2
+          },
+          {
+            "field": "summary",
+            "resolution": 1
+          }
+        ]
+      },
+      "optimize": true,
+      "tokenize": "strict"
+    },
+    "index": {
+      "metadata": {
+        "all": false,
+        "enabled": true
+      },
+      "summary": {
+        "enabled": true
+      }
+    }
+  },
+  "theme": {
+    "defaultTheme": "light",
+    "accentColor": "red",
+    "grayColor": "sand",
+    "panelBackground": "translucent",
+    "radius": "small",
+    "scaling": "100%"
+  }
+}

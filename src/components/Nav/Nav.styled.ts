@@ -47,7 +47,6 @@ const Items = styled("div", {
     padding: "$gr1 $gr2",
     display: "inline-flex",
     color: "var(--gray-12)",
-    textDecoration: "none",
     borderRadius: "2rem",
     position: "relative",
     transition: "$canopyAll",

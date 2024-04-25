@@ -1,14 +1,17 @@
-import { Link } from "@radix-ui/themes";
+import CanopyLink from "../Shared/Link";
+import { DefinitionListWrapper } from "../Shared/DefinitionList.styled";
 
-const ManifestId = ({ manifestId }: { manifestId: string }) => {
+const WorkManifestId = ({ manifestId }: { manifestId: string }) => {
   return (
-    <dl>
-      <dt>IIIF Manifest</dt>
-      <dd style={{ wordBreak: "break-word" }}>
-        <Link href={manifestId}>{manifestId}</Link>
-      </dd>
-    </dl>
+    <DefinitionListWrapper>
+      <dl>
+        <dt>IIIF Manifest</dt>
+        <dd style={{ wordBreak: "break-word" }}>
+          <CanopyLink href={manifestId}>{manifestId}</CanopyLink>
+        </dd>
+      </dl>
+    </DefinitionListWrapper>
   );
 };
 
-export default ManifestId;
+export default WorkManifestId;
