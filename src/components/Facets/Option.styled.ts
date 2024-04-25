@@ -37,7 +37,7 @@ const OptionCheckbox = styled(Checkbox.Root, {
   height: "$gr3",
   margin: "0 $gr1 0 0",
   background: "var(--gray-3)",
-  boxShadow: "inset 1px 1px 2px var(--gray-a4)",
+  boxShadow: "inset var(--shadow-2)",
   border: "none",
   borderRadius: "50%", // 3px for checkbox
   cursor: "pointer",

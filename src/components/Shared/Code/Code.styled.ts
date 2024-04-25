@@ -3,7 +3,7 @@ import { styled } from "@styles/stitches";
 
 const CodeStyled = styled(ScrollArea, {
   backgroundColor: "var(--accent-2)",
-  boxShadow: `inset 1px 1px 2px var(--accent-a4)`,
+  boxShadow: `inset var(--shadow-1)`,
   position: "relative",
   maxHeight: "61.8vh",
   borderRadius: "max(var(--radius-1))",
@@ -28,7 +28,7 @@ const CodeInline = styled("code", {
   padding: "3px $gr1",
   borderRadius: "max(var(--radius-1), var(--radius-full))",
   fontSize: "$gr2",
-  boxShadow: `1px 1px 1px var(--accent-a4)`,
+  boxShadow: `var(--shadow-2)`,
 });
 
 export { CodeStyled, CodeInline, CodePre };

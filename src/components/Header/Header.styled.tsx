@@ -35,7 +35,7 @@ const Actions = styled("div", {
     overflow: "hidden",
     left: "0",
     top: "-10000px",
-    boxShadow: `1px 2px 2px var(--gray-a4)`,
+    boxShadow: `var(--shadow-4)`,
   },
 
   variants: {
@@ -57,7 +57,7 @@ const Content = styled("div", {
   lineHeight: "1.5rem",
   alignItems: "center",
   zIndex: "1",
-  boxShadow: `3px 3px 8px var(--gray-a4)`,
+  boxShadow: `var(--shadow-4)`,
   boxSizing: "border-box",
 
   "@xl": {

@@ -53,7 +53,7 @@ const SliderStyled = styled("div", {
     "> div": {
       borderRadius: "3px",
       overflow: "hidden",
-      boxShadow: "2px 2px 5px #0001",
+      boxShadow: "var(--shadow-3)",
     },
   },
 

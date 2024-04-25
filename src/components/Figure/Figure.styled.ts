@@ -26,7 +26,6 @@ const Wrapper = styled("figure", {
   overflow: "hidden",
   zIndex: "0",
   borderRadius: "3px",
-  boxShadow: "2px 2px 5px var(--gray-a4)",
   transition: "$canopyAll",
 });
 

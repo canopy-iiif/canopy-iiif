@@ -1,7 +1,7 @@
 import { BaseButtonProps } from "@radix-ui/themes/dist/cjs/components/base-button";
-import { ButtonStyled } from "./Button.styled";
+import { ButtonStyled } from "@components/Shared/Button/Button.styled";
+import Link from "next/link";
 import React from "react";
-import useNextRouter from "../../../hooks/useNextRouter";
 
 interface ButtonProps extends BaseButtonProps {
   href?: string;
@@ -9,21 +9,15 @@ interface ButtonProps extends BaseButtonProps {
 }
 
 const Button: React.FC<ButtonProps> = (props) => {
-  const router = useNextRouter();
-
-  const handleOnClick = (e: React.SyntheticEvent) => {
-    if (props.href && !props.target) {
-      e.preventDefault();
-      // @ts-ignore
-      router.push(props.href);
-    } else if (props.href && props.target) {
-      window.open(props.href, props.target);
-    }
-
-    return;
-  };
-
-  return <ButtonStyled size="3" {...props} onClick={handleOnClick} />;
+  return (
+    <ButtonStyled size="3" {...props} asChild>
+      {props.href && (
+        <Link href={props.href} target={props.target}>
+          {props.children}
+        </Link>
+      )}
+    </ButtonStyled>
+  );
 };
 
 export default Button;

@@ -1,5 +1,4 @@
 import { Dialog } from "@radix-ui/themes";
-import { grayA } from "@radix-ui/colors";
 import { styled } from "@styles/stitches";
 
 const FacetsActivateIndicator = styled("span", {
@@ -39,7 +38,7 @@ const FacetsActivateFloatingWrapper = styled("div", {
           transform: "translate(50%)",
           backfaceVisibility: "hidden",
           webkitFontSmoothing: "subpixel-antialiased",
-          boxShadow: `5px 5px 38px ${grayA.grayA9}`,
+          boxShadow: "var(--shadow-5)",
         },
       },
     },

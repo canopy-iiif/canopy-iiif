@@ -1,3 +1,4 @@
+import { Button, TextField } from "@radix-ui/themes";
 import React, {
   ChangeEvent,
   SyntheticEvent,
@@ -6,11 +7,9 @@ import React, {
   useState,
 } from "react";
 
-import Button from "../Shared/Button/Button";
 import { LocaleString } from "@hooks/useLocale";
 import { MagnifyingGlassIcon } from "@radix-ui/react-icons";
 import { SearchForm } from "@components/Search/Search.styled";
-import { TextField } from "@radix-ui/themes";
 import { useRouter } from "next/router";
 
 const Search = () => {
@@ -54,8 +53,8 @@ const Search = () => {
         <TextField.Slot side="left" pl="3">
           <MagnifyingGlassIcon height="20" width="20" />
         </TextField.Slot>
-        <TextField.Slot side="right" pr="2" gap="0">
-          <Button size="1" type="submit">
+        <TextField.Slot side="right" pr="1" gap="0">
+          <Button size="2" type="submit">
             {LocaleString("searchButton")}
           </Button>
         </TextField.Slot>
