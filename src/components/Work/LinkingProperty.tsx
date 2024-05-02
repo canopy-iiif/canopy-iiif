@@ -23,25 +23,25 @@ const WorkLinkingProperty = ({
     <StyledLinkingProperty>
       {rendering && (
         <dl>
-          <dt>{LocaleString("primitiveRendering")}</dt>
+          <dt>{LocaleString("primitiveRendering") || "Alternate formats"}</dt>
           <dd><Rendering rendering={rendering} /></dd>
         </dl>
       )}
       {seeAlso && (
         <dl>
-          <dt>{LocaleString("primitiveSeeAlso")}</dt>
+          <dt>{LocaleString("primitiveSeeAlso") || "See also"}</dt>
           <dd><SeeAlso seeAlso={seeAlso} /></dd>
         </dl>
       )}
       {homepage && (
         <dl>
-          <dt>{LocaleString("primitiveHomepage")}</dt>
+          <dt>{LocaleString("primitiveHomepage") || "Homepage"}</dt>
           <dd><Homepage homepage={homepage} /></dd>
         </dl>
       )}
       {partOf && (
         <dl>
-          <dt>{LocaleString("primitivePartOf")}</dt>
+          <dt>{LocaleString("primitivePartOf")  || "Parent collections"}</dt>
           <dd><PartOf partOf={partOf} /></dd>
         </dl>
       )}
