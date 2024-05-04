@@ -4,6 +4,10 @@
     "text": "Works"
   },
   {
+    "path": "/map",
+    "text": "Map"
+  },
+  {
     "path": "/metadata",
     "text": "Metadata"
   },

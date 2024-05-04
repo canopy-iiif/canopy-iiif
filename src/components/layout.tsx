@@ -6,7 +6,13 @@ import Main from "./Shared/Main";
 import { styled } from "@src/styles/stitches";
 import { useTheme } from "next-themes";
 
-const Layout = ({ children }: { children: ReactNode }) => {
+const Layout = ({
+  children,
+  hasFooter = true,
+}: {
+  children: ReactNode;
+  hasFooter?: boolean;
+}) => {
   const { theme } = useTheme();
 
   // define Clover IIIF colors for @radix-ui/themes variables
@@ -41,7 +47,7 @@ const Layout = ({ children }: { children: ReactNode }) => {
     <StyledLayout>
       <Header />
       <Main>{children}</Main>
-      <Footer />
+      {hasFooter && <Footer />}
     </StyledLayout>
   );
 };

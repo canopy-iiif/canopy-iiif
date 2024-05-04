@@ -1,0 +1,59 @@
+{
+  "collection": "https://raw.githubusercontent.com/abolition-now/manifests/main/collections/abolition-now.json",
+  "devCollection": "https://raw.githubusercontent.com/abolition-now/manifests/main/collections/abolition-now.json",
+  "featured": [
+    "https://raw.githubusercontent.com/abolition-now/manifests/main/manifests/0028_abolitionwithbarbedwire.json",
+    "https://raw.githubusercontent.com/abolition-now/manifests/main/manifests/0089_waterismedicine.json",
+    "https://raw.githubusercontent.com/abolition-now/manifests/main/manifests/0210_0211_restinpower.json",
+    "https://raw.githubusercontent.com/abolition-now/manifests/main/manifests/0148_abolitionpigcop.json",
+    "https://raw.githubusercontent.com/abolition-now/manifests/main/manifests/0073_youthsoeducated.json",
+    "https://raw.githubusercontent.com/abolition-now/manifests/main/manifests/0141_humanityoverhate.json",
+    "https://raw.githubusercontent.com/abolition-now/manifests/main/manifests/0007_stopcopcity.json",
+    "https://raw.githubusercontent.com/abolition-now/manifests/main/manifests/0007_walaaloisjeceylgeorgefloydphoenix.json",
+    "https://raw.githubusercontent.com/abolition-now/manifests/main/manifests/0063_housingkeepsyouthfree.json",
+    "https://raw.githubusercontent.com/abolition-now/manifests/main/manifests/0136_policefreeschools.json"
+  ],
+  "metadata": [
+    "Subject",
+    "Artist",
+    "Slogans",
+    "Visual Motifs",
+    "Date",
+    "Geography",
+    "People",
+    "Medium",
+    "Photographer"
+  ],
+  "summary": {
+    "none": ["Images for Study and Struggle"]
+  },
+  "label": { "none": ["Abolition Now"] },
+  "map": {
+    "defaultBounds": [[51.505, -0.09]],
+    "enabled": true,
+    "icon": {
+      "iconUrl": "images/marker-icon.png",
+      "iconSize": [24, 36],
+      "iconAnchor": [12, 36]
+    },
+    "tileLayers": [
+      {
+        "name": "OpenStreetMap",
+        "url": "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+        "attribution": "&copy; <a href=\"https://www.openstreetmap.org/copyright\">OpenStreetMap</a> contributors"
+      },
+      {
+        "name": "OpenTopoMap",
+        "url": "https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png",
+        "attribution": "&copy; <a href=\"https://www.openstreetmap.org/copyright\">OpenStreetMap</a> contributors"
+      }
+    ]
+  },
+  "theme": {
+    "defaultTheme": "light",
+    "accentColor": "amber",
+    "radius": "full",
+    "scaling": "100%",
+    "toggleEnabled": true
+  }
+}
