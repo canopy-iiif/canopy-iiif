@@ -54,23 +54,28 @@ export default WorkLinkingProperty;
 const StyledLinkingProperty = styled("div", {
     dl: {
       margin: "0",
+
       dt: {
         padding: "$gr2 0 $gr1",
         fontWeight: "500",
         color: "var(--gray-10)",
         fontSize: "$gr2",
       },
+      
       dd: {
         padding: "0 0 $gr1",
+        
         a: {
           color: "var(--accent-11)",
           textDecoration: "none",
         },
+        
         ul: {
           listStyle: "none",
           listStyleType: "none",
           margin: "0",
           paddingInlineStart: "0px",
+          
           li: {
             listStyle: "none",
             listStyleType: "none",
