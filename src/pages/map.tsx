@@ -2,14 +2,14 @@
 
 import "leaflet/dist/leaflet.css";
 
-import Layout from "@components/layout";
+import LayoutsFullScreen from "@src/components/Layouts/FullScreen";
 import { Manifest } from "@iiif/presentation-3";
 import React from "react";
 import { canopyManifests } from "@lib/constants/canopy";
 import dynamic from "next/dynamic";
 import { getFeatures } from "@lib/iiif/navPlace";
 
-const Map = dynamic(() => import("../components/Map/Map"), { ssr: false });
+const Map = dynamic(() => import("@src/components/Map/Map"), { ssr: false });
 
 interface MapPageProps {
   manifests: Manifest[];
@@ -20,11 +20,9 @@ export default function MapPage({ manifests }: MapPageProps) {
   const features = getFeatures(navPlaceManifests);
 
   return (
-    <Layout>
-      <div>
-        <Map manifests={features} />
-      </div>
-    </Layout>
+    <LayoutsFullScreen>
+      <Map manifests={features} />
+    </LayoutsFullScreen>
   );
 }
 
