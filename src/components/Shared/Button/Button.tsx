@@ -1,6 +1,6 @@
 import { BaseButtonProps } from "@radix-ui/themes/dist/cjs/components/base-button";
 import { ButtonStyled } from "@components/Shared/Button/Button.styled";
-import Link from "next/link";
+import Link from "@components/Shared/Link";
 import React from "react";
 
 interface ButtonProps extends BaseButtonProps {

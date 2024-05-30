@@ -3,11 +3,11 @@ import {
   ContentWrapper,
 } from "@components/Shared/Content.styled";
 
-import Container from "../components/Shared/Container";
+import Container from "@components/Shared/Container";
 import FACETS from "@.canopy/facets.json";
 import Heading from "@components/Shared/Heading/Heading";
 import Layout from "@components/layout";
-import { Link } from "@radix-ui/themes";
+import Link from "@components/Shared/Link";
 import React from "react";
 import { styled } from "@styles/stitches";
 

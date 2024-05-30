@@ -1,6 +1,7 @@
 import "leaflet/dist/leaflet.css";
 import "leaflet.markercluster/dist/MarkerCluster.css";
 import "leaflet.markercluster/dist/MarkerCluster.Default.css";
+
 import {
   FeatureGroup,
   LayersControl,
@@ -11,10 +12,11 @@ import {
 } from "react-leaflet";
 import { Label, Thumbnail } from "@samvera/clover-iiif/primitives";
 import { useEffect, useRef, useState } from "react";
+
 import Container from "@components/Shared/Container";
 import { InternationalString } from "@iiif/presentation-3";
 import Leaflet from "leaflet";
-import Link from "next/link";
+import Link from "@components/Shared/Link";
 import { MapStyled } from "@components/Map/Map.styled";
 import MarkerClusterGroup from "@components/Map/MarkerClusterGroup";
 import { getBounds } from "@lib/iiif/navPlace";
