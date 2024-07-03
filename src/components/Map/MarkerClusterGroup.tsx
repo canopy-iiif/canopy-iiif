@@ -17,7 +17,7 @@ const createClusterCustomIcon = function (cluster: any) {
   });
 };
 
-const MarkerClusterGroup = createPathComponent(({ ...props }, ctx) => {
+const MarkerClusterGroup = createPathComponent(({}, ctx) => {
   const clusterProps: Record<string, any> = {
     iconCreateFunction: createClusterCustomIcon,
     polygonOptions: {

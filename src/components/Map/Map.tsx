@@ -2,7 +2,7 @@ import "leaflet/dist/leaflet.css";
 import "leaflet.markercluster/dist/MarkerCluster.css";
 import "leaflet.markercluster/dist/MarkerCluster.Default.css";
 
-import { Box, Flex, Select, Separator } from "@radix-ui/themes";
+import { Box, Flex, Select } from "@radix-ui/themes";
 import {
   FeatureGroup,
   LayersControl,
@@ -14,14 +14,12 @@ import {
 import { MinusIcon, PlusIcon } from "@radix-ui/react-icons";
 import { useEffect, useRef, useState } from "react";
 
-import { Icon } from "@radix-ui/themes/dist/cjs/components/callout";
 import { IconButton } from "@radix-ui/themes";
 import Leaflet from "leaflet";
 import MDXCard from "../MDX/Card";
 import { MapStyled } from "@components/Map/Map.styled";
 import MarkerClusterGroup from "@components/Map/MarkerClusterGroup";
 import { MarkerIcon } from "@components/Map/MarkerIcon";
-import { c } from "vitest/dist/reporters-5f784f42";
 import { getBounds } from "@lib/iiif/navPlace";
 import { headerHeight } from "@src/styles/global";
 
