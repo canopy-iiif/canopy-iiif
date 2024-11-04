@@ -48,12 +48,5 @@
         "attribution": "&copy; <a href=\"https://www.openstreetmap.org/copyright\">OpenStreetMap</a> contributors"
       }
     ]
-  },
-  "theme": {
-    "defaultTheme": "light",
-    "accentColor": "amber",
-    "radius": "full",
-    "scaling": "100%",
-    "toggleEnabled": true
   }
 }

@@ -4,7 +4,7 @@ import Leaflet from "leaflet";
 import { createPathComponent } from "@react-leaflet/core";
 
 const clusterIconHtml = (count: number) =>
-  `<button data-accent-color="" data-radius="full" style="box-shadow: var(--shadow-3); cursor: pointer; outline-style: none;" class="rt-reset rt-BaseButton rt-r-size-3 rt-variant-solid rt-high-contrast rt-IconButton"><span class="rt-Text rt-r-size-4 rt-r-weight-bold">${count}</span></button>`;
+  `<button data-accent-color="" data-radius="full" style="box-shadow: var(--shadow-3); cursor: pointer; outline-style: none;" class="rt-reset rt-BaseButton rt-r-size-3 rt-variant-solid rt-IconButton"><span class="rt-Text rt-r-size-4 rt-r-weight-bold">${count}</span></button>`;
 
 const createClusterCustomIcon = function (cluster: any) {
   const count = cluster.getChildCount();
