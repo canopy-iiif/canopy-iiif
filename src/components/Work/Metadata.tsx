@@ -1,6 +1,6 @@
 import { DefinitionListWrapper } from "../Shared/DefinitionList.styled";
 import FACETS from "@.canopy/facets.json";
-import { Link } from "@radix-ui/themes";
+import Link from "@components/Shared/Link";
 import { Metadata } from "@samvera/clover-iiif/primitives";
 import { MetadataItem } from "@iiif/presentation-3";
 import React from "react";
