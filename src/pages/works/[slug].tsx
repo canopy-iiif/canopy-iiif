@@ -19,6 +19,7 @@ import WorkViewer from "@src/components/Work/Viewer";
 import WorkScroll from "@src/components/Work/Scroll";
 import WorkReferencingContent from "@src/components/Work/ReferencingContent";
 import WorkRequiredStatement from "@src/components/Work/RequiredStatement";
+import WorkLinkingProperty from "@components/Work/LinkingProperty";
 
 interface WorkProps {
   manifest: Manifest;
@@ -33,12 +34,12 @@ export default function WorkPage({
   related,
   source,
 }: WorkProps) {
-  const { id, label, metadata, requiredStatement, summary } = manifest;
-
+  const { id, homepage, label, metadata, rendering, requiredStatement, partOf, seeAlso, summary } = manifest;
   const Work = () => <></>;
 
   Work.ManifestId = () => <WorkManifestId manifestId={id} />;
   Work.Metadata = () => <WorkMetadata metadata={metadata} />;
+  Work.LinkingProperty = (props) => <WorkLinkingProperty {...props} homepage={homepage} partOf={partOf} rendering={rendering} seeAlso={seeAlso} />;
   Work.RequiredStatement = () => (
     <WorkRequiredStatement requiredStatement={requiredStatement} />
   );

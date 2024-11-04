@@ -27,6 +27,10 @@ jobs:
         run: npm run prebuild -- --path=./config/.fixtures/canopy.customize-search.json
       - name: Customize Search (Build)
         run: npm run test-build
+      - name: Customize Maps (Aggregation)
+        run: npm run prebuild -- --path=./config/.fixtures/canopy.maps.json
+      - name: Customize Maps (Build)
+        run: npm run test-build
       - name: Minimal Configuration (Aggregation)
         run: npm run prebuild -- --path=./config/.fixtures/canopy.minimal.json
       - name: Minimal Configuration (Build)

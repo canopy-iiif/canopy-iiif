@@ -14,6 +14,11 @@ const DefinitionListWrapper = styled("div", {
     dd: {
       padding: "0 0 $gr1",
       margin: "0",
+
+      a: {
+        color: "var(--accent-11)",
+        textDecoration: "none",
+      }
     },
   },
 });

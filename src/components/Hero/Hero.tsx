@@ -7,9 +7,9 @@ import { Autoplay, EffectFade, Keyboard, Navigation } from "swiper";
 import { Label, Thumbnail } from "@samvera/clover-iiif/primitives";
 import { Swiper, SwiperSlide } from "swiper/react";
 
-import Container from "../Shared/Container";
+import Container from "@components/Shared/Container";
 import { HeroStyled } from "@components/Hero/Hero.styled";
-import Link from "next/link";
+import Link from "@components/Shared/Link";
 import React from "react";
 
 interface HeroProps {
