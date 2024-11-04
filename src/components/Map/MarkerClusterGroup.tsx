@@ -1,25 +1,39 @@
-import 'leaflet.markercluster';
-import { createPathComponent } from '@react-leaflet/core';
-import L from 'leaflet';
+import "leaflet.markercluster";
 
-const MarkerClusterGroup = createPathComponent(({ ...props}, ctx) => {
-  const clusterProps: Record<string, any> = {};
-  const clusterEvents: Record < string, any >= {};
+import Leaflet from "leaflet";
+import { createPathComponent } from "@react-leaflet/core";
 
-  Object.entries(props).forEach(([propName, prop]) => propName.startsWith('on') ? (clusterEvents[propName] = prop)
-    : (clusterProps[propName] = prop));
+const clusterIconHtml = (count: number) =>
+  `<button data-accent-color="" data-radius="full" style="box-shadow: var(--shadow-3); cursor: pointer; outline-style: none;" class="rt-reset rt-BaseButton rt-r-size-3 rt-variant-solid rt-IconButton"><span class="rt-Text rt-r-size-4 rt-r-weight-bold">${count}</span></button>`;
+
+const createClusterCustomIcon = function (cluster: any) {
+  const count = cluster.getChildCount();
+  return Leaflet.divIcon({
+    className: "canopy-map-cluster-group-icon",
+    html: clusterIconHtml(count),
+    iconSize: Leaflet.point(40, 40, true),
+    iconAnchor: [20, 40],
+    popupAnchor: [0, -40],
+  });
+};
+
+const MarkerClusterGroup = createPathComponent(({}, ctx) => {
+  const clusterProps: Record<string, any> = {
+    iconCreateFunction: createClusterCustomIcon,
+    polygonOptions: {
+      fillColor: "var(--accent-a10)",
+      color: "var(--accent-10)",
+      weight: 2,
+      opacity: 1,
+    },
+  };
 
   // @ts-ignore
-  const markerClusterGroup = L.markerClusterGroup(clusterProps);
-
-  Object.entries(clusterEvents).forEach(([eventAsProp, callback]) => {
-    const clusterEvent = `cluster${eventAsProp.substring(2).toLowerCase()}`;
-    markerClusterGroup.on(clusterEvent, callback);
-  });
+  const markerClusterGroup = Leaflet.markerClusterGroup(clusterProps);
 
   return {
     instance: markerClusterGroup,
-    context: {...ctx, layerContainer: markerClusterGroup},
+    context: { ...ctx, layerContainer: markerClusterGroup },
   };
 });
 
