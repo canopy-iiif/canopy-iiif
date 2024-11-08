@@ -4,21 +4,12 @@ const CardStyled = styled("div", {
   paddingBottom: "$gr4",
   zIndex: "1",
 
-  "@xxs": {
-    paddingBottom: "$gr2",
+  "@md": {
+    paddingBottom: "$gr3",
   },
 
   "@xs": {
     paddingBottom: "$gr2",
   },
-
-  "@sm": {
-    paddingBottom: "$gr3",
-  },
-
-  "@md": {
-    paddingBottom: "$gr3",
-  },
-});
 
 export { CardStyled };
