@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 
 import Card from "@components/Card/Card";
+import { CardStyled } from "@components/MDX/Card.styled.ts";
 import { canopyManifests } from "@lib/constants/canopy";
 
 const MDXCard = ({ iiifContent }: { iiifContent: string }) => {
@@ -28,7 +29,7 @@ const MDXCard = ({ iiifContent }: { iiifContent: string }) => {
 
   if (!resource) return null;
 
-  return <Card resource={resource} />;
+  return <span><CardStyled><Card resource={resource} /></CardStyled></span>;
 };
 
 export default MDXCard;
