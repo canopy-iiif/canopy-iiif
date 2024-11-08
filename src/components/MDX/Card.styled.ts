@@ -11,5 +11,6 @@ const MDXCardStyled = styled("div", {
   "@xs": {
     paddingBottom: "$gr2",
   },
+});
 
-export { CardStyled };
+export { MDXCardStyled };
