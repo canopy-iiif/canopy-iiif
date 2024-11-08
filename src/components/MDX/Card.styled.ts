@@ -1,6 +1,6 @@
 import {styled} from "@styles/stitches.ts";
 
-const CardStyled = styled("div", {
+const MDXCardStyled = styled("div", {
   paddingBottom: "$gr4",
   zIndex: "1",
 
