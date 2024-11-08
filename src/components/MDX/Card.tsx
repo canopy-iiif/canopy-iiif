@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
 import Card from "@components/Card/Card";
-import { CardStyled } from "@components/MDX/Card.styled.ts";
+import { MDXCardStyled } from "@components/MDX/Card.styled.ts";
 import { canopyManifests } from "@lib/constants/canopy";
 
 const MDXCard = ({ iiifContent }: { iiifContent: string }) => {
