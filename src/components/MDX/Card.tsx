@@ -29,7 +29,7 @@ const MDXCard = ({ iiifContent }: { iiifContent: string }) => {
 
   if (!resource) return null;
 
-  return <span><CardStyled><Card resource={resource} /></CardStyled></span>;
+  return <MDXCardStyled><Card resource={resource} /></MDXCardStyled>;
 };
 
 export default MDXCard;
