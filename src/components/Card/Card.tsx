@@ -1,21 +1,15 @@
 import * as AspectRatio from "@radix-ui/react-aspect-ratio";
 
-import {
-  Box,
-  Inset,
-  Link,
-  Card as RadixThemesCard,
-  Text,
-} from "@radix-ui/themes";
+import { Box, Inset, Card as RadixThemesCard, Text } from "@radix-ui/themes";
 import { Content, Placeholder, Wrapper } from "@components/Card/Card.styled";
 import { LazyMotion, MotionConfig, domAnimation, m } from "framer-motion";
 
+import CanopyLink from "../Shared/Link";
 import Figure from "@components/Figure/Figure";
 import { Label } from "@samvera/clover-iiif/primitives";
 import React from "react";
 import { SearchResponseItem } from "@customTypes/search/search";
 import { getLabel } from "@lib/iiif/label";
-import { getRandomItem } from "@lib/utils";
 import { useInView } from "react-intersection-observer";
 
 interface CardProps {
@@ -27,7 +21,7 @@ const Card: React.FC<CardProps> = ({ resource }) => {
 
   const { label, homepage, thumbnail } = resource;
   // @ts-ignore
-  const { width, height } = getRandomItem(thumbnail);
+  const { width, height } = thumbnail[0];
 
   if (width && height) aspectRatio = width / height;
 
@@ -42,8 +36,13 @@ const Card: React.FC<CardProps> = ({ resource }) => {
         variant="classic"
         asChild
       >
-        <Link href={homepage && homepage[0].id ? homepage[0].id : ""}>
-          <Inset clip="padding-box" side="top">
+        <CanopyLink href={homepage && homepage[0].id ? homepage[0].id : ""}>
+          <Inset
+            clip="padding-box"
+            side="top"
+            data-testid="canopy-card-inset"
+            data-resource={thumbnail[0].id}
+          >
             <AspectRatio.Root ratio={aspectRatio}>
               <Placeholder>
                 <MotionConfig transition={{ duration: 1 }}>
@@ -67,7 +66,7 @@ const Card: React.FC<CardProps> = ({ resource }) => {
               <Label label={label} />
             </Content>
           </Text>
-        </Link>
+        </CanopyLink>
       </RadixThemesCard>
     </Wrapper>
   );

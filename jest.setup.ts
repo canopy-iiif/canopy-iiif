@@ -1,5 +1,9 @@
 import "@testing-library/jest-dom";
 
+import { loadEnvConfig } from "@next/env";
+
+loadEnvConfig(process.cwd());
+
 // IntersectionObserver isn't available in test environment
 const mockIntersectionObserver = jest.fn();
 mockIntersectionObserver.mockReturnValue({
