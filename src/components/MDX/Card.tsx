@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 
-import { CanopyEnvironment } from "@customTypes/canopy";
 import Card from "@components/Card/Card";
 import { MDXCardStyled } from "@components/MDX/Card.styled.ts";
 import { canopyManifests } from "@lib/constants/canopy";
@@ -11,7 +10,7 @@ const MDXCard = ({ iiifContent }: { iiifContent: string }) => {
 
   useEffect(() => {
     const item = manifests.find((manifest) => manifest.id === iiifContent);
-    const { basePath } = (process.env.CANOPY_CONFIG ?? {}) as CanopyEnvironment;
+
     if (item)
       setResource({
         id: iiifContent,
@@ -20,7 +19,7 @@ const MDXCard = ({ iiifContent }: { iiifContent: string }) => {
         thumbnail: item.thumbnail,
         homepage: [
           {
-            id: `${basePath}/works/${item.slug}`,
+            id: `/works/${item.slug}`,
             label: item.label,
             type: "Text",
           },
@@ -30,7 +29,11 @@ const MDXCard = ({ iiifContent }: { iiifContent: string }) => {
 
   if (!resource) return null;
 
-  return <MDXCardStyled><Card resource={resource} /></MDXCardStyled>;
+  return (
+    <MDXCardStyled data-testid="mdx-card">
+      <Card resource={resource} />
+    </MDXCardStyled>
+  );
 };
 
 export default MDXCard;
