@@ -1,3 +1,5 @@
+import { GAParams, GTMParams } from "@next/third-parties/dist/types/google";
+
 import { InternationalString } from "@iiif/presentation-3";
 import { ThemeProps } from "@radix-ui/themes";
 
@@ -29,9 +31,8 @@ export interface CanopyTheme extends ThemeProps {
 }
 
 export interface CanopyVendor {
-  googleTagManager?: {
-    container: string;
-  };
+  googleAnalytics?: GAParams;
+  googleTagManager?: GTMParams;
 }
 
 export interface CanopyEnvironment {
