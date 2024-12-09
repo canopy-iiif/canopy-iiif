@@ -28,6 +28,12 @@ export interface CanopyTheme extends ThemeProps {
   toggleEnabled: boolean;
 }
 
+export interface CanopyVendor {
+  googleTagManager?: {
+    container: string;
+  };
+}
+
 export interface CanopyEnvironment {
   collection: string;
   featured: string[];
@@ -48,6 +54,7 @@ export interface CanopyEnvironment {
   theme: CanopyTheme;
   url: string;
   basePath?: string;
+  vendor?: CanopyVendor;
 }
 
 export interface CanopyFacetValueShape {

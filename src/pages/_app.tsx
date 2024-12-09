@@ -8,6 +8,7 @@ import { getDefaultLang, getLocale } from "@hooks/useLocale";
 
 import { AppProps } from "next/app";
 import COLLECTIONS from "@.canopy/collections.json";
+import { GoogleTagManager } from "@next/third-parties/google";
 import { NextSeo } from "next-seo";
 import { Theme } from "@radix-ui/themes";
 import { ThemeProvider } from "next-themes";
@@ -30,7 +31,9 @@ export default function CanopyAppProps({
   const root = COLLECTIONS.find((collection) => collection.depth === 0);
   const label = root?.label;
 
-  const { locales, theme } = config;
+  const { locales, theme, vendor } = config;
+
+  const GTM_CONTAINER = vendor?.googleTagManager?.container;
 
   const radixTheme = {
     accentColor: theme.accentColor,
@@ -94,6 +97,7 @@ export default function CanopyAppProps({
           </CanopyProvider>
         )}
       </ThemeProvider>
+      {GTM_CONTAINER && <GoogleTagManager gtmId={GTM_CONTAINER} />}
     </>
   );
 }
