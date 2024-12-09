@@ -2,6 +2,7 @@ import "@radix-ui/themes/styles.css";
 
 import { CanopyEnvironment, CanopyLocale } from "@customTypes/canopy";
 import { CanopyProvider, defaultState } from "../context/canopy";
+import { GoogleAnalytics, GoogleTagManager } from "@next/third-parties/google";
 import React, { useEffect, useState } from "react";
 import { dm_sans, dm_serif_display } from "@styles/theme/fonts";
 import { getDefaultLang, getLocale } from "@hooks/useLocale";
@@ -30,7 +31,7 @@ export default function CanopyAppProps({
   const root = COLLECTIONS.find((collection) => collection.depth === 0);
   const label = root?.label;
 
-  const { locales, theme } = config;
+  const { locales, theme, vendor } = config;
 
   const radixTheme = {
     accentColor: theme.accentColor,
@@ -94,6 +95,12 @@ export default function CanopyAppProps({
           </CanopyProvider>
         )}
       </ThemeProvider>
+      {vendor?.googleAnalytics && (
+        <GoogleAnalytics {...vendor.googleAnalytics} />
+      )}
+      {vendor?.googleTagManager && (
+        <GoogleTagManager {...vendor.googleTagManager} />
+      )}
     </>
   );
 }
