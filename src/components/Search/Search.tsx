@@ -49,6 +49,7 @@ const Search = () => {
         size="3"
         style={{ width: "100%" }}
         variant="surface"
+        aria-label={LocaleString("searchButton")}
       >
         <TextField.Slot side="left" pl="3">
           <MagnifyingGlassIcon height="20" width="20" />
