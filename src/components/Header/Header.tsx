@@ -49,7 +49,7 @@ const Header = () => {
           </Heading>
         </Link>
         <ResponsiveActions>
-          <button onClick={handleShowNav}>
+          <button onClick={handleShowNav} aria-label="Expand navigation menu" aria-controls="navigation-menu">
             <HamburgerMenuIcon />
           </button>
         </ResponsiveActions>
