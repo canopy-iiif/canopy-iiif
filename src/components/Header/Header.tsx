@@ -7,6 +7,7 @@ import { Heading } from "@radix-ui/themes";
 import { Label } from "@samvera/clover-iiif/primitives";
 import Link from "@components/Shared/Link";
 import Locale from "@components/Shared/Locale/Locale";
+import { LocaleString } from "@hooks/useLocale";
 import Nav from "@components/Nav/Nav";
 import Search from "@components/Search/Search";
 import collections from "@.canopy/collections.json";
@@ -49,7 +50,7 @@ const Header = () => {
           </Heading>
         </Link>
         <ResponsiveActions>
-          <button onClick={handleShowNav}>
+          <button onClick={handleShowNav} aria-label={LocaleString("navigationMenuExpand") || "Expand Navigation Menu"} aria-controls="navigation-menu">
             <HamburgerMenuIcon />
           </button>
         </ResponsiveActions>
