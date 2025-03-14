@@ -30,13 +30,13 @@ const buildManifestSEO = async (manifest: Manifest, path: string) => {
     openGraph: {
       images: thumbnails.length > 0
         ? thumbnails.map((item: any) => ({
-            url: item.id || fallbackImage, // Use fallback if no image found
+            url: item.id || fallbackImage,
             type: item.format || "image/jpeg",
             width: item.width || 600,
             height: item.height || 400,
-            alt: title || "Fallback Image",
+            alt: title || "Fallback Image Indicating Manifest is Missing a Thumbnail",
           }))
-        : [{ url: fallbackImage, type: "image/jpeg", width: 600, height: 400, alt: "Fallback Image" }],
+        : [{ url: fallbackImage, type: "image/jpeg", width: 600, height: 400, alt: "Fallback Image Indicating Manifest is Missing a Thumbnail" }],
     },
   };
 };
