@@ -22,7 +22,7 @@ const Card: React.FC<CardProps> = ({ resource }) => {
   const { label, homepage, thumbnail } = resource;
 
   const hasThumbnail = Array.isArray(thumbnail) && thumbnail.length > 0;
-  const imageUrl = hasThumbnail ? thumbnail[0].id : "images/fallback-thumbnail.jpg";
+  const thumbnailPath = hasThumbnail ? thumbnail[0].id : "images/fallback-thumbnail.jpg";
   const width = hasThumbnail ? thumbnail[0].width : undefined;
   const height = hasThumbnail ? thumbnail[0].height : undefined;
 
@@ -44,7 +44,7 @@ const Card: React.FC<CardProps> = ({ resource }) => {
             clip="padding-box"
             side="top"
             data-testid="canopy-card-inset"
-            data-resource={imageUrl}
+            data-resource={thumbnailPath}
           >
             <AspectRatio.Root ratio={aspectRatio}>
               <Placeholder>
@@ -56,7 +56,7 @@ const Card: React.FC<CardProps> = ({ resource }) => {
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                       >
-                        <Figure resource={hasThumbnail ? thumbnail : [{ id: imageUrl }]} alt={alt} />
+                        <Figure resource={hasThumbnail ? thumbnail : [{ id: thumbnailPath }]} alt={alt} />
                       </m.div>
                     </LazyMotion>
                   )}
