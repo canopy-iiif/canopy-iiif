@@ -10,14 +10,16 @@ import { getRandomItem } from "./utils";
 const root = COLLECTIONS.find((collection) => collection.depth === 0);
 const label = root?.label;
 
+const fallbackImage = "/images/fallback-thumbnail.jpg";
+
 const buildManifestSEO = async (manifest: Manifest, path: string) => {
   const { url, basePath } = process.env
     ?.CANOPY_CONFIG as unknown as CanopyEnvironment;
   const baseUrl = basePath ? `${url}${basePath}` : url;
 
   const title = getLabel(manifest.label).join(" - ");
-  const images = MANIFESTS.find((item) => item.id === manifest.id)
-    ?.thumbnail as any[];
+  const manifestData = MANIFESTS.find((item) => item.id === manifest.id);
+  const thumbnails = (manifestData?.thumbnail as any[]) || [];
 
   return {
     title: `${title} - ${getLabel(label).join(" - ")}`,
@@ -26,15 +28,15 @@ const buildManifestSEO = async (manifest: Manifest, path: string) => {
     }),
     canonical: `${baseUrl}${path}`,
     openGraph: {
-      images: images?.map((item: any) => {
-        return {
-          url: item.id || "",
-          type: item.format || "",
-          width: item.width || 200,
-          height: item.height || 200,
-          alt: title || "",
-        };
-      }),
+      images: thumbnails.length > 0
+        ? thumbnails.map((item: any) => ({
+            url: item.id || fallbackImage, // Use fallback if no image found
+            type: item.format || "image/jpeg",
+            width: item.width || 600,
+            height: item.height || 400,
+            alt: title || "Fallback Image",
+          }))
+        : [{ url: fallbackImage, type: "image/jpeg", width: 600, height: 400, alt: "Fallback Image" }],
     },
   };
 };
@@ -60,15 +62,22 @@ const buildDefaultSEO = (config: any) => {
     ? `${config.pageTitle} - ${siteTitle}`
     : siteTitle;
   const description = getLabel(summary).join(" - ");
-  const featured = config.featured;
+  const featured = config.featured || [];
 
-  const candidates = featured?.map((item: any) => {
-    const manifest = MANIFESTS.find((manifest: any) => manifest?.id === item);
-    const thumbnail = manifest?.thumbnail as any[];
-    if (thumbnail?.length > 0) return thumbnail[0];
-  });
+  // Get valid thumbnails from featured manifests
+  const candidates = featured
+    .map((item: any) => {
+      const manifest = MANIFESTS.find((manifest: any) => manifest?.id === item);
+      return manifest?.thumbnail?.[0];
+    })
+    .filter(Boolean);
 
-  const defaultImage = getRandomItem(candidates as IIIFExternalWebResource[]);
+  const defaultImage = getRandomItem(candidates as IIIFExternalWebResource[]) || {
+    id: fallbackImage,
+    format: "image/jpeg",
+    width: 600,
+    height: 400,
+  };
 
   return {
     title,
@@ -76,11 +85,11 @@ const buildDefaultSEO = (config: any) => {
     openGraph: {
       images: [
         {
-          url: defaultImage?.id || "",
-          type: defaultImage?.format || "",
-          width: defaultImage?.width || 200,
-          height: defaultImage?.height || 200,
-          alt: title || "",
+          url: defaultImage.id || fallbackImage,
+          type: defaultImage.format || "image/jpeg",
+          width: defaultImage.width || 600,
+          height: defaultImage.height || 400,
+          alt: title || "Fallback Image",
         },
       ],
     },
