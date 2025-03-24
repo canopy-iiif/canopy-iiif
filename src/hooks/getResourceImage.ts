@@ -3,6 +3,8 @@ export const getResourceImage = (
   size = "600,",
   region = "full"
 ) => {
+  if (!resource) return null;
+
   if (Array.isArray(resource)) resource = resource[0];
 
   if (!resource.service) return resource.id;

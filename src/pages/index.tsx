@@ -33,7 +33,7 @@ const Index: React.FC<IndexProps> = ({
   return (
     <LayoutsBasic frontMatter={frontMatter}>
       <>
-        {frontMatter.showHero && (
+        {frontMatter.showHero && featuredItems && (
           <HeroWrapper>
             <Hero collection={featuredItems} />
           </HeroWrapper>
@@ -75,13 +75,16 @@ export async function getStaticProps() {
 
   const randomFeaturedItem =
     manifests[Math.floor(Math.random() * manifests.length)];
-  const featuredItems = await createCollection(
-    featured ? featured : [randomFeaturedItem.id],
-    baseUrl
-  );
+  const featuredItems =
+    (await createCollection(
+      featured ? featured : [randomFeaturedItem.id],
+      baseUrl
+    )) || [];
 
   const metadataCollections = FACETS.map((facet) => {
+    // @ts-ignore
     const value = getRelatedFacetValue(facet?.label);
+    // @ts-ignore
     return `${baseUrl}/api/facet/${facet?.slug}/${value?.slug}.json?sort=random`;
   });
 

@@ -31,8 +31,8 @@ async function createItem(resource, baseUrl) {
               id: best.id,
               type: "Image",
               format: "image/jpeg",
-              width: best.width,
-              height: best.height,
+              width: best.width || 720,
+              height: best.height || 720,
             },
           ]
         : [],
