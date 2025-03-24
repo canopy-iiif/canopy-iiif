@@ -68,5 +68,8 @@
   "theme": {
     "defaultTheme": "light",
     "toggleEnabled": false
+  },
+  "components": {
+    "viewer": "clover"
   }
 }

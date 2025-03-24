@@ -21,7 +21,9 @@ const Card: React.FC<CardProps> = ({ resource }) => {
 
   const { label, homepage, thumbnail } = resource;
   // @ts-ignore
-  const { width, height } = thumbnail[0];
+  const { width, height } = thumbnail?.length
+    ? thumbnail[0]
+    : { width: null, height: null };
 
   if (width && height) aspectRatio = width / height;
 
@@ -41,7 +43,7 @@ const Card: React.FC<CardProps> = ({ resource }) => {
             clip="padding-box"
             side="top"
             data-testid="canopy-card-inset"
-            data-resource={thumbnail[0].id}
+            data-resource={thumbnail?.length ? thumbnail[0]?.id : null}
           >
             <AspectRatio.Root ratio={aspectRatio}>
               <Placeholder>

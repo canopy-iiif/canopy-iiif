@@ -25,6 +25,10 @@ export interface CanopyCollectionShape {
   }>;
 }
 
+export interface CanopyComponents {
+  viewer?: "clover" | "ramp";
+}
+
 export interface CanopyTheme extends ThemeProps {
   defaultTheme: string;
   toggleEnabled: boolean;
@@ -55,6 +59,7 @@ export interface CanopyEnvironment {
   theme: CanopyTheme;
   url: string;
   basePath?: string;
+  components?: CanopyComponents;
   vendor?: CanopyVendor;
 }
 
