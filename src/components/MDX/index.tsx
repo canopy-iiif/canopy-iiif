@@ -15,6 +15,7 @@ import Heading from "@components/Shared/Heading/Heading";
 import Image from "@components/MDX/Image";
 import ReferencedItems from "@src/components/MDX/ReferencedItems";
 import Scroll from "@components/MDX/Scroll";
+import Share from "@components/MDX/Share";
 import Slider from "@components/MDX/Slider";
 import Viewer from "@components/MDX/Viewer";
 import { getSlug } from "@src/lib/build/slug";
@@ -31,6 +32,7 @@ const canopyComponents = {
   Image,
   ReferencedItems,
   Scroll,
+  Share,
   Slider,
   Viewer,
 };

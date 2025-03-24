@@ -3,6 +3,7 @@ import { InternationalString } from "@iiif/presentation-3";
 import React from "react";
 
 type Action =
+  | { type: "updateContentState"; iiifContentState: any }
   | { type: "updateHeaderVisible"; headerVisible: boolean }
   | { type: "updateLocale"; locale: any }
   | { type: "updateSearchHeaderFixed"; searchHeaderFixed: boolean }
@@ -19,6 +20,7 @@ type CanopyProviderProps = {
 const defaultState: CanopyContextStore = {
   config: {},
   headerVisible: true,
+  iiifContentState: "",
   locale: {},
   searchHeaderFixed: false,
   searchParams: new URLSearchParams(),
@@ -31,6 +33,12 @@ const CanopyStateContext = React.createContext<
 
 function canopyReducer(state: State, action: Action) {
   switch (action.type) {
+    case "updateContentState": {
+      return {
+        ...state,
+        iiifContentState: action.iiifContentState,
+      };
+    }
     case "updateHeaderVisible": {
       return {
         ...state,
