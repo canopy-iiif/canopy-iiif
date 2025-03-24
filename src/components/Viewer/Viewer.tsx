@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+
 import dynamic from "next/dynamic";
 import { styled } from "@src/styles/stitches";
 
@@ -6,6 +7,7 @@ const CloverViewer: React.ComponentType<{
   customTheme: any;
   iiifContent: string;
   options: any;
+  canvasIdCallback?: (canvasId: string) => void;
 }> = dynamic(
   () => import("@samvera/clover-iiif").then((Clover) => Clover.Viewer),
   {
@@ -40,18 +42,40 @@ const defaultOptions = {
 const Viewer = ({
   iiifContent,
   options,
+  canvasIdCallback,
 }: {
   iiifContent: string;
   options?: any;
-}) => (
-  <StyledCloverViewer>
-    <CloverViewer
-      iiifContent={iiifContent}
-      options={{ ...defaultOptions, ...options }}
-      customTheme={customTheme}
-    />
-  </StyledCloverViewer>
-);
+  canvasIdCallback?: (canvasId: string) => void;
+}) => {
+  const [iiifContentVerified, setIIIFContentVerified] = useState<string>();
+
+  useEffect(() => {
+    const url = new URL(window.location.href);
+    const iiifContentParam = url.searchParams.get("iiif-content");
+
+    if (!iiifContentParam) {
+      setIIIFContentVerified(iiifContent);
+      return;
+    } else {
+      setIIIFContentVerified(iiifContentParam);
+      return;
+    }
+  }, []);
+
+  if (!iiifContentVerified) return;
+
+  return (
+    <StyledCloverViewer>
+      <CloverViewer
+        iiifContent={iiifContentVerified}
+        options={{ ...defaultOptions, ...options }}
+        customTheme={customTheme}
+        canvasIdCallback={canvasIdCallback}
+      />
+    </StyledCloverViewer>
+  );
+};
 
 const StyledCloverViewer = styled("div", {
   ".clover-viewer-header": {
