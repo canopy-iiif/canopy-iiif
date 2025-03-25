@@ -5,11 +5,10 @@ import { styled } from "@stitches/react";
 const contentStateViewers = ["clover"];
 
 interface WorkShareProps {
-  activeCanvas?: string;
   iiifContent: string;
 }
 
-const WorkShare: React.FC<WorkShareProps> = ({ iiifContent, activeCanvas }) => {
+const WorkShare: React.FC<WorkShareProps> = ({ iiifContent }) => {
   // @ts-ignore
   const viewer = process.env.CANOPY_CONFIG.components.viewer;
 
@@ -18,7 +17,6 @@ const WorkShare: React.FC<WorkShareProps> = ({ iiifContent, activeCanvas }) => {
   return (
     <StyledWorkShare>
       <Share
-        activeCanvas={activeCanvas}
         iiifContent={iiifContent}
         isContentStateViewer={isContentStateViewer}
       />

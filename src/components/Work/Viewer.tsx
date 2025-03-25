@@ -7,7 +7,10 @@ import { useCanopyState } from "@src/context/canopy";
 const viewer = process?.env?.CANOPY_CONFIG?.components?.viewer;
 
 const WorkViewer = (props: CloverViewerProps) => {
-  const { canopyDispatch } = useCanopyState();
+  const {
+    canopyState: { iiifContentState },
+    canopyDispatch,
+  } = useCanopyState();
 
   const handleCanvasIdCallback = (canvasId: string) => {
     if (!canvasId) return;
@@ -31,10 +34,11 @@ const WorkViewer = (props: CloverViewerProps) => {
       },
     });
 
-    canopyDispatch({
-      type: "updateContentState",
-      iiifContentState: contentState,
-    });
+    if (contentState !== iiifContentState)
+      canopyDispatch({
+        type: "updateContentState",
+        iiifContentState: contentState,
+      });
   };
 
   return (
