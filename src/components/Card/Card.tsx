@@ -22,7 +22,7 @@ const Card: React.FC<CardProps> = ({ resource }) => {
   const { label, homepage, thumbnail } = resource;
 
   const hasThumbnail = Array.isArray(thumbnail) && thumbnail.length > 0;
-  const thumbnailPath = hasThumbnail ? thumbnail[0].id : "images/fallback-thumbnail.jpg";
+  const thumbnailPath = hasThumbnail ? thumbnail[0].id : "images/image.svg";
   const width = hasThumbnail ? thumbnail[0].width : undefined;
   const height = hasThumbnail ? thumbnail[0].height : undefined;
 
