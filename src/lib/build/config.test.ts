@@ -4,8 +4,16 @@ import * as defaultData from "@config/.default/canopy.default.json";
 
 import { CanopyBuildConfigValues } from "@customTypes/build";
 
-describe("getConfig() function", () => {
-  it("should return default settings if path is not set", () => {
+import fs from "fs";
+import path from "path";
+
+const canopyPath = path.resolve("./config/canopy.json");
+
+// Only run the default test if canopy.json is not set
+(fs.existsSync(canopyPath) ? describe.skip : describe)("getConfig fallback", () => {
+  const { getConfig } = require("./config");
+
+  it("should return default settings if canopy.json is not present", () => {
     const result: CanopyBuildConfigValues = getConfig();
     expect(result.collection).toEqual(defaultData.collection);
     expect(result.locales).toEqual(defaultData.locales);
@@ -14,7 +22,9 @@ describe("getConfig() function", () => {
     expect(result.search).toEqual(defaultData.search);
     expect(result.theme).toEqual(defaultData.theme);
   });
+});
 
+describe("getConfig() function", () => {
   it("should load a custom path for the configuration", () => {
     const result: CanopyBuildConfigValues = getConfig(
       "./config/.fixtures/canopy.presentation-3.json"
