@@ -36,6 +36,7 @@
       "tokenize": "strict",
       "bidirectional": false,
       "document": {
+        "id": "id",
         "index": [
           {
             "field": "label",
