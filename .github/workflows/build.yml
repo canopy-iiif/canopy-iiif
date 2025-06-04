@@ -113,6 +113,6 @@ jobs:
         uses: chrisreddington/validate-file-exists@v0.0.1
         with:
           required-files: |
-            'out/404.html, out/about.html, out/index.html, out/metadata.html,
+            out/404.html, out/about.html, out/index.html, out/metadata.html,
             out/robots.txt, out/search.html, out/sitemap.xml, out/sitemap-0.xml,
-            out/works.html'
+            out/works.html
