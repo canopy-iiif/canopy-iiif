@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  build:
+  build-static:
     runs-on: ubuntu-latest
 
     strategy:
