@@ -112,7 +112,7 @@ jobs:
       - name: Check out gets written
         uses: chrisreddington/validate-file-exists@v0.0.1
         with:
-          files: |
+          required-files: |
             'out/404.html, out/about.html, out/index.html, out/metadata.html,
             out/robots.txt, out/search.html, out/sitemap.xml, out/sitemap-0.xml,
             out/works.html'
