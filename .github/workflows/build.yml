@@ -107,7 +107,7 @@ jobs:
         run: npm run test-build
 
       - name: Test Build Static
-        run: npm run build:static
+        run: npm run build
 
       - name: Check out gets written
         uses: chrisreddington/validate-file-exists@v0.0.1
