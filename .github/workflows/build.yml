@@ -14,7 +14,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: "16"
+          node-version: "18"
 
       - name: Cache Node Modules
         id: cache-deps
@@ -37,7 +37,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: "16"
+          node-version: "18"
 
       - name: Restore Node Modules
         uses: actions/cache@v3
@@ -63,7 +63,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: "16"
+          node-version: "18"
 
       - name: Restore Node Modules
         uses: actions/cache@v3
@@ -105,3 +105,20 @@ jobs:
 
       - name: Minimal Configuration (Build)
         run: npm run test-build
+
+      - name: Test Build Static
+        run: npm run build
+
+      - name: List all files
+        run: ls -lah
+
+      - name: List all files
+        run: ls -la out
+
+      - name: Check out gets written
+        uses: chrisreddington/validate-file-exists@v0.0.1
+        with:
+          required-files: |
+            out/404.html, out/about.html, out/index.html, out/metadata.html,
+            out/robots.txt, out/search.html, out/sitemap.xml, out/sitemap-0.xml,
+            out/works.html
