@@ -1,0 +1,16 @@
+{
+  "type": "Collection",
+  "id": "https://example.org/iiif/collection",
+  "items": [
+    {
+      "id": "https://example.org/iiif/manifest/1",
+      "type": "Manifest",
+      "label": {"en": ["Example Manifest 1"]}
+    },
+    {
+      "id": "https://example.org/iiif/manifest/2",
+      "type": "Manifest",
+      "label": {"en": ["Example Manifest 2"]}
+    }
+  ]
+}
