@@ -1,0 +1,16 @@
+{
+  "name": "canopy-iiif",
+  "version": "1.0.0",
+  "description": "Minimal React + MDX static site generator",
+  "type": "module",
+  "scripts": {
+    "build": "node build.js",
+    "test": "echo \"No tests yet\" && exit 0",
+    "iiif": "node lib/iiif.js"
+  },
+  "dependencies": {
+    "@mdx-js/mdx": "^2.3.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  }
+}
