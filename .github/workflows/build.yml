@@ -14,7 +14,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: "16"
+          node-version: "18"
 
       - name: Cache Node Modules
         id: cache-deps
@@ -37,7 +37,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: "16"
+          node-version: "18"
 
       - name: Restore Node Modules
         uses: actions/cache@v3
@@ -63,7 +63,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: "16"
+          node-version: "18"
 
       - name: Restore Node Modules
         uses: actions/cache@v3
@@ -105,3 +105,15 @@ jobs:
 
       - name: Minimal Configuration (Build)
         run: npm run test-build
+
+      - name: Test Build Static
+        run: npm run build
+  
+      - name: Verify build output
+        run: |
+          echo "Build completed. Checking output structure:"
+          ls -la out/
+          echo "Required files check:"
+          test -f out/robots.txt && echo "✓ robots.txt exists" || echo "✗ robots.txt missing"
+          test -f out/sitemap.xml && echo "✓ sitemap.xml exists" || echo "✗ sitemap.xml missing"
+          # etc.
