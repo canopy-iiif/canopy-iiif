@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunk_N_E=self.webpackChunk_N_E||[]).push([[4411],{64411:e=>{e.exports=JSON.parse('[{"path":"/about","text":"About"},{"path":"/about/example","text":"Markdown Example"}]')}}]);

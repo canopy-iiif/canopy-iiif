@@ -1,9 +1,0 @@
-# *
-User-agent: *
-Allow: /
-
-# Host
-Host: https://canopy-iiif.github.io/canopy-iiif
-
-# Sitemaps
-Sitemap: https://canopy-iiif.github.io/canopy-iiif/sitemap.xml

@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunk_N_E=self.webpackChunk_N_E||[]).push([[4626],{14626:e=>{e.exports={Color:"Colour"}}}]);
